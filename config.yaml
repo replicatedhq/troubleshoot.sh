@@ -1,0 +1,59 @@
+---
+baseURL: "https://kots.io"
+languageCode: "en-us"
+title: "Kots.io"
+theme: "hugo-whisper-theme"
+metadataformat: "yaml"
+canonifyurls: true
+description: "Documentation for Replicated Kots."
+googleAnalytics: ""
+
+
+# Hugo configuration
+pygmentsCodeFences: true
+pygmentsStyle: "monokai"
+
+staticDir:
+    - ./static
+
+Params:
+  author: "Kots"
+  copyright: "Replicated, Inc"
+  homepage_intro: "Kots is a kubectl plugin to help manage Kubernetes Off-The-Shelf software"
+
+  # matomo:
+  #   host: "localhost:4000"
+  #   site: "2"
+
+  favicon: ""
+  pagetitle: "Kots.io"
+  permalink: "#"
+  mainSections:
+    - kots-cli
+    - vendor
+    - kotsadm
+    - preflight
+    - support-bundle
+    - reference
+    - v1beta1
+menu:
+  main:
+    - Name: "Kots CLI"
+      Weight: 1
+      URL: "/kots-cli/getting-started"
+    - Name: "Admin Console"
+      Weight: 2
+      URL: "/kotsadm/"
+    - Name: "Preflight"
+      Weight: 3
+      URL: "/preflight/"
+    - Name: "Support Bundle"
+      Weight: 4
+      URL: "/support-bundle/"
+    - Name: "Reference"
+      Weight: 5
+      URL: "/reference/"
+    - Name: "Vendor"
+      Weight: 6
+      URL: "/vendor/"
+---

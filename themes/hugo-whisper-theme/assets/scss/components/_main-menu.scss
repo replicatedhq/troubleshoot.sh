@@ -1,0 +1,39 @@
+.main-menu {
+  display: none;
+  @include media-breakpoint-up(md) {
+    display: block;
+  }
+  > ul {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    font-family: $font-family-ubuntu;
+    > li {
+      list-style: none;
+      font-size: 14px;
+      > a {
+        padding: 10px 14px 10px 14px;
+        margin-right: 15px;
+        display: inline-block;
+        font-weight: normal;
+        text-decoration: none;
+        -webkit-transition: all .2s ease;
+        transition: all .2s ease;
+        color: $dove-gray;
+        &:hover {
+          color: $tundora-gray;
+        }
+      }
+      &.active {
+        > a {
+          font-weight: bold;
+        }
+      }
+      &:last-child {
+        > a {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
