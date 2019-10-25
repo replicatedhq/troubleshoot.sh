@@ -16,6 +16,14 @@
     z-index: 10;
     width: 100%;
   }
+
+  .logo-desktop {
+    height: 100px;
+    width: 200px;
+    img {
+      width: 100%;
+    }
+  }
 }
 .lock-scroll {
   .header {

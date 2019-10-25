@@ -20,7 +20,9 @@
   <div class="container pt-12 pb-16">
     <div class="row">
       <div class="col-12">
-        <div class="landing-logo"></div>
+        <div class="logo-desktop-wrapper">
+          <img src="{{.Site.Params.logo.support_bundle | relURL }}">
+        </div>
         <div class="content">
           {{ if .Content }}
           {{ .Content }}

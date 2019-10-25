@@ -26,6 +26,9 @@ Params:
   #   site: "2"
 
   favicon: ""
+  logo:
+    preflight: "/images/preflight.svg"
+    support_bundle: "/images/support.svg"
   pagetitle: "Troubleshoot.sh"
   permalink: "#"
   mainSections:

@@ -7293,6 +7293,11 @@ p {
     position: absolute;
     z-index: 10;
     width: 100%; }
+  .header .logo-desktop {
+    height: 100px;
+    width: 200px; }
+    .header .logo-desktop img {
+      width: 100%; }
 
 .lock-scroll .header.header-absolute {
   position: static; }
@@ -7844,13 +7849,12 @@ p {
 
 .page-home {
   text-align: center; }
-  .page-home .landing-logo {
-    width: 204px;
-    height: 80px;
-    margin: 0 auto;
-    background-image: url("/images/kots.svg");
-    background-repeat: no-repeat;
-    background-size: 100%; }
+  .page-home .logo-desktop-wrapper {
+    height: 100px;
+    width: 300px;
+    margin: 0 auto; }
+    .page-home .logo-desktop-wrapper img {
+      width: 100%; }
   .page-home p {
     margin: 30px auto;
     font-family: "Ubuntu", sans-serif;
