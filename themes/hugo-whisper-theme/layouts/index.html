@@ -29,10 +29,10 @@
           {{ end }}
         </div>
         <div class="button-wrapper">
-          <a class="button primary-button" href="/kots-cli/getting-started/">
+          <a class="button primary-button" href="/preflight">
             Get started
           </a>
-          <a class="button border-button" href="https://github.com/replicatedhq/kots/releases" target="_blank">
+          <a class="button border-button" href="https://github.com/replicatedhq/troubleshoot/releases" target="_blank">
             Download latest version
           </a>
         </div>
@@ -44,8 +44,11 @@
           {{ if .Content }}
           {{ .Content }}
           {{ else }}
-          <p style="margin-bottom:0px; font-size:16px;">Install on your workstation:</p>
-          <p style="margin-top:0px"><code>curl https://kots.io/install | bash</code></p>
+          <p style="margin-bottom:0px; font-size:16px;">Install on your workstation via <a target="_blank" rel="noopener noreferrer" href="https://krew.dev">
+            <code>krew</code>
+          </a></p>
+          <p style="margin-top:0px; margin-bottom:10px;"><code>kubectl krew install preflight</code></p>
+          <p style="margin-top:0px"><code>kubectl krew install support-bundle</code></p>
           {{ end }}
         </div>
       </div>
