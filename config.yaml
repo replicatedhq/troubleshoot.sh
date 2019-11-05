@@ -8,6 +8,10 @@ canonifyurls: true
 description: "Documentation for the kubectl troubleshoot plugin"
 googleAnalytics: ""
 
+# Algoloia search
+algolia:
+  index: "prod_troubleshootsh"
+  appID: ""
 
 # Hugo configuration
 pygmentsCodeFences: true
@@ -19,7 +23,7 @@ staticDir:
 Params:
   author: "Troubleshoot.sh"
   copyright: "Replicated, Inc"
-  homepage_intro: "Troubleshoot is a kubectl plugin to run preflights or generate easy-to-read support bundles for Kots applications"
+  homepage_intro: "Troubleshoot is a set of kubectl plugins to run preflight checks or collect and analyze support bundles for KOTS applications"
 
   # matomo:
   #   host: "localhost:4000"
@@ -34,12 +38,16 @@ Params:
   mainSections:
     - preflight
     - support-bundle
+    - vendor
 menu:
   main:
     - Name: "Preflight"
       Weight: 1
-      URL: "/preflight/"
+      URL: "/preflight/overview"
     - Name: "Support Bundle"
       Weight: 2
-      URL: "/support-bundle/"
+      URL: "/support-bundle/overview"
+    - Name: "Vendor"
+      Weight: 3
+      URL: "/vendor/getting-started/overview"
 ---

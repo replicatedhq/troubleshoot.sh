@@ -1,12 +1,49 @@
-{{$currentNode := .}}
+{{ $currentNode := . }}
+
 <div class="docs-menu">
-  <h4>{{ .Section | humanize }}</h4>
+  <h3>
+    <a href="{{ .FirstSection.Params.redirect }}">
+      {{ if eq .Section "vendor" }}
+        Vendor Documentation
+      {{ else }}
+        {{ .Section | humanize }} 
+      {{ end }}
+  </h3>
   <ul>
-    {{ range (where .Site.RegularPages "Section" .Section) sort .Site.RegularPages ".Weight" }}
-      {{ if not (eq .Params.displaySidebar false) }}
-    <li class="{{ if eq .File.UniqueID $currentNode.File.UniqueID }}active {{ end }}">
-      <a href="{{ .Permalink }}">{{ .Title }}</a>
-    </li>
+    {{ range .FirstSection.Pages }}
+      {{ if .IsPage }}
+        <li class="{{ if eq .Title $currentNode.Title }}active{{ end }}">
+          <a href="{{ .Permalink | relURL }}">
+            {{ if .Params.linktitle }}
+              {{ .Params.linktitle }}
+            {{ else }}
+              {{ .Title }}
+            {{ end }}
+          </a>
+        </li>
+      {{ else }}
+        <li class="is-parent {{ if eq .Title $currentNode.Title }}active{{ end }}">
+          <a href="{{ or .Params.redirect .Permalink }}">
+            {{ if .Params.linktitle }}
+              {{ .Params.linktitle }}
+            {{ else }}
+              {{ .Title }}
+            {{ end }}
+          </a>
+        </li>
+        {{ if $currentNode.IsDescendant . }}
+          {{ range .Pages }}
+            <li class="is-descendant {{ if eq .Title $currentNode.Title }}active{{ end }}">
+              <a href="{{ .Permalink | relURL }}">
+                {{ if .Params.linktitle }}
+                  {{ .Params.linktitle }}
+                {{ else }}
+                  {{ .Title }}
+                {{ end }}
+              </a>
+            </li>
+          {{ end }}
+        {{ end }}
       {{ end }}
     {{ end }}
   </ul>

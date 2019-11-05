@@ -1,7 +1,8 @@
 .main-menu {
   display: none;
   @include media-breakpoint-up(md) {
-    display: block;
+    display: flex;
+    align-items: center;
   }
   > ul {
     display: flex;

@@ -3,14 +3,9 @@
 {{ define "header_classes" }}{{ end }}
 
 {{ define "main" }}
-
 <h1 class="title">{{ .Title }}</h1>
 <div class="content">
   {{ .Content }}
 </div>
-
-{{ range.Pages }}
-{{ .Render "summary" }}
-{{ end }}
 
 {{ end }}

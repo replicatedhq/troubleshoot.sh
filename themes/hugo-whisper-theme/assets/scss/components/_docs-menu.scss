@@ -13,11 +13,8 @@
       font-weight: 400;
       margin: 0;
       padding: 4px 0 4px 0;
-      &.active {
-        a {
-          color: lighten($primary, 10%);
-          font-weight: 400;
-        }
+      &.active a {
+        color: $primary;
       }
       a {
         color: $black;
@@ -26,5 +23,23 @@
         }
       }
     }
+  }
+
+  .active {
+    color: $primary;
+    font-weight: bold;
+  }
+
+  .is-parent {
+    font-weight: bold;
+  }
+
+  .is-page {
+    padding-left: 10px;
+  }
+
+  .is-descendant {
+    padding-left: 20px;
+    color: $primary;
   }
 }
