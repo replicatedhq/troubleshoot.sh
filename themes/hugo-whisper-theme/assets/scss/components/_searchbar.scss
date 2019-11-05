@@ -1,0 +1,143 @@
+.search {
+  position: relative;
+
+  .fa-search {
+    margin-left: 20px;
+  }
+
+  .fa-search:hover {
+    cursor: pointer;
+  }
+
+  .search-tooltip {
+    max-height: 500px;
+    overflow: auto;
+    transition: all .1s ease;
+    padding: 20px;
+    position: absolute;
+    top: 30px;
+    right: 0;
+    visibility: hidden;
+    opacity: 0;
+    box-shadow: 0 0 4px 0 rgba(0,0,0,.3);
+
+    &.open {
+      opacity: 1;
+      z-index: 10;
+      visibility: visible;
+      background-color: #fff;
+    }
+
+    &:after {
+      // CSS ARROW?
+      bottom: 100%;
+      right: 0;
+      border: solid transparent;
+      content: "";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-width: 10px;
+    }
+    .search-tooltip-content {
+      position: relative;
+    }
+  }
+
+  .search-input {
+    background-color: transparent;
+    padding: 8px;
+    color: #323232;
+    border: 1px solid #9d9d9d;
+    margin-bottom: 12px;
+    border-radius: 8px;
+    width: 400px;
+
+    @include media-breakpoint-up(lg) {
+      width: 800px;
+    }
+
+  }
+
+  #search-results {
+    background-color: #fff;
+  }
+
+  .search-result {
+    display: block;
+    width: 400px;
+    padding: 12px;
+    border-bottom: 1px solid #9d9d9d;
+    @include media-breakpoint-up(lg) {
+      width: 800px;
+    }
+
+    em {
+      font-style: normal;
+      background-color: yellow;
+    }
+    h3.searchresult-title {
+      text-align: left;
+      color: #323232;
+      font-size: 18px;
+    }
+    p.searchresult-content {
+      margin: 0;
+      font-size: 14px;
+      font-family: Roboto, HelveticaNeue, Helvetica, Arial, sans-serif;
+      color: #9d9d9d;
+      font-weight: normal;
+      white-space:nowrap;
+      text-overflow: ellipsis;
+      overflow:hidden;
+    }
+
+    &:hover, &:focus {
+      cursor: pointer;
+      text-decoration: none;
+      background-color: rgba(163, 211, 233, .5);
+
+      .searchresult-title {
+        color: #323232;
+      }
+
+      .searchresult-content {
+        color: #323232;
+      }
+    }
+  }
+}
+#search-page-results {
+  max-width: 960px;
+  margin: 0 auto;
+  em {
+    background-color: yellow;
+  }
+  .search-result-content {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #9d9d9d;
+
+    &:hover {
+      background-color: rgba(163, 211, 233, .5);
+    }
+  }
+
+  a:hover {
+    text-decoration: none;
+  }
+
+  .searchresult-title {
+    text-align: left;
+  }
+
+  p {
+    text-align: left;
+    width: 100%;
+    margin: 0 auto;
+    font-size: 16px;
+    font-family: Roboto;
+
+
+  }
+}

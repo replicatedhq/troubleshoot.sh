@@ -20,9 +20,7 @@
   <div class="container pt-12 pb-16">
     <div class="row">
       <div class="col-12">
-        <div class="logo-desktop-wrapper">
-          <img src="{{.Site.Params.logo.support_bundle | relURL }}">
-        </div>
+        <div class="landing-logo"></div>
         <div class="content">
           {{ if .Content }}
           {{ .Content }}
@@ -31,7 +29,7 @@
           {{ end }}
         </div>
         <div class="button-wrapper">
-          <a class="button primary-button" href="/preflight">
+          <a class="button primary-button" href="/vendor/getting-started/">
             Get started
           </a>
           <a class="button border-button" href="https://github.com/replicatedhq/troubleshoot/releases" target="_blank">
@@ -46,11 +44,10 @@
           {{ if .Content }}
           {{ .Content }}
           {{ else }}
-          <p style="margin-bottom:0px; font-size:16px;">Install on your workstation via <a target="_blank" rel="noopener noreferrer" href="https://krew.dev">
-            <code>krew</code>
-          </a></p>
-          <p style="margin-top:0px; margin-bottom:10px;"><code>kubectl krew install preflight</code></p>
-          <p style="margin-top:0px"><code>kubectl krew install support-bundle</code></p>
+          <p style="margin-bottom:0px; font-size:16px;">Install Preflight on your workstation:</p>
+          <p style="margin-top:0px"><code>curl https://krew.sh/preflight | bash</code></p>
+          <p style="margin-bottom:0px; font-size:16px;">Install Support Bundle on your workstation:</p>
+          <p style="margin-top:0px"><code>curl https://krew.sh/support-bundle | bash</code></p>
           {{ end }}
         </div>
       </div>

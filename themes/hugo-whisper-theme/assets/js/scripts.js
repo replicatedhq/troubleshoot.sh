@@ -33,3 +33,177 @@ function addHeaderAnchors(content) {
         }
     }
 }
+
+// SEARCH.js
+var client = algoliasearch("RKUCTRIG38", "1413550d394a754f742b8c18a770b5be");
+var resultsEl = document.getElementById("search-results");
+var index = client.initIndex("prod_kotsio");
+var timeout = null;
+var DEBOUNCE_TIME = 300;
+function onSearchInput(event) {
+    var value = event.currentTarget.value;
+    clearTimeout(timeout);
+    if (value) {
+        timeout = setTimeout(function () {
+            index.search({ query: value })
+                .then(function (results) {
+                    var resultsHTML = "";
+                    var hits = results.hits;
+                    if (results.hits.length === 0) {
+                        resultsEl.innerHTML = `
+                            <div class="searchbar-item text-center">
+                                <p class="searchbar-content">No docs found for "${value}." Please try broadening your search</p>
+                            </div>
+                        `;
+                        return;
+                    }
+                    for (var i = 0; i < hits.length; i++) {
+                        var uri = hits[i]._highlightResult.uri.value;
+                        var description = hits[i]._highlightResult.description && hits[i]._highlightResult.description.value;
+
+                        resultsHTML += `
+                          <a class="search-result" href="/${hits[i].uri}">
+                            <div class="search-result-content">
+                                ${uri && `<h3 class="searchresult-title"> ${uri}</h3>`}
+                                ${(description && `<p class="searchresult-content">${description}</p>`) || ""}
+                            </div>
+                          </a>
+                        `;
+                    }
+                    resultsEl.innerHTML = resultsHTML;
+                }).catch(function (error) {
+                    console.error(error);
+                });
+        }, DEBOUNCE_TIME);
+    } else {
+        resultsEl.innerHTML = "";
+    }
+}
+
+function onSearchPageInput(event) {
+    var value = event.currentTarget.value;
+    var searchPageResults = document.getElementById("search-page-results");
+    if (value) {
+        timeout = setTimeout(function () {
+            index.search({ query: value }).then(function (results) {
+                var resultsHTML = "";
+                var hits = results.hits;
+                if (results.hits.length === 0) {
+                    searchPageResults.innerHTML = `
+                        <div class="searchbar-item text-center">
+                            <p class="searchbar-content">No docs found for "${value}." Please try broadening your search</p>
+                        </div>
+                    `;
+                    if (history.replaceState) {
+                        var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + value;
+                        window.history.replaceState({ path: newurl }, '', newurl);
+                    }
+                    return;
+                }
+                for (var i = 0; i < hits.length; i++) {
+                    var uri = hits[i]._highlightResult.uri.value;
+                    var description = hits[i]._highlightResult.description && hits[i]._highlightResult.description.value;
+
+                    resultsHTML += `
+                        <a class="search-result" href="/${hits[i].uri}">
+                        <div class="search-result-content">
+                            ${uri && `<h3 class="searchresult-title"> ${uri}</h3>`}
+                            ${(description && `<p class="searchresult-content">${description}</p>`) || ""}
+                        </div>
+                        </a>
+                    `;
+                }
+                searchPageResults.innerHTML = resultsHTML;
+                if (history.replaceState) {
+                    var newurl = window.location.protocol + "//" + window.location.host + window.location.pathname + '?q=' + value;
+                    window.history.replaceState({ path: newurl }, '', newurl);
+                }
+            }).catch(function (error) {
+                console.error(error);
+            });
+        }, DEBOUNCE_TIME);
+    } else {
+        searchPageResults.innerHTML = "";
+    }
+
+}
+
+var searchBar = document.getElementById("search");
+var searchIcon = document.getElementById("searchIcon");
+var searchTooltip = document.getElementById("searchTooltip");
+var searchInput = document.getElementById("searchInput");
+var searchPageInput = document.getElementById("searchPageInput");
+
+if (searchIcon && searchTooltip) {
+    // Toggle the search tooltip to be shown or hidden
+    searchIcon.addEventListener("click", function() {
+       searchTooltip.classList.toggle("open");
+       setTimeout(function() {
+           if (searchTooltip.classList.contains("open")) {
+               searchInput.focus();
+           } else {
+               searchInput.value = "";
+           }
+       },50);
+
+    });
+    searchInput.addEventListener("input", onSearchInput);
+
+    window.addEventListener("keyup", function(event) {
+        event.preventDefault();
+        var KEY_ESCAPE = 27;
+        var KEY_ARROW_UP = 38;
+        var KEY_ARROW_DOWN = 40;
+        var isSearchOpen = searchTooltip.classList.contains("open");
+        if (event.keyCode === KEY_ESCAPE) {
+            searchTooltip.classList.remove("open");
+            document.body.focus();
+            return;
+        }
+
+        var isSearchInputActive = document.activeElement.id === "searchInput";
+        if (isSearchOpen && isSearchInputActive) {
+            if (event.keyCode === KEY_ARROW_DOWN) {
+                var firstResult = document.getElementsByClassName("search-result")[0];
+                if (firstResult) {
+                    firstResult.focus();
+                }
+                return;
+            }
+        }
+
+        var isFocusedOnSearchResult = document.activeElement.classList.contains("search-result");
+        if (isFocusedOnSearchResult) {
+            if (event.keyCode === KEY_ARROW_DOWN) {
+                document.activeElement.nextElementSibling.focus();
+            }
+
+            if (event.keyCode === KEY_ARROW_UP) {
+                var previous = document.activeElement.previousElementSibling;
+                if (previous) {
+                    previous.focus();
+                } else {
+                    document.getElementById("searchInput").focus();
+                }
+            }
+        }
+
+    })
+}
+
+// Only run this JS for the search page
+if (searchPageInput) {
+    var urlQuery = new URLSearchParams(window.location.search);
+    var q = urlQuery.get("q");
+
+    if (q) {
+        searchPageInput.value = q.trim();
+        onSearchPageInput({ currentTarget: { value: q }});
+    }
+    searchPageInput.addEventListener("input", onSearchPageInput);
+}
+
+
+
+
+

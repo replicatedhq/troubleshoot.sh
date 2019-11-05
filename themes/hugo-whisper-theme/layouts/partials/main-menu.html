@@ -1,4 +1,9 @@
-<div id="main-menu" class="main-menu">
+<div id="main-menu" class="main-menu flex">
+  <!-- <div class="searchbar-container">
+    <input id="searchbar" class="searchbar" type="text" placeholder="Search Docs" />
+    <div id="searchbar-results" class="searchbar-results">
+    </div>
+  </div> -->
   <ul>
     {{ $currentPage := . }}
     {{ range .Site.Menus.main }}
@@ -9,4 +14,15 @@
     </li>
     {{end}}
   </ul>
+  <div class="search">
+    <i id="searchIcon" class="fa fa-search"></i>
+    <div id="searchTooltip" class="search-tooltip">
+      <div class="search-tooltip-content">
+        <div class="search-input-wrapper">
+          <input type="text" id="searchInput" class="search-input" placeholder="Search Docs">
+        </div>
+        <div id="search-results"></div>
+      </div>
+    </div>
+  </div>
 </div>
