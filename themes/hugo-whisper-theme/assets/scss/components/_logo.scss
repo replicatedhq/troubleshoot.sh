@@ -24,9 +24,13 @@
   @include media-breakpoint-up(sm) {
     display: none;
   }
-  img {
-    width: 100%;
-    height: auto;
+  span {
+    width: 77px;
+    height: 30px;
+    background-image: url("/images/support.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
   }
   a {
     display: block;

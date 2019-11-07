@@ -7436,9 +7436,13 @@ p {
   @media (min-width: 576px) {
     .logo-mobile {
       display: none; } }
-  .logo-mobile img {
-    width: 100%;
-    height: auto; }
+  .logo-mobile span {
+    width: 77px;
+    height: 30px;
+    background-image: url("/images/support.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block; }
   .logo-mobile a {
     display: block;
     width: 100%;
