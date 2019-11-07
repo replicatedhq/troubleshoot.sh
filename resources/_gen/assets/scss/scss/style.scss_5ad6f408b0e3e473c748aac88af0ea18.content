@@ -607,6 +607,9 @@ button.bg-dark:focus {
 .embed-responsive-1by1::before {
   padding-top: 100%; }
 
+.flex {
+  display: flex !important; }
+
 .flex-row {
   flex-direction: row !important; }
 
@@ -710,6 +713,8 @@ button.bg-dark:focus {
   align-self: stretch !important; }
 
 @media (min-width: 576px) {
+  .flex {
+    display: flex !important; }
   .flex-sm-row {
     flex-direction: row !important; }
   .flex-sm-column {
@@ -780,6 +785,8 @@ button.bg-dark:focus {
     align-self: stretch !important; } }
 
 @media (min-width: 768px) {
+  .flex {
+    display: flex !important; }
   .flex-md-row {
     flex-direction: row !important; }
   .flex-md-column {
@@ -850,6 +857,8 @@ button.bg-dark:focus {
     align-self: stretch !important; } }
 
 @media (min-width: 992px) {
+  .flex {
+    display: flex !important; }
   .flex-lg-row {
     flex-direction: row !important; }
   .flex-lg-column {
@@ -920,6 +929,8 @@ button.bg-dark:focus {
     align-self: stretch !important; } }
 
 @media (min-width: 1300px) {
+  .flex {
+    display: flex !important; }
   .flex-xl-row {
     flex-direction: row !important; }
   .flex-xl-column {
@@ -7436,9 +7447,13 @@ p {
   @media (min-width: 576px) {
     .logo-mobile {
       display: none; } }
-  .logo-mobile img {
-    width: 100%;
-    height: auto; }
+  .logo-mobile span {
+    width: 77px;
+    height: 30px;
+    background-image: url("/images/support.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block; }
   .logo-mobile a {
     display: block;
     width: 100%;
@@ -7956,6 +7971,36 @@ p {
     margin: 0 auto;
     font-size: 16px;
     font-family: Roboto; }
+
+.suite-banner {
+  padding: 14px 30px;
+  background-color: #073551;
+  color: #ffffff; }
+  .suite-banner .repl-logo-white {
+    width: 83px;
+    height: 20px;
+    background-image: url("/images/repl-white.svg");
+    background-repeat: no-repeat;
+    background-size: 100%; }
+  .suite-banner a {
+    font-size: 14px;
+    font-weight: 400;
+    text-decoration: none;
+    color: #ffffff; }
+    .suite-banner a .banner-arrow {
+      position: relative;
+      margin-left: 6px;
+      top: 4px;
+      right: 0;
+      width: 9px;
+      height: 16px;
+      background-image: url("/images/banner-arrow.png");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      display: inline-block;
+      transition: all 0.2s; }
+    .suite-banner a:hover .banner-arrow {
+      right: -4px; }
 
 .page-home {
   text-align: center; }
