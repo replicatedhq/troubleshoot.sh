@@ -10,8 +10,8 @@ googleAnalytics: ""
 
 # Algoloia search
 algolia:
-  index: "prod_troubleshootsh"
-  appID: ""
+  index: "prod_troubleshoot"
+  appID: "NHTIKUBZ4C"
 
 # Hugo configuration
 pygmentsCodeFences: true
