@@ -35,7 +35,7 @@ function addHeaderAnchors(content) {
 }
 
 // SEARCH.js
-var client = algoliasearch("RKUCTRIG38", "1413550d394a754f742b8c18a770b5be");
+var client = algoliasearch("NHTIKUBZ4C", "faf5f0b734b979e364fa1d9cd38e55c4");
 var resultsEl = document.getElementById("search-results");
 var index = client.initIndex("prod_kotsio");
 var timeout = null;
