@@ -37,7 +37,7 @@ function addHeaderAnchors(content) {
 // SEARCH.js
 var client = algoliasearch("NHTIKUBZ4C", "faf5f0b734b979e364fa1d9cd38e55c4");
 var resultsEl = document.getElementById("search-results");
-var index = client.initIndex("prod_kotsio");
+var index = client.initIndex("prod_troubleshoot");
 var timeout = null;
 var DEBOUNCE_TIME = 300;
 function onSearchInput(event) {
