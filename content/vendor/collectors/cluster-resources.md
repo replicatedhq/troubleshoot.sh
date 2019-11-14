@@ -5,10 +5,15 @@ title: Cluster Resources
 weight: 20030
 ---
 
+The clusterResources collector will attempt to enumerate anything that's deployed to the Kubernetes cluster. This will attempt to collect information from all namespaces, but if RBAC policies prevent the collector from accessing a namespace or resource, it will still include the resources that are accessible. Any RBAC policy errors will be included in the support bundle.
 
-The cluster resources colector is a default collector-- it will be automatically included in your collector spec if you don't include it.
+This is a default collector-- it will be automatically included in your collector spec if you don't include it.
+
+## Parameters
 
 This collector does not accept any parameters.
+
+## Example Collector Definition
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -82,8 +87,11 @@ This file contains information about all known namespaces in the cluster
 ]
 ```
 
+### /cluster-resources/nodes.json
+This file contains information about all of the nodes in the cluster. This is equivalent to running `kubectl describe nodes -o json`.
+
 ### /cluster-resources/storage-classes.json
-This file contains information about all installed storage classes in the cluster.
+This file contains information about all installed storage classes in the cluster. This is equivalent to running `kubectl describe storageclasses -o json`.
 
 ```json
 [

@@ -19,7 +19,7 @@ spec: []
 
 The above file is a simple but valid support bundle spec. It will collect only the default data.
 
-To add additional collectors, read the docs in this section to understand each one, and add them as an array item below `spec`.
+To add additional collectors, read the docs in this section to understand each one, and add them as an array item below `spec`. Each collector can be included multiple times, if there are different sets of options to use. 
 
 For example, a complete spec might be:
 

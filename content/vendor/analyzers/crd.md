@@ -5,6 +5,9 @@ title: Custom Resource Definition
 weight: 20060
 ---
 
+The customResourceDefinition analyzer.
+
+
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
 kind: Preflight

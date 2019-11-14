@@ -5,6 +5,7 @@ title: Storage Class
 weight: 20070
 ---
 
+The storageClass analyzer provides an 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
 kind: Preflight

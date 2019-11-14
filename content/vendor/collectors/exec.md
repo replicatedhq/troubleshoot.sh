@@ -5,9 +5,25 @@ title: Exec
 weight: 20060
 ---
 
-Optional `exec` collectors can be defined to collect output from commands executed inside running containers.
+The exec collector will run a command in an existing pod, and record the stdout and stderr in the support bundle. The pod to execute the command is found from a selector, specified in the collector definition. When the selector refers to more than one replica of a pod, the exec collector will execute in only one of the pods found. This spec can be included multiple times, each defining different commands and/or label selectors to use.
 
-For example:
+## Parameters
+
+The exec collector requires that the pod selector and command to be provided. There are additional, optional parameters if needed.
+
+**name**: (Optional) The name of the collector. This will be map to the path that the output is written to in the support bundle. If name is not provided, it will default to a calculated and deterministic value that is made from the label selector and the command.
+
+**selector**: (Required) The selector to use when locating the pod. The exec command will execute in the first pod that is returned from the Kubernetes API when queried for this label selector.
+
+**namespace**: (Optional) The namespace to look for the pod selector in. If not specified, it will assume the "current" namespace that the kubectl context is set to.
+
+**command**: (Required) An array of strings containing the command to execute in the pod.
+
+**args**: (Optional) An array of strings containing the arguments to pass to the command when executing.
+
+**timeout**: (Optional) A [duration](https://golang.org/duration) that will be honored when executing the command. This cannot be greater than 20 seconds (20s) and if not specified, the default is 20s.
+
+## Example Collector Definition
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1

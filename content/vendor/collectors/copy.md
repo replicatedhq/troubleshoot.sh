@@ -5,7 +5,7 @@ title: Copy
 weight: 20040
 ---
 
-The copy file collector is not automatically included. You need to specify it in your spec to include pod logs. You can include this spec multiple times.
+The copy collector include pod logs. You can include this spec multiple times.
 
 
 ```yaml
