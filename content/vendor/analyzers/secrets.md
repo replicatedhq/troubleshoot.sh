@@ -5,8 +5,11 @@ title: Secrets
 weight: 20030
 ---
 
-By default, the collectors don't include secrets. This means that a preflight check or a support bundle will fail validate the presence of a secret. This is for security reasons. However, the existance of a secret can still be validated by adding a specific collector, defining the secret and which parts of the secret to collect.
+The secret analyzer is a available to require or warn if a specific Kubernetes secret is not present or does not contain a required key. The `when` attribute is not supported in the outcomes of this analyzer.
 
+Collectors do not automatically include secrets because these often contain sensitive information. The [secret collector](../../collectors/secret), can be included in a set of collectors to include data about the secret. It's not recommend, and therefore not default, to include the value of secrets. The most common use of this analyzer it to detect the existence of a specific key in a specific secret.
+
+## Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -19,16 +22,16 @@ spec:
         name: my-app-postgres
         namespace: default
         key: uri
-        includeValue: false
+        includeValue: false # this is the default, specified here for clarity
   analyzers:
     - secret:
-        checkName: PG URI
+        checkName: Postgres URI Secret
         secretName: my-app-postgres
         namespace: default
         key: uri
         outcomes:
           - fail:
-              message: You don't have a pg uri secret
+              message: The `my-app-postgres` secret was not found or the `uri` key was not detected.
           - pass:
-              message: Probably a green light connecting to pg
+              message: The Postgres URI was found in a secret in the cluster.
 ```

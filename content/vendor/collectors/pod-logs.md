@@ -5,8 +5,21 @@ title: Pod Logs
 weight: 20040
 ---
 
-The pod logs collector is not automatically included. You need to specify it in your spec to include pod logs. You can include this spec multiple times.
+The logs collectors is available to collect logs from the running pods. This collector can be included multiple times with different label selectors and/or namespaces.
 
+## Parameters
+
+The logs collector requires the selector parameter to find the pods. There are additional parameters available to refine the collection.
+
+**selector**: (Required) The selector to use to find matching pods. If this selector returns more than one pod, all matching pods will be collected.
+
+**namespace**: (Optional) The namespace to search for the pod selector in. If this is not provided, it will default to the current namespace of the context.
+
+**limits**: (Optional) Provided to limit the size of the logs. By default, this is set to `maxLines: 10000`. Either `maxAge` or `maxLines` can be provided, but not both.
+**limits.maxAge**: The duration of the maximum oldest log to include.
+**limits.maxLines**: The number of lines to include, starting from the newest.
+
+## Example Collector Definition
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -23,10 +36,6 @@ spec:
         maxLines: 1000
 
 ```
-
-The selector attribute is a standard Kubernetes selector. It can match any labels.
-
-The limits field can support one or both of `maxAge` and `maxLines`. This will limit the output to the constraints provided. If not supplied, the `maxAge` will be unset (all), and the `maxLines` will be set to 10000 lines.
 
 ## Included resources
 

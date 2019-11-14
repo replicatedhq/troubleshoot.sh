@@ -5,11 +5,23 @@ title: HTTP
 weight: 20090
 ---
 
-Optional `http` collectors can be defined to collect output from HTTP requests.
+The http collector is available to execute http requests from inside the cluster and report the response code and body of the result. The http collector can be specified multiple times in a collector spec.
 
-## GET
+## Parameters
 
-The `GET` collector will issue an HTTP or HTTPS request to the specified URL.  For example:
+The http collector requires that a method is specified. All methods require the url parameter, and some support methods support additional parameters.
+
+**uri**: (Required) The URI to make the HTTP request against
+
+**insecureSkipVerify**: (Optional) When set to true, this will make connections to untrusted or self-signed certs. This defaults to false.
+
+**headers**: (Optional) When present, additional headers to send with the request. By default, there are no headers added to the request.
+
+**body**: (Optional) When present, the body to be send with the request. By default, there is no body included in a request.
+
+### GET
+
+The `get` method will issue an HTTP or HTTPS request to the specified URL. The body parameter is not supported in the `get method.
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -23,14 +35,10 @@ spec:
         url: http://api:3000/healthz
 ```
 
-Fields supported in `GET` requests:
-
-- url
-- insecureSkipVerify
-- headers
 
 ## POST/PUT
 
+The `post` and `put` methods will issue an HTTP or HTTPS POST or PUT request to the specified URL.
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -47,11 +55,6 @@ spec:
         headers:
           Content-Type: "application/json"
 ```
-
-- url
-- insecureSkipVerify
-- body
-- headers
 
 ## Response
 

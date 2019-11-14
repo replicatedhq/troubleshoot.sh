@@ -11,7 +11,9 @@ The `clusterVersion` analyzer requires that that [clusterInfo](../../collectors/
 
 To implement an analyzer that has a minimum version, specify that version as a fail or warn outcome first, and have a default outcome for pass. This will allow the pass outcome to always succeed when the fail or warn outcomes are not truthy.
 
-An example clusterVersion analyzer that reports a failure on Kubernetes less than 1.14.0, a warning when running 1.14.x, and a pass on 1.15.0 or later is:
+An example clusterVersion analyzer that reports a failure on Kubernetes less than 1.14.0, a warning when running 1.14.x, and a pass on 1.15.0 or later is included here.
+
+## Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
