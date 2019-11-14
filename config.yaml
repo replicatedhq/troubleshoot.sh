@@ -21,9 +21,9 @@ staticDir:
     - ./static
 
 Params:
-  author: "Troubleshoot.sh"
+  author: "Replicated, Inc."
   copyright: "Replicated, Inc"
-  homepage_intro: "Troubleshoot is a set of kubectl plugins to run preflight checks or collect and analyze support bundles for KOTS applications"
+  homepage_intro: "Troubleshoot is a set of kubectl plugins to run preflight checks or collect and analyze support bundles for any Kubernetes application"
 
   # matomo:
   #   host: "localhost:4000"
@@ -38,7 +38,7 @@ Params:
   mainSections:
     - preflight
     - support-bundle
-    - vendor
+    - reference
 menu:
   main:
     - Name: "Preflight"
@@ -47,7 +47,7 @@ menu:
     - Name: "Support Bundle"
       Weight: 2
       URL: "/support-bundle/overview"
-    - Name: "Vendor"
+    - Name: "Reference"
       Weight: 3
-      URL: "/vendor/getting-started/overview"
+      URL: "/reference/overview"
 ---
