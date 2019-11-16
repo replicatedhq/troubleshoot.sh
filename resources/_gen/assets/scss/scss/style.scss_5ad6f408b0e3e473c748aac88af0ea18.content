@@ -8014,14 +8014,14 @@ p {
   .page-home p {
     margin: 30px auto;
     font-family: "Ubuntu", sans-serif;
-    font-size: 22px;
+    font-size: 32px;
     font-weight: 500; }
     @media (min-width: 768px) {
       .page-home p {
         width: 80%; } }
     @media (min-width: 992px) {
       .page-home p {
-        width: 460px; } }
+        width: 600px; } }
   .page-home .terminal {
     border-radius: 3px;
     margin: 0 auto;
@@ -8029,6 +8029,37 @@ p {
     .page-home .terminal img {
       width: 100%;
       height: auto; }
+  .page-home .cards-wrapper {
+    padding: 50px; }
+    .page-home .cards-wrapper span {
+      font-size: 16px;
+      line-height: 26px;
+      font-weight: 400;
+      color: #9B9B9B;
+      text-align: center; }
+    .page-home .cards-wrapper .card {
+      width: 600px;
+      background-color: #ffffff;
+      padding: 22px 20px;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
+      max-width: 295px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+      line-height: normal;
+      color: #4a4949;
+      font-weight: 500; }
+    .page-home .cards-wrapper a {
+      color: #3E5FA8;
+      font-weight: bold;
+      padding-bottom: 5px;
+      display: inline-block;
+      border-bottom: solid 1px #3E5FA8;
+      cursor: pointer; }
+    .page-home .cards-wrapper a:hover {
+      color: #0538a5;
+      text-decoration: none; }
 
 body {
   font-family: "Roboto", Arial, sans-serif, -apple-system;

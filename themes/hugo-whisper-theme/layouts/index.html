@@ -20,7 +20,6 @@
   <div class="container pt-12 pb-16">
     <div class="row">
       <div class="col-12">
-        <div class="landing-logo"></div>
         <div class="content">
           {{ if .Content }}
           {{ .Content }}
@@ -28,27 +27,25 @@
           <p>{{ .Site.Params.homepage_intro }}</p>
           {{ end }}
         </div>
-        <div class="button-wrapper">
-          <a class="button primary-button" href="/vendor/getting-started/">
-            Get started
-          </a>
-          <a class="button border-button" href="https://github.com/replicatedhq/troubleshoot/releases" target="_blank">
-            Download latest version
-          </a>
-        </div>
       </div>
     </div>
-    <div class="row">
-      <div class="col-12">
-        <div class="content">
-          {{ if .Content }}
-          {{ .Content }}
-          {{ else }}
-          <p style="margin-bottom:0px; font-size:16px;">Install Preflight on your workstation:</p>
-          <p style="margin-top:0px"><code>curl https://krew.sh/preflight | bash</code></p>
-          <p style="margin-bottom:0px; font-size:16px;">Install Support Bundle on your workstation:</p>
-          <p style="margin-top:0px"><code>curl https://krew.sh/support-bundle | bash</code></p>
-          {{ end }}
+    <div class="cards-wrapper flex flex1 justify-content-between">
+      <div class="flex flex-column align-items-center">
+        <div class="card">
+          Preflight
+        </div>
+        <div class="flex flex-column justify-content-end align-items-end">
+          <span> Conformance Tests For Any Kubernetes App </span>
+          <a href="https://troubleshoot.sh/preflight" target="_blank"> learn more > </a>
+        </div>
+      </div>
+      <div class="flex flex-column align-items-center">
+        <div class="card">
+          Support
+        </div>
+        <div class="flex flex-column justify-content-end align-items-end">
+          <span> Disconnected Support For Any Kubernetes App </span>
+          <a href="https://troubleshoot.sh/support-bundle" target="_blank"> learn more > </a>
         </div>
       </div>
     </div>

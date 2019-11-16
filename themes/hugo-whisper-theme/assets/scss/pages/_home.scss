@@ -49,13 +49,13 @@
   p {
     margin: 30px auto;
     font-family: $font-family-ubuntu;
-    font-size: 22px;
+    font-size: 32px;
     font-weight: 500;
     @include media-breakpoint-up(md) {
       width: 80%;
     }
     @include media-breakpoint-up(lg) {
-      width: 460px;
+      width: 600px;
     }
   }
   .terminal {
@@ -65,6 +65,42 @@
     img {
       width: 100%;
       height: auto;
+    }
+  }
+  .cards-wrapper {
+    padding: 50px;
+    span {
+      font-size: 16px;
+      line-height: 26px;
+      font-weight: 400;
+      color: #9B9B9B;
+      text-align: center;
+    }
+    .card {
+      width: 600px;
+      background-color: #ffffff;
+      padding: 22px 20px;
+      border-radius: 6px;
+      text-align: center;
+      box-shadow: 0 0 4px rgba(0,0,0,0.16);
+      max-width: 295px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+      line-height: normal;
+      color: #4a4949;
+      font-weight: 500;
+    }
+    a {
+      color: #3E5FA8;
+      font-weight: bold;
+      padding-bottom: 5px;
+      display: inline-block;
+      border-bottom: solid 1px #3E5FA8;
+      cursor: pointer;
+    }
+    a:hover {
+      color: #0538a5;
+      text-decoration: none;
     }
   }
 }

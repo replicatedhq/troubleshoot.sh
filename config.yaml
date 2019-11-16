@@ -23,7 +23,7 @@ staticDir:
 Params:
   author: "Troubleshoot.sh"
   copyright: "Replicated, Inc"
-  homepage_intro: "Troubleshoot is a set of kubectl plugins to run preflight checks or collect and analyze support bundles for KOTS applications"
+  homepage_intro: "Deliver More Reliable and Predictable Kubernetes Applications"
 
   # matomo:
   #   host: "localhost:4000"
