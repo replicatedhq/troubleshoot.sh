@@ -76,13 +76,17 @@
     }
   }
   .cards-wrapper {
-    padding: 50px;
     span {
       font-size: 16px;
       line-height: 26px;
       font-weight: 400;
       color: #9B9B9B;
       text-align: center;
+    }
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
     }
     .card {
       width: 600px;
