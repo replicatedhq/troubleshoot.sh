@@ -46,6 +46,14 @@
     background-repeat: no-repeat;
     background-size: 100%;
   }
+  .preflight-logo {
+    width: 300px;
+    height: 60px;
+    margin: 0 auto;
+    background-image: url("/images/preflight.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
   p {
     margin: 30px auto;
     font-family: $font-family-ubuntu;

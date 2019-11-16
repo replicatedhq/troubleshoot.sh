@@ -17,37 +17,26 @@
 
 {{ define "main" }}
 <div class="strip strip-pattern-blue">
-  <div class="container pt-12 pb-16">
+  <div class="container pt-12 pb-16 flex flex-column justify-content-center align-items-center">
     <div class="row">
+      <div class="landing-logo"></div>
       <div class="col-12">
-        <div class="content">
-          {{ if .Content }}
-          {{ .Content }}
-          {{ else }}
-          <p>{{ .Site.Params.homepage_intro }}</p>
-          {{ end }}
+        <div class="content flex flex-column">
+          <code>curl https://knew.sh/support-bundle</code>
+          <code> kubectl support-bundle https://support.myapp.com</code>
         </div>
       </div>
     </div>
-    <div class="cards-wrapper flex flex1 justify-content-between">
-      <div class="flex flex-column align-items-center">
-        <div class="card">
-          Preflight
-        </div>
-        <div class="flex flex-column justify-content-end align-items-end">
-          <span> Conformance Tests For Any Kubernetes App </span>
-          <a href="/preflight" target="_blank"> learn more > </a>
-        </div>
-      </div>
-      <div class="flex flex-column align-items-center">
-        <div class="card">
-          Support
-        </div>
-        <div class="flex flex-column justify-content-end align-items-end">
-          <span> Disconnected Support For Any Kubernetes App </span>
-          <a href="/support-bundle" target="_blank"> learn more > </a>
-        </div>
-      </div>
+    <div class="col-md-10">
+      <p>Package Customizable Support Bundle Collection And Analysis With Any Kubernetes Application</p>
+    </div>
+    <div class="button-wrapper">
+      <a class="button primary-button" href="/support-bundle/overview/">
+        Get started
+      </a>
+      <a class="button border-button" href="/reference/getting-started/overview/" target="_blank">
+        Full docs
+      </a>
     </div>
   </div>
 </div>
