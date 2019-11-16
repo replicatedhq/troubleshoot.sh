@@ -38,16 +38,16 @@ Params:
   mainSections:
     - preflight
     - support-bundle
-    - vendor
+    - reference
 menu:
   main:
     - Name: "Preflight"
       Weight: 1
-      URL: "/preflight/overview"
+      URL: "/preflight"
     - Name: "Support Bundle"
       Weight: 2
-      URL: "/support-bundle/overview"
-    - Name: "Vendor"
+      URL: "/support-bundle"
+    - Name: "Reference"
       Weight: 3
-      URL: "/vendor/getting-started/overview"
+      URL: "/reference/getting-started/overview"
 ---
