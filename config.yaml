@@ -36,8 +36,7 @@ Params:
   pagetitle: "Troubleshoot.sh"
   permalink: "#"
   mainSections:
-    - preflight
-    - support-bundle
+    - docs
     - reference
 menu:
   main:
