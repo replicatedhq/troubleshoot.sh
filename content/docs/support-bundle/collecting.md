@@ -5,20 +5,29 @@ title: Collecting Support Bundles
 weight: 40020
 ---
 
-Before you can collect a support bundle, you need to have a client-only component available. Nothing needs to be installed in the cluster. The Troubleshoot client utility is packaged as a kubectl plugin, and can be installed using [krew](https://krew.dev). For instructions on how to install krew, visit [https://github.com/kubernetes-sigs/krew/#installation](https://github.com/kubernetes-sigs/krew/#installation).
+Before you can collect a support bundle, you need to have a client-only component available. Nothing needs to be installed in the cluster. The Troubleshoot client utility is packaged as a kubectl plugin, and can be installed using [krew](https://krew.dev). 
 
-If you have krew installed, the next step is to install the Troubleshoot plugin:
+The support bundle plugin can be installed using a simple script:
 
 ```shell
-kubectl krew install troubleshoot
-kubectl troubleshoot <uri/path>
+curl https://krew.sh/support-bundle | bash 
 ```
 
-Once it's installed, you can test it by generating and downloading a sample support bundle:
+For additional options to install krew, visit [https://github.com/kubernetes-sigs/krew/#installation](https://github.com/kubernetes-sigs/krew/#installation).
+
+## Collecting a Support Bundle
+
+Once you have the support bundle plugin installed on your workstation, you can generate a local support-bundle by giving the plugin a path to a set of collectors:
+
+```shell
+kubectl support-bundle <uri/path to collectors>
+```
+
+For example, to use a set of sample collectors:
 
 ```shell
 kubectl troubleshoot https://troubleshoot.replicated.com
 ```
 
-This will connect to the cluster defined in your local kubecontext, and collect some basic information about the cluster. After it's finished, it will write a file named "support-bundle.tar.gz" to the current working directory.
+This will connect to the cluster defined in your local context, and collect some basic information about the cluster. After it's finished, it will write a file named "support-bundle.tar.gz" to the current working directory.
 

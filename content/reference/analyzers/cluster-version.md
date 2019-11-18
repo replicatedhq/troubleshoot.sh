@@ -27,7 +27,7 @@ spec:
           - fail:
               when: "< 1.14.0"
               message: The application requires at Kubernetes 1.14.0 or later, and recommends 1.15.0.
-              uri: https://www.kubernetes.io
+              uri: https://kubernetes.io
           - warn:
               when: "< 1.15.0"
               message: Your cluster meets the minimum version of Kubernetes, but we recommend you update to 1.15.0 or later.

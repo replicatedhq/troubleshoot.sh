@@ -3,17 +3,30 @@ date: 2019-10-09
 linktitle: "Preflight Checks"
 title: Preflight Checks
 weight: 30010
-aliases:
-  - /preflight/overview
 ---
 
-Preflight checks are designed to be run against a target cluster before installing an application. Preflights are simply a different set of collectors + analyzers.
+Before you can run preflight checks against a cluster, you need to have a client-only component available. Nothing needs to be installed in the cluster. The preflight client utility is packaged as a kubectl plugin, and can be installed using [krew](https://krew.dev). 
 
-To start, we recommend that you install the preflight tool on your workstation, where you have kubectl installed. The best and easiest way to do this is to use [krew](https://krew.dev/), the package manager for kubectl plugins.
+The preflight plugin can be installed using a simple script:
 
-There are also alternative methods to install the preflight tool:
+```shell
+curl https://krew.sh/preflight | bash 
+```
 
-1. kubectl plugin
-2. download the binary and install it
-3. run it in a docker container
+For additional options to install krew, visit [https://github.com/kubernetes-sigs/krew/#installation](https://github.com/kubernetes-sigs/krew/#installation).
 
+## Running Preflight Checks
+
+Once you have the preflight plugin installed on your workstation, you can execute preflight checks by running a command on your workstation:
+
+```shell
+kubectl preflight <uri/path to preflight>
+```
+
+For example, to use a set of sample collectors:
+
+```shell
+kubectl preflight https://preflight.replicated.com
+```
+
+This will show a terminal-based screen with the results of the preflight checks.
