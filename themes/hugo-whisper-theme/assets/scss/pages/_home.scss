@@ -46,16 +46,24 @@
     background-repeat: no-repeat;
     background-size: 100%;
   }
+  .preflight-logo {
+    width: 300px;
+    height: 60px;
+    margin: 0 auto;
+    background-image: url("/images/preflight.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
   p {
     margin: 30px auto;
     font-family: $font-family-ubuntu;
-    font-size: 22px;
+    font-size: 32px;
     font-weight: 500;
     @include media-breakpoint-up(md) {
       width: 80%;
     }
     @include media-breakpoint-up(lg) {
-      width: 460px;
+      width: 600px;
     }
   }
   .terminal {
@@ -65,6 +73,81 @@
     img {
       width: 100%;
       height: auto;
+    }
+  }
+  .cards-wrapper {
+    .card-wrapper {
+      display: flex;
+      flex-direction: column;
+      padding: 50px;
+      align-items: center;
+    }
+    .card {
+      width: 600px;
+      background-color: #ffffff;
+      padding: 22px 20px;
+      border-radius: 6px;
+      box-shadow: 0 0 4px rgba(0,0,0,0.16);
+      max-width: 295px;
+      box-sizing: border-box;
+      margin-bottom: 30px;
+      line-height: normal;
+      color: #4a4949;
+      font-weight: 500;
+      font-size: 22px;
+
+      .card-text {
+        margin-top:10px;
+        font-size: 16px;
+        line-height: 26px;
+        font-weight: 400;
+        color: #9B9B9B;
+        text-align: start;
+      }
+    }
+    .support-small-logo {
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+      background-image: url("/images/support-bundle-mini.svg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    .preflight-small-logo {
+      width: 30px;
+      height: 30px;
+      margin-right: 15px;
+      background-image: url("/images/preflight-mini.svg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
+    .learnMoreLink {
+      a {
+        color: #326DE6;
+        font-weight: 500;
+        display: inline-block;
+        font-size: 16px;
+        cursor: pointer;
+        .blue-arrow {
+          position: relative;
+          top: 4px;
+          right: 0;
+          margin-left: 6px;
+          width: 6px;
+          height: 15px;
+          background-image: url("/images/blue-arrow.svg");
+          background-repeat: no-repeat;
+          background-size: 100%;
+          display: inline-block;
+          transition: all 0.2s;
+        }
+        &:hover .blue-arrow {
+          right: -4px;
+        }
+      }
+      a:hover {
+        text-decoration: none;
+      }
     }
   }
 }

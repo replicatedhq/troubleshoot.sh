@@ -2,12 +2,12 @@
   display: none;
   @include media-breakpoint-up(sm) {
     display: block;
-    width: 70px;
+    width: 250px;
   }
   span {
-    width: 77px;
-    height: 30px;
-    background-image: url("/images/support.svg");
+    width: 250px;
+    height: 25px;
+    background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block;
@@ -25,9 +25,9 @@
     display: none;
   }
   span {
-    width: 77px;
-    height: 30px;
-    background-image: url("/images/support.svg");
+    width: 250px;
+    height: 25px;
+    background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block;

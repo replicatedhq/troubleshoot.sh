@@ -4,7 +4,7 @@ linktitle: "Preflight Checks"
 title: Preflight Checks
 weight: 30010
 aliases:
-  - /preflight/
+  - /preflight/overview
 ---
 
 Preflight checks are designed to be run against a target cluster before installing an application. Preflights are simply a different set of collectors + analyzers.
