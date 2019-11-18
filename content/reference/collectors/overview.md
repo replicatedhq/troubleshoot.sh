@@ -14,12 +14,13 @@ apiVersion: troubleshoot.replicated.com/v1beta1
 kind: Collector
 metadata:
   name: my-application-name
-spec: []
+spec:
+  collectors: []
 ```
 
 The above file is a simple but valid support bundle spec. It will collect only the default data.
 
-To add additional collectors, read the docs in this section to understand each one, and add them as an array item below `spec`.
+To add additional collectors, read the docs in this section to understand each one, and add them as an array item below `spec`. Each collector can be included multiple times, if there are different sets of options to use.
 
 For example, a complete spec might be:
 
@@ -29,25 +30,26 @@ kind: Collector
 metadata:
   name: my-application-name
 spec:
-  - clusterInfo: {}
-  - clusterResources: {}
-  - logs:
-      selector:
-        - app=api
-      namespace: default
-      limits:
-        maxAge: 30d
-        maxLines: 1000
-  - http:
-      name: healthz
-      get:
-        url: http://api:3000/healthz
-  - exec:
-      name: mysql-version
-      selector:
-        - app=mysql
-      namespace: default
-      command: ["mysql"]
-      args: ["-V"]
-      timeout: 5s
+  collectors:
+    - clusterInfo: {}
+    - clusterResources: {}
+    - logs:
+        selector:
+          - app=api
+        namespace: default
+        limits:
+          maxAge: 30d
+          maxLines: 1000
+    - http:
+        name: healthz
+        get:
+          url: http://api:3000/healthz
+    - exec:
+        name: mysql-version
+        selector:
+          - app=mysql
+        namespace: default
+        command: ["mysql"]
+        args: ["-V"]
+        timeout: 5s
 ```
