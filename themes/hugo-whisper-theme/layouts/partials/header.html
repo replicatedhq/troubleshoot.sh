@@ -1,10 +1,26 @@
 <div class='header'>
   <div class="container">
-    <div class="logo">
-      <a href="{{ .Site.BaseURL }}"><span/></a>
+    {{ if in .File.Dir "support-bundle" }}
+      <div class="logo support-bundle">
+        <a href="{{ .Site.BaseURL }}/support-bundle"><span/></a>
+    {{ else if in .File.Dir "preflight" }}
+      <div class="logo preflight">
+        <a href="{{ .Site.BaseURL }}/preflight"><span/></a>
+    {{ else }}
+      <div class="logo">
+        <a href="{{ .Site.BaseURL }}"><span/></a>
+    {{ end }}
     </div>
-    <div class="logo-mobile">
-      <a href="{{ .Site.BaseURL }}"><span/></a>
+    {{ if in .File.Dir "support-bundle" }}
+      <div class="logo-mobile support-bundle">
+        <a href="{{ .Site.BaseURL }}/support-bundle"><span/></a>
+    {{ else if in .File.Dir "preflight" }}
+      <div class="logo-mobile preflight">
+        <a href="{{ .Site.BaseURL }}/preflight"><span/></a>
+    {{ else }}
+      <div class="logo-mobile">
+        <a href="{{ .Site.BaseURL }}"><span/></a>
+    {{ end }}
     </div>
     {{ partial "main-menu.html" . }}
     {{ partial "hamburger.html" . }}

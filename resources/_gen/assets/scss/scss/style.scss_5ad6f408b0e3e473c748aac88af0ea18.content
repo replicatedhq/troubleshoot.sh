@@ -6076,6 +6076,7 @@ a.text-dark:hover, a.text-dark:focus {
   visibility: hidden !important; }
 
 .container {
+  position: relative;
   width: 100%;
   padding-right: 10px;
   padding-left: 10px;
@@ -7434,8 +7435,12 @@ p {
     height: 25px;
     background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
     display: inline-block; }
+  .logo.support-bundle span {
+    background-image: url("/images/support.svg"); }
+  .logo.preflight span {
+    background-image: url("/images/preflight.svg"); }
   .logo a {
     display: block;
     width: 100%;
@@ -7452,8 +7457,12 @@ p {
     height: 25px;
     background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
     display: inline-block; }
+  .logo-mobile.support-bundle span {
+    background-image: url("/images/support.svg"); }
+  .logo-mobile.preflight span {
+    background-image: url("/images/preflight.svg"); }
   .logo-mobile a {
     display: block;
     width: 100%;
@@ -7599,6 +7608,29 @@ p {
 .docs-menu .is-descendant {
   padding-left: 20px;
   color: #326DE6; }
+
+ol.breadcrumbs {
+  position: absolute;
+  top: -15px; }
+  @media (min-width: 576px) {
+    ol.breadcrumbs {
+      top: 10px; } }
+  ol.breadcrumbs li {
+    display: inline-block;
+    position: relative;
+    margin: 0 10px; }
+  ol.breadcrumbs li::after {
+    display: block;
+    content: "/";
+    position: absolute;
+    right: -15px;
+    top: 0;
+    color: #326DE6; }
+  ol.breadcrumbs li:first-child {
+    margin: 0; }
+  ol.breadcrumbs li:first-child::after,
+  ol.breadcrumbs li:last-child::after {
+    display: none; }
 
 .hamburger {
   padding: 10px 0 10px 10px;

@@ -4,6 +4,7 @@
 
 @if $enable-grid-classes {
   .container {
+    position: relative;
     @include make-container();
     @include make-container-max-widths();
   }
