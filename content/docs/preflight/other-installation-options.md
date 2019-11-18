@@ -13,8 +13,8 @@ To install, download the latest release from our GitHub releases, or use [brew](
 ### MacOS
 
 ```shell
-curl -Lo https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.8/preflight_0.9.8_darwin_amd64-alpha.tar.gz
-tar xzvf preflight_0.9.8_darwin_amd64-alpha.tar.gz
+curl -Lo https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.13/preflight_0.9.13_darwin_amd64-alpha.tar.gz
+tar xzvf preflight_0.9.13_darwin_amd64-alpha.tar.gz
 sudo mv preflight /usr/local/bin/kubectl-prefight
 ```
 ## Linux
@@ -22,8 +22,8 @@ sudo mv preflight /usr/local/bin/kubectl-prefight
 To install preflight on Linux:
 
 ```shell
-curl -Lo https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.8/preflight_0.9.8_linux_amd64-alpha.tar.gz
-tar xzvf preflight_0.9.8_linux_amd64-alpha.tar.gz
+curl -Lo https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.13/preflight_0.9.13_linux_amd64-alpha.tar.gz
+tar xzvf preflight_0.9.13_linux_amd64-alpha.tar.gz
 sudo mv preflight /usr/local/bin/kubectl-preflight
 ```
 
@@ -31,7 +31,7 @@ sudo mv preflight /usr/local/bin/kubectl-preflight
 
 To install on Windows, download the latest release:
 
-[https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.8/preflight_0.9.8_windows_amd64-0.9.8.zip](https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.8/preflight_0.9.8_windows_amd64-0.9.8.zip) and unzip it.
+[https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.13/preflight_0.9.13_windows_amd64-0.9.13.zip](https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.13/preflight_0.9.8_windows_amd64-0.9.13.zip) and unzip it.
 
 
 
