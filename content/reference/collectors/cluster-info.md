@@ -22,7 +22,7 @@ metadata:
   name: sample
 spec:
   collectors:
-  s  - clusterInfo: {}
+    - clusterInfo: {}
 ```
 
 ## Included resources
