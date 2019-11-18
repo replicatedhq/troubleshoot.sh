@@ -7428,11 +7428,11 @@ p {
   @media (min-width: 576px) {
     .logo {
       display: block;
-      width: 70px; } }
+      width: 250px; } }
   .logo span {
-    width: 77px;
-    height: 30px;
-    background-image: url("/images/support.svg");
+    width: 250px;
+    height: 25px;
+    background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block; }
@@ -7448,9 +7448,9 @@ p {
     .logo-mobile {
       display: none; } }
   .logo-mobile span {
-    width: 77px;
-    height: 30px;
-    background-image: url("/images/support.svg");
+    width: 250px;
+    height: 25px;
+    background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block; }
@@ -8036,38 +8036,66 @@ p {
     .page-home .terminal img {
       width: 100%;
       height: auto; }
-  .page-home .cards-wrapper span {
-    font-size: 16px;
-    line-height: 26px;
-    font-weight: 400;
-    color: #9B9B9B;
-    text-align: center; }
   .page-home .cards-wrapper .card-wrapper {
     display: flex;
     flex-direction: column;
-    padding: 50px; }
+    padding: 50px;
+    align-items: center; }
   .page-home .cards-wrapper .card {
     width: 600px;
     background-color: #ffffff;
     padding: 22px 20px;
     border-radius: 6px;
-    text-align: center;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
     max-width: 295px;
     box-sizing: border-box;
     margin-bottom: 30px;
     line-height: normal;
     color: #4a4949;
-    font-weight: 500; }
-  .page-home .cards-wrapper a {
-    color: #3E5FA8;
-    font-weight: bold;
-    padding-bottom: 5px;
+    font-weight: 500;
+    font-size: 22px; }
+    .page-home .cards-wrapper .card .card-text {
+      margin-top: 10px;
+      font-size: 16px;
+      line-height: 26px;
+      font-weight: 400;
+      color: #9B9B9B;
+      text-align: start; }
+  .page-home .cards-wrapper .support-small-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    background-image: url("/images/support-bundle-mini.svg");
+    background-repeat: no-repeat;
+    background-size: 100%; }
+  .page-home .cards-wrapper .preflight-small-logo {
+    width: 30px;
+    height: 30px;
+    margin-right: 15px;
+    background-image: url("/images/preflight-mini.svg");
+    background-repeat: no-repeat;
+    background-size: 100%; }
+  .page-home .cards-wrapper .learnMoreLink a {
+    color: #326DE6;
+    font-weight: 500;
     display: inline-block;
-    border-bottom: solid 1px #3E5FA8;
+    font-size: 16px;
     cursor: pointer; }
-  .page-home .cards-wrapper a:hover {
-    color: #0538a5;
+    .page-home .cards-wrapper .learnMoreLink a .blue-arrow {
+      position: relative;
+      top: 4px;
+      right: 0;
+      margin-left: 6px;
+      width: 6px;
+      height: 15px;
+      background-image: url("/images/blue-arrow.svg");
+      background-repeat: no-repeat;
+      background-size: 100%;
+      display: inline-block;
+      transition: all 0.2s; }
+    .page-home .cards-wrapper .learnMoreLink a:hover .blue-arrow {
+      right: -4px; }
+  .page-home .cards-wrapper .learnMoreLink a:hover {
     text-decoration: none; }
 
 body {
