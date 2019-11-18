@@ -7434,8 +7434,12 @@ p {
     height: 25px;
     background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
     display: inline-block; }
+  .logo.support-bundle span {
+    background-image: url("/images/support.svg"); }
+  .logo.preflight span {
+    background-image: url("/images/preflight.svg"); }
   .logo a {
     display: block;
     width: 100%;
@@ -7452,8 +7456,12 @@ p {
     height: 25px;
     background-image: url("/images/troubleshoot-full.svg");
     background-repeat: no-repeat;
-    background-size: 100%;
+    background-size: contain;
     display: inline-block; }
+  .logo-mobile.support-bundle span {
+    background-image: url("/images/support.svg"); }
+  .logo-mobile.preflight span {
+    background-image: url("/images/preflight.svg"); }
   .logo-mobile a {
     display: block;
     width: 100%;
