@@ -21,7 +21,8 @@ kind: Collector
 metadata:
   name: sample
 spec:
-  - clusterResources: {}
+  collectors:
+  s  - clusterResources: {}
 ```
 
 ## Included resources
