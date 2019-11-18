@@ -27,13 +27,8 @@ kind: Collector
 metadata:
   name: sample
 spec:
-  - copy:
-      selector:
-        - app=api
-      namespace: default
-      containerPath: /etc/hosts
-      containerName: sidecar
-```
+  collectors:
+s```
 
 
 ## Included resources

@@ -33,14 +33,8 @@ kind: Collector
 metadata:
   name: sample
 spec:
-  - run:
-      name: ping-google
-      namespace: default
-      image: flungo/netutils
-      command: ["ping"]
-      args: ["www.google.com"]
-      timeout: 5s
-      imagePullPolicy: IfNotPresent
+  collectors:
+    - run:s
 
 ```
 
