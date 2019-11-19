@@ -1,5 +1,5 @@
 ---
-baseURL: "https://troubleshoot.sh"
+baseURL: "https://troubleshoot.sh/"
 languageCode: "en-us"
 title: "Troubleshoot.sh"
 theme: "hugo-whisper-theme"
