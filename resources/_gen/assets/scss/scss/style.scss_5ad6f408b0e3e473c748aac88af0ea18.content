@@ -7468,6 +7468,10 @@ p {
     width: 100%;
     height: 100%; }
 
+.page-home.page-preflight .logo span,
+.page-home.page-preflight .logo-mobile span {
+  background-image: url("/images/troubleshoot-full.svg"); }
+
 .main-menu {
   display: none; }
   @media (min-width: 768px) {
