@@ -1,6 +1,6 @@
 {{ define "title" }}{{ .Site.Title }}{{ end}}
 {{ define "header_css" }}{{ end }}
-{{ define "body_classes" }}page-home{{ end }}
+{{ define "body_classes" }}page-home page-preflight{{ end }}
 {{ define "header_classes" }}{{ end }}
 
 {{ define "meta_tags" }}
@@ -22,7 +22,7 @@
       <div class="flex-column flex1 left-block-wrapper">
         <div class="row">
           <div class="preflight-logo"></div>
-          <div class="col-12">
+          <div>
             <div class="content flex flex-column">
               <code>curl https://krew.sh/preflight | bash</code>
               <code> kubectl preflight https://preflight.myapp.com</code>

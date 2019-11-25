@@ -50,3 +50,10 @@
     height: 100%;
   }
 }
+
+.page-home.page-preflight .logo,
+.page-home.page-preflight .logo-mobile {
+  span {
+    background-image: url("/images/troubleshoot-full.svg");
+  }
+}
