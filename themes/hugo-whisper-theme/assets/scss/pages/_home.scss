@@ -151,3 +151,53 @@
     }
   }
 }
+
+.Preflight--wrapper {
+  .left-block-wrapper {
+    margin-bottom: 40px;
+  }
+}
+.Preflight--wrapper .left-block-wrapper,
+.Preflight--wrapper .right-block-wrapper {
+  max-width: none;
+}
+.Preflight--wrapper .iframe-placeholder {
+  width: 100%;
+  height: 480px;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#asciicast-container-283519 {
+  margin: 0 !important;
+}
+
+iframe {
+  width: 900px !important; /* overide width of the iframe that gets embedded */
+  position: relative;
+  z-index: 2;
+  height: 480px !important; /* overide height of the iframe that gets embedded */
+}
+
+/* Media Queries */
+
+/* ≥ 568px */
+@media screen and (min-width: 35.5em) {
+  .Preflight--wrapper .left-block-wrapper,
+  .Preflight--wrapper .right-block-wrapper {
+    max-width: 540px;
+  }
+}
+
+/* ≥ 768px */
+@media screen and (min-width: 48em) {
+  .Preflight--wrapper .left-block-wrapper {
+    padding-right: 40px;
+    margin-bottom: 0;
+    max-width: 440px;
+  }
+  .Preflight--wrapper .right-block-wrapper {
+    padding-left: 40px;
+    max-width: 880px;
+  }
+}
