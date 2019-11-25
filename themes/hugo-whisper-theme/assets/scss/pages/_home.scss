@@ -38,6 +38,11 @@
 
 .page-home {
   text-align: center;
+
+  &.page-preflight {
+    text-align: left;
+  }
+
   .landing-logo {
     width: 300px;
     height: 80px;
@@ -49,7 +54,6 @@
   .preflight-logo {
     width: 300px;
     height: 60px;
-    margin: 0 auto;
     background-image: url("/images/preflight.svg");
     background-repeat: no-repeat;
     background-size: 100%;

@@ -8036,6 +8036,8 @@ ol.breadcrumbs {
 
 .page-home {
   text-align: center; }
+  .page-home.page-preflight {
+    text-align: left; }
   .page-home .landing-logo {
     width: 300px;
     height: 80px;
@@ -8046,7 +8048,6 @@ ol.breadcrumbs {
   .page-home .preflight-logo {
     width: 300px;
     height: 60px;
-    margin: 0 auto;
     background-image: url("/images/preflight.svg");
     background-repeat: no-repeat;
     background-size: 100%; }
