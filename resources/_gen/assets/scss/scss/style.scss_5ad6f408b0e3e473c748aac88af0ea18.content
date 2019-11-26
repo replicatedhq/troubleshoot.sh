@@ -8135,6 +8135,10 @@ ol.breadcrumbs {
   .page-home .cards-wrapper .learnMoreLink a:hover {
     text-decoration: none; }
 
+.u-flexTabletReflow {
+  display: flex;
+  flex-direction: column; }
+
 .Preflight--wrapper .left-block-wrapper {
   margin-bottom: 40px; }
 
@@ -8174,7 +8178,9 @@ iframe {
     max-width: 440px; }
   .Preflight--wrapper .right-block-wrapper {
     padding-left: 40px;
-    max-width: 880px; } }
+    max-width: 880px; }
+  .u-flexTabletReflow {
+    flex-direction: row; } }
 
 body {
   font-family: "Roboto", Arial, sans-serif, -apple-system;

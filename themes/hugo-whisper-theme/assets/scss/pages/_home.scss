@@ -156,6 +156,11 @@
   }
 }
 
+.u-flexTabletReflow {
+	display: flex;
+	flex-direction: column;
+}
+
 .Preflight--wrapper {
   .left-block-wrapper {
     margin-bottom: 40px;
@@ -203,5 +208,8 @@ iframe {
   .Preflight--wrapper .right-block-wrapper {
     padding-left: 40px;
     max-width: 880px;
+  }
+  .u-flexTabletReflow {
+		flex-direction: row;
   }
 }
