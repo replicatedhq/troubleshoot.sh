@@ -22,7 +22,7 @@ metadata:
   name: sample
 spec:
   collectors:
-  s  - clusterResources: {}
+    - clusterResources: {}
 ```
 
 ## Included resources
@@ -233,4 +233,3 @@ This file contains information about all pods, separated by namespace.
 
 ### /cluster-resources/ingress/\<namespace\>/\<name\>.json
 This file contains information about all ingresses, separated by namespace.
-
