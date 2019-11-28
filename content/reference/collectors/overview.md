@@ -5,7 +5,7 @@ title: Collectors Overview
 weight: 20010
 ---
 
-Collectors are YAML specifications that define what to data to collect when generating a support bundle or when running preflight checks on a cluster.
+Collectors are YAML specifications that define which data to collect when generating a support bundle or when running preflight checks on a cluster.
 
 All collectors are specified in a single YAML file. To build a set of collectors, start with a Kubernetes YAML file:
 

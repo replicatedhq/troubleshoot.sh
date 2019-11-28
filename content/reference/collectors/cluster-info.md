@@ -5,7 +5,7 @@ title: Cluster Info
 weight: 20020
 ---
 
-The clusterInfo collector sill add common information about a Kubernetes cluster.
+The clusterInfo collector will add common information about a Kubernetes cluster.
 
 This collector is a default collector-- it will be automatically included in your collector spec if you don't include it.
 
