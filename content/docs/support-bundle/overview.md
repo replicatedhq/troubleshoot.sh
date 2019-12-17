@@ -30,5 +30,5 @@ spec:
    - clusterResources: {}
 ```
 
-For a full list of options that can be included in a Kubernetes support bundle, visit the [Collectors](/docs/troubleshoot/kubernetes/collectors/collector-phase/) section.
+For a full list of options that can be included in a Kubernetes support bundle, visit the [Collectors](/reference/collectors/overview/) reference section.
 
