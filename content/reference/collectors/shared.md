@@ -13,6 +13,4 @@ Optionally, a collector can specify the `collectorName` property. This controls 
 
 ### `exclude`
 
-_This feature is currently under development. See [https://github.com/replicatedhq/troubleshoot/issues/90](https://github.com/replicatedhq/troubleshoot/issues/90)_
-
 For collectors that are optional, based on runtime available configuration, the conditional can be specified in the `exclude` property. This is useful for Replciated applications that have access to the `{{repl ...}}` and `repl{{ ...}}` templating utility. Setting this to `false` will prevent the collector from running.ghit
