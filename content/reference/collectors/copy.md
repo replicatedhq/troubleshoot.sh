@@ -28,7 +28,7 @@ metadata:
   name: sample
 spec:
   collectors:
-s```
+```
 
 
 ## Included resources
