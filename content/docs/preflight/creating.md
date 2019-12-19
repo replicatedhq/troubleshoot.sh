@@ -1,8 +1,8 @@
 ---
 date: "2019-11-27"
-title: "Preflights"
-description: "Preflights"
-weight: "4"
+title: "Defining Preflights"
+description: "Defining Preflight"
+weight: 30090
 ---
 
 Preflight checks are packaged conformance tests designed to be executed on the target cluster before deploying the application.

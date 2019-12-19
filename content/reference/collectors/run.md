@@ -34,7 +34,13 @@ metadata:
   name: sample
 spec:
   collectors:
-    - run:s
+    - run:
+        collectorName: "run-ping"
+        image: busybox:1
+        namespace: default
+        command: ["ping"]
+        args: ["-w", "5", "www.google.com"]
+        imagePullPolicy: IfNotPresent
 
 ```
 
@@ -45,5 +51,4 @@ When this collector is executed, it will include the following files in a suppor
 ### /run/\<name\>.txt
 
 This will contain the pod output (up to 10000 lines).
-
 
