@@ -13,7 +13,7 @@ To install, download the latest release from our GitHub releases.
 ### MacOS
 
 ```shell
-curl -Lo https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.15/preflight_darwin_amd64.tar.gz
+curl -LO https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.15/preflight_darwin_amd64.tar.gz
 tar xzvf preflight_darwin_amd64.tar.gz
 sudo mv preflight /usr/local/bin/kubectl-prefight
 ```
@@ -22,7 +22,7 @@ sudo mv preflight /usr/local/bin/kubectl-prefight
 To install preflight on Linux:
 
 ```shell
-curl -Lo https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.15/preflight_linux_amd64.tar.gz
+curl -LO https://github.com/replicatedhq/troubleshoot/releases/download/v0.9.15/preflight_linux_amd64.tar.gz
 tar xzvf preflight_linux_amd64.tar.gz
 sudo mv preflight /usr/local/bin/kubectl-preflight
 ```
