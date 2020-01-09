@@ -15,3 +15,8 @@ install:
 .PHONY: dev
 dev:
 	hugo serve --theme hugo-whisper-theme
+
+.PHONY: test
+test:
+	hugo -v -s .
+	htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /troubleshoot.sh/css/ "./public"

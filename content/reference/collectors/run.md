@@ -21,7 +21,7 @@ The run collector requires that the image and command be provided, There are add
 
 **args**: (Optional) An array of strings containing the arguments to pass to the command when starting.
 
-**timeout**: (Optional) A [duration](https://golang.org/duration) that will be honored when running the pod. This cannot be greater than 30 seconds (30s) and if not specified, the default is 20s.
+**timeout**: (Optional) A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod. This cannot be greater than 30 seconds (30s) and if not specified, the default is 20s.
 
 **imagePullPolicy**: (Optional) A valid, string representation of the pull policy to use when delivering the image the nodes. If not specified, this will be set to IfNotPresent.
 

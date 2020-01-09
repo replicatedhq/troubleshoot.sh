@@ -21,7 +21,7 @@ The exec collector requires that the pod selector and command to be provided. Th
 
 **args**: (Optional) An array of strings containing the arguments to pass to the command when executing.
 
-**timeout**: (Optional) A [duration](https://golang.org/duration) that will be honored when executing the command. This cannot be greater than 20 seconds (20s) and if not specified, the default is 20s.
+**timeout**: (Optional) A [duration](https://golang.org/pkg/time/#Duration) that will be honored when executing the command. This cannot be greater than 20 seconds (20s) and if not specified, the default is 20s.
 
 ## Example Collector Definition
 

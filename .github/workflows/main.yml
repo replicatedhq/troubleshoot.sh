@@ -1,0 +1,22 @@
+name: CI
+
+on: [pull_request]
+
+jobs:
+  check-html:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Source Code
+      uses: actions/checkout@v1
+    - name: Build HTML
+      uses: srt32/hugo-action@v0.0.3
+      with: 
+        args: -v -s .
+    - name: Check HTML
+      uses: chabad360/htmlproofer@v1.1
+      with:
+        # The directory to scan
+        directory: "./public"
+        # The arguments to pass to HTMLProofer
+        arguments: --allow-hash-href --check-html --empty-alt-ignore --url-ignore /troubleshoot.sh/css/
