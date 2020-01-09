@@ -233,3 +233,96 @@ This file contains information about all pods, separated by namespace.
 
 ### /cluster-resources/ingress/\<namespace\>/\<name\>.json
 This file contains information about all ingresses, separated by namespace.
+
+### /cluster-resources/groups.json
+This file contains information about all kubernetes API resource groups in the cluster.
+
+The below is a partial example only, and real results will be significantly longer.
+```json
+[
+  {
+    "name": "",
+    "versions": [
+      {
+        "groupVersion": "v1",
+        "version": "v1"
+      }
+    ],
+    "preferredVersion": {
+      "groupVersion": "v1",
+      "version": "v1"
+    }
+  },
+  {
+    "name": "apiregistration.k8s.io",
+    "versions": [
+      {
+        "groupVersion": "apiregistration.k8s.io/v1",
+        "version": "v1"
+      },
+      {
+        "groupVersion": "apiregistration.k8s.io/v1beta1",
+        "version": "v1beta1"
+      }
+    ],
+    "preferredVersion": {
+      "groupVersion": "apiregistration.k8s.io/v1",
+      "version": "v1"
+    }
+  },
+...
+```
+
+## /cluster-resources/resources.json
+This file contains information about all kubernetes API resources in the cluster.
+
+The below is a partial example only, and real results will be significantly longer.
+```json
+[
+  {
+    "kind": "APIResourceList",
+    "groupVersion": "v1",
+    "resources": [
+      {
+        "name": "bindings",
+        "singularName": "",
+        "namespaced": true,
+        "kind": "Binding",
+        "verbs": [
+          "create"
+        ]
+      },
+      {
+        "name": "componentstatuses",
+        "singularName": "",
+        "namespaced": false,
+        "kind": "ComponentStatus",
+        "verbs": [
+          "get",
+          "list"
+        ],
+        "shortNames": [
+          "cs"
+        ]
+      },
+      {
+        "name": "configmaps",
+        "singularName": "",
+        "namespaced": true,
+        "kind": "ConfigMap",
+        "verbs": [
+          "create",
+          "delete",
+          "deletecollection",
+          "get",
+          "list",
+          "patch",
+          "update",
+          "watch"
+        ],
+        "shortNames": [
+          "cm"
+        ]
+      },
+...
+```
