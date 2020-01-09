@@ -237,6 +237,7 @@ This file contains information about all ingresses, separated by namespace.
 ### /cluster-resources/groups.json
 This file contains information about all kubernetes API resource groups in the cluster.
 
+The below is a partial example only, and real results will be significantly longer.
 ```json
 [
   {
@@ -269,11 +270,13 @@ This file contains information about all kubernetes API resource groups in the c
       "version": "v1"
     }
   },
+...
 ```
 
 ## /cluster-resources/resources.json
 This file contains information about all kubernetes API resources in the cluster.
 
+The below is a partial example only, and real results will be significantly longer.
 ```json
 [
   {
@@ -321,4 +324,5 @@ This file contains information about all kubernetes API resources in the cluster
           "cm"
         ]
       },
+...
 ```
