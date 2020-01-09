@@ -8,7 +8,7 @@ weight: 30030
 If krew plugins are not an option, it's still possible to run the same Preflight tool by installing a binary on your workstation, or by running preflights in a Docker container.
 
 ## Binary
-To install, download the latest release from our GitHub releases, or use [brew](https://brew.sh) if running MacOS.
+To install, download the latest release from our GitHub releases.
 
 ### MacOS
 
