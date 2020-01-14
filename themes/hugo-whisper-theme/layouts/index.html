@@ -17,7 +17,7 @@
 
 {{ define "main" }}
 <div class="strip strip-pattern-blue">
-  <div class="container pt-12 pb-16">
+  <div class="container pb-16">
     <div class="row">
       <div class="col-12">
         <div class="content">
@@ -32,34 +32,52 @@
     <div class="flex flex1 justify-content-center align-items-center">
       <div class="row cards-wrapper">
         <div class="card-wrapper">
-          <div class="card flex flex-column">
-            <div class="flex flex1 align-items-center">
-              <div class="preflight-small-logo"> </div>
-              <div> Preflight </div>
-            </div>
-            <div class="flex flex-column">
-              <div class="card-text"> Conformance Tests For Any Kubernetes App </div>
-              <div class="flex align-items-center learnMoreLink">
-                <a href="/preflight"> learn more <span class="arrow blue-arrow"></span> </a>
+            <div class="card flex flex-column align-items-center">
+              <div class="row preflight-logo"> </div>
+              <div class="row"><span style="margin-bottom:0px; font-size:18px;">Package Application Conformance Checks With Any Kubernetes Application</span></div>
+              <div class="row">&nbsp;</div>
+              <div class="row button-wrapper">
+                <a class="button primary-button" href="/preflight/overview/">
+                  Get started
+                </a>
+                <a class="button border-button" href="https://github.com/replicatedhq/troubleshoot/releases" target="_blank">
+                  Download latest version
+                </a>
+              </div>
+              <div class="row"><p style="margin-bottom:0px; font-size:16px;">Install on your workstation:</p></div>
+              <div>
+                <div class="content flex flex-column">
+                  <code >curl https://krew.sh/preflight | bash</code>
+                  <code> kubectl preflight https://preflight.myapp.com</code>
+                </div>
+              </div>
               </div>
             </div>
-          </div>
         </div>
-        <div class="card-wrapper">
-          <div class="card flex flex-column">
-            <div class="flex flex1 align-items-center">
-              <div class="support-small-logo"> </div>
-              <div>Support Bundle</div>
-            </div>
-            <div class="flex flex-column">
-              <div class="card-text"> Disconnected Support For Any Kubernetes App </div>
-              <div class="flex align-items-center learnMoreLink">
-                <a href="/support-bundle"> learn more <span class="arrow blue-arrow"></span> </a>
+        <div class="row cards-wrapper">
+          <div class="card-wrapper">
+              <div class="card flex flex-column align-items-center">
+                <div class="row support-logo"> </div>
+                <div class="row"><span style="margin-bottom:0px; font-size:18px;">Customizable Support Bundle Collection And Analysis With Any Kubernetes Application</span></div>
+                <div class="row">&nbsp;</div>
+                <div class="row button-wrapper">
+                  <a class="button primary-button" href="/support-bundle/overview/">
+                    Get started
+                  </a>
+                  <a class="button border-button" href="https://github.com/replicatedhq/troubleshoot/releases" target="_blank">
+                    Download latest version
+                  </a>
+                </div>
+                <div class="row"><p style="margin-bottom:0px; font-size:16px;">Install on your workstation:</p></div>
+                <div>
+                  <div class="content flex flex-column">
+                    <code >curl https://krew.sh/support-bundle</code>
+                    <code> kubectl support-bundle https://support.myapp.com</code>
+                  </div>
+                </div>
+                </div>
               </div>
-            </div>
           </div>
-        </div>
-
       </div>
     </div>
   </div>

@@ -4,7 +4,7 @@
   <h3>
     <a href="{{ .FirstSection.Params.redirect }}">
       {{ if eq .Section "reference" }}
-        Vendor Documentation
+        Reference Documentation
       {{ else }}
         {{ .Section | humanize }} 
       {{ end }}
@@ -23,7 +23,7 @@
         </li>
       {{ else }}
         <li class="is-parent {{ if eq .Title $currentNode.Title }}active{{ end }}">
-          <a href="{{ or .Params.redirect .Permalink }}">
+          <a href="{{ or .Params.redirect .Permalink | relURL }}">
             {{ if .Params.linktitle }}
               {{ .Params.linktitle }}
             {{ else }}
