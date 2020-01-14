@@ -3,7 +3,7 @@
   <img alt="{{ .Title }}" src="{{ .Params.image }}" />
   {{ end }}
   <h2 class="title-summary">
-    <a href="{{ .Permalink }}">
+    <a href="{{ .Permalink | relURL }}">
       {{ .Title }}
     </a>
   </h2>

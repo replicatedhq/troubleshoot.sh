@@ -7498,6 +7498,7 @@ p {
         .main-menu > ul > li > a:hover {
           color: #4a4a4a; }
       .main-menu > ul > li.active > a {
+        color: #4a4a4a;
         font-weight: bold; }
       .main-menu > ul > li:last-child > a {
         margin-right: 0; }
@@ -8049,6 +8050,12 @@ ol.breadcrumbs {
     background-image: url("/images/support.svg");
     background-repeat: no-repeat;
     background-size: 100%; }
+  .page-home .support-logo {
+    width: 230px;
+    height: 60px;
+    background-image: url("/images/support.svg");
+    background-repeat: no-repeat;
+    background-size: 100%; }
   .page-home .preflight-logo {
     width: 300px;
     height: 60px;
@@ -8076,7 +8083,7 @@ ol.breadcrumbs {
   .page-home .cards-wrapper .card-wrapper {
     display: flex;
     flex-direction: column;
-    padding: 50px;
+    padding: 40px;
     align-items: center; }
   .page-home .cards-wrapper .card {
     width: 600px;
@@ -8084,7 +8091,7 @@ ol.breadcrumbs {
     padding: 22px 20px;
     border-radius: 6px;
     box-shadow: 0 0 4px rgba(0, 0, 0, 0.16);
-    max-width: 295px;
+    max-width: 425px;
     box-sizing: border-box;
     margin-bottom: 30px;
     line-height: normal;

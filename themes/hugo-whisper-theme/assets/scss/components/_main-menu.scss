@@ -27,6 +27,7 @@
       }
       &.active {
         > a {
+          color: $tundora-gray;
           font-weight: bold;
         }
       }

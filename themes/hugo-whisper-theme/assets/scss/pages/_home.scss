@@ -51,6 +51,13 @@
     background-repeat: no-repeat;
     background-size: 100%;
   }
+  .support-logo {
+    width: 230px;
+    height: 60px;
+    background-image: url("/images/support.svg");
+    background-repeat: no-repeat;
+    background-size: 100%;
+  }
   .preflight-logo {
     width: 300px;
     height: 60px;
@@ -83,7 +90,7 @@
     .card-wrapper {
       display: flex;
       flex-direction: column;
-      padding: 50px;
+      padding: 40px;
       align-items: center;
     }
     .card {
@@ -92,7 +99,7 @@
       padding: 22px 20px;
       border-radius: 6px;
       box-shadow: 0 0 4px rgba(0,0,0,0.16);
-      max-width: 295px;
+      max-width: 425px;
       box-sizing: border-box;
       margin-bottom: 30px;
       line-height: normal;

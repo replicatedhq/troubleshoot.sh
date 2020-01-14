@@ -5,6 +5,7 @@ title: "Troubleshoot.sh"
 theme: "hugo-whisper-theme"
 metadataformat: "yaml"
 canonifyurls: true
+relativeurls: true
 description: "Documentation for the kubectl troubleshoot plugin"
 googleAnalytics: ""
 
@@ -36,17 +37,21 @@ Params:
   pagetitle: "Troubleshoot.sh"
   permalink: "#"
   mainSections:
-    - docs
+    - preflight
+    - support-bundle
     - reference
 menu:
   main:
-    - Name: "Preflight"
+    - Name: Preflight
+      Identifier: preflight
       Weight: 1
-      URL: "/preflight"
-    - Name: "Support Bundle"
+      URL: /preflight/overview/
+    - Name: Support Bundle
+      Identifier: support-bundle
       Weight: 2
-      URL: "/support-bundle"
-    - Name: "Reference"
+      URL: /support-bundle/overview/
+    - Name: Reference
+      Identifier: reference
       Weight: 3
-      URL: "/reference/getting-started/overview"
+      URL: /reference/getting-started/overview
 ---

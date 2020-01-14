@@ -1,8 +1,10 @@
 ---
 date: 2019-10-09
-linktitle: "Collecting Support Bundles"
 title: Collecting Support Bundles
+linktitle: collecting
 weight: 40020
+aliases:
+  - /docs/support-bundle/collecting
 ---
 
 Before you can collect a support bundle, you need to have a client-only component available. Nothing needs to be installed in the cluster. The Troubleshoot client utility is packaged as a kubectl plugin, and can be installed using [krew](https://krew.dev). 

@@ -1,8 +1,10 @@
 ---
 date: 2019-10-09
-linktitle: "Executing Preflight Checks"
 title: Executing Preflight Checks
+linktitle: executing
 weight: 30020
+aliases:
+  - /docs/preflight/executing
 ---
 
 Before preflight checks can run, you need to have a client-only component available. Nothing needs to be installed in the cluster. The Preflight client utility is packaged as a kubectl plugin, and can be installed using [krew](https://krew.dev). For instructions on how to install krew, visit [https://github.com/kubernetes-sigs/krew/#installation](https://github.com/kubernetes-sigs/krew/#installation). For most supported platforms, Replicated has created an easy-to-use krew installer that can be found at [krew.sh](https://krew.sh). 

@@ -1,8 +1,10 @@
 ---
 date: 2019-10-09
-linktitle: "Other Installation Options"
 title: Other Installation Options
+linktitle: other-installation-options
 weight: 30030
+aliases:
+  - /docs/preflight/other-installation-options
 ---
 
 If krew plugins are not an option, it's still possible to run the same Preflight tool by installing a binary on your workstation, or by running preflights in a Docker container.

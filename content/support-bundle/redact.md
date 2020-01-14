@@ -1,8 +1,10 @@
 ---
 date: 2019-10-09
-linktitle: "Redaction"
 title: Redaction
+linktitle: redact
 weight: 40030
+aliases:
+  - /docs/support-bundle/redact
 ---
 
 By default troubleshoot will redact sensitive information from all collectors. This includes

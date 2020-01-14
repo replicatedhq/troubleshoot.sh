@@ -1,8 +1,11 @@
 ---
 date: 2019-10-09
-linktitle: "Preflight Checks"
 title: Preflight Checks
+linktitle: overview
 weight: 30010
+aliases:
+  - /preflight
+  - /docs/preflight/overview
 ---
 
 Before you can run preflight checks against a cluster, you need to have a client-only component available. Nothing needs to be installed in the cluster. The preflight client utility is packaged as a kubectl plugin, and can be installed using [krew](https://krew.dev). 

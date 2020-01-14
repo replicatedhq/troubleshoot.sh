@@ -1,10 +1,11 @@
 ---
 date: 2019-10-09
-linktitle: "Support Bundle"
 title: Support Bundle
+linktitle: overview
 weight: 40010
 aliases:
   - /support-bundle/
+  - /docs/support-bundle/overview
 ---
 
 Replicated Troubleshoot can provide an easy way to remotely diagnose an application in a Kubernetes cluster. Troubleshoot was built with the understanding that there are often two different people involved in diagnosing issues with third party software: the application developer/vendor and the cluster administrator . The vendor may not have direct access to the Kubernetes clusters, but the cluster administrator doesn’t have the internal knowledge of the software to read logs files or figure out what part of the architecture is failing.
