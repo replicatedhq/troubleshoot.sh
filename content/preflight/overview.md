@@ -1,10 +1,9 @@
 ---
 date: 2019-10-09
-title: Preflight Checks
-linktitle: overview
+title: "Preflight Checks"
+linktitle: "Preflight Overview"
 weight: 30010
 aliases:
-  - /preflight
   - /docs/preflight/overview
 ---
 

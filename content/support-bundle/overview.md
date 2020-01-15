@@ -1,10 +1,9 @@
 ---
 date: 2019-10-09
-title: Support Bundle
-linktitle: overview
+title: "Support Bundle"
+linktitle: "Support Bundle Overview"
 weight: 40010
 aliases:
-  - /support-bundle/
   - /docs/support-bundle/overview
 ---
 

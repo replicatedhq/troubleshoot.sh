@@ -1,7 +1,7 @@
 ---
 date: 2019-10-09
-title: Redaction
-linktitle: redact
+title: "Redaction"
+linktitle: "Redaction"
 weight: 40030
 aliases:
   - /docs/support-bundle/redact

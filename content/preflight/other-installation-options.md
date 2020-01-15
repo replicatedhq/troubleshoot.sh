@@ -1,7 +1,7 @@
 ---
 date: 2019-10-09
-title: Other Installation Options
-linktitle: other-installation-options
+title: "Other Installation Options"
+linktitle: "Other Installation Options"
 weight: 30030
 aliases:
   - /docs/preflight/other-installation-options

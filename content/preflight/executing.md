@@ -1,7 +1,7 @@
 ---
 date: 2019-10-09
-title: Executing Preflight Checks
-linktitle: executing
+title: "Executing Preflight Checks"
+linktitle: "Executing Preflight Checks"
 weight: 30020
 aliases:
   - /docs/preflight/executing
