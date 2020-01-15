@@ -1,7 +1,7 @@
 ---
 date: 2019-10-09
-title: Collecting Support Bundles
-linktitle: collecting
+title: "Collecting Support Bundles"
+linktitle: "Collecting Support Bundles"
 weight: 40020
 aliases:
   - /docs/support-bundle/collecting

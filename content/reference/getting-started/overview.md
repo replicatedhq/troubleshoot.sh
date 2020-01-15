@@ -1,8 +1,10 @@
 ---
 date: 2019-10-09
 linktitle: "Overview"
-title: Overview of Troubleshoot
+title: "Overview of Troubleshoot"
 weight: 20010
+aliases:
+  - /reference/getting-started
 ---
 
 

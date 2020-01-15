@@ -1,8 +1,8 @@
 ---
 date: "2019-11-27"
 title: "Defining Preflights"
-linktitle: creating
-description: "Defining Preflight"
+linktitle: "Defining Preflights"
+description: "Defining Preflights"
 weight: 30090
 aliases:
   - /docs/preflight/creating
