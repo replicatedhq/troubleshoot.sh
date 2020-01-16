@@ -3,8 +3,6 @@ date: 2019-10-23
 linktitle: "Collectors Overview"
 title: "Collectors Overview"
 weight: 20010
-aliases:
-  - /reference/collectors
 ---
 
 Collectors are YAML specifications that define which data to collect when generating a support bundle or when running preflight checks on a cluster.
