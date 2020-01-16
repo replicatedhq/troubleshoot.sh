@@ -3,8 +3,6 @@ date: 2019-11-01
 linktitle: "Analyzers Overview"
 title: "Analyzers Overview"
 weight: 20010
-aliases:
-  - /reference/analyzers
 ---
 
 
