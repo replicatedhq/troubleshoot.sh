@@ -225,6 +225,9 @@ This file contains information about all installed CRDs in the cluster.
 ### /cluster-resources/deployments/\<namespace\>/\<name\>.json
 This file contains information about all deployments, separated by namespace.
 
+### /cluster-resources/statefulsets/\<namespace\>/\<name\>.json
+This file contains information about all statefulsets, separated by namespace.
+
 ### /cluster-resources/services/\<namespace\>/\<name\>.json
 This file contains information about all services, separated by namespace.
 
