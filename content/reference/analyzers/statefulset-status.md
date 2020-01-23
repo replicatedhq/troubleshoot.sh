@@ -26,7 +26,7 @@ metadata:
   name: redis-statefulset-running
 spec:
   analyzers:
-    - statefulset:
+    - statefulsetStatus:
         name: redis
         namespace: default
         outcomes:
@@ -37,5 +37,5 @@ spec:
               when: "= 1"
               message: The API deployment has only a single ready replica.
           - pass:
-              message: There are multiple replicas of the API deployment ready.a
+              message: There are multiple replicas of the API deployment ready.
 ```
