@@ -15,6 +15,10 @@ The logs collector requires the selector parameter to find the pods. There are a
 
 **namespace**: (Optional) The namespace to search for the pod selector in. If this is not provided, it will default to the current namespace of the context.
 
+**name**: Name will be used to create a folder in the support bundle where logs will be saved.  Name can contain slashes to create a path in the support bundle.
+
+**containers**: (Optional) Containers is an array of container names.  If specified, logs fro each container in the list will be collected.  This can be omitted for pods with only one container.
+
 **limits**: (Optional) Provided to limit the size of the logs. By default, this is set to `maxLines: 10000`. Either `maxAge` or `maxLines` can be provided, but not both.
 **limits.maxAge**: The duration of the maximum oldest log to include.
 **limits.maxLines**: The number of lines to include, starting from the newest.
@@ -32,6 +36,10 @@ spec:
         selector:
           - app=api
         namespace: default
+        name: api/container/logs
+        containers:
+          - api
+          - node
         limits:
           maxAge: 30d
           maxLines: 1000
@@ -44,4 +52,3 @@ When this collector is executed, it will include the following files in a suppor
 
 ### /logs/\<namespace\>/\<pod-name\>.txt
 This will be created for each pod that matches the selector.
-
