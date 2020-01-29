@@ -36,6 +36,12 @@
   }
 }
 
+.intro-flex {
+  @include media-breakpoint-down(sm) {
+    flex-direction: column !important;
+  }
+}
+
 .page-home {
   text-align: center;
 
