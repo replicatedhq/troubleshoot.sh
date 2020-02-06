@@ -89,10 +89,10 @@ This file contains information about all known namespaces in the cluster
 ```
 
 ### /cluster-resources/nodes.json
-This file contains information about all of the nodes in the cluster. This is equivalent to running `kubectl describe nodes -o json`.
+This file contains information about all of the nodes in the cluster. This is equivalent to running `kubectl get nodes -o json`.
 
 ### /cluster-resources/storage-classes.json
-This file contains information about all installed storage classes in the cluster. This is equivalent to running `kubectl describe storageclasses -o json`.
+This file contains information about all installed storage classes in the cluster. This is equivalent to running `kubectl get storageclasses -o json`.
 
 ```json
 [
