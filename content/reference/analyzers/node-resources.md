@@ -9,7 +9,7 @@ The node resources analyzer is available to determine if the nodes in the cluste
 
 This analyzer's outcome `when` clause compares the condition specified with the resources present on each or all nodes. It's possible to create an analyzer to report on both aggregate values of all nodes in the cluster or individual values of any node in the cluster.
 
-This analyzer also syupports a `filters` property. If provided, the nodes analyed will be filtered to any node that matches the filters specified.
+This analyzer also supports a `filters` property. If provided, the nodes analyzed will be filtered to any node that matches the filters specified.
 
 ## Available Filters
 
