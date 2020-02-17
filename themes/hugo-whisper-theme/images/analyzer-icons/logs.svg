@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="15px" height="18px" viewBox="0 0 15 18" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>logs</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Kotsadm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main_spritesheet" transform="translate(-29.000000, -415.000000)">
+            <g id="logs" transform="translate(29.000000, 416.000000)">
+                <path d="M10.7278058,0.421052632 L1.9728249,0.421052632 C1.95715081,0.421052632 1.94444444,0.434809895 1.94444444,0.451780339 L1.94444444,15.5482196 C1.94444444,15.5651901 1.95715081,15.5789474 1.9728249,15.5789474 L13.5827306,15.5789474 C13.5984048,15.5789474 13.6111111,15.5651901 13.6111111,15.5482196 L13.6111111,3.54282676 L10.7278058,0.421052632 Z" id="Path-7" stroke="#3B98FC" fill="#FFFFFF"></path>
+                <polyline id="Path-4" stroke="#3B98FC" points="10.5080702 0.591899671 10.5080702 3.81959293 13.338623 3.81959293"></polyline>
+                <rect id="Rectangle-2" stroke="#3B98FC" fill="#3B98FC" x="0.5" y="9.5" width="7.77777778" height="3.05263158"></rect>
+                <g id="LOG" transform="translate(2.000000, 9.000000)" fill="#FFFFFF" font-family="HelveticaNeue-Bold, Helvetica Neue" font-size="2" font-weight="bold">
+                    <g id="Group">
+                        <text id="LOG">
+                            <tspan x="0.25888889" y="2.5">LOG</tspan>
+                        </text>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
