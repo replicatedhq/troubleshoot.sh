@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="16px" viewBox="0 0 21 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>azure</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Kotsadm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main_spritesheet" transform="translate(-55.000000, -289.000000)" fill="#0065C6">
+            <g id="azure" transform="translate(55.000000, 289.000000)">
+                <polygon id="Path-18" points="0.0155302558 14.2124392 4.78476849 14.2124392 11.4024243 0.0348475046 5.32832659 5.0792992"></polygon>
+                <polygon id="Path-21" points="4.88103122 15.9900817 14.4882928 14.2403384 9.49666428 8.30769771 12.1117626 1.11540627 20.7413564 15.9900817"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>
