@@ -75,10 +75,10 @@ spec:
         checkName: Total CPU Cores in the cluster is 20 or greater
         outcomes:
           - fail:
-              when: "sum(cpuCapacity) >= 20"
+              when: "sum(cpuCapacity) < 20"
               message: The cluster must contain at least 20 cores
           - pass:
-              message: There are at over 20 cores in the cluster
+              message: There are at least 20 cores in the cluster
 ```
 
 ```yaml
