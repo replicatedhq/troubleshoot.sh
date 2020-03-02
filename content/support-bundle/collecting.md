@@ -28,7 +28,7 @@ kubectl support-bundle <uri/path to collectors>
 For example, to use a set of sample collectors:
 
 ```shell
-kubectl troubleshoot https://troubleshoot.replicated.com
+kubectl support-bundle https://troubleshoot.replicated.com
 ```
 
 This will connect to the cluster defined in your local context, and collect some basic information about the cluster. After it's finished, it will write a file named "support-bundle.tar.gz" to the current working directory.
