@@ -30,7 +30,7 @@ spec:
   analyzers:
     - regex:
         collectorName: "run-ping"
-        expression: "(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+\.\d+)% packet loss"
+        expression: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+\.\d+)% packet loss'
         outcomes:
           - pass:
               when: "Loss < 5.0"
