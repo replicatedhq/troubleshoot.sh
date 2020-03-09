@@ -24,7 +24,7 @@ metadata:
   name: sample
 spec:
   collectors:
-    - exec:
+    - data:
         name: static/data.txt
         data: |
           any static
