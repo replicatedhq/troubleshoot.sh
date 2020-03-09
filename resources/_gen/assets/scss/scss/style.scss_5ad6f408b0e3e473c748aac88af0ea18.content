@@ -8039,6 +8039,10 @@ ol.breadcrumbs {
     .suite-banner a:hover .banner-arrow {
       right: -4px; }
 
+@media (max-width: 767.98px) {
+  .intro-flex {
+    flex-direction: column !important; } }
+
 .page-home {
   text-align: center; }
   .page-home.page-preflight {

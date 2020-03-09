@@ -41,7 +41,7 @@ spec:
           - api
           - node
         limits:
-          maxAge: 30d
+          maxAge: 720h
           maxLines: 1000
 
 ```

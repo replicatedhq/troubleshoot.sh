@@ -38,7 +38,7 @@ spec:
           - app=api
         namespace: default
         limits:
-          maxAge: 30d
+          maxAge: 720h
           maxLines: 1000
     - http:
         name: healthz
