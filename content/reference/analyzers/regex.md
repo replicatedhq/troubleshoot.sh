@@ -29,11 +29,12 @@ spec:
         args: ["-w", "5", "www.google.com"]
         imagePullPolicy: IfNotPresent
   analyzers:
+
     - textAnalyze:
         checkName: "run-ping"
         filename: run/ping.txt
         data: '{{repl ConfigOption "replica_count" }}'
-        regexGroups: "(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+\.\d+)% packet loss"
+        regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+\.\d+)% packet loss'
         outcomes:
           - pass:
               when: "Loss < 5.0"
