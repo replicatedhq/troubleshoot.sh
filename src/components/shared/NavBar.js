@@ -12,15 +12,15 @@ export class NavBar extends React.Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener("scroll", this.shrinkNavbarOnScroll, true);
+    window.removeEventListener("scroll", this.handleNavScroll, true);
   }
 
   componentDidMount() {
-    window.addEventListener("scroll", this.shrinkNavbarOnScroll, true);
+    window.addEventListener("scroll", this.handleNavScroll, true);
   }
 
-  shrinkNavbarOnScroll = () => {
-    const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop)
+  handleNavScroll = () => {
+    const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
     const distanceY = scrollTop,
       shrinkOn = 100,
       troubleshootNav = document.getElementById("troubleshoot-header");

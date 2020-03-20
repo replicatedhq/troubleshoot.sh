@@ -16,6 +16,10 @@ body {
   flex: 1;
   height: 100%;
   -webkit-font-smoothing: antialiased;
+
+  .body-copy {
+    font-family: "Helvetica Neue", "Helvetica", "sans-serif";
+  }
 }
 
 body a {
@@ -37,9 +41,35 @@ body a {
 
 .container {
   width: 100%;
-  padding: 160px 80px 40px 80px;
+  padding: 0 20px;
   margin: 0 auto;
   box-sizing: border-box;
+}
+
+.contain-700 {
+  margin: 0 auto;
+  max-width: 700px;
+  text-align: center;
+}
+
+.section {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  &.border {
+    border-bottom: 1px solid #E5E5E5;
+  }
+
+  &.gradient {
+    background: rgb(230,235,246);
+    background: linear-gradient(0deg, rgba(230,235,246,1) 0%, rgba(39,86,179,0) 100%);
+  }
+}
+
+.troubleshoot-logo {
+  background-image: url("../../images/troubleshoot.svg");
+  background-size: 100%;
+  display: inline-block;
 }
 
 .mobile-container {
@@ -66,13 +96,13 @@ body a {
   max-width: 860px;
 }
 
-.replicated-link {
+.link {
   color: #326DE6;
   cursor: pointer;
   font-weight: 500;
 }
 
-.replicated-link:hover {
+.link:hover {
   text-decoration: underline;
 }
 
@@ -126,6 +156,9 @@ body a {
 
 /* ≥ 768px */
 @media screen and (min-width: 48em) {
+  .container {
+    padding: 0 30px;
+  }
   .docs-container {
     width: 100%;
     padding: 140px 0px 20px 260px;
