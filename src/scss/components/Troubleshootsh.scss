@@ -1,0 +1,28 @@
+.MonacoEditor--wrapper {
+  overflow: auto;
+  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  height: 400px;
+  
+  .error-highlight {
+    background:#FBEDEB;
+    position: absolute;
+  }
+
+  .disabled-ace-editor {
+    opacity: .5;
+  }
+
+  .ace_search {
+    left: 0;
+    right: auto;
+  }
+}
+
+.wrapperForm {
+    input[type="text"], input[type="number"] {
+      padding-left: 10px;
+      width: 100%;
+      height: 30px;  
+    }
+  }
