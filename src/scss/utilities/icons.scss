@@ -1,0 +1,77 @@
+.icon {
+  // background-image: url("../../images/main_spritesheet.svg");
+  background-repeat: no-repeat;
+  background-size: initial;
+  display: inline-block;
+  cursor: default;
+  position: relative;
+}
+.icon.clickable {
+  cursor: pointer;
+}
+.icon.u-kurl {
+  background-position: -5px -7px;
+  width: 31px;
+  height: 30px;
+}
+.icon.u-questionMarkCircle {
+  background-position: -6px -48px;
+  width: 15px;
+  height: 15px;
+}
+.icon.u-kubernetesIcon {
+  background-position: -41px -7px;
+  width: 31px;
+  height: 30px;
+}
+.icon.u-weaveworksFlux {
+  background-position: -6px -74px;
+  width: 40px;
+  height: 40px;
+}
+.icon.u-contour {
+  background-position: -150px -74px;
+  width: 39px;
+  height: 39px;
+}
+.icon.u-rook {
+  background-position: -56px -74px;
+  width: 33px;
+  height: 40px;
+}
+.icon.u-dockerRegistry {
+  background-position: -104px -74px;
+  width: 39px;
+  height: 41px;
+}
+.icon.u-prometheus {
+  background-position: -199px -75px;
+  width: 39px;
+  height: 41px;
+}
+.icon.u-kotsadm {
+  background-position: -1px -126px;
+  width: 200px;
+  height: 41px;
+}
+.icon.u-hamburgerMenu {
+  background-position: -26px -48px;
+  width: 29px;
+  height: 14px;
+}
+.icon.u-closeIcon {
+  background-position: -67px -41px;
+  width: 23px;
+  height: 22px;
+}
+.icon.u-smallHamburgerMenu {
+  background-position: -134px -49px;
+  width: 19px;
+  height: 14px;
+}
+.icon.u-closeBlueIcon {
+  background-position: -104px -41px;
+  width: 23px;
+  height: 22px;
+}
+
