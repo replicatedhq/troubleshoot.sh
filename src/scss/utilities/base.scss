@@ -5,16 +5,11 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
-  min-height: 100vh;
 }
 
 body {
   font-family: "Roboto Mono", "monospace";
   overflow-x: hidden;
-  display: flex;
-  flex-direction: column;
-  flex: 1;
-  height: 100%;
   -webkit-font-smoothing: antialiased;
 
   .body-copy {
@@ -25,18 +20,6 @@ body {
 body a {
   text-decoration: none;
   outline: none;
-}
-
-#___gatsby {
-  display: flex;
-  flex-direction: column;
-  height:100%;
-  min-height: 100vh;
-}
-
-#gatsby-focus-wrapper {
-  display: flex;
-  flex: 1;
 }
 
 .container {
@@ -149,6 +132,13 @@ body a {
   margin-bottom: 20px;
   border-bottom: 1px solid #C4C8CA;
 }
+
+.two-btn-wrapper {
+  .Button:first-child {
+    margin-bottom: 20px;
+  }
+}
+
 /* Media Queries */
 
 /* ≥ 568px */
@@ -157,6 +147,12 @@ body a {
     width: 100%;
     padding: 140px 0px 20px 260px;
     box-sizing: border-box;
+  }
+  .two-btn-wrapper {
+    .Button:first-child {
+      margin-bottom: 0;
+      margin-right: 30px;
+    }
   }
 }
 

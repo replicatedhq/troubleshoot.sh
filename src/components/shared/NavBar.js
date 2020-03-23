@@ -41,7 +41,7 @@ export class NavBar extends React.Component {
     ];
 
     return (
-      <div>
+      <div className="flex flex-auto">
         <div className={`flex flex-auto ${documentation ? "MobileDocNavBarWrapper" : isMobile ? "MobileNavBarWrapper": "NavBarWrapper"}`}>
           <div className={`${documentation ? "MobileDocKurlHeader" : isMobile ? "MobileTroubleshootHeader" : "TroubleshootHeader"} flex flex1`} id="troubleshoot-header">
             {isMobile ?
