@@ -7,25 +7,31 @@ class Troubleshootsh extends React.Component {
     this.state = {};
   }
 
-  componentDidMount() {
-
+  resizeLogo = () => {
+    console.log("figure out logo scroll");
   }
 
-  componentDidUpdate() {
-    
+  componentDidMount() {
+    window.addEventListener("scroll", this.resizeLogo);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener("scroll", this.resizeLogo);
   }
 
   render() {
-    // const { isMobile } = this.props;
+    const { isMobile } = this.props;
+    const logoStyle = isMobile ? { width: `320px`, height: `31px` } : { width: `489px`, height: `47px` };
+
     return (
-      <div className={`u-minHeight--full u-width--full u-overflow--auto flex-column flex1 u-marginBottom---40`}>
+      <div className={`u-width--full u-overflow--auto flex-column flex1`}>
         <div className="section landing-header border">
           <div className="container">
             <div className="contain-700">
-              <span style={{ width: `489px`, height: `47px` }} className="troubleshoot-logo"></span>
+              <span style={logoStyle} className="troubleshoot-logo" id="tblshootLogo"></span>
               <p className="u-fontSize--24 u-marginTop--30 u-color--biscay u-lineHeight--more u-fontWeight--medium">Disconnected remote support and validation for Kubernetes applications</p>
-              <div className="u-marginTop--30">
-                <button className="Button secondary u-marginRight--30"><span className="icon preflight-small"></span>Explore preflight</button>
+              <div className="u-marginTop--30 u-flexMobileReflow two-btn-wrapper justifyContent--center">
+                <button className="Button secondary"><span className="icon preflight-small"></span>Explore preflight</button>
                 <button className="Button secondary"><span className="icon support-small"></span>Explore support</button>
               </div>
             </div>
@@ -38,7 +44,7 @@ class Troubleshootsh extends React.Component {
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Validate an environment before an application is installed to&nbsp;prevent common errors</p>
             </div>
             <div className="contain-1280">
-              <div className="flex u-marginTop--50 u-paddingBottom--20">
+              <div className="u-flexMobileReflow u-marginTop--50 u-paddingBottom--20">
                 <div className="flex1 left-block next-step-arrow">
                   <div className="u-position--relative u-textAlign--center">
                     <div className="icon analyze-icon-large"><span className="illustration-text">Analyze</span></div>
@@ -61,7 +67,7 @@ class Troubleshootsh extends React.Component {
               <div className="u-marginTop--50">
                 <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Example preflight specs</p>
                 <div className="contain-1280">
-                  <div className="flex u-marginTop--50">
+                  <div className="u-flexMobileReflow u-marginTop--50">
                     <div className="example-spec-block-wrapper flex1">
                       <div className="example-spec-block">
                         <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Cluster Information</p>
@@ -97,7 +103,7 @@ class Troubleshootsh extends React.Component {
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">When something isn’t working right, eliminate the back and forth, async debugging by collecting everything at once</p>
             </div>
             <div className="contain-1280">
-              <div className="flex u-marginTop--50">
+              <div className="u-flexMobileReflow u-marginTop--50">
                 <div className="flex1 left-block more next-step-arrow">
                   <div className="u-position--relative u-textAlign--center">
                     <div className="icon collect-icon-large"><span className="illustration-text">Collect</span></div>
@@ -107,7 +113,7 @@ class Troubleshootsh extends React.Component {
                     <a className="u-fontSize--small link">Explore collector specs</a>
                   </div>
                 </div>
-                <div className="flex1 next-step-arrow center">
+                <div className="flex1 next-step-arrow center-block">
                   <div className="u-position--relative u-textAlign--center">
                     <div className="icon redact-icon-large"><span className="illustration-text">Redact</span></div>
                   </div>
@@ -129,7 +135,7 @@ class Troubleshootsh extends React.Component {
               <div className="u-marginTop--50">
                 <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Example support specs</p>
                 <div className="contain-1280">
-                  <div className="flex u-marginTop--50">
+                  <div className="u-flexMobileReflow u-marginTop--50">
                     <div className="example-spec-block-wrapper flex1">
                       <div className="example-spec-block">
                         <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Cluster Information</p>
