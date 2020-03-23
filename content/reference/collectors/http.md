@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: HTTP
 title: HTTP
-weight: 20090
+weight: 10
 ---
 
 The http collector is available to execute http requests from inside the cluster and report the response code and body of the result. The http collector can be specified multiple times in a collector spec.

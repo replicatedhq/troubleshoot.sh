@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: Exec
 title: Exec
-weight: 20060
+weight: 7
 ---
 
 The exec collector will run a command in an existing pod, and record the stdout and stderr in the support bundle. The pod to execute the command is found from a selector, specified in the collector definition. When the selector refers to more than one replica of a pod, the exec collector will execute in only one of the pods found. This spec can be included multiple times, each defining different commands and/or label selectors to use.

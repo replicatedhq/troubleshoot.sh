@@ -2,7 +2,7 @@
 date: 2019-12-17
 linktitle: "Shared Properties"
 title: Shared Properties
-weight: 20015
+weight: 2
 ---
 
 All collectors inherit some common, shared properties.

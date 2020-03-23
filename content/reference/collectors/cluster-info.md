@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: "Cluster Info"
 title: Cluster Info
-weight: 20020
+weight: 3
 ---
 
 The clusterInfo collector will add common information about a Kubernetes cluster.

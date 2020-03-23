@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: "Pod Logs"
 title: Pod Logs
-weight: 20040
+weight: 6
 ---
 
 The logs collectors is available to collect logs from the running pods. This collector can be included multiple times with different label selectors and/or namespaces.

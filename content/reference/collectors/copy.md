@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: "Copy"
 title: Copy
-weight: 20040
+weight: 5
 ---
 
 The copy collector is available to copy files out of pod and include them in the support bundle. This collector can be included multiple times to copy different files from different pods.

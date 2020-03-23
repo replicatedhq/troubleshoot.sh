@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: "Cluster Resources"
 title: Cluster Resources
-weight: 20030
+weight: 4
 ---
 
 The clusterResources collector will attempt to enumerate anything that's deployed to the Kubernetes cluster. This will attempt to collect information from all namespaces, but if RBAC policies prevent the collector from accessing a namespace or resource, it will still include the resources that are accessible. Any RBAC policy errors will be included in the support bundle.

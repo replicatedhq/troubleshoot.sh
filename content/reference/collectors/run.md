@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: Run
 title: Run
-weight: 20070
+weight: 8
 ---
 
 The run collector will run a new pod in the cluster with the parameters provided. The support bundle plugin will delete and clean up this pod and any artifacts after it's created. This spec can be included multiple times, each defining different commands to run.

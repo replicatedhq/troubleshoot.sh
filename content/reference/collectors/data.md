@@ -2,7 +2,7 @@
 date: 2019-10-23
 linktitle: Data
 title: Data
-weight: 20100
+weight: 11
 ---
 
 The data collector will add any static data into the support bundle.
