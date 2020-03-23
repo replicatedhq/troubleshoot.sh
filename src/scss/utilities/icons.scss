@@ -1,0 +1,43 @@
+.icon {
+  background-image: url("../../images/main_spritesheet.svg");
+  background-repeat: no-repeat;
+  background-size: initial;
+  display: inline-block;
+  cursor: default;
+  position: relative;
+}
+.icon.clickable {
+  cursor: pointer;
+}
+
+.icon.preflight-small {
+  width: 20px;
+  height: 20px;
+  background-position: 0 -24px;
+}
+.icon.support-small {
+  width: 20px;
+  height: 20px;
+  background-position: 0 -46px;
+}
+
+.icon.analyze-icon-large {
+  width: 123px;
+  height: 140px;
+  background-position: -26px -177px;
+}
+.icon.report-icon-large {
+  width: 110px;
+  height: 140px;
+  background-position: -169px -177px;
+}
+.icon.redact-icon-large {
+  width: 111px;
+  height: 140px;
+  background-position: -169px -33px;
+}
+.icon.collect-icon-large {
+  width: 139px;
+  height: 141px;
+  background-position: -26px -32px;
+}

@@ -1,0 +1,39 @@
+.Button {
+  font-weight: 700;
+  cursor: pointer;
+  padding: 12px 14px 13px 14px;
+  font-family: "Roboto Mono", "monospace";
+  font-size: 14px;
+  display: inline-block;
+  border: 0;
+  transition: all .2s;
+  outline: none;
+  position: relative;
+
+  .icon {
+    position: relative;
+    top: 4px;
+    margin-right: 10px;
+  }
+}
+
+.Button.primary {
+  background-color: #326DE6;
+  border: 1px solid #326DE6;
+  color: #ffffff;
+}
+
+.Button.primary:hover {
+  background-color: #154FC6;
+}
+
+.Button.secondary {
+  background-color: #ffffff;
+  border: 1px solid #326DE6;
+  color: #326DE6;
+
+  &:hover {
+    border-color: #163166;
+    color: #163166;
+  }
+}
