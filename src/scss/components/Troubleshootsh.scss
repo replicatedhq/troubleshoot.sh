@@ -23,6 +23,87 @@
   margin-top: 120px;
 }
 
+.left-block {
+  padding-right: 50px;
+
+  &.more {
+    padding-right: 70px;
+  }
+}
+
+.right-block {
+  padding-left: 50px;
+
+  &.more {
+    padding-left: 70px;
+  }
+}
+
+.next-step-arrow {
+  position: relative;
+
+  &::after {
+    position: absolute;
+    content: "";
+    background-image: url("../../images/main_spritesheet.svg");
+    background-repeat: no-repeat;
+    background-size: initial;
+    display: block;
+    width: 106px;
+    height: 30px;
+    background-position: -48px 0;
+    right: -30px;
+    top: 60px;
+  }
+
+  &.center::after {
+    right: -80px;
+  }
+}
+
+.illustration-text {
+  padding: 6px 8px;
+  background-color: #163166;
+  color: #ffffff;
+  font-weight: 500;
+  position: absolute;
+  bottom: -8px;
+  left: -25px;
+}
+
+.example-spec-block-wrapper {
+  margin-right: 30px;
+  text-align: left;
+  &:last-child {
+    margin-right: 0;
+  }
+}
+.example-spec-block {
+  padding: 15px 30px 15px 15px;
+  background-color: #ffffff;
+  position: relative;
+
+  &::after {
+    content: "";
+    background-image: url("../../images/main_spritesheet.svg");
+    background-repeat: no-repeat;
+    background-size: initial;
+    display: inline-block;
+    width: 10px;
+    height: 17px;
+    background-position: 0 -68px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -8px;
+    transition: all .2s ease;
+  }
+
+  &:hover::after {
+    right: 12px;
+  }
+}
+
 .wrapperForm {
     input[type="text"], input[type="number"] {
       padding-left: 10px;
