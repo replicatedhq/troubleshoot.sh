@@ -135,13 +135,13 @@ class TroubleshootSpec extends React.Component {
               <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Related specs </p>
               <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--20"> Validate that the mysql version is supported </p>
               <div className="u-marginTop--15">
-                <Link to={"/explore-spec"} className="u-fontSize--small link"> View spec </Link>
+                <Link to={"/explore"} className="u-fontSize--small link"> View spec </Link>
               </div>
             </div>
             <div className="u-borderTop--gray">
               <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--20"> Validate that the postgres version is supported </p>
               <div className="u-marginTop--15">
-                <Link to={"/explore-spec"} className="u-fontSize--small link"> View spec </Link>
+                <Link to={"/explore"} className="u-fontSize--small link"> View spec </Link>
               </div>
             </div>
           </div>

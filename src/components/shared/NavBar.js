@@ -22,7 +22,7 @@ export class NavBar extends React.Component {
   handleNavScroll = () => {
     const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
     const distanceY = scrollTop,
-      shrinkOn = 100,
+      shrinkOn = 50,
       troubleshootNav = document.getElementById("troubleshoot-header");
 
     if (distanceY > shrinkOn) {
@@ -62,10 +62,10 @@ export class NavBar extends React.Component {
                     <div className="flex flex-auto">
                       <div className="flex alignItems--center flex1 flex-verticalCenter u-position--relative u-marginRight--20">
                         <div className="flex-column flex-auto u-marginRight--50 justifyContent--center NavItem">
-                          <Link to="/add-ons" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Docs</Link>
+                          <Link to="/docs" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Docs</Link>
                         </div>
                         <div className="flex-column flex-auto justifyContent--center NavItem">
-                          <Link to="/docs/introduction/" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Explore specs</Link>
+                          <Link to="/explore" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Explore specs</Link>
                         </div>
                       </div>
                     </div>

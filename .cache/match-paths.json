@@ -4,8 +4,8 @@
         "matchPath": "/dev-404-page/"
     },
     {
-        "path": "/explore-spec/",
-        "matchPath": "/explore-spec/"
+        "path": "/explore/",
+        "matchPath": "/explore/"
     },
     {
         "path": "/spec/",
