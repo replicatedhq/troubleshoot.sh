@@ -47,13 +47,14 @@ export class NavBar extends React.Component {
             {isMobile ?
               <div className="flex flex1 alignItems--center">
                 <span
-                  className={`icon clickable ${mobileNavIsOpen ? "u-closeIcon" : "u-hamburgerMenu"} u-marginLeft--20`}
+                  className={`icon clickable ${mobileNavIsOpen ? "gray-x-icon" : "hamburger-icon"} u-marginLeft--20`}
                   onClick={() => {
                     this.setState({
                       mobileNavIsOpen: !this.state.mobileNavIsOpen
                     });
                   }}
                 ></span>
+                <span style={{ width: `202px`, height: `19px` }} className="troubleshoot-logo"></span>
               </div>
               :
               <div className="NavBarContainer flex flex1 alignItems--center">
