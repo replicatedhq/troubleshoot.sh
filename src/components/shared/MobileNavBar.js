@@ -30,7 +30,7 @@ export default class MobileNavBar extends React.Component {
         <div className="MobileNav-menu flex-column flex1 u-overflow--hidden">
           <div className="u-overflow--auto flex-1-auto">
             <div className="flex flex1 u-padding--20">
-              <span className={`${isOpen ? "icon clickable u-closeIcon" : ""}`} onClick={onClose}></span>
+              <span className={`${isOpen ? "icon clickable gray-x-icon" : ""}`} onClick={onClose}></span>
             </div>
             <ul className="MobileNav-items flex flex-column alignItems--center">
               {items.map((item, i) => (
@@ -50,7 +50,7 @@ export default class MobileNavBar extends React.Component {
                 </li>
               ))
               }
-              <li> <GitHubButton type="stargazers" size="large" repo="kurl" namespace="replicatedhq" /> </li>
+              <li> <GitHubButton type="stargazers" size="large" repo="troubleshoot" namespace="replicatedhq" /> </li>
             </ul>
           </div>
         </div>
