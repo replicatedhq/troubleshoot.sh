@@ -5,6 +5,19 @@ html {
   margin: 0;
   padding: 0;
   width: 100%;
+  min-height: 100vh;
+}
+
+#___gatsby {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  min-height: 100vh;
+}
+
+#gatsby-focus-wrapper {
+  display: flex;
+  flex: 1 1;
 }
 
 body {
@@ -136,6 +149,48 @@ body a {
 .two-btn-wrapper {
   .Button:first-child {
     margin-bottom: 20px;
+  }
+}
+
+.tab {
+  &.is-active-blue {
+    color: #4A4A4A;
+    font-weight: 600;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      display: block;
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      background-color: #FFFFFF;
+      border-top: 1px solid #FFFFFF;
+      border-left: 1px solid #FFFFFF;
+      left: 50%;
+      margin-left: -4px;
+    }
+  }
+
+  &.is-active-gray {
+    color: #4A4A4A;
+    font-weight: 600;
+
+    &::after {
+      content: "";
+      position: absolute;
+      bottom: -5px;
+      display: block;
+      width: 8px;
+      height: 8px;
+      transform: rotate(45deg);
+      background-color: #FFFFFF;
+      border-top: 1px solid #9B9B9B;
+      border-left: 1px solid #9B9B9B;
+      left: 50%;
+      margin-left: -4px;
+    }
   }
 }
 

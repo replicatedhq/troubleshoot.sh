@@ -10,13 +10,6 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `markdown-pages`,
-        path: `${__dirname}/src/markdown-pages`,
-      },
-    },
-    {
       resolve: `gatsby-plugin-sass`,
       options: {
         useResolveUrlLoader: true,
@@ -37,6 +30,10 @@ module.exports = {
           }
         ],
       },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/index/*`, `/spec/*`] },
     },
     // {
     //   resolve: `gatsby-plugin-google-analytics`,

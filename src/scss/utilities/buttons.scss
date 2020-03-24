@@ -21,16 +21,30 @@
   background-color: #326DE6;
   border: 1px solid #326DE6;
   color: #ffffff;
-}
 
-.Button.primary:hover {
-  background-color: #154FC6;
+  &:hover {
+    background-color: #154FC6;
+  }
+
+  &.blue {
+    background-color: #2756B3;
+  } 
+
+  &.darkBlue {
+    background-color: #163166;
+    border: 1px solid #163166;
+  }
 }
 
 .Button.secondary {
   background-color: #ffffff;
   border: 1px solid #326DE6;
   color: #326DE6;
+
+  &.gray {
+    border: 1px solid #9B9B9B;
+    color: #9B9B9B;
+  }
 
   &:hover {
     border-color: #163166;

@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 
-import ("../../scss/components/shared/CodeSnippet.scss");
+import "../../scss/components/shared/CodeSnippet.scss";
 
 class CodeSnippet extends Component {
   state = {
@@ -27,7 +27,7 @@ class CodeSnippet extends Component {
 
   static defaultProps = {
     variant: "plain",
-    copyText: "Copy URL",
+    copyText: "Copy",
     copyTextCommand: "Copy command",
     onCopyText: "Copied!",
     copyDelay: 3000
@@ -71,8 +71,7 @@ class CodeSnippet extends Component {
       copyText,
       onCopyText,
       variant,
-      downloadAirgapLink,
-      downloadAirgapHtml,
+      learnMore,
       isCommand,
       copyTextCommand
     } = this.props;
@@ -107,14 +106,14 @@ class CodeSnippet extends Component {
               } 
             </span>
           )}
-          {downloadAirgapLink ?
+          {learnMore ?
             <span className="u-color--dustyGray u-fontSize--small u-marginLeft--small u-marginRight--small"> | </span>
           : null}
-          {downloadAirgapLink && (
+          {learnMore && (
             <span
               className="CodeSnippet-copy u-fontWeight--bold"
             >
-            {downloadAirgapHtml} 
+            {learnMore} 
             </span>
           )}
         </div>

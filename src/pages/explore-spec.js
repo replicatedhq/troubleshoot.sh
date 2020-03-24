@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../components/Layout";
-import Troubleshootsh from "../components/Troubleshootsh";
+import ExploreSpecComponent from "../components/ExploreSpec";
 import { Resizer } from "../components/shared/Resize";
 import { BreakpointConfig } from "../services/breakpoints";
 
 @Resizer(BreakpointConfig)
-class Troubleshoot extends React.Component {
+class ExploreSpec extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -31,11 +31,11 @@ class Troubleshoot extends React.Component {
     const { isMobile } = this.state;
 
     return (
-      <Layout isMobile={isMobile} title={"Troubleshoot.sh"}> 
-        <Troubleshootsh isMobile={isMobile} />
+      <Layout isMobile={isMobile} title={"Explore spec"}> 
+        <ExploreSpecComponent isMobile={isMobile} />
       </Layout>
     )
   }
 };
 
-export default Troubleshoot;
+export default ExploreSpec;

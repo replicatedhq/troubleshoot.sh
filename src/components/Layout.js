@@ -8,16 +8,18 @@ import "../scss/index.scss";
 
 const Layout = ({ children, isMobile, title }) => {
   return (
-    <div>
+    <div className="flex flex1">
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
       </Helmet>
       <NavBar isMobile={isMobile} title={title} />
-      <div className="flex-column flex1">
+      <div className="u-minHeight--full flex-column flex1">
         <main className="flex-column flex1">{children}</main>
+        <div className="flex-auto Footer-wrapper u-width--full">
+          <Footer />
+        </div>
       </div>
-      <Footer/>
     </div>
   )
 }
