@@ -20,9 +20,10 @@ export class NavBar extends React.Component {
   }
 
   handleNavScroll = () => {
+    const { isMobile } = this.props;
     const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
     const distanceY = scrollTop,
-      shrinkOn = 50,
+      shrinkOn = isMobile ? 100 : 220,
       troubleshootNav = document.getElementById("troubleshoot-header");
 
     if (distanceY > shrinkOn) {
@@ -47,16 +48,18 @@ export class NavBar extends React.Component {
             {isMobile ?
               <div className="flex flex1 alignItems--center">
                 <span
-                  className={`icon clickable ${mobileNavIsOpen ? "u-closeIcon" : "u-hamburgerMenu"} u-marginLeft--20`}
+                  className={`icon clickable ${mobileNavIsOpen ? "gray-x-icon" : "hamburger-icon"} u-marginLeft--20`}
                   onClick={() => {
                     this.setState({
                       mobileNavIsOpen: !this.state.mobileNavIsOpen
                     });
                   }}
                 ></span>
+                <span style={{ width: `202px`, height: `19px` }} className="troubleshoot-logo"></span>
               </div>
               :
-              <div className="NavBarContainer flex flex1 alignItems--center">
+              <div className="NavBarContainer flex flex1 alignItems--center u-position--relative">
+                <span style={{ width: `271px`, height: `26px` }} className="troubleshoot-logo"></span>
                 <div className="flex1 justifyContent--flexStart">
                   <div className="flex1 flex u-height--full">
                     <div className="flex flex-auto">

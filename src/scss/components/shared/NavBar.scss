@@ -20,7 +20,7 @@
 .MobileNavBarWrapper {
   width: 100%;
   padding: 0;
-  background-color: #F5F8FC;
+  background-color: #ffffff;
   margin-bottom: 0;
   min-height: 50px;
   transition: height 0.3s;
@@ -108,7 +108,7 @@
 
 .MobileNav {
   position: fixed;
-  background: #326de6;
+  background: #ffffff;
   top: 0;
   left: 0;
   width: 100%;
@@ -125,14 +125,10 @@
 }
 
 .MobileNav-menu {
-  background-color: #326de6;
+  background-color: #ffffff;
   position: relative;
   width: 100%;
-  z-index: 400;
-
-  .closeIcon {
-    z-index: 500;
-  }
+  z-index: 90;
 
   ul {
     list-style-type: none;
@@ -166,7 +162,7 @@
   margin: 0;
   padding-top: 10px;
   width: 100%;
-  background-color: #326de6;
+  background-color: #ffffff;
   display: block;
   visibility: collapse;
   opacity: 0;
@@ -180,7 +176,7 @@
     text-align: center;
     display: block;
     font-size: 26px;
-    color: #FFFFFF;
+    color: #326de6;
     font-weight: medium;
     cursor: pointer;
     line-height: normal;
@@ -196,4 +192,34 @@
 .MobileNav.is-open .MobileNav-items {
   visibility: visible;
   opacity: 1;
+}
+
+/* Logo on scroll styles */
+
+.TroubleshootHeader .troubleshoot-logo {
+  position: absolute;
+  visibility: hidden;
+  left: 50%;
+  margin-left: -101px;
+  top: -28px;
+  transition: all .1s ease;
+}
+
+.TroubleshootHeader.scrolled .troubleshoot-logo {
+  top: 21px;
+  visibility: visible;
+}
+
+.MobileTroubleshootHeader .troubleshoot-logo {
+  position: absolute;
+  visibility: hidden;
+  left: 50%;
+  margin-left: -101px;
+  top: -24px;
+  transition: all .1s ease;
+}
+
+.MobileTroubleshootHeader.scrolled .troubleshoot-logo {
+  top: 16px;
+  visibility: visible;
 }
