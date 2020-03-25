@@ -1,5 +1,9 @@
 import * as React from "react";
+import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+
 import "../scss/components/ExploreSpec.scss";
+import ExploreInfo from "./shared/ExploreInfo";
+import MobileExploreFilters from "./MobileExploreFilters";
 
 const clusterInfo = [
   { name: "Kubernetes", description: "Validate that at least n nodes in the cluster have GPU support" },
@@ -47,16 +51,45 @@ const externalAppInfo = [
   { name: "GitHub", description: "Verify that a GitHub app / key / secret are valid" },
   { name: "GitLab", description: "Verify that a GitLab app / key / secret are valid" },
   { name: "Salesforce", description: "Validate a Salesforce Key is valid" },
-]
+];
+
 
 class ExploreSpec extends React.Component {
+  state = {
+    categoryToShow: "",
+    showTagsList: false,
+    showMobileFilters: false,
+    mobileFiltersOpen: false
+  }
+
+  showingCategoryDetails = (category, e) => {
+    if (!e.target.classList.contains("close")) {
+      this.setState({ categoryToShow: category });
+    }
+  }
+
+  onCloseCategory = () => {
+    this.setState({ categoryToShow: "" });
+  }
+
+  toggleTags = () => {
+    this.setState({ showTagsList: !this.state.showTagsList });
+  }
+
+  onMobileFiltersClick = () => {
+    this.setState({ mobileFiltersOpen: !this.state.mobileFiltersOpen });
+  }
+
+
   render() {
+    const { categoryToShow, showTagsList } = this.state;
+    const { isMobile } = this.props;
     const categories = ["Database", "Cloud provider", "External app dependecies", "Cluster information", "Storage", "Performance", "Networking"];
     const tags = ["database", "connection", "storage", "networking", "kubernetes", "performance", "cloud", "s3", "postgres", "mysql", "cluster", "pods"];
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section landing-header gradient border justifyContent--center alignItems--center">
+        <div className="section u-marginTop--50 gradient border justifyContent--center alignItems--center">
           <div className="container">
             <p className="u-fontSize--jumbo u-fontWeight--bold u-color--biscay u-lineHeight--more"> Explore troubleshoot specs </p>
             <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy">
@@ -64,151 +97,98 @@ class ExploreSpec extends React.Component {
           </div>
         </div>
 
-        <div className="section u-marginTop--30">
-          <div className="flex flex1 container">
-            <div className="flex">
-              <div className="flex-column">
-                <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay"> Categories </p>
-                {categories.map((category, i) => {
-                  return (
-                    <p className="u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy" key={`${category}-${i}`}> {category} </p>
-                  )
-                })}
-
-                <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50"> Tags </p>
-                {tags.map((tag, i) => {
-                  return (
-                    <p className="u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy" key={`${tag}-${i}`}> {tag} </p>
-                  )
-                })}
-              </div>
-            </div>
-            <div className="flex1 flex-column u-marginLeft--50">
-              <div className="flex flex-column">
-                <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> Cluster information </p>
-                <div className="u-borderTop--gray">
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {clusterInfo.map((info, i) => {
+        <div className={`section ${!isMobile && "u-marginTop--30"}`}>
+          <div className={`flex flex1 container ${isMobile && "justifyContent--center"}`}>
+            {!isMobile ?
+              <div className="flex">
+                <div className="flex-column">
+                  <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
+                  {categories.map((category, i) => {
+                    return (
+                      <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category, e)} key={`${category}-${i}`}>
+                        {category}
+                        {category === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
+                      </p>
+                    )
+                  })}
+                  <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10" onClick={() => this.toggleTags()}> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
+                  {showTagsList ?
+                    tags.map((tag, i) => {
                       return (
-                        <div className="flex flex-column" key={`${info}-${i}`}>
-                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {info.name} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {info.description} </p>
-                        </div>
+                        <p className="List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy" key={`${tag}-${i}`}> {tag} </p>
                       )
-                    })}
-
-                  </div>
-
+                    })
+                    :
+                    null
+                  }
                 </div>
               </div>
-
-              <div className="flex flex-column u-marginTop--50">
-                <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> Database </p>
-                <div className="u-borderTop--gray">
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {databaseInfo.map((info, i) => {
-                      return (
-                        <div className="flex flex-column" key={`${info}-${i}`}>
-                          <p className="u-fontSize--largest u-color--tundora u-fontWeight--bold u-lineHeight--more"> {info.name} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {info.description} </p>
-                        </div>
-                      )
-                    })}
-
-                  </div>
+              :
+              null
+            }
+            <div className={`flex1 flex-column ${!isMobile && "u-marginLeft--50"}`}>
+              <div className="ExploreSearch--wrapper u-overflow--scroll">
+                <div className="ExploreSearch--search">
+                  <InstantSearch
+                    indexName="test"
+                    searchClient={"test"}
+                  >
+                    <div className="ais-SearchBox-wrapper">
+                      <SearchBox className="u-marginBottom--most"
+                        translations={{
+                          placeholder: "What type of spec do you need?",
+                        }}
+                      />
+                      <span className="ais-SearchBox-SearchIcon" />
+                    </div>
+                    <Hits />
+                  </InstantSearch>
                 </div>
               </div>
-
-              <div className="flex flex-column u-marginTop--50">
-                <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> Storage </p>
-                <div className="u-borderTop--gray">
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {storageInfo.map((info, i) => {
-                      return (
-                        <div className="flex flex-column" key={`${info}-${i}`}>
-                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {info.name} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {info.description} </p>
-                        </div>
-                      )
-                    })}
-
-                  </div>
+              {isMobile && <div className="flex flex-column u-marginTop--20">
+                <button className="Button secondary" onClick={() => this.onMobileFiltersClick()}> Filters </button>
+              </div>}
+              {categoryToShow === "" ?
+                <div>
+                  <ExploreInfo name={"Cluster information"} infos={clusterInfo} isMobile={isMobile} />
+                  <ExploreInfo name={"Database"} infos={databaseInfo} isMobile={isMobile} />
+                  <ExploreInfo name={"Storage"} infos={storageInfo} isMobile={isMobile} />
+                  <ExploreInfo name={"Networking"} infos={networkingInfo} isMobile={isMobile} />
+                  <ExploreInfo name={"Performance"} infos={performanceInfo} isMobile={isMobile} />
+                  <ExploreInfo name={"Cloud provider"} infos={cloudProviderInfo} isMobile={isMobile} />
+                  <ExploreInfo name={"External app dependecies"} infos={externalAppInfo} isMobile={isMobile} />
                 </div>
-              </div>
-
-              <div className="flex flex-column u-marginTop--50">
-                <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> Networking </p>
-                <div className="u-borderTop--gray">
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {networkingInfo.map((info, i) => {
-                      return (
-                        <div className="flex flex-column" key={`${info}-${i}`}>
-                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {info.name} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {info.description} </p>
-                        </div>
-                      )
-                    })}
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-column u-marginTop--50">
-                <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> Performance </p>
-                <div className="u-borderTop--gray">
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {performanceInfo.map((info, i) => {
-                      return (
-                        <div className="flex flex-column" key={`${info}-${i}`}>
-                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {info.name} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {info.description} </p>
-                        </div>
-                      )
-                    })}
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-column u-marginTop--50">
-                <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> Cloud provider </p>
-                <div className="u-borderTop--gray">
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {cloudProviderInfo.map((info, i) => {
-                      return (
-                        <div className="flex flex-column" key={`${info}-${i}`}>
-                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {info.name} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {info.description} </p>
-                        </div>
-                      )
-                    })}
-
-                  </div>
-                </div>
-              </div>
-
-              <div className="flex flex-column u-marginTop--50">
-                <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> External app dependecies </p>
-                <div className="u-borderTop--gray">
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {externalAppInfo.map((info, i) => {
-                      return (
-                        <div className="flex flex-column" key={`${info}-${i}`}>
-                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {info.name} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {info.description} </p>
-                        </div>
-                      )
-                    })}
-
-                  </div>
-                </div>
-              </div>
-
-
+                : categoryToShow === "Cluster information" ?
+                  <ExploreInfo name={"Cluster information"} infos={clusterInfo} isMobile={isMobile} />
+                  : categoryToShow === "Database" ?
+                    <ExploreInfo name={"Database"} infos={databaseInfo} isMobile={isMobile} />
+                    : categoryToShow === "Storage" ?
+                      <ExploreInfo name={"Storage"} infos={storageInfo} isMobile={isMobile} />
+                      : categoryToShow === "Networking" ?
+                        <ExploreInfo name={"Networking"} infos={networkingInfo} isMobile={isMobile} />
+                        : categoryToShow === "Performance" ?
+                          <ExploreInfo name={"Performance"} infos={performanceInfo} isMobile={isMobile} />
+                          : categoryToShow === "Cloud provider" ?
+                            <ExploreInfo name={"Cloud provider"} infos={cloudProviderInfo} isMobile={isMobile} />
+                            : categoryToShow === "External app dependecies" ?
+                              <ExploreInfo name={"External app dependecies"} infos={externalAppInfo} isMobile={isMobile} />
+                              : null
+              }
             </div>
           </div>
-
         </div>
+        {isMobile ? (
+          <MobileExploreFilters
+            className="MobileNavBar"
+            categoryToShow={categoryToShow}
+            showingCategoryDetails={this.showingCategoryDetails}
+            onCloseCategory={this.onCloseCategory}
+            categoryItems={categories}
+            tagItems={tags}
+            isOpen={this.state.mobileFiltersOpen}
+            onClose={this.onMobileFiltersClick}
+          />
+        ) : null}
       </div>
     );
   }
