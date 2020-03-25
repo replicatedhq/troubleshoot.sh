@@ -20,9 +20,10 @@ export class NavBar extends React.Component {
   }
 
   handleNavScroll = () => {
+    const { isMobile } = this.props;
     const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
     const distanceY = scrollTop,
-      shrinkOn = 100,
+      shrinkOn = isMobile ? 100 : 220,
       troubleshootNav = document.getElementById("troubleshoot-header");
 
     if (distanceY > shrinkOn) {
@@ -57,7 +58,8 @@ export class NavBar extends React.Component {
                 <span style={{ width: `202px`, height: `19px` }} className="troubleshoot-logo"></span>
               </div>
               :
-              <div className="NavBarContainer flex flex1 alignItems--center">
+              <div className="NavBarContainer flex flex1 alignItems--center u-position--relative">
+                <span style={{ width: `271px`, height: `26px` }} className="troubleshoot-logo"></span>
                 <div className="flex1 justifyContent--flexStart">
                   <div className="flex1 flex u-height--full">
                     <div className="flex flex-auto">
