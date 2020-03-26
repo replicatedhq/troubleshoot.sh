@@ -172,26 +172,6 @@ body a {
       margin-left: -4px;
     }
   }
-
-  &.is-active-gray {
-    color: #4A4A4A;
-    font-weight: 600;
-
-    &::after {
-      content: "";
-      position: absolute;
-      bottom: -5px;
-      display: block;
-      width: 8px;
-      height: 8px;
-      transform: rotate(45deg);
-      background-color: #FFFFFF;
-      border-top: 1px solid #9B9B9B;
-      border-left: 1px solid #9B9B9B;
-      left: 50%;
-      margin-left: -4px;
-    }
-  }
 }
 
 /* Media Queries */
