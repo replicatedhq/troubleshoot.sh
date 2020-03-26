@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    title: "Troubleshoot.sh"
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
@@ -7,6 +10,13 @@ module.exports = {
       options: {
         name: `images`,
         path: `${__dirname}/src/images`
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `markdown-pages`,
+        path: `${__dirname}/src/markdown-pages`,
       },
     },
     {
@@ -33,7 +43,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/index/*`, `/spec/*`] },
+      options: { prefixes: [`/spec/*`, `/docs/*`] },
     },
     // {
     //   resolve: `gatsby-plugin-google-analytics`,

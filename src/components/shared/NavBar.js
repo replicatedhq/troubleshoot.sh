@@ -37,14 +37,14 @@ export class NavBar extends React.Component {
     const { mobileNavIsOpen } = this.state;
     const { isMobile, documentation } = this.props;
     const navBarItems = [
-      { linkTo: "/docs", label: "Docs" },
+      { linkTo: "/docs/", label: "Docs" },
       { linkTo: "/explore", label: "Explore specs" },
     ];
 
     return (
       <div className="flex flex-auto">
         <div className={`flex flex-auto ${documentation ? "MobileDocNavBarWrapper" : isMobile ? "MobileNavBarWrapper": "NavBarWrapper"}`}>
-          <div className={`${documentation ? "MobileDocKurlHeader" : isMobile ? "MobileTroubleshootHeader" : "TroubleshootHeader"} flex flex1`} id="troubleshoot-header">
+          <div className={`${documentation ? "MobileDocHeader" : isMobile ? "MobileTroubleshootHeader" : "TroubleshootHeader"} flex flex1`} id="troubleshoot-header">
             {isMobile ?
               <div className="flex flex1 alignItems--center">
                 <span
@@ -65,7 +65,7 @@ export class NavBar extends React.Component {
                     <div className="flex flex-auto">
                       <div className="flex alignItems--center flex1 flex-verticalCenter u-position--relative u-marginRight--20">
                         <div className="flex-column flex-auto u-marginRight--50 justifyContent--center NavItem">
-                          <Link to="/docs" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Docs</Link>
+                          <Link to="/docs/" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Docs</Link>
                         </div>
                         <div className="flex-column flex-auto justifyContent--center NavItem">
                           <Link to="/explore" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Explore specs</Link>
