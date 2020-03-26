@@ -59,7 +59,7 @@
     display: inline-block;
     width: 10px;
     height: 17px;
-    background-position: 0 -68px;
+    background-position: 0 -74px;
     position: absolute;
     right: 15px;
     top: 50%;
@@ -72,13 +72,6 @@
   }
 }
 
-.wrapperForm {
-    input[type="text"], input[type="number"] {
-      padding-left: 10px;
-      width: 100%;
-      height: 30px;  
-    }
-  }
 
 /* ≥ 768px */
 @media screen and (min-width: 48em) {
@@ -138,4 +131,5 @@
       margin-right: 0;
     }
   }
+
 }

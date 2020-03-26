@@ -1,4 +1,5 @@
 import * as React from "react";
+import TroubleshootLifecycle from "./TroubleshootLifecycle";
 import "../scss/components/Troubleshootsh.scss";
 
 class Troubleshootsh extends React.Component {
@@ -31,8 +32,27 @@ class Troubleshootsh extends React.Component {
               <span style={logoStyle} className="troubleshoot-logo" id="tblshootLogo"></span>
               <p className="u-fontSize--24 u-marginTop--30 u-color--biscay u-lineHeight--more u-fontWeight--medium">Disconnected remote support and validation for Kubernetes applications</p>
               <div className="u-marginTop--30 u-flexMobileReflow two-btn-wrapper justifyContent--center">
-                <button className="Button secondary"><span className="icon preflight-small"></span>Explore preflight</button>
-                <button className="Button secondary"><span className="icon support-small"></span>Explore support</button>
+                <button className="Button secondary flex alignItems--center justifyContent--center">
+                  <span className="icon preflight-small"></span>
+                  <span>Explore preflight</span>
+                </button>
+                <button className="Button secondary flex alignItems--center justifyContent--center">
+                  <span className="icon support-small"></span>
+                  <span>Explore support</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div className="section border">
+          <div className="container">
+            <div className="contain-700">
+              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Write one spec and use it for preflight checks and support&nbsp;bundle analysis</p>
+            </div>
+            <div className="contain-1280 flex">
+              <div className="troubleshoot-lifecycle-container u-marginTop--30 u-position--relative">
+                <TroubleshootLifecycle isMobile={isMobile} />
               </div>
             </div>
           </div>
