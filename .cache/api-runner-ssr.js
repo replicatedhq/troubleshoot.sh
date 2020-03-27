@@ -1,8 +1,8 @@
 var plugins = [{
-      plugin: require('/home/grayson/go/src/github.com/replicatedhq/troubleshoot.sh/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
+      plugin: require('/Users/jelenagruica/Desktop/troubleshoot.sh/node_modules/gatsby-plugin-react-helmet/gatsby-ssr'),
       options: {"plugins":[]},
     },{
-      plugin: require('/home/grayson/go/src/github.com/replicatedhq/troubleshoot.sh/node_modules/gatsby-remark-autolink-headers/gatsby-ssr'),
+      plugin: require('/Users/jelenagruica/Desktop/troubleshoot.sh/node_modules/gatsby-remark-autolink-headers/gatsby-ssr'),
       options: {"plugins":[],"offsetY":"100"},
     }]
 // During bootstrap, we write requires at top of this file which looks like:

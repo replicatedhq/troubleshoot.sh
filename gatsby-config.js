@@ -1,4 +1,7 @@
 module.exports = {
+  siteMetadata: {
+    title: "Troubleshoot.sh"
+  },
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
@@ -37,6 +40,10 @@ module.exports = {
           }
         ],
       },
+    },
+    {
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/spec/*`, `/docs/*`] },
     },
     // {
     //   resolve: `gatsby-plugin-google-analytics`,

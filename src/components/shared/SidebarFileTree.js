@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import classNames from "classnames";
 import { Link, navigate } from "gatsby";
 import "../../scss/components/shared/SidebarFileTree.scss";
 
@@ -119,7 +118,7 @@ export default class SidebarFileTree extends Component {
   }
 
   render() {
-    const { depth = 0, data, type, className, open, children } = this.props;
+    const { depth = 0, data, type, open, children } = this.props;
     const { treeState } = this.state;
 
     if (treeState.length === 0 && depth === 0) {
@@ -133,7 +132,7 @@ export default class SidebarFileTree extends Component {
 
     return (
       <div
-        className={classNames(`SidebarFileTree depth-${depth} flex1 flex-column`, className)}
+        className={`SidebarFileTree depth-${depth} flex1 flex-column ${type === "directory" ? "is-directory" : "is-file"}`}
         onClick={type === "directory" ? this.onDirectoryClick : null}
         data-type={type}
         data-path={children && children.toString()}
