@@ -5,31 +5,15 @@ import { Resizer } from "../components/shared/Resize";
 import { BreakpointConfig } from "../services/breakpoints";
 
 @Resizer(BreakpointConfig)
-class Kurl extends React.Component {
+class Troubleshoot extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      installerData: null,
       isMobile: false
     };
   }
-  
-  fetchInstallerData = async () => {
-    try {
-      const resp = await fetch(process.env.KURL_INSTALLER_URL);  
-      const installerData = await resp.json();
-      this.setState({
-        installerData
-      });
-    } catch (error) {
-      throw error;
-    }
-  }
-  
+
   componentDidMount() {
-    if (!this.props.data) {
-      this.fetchInstallerData();
-    }
     if (this.props.breakpoint) {
       this.setState({ isMobile: this.props.breakpoint === "mobile" })
     }
@@ -45,14 +29,13 @@ class Kurl extends React.Component {
   
   render() {
     const { isMobile } = this.state;
-    const { installerData } = this.state;
 
     return (
       <Layout isMobile={isMobile} title={"Troubleshoot.sh"}> 
-        <Troubleshootsh isMobile={isMobile} installerData={installerData} />
+        <Troubleshootsh isMobile={isMobile} />
       </Layout>
     )
   }
 };
 
-export default Kurl;
+export default Troubleshoot;

@@ -41,7 +41,7 @@
   transition: height 0.3s;
   overflow: hidden;
   position: fixed;
-  top: 56px;
+  top: 0;
   left: 0;
   z-index: 100;
   box-shadow: 0 1px 4px rgba(0,0,0,.16);
@@ -83,16 +83,6 @@
 .left-items {
   .NavItem {
     padding: 0 15px;
-  }
-}
-
-/* ≥ 500px */
-@media screen and (min-width: 31.25em) {
-  .MobileDocNavBarWrapper {
-    top: 40px;
-  }
-  .MobileNavBarWrapper {
-    top: 40px;
   }
 }
 

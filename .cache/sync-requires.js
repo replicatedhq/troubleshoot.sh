@@ -5,7 +5,11 @@ const preferDefault = m => m && m.default || m
 
 
 exports.components = {
-  "component---cache-dev-404-page-js": hot(preferDefault(require("/home/grayson/go/src/github.com/replicatedhq/troubleshoot.sh/.cache/dev-404-page.js"))),
-  "component---src-pages-index-js": hot(preferDefault(require("/home/grayson/go/src/github.com/replicatedhq/troubleshoot.sh/src/pages/index.js")))
+  "component---src-templates-docs-template-js": hot(preferDefault(require("/Users/jelenagruica/Desktop/troubleshoot.sh/src/templates/DocsTemplate.js"))),
+  "component---cache-dev-404-page-js": hot(preferDefault(require("/Users/jelenagruica/Desktop/troubleshoot.sh/.cache/dev-404-page.js"))),
+  "component---src-pages-docs-js": hot(preferDefault(require("/Users/jelenagruica/Desktop/troubleshoot.sh/src/pages/docs.js"))),
+  "component---src-pages-explore-js": hot(preferDefault(require("/Users/jelenagruica/Desktop/troubleshoot.sh/src/pages/explore.js"))),
+  "component---src-pages-index-js": hot(preferDefault(require("/Users/jelenagruica/Desktop/troubleshoot.sh/src/pages/index.js"))),
+  "component---src-pages-spec-js": hot(preferDefault(require("/Users/jelenagruica/Desktop/troubleshoot.sh/src/pages/spec.js")))
 }
 

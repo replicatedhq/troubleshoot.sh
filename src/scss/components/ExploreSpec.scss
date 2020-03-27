@@ -1,0 +1,81 @@
+.Info--wrapper {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  div {
+    width: 50%;
+    margin-bottom: 10px;
+    padding: 0;
+  }
+}
+
+.List--item {
+  cursor: pointer;
+  padding: 10px 10px;
+ 
+  &:hover {
+    background-color: #E5E5E5;
+    color: #326DE6;
+  }
+}
+
+.List--item.is-active,
+.List--item.is-active .Lits--item:hover {
+  background-color: #326DE6;
+  color: #ffffff;
+}
+
+.close {
+  float:right;
+  margin-left:10px;
+}
+
+.ExploreSearch--wrapper {
+  max-height: 100vh;
+
+  .ais-SearchBox-wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .ais-SearchBox-input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #E5E5E5;
+    outline: 0;
+    font-size: 14px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #323232;
+    padding: 10px 11px 11px;
+    transition: border .2s;
+    padding-left: 35px;
+    min-height: 50px;
+
+    ::placeholder {
+      color: #C5C5C5
+    }
+  }
+
+  .ais-Stats-text {
+    color: #C5C5C5;
+    font-size: 12px;
+    font-weight: 500;
+  }
+
+  .ais-SearchBox-SearchIcon {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    background: transparent url("../../images/main_spritesheet.svg") left no-repeat;
+    background-position: -24px 0px;
+    width: 22px;
+    height: 22px;
+  }
+
+  .ais-SearchBox-submit, .ais-SearchBox-reset {
+    display: none;
+  }
+}
