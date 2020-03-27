@@ -1,7 +1,6 @@
 *.DS_Store
 .vscode/
 .idea/
-.cache/
 *.swp
 
 # Directories
@@ -15,10 +14,3 @@ swagger2markup-*.jar
 # Logs
 logs
 *.log
-
-hugo
-deps/
-resources/_gen/
-themes/hugo-whisper-theme/exampleSite/resources/_gen/
-hugo.tar.gz
-
