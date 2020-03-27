@@ -1,0 +1,49 @@
+$base-padding: 8px;
+
+.SidebarFileTree {
+  color: #4a4a4a;
+  transition: all .2s ease;
+  &:hover {
+    color: #326DE6;
+    cursor: pointer;
+  }
+
+  .SidebarFileTree:nth-child(1) {
+    padding-top: 12px;
+  }
+
+  a {
+    display: block;
+    padding-top: $base-padding;
+    padding-bottom: $base-padding;
+    color: #323232;
+    margin-left: 16px;
+
+   &:visited{
+     color: #4a4a4a;
+   }
+
+   &.active {
+     font-weight: bold;
+     color: #326de6;
+   }
+  }
+
+  .is-directory {
+    font-weight: bold;
+    color: #163166;
+  }
+
+  .is-file {
+    font-weight: 300;
+    color: #323232;
+  }
+
+  @for $spacing from 0 through 1 {
+    .depth-#{$spacing} {
+      margin-left: 24px;
+      padding-top: 20px;
+    }
+  }
+
+}
