@@ -17,7 +17,5 @@ swagger2markup-*.jar
 logs
 *.log
 
-hugo
-
 # Yarn Integrity file
 .yarn-integrity
