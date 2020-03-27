@@ -1,7 +1,6 @@
 *.DS_Store
 .vscode/
 .idea/
-.cache/
 *.swp
 
 # Directories
@@ -15,5 +14,3 @@ swagger2markup-*.jar
 # Logs
 logs
 *.log
-
-hugo
