@@ -20,13 +20,16 @@ export class NavBar extends React.Component {
   }
 
   handleNavScroll = () => {
-    const { isMobile } = this.props;
+    const { isMobile, documentation } = this.props;
     const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
     const distanceY = scrollTop,
-      shrinkOn = isMobile ? 100 : 220,
-      troubleshootNav = document.getElementById("troubleshoot-header");
-
-    if (distanceY > shrinkOn) {
+    shrinkOn = isMobile ? 100 : 220,
+    troubleshootNav = document.getElementById("troubleshoot-header");
+    
+    if (documentation) {
+      troubleshootNav && troubleshootNav.classList.add("scrolled");
+      return;
+    } else if (distanceY > shrinkOn && !documentation) {
       troubleshootNav && troubleshootNav.classList.add("scrolled");
     } else {
       troubleshootNav && troubleshootNav.classList.remove("scrolled");
@@ -43,8 +46,8 @@ export class NavBar extends React.Component {
 
     return (
       <div className="flex flex-auto">
-        <div className={`flex flex-auto ${documentation ? "MobileDocNavBarWrapper" : isMobile ? "MobileNavBarWrapper": "NavBarWrapper"}`}>
-          <div className={`${documentation ? "MobileDocHeader" : isMobile ? "MobileTroubleshootHeader" : "TroubleshootHeader"} flex flex1`} id="troubleshoot-header">
+        <div className={`flex flex-auto ${isMobile ? "MobileNavBarWrapper": "NavBarWrapper"} ${documentation && "scrolled"}`}>
+          <div className={`${isMobile ? "MobileTroubleshootHeader" : "TroubleshootHeader"} flex flex1 ${documentation && "scrolled"}`} id="troubleshoot-header">
             {isMobile ?
               <div className="flex flex1 alignItems--center">
                 <span
