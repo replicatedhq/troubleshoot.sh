@@ -1,6 +1,8 @@
 *.DS_Store
 .vscode/
 .idea/
+.cache/
+**/.cache
 *.swp
 
 # Directories
@@ -14,3 +16,8 @@ swagger2markup-*.jar
 # Logs
 logs
 *.log
+
+hugo
+
+# Yarn Integrity file
+.yarn-integrity
