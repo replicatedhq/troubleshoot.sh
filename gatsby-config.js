@@ -43,13 +43,7 @@ module.exports = {
     },
     {
       resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/spec/*`, `/docs/*`] },
-    },
-    // {
-    //   resolve: `gatsby-plugin-google-analytics`,
-    //   options: {
-    //     trackingId: process.env.GOOGLE_ANALYTICS_TRACKING_ID,
-    //   },
-    // }
+      options: { prefixes: [`/spec/*`] },
+    }
   ],
 }
