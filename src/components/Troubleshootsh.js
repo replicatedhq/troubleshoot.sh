@@ -8,18 +8,6 @@ class Troubleshootsh extends React.Component {
     this.state = {};
   }
 
-  resizeLogo = () => {
-    console.log("figure out logo scroll");
-  }
-
-  componentDidMount() {
-    window.addEventListener("scroll", this.resizeLogo);
-  }
-
-  componentWillUnmount() {
-    window.removeEventListener("scroll", this.resizeLogo);
-  }
-
   render() {
     const { isMobile } = this.props;
     const logoStyle = isMobile ? { width: `320px`, height: `31px` } : { width: `489px`, height: `47px` };
