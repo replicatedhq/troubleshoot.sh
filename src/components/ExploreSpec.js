@@ -44,7 +44,7 @@ const cloudProviderInfo = [
 ]
 
 const performanceInfo = [
-  { name: "Kubernetes", description: "Validate that pod to pod networking bandwidth " },
+  { name: "Kubernetes", description: "Validate that pod to pod networking bandwidth" },
 ];
 
 const externalAppInfo = [

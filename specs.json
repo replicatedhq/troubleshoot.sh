@@ -1,0 +1,467 @@
+{
+  "tags": ["database", "connection", "storage", "networking", "kubernetes", "performance", "cloud", "s3", "postgres", "mysql", "cluster", "pods", "gitops", "external-apps", "rook", "ceph", "openEBS", "disk", "ingress", "load-balancer"],
+  "categories": [
+    {
+      "name": "database",
+      "display": "Database"
+    },
+    {
+      "name": "cloud_provider",
+      "display": "Cloud provider"
+    },
+    {
+      "name": "external_app_dependencies",
+      "display": "External app dependencies"
+    },
+    {
+      "name": "cluster_information",
+      "display": "Cluster information"
+    },
+    {
+      "name": "storage",
+      "display": "Storage"
+    },
+    {
+      "name": "performance",
+      "display": "Performance"
+    },
+    {
+      "name": "Networking",
+      "display": "networking"
+    }
+  ],
+  "specs": [
+    {
+      "id": "hF8POP3",
+      "slug": "postgres-connection-string-valid",
+      "category": "database",
+      "title": "Postgres connection string",
+      "description": "Validate that the connection string is valid",
+      "iconUri": "https://link.to.iconuri/postgres",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["database", "connection", "postgres"]
+    },
+    {
+      "id": "TxwyPfl",
+      "slug": "postgres-connection-string-supported",
+      "category": "database",
+      "title": "Postgres connection string",
+      "description": "Validate that the Postgres version is supported",
+      "iconUri": "https://link.to.iconuri/postgres",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["database", "connection", "postgres"]
+    },
+    {
+      "id": "dgVzsad",
+      "slug": "mysql-connection-string-valid",
+      "category": "database",
+      "title": "MySQL connection string",
+      "description": "Validate that the connection string is valid",
+      "iconUri": "https://link.to.iconuri/mysql",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["database", "connection", "mysql"]
+    },
+    {
+      "id": "5brqZNG",
+      "slug": "mysql-connection-string-supported",
+      "category": "database",
+      "title": "MySQL connection string",
+      "description": "Validate that the MySQL version is supported",
+      "iconUri": "https://link.to.iconuri/mysql",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["database", "connection", "mysql"]
+    },
+    {
+      "id": "5t9yWDp",
+      "slug": "iam-instance-permissions",
+      "category": "cloud_provider",
+      "title": "Amazon S3",
+      "description": "Verify that the IAM instance role has n permissions",
+      "iconUri": "https://link.to.iconuri/amazonS3",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["s3", "cloud"]
+    },
+    {
+      "id": "phC33c5",
+      "slug": "s3-bucket-exists-with-access",
+      "category": "cloud_provider",
+      "title": "Amazon S3",
+      "description": "Verify that an S3 bucket exists and is readable/writeable",
+      "iconUri": "https://link.to.iconuri/amazonS3",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["s3", "cloud"]
+    },
+    {
+      "id": "phC33c5",
+      "slug": "cluster-runs-in-specific-provider",
+      "category": "cloud_provider",
+      "title": "Cloud provider",
+      "description": "Verify that the cluster is running in a specific cloud provider (managed or not)",
+      "iconUri": "https://link.to.iconuri/cloud-provider",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["s3", "cloud"]
+    },
+    {
+      "id": "sHNC0pb",
+      "slug": "github-provided",
+      "category": "external_app_dependencies",
+      "title": "GitHub",
+      "description": "Verify that a GitHub app / key / secret are valid",
+      "iconUri": "https://link.to.iconuri/github",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["gitops", "external-apps"]
+    },
+    {
+      "id": "1fMuke3",
+      "slug": "gitlab-provided",
+      "category": "external_app_dependencies",
+      "title": "GitLab",
+      "description": "Verify that a GitLab app / key / secret are valid",
+      "iconUri": "https://link.to.iconuri/gitlab",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["gitops", "external-apps"]
+    },
+    {
+      "id": "PaVR8oa",
+      "slug": "salesforce-key-is-valid",
+      "category": "external_app_dependencies",
+      "title": "Salesforce",
+      "description": "Validate a Salesforce Key is valid",
+      "iconUri": "https://link.to.iconuri/salseforce",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["external-apps"]
+    },
+    {
+      "id": "Fp5vewS",
+      "slug": "validate-cluster-gpu-support",
+      "category": "cluster_information",
+      "title": "Kubernetes",
+      "description": "Validate that at least n nodes in the cluster have GPU support",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["cluster", "kubernetes"]
+    },
+    {
+      "id": "9U2es8C",
+      "slug": "kubernetes-version",
+      "category": "cluster_information",
+      "title": "Kubernetes",
+      "description": "Kubernetes version",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["cluster", "kubernetes"]
+    },
+    {
+      "id": "aVsjnvO",
+      "slug": "number-of-nodes",
+      "category": "cluster_information",
+      "title": "Kubernetes",
+      "description": "Number of nodes",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["cluster", "kubernetes"]
+    },
+    {
+      "id": "GbtYTU4",
+      "slug": "distribution-managed-k8s",
+      "category": "cluster_information",
+      "title": "Kubernetes",
+      "description": "Distribution / Managed K8s",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["cluster", "kubernetes"]
+    },
+    {
+      "id": "ClVgBpX",
+      "slug": "container-runtime-support",
+      "category": "cluster_information",
+      "title": "Kubernetes",
+      "description": "Supported container runtime",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["cluster", "kubernetes"]
+    },
+    {
+      "id": "u2x3Nac",
+      "slug": "cpu-memory-scheduling",
+      "category": "cluster_information",
+      "title": "Kubernetes",
+      "description": "Validate that sufficient CPU and memory are available for scheduling",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["cluster", "kubernetes"]
+    },
+    {
+      "id": "2jqQtrA",
+      "slug": "node-ready-status",
+      "category": "cluster_information",
+      "title": "Kubernetes",
+      "description": "All nodes are ready / node status",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["cluster", "kubernetes"]
+    },
+    {
+      "id": "jSlglt2",
+      "slug": "storage-class-exists",
+      "category": "storage",
+      "title": "Storage",
+      "description": "Validate that a storage class exists",
+      "iconUri": "https://link.to.iconuri/storage",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["storage"]
+    },
+    {
+      "id": "xld8RyK",
+      "slug": "validate-rook-quorum",
+      "category": "storage",
+      "title": "Rook",
+      "description": "Validate that Rook / Ceph have a quorum",
+      "iconUri": "https://link.to.iconuri/rook",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["storage", "rook", "ceph"]
+    },
+    {
+      "id": "YIwxZZ4",
+      "slug": "validate-openebs",
+      "category": "storage",
+      "title": "OpenEBS",
+      "description": "Validate OpenEBS",
+      "iconUri": "https://link.to.iconuri/openebs",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["storage", "openEBS"]
+    },
+    {
+      "id": "bdDRhuD",
+      "slug": "validate-disk-capacity",
+      "category": "storage",
+      "title": "Disk",
+      "description": "Validate that disk capacity exceeds n (limit ranges allow for PVC creation)",
+      "iconUri": "https://link.to.iconuri/disk",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["storage", "disk"]
+    },
+    {
+      "id": "DNjK5sI",
+      "slug": "debug-rook",
+      "category": "storage",
+      "title": "Rook",
+      "description": "How to debug Rook",
+      "iconUri": "https://link.to.iconuri/rook",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["storage", "rook"]
+    },
+    {
+      "id": "UYVr6C4",
+      "slug": "validate-pod-bandwidth",
+      "category": "performance",
+      "title": "Kubernetes",
+      "description": "Validate that pod to pod networking bandwidth",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["kubernetes", "pod"]
+    },
+    {
+      "id": "SP6JtBy",
+      "slug": "validate-ingress-controller",
+      "category": "networking",
+      "title": "Kubernetes",
+      "description": "Validate there is an ingress controller",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["kubernetes", "ingress", "networking"]
+    },
+    {
+      "id": "MKhnN88",
+      "slug": "load-balancer-support",
+      "category": "networking",
+      "title": "Kubernetes",
+      "description": "Can support a Load Balancer",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["kubernetes", "load-balancer", "networking"]
+    },
+    {
+      "id": "Y2A3uDy",
+      "slug": "nodeport-availability",
+      "category": "networking",
+      "title": "Kubernetes",
+      "description": "NodePort is available",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["kubernetes", "networking"]
+    },
+    {
+      "id": "9YYVCTE",
+      "slug": "tls-secret-exists",
+      "category": "networking",
+      "title": "Kubernetes",
+      "description": "Verify that a TLS secret exists, is valid",
+      "iconUri": "https://link.to.iconuri/kubernetes",
+      "specYaml": "yaml spec goes here",
+      "contributors": [
+        {
+          "name": "Marc Campbell",
+          "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+        }
+      ],
+      "tags": ["kubernetes", "networking"]
+    }
+  ]
+}
