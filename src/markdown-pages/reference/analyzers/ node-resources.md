@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/node-resources"
-date: 2020-01-28
+date: "2019-09-10"
 linktitle: "Node Resources"
-title: Node Resources
-weight: 20121
+weight: 34
+title: "Node Resources"
 ---
 
 The node resources analyzer is available to determine if the nodes in the cluster have sufficient resources to run an application. This is useful in preflight checks to avoid deploying a version that will not work, and it's useful in support bundles to collect and analyze in case the available resources of a shared cluster are being consumed by other workloads or if an autoscaling group is changing the resources available.

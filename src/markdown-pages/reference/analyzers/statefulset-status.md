@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/statefulset-status"
-date: 2019-11-18
+date: "2019-09-10"
 linktitle: "Statefulset Status"
-title: Statefulset Status
-weight: 20100
+weight: 31
+title: "Statefulset Status"
 ---
 
 The statefulsetStatus analyzer is used to report on the number of replicas that are "Ready" in a statefulset. The `when` attribute supports standard comparators to compare the number of ready replicas.

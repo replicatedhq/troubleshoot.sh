@@ -29,4 +29,4 @@ spec:
    - clusterResources: {}
 ```
 
-For a full list of options that can be included in a Kubernetes support bundle, visit the [Collectors](/reference/collectors/overview/) reference section.
+For a full list of options that can be included in a Kubernetes support bundle, visit the [Collectors](/docs/reference/collectors/overview) reference section.

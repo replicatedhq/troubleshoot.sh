@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/regex"
-date: 2019-12-18
+date: "2019-09-10"
 linktitle: "Regex"
-title: Regex
-weight: 20130
+weight: 35
+title: "Regex"
 ---
 
 The regex analyzer is used to run arbitrary regular expressions against data collected in a run, copy or exec collector.

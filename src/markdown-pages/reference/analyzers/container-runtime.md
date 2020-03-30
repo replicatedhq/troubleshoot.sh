@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/container-runtime"
-date: 2019-11-18
+date: "2019-09-10"
 linktitle: "Container Runtime"
-title: Container Runtime
-weight: 20110
+weight: 32
+title: "Container Runtime"
 ---
 
 The containerRuntime analyzer is used to report on each nodes container runtime that's installed. The   `when` attribute supports standard comparators to compare to the detected runtime.

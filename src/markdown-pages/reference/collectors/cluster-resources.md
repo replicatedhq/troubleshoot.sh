@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/collectors/cluster-resources"
 date: "2019-10-09"
-linktitle: "Cluster Info"
+linktitle: "Cluster Resources"
 weight: 14
-title: "Cluster Info"
+title: "Cluster Resources"
 ---
 
 The clusterResources collector will attempt to enumerate anything that's deployed to the Kubernetes cluster. This will attempt to collect information from all namespaces, but if RBAC policies prevent the collector from accessing a namespace or resource, it will still include the resources that are accessible. Any RBAC policy errors will be included in the support bundle.

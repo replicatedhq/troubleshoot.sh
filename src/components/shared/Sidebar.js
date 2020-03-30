@@ -51,7 +51,8 @@ export default class Sidebar extends Component {
 
           return (
             <div className={classNames("flex-column flex1", {
-              "Sidebar": !this.props.isMobile
+              "Sidebar": !this.props.isMobile,
+              "u-marginTop--20": this.props.isMobile
             })}>
               <div className={`${this.props.isMobile ? "u-paddingBottom--20" : "Sidebar-content u-position--relative"}`}>
                 {tree[0].links[0].links.map((link, i) => {

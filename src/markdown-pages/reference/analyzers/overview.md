@@ -1,11 +1,10 @@
 ---
 path: "/docs/reference/analyzers/overview"
-date: 2019-11-01
+date: "2019-09-10"
 linktitle: "Analyzers Overview"
+weight: 22
 title: "Analyzers Overview"
-weight: 20010
 ---
-
 
 Analyzers are YAML specifications that define a set of criteria and operations to run against files collected in a support bundle. Each analyzer included will result in either 0 or 1 [outcome](../outcomes). If an analyzer produces zero outcomes, it will not be displayed on the support bundle analysis page.
 
@@ -70,5 +69,4 @@ spec:
                 message: Rook is required for my-application. Rook was not found in the cluster.
             - pass:
                 message: Found a supported version of Rook installed and running in the cluster.
-
 ```
