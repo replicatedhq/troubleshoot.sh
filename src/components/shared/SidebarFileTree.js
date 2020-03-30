@@ -21,6 +21,7 @@ export default class SidebarFileTree extends Component {
     const { depth = 0, data, whosOpen, path, onDirectoryClick, pathname } = this.props;
     const isOpen = () => whosOpen && !!whosOpen.find(el => isEqual(el, {depth, directoryName: data.directory}))
 
+
     return (
       (data.directory) ?
         <div

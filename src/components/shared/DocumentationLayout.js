@@ -1,16 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from "@reach/router";
 import { Resizer } from "./Resize";
 import { BreakpointConfig } from "../../services/breakpoints";
 
 import Sidebar from "./Sidebar";
+import MobileSidebar from "./MobileSidebar";
 import Navbar from "./NavBar";
 import { Helmet } from "react-helmet"
+
+function titleize(string) {
+  let newStr;
+  if (string !== "") {
+    newStr = string
+      .split("-")
+      .map(s => s[0].toUpperCase() + s.slice(1))
+      .join(" ");
+  }
+  return newStr;
+}
 
 @Resizer(BreakpointConfig)
 class DocumentationLayout extends Component {
   state = {
     isMobile: false,
+    toggleTableOfContents: false
   }
 
   allImagesLoaded = (hash) => {
@@ -57,9 +71,15 @@ class DocumentationLayout extends Component {
     }
   }
 
+  toggleTableOfContents = () => {
+    this.setState({ toggleTableOfContents: !this.state.toggleTableOfContents })
+  }
+
   render() {
     const { children } = this.props;
-    const { isMobile } = this.state;
+    const { isMobile, toggleTableOfContents } = this.state;
+    const splitPathname = this.props.location.pathname.split("/");
+
 
     return (
       <div>
@@ -69,16 +89,49 @@ class DocumentationLayout extends Component {
         </Helmet>
         <Navbar isMobile={isMobile} documentation={isMobile && true} />
         <div className={`u-minHeight--full u-width--full u-overflow--auto flex-column flex1 ${isMobile ? "" : "u-marginBottom---40"}`}>
-          <div className={`${isMobile ? "Mobile--wrapper u-marginTop--80" : "Sidebar-wrapper"}`}>
-            <Sidebar
-              isMobile={isMobile}
-              slideOpen={true}
-              pathname={this.props.location.pathname}
-            />
+          {isMobile ?
+            <div className="flex1 u-background--alabaster u-marginTop--50 u-padding--row">
+              {splitPathname.length === 4 ?
+                <span className="u-fontSize--small u-fontWeight--medium u-color--scorpion u-lineHeight--normal u-marginTop--small">
+                  <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="replicated-link">{titleize(splitPathname[2])}</Link>
+                  <span className="u-color--dustyGray"> / {splitPathname[3] === "" ? "Overview" : titleize(splitPathname[3])} </span>
+                </span>
+                :
+                <span className="u-fontSize--small u-fontWeight--medium u-color--scorpion u-lineHeight--normal u-marginTop--small">
+                  <Link to={`/${splitPathname[1]}/${splitPathname[2]}/`} className="replicated-link"> {titleize(splitPathname[2])} </Link>
+                  <Link to={`/${splitPathname[1]}/${splitPathname[2]}/${splitPathname[3]}/overview`} className="replicated-link"> / {titleize(splitPathname[3])} </Link>
+                  <span className="u-color--dustyGray"> / {titleize(splitPathname[4])} </span>
+                </span>
+              }
+            </div> : null}
+          <div className={`${isMobile ? "Mobile--wrapper flex" : "Sidebar-wrapper"}`}>
+            {isMobile ?
+              <button className="Button secondary blue flex1" onClick={() => this.toggleTableOfContents()}> Table of contents </button>
+              :
+              <Sidebar
+                isMobile={isMobile}
+                slideOpen={true}
+                pathname={this.props.location.pathname}
+              />
+            }
           </div>
           <div className={`${isMobile ? "docs-mobile-container" : "docs-container"} flex-column flex1`}>
             {!isMobile ?
-              <div className="flex-column flex1 docsWidth">
+              <div className="flex-column flex1 docsWidth u-padding--20">
+                <div className="flex1 u-marginBottom--20">
+                  {splitPathname.length === 4 ?
+                    <span className="u-fontSize--small u-fontWeight--medium u-color--scorpion u-lineHeight--normal u-marginTop--small">
+                      <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="replicated-link">{titleize(splitPathname[2])}</Link>
+                      <span className="u-color--dustyGray"> / {splitPathname[3] === "" ? "Overview" : titleize(splitPathname[3])} </span>
+                    </span>
+                    :
+                    <span className="u-fontSize--small u-fontWeight--medium u-color--scorpion u-lineHeight--normal u-marginTop--small">
+                      <Link to={`/${splitPathname[1]}/${splitPathname[2]}/`} className="replicated-link"> {titleize(splitPathname[2])} </Link>
+                      <Link to={`/${splitPathname[1]}/${splitPathname[2]}/${splitPathname[3]}/overview`} className="replicated-link"> / {titleize(splitPathname[3])} </Link>
+                      <span className="u-color--dustyGray"> / {titleize(splitPathname[4])} </span>
+                    </span>
+                  }
+                </div>
                 {children}
               </div>
               :
@@ -86,6 +139,16 @@ class DocumentationLayout extends Component {
             }
           </div>
         </div>
+        {toggleTableOfContents &&
+          <MobileSidebar
+            className="MobileNavBar"
+            isMobile={isMobile}
+            slideOpen={true}
+            pathname={this.props.location.pathname}
+            isOpen={toggleTableOfContents}
+            onClose={this.toggleTableOfContents}
+          />
+        }
       </div>
     );
 
