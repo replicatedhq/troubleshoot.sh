@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/crd"
-date: 2019-11-01
+date: "2019-09-10"
 linktitle: "Custom Resource Definition"
-title: Custom Resource Definition
-weight: 20060
+weight: 28
+title: "Custom Resource Definition"
 ---
 
 The customResourceDefinition analyzer is available to check for the existence of a Custom Resource Definition (CRD) that is expected to be installed.

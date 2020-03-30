@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/storage-class"
-date: 2019-11-01
+date: "2019-09-10"
 linktitle: "Storage Class"
-title: Storage Class
-weight: 20070
+weight: 29
+title: "Storage Class"
 ---
 
 ```yaml

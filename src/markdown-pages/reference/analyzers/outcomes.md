@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/outcomes"
-date: 2019-11-14
+date: "2019-09-10"
 linktitle: "Outcomes"
-title: Outcomes
-weight: 20015
+weight: 23
+title: "Outcomes"
 ---
 
 Analyzer Outcomes are the output of an analyzer running against a support bundle. 

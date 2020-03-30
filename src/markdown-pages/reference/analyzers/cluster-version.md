@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/cluster-version"
-date: 2019-11-01
+date: "2019-09-10"
 linktitle: "Cluster Version"
-title: Cluster Version
-weight: 20020
+weight: 24
+title: "Cluster Version"
 ---
 
 The clusterVersion analyzer is used to report on the installed version of Kubernetes. This checks the server/cluster version, not the version of kubectl. The `when` attribute specifies a semver range to compare the running version against and supports all standard comparison operators.

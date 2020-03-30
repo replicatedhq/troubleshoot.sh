@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/image-pull-secrets"
-date: 2019-11-01
+date: "2019-09-10"
 linktitle: "Image Pull Secrets"
-title: Image Pull Secrets
-weight: 20030
+weight: 25
+title: "Image Pull Secrets"
 ---
 
 ```yaml

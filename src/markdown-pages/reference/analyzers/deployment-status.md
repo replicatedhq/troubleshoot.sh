@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/deployment-status"
-date: 2019-11-18
+date: "2019-09-10"
 linktitle: "Deployment Status"
-title: Deployment Status
-weight: 20090
+weight: 30
+title: "Deployment Status"
 ---
 
 The deploymentStatus analyzer is used to report on the number of replicas that are "Ready" in a deployment. The `when` attribute supports standard comparators to compare the number of ready replicas.

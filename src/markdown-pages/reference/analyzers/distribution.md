@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/distribution"
-date: 2019-11-18
+date: "2019-09-10"
 linktitle: "Distribution"
-title: Distribution
-weight: 20120
+weight: 33
+title: "Distribution"
 ---
 
 The distribution analyzer is used to check for known managed (hosted) and self-hosted versions of Kubernetes. The `when` attribute supports standard comparators to compare the result to.

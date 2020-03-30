@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/ingress"
-date: 2019-11-01
+date: "2019-09-10"
 linktitle: "Ingress"
-title: Ingress
-weight: 20050
+weight: 27
+title: "Ingress"
 ---
 
 ```yaml

@@ -1,9 +1,9 @@
 ---
 path: "/docs/reference/analyzers/secrets"
-date: 2019-11-01
+date: "2019-09-10"
 linktitle: "Secrets"
-title: Secrets
-weight: 20030
+weight: 26
+title: "Secrets"
 ---
 
 The secret analyzer is a available to require or warn if a specific Kubernetes secret is not present or does not contain a required key. The `when` attribute is not supported in the outcomes of this analyzer.
