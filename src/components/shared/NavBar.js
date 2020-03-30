@@ -59,7 +59,7 @@ export class NavBar extends React.Component {
                     });
                   }}
                 ></span>
-                <span style={{ width: `202px`, height: `19px` }} className="troubleshoot-logo"></span>
+                <Link to="/"><span style={{ width: `202px`, height: `19px` }} className="troubleshoot-logo"></span></Link>
               </div>
               :
               <div className="NavBarContainer flex flex1 alignItems--center u-position--relative">

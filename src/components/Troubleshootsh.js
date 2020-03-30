@@ -8,6 +8,11 @@ class Troubleshootsh extends React.Component {
     this.state = {};
   }
 
+  scrollToEl = (elId) => {
+    const element = document.getElementById(elId);
+    element.scrollIntoView({ behavior: "smooth" });
+  }
+
   render() {
     const { isMobile } = this.props;
     const logoStyle = isMobile ? { width: `320px`, height: `31px` } : { width: `489px`, height: `47px` };
@@ -20,11 +25,11 @@ class Troubleshootsh extends React.Component {
               <span style={logoStyle} className="troubleshoot-logo" id="tblshootLogo"></span>
               <p className="u-fontSize--24 u-marginTop--30 u-color--biscay u-lineHeight--more u-fontWeight--medium">Disconnected remote support and validation for Kubernetes applications</p>
               <div className="u-marginTop--30 u-flexMobileReflow two-btn-wrapper justifyContent--center">
-                <button className="Button secondary flex alignItems--center justifyContent--center">
+                <button className="Button secondary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("preflightSection")}>
                   <span className="icon preflight-small"></span>
                   <span>Explore preflight</span>
                 </button>
-                <button className="Button secondary flex alignItems--center justifyContent--center">
+                <button className="Button secondary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("supportSection")}>
                   <span className="icon support-small"></span>
                   <span>Explore support</span>
                 </button>
@@ -46,7 +51,7 @@ class Troubleshootsh extends React.Component {
           </div>
         </div>
 
-        <div className="section gradient border">
+        <div className="section gradient border" id="preflightSection">
           <div className="container">
             <div className="contain-700">
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Validate an environment before an application is installed to&nbsp;prevent common errors</p>
@@ -105,7 +110,7 @@ class Troubleshootsh extends React.Component {
           </div>
         </div>
 
-        <div className="section gradient">
+        <div className="section gradient" id="supportSection">
           <div className="container">
             <div className="contain-700">
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">When something isn’t working right, eliminate the back and forth, async debugging by collecting everything at once</p>
