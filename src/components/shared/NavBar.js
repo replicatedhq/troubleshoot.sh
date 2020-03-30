@@ -25,14 +25,17 @@ export class NavBar extends React.Component {
     const distanceY = scrollTop,
     shrinkOn = isMobile ? 100 : 220,
     troubleshootNav = document.getElementById("troubleshoot-header");
-    const isHome = window.location.pathname === "/";
-    if (!isHome) {
-      troubleshootNav && troubleshootNav.classList.add("scrolled");
-      return;
-    } else if (distanceY > shrinkOn) {
-      troubleshootNav && troubleshootNav.classList.add("scrolled");
-    } else {
-      troubleshootNav && troubleshootNav.classList.remove("scrolled");
+    let isHome;
+    if (typeof window !== "undefined") {
+      isHome = window.location.pathname === "/";
+      if (!isHome) {
+        troubleshootNav && troubleshootNav.classList.add("scrolled");
+        return;
+      } else if (distanceY > shrinkOn) {
+        troubleshootNav && troubleshootNav.classList.add("scrolled");
+      } else {
+        troubleshootNav && troubleshootNav.classList.remove("scrolled");
+      }
     }
   }
 
@@ -43,7 +46,11 @@ export class NavBar extends React.Component {
       { linkTo: "/docs/", label: "Docs" },
       { linkTo: "/explore", label: "Explore specs" },
     ];
-    const isHome = window.location.pathname === "/";
+
+    let isHome;
+    if (typeof window !== "undefined") {
+      isHome = window.location.pathname === "/";
+    }
 
     return (
       <div className="flex flex-auto">
