@@ -23,5 +23,4 @@ spec:
               message: You don't have a pg uri secret
           - pass:
               message: Probably a green light connecting to pg
-
 ```

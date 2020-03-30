@@ -69,5 +69,4 @@ spec:
                 message: Rook is required for my-application. Rook was not found in the cluster.
             - pass:
                 message: Found a supported version of Rook installed and running in the cluster.
-
 ```
