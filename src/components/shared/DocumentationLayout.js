@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import { StaticQuery, graphql } from 'gatsby';
 import { Resizer } from "./Resize";
 import { BreakpointConfig } from "../../services/breakpoints";
 
@@ -13,7 +12,7 @@ class DocumentationLayout extends Component {
   state = {
     isMobile: false,
   }
-  
+
   allImagesLoaded = (hash) => {
     let counter = 0;
 
@@ -63,44 +62,31 @@ class DocumentationLayout extends Component {
     const { isMobile } = this.state;
 
     return (
-      <StaticQuery
-        query={graphql`
-        query SiteTitleQuery {
-          site {
-            siteMetadata {
-              title
+      <div>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>{children.props.children.props.children[0].props.children}</title>
+        </Helmet>
+        <Navbar isMobile={isMobile} documentation={isMobile && true} />
+        <div className={`u-minHeight--full u-width--full u-overflow--auto flex-column flex1 ${isMobile ? "" : "u-marginBottom---40"}`}>
+          <div className={`${isMobile ? "Mobile--wrapper u-marginTop--80" : "Sidebar-wrapper"}`}>
+            <Sidebar
+              isMobile={isMobile}
+              slideOpen={true}
+              pathname={this.props.location.pathname}
+            />
+          </div>
+          <div className={`${isMobile ? "docs-mobile-container" : "docs-container"} flex-column flex1`}>
+            {!isMobile ?
+              <div className="flex-column flex1 docsWidth">
+                {children}
+              </div>
+              :
+              children
             }
-          }
-        }
-      `}
-        render={data => (
-          <>
-            <Helmet>
-              <meta charSet="utf-8" />
-              <title>{children.props.children.props.children[0].props.children}</title>
-            </Helmet>
-            <Navbar isMobile={isMobile} documentation={isMobile && true} />
-            <div className={`u-minHeight--full u-width--full u-overflow--auto flex-column flex1 ${isMobile ? "" : "u-marginBottom---40"}`}>
-              <div className={`${isMobile ? "Mobile--wrapper u-marginTop--80" : "Sidebar-wrapper"}`}>
-                <Sidebar
-                  isMobile={isMobile}
-                  slideOpen={true}
-                  pathname={this.props.location.pathname}
-                />
-              </div>
-              <div className={`${isMobile ? "docs-mobile-container" : "docs-container"} flex-column flex1`}>
-                {!isMobile ?
-                  <div className="flex-column flex1 docsWidth">
-                    {children}
-                  </div>
-                  :
-                  children
-                }
-              </div>
-            </div>
-          </>
-        )}
-      />
+          </div>
+        </div>
+      </div>
     );
 
   }
