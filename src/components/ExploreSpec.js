@@ -1,57 +1,10 @@
 import * as React from "react";
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import specJson from "../../specs.json";
 
 import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
-
-const clusterInfo = [
-  { name: "Kubernetes", description: "Validate that at least n nodes in the cluster have GPU support" },
-  { name: "Kubernetes", description: "Kubernetes version" },
-  { name: "Kubernetes", description: "Number of nodes" },
-  { name: "Kubernetes", description: "Distribution / Managed K8s" },
-  { name: "Kubernetes", description: "Supported container runtime" },
-  { name: "Kubernetes", description: "Validate that sufficient CPU and memory are available for scheduling" },
-  { name: "Kubernetes", description: "All nodes are ready / node status" }
-];
-
-const databaseInfo = [
-  { name: "Postgres connection string", description: "Validate that the connection string is valid" },
-  { name: "Postgres connection string", description: "Validate that the postgres version is supported" },
-  { name: "MySQL connection string", description: "Validate that the connection string is valid" },
-  { name: "MySQL connection string", description: "Validate that the MySQL version is supported" }
-];
-
-const storageInfo = [
-  { name: "Storage", description: "Validate that a storage class exists" },
-  { name: "Rook", description: "Validate that Rook / Ceph have a quorum" },
-  { name: "OpenEBS", description: "Validate OpenEBS" },
-  { name: "Disk", description: "Validate that disk capacity exceeds n (limit ranges allow for PVC creation)" },
-  { name: "Rook", description: "How to debug Rook" }
-];
-
-const networkingInfo = [
-  { name: "Kubernetes", description: "Validate there is an ingress controller" },
-  { name: "Kubernetes", description: "Can support a Load Balancer" },
-  { name: "Kubernetes", description: "NodePort is available" },
-  { name: "Kubernetes", description: "Verify that a TLS secret exists, is valid" }
-];
-
-const cloudProviderInfo = [
-  { name: "Amazon S3", description: "Verify that an S3 bucket exists and is readable/writeable" },
-  { name: "Amazon S3", description: "Verify that the IAM instance role has n permissions" },
-  { name: "Cloud provider", description: "Verify that the cluster is running in a specific cloud provider (managed or not)" }
-]
-
-const performanceInfo = [
-  { name: "Kubernetes", description: "Validate that pod to pod networking bandwidth" },
-];
-
-const externalAppInfo = [
-  { name: "GitHub", description: "Verify that a GitHub app / key / secret are valid" },
-  { name: "GitLab", description: "Verify that a GitLab app / key / secret are valid" },
-  { name: "Salesforce", description: "Validate a Salesforce Key is valid" },
-];
 
 
 class ExploreSpec extends React.Component {
@@ -84,8 +37,6 @@ class ExploreSpec extends React.Component {
   render() {
     const { categoryToShow, showTagsList } = this.state;
     const { isMobile } = this.props;
-    const categories = ["Database", "Cloud provider", "External app dependecies", "Cluster information", "Storage", "Performance", "Networking"];
-    const tags = ["database", "connection", "storage", "networking", "kubernetes", "performance", "cloud", "s3", "postgres", "mysql", "cluster", "pods"];
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
@@ -103,17 +54,17 @@ class ExploreSpec extends React.Component {
               <div className="flex">
                 <div className="flex-column">
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
-                  {categories.map((category, i) => {
+                  {specJson.categories.map((category, i) => {
                     return (
-                      <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category, e)} key={`${category}-${i}`}>
-                        {category}
-                        {category === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
+                      <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.display === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.display, e)} key={`${category.display}-${i}`}>
+                        {category.display}
+                        {category.display === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
                       </p>
                     )
                   })}
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10" onClick={() => this.toggleTags()}> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
                   {showTagsList ?
-                    tags.map((tag, i) => {
+                    specJson.tags.map((tag, i) => {
                       return (
                         <p className="List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy" key={`${tag}-${i}`}> {tag} </p>
                       )
@@ -149,29 +100,27 @@ class ExploreSpec extends React.Component {
                 <button className="Button secondary" onClick={() => this.onMobileFiltersClick()}> Filters </button>
               </div>}
               {categoryToShow === "" ?
-                <div>
-                  <ExploreInfo name={"Cluster information"} infos={clusterInfo} isMobile={isMobile} />
-                  <ExploreInfo name={"Database"} infos={databaseInfo} isMobile={isMobile} />
-                  <ExploreInfo name={"Storage"} infos={storageInfo} isMobile={isMobile} />
-                  <ExploreInfo name={"Networking"} infos={networkingInfo} isMobile={isMobile} />
-                  <ExploreInfo name={"Performance"} infos={performanceInfo} isMobile={isMobile} />
-                  <ExploreInfo name={"Cloud provider"} infos={cloudProviderInfo} isMobile={isMobile} />
-                  <ExploreInfo name={"External app dependecies"} infos={externalAppInfo} isMobile={isMobile} />
-                </div>
-                : categoryToShow === "Cluster information" ?
-                  <ExploreInfo name={"Cluster information"} infos={clusterInfo} isMobile={isMobile} />
+                specJson.categories.map(category => {
+                  const categorySpecs = specJson.specs.filter(spec => category.name === spec.category);
+                  return (
+                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} />
+                  )
+                })
+                : 
+                categoryToShow === "Cluster information" ?
+                  <ExploreInfo name={"Cluster information"} specs={specJson.specs.filter(spec => "cluster_information" === spec.category)} isMobile={isMobile} />
                   : categoryToShow === "Database" ?
-                    <ExploreInfo name={"Database"} infos={databaseInfo} isMobile={isMobile} />
+                    <ExploreInfo name={"Database"} specs={specJson.specs.filter(spec => "database" === spec.category)} isMobile={isMobile} />
                     : categoryToShow === "Storage" ?
-                      <ExploreInfo name={"Storage"} infos={storageInfo} isMobile={isMobile} />
+                      <ExploreInfo name={"Storage"} specs={specJson.specs.filter(spec => "storage" === spec.category)} isMobile={isMobile} />
                       : categoryToShow === "Networking" ?
-                        <ExploreInfo name={"Networking"} infos={networkingInfo} isMobile={isMobile} />
+                        <ExploreInfo name={"Networking"} specs={specJson.specs.filter(spec => "networking" === spec.category)} isMobile={isMobile} />
                         : categoryToShow === "Performance" ?
-                          <ExploreInfo name={"Performance"} infos={performanceInfo} isMobile={isMobile} />
+                          <ExploreInfo name={"Performance"} specs={specJson.specs.filter(spec => "performance" === spec.category)}isMobile={isMobile} />
                           : categoryToShow === "Cloud provider" ?
-                            <ExploreInfo name={"Cloud provider"} infos={cloudProviderInfo} isMobile={isMobile} />
-                            : categoryToShow === "External app dependecies" ?
-                              <ExploreInfo name={"External app dependecies"} infos={externalAppInfo} isMobile={isMobile} />
+                            <ExploreInfo name={"Cloud provider"} specs={specJson.specs.filter(spec => "cloud_provider" === spec.category)} isMobile={isMobile} />
+                            : categoryToShow === "External app dependencies" ?
+                              <ExploreInfo name={"External app dependencies"} specs={specJson.specs.filter(spec => "external_app_dependencies" === spec.category)} isMobile={isMobile} />
                               : null
               }
             </div>
@@ -183,8 +132,8 @@ class ExploreSpec extends React.Component {
             categoryToShow={categoryToShow}
             showingCategoryDetails={this.showingCategoryDetails}
             onCloseCategory={this.onCloseCategory}
-            categoryItems={categories}
-            tagItems={tags}
+            categoryItems={specJson.categories}
+            tagItems={specJson.tags}
             isOpen={this.state.mobileFiltersOpen}
             onClose={this.onMobileFiltersClick}
           />
