@@ -1,0 +1,54 @@
+$base-padding: 8px;
+
+.SidebarFileTree {
+  color: #9B9B9B;
+  transition: all .2s ease;
+  &:hover {
+    color: #326DE6;
+    cursor: pointer;
+  }
+
+  .SidebarFileTree:nth-child(1) {
+    padding-top: 12px;
+  }
+
+  a {
+    display: block;
+    color: #9B9B9B;
+    font-family: Helvetica Neue;
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 44px;
+
+   &:visited{
+     color: #9B9B9B;
+   }
+
+   &.active {
+     font-weight: bold;
+     background-color: #E9F0FF;
+     color: #163166;
+   }
+  }
+}
+
+.is-directory {
+  font-weight: bold;
+  color: #163166;
+  margin-bottom:20px;
+}
+
+.is-file {
+  font-weight: 300;
+  color: #323232;
+}
+
+.sub-dir {
+  font-family: Helvetica Neue;
+  font-size: 14px;
+}
+
+.sub-file {
+  padding-left: 10px;
+}
