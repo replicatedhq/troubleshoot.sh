@@ -18,6 +18,11 @@ export default class MobileExploreFilters extends React.Component {
     this.props.onClose();
   }
 
+  showingTagFilter = (tag, e) => {
+    this.props.showingTagFilter(tag, e);
+    this.props.onClose();
+  }
+
   render() {
     const {
       isOpen,
@@ -25,7 +30,9 @@ export default class MobileExploreFilters extends React.Component {
       tagItems,
       onClose,
       categoryToShow,
-      onCloseCategory
+      onCloseCategory,
+      tagToShow,
+      onCloseTagFiler
     } = this.props;
 
     const mobileDropdownVisibleClasses = `MobileFilters ${isOpen ? "is-open" : ""}`;
@@ -51,7 +58,10 @@ export default class MobileExploreFilters extends React.Component {
               <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10"> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
               {tagItems.map((tag, i) => {
                 return (
-                  <p className="List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy" key={`${tag}-${i}`}> {tag} </p>
+                  <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}> 
+                  {tag} 
+                  {tag === tagToShow && <span className="close" onClick={onCloseTagFiler}>x</span>}
+                  </p>
                 )
               })}
             </div>
