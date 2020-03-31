@@ -12,17 +12,28 @@ class ExploreSpec extends React.Component {
     categoryToShow: "",
     showTagsList: false,
     showMobileFilters: false,
-    mobileFiltersOpen: false
+    mobileFiltersOpen: false,
+    tagToShow: ""
   }
 
   showingCategoryDetails = (category, e) => {
     if (!e.target.classList.contains("close")) {
-      this.setState({ categoryToShow: category });
+      this.setState({ categoryToShow: category, tagToShow: "" });
+    }
+  }
+
+  showingTagFilter = (tag, e) => {
+    if (!e.target.classList.contains("close")) {
+      this.setState({ tagToShow: tag, categoryToShow: "" });
     }
   }
 
   onCloseCategory = () => {
     this.setState({ categoryToShow: "" });
+  }
+
+  onCloseTagFiler = () => {
+    this.setState({ tagToShow: "" });
   }
 
   toggleTags = () => {
@@ -35,8 +46,11 @@ class ExploreSpec extends React.Component {
 
 
   render() {
-    const { categoryToShow, showTagsList } = this.state;
+    const { categoryToShow, showTagsList, tagToShow } = this.state;
     const { isMobile } = this.props;
+    const specsToShow = specJson.specs.filter(spec => spec.tags.includes(tagToShow));
+
+
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
@@ -66,7 +80,10 @@ class ExploreSpec extends React.Component {
                   {showTagsList ?
                     specJson.tags.map((tag, i) => {
                       return (
-                        <p className="List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy" key={`${tag}-${i}`}> {tag} </p>
+                        <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}>
+                          {tag}
+                          {tag === tagToShow && <span className="close" onClick={this.onCloseTagFiler}>x</span>}
+                        </p>
                       )
                     })
                     :
@@ -99,29 +116,51 @@ class ExploreSpec extends React.Component {
               {isMobile && <div className="flex flex-column u-marginTop--20">
                 <button className="Button secondary" onClick={() => this.onMobileFiltersClick()}> Filters </button>
               </div>}
-              {categoryToShow === "" ?
+              {tagToShow &&
+                <div className="flex alignItems--center body-copy u-marginTop--20">
+                  <span className="u-fontSize--normal u-color--tuna"> {specsToShow.length} results </span>
+                  <span className="u-fontSize--normal u-color--dustyGray"> for </span>
+                  <span className="u-fontSize--normal activeTag"> {tagToShow} <span className="close" onClick={this.onCloseTagFiler}>X</span></span>
+                </div>
+              }
+              {categoryToShow === "" && tagToShow === "" ?
                 specJson.categories.map(category => {
                   const categorySpecs = specJson.specs.filter(spec => category.name === spec.category);
                   return (
                     <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} />
                   )
                 })
-                : 
-                categoryToShow === "Cluster information" ?
-                  <ExploreInfo name={"Cluster information"} specs={specJson.specs.filter(spec => "cluster_information" === spec.category)} isMobile={isMobile} />
-                  : categoryToShow === "Database" ?
-                    <ExploreInfo name={"Database"} specs={specJson.specs.filter(spec => "database" === spec.category)} isMobile={isMobile} />
-                    : categoryToShow === "Storage" ?
-                      <ExploreInfo name={"Storage"} specs={specJson.specs.filter(spec => "storage" === spec.category)} isMobile={isMobile} />
-                      : categoryToShow === "Networking" ?
-                        <ExploreInfo name={"Networking"} specs={specJson.specs.filter(spec => "networking" === spec.category)} isMobile={isMobile} />
-                        : categoryToShow === "Performance" ?
-                          <ExploreInfo name={"Performance"} specs={specJson.specs.filter(spec => "performance" === spec.category)}isMobile={isMobile} />
-                          : categoryToShow === "Cloud provider" ?
-                            <ExploreInfo name={"Cloud provider"} specs={specJson.specs.filter(spec => "cloud_provider" === spec.category)} isMobile={isMobile} />
-                            : categoryToShow === "External app dependencies" ?
-                              <ExploreInfo name={"External app dependencies"} specs={specJson.specs.filter(spec => "external_app_dependencies" === spec.category)} isMobile={isMobile} />
-                              : null
+                :
+                tagToShow ?
+                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
+                    {specsToShow.map((spec, i) => {
+                      return (
+                        <div className="flex alignItems--center" key={`${spec.id}-${i}`}>
+                          <span className="category-icon" style={{ backgroundImage: `url(${spec.iconUri})` }} />
+                          <div className="flex-column u-marginLeft--12">
+                            <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
+                            <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>
+                          </div>
+                        </div>
+                      )
+                    })}
+                  </div>
+                  :
+                  categoryToShow === "Cluster information" ?
+                    <ExploreInfo name={"Cluster information"} specs={specJson.specs.filter(spec => "cluster_information" === spec.category)} isMobile={isMobile} />
+                    : categoryToShow === "Database" ?
+                      <ExploreInfo name={"Database"} specs={specJson.specs.filter(spec => "database" === spec.category)} isMobile={isMobile} />
+                      : categoryToShow === "Storage" ?
+                        <ExploreInfo name={"Storage"} specs={specJson.specs.filter(spec => "storage" === spec.category)} isMobile={isMobile} />
+                        : categoryToShow === "Networking" ?
+                          <ExploreInfo name={"Networking"} specs={specJson.specs.filter(spec => "networking" === spec.category)} isMobile={isMobile} />
+                          : categoryToShow === "Performance" ?
+                            <ExploreInfo name={"Performance"} specs={specJson.specs.filter(spec => "performance" === spec.category)} isMobile={isMobile} />
+                            : categoryToShow === "Cloud provider" ?
+                              <ExploreInfo name={"Cloud provider"} specs={specJson.specs.filter(spec => "cloud_provider" === spec.category)} isMobile={isMobile} />
+                              : categoryToShow === "External app dependencies" ?
+                                <ExploreInfo name={"External app dependencies"} specs={specJson.specs.filter(spec => "external_app_dependencies" === spec.category)} isMobile={isMobile} />
+                                : null
               }
             </div>
           </div>
