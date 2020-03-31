@@ -88,8 +88,8 @@ class TroubleshootSpec extends React.Component {
     const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson } = this.state;
     const { isMobile } = this.props;
 
-    const currentSpec = specJson.specs.find(spec => spec.id === this.props.id);
-    const relatedSpecs = specJson.specs?.filter(spec => currentSpec.tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
+    const currentSpec = specJson?.specs?.find(spec => spec.id === this.props.id);
+    const relatedSpecs = specJson?.specs?.filter(spec => currentSpec.tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
 
 
     return (
