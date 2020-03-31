@@ -116,9 +116,9 @@ class TroubleshootSpec extends React.Component {
               <div className="u-borderTop--gray u-marginBottom--30">
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Try it out </p>
                 <p className="u-fontSize--large u-color--dustyGray u-marginTop--small body-copy"> Find select the type of command you want to try</p>
-                <div className={`u-marginTop--30 ${isMobile && "flex"}`}>
-                  <button className={`Button tab ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight Check</button>
-                  <button className={`Button tab u-marginLeft--10 ${isActive === "supportbundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("supportbundle")}><span className="icon support-small"></span>Support Bundle</button>
+                <div className="u-marginTop--30 flex">
+                  <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight Check</button>
+                  <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "supportbundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("supportbundle")}><span className="icon support-small"></span>Support Bundle</button>
                 </div>
                 {showCodeSnippet &&
                   <div className="flex flex-column u-marginTop--normal">
