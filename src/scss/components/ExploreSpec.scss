@@ -3,13 +3,20 @@
   margin-left: 0;
   padding-left: 0;
 
-  a {
+  .Info--item {
     width: 40%;
     margin-bottom: 30px;
     padding: 10px;
+    &:hover {
+      cursor: pointer;
+      background-color: #F8F8F8;
+    }
   }
 
-  .Info--item {
+  .InfoMobile--item {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px;
     &:hover {
       cursor: pointer;
       background-color: #F8F8F8;
@@ -48,15 +55,124 @@
   }
 }
 
-.category-icon {
+.category-postgres-connection-string {
   height: 50px;
   width: 50px;
   border-radius: 50%;
   background-position: center;
   background-size: contain;
   background-repeat: no-repeat;
-  box-shadow: inset 0 0 3px rgba(0,0,0,0.3);
   z-index: 1;
+  background-image: url("../../images/category-icons/postgres.svg");
+}
+.category-mysql-connection-string {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  z-index: 1;
+  background-image: url("../../images/category-icons/mysql.svg");
+}
+.category-kubernetes {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/kubernetes.svg");
+}
+.category-storage {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/storage.svg");
+}
+.category-openebs {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/openebs.svg");
+}
+.category-disk {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/disk.svg");
+}
+.category-rook {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/rook.svg");
+}
+.category-github {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/github.svg");
+}
+.category-gitlab {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/gitlab.svg");
+}
+.category-salesforce {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/salesforce.svg");
+}
+.category-cloud-provider {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/cloud-provider.svg");
+}
+.category-amazon-s3 {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  background-image: url("../../images/category-icons/amazon-s3.svg");
 }
 
 .activeTag {
