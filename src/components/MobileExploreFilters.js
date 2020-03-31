@@ -47,7 +47,7 @@ export default class MobileExploreFilters extends React.Component {
           <div className="flex u-borderTop--gray u-padding--10">
             <div className="flex-column u-marginTop--10">
               <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
-              {categoryItems.map((category, i) => {
+              {categoryItems?.map((category, i) => {
                 return (
                   <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
                     {category.display}
@@ -56,7 +56,7 @@ export default class MobileExploreFilters extends React.Component {
                 )
               })}
               <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10"> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
-              {tagItems.map((tag, i) => {
+              {tagItems?.map((tag, i) => {
                 return (
                   <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}> 
                   {tag} 
