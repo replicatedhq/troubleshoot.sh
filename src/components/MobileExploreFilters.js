@@ -42,9 +42,9 @@ export default class MobileExploreFilters extends React.Component {
               <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
               {categoryItems.map((category, i) => {
                 return (
-                  <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category, e)} key={`${category}-${i}`}>
-                    {category}
-                    {category === categoryToShow && <span className="close" onClick={onCloseCategory}>x</span>}
+                  <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
+                    {category.display}
+                    {category.name === categoryToShow && <span className="close" onClick={onCloseCategory}>x</span>}
                   </p>
                 )
               })}

@@ -1,6 +1,7 @@
 import * as React from "react";
 import { Link } from "@reach/router";
 
+import specJson from "../../specs.json";
 import Tag from "./shared/Tag";
 import CodeSnippet from "./shared/CodeSnippet";
 
@@ -17,9 +18,6 @@ spec:
     - mysql
         ...
 `
-const tags = ["mysql", "database", "connection"];
-const preflightCommand = "kubectl preflight https://preflight.com/24gs67";
-const bundleCommand = "kubectl supportbundle https://supportbundle.com/24gs67";
 
 
 class TroubleshootSpec extends React.Component {
@@ -67,6 +65,8 @@ class TroubleshootSpec extends React.Component {
   }
 
   onTryItOut = (type) => {
+    const preflightCommand = `kubectl preflight https://preflight.com/${this.props.id}`;
+    const bundleCommand = `kubectl supportbundle https://supportbundle.com/${this.props.id}`;
     this.setState({ showCodeSnippet: true });
 
     if (type === "preflight") {
@@ -85,6 +85,10 @@ class TroubleshootSpec extends React.Component {
   render() {
     const { copySuccess, showCodeSnippet, currentCommand, isActive } = this.state;
     const { isMobile } = this.props;
+
+    const currentSpec = specJson.specs.find(spec => spec.id === this.props.id);
+    const relatedSpecs = specJson.specs.filter(spec => currentSpec.tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
+
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
@@ -105,27 +109,35 @@ class TroubleshootSpec extends React.Component {
               </div>
             </div>
             <div className={`section ${!isMobile && "u-marginLeft--50"}`}>
+              <div className="flex alignItems--center">
               <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium"> Contributors </p>
+              {currentSpec.contributors.map((contributor, i) => (
+                <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}> 
+                  <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
+                </div>
+              ))}
+              </div>
+              
               <div className="flex u-marginTop--30 u-marginBottom--30">
                 <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex"> Tags </p>
                 <div className="flex flex1 u-marginLeft--12">
-                  {tags.map((tag, i) => (<Tag tag={tag} tagKey={`${tag}-${i}`} />))}
+                  {currentSpec.tags.map((tag, i) => (<Tag tag={tag} tagKey={`${tag}-${i}`} />))}
                 </div>
               </div>
 
               <div className="u-borderTop--gray u-marginBottom--30">
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Try it out </p>
                 <p className="u-fontSize--large u-color--dustyGray u-marginTop--small body-copy"> Find select the type of command you want to try</p>
-                <div className={`u-marginTop--30 ${isMobile && "flex"}`}>
-                  <button className={`Button tab ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight Check</button>
-                  <button className={`Button tab u-marginLeft--10 ${isActive === "supportbundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("supportbundle")}><span className="icon support-small"></span>Support Bundle</button>
+                <div className="u-marginTop--30 flex">
+                  <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight Check</button>
+                  <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "supportbundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("supportbundle")}><span className="icon support-small"></span>Support Bundle</button>
                 </div>
                 {showCodeSnippet &&
                   <div className="flex flex-column u-marginTop--normal">
                     <CodeSnippet
                       canCopy={true}
                       onCopyText={<span className="u-color--vidaLoca">Command has been copied to your clipboard</span>}
-                      learnMore={<a to={""} className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> Learn more about Support Bundle </a>}
+                      learnMore={<Link to={isActive === "supportbundle" ? `/docs/support-bundle/` : `/docs/preflight/`} className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "supportbundle" ? "Support Bundle" : "Preflight"}`}</Link>}
                     >
                       {currentCommand}
                     </CodeSnippet>
@@ -135,18 +147,22 @@ class TroubleshootSpec extends React.Component {
 
               <div className="u-borderTop--gray u-marginBottom--15">
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Related specs </p>
-                <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--20"> Validate that the mysql version is supported </p>
-                <div className="u-marginTop--15 flex flex1 justifyContent--spaceBetween">
-                  <Link to={"/explore"} className="u-fontSize--small link"> View spec </Link>
-                  <p className="u-fontSize--small u-color--dustyGray"> mysql, database, connection </p>
-                </div>
-              </div>
-              <div className="u-borderTop--gray">
-                <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--20"> Validate that the postgres version is supported </p>
-                <div className="u-marginTop--15 flex flex1 justifyContent--spaceBetween">
-                  <Link to={"/explore"} className="u-fontSize--small link"> View spec </Link>
-                  <p className="u-fontSize--small u-color--dustyGray"> database, connection </p>
-                </div>
+                {relatedSpecs.slice(0, 2).map((spec, i) => (
+                  <div className="RelatedSpecs--wrapper" key={`${spec.id}-${i}`}>
+                    <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--10"> {spec.description} </p>
+                    <div className="u-marginTop--15 flex flex1">
+                      <Link to={`/spec/${spec.id}`} className="u-fontSize--small link"> View spec </Link>
+                      <div className="flex flex1 justifyContent--flexEnd">
+                        <span className="icon tag-icon" />
+                        {spec.tags.map((tag, i) => (
+                          <p className="u-fontSize--small u-color--dustyGray u-marginLeft--10" key={`${tag}-${i}`}> {tag} </p>
+                        )
+                        )}
+                      </div>
+                    </div>
+                  </div>
+                )
+                )}
               </div>
             </div>
           </div>
