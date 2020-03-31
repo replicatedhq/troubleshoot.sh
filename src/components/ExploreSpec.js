@@ -119,15 +119,15 @@ class ExploreSpec extends React.Component {
               {tagToShow &&
                 <div className="flex alignItems--center body-copy u-marginTop--20">
                   <span className="u-fontSize--normal u-color--tuna"> {specsToShow.length} results </span>
-                  <span className="u-fontSize--normal u-color--dustyGray"> for </span>
-                  <span className="u-fontSize--normal activeTag"> {tagToShow} <span className="close" onClick={this.onCloseTagFiler}>X</span></span>
+                  <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
+                  <span className="u-fontSize--normal activeTag u-marginLeft--small"> {tagToShow} <span className="close" onClick={this.onCloseTagFiler}>X</span></span>
                 </div>
               }
               {categoryToShow === "" && tagToShow === "" ?
-                specJson.categories.map(category => {
+                specJson.categories.map((category,i) => {
                   const categorySpecs = specJson.specs.filter(spec => category.name === spec.category);
                   return (
-                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} />
+                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} key={`${category.name}-${i}`}/>
                   )
                 })
                 :

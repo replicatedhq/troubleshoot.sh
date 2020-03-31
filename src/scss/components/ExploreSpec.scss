@@ -3,10 +3,17 @@
   margin-left: 0;
   padding-left: 0;
 
-  div {
-    width: 50%;
-    margin-bottom: 10px;
-    padding: 0;
+  a {
+    width: 40%;
+    margin-bottom: 30px;
+    padding: 10px;
+  }
+
+  .Info--item {
+    &:hover {
+      cursor: pointer;
+      background-color: #F8F8F8;
+    }
   }
 }
 
