@@ -2,7 +2,6 @@ import * as React from "react";
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
 import { Link } from "@reach/router";
 
-import specJson from "../../specs.json";
 import { Utilities } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
@@ -46,11 +45,17 @@ class ExploreSpec extends React.Component {
     this.setState({ mobileFiltersOpen: !this.state.mobileFiltersOpen });
   }
 
+  componentDidMount() {
+    import("../../static/specs.json").then(module => {
+      this.setState({ specJson: module });
+    });
+  }
+
 
   render() {
-    const { categoryToShow, showTagsList, tagToShow } = this.state;
+    const { categoryToShow, showTagsList, tagToShow, specJson } = this.state;
     const { isMobile } = this.props;
-    const specsToShow = specJson.specs.filter(spec => spec.tags.includes(tagToShow));
+    const specsToShow = specJson?.specs?.filter(spec => spec.tags.includes(tagToShow));
 
 
     return (
@@ -69,7 +74,7 @@ class ExploreSpec extends React.Component {
               <div className="flex">
                 <div className="flex-column">
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
-                  {specJson.categories.map((category, i) => (
+                  {specJson?.categories?.map((category, i) => (
                     <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
                       {category.display}
                       {category.name === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
@@ -77,7 +82,7 @@ class ExploreSpec extends React.Component {
                   ))}
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10" onClick={() => this.toggleTags()}> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
                   {showTagsList ?
-                    specJson.tags.map((tag, i) => (
+                    specJson?.tags?.map((tag, i) => (
                       <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}>
                         {tag}
                         {tag === tagToShow && <span className="close" onClick={this.onCloseTagFiler}>x</span>}
@@ -121,10 +126,10 @@ class ExploreSpec extends React.Component {
                 </div>
               }
               {categoryToShow === "" && tagToShow === "" ?
-                specJson.categories.map((category, i) => {
-                  const categorySpecs = specJson.specs.filter(spec => category.name === spec.category);
+                specJson?.categories?.map((category, i) => {
+                  const categorySpecs = specJson?.specs?.filter(spec => category.name === spec.category);
                   return (
-                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} />
+                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} key={`${category.name}-${i}`} />
                   )
                 })
                 :
@@ -141,7 +146,7 @@ class ExploreSpec extends React.Component {
                     ))}
                   </div>
                   :
-                  <ExploreInfo name={Utilities.titleize(categoryToShow.replace(/_/gi, " "))} specs={specJson.specs.filter(spec => categoryToShow === spec.category)} isMobile={isMobile} />
+                  <ExploreInfo name={Utilities.titleize(categoryToShow.replace(/_/gi, " "))} specs={specJson?.specs?.filter(spec => categoryToShow === spec.category)} isMobile={isMobile} />
               }
             </div>
           </div>
@@ -153,8 +158,8 @@ class ExploreSpec extends React.Component {
             tagToShow={tagToShow}
             showingCategoryDetails={this.showingCategoryDetails}
             onCloseCategory={this.onCloseCategory}
-            categoryItems={specJson.categories}
-            tagItems={specJson.tags}
+            categoryItems={specJson?.categories}
+            tagItems={specJson?.tags}
             showingTagFilter={this.showingTagFilter}
             onCloseTagFiler={this.onCloseTagFiler}
             isOpen={this.state.mobileFiltersOpen}
