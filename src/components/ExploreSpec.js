@@ -1,5 +1,6 @@
 import * as React from "react";
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
+import { Link } from "@reach/router";
 
 import specJson from "../../specs.json";
 import { Utilities } from "../utils/utilities";
@@ -24,7 +25,7 @@ class ExploreSpec extends React.Component {
   }
 
   showingTagFilter = (tag, e) => {
-    if (!e.target.classList.contains("close")) {
+    if (!e.target.classList.contains("icon") && (!e.target.classList.contains("close"))) {
       this.setState({ tagToShow: tag, categoryToShow: "" });
     }
   }
@@ -68,24 +69,20 @@ class ExploreSpec extends React.Component {
               <div className="flex">
                 <div className="flex-column">
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
-                  {specJson.categories.map((category, i) => {
-                    return (
-                      <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
-                        {category.display}
-                        {category.name === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
-                      </p>
-                    )
-                  })}
+                  {specJson.categories.map((category, i) => (
+                    <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
+                      {category.display}
+                      {category.name === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
+                    </p>
+                  ))}
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10" onClick={() => this.toggleTags()}> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
                   {showTagsList ?
-                    specJson.tags.map((tag, i) => {
-                      return (
-                        <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}>
-                          {tag}
-                          {tag === tagToShow && <span className="close" onClick={this.onCloseTagFiler}>x</span>}
-                        </p>
-                      )
-                    })
+                    specJson.tags.map((tag, i) => (
+                      <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}>
+                        {tag}
+                        {tag === tagToShow && <span className="close" onClick={this.onCloseTagFiler}>x</span>}
+                      </p>
+                    ))
                     :
                     null
                   }
@@ -120,30 +117,28 @@ class ExploreSpec extends React.Component {
                 <div className="flex alignItems--center body-copy u-marginTop--20">
                   <span className="u-fontSize--normal u-color--tuna"> {specsToShow.length} results </span>
                   <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
-                  <span className="u-fontSize--normal activeTag u-marginLeft--small"> {tagToShow} <span className="close" onClick={this.onCloseTagFiler}>X</span></span>
+                  <span className="u-fontSize--normal activeTag u-marginLeft--small"> {tagToShow} <span className="icon gray-x-icon u-cursor--pointer" onClick={this.onCloseTagFiler} /> </span>
                 </div>
               }
               {categoryToShow === "" && tagToShow === "" ?
-                specJson.categories.map((category,i) => {
+                specJson.categories.map((category, i) => {
                   const categorySpecs = specJson.specs.filter(spec => category.name === spec.category);
                   return (
-                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} key={`${category.name}-${i}`}/>
+                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} />
                   )
                 })
                 :
                 tagToShow ?
                   <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {specsToShow.map((spec, i) => {
-                      return (
-                        <div className="flex alignItems--center" key={`${spec.id}-${i}`}>
-                          <span className="category-icon" style={{ backgroundImage: `url(${spec.iconUri})` }} />
-                          <div className="flex-column u-marginLeft--12">
-                            <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
-                            <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>
-                          </div>
+                    {specsToShow.map((spec, i) => (
+                      <Link to={`/spec/${spec.id}`} className="Info--item flex alignItems--center" key={`${spec.id}-${i}`}>
+                        <span className="category-icon" style={{ backgroundImage: `url(${spec.iconUri})` }} />
+                        <div className="flex-column u-marginLeft--12">
+                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
+                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>
                         </div>
-                      )
-                    })}
+                      </Link>
+                    ))}
                   </div>
                   :
                   <ExploreInfo name={Utilities.titleize(categoryToShow.replace(/_/gi, " "))} specs={specJson.specs.filter(spec => categoryToShow === spec.category)} isMobile={isMobile} />
