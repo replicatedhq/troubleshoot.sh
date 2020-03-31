@@ -38,6 +38,16 @@
   margin-left:10px;
 }
 
+.RelatedSpecs--wrapper {
+  padding-top: 10px;
+  padding-bottom: 10px;
+
+  &:last-child {
+    margin-top: 10px;
+    border-top: 1px solid #C4C8CA;
+  }
+}
+
 .category-icon {
   height: 50px;
   width: 50px;
@@ -53,7 +63,21 @@
   background-color: #E9F0FF;
   padding: 5px;
   color: #4A4A4A;
-  cursor: pointer;
+}
+
+.Contributors--wrapper {
+    margin-left: 10px;
+  .contributer-icon {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ffffff;
+  }
 }
 
 .ExploreSearch--wrapper {
