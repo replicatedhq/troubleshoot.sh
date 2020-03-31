@@ -55,7 +55,7 @@ class ExploreSpec extends React.Component {
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section u-marginTop--50 gradient border justifyContent--center alignItems--center">
+        <div className="section u-marginTop--70 gradient border justifyContent--center alignItems--center">
           <div className="container">
             <p className="u-fontSize--jumbo u-fontWeight--bold u-color--biscay u-lineHeight--more"> Explore troubleshoot specs </p>
             <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy">
@@ -117,7 +117,7 @@ class ExploreSpec extends React.Component {
                 <div className="flex alignItems--center body-copy u-marginTop--20">
                   <span className="u-fontSize--normal u-color--tuna"> {specsToShow.length} results </span>
                   <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
-                  <span className="u-fontSize--normal activeTag u-marginLeft--small"> {tagToShow} <span className="icon gray-x-icon u-cursor--pointer" onClick={this.onCloseTagFiler} /> </span>
+                  <span className="u-fontSize--normal activeTag u-marginLeft--small flex alignItems--center"> {tagToShow} <span className="icon gray-x-icon u-cursor--pointer u-marginLeft--small" onClick={this.onCloseTagFiler} /> </span>
                 </div>
               }
               {categoryToShow === "" && tagToShow === "" ?
@@ -131,7 +131,7 @@ class ExploreSpec extends React.Component {
                 tagToShow ?
                   <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
                     {specsToShow.map((spec, i) => (
-                      <Link to={`/spec/${spec.id}`} className="Info--item flex alignItems--center" key={`${spec.id}-${i}`}>
+                      <Link to={`/spec/${spec.id}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
                         <span className={`category-${spec.title.toLowerCase().replace(/ /gi, "-")}`}> </span>
                         <div className="flex-column u-marginLeft--12">
                           <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
@@ -150,10 +150,13 @@ class ExploreSpec extends React.Component {
           <MobileExploreFilters
             className="MobileNavBar"
             categoryToShow={categoryToShow}
+            tagToShow={tagToShow}
             showingCategoryDetails={this.showingCategoryDetails}
             onCloseCategory={this.onCloseCategory}
             categoryItems={specJson.categories}
             tagItems={specJson.tags}
+            showingTagFilter={this.showingTagFilter}
+            onCloseTagFiler={this.onCloseTagFiler}
             isOpen={this.state.mobileFiltersOpen}
             onClose={this.onMobileFiltersClick}
           />
