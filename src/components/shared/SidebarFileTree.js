@@ -2,14 +2,8 @@ import React, { Component } from "react";
 import { Link, navigate } from "gatsby";
 import isEqual from "lodash/isEqual"
 
+import { Utilities } from "../../utils/utilities";
 import "../../scss/components/shared/SidebarFileTree.scss";
-
-function titleize(string) {
-  return string
-    .split("-")
-    .map(s => s[0].toUpperCase() + s.slice(1))
-    .join(" ");
-}
 
 export default class SidebarFileTree extends Component {
   onLinkClick = event => {
@@ -33,7 +27,7 @@ export default class SidebarFileTree extends Component {
             }
         }}
         >
-          {titleize(data.directory)}
+          {Utilities.titleize(data.directory)}
 
           {isOpen() && (data.links.map((link, idx) =>
             (<SidebarFileTree

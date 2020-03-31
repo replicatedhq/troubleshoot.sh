@@ -1,7 +1,8 @@
 import * as React from "react";
 import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
-import specJson from "../../specs.json";
 
+import specJson from "../../specs.json";
+import { Utilities } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
@@ -51,7 +52,6 @@ class ExploreSpec extends React.Component {
     const specsToShow = specJson.specs.filter(spec => spec.tags.includes(tagToShow));
 
 
-
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
         <div className="section u-marginTop--50 gradient border justifyContent--center alignItems--center">
@@ -70,9 +70,9 @@ class ExploreSpec extends React.Component {
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
                   {specJson.categories.map((category, i) => {
                     return (
-                      <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.display === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.display, e)} key={`${category.display}-${i}`}>
+                      <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
                         {category.display}
-                        {category.display === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
+                        {category.name === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
                       </p>
                     )
                   })}
@@ -146,21 +146,7 @@ class ExploreSpec extends React.Component {
                     })}
                   </div>
                   :
-                  categoryToShow === "Cluster information" ?
-                    <ExploreInfo name={"Cluster information"} specs={specJson.specs.filter(spec => "cluster_information" === spec.category)} isMobile={isMobile} />
-                    : categoryToShow === "Database" ?
-                      <ExploreInfo name={"Database"} specs={specJson.specs.filter(spec => "database" === spec.category)} isMobile={isMobile} />
-                      : categoryToShow === "Storage" ?
-                        <ExploreInfo name={"Storage"} specs={specJson.specs.filter(spec => "storage" === spec.category)} isMobile={isMobile} />
-                        : categoryToShow === "Networking" ?
-                          <ExploreInfo name={"Networking"} specs={specJson.specs.filter(spec => "networking" === spec.category)} isMobile={isMobile} />
-                          : categoryToShow === "Performance" ?
-                            <ExploreInfo name={"Performance"} specs={specJson.specs.filter(spec => "performance" === spec.category)} isMobile={isMobile} />
-                            : categoryToShow === "Cloud provider" ?
-                              <ExploreInfo name={"Cloud provider"} specs={specJson.specs.filter(spec => "cloud_provider" === spec.category)} isMobile={isMobile} />
-                              : categoryToShow === "External app dependencies" ?
-                                <ExploreInfo name={"External app dependencies"} specs={specJson.specs.filter(spec => "external_app_dependencies" === spec.category)} isMobile={isMobile} />
-                                : null
+                  <ExploreInfo name={Utilities.titleize(categoryToShow.replace(/_/gi, " "))} specs={specJson.specs.filter(spec => categoryToShow === spec.category)} isMobile={isMobile} />
               }
             </div>
           </div>
