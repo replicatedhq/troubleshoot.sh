@@ -15,7 +15,7 @@ export default class ExploreInfo extends React.Component {
             {specs && specs.map((spec, i) => {
               return (
                 <Link to={`/spec/${spec.id}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"} flex alignItems--center`} key={`${spec.id}-${i}`}>
-                  <span className={`category-${spec.title.toLowerCase().replace(/ /gi, "-")}`}> </span>
+                  <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")`}}> </span>
                   <div className="flex-column u-marginLeft--12">
                     <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
                     <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>

@@ -1,7 +1,6 @@
 import * as React from "react";
 import { Link } from "@reach/router";
 
-import specJson from "../../specs.json";
 import Tag from "./shared/Tag";
 import CodeSnippet from "./shared/CodeSnippet";
 
@@ -45,6 +44,9 @@ class TroubleshootSpec extends React.Component {
   }
 
   componentDidMount() {
+    import("../../static/specs.json").then(module => {
+      this.setState({ specJson: module });
+    });
     this.renderMonacoEditor();
   }
 
@@ -83,11 +85,11 @@ class TroubleshootSpec extends React.Component {
   }
 
   render() {
-    const { copySuccess, showCodeSnippet, currentCommand, isActive } = this.state;
+    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson } = this.state;
     const { isMobile } = this.props;
 
     const currentSpec = specJson.specs.find(spec => spec.id === this.props.id);
-    const relatedSpecs = specJson.specs.filter(spec => currentSpec.tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
+    const relatedSpecs = specJson.specs?.filter(spec => currentSpec.tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
 
 
     return (
