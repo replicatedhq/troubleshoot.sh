@@ -89,7 +89,7 @@ class TroubleshootSpec extends React.Component {
     const { isMobile } = this.props;
 
     const currentSpec = specJson?.specs?.find(spec => spec.id === this.props.id);
-    const relatedSpecs = specJson?.specs?.filter(spec => currentSpec.tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
+    const relatedSpecs = specJson?.specs?.filter(spec => currentSpec?.tags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
 
 
     return (
@@ -113,7 +113,7 @@ class TroubleshootSpec extends React.Component {
             <div className={`section ${!isMobile && "u-marginLeft--50"}`}>
               <div className="flex alignItems--center">
               <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium"> Contributors </p>
-              {currentSpec.contributors.map((contributor, i) => (
+              {currentSpec?.contributors?.map((contributor, i) => (
                 <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}> 
                   <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
                 </div>
@@ -123,7 +123,7 @@ class TroubleshootSpec extends React.Component {
               <div className="flex u-marginTop--30 u-marginBottom--30">
                 <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex"> Tags </p>
                 <div className="flex flex1 u-marginLeft--12">
-                  {currentSpec.tags.map((tag, i) => (<Tag tag={tag} tagKey={`${tag}-${i}`} />))}
+                  {currentSpec?.tags?.map((tag, i) => (<Tag tag={tag} tagKey={`${tag}-${i}`} />))}
                 </div>
               </div>
 
@@ -149,7 +149,7 @@ class TroubleshootSpec extends React.Component {
 
               <div className="u-borderTop--gray u-marginBottom--15">
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Related specs </p>
-                {relatedSpecs.slice(0, 2).map((spec, i) => (
+                {relatedSpecs?.slice(0, 2).map((spec, i) => (
                   <div className="RelatedSpecs--wrapper" key={`${spec.id}-${i}`}>
                     <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--10"> {spec.description} </p>
                     <div className="u-marginTop--15 flex flex1">
