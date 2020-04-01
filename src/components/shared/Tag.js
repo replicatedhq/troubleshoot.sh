@@ -6,12 +6,11 @@ export default class Tag extends React.Component {
   render() {
     const {
       tag,
-      tagKey
     } = this.props;
 
 
     return (
-      <div className="Tag-wrapper flex-row u-alignSelf--center" key={tagKey}>
+      <div className="Tag-wrapper flex-row u-alignSelf--center">
         <div className="Tag-content flex1">
           <span className="Tag-label u-fontWeight--medium">{tag}</span>
         </div>
