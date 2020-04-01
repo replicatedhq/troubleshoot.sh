@@ -1,11 +1,11 @@
 import * as React from "react";
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
 import { Link } from "@reach/router";
 
 import { Utilities } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
+import Search from "./shared/Search";
 
 
 class ExploreSpec extends React.Component {
@@ -102,20 +102,7 @@ class ExploreSpec extends React.Component {
             <div className={`flex1 flex-column ${!isMobile && "u-marginLeft--50"}`}>
               <div className="ExploreSearch--wrapper u-overflow--scroll">
                 <div className="ExploreSearch--search">
-                  <InstantSearch
-                    indexName="test"
-                    searchClient={"test"}
-                  >
-                    <div className="ais-SearchBox-wrapper">
-                      <SearchBox className="u-marginBottom--most"
-                        translations={{
-                          placeholder: "What type of spec do you need?",
-                        }}
-                      />
-                      <span className="ais-SearchBox-SearchIcon" />
-                    </div>
-                    <Hits />
-                  </InstantSearch>
+                  <Search classNames={"SearchBox--wrapper"}/>
                 </div>
               </div>
               {isMobile && <div className="flex flex-column u-marginTop--20">
