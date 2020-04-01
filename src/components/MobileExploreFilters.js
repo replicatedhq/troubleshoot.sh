@@ -23,6 +23,11 @@ export default class MobileExploreFilters extends React.Component {
     this.props.onClose();
   }
 
+  onCloseTagFilter = (tag) => {
+    this.props.onCloseTagFilter(tag);
+    this.props.onClose();
+  }
+
   render() {
     const {
       isOpen,
@@ -31,8 +36,8 @@ export default class MobileExploreFilters extends React.Component {
       onClose,
       categoryToShow,
       onCloseCategory,
-      tagToShow,
-      onCloseTagFiler
+      tagsToShow,
+      onCloseTagFilter
     } = this.props;
 
     const mobileDropdownVisibleClasses = `MobileFilters ${isOpen ? "is-open" : ""}`;
@@ -49,18 +54,18 @@ export default class MobileExploreFilters extends React.Component {
               <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
               {categoryItems?.map((category, i) => {
                 return (
-                  <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
+                  <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy flex justifyContent--spaceBetween alignItems--center ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
                     {category.display}
-                    {category.name === categoryToShow && <span className="close" onClick={onCloseCategory}>x</span>}
+                    {category.name === categoryToShow && <span className="icon white-x-icon u-marginLeft--small" onClick={onCloseCategory} />}
                   </p>
                 )
               })}
               <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10"> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
               {tagItems?.map((tag, i) => {
                 return (
-                  <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}> 
+                  <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy flex justifyContent--spaceBetween alignItems--center ${tagsToShow.includes(tag) && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}> 
                   {tag} 
-                  {tag === tagToShow && <span className="close" onClick={onCloseTagFiler}>x</span>}
+                  {tagsToShow.includes(tag) && <span className="icon white-x-icon" onClick={() => onCloseTagFilter(tag)} />}
                   </p>
                 )
               })}

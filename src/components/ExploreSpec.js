@@ -14,18 +14,21 @@ class ExploreSpec extends React.Component {
     showTagsList: false,
     showMobileFilters: false,
     mobileFiltersOpen: false,
-    tagToShow: ""
+    tagsToShow: []
   }
 
   showingCategoryDetails = (category, e) => {
-    if (!e.target.classList.contains("close")) {
-      this.setState({ categoryToShow: category, tagToShow: "" });
+    if (!e.target.classList.contains("icon")) {
+      this.setState({ categoryToShow: category, tagsToShow: [] });
     }
   }
 
   showingTagFilter = (tag, e) => {
-    if (!e.target.classList.contains("icon") && (!e.target.classList.contains("close"))) {
-      this.setState({ tagToShow: tag, categoryToShow: "" });
+    if (!e.target.classList.contains("icon")) {
+      const doesTagAlreadyExist = this.state.tagsToShow.find(stateTag => stateTag === tag);
+      if (!doesTagAlreadyExist) {
+        this.setState({ tagsToShow: [...this.state.tagsToShow, tag], categoryToShow: "" });
+      }
     }
   }
 
@@ -33,8 +36,8 @@ class ExploreSpec extends React.Component {
     this.setState({ categoryToShow: "" });
   }
 
-  onCloseTagFiler = () => {
-    this.setState({ tagToShow: "" });
+  onCloseTagFilter = (tag) => {
+    this.setState({ tagsToShow: this.state.tagsToShow.filter(stateTag => stateTag !== tag) });
   }
 
   toggleTags = () => {
@@ -53,9 +56,9 @@ class ExploreSpec extends React.Component {
 
 
   render() {
-    const { categoryToShow, showTagsList, tagToShow, specJson } = this.state;
+    const { categoryToShow, showTagsList, tagsToShow, specJson } = this.state;
     const { isMobile } = this.props;
-    const specsToShow = specJson?.specs?.filter(spec => spec.tags.includes(tagToShow));
+    const specsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)));
 
 
     return (
@@ -75,17 +78,17 @@ class ExploreSpec extends React.Component {
                 <div className="flex-column">
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
                   {specJson?.categories?.map((category, i) => (
-                    <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
+                    <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy flex alignItems--center justifyContent--spaceBetween ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
                       {category.display}
-                      {category.name === categoryToShow && <span className="close" onClick={this.onCloseCategory}>x</span>}
+                      {category.name === categoryToShow && <span className="icon white-x-icon u-marginLeft--small" onClick={this.onCloseCategory} />}
                     </p>
                   ))}
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10" onClick={() => this.toggleTags()}> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
                   {showTagsList ?
                     specJson?.tags.map((tag, i) => (
-                      <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 body-copy ${tag === tagToShow && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}>
+                      <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 flex justifyContent--spaceBetween alignItems--center body-copy ${tagsToShow.includes(tag) && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}>
                         {tag}
-                        {tag === tagToShow && <span className="close" onClick={this.onCloseTagFiler}>x</span>}
+                        {tagsToShow.includes(tag) && <span className="icon white-x-icon" onClick={() => this.onCloseTagFilter(tag)} />}
                       </p>
                     ))
                     :
@@ -118,14 +121,16 @@ class ExploreSpec extends React.Component {
               {isMobile && <div className="flex flex-column u-marginTop--20">
                 <button className="Button secondary" onClick={() => this.onMobileFiltersClick()}> Filters </button>
               </div>}
-              {tagToShow &&
+              {tagsToShow?.length > 0 &&
                 <div className="flex alignItems--center body-copy u-marginTop--20">
                   <span className="u-fontSize--normal u-color--tuna"> {specsToShow.length} results </span>
                   <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
-                  <span className="u-fontSize--normal activeTag u-marginLeft--small flex alignItems--center"> {tagToShow} <span className="icon gray-x-icon u-cursor--pointer u-marginLeft--small" onClick={this.onCloseTagFiler} /> </span>
+                  {tagsToShow?.map((tag, i) => (
+                    <span className="u-fontSize--normal activeTag u-marginLeft--small flex alignItems--center" key={`${tag}-${i}`}> {tag} <span className="icon gray-x-icon u-cursor--pointer u-marginLeft--small" onClick={() => this.onCloseTagFilter(tag)} /> </span>
+                  ))}
                 </div>
               }
-              {categoryToShow === "" && tagToShow === "" ?
+              {categoryToShow === "" && tagsToShow.length === 0 ?
                 specJson?.categories?.map((category, i) => {
                   const categorySpecs = specJson?.specs?.filter(spec => category.name === spec.category);
                   return (
@@ -133,9 +138,9 @@ class ExploreSpec extends React.Component {
                   )
                 })
                 :
-                tagToShow ?
+                tagsToShow.length > 0 ?
                   <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {specsToShow.map((spec, i) => (
+                    {specsToShow?.map((spec, i) => (
                       <Link to={`/spec/${spec.id}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
                         <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")`}}> </span>
                         <div className="flex-column u-marginLeft--12">
@@ -155,13 +160,13 @@ class ExploreSpec extends React.Component {
           <MobileExploreFilters
             className="MobileNavBar"
             categoryToShow={categoryToShow}
-            tagToShow={tagToShow}
+            tagsToShow={tagsToShow}
             showingCategoryDetails={this.showingCategoryDetails}
             onCloseCategory={this.onCloseCategory}
             categoryItems={specJson.categories}
             tagItems={specJson.tags}
             showingTagFilter={this.showingTagFilter}
-            onCloseTagFiler={this.onCloseTagFiler}
+            onCloseTagFilter={this.onCloseTagFilter}
             isOpen={this.state.mobileFiltersOpen}
             onClose={this.onMobileFiltersClick}
           />
