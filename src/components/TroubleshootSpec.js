@@ -21,10 +21,10 @@ spec:
 
 class TroubleshootSpec extends React.Component {
   state = {
-    showCodeSnippet: false,
+    showCodeSnippet: true,
     copyingSpecYaml: false,
     copySuccess: "",
-    isActive: ""
+    isActive: "preflight"
   }
 
 
@@ -48,6 +48,10 @@ class TroubleshootSpec extends React.Component {
       this.setState({ specJson: module });
     });
     this.renderMonacoEditor();
+
+    this.setState({
+      currentCommand: `kubectl preflight https://preflight.com/${this.props.id}`
+    })
   }
 
   copySpecYamlToClipboard = () => {
@@ -97,8 +101,8 @@ class TroubleshootSpec extends React.Component {
         <div className="section landing-header">
           <div className={`${!isMobile ? "flex1" : "flex-column"} container flex justifyContent--center`}>
             <div className="section">
-              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> Validate MySQL connection string </p>
-              <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> This collector and anlyzer is designed to validate a mysql connection string. </p>
+              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
+              <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
               <div className="MonacoEditor--wrapper flex u-width--full">
                 <div className="flex u-width--full u-overflow--hidden" id="monaco">
                 </div>
@@ -107,7 +111,6 @@ class TroubleshootSpec extends React.Component {
                 {!copySuccess ?
                   <button className="Button primary blue u-marginRight--30" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</button>
                   : <span className="u-color--vidaLoca u-marginRight--30">{copySuccess}</span>}
-                <button className="Button secondary gray"> View RAW on Github </button>
               </div>
             </div>
             <div className={`section ${!isMobile && "u-marginLeft--50"}`}>
@@ -123,7 +126,7 @@ class TroubleshootSpec extends React.Component {
               <div className="flex u-marginTop--30 u-marginBottom--30">
                 <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex"> Tags </p>
                 <div className="flex flex1 u-marginLeft--12">
-                  {currentSpec?.tags?.map((tag, i) => (<Tag tag={tag} tagKey={`${tag}-${i}`} />))}
+                  {currentSpec?.tags?.map((tag, i) => (<Tag tag={tag} key={`${tag}-${i}`} />))}
                 </div>
               </div>
 
@@ -131,17 +134,17 @@ class TroubleshootSpec extends React.Component {
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Try it out </p>
                 <p className="u-fontSize--large u-color--dustyGray u-marginTop--small body-copy"> Find select the type of command you want to try</p>
                 <div className="u-marginTop--30 flex">
-                  <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight Check</button>
-                  <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "supportbundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("supportbundle")}><span className="icon support-small"></span>Support Bundle</button>
+                  <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight</button>
+                  <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "supportbundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("supportbundle")}><span className="icon support-small"></span>Support</button>
                 </div>
                 {showCodeSnippet &&
                   <div className="flex flex-column u-marginTop--normal">
                     <CodeSnippet
                       canCopy={true}
-                      onCopyText={<span className="u-color--vidaLoca">Command has been copied to your clipboard</span>}
+                      onCopyText={<span className="u-color--vidaLoca">Copied!</span>}
                       learnMore={<Link to={isActive === "supportbundle" ? `/docs/support-bundle/` : `/docs/preflight/`} className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "supportbundle" ? "Support Bundle" : "Preflight"}`}</Link>}
                     >
-                      {currentCommand}
+                      {currentCommand ? currentCommand : ""}
                     </CodeSnippet>
                   </div>
                 }
