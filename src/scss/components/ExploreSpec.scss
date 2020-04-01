@@ -89,12 +89,12 @@
 .ExploreSearch--wrapper {
   max-height: 100vh;
 
-  .ais-SearchBox-wrapper {
+  .SearchBox--wrapper {
     position: relative;
     width: 100%;
   }
 
-  .ais-SearchBox-input {
+  .SearchBox-input {
     display: block;
     box-sizing: border-box;
     width: 100%;
@@ -114,13 +114,7 @@
     }
   }
 
-  .ais-Stats-text {
-    color: #C5C5C5;
-    font-size: 12px;
-    font-weight: 500;
-  }
-
-  .ais-SearchBox-SearchIcon {
+  .SearchBox-SearchIcon {
     position: absolute;
     left: 10px;
     top: 15px;
@@ -128,9 +122,5 @@
     background-position: -24px 0px;
     width: 22px;
     height: 22px;
-  }
-
-  .ais-SearchBox-submit, .ais-SearchBox-reset {
-    display: none;
   }
 }
