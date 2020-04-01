@@ -37,7 +37,7 @@
       "category": "database",
       "title": "Postgres connection string",
       "description": "Validate that the connection string is valid",
-      "iconUri": "./category-icons/postgres.svg",
+      "iconUri": "/category-icons/postgres.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -53,7 +53,7 @@
       "category": "database",
       "title": "Postgres connection string",
       "description": "Validate that the Postgres version is supported",
-      "iconUri": "./category-icons/postgres.svg",
+      "iconUri": "/category-icons/postgres.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -69,7 +69,7 @@
       "category": "database",
       "title": "MySQL connection string",
       "description": "Validate that the connection string is valid",
-      "iconUri": "./category-icons/mysql.svg",
+      "iconUri": "/category-icons/mysql.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -85,7 +85,7 @@
       "category": "database",
       "title": "MySQL connection string",
       "description": "Validate that the MySQL version is supported",
-      "iconUri": "./category-icons/mysql.svg",
+      "iconUri": "/category-icons/mysql.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -101,7 +101,7 @@
       "category": "cloud_provider",
       "title": "Amazon S3",
       "description": "Verify that the IAM instance role has n permissions",
-      "iconUri": "./category-icons/amazon-s3.svg",
+      "iconUri": "/category-icons/amazon-s3.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -117,7 +117,7 @@
       "category": "cloud_provider",
       "title": "Amazon S3",
       "description": "Verify that an S3 bucket exists and is readable/writeable",
-      "iconUri": "./category-icons/amazon-s3.svg",
+      "iconUri": "/category-icons/amazon-s3.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -133,7 +133,7 @@
       "category": "cloud_provider",
       "title": "Cloud provider",
       "description": "Verify that the cluster is running in a specific cloud provider (managed or not)",
-      "iconUri": "./category-icons/cloud-provider.svg",
+      "iconUri": "/category-icons/cloud-provider.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -149,7 +149,7 @@
       "category": "external_app_dependencies",
       "title": "GitHub",
       "description": "Verify that a GitHub app / key / secret are valid",
-      "iconUri": "./category-icons/github.svg",
+      "iconUri": "/category-icons/github.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -165,7 +165,7 @@
       "category": "external_app_dependencies",
       "title": "GitLab",
       "description": "Verify that a GitLab app / key / secret are valid",
-      "iconUri": "./category-icons/gitlab.svg",
+      "iconUri": "/category-icons/gitlab.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -181,7 +181,7 @@
       "category": "external_app_dependencies",
       "title": "Salesforce",
       "description": "Validate a Salesforce Key is valid",
-      "iconUri": "./category-icons/salesforce.svg",
+      "iconUri": "/category-icons/salesforce.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -197,7 +197,7 @@
       "category": "cluster_information",
       "title": "Kubernetes",
       "description": "Validate that at least n nodes in the cluster have GPU support",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -213,7 +213,7 @@
       "category": "cluster_information",
       "title": "Kubernetes",
       "description": "Kubernetes version",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -229,7 +229,7 @@
       "category": "cluster_information",
       "title": "Kubernetes",
       "description": "Number of nodes",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -245,7 +245,7 @@
       "category": "cluster_information",
       "title": "Kubernetes",
       "description": "Distribution / Managed K8s",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -261,7 +261,7 @@
       "category": "cluster_information",
       "title": "Kubernetes",
       "description": "Supported container runtime",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -277,7 +277,7 @@
       "category": "cluster_information",
       "title": "Kubernetes",
       "description": "Validate that sufficient CPU and memory are available for scheduling",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -293,7 +293,7 @@
       "category": "cluster_information",
       "title": "Kubernetes",
       "description": "All nodes are ready / node status",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -309,7 +309,7 @@
       "category": "storage",
       "title": "Storage",
       "description": "Validate that a storage class exists",
-      "iconUri": "./category-icons/storage.svg",
+      "iconUri": "/category-icons/storage.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -325,7 +325,7 @@
       "category": "storage",
       "title": "Rook",
       "description": "Validate that Rook / Ceph have a quorum",
-      "iconUri": "./category-icons/rook.svg",
+      "iconUri": "/category-icons/rook.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -341,7 +341,7 @@
       "category": "storage",
       "title": "OpenEBS",
       "description": "Validate OpenEBS",
-      "iconUri": "./category-icons/openebs.svg",
+      "iconUri": "/category-icons/openebs.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -357,7 +357,7 @@
       "category": "storage",
       "title": "Disk",
       "description": "Validate that disk capacity exceeds n (limit ranges allow for PVC creation)",
-      "iconUri": "./category-icons/disk.svg",
+      "iconUri": "/category-icons/disk.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -373,7 +373,7 @@
       "category": "storage",
       "title": "Rook",
       "description": "How to debug Rook",
-      "iconUri": "./category-icons/rook.svg",
+      "iconUri": "/category-icons/rook.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -389,7 +389,7 @@
       "category": "performance",
       "title": "Kubernetes",
       "description": "Validate that pod to pod networking bandwidth",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -405,7 +405,7 @@
       "category": "networking",
       "title": "Kubernetes",
       "description": "Validate there is an ingress controller",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -421,7 +421,7 @@
       "category": "networking",
       "title": "Kubernetes",
       "description": "Can support a Load Balancer",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -437,7 +437,7 @@
       "category": "networking",
       "title": "Kubernetes",
       "description": "NodePort is available",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
@@ -453,7 +453,7 @@
       "category": "networking",
       "title": "Kubernetes",
       "description": "Verify that a TLS secret exists, is valid",
-      "iconUri": "./category-icons/kubernetes.svg",
+      "iconUri": "/category-icons/kubernetes.svg",
       "specYaml": "yaml spec goes here",
       "contributors": [
         {
