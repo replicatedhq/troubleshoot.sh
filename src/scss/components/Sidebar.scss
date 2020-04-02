@@ -19,6 +19,7 @@
   transition-property: transform;
   transition-property: transform, -webkit-transform;
   z-index: 5;
+  overflow: auto;
 
   &.isOpen {
     -webkit-transform: translateX(0);

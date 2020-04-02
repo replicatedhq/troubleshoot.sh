@@ -1,5 +1,4 @@
 import * as React from "react";
-import { InstantSearch, SearchBox, Hits } from 'react-instantsearch-dom';
 import { Link } from "@reach/router";
 
 import { Utilities } from "../utils/utilities";
@@ -14,7 +13,8 @@ class ExploreSpec extends React.Component {
     showTagsList: false,
     showMobileFilters: false,
     mobileFiltersOpen: false,
-    tagsToShow: []
+    tagsToShow: [],
+    query: ""
   }
 
   showingCategoryDetails = (category, e) => {
@@ -54,11 +54,80 @@ class ExploreSpec extends React.Component {
     });
   }
 
+  searchInSpecs = (spec, searchQuery) => {
+    return spec.title.toUpperCase().includes(searchQuery.toUpperCase()) ||
+      spec.category.toUpperCase().includes(searchQuery.toUpperCase()) ||
+      spec.description.toUpperCase().includes(searchQuery.toUpperCase())
+  }
+
+  doesCategoryExistInSearch = (allSpecs, category, searchQuery) => {
+    return !!allSpecs.find(spec => spec.category === category.name && this.searchInSpecs(spec, searchQuery));
+  }
+
+  onSearch = (e) => {
+    const query = e.target.value
+    this.setState({ query })
+  }
+
+  renderSpecs = (categoriesToShow, filteredCategoriesToShow, filteredTagsToShow) => {
+    const { specJson, categoryToShow, tagsToShow, query } = this.state;
+    const { isMobile } = this.props;
+
+    
+    if (categoryToShow === "" && tagsToShow.length === 0) {
+      if (categoriesToShow?.length > 0) {
+        return categoriesToShow?.map((category, i) => {
+          const categorySpecs = specJson?.specs?.filter(spec => (category.name === spec.category) && this.searchInSpecs(spec, query));
+          return (
+            <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} key={`${category.name}-${i}`} />
+          )
+        })
+      } else {
+        return (
+          <div className="flex alignItems--center body-copy u-marginTop--20">
+            <span className="u-fontSize--normal u-color--tuna"> {categoriesToShow?.length} results </span>
+            <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
+            <span className="u-fontSize--normal activeTag u-marginLeft--small"> {query} </span>
+          </div>
+        )
+      }
+    } else if (filteredCategoriesToShow?.length > 0) {
+      return (
+        <ExploreInfo name={Utilities.titleize(categoryToShow.replace(/_/gi, " "))} specs={filteredCategoriesToShow} isMobile={isMobile} />
+      )
+    } else if (tagsToShow.length > 0) {
+      return (
+      <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
+        {filteredTagsToShow?.map((spec, i) => (
+          <Link to={`/spec/${spec.slug}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
+            <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")` }}> </span>
+            <div className="flex-column u-marginLeft--12">
+              <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
+              <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>
+            </div>
+          </Link>
+        ))}
+      </div>
+      )
+    } else {
+      return (
+        <div className="flex alignItems--center body-copy u-marginTop--20">
+          <span className="u-fontSize--normal u-color--tuna"> {filteredCategoriesToShow?.length} results </span>
+          <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
+          <span className="u-fontSize--normal activeTag u-marginLeft--small"> {query} </span>
+        </div>
+      )
+    }
+  }
+
 
   render() {
-    const { categoryToShow, showTagsList, tagsToShow, specJson } = this.state;
+    const { categoryToShow, showTagsList, tagsToShow, specJson, query } = this.state;
     const { isMobile } = this.props;
-    const specsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)));
+
+    const filteredTagsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)) && this.searchInSpecs(spec, query));
+    const categoriesToShow = specJson?.categories.filter(category => this.doesCategoryExistInSearch(specJson?.specs, category, query));
+    const filteredCategoriesToShow = specJson?.specs?.filter(spec => (categoryToShow === spec.category) && this.searchInSpecs(spec, query));
 
 
     return (
@@ -102,20 +171,15 @@ class ExploreSpec extends React.Component {
             <div className={`flex1 flex-column ${!isMobile && "u-marginLeft--50"}`}>
               <div className="ExploreSearch--wrapper u-overflow--scroll">
                 <div className="ExploreSearch--search">
-                  <InstantSearch
-                    indexName="test"
-                    searchClient={"test"}
-                  >
-                    <div className="ais-SearchBox-wrapper">
-                      <SearchBox className="u-marginBottom--most"
-                        translations={{
-                          placeholder: "What type of spec do you need?",
-                        }}
-                      />
-                      <span className="ais-SearchBox-SearchIcon" />
-                    </div>
-                    <Hits />
-                  </InstantSearch>
+                  <div className="SearchBox--wrapper">
+                    <span className="SearchBox-SearchIcon"></span>
+                    <input className="SearchBox-input"
+                      type="text"
+                      value={query}
+                      onChange={this.onSearch}
+                      placeholder={"What type of spec do you need?"}
+                    />
+                  </div>
                 </div>
               </div>
               {isMobile && <div className="flex flex-column u-marginTop--20">
@@ -123,36 +187,14 @@ class ExploreSpec extends React.Component {
               </div>}
               {tagsToShow?.length > 0 &&
                 <div className="flex alignItems--center body-copy u-marginTop--20">
-                  <span className="u-fontSize--normal u-color--tuna"> {specsToShow.length} results </span>
+                  <span className="u-fontSize--normal u-color--tuna"> {filteredTagsToShow.length} results </span>
                   <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
                   {tagsToShow?.map((tag, i) => (
                     <span className="u-fontSize--normal activeTag u-marginLeft--small flex alignItems--center" key={`${tag}-${i}`}> {tag} <span className="icon gray-x-icon u-cursor--pointer u-marginLeft--small" onClick={() => this.onCloseTagFilter(tag)} /> </span>
                   ))}
                 </div>
               }
-              {categoryToShow === "" && tagsToShow.length === 0 ?
-                specJson?.categories?.map((category, i) => {
-                  const categorySpecs = specJson?.specs?.filter(spec => category.name === spec.category);
-                  return (
-                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} key={`${category.name}-${i}`} />
-                  )
-                })
-                :
-                tagsToShow.length > 0 ?
-                  <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-                    {specsToShow?.map((spec, i) => (
-                      <Link to={`/spec/${spec.id}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
-                        <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")`}}> </span>
-                        <div className="flex-column u-marginLeft--12">
-                          <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
-                          <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
-                  :
-                  <ExploreInfo name={Utilities.titleize(categoryToShow.replace(/_/gi, " "))} specs={specJson?.specs?.filter(spec => categoryToShow === spec.category)} isMobile={isMobile} />
-              }
+              {this.renderSpecs(categoriesToShow, filteredCategoriesToShow, filteredTagsToShow)}
             </div>
           </div>
         </div>
