@@ -48,10 +48,17 @@ class TroubleshootSpec extends React.Component {
       this.setState({ specJson: module });
     });
     this.renderMonacoEditor();
+  }
 
-    this.setState({
-      currentCommand: `kubectl preflight https://preflight.com/${this.props.id}`
-    })
+  componentDidUpdate(lastProps, lastState) {
+    if (this.state.specJson !== lastState.specJson && this.state.specJson) {
+      const currentSpec = this.state.specJson?.specs?.find(spec => spec.slug === this.props.slug);
+      if (currentSpec) {
+        this.setState({
+          currentCommand: `kubectl preflight https://preflight.com/${currentSpec?.id}`
+        })
+      }
+    }
   }
 
   copySpecYamlToClipboard = () => {
@@ -71,8 +78,9 @@ class TroubleshootSpec extends React.Component {
   }
 
   onTryItOut = (type) => {
-    const preflightCommand = `kubectl preflight https://preflight.com/${this.props.id}`;
-    const bundleCommand = `kubectl supportbundle https://supportbundle.com/${this.props.id}`;
+    const currentSpec = this.state.specJson?.specs?.find(spec => spec.slug === this.props.slug);
+    const preflightCommand = `kubectl preflight https://preflight.com/${currentSpec?.id}`;
+    const bundleCommand = `kubectl supportbundle https://supportbundle.com/${currentSpec?.id}`;
     this.setState({ showCodeSnippet: true });
 
     if (type === "preflight") {
@@ -92,7 +100,7 @@ class TroubleshootSpec extends React.Component {
     const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson } = this.state;
     const { isMobile } = this.props;
 
-    const currentSpec = specJson?.specs?.find(spec => spec.id === this.props.id);
+    const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
     const relatedSpecs = specJson?.specs?.filter(spec => currentSpec?.tags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
 
 
