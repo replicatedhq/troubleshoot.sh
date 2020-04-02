@@ -153,10 +153,10 @@ class ExploreSpec extends React.Component {
                   {specJson?.categories?.map((category, i) => (
                     <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy flex alignItems--center justifyContent--spaceBetween ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>
                       {category.display}
-                      {category.name === categoryToShow && <span className="icon white-x-icon u-marginLeft--small" onClick={this.onCloseCategory} />}
+                      {category.name === categoryToShow && <span className="icon white-x-icon u-marginLeft--10" onClick={this.onCloseCategory} />}
                     </p>
                   ))}
-                  <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10" onClick={() => this.toggleTags()}> Tags <span className="icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small"> </span> </p>
+                  <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginTop--50 flex alignItems--center u-cursor--pointer u-marginBottom--10 u-padding--10" onClick={() => this.toggleTags()}> Tags <span className={`icon clickable gray-expand-icon u-marginLeft--small u-marginTop--small ${this.state.showTagsList && "expanded"}`} /> </p>
                   {showTagsList ?
                     specJson?.tags.map((tag, i) => (
                       <p className={`List--item  u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal u-paddingTop--30 flex justifyContent--spaceBetween alignItems--center body-copy ${tagsToShow.includes(tag) && "is-active"}`} onClick={(e) => this.showingTagFilter(tag, e)} key={`${tag}-${i}`}>
