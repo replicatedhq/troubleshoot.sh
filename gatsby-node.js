@@ -91,4 +91,9 @@ exports.onCreatePage = async ({ page, actions }) => {
     page.matchPath = `/spec/*`
     createPage(page)
   }
+
+  if (page.path === `/explore`) {
+    page.matchPath = `/explore/*`
+    createPage(page)
+  }
 }
