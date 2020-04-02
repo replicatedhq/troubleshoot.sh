@@ -148,7 +148,7 @@ class ExploreSpec extends React.Component {
           <div className={`flex flex1 container ${isMobile && "justifyContent--center"}`}>
             {!isMobile ?
               <div className="flex">
-                <div className="flex-column">
+                <div className="flex-column u-width--220">
                   <p className="u-fontSize--18 u-fontWeight--bold u-color--biscay u-marginBottom--10 u-padding--10"> Categories </p>
                   {specJson?.categories?.map((category, i) => (
                     <p className={`List--item u-fontSize--normal u-color--dustyGray u-fontWeight--bold u-lineHeight--normal body-copy flex alignItems--center justifyContent--spaceBetween ${category.name === categoryToShow && "is-active"}`} onClick={(e) => this.showingCategoryDetails(category.name, e)} key={`${category.name}-${i}`}>

@@ -86,7 +86,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Without installing anything to the cluster, Preflight analyzes  the environment, comparing it to your requirements.</p>
-                    <a className="u-fontSize--small link">Explore analyzer specs</a>
+                    <Link to="/docs/reference/analyzers/overview" className="u-fontSize--small link">Explore analyzer specs</Link>
                   </div>
                 </div>
                 <div className="flex1 right-block">
@@ -136,7 +136,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about the collection process. Maybe talk about the spec and include a link to create one.</p>
-                    <a className="u-fontSize--small link">Explore collector specs</a>
+                    <Link to="/docs/reference/collectors/overview" className="u-fontSize--small link">Explore collector specs</Link>
                   </div>
                 </div>
                 <div className="flex1 next-step-arrow center-block">
@@ -145,7 +145,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about redacting. Maybe talk about how it’s customizable and include a link to the docs.</p>
-                    <a className="u-fontSize--small link">Learn about custom redacting</a>
+                    <Link to="/docs/support-bundle/redact" className="u-fontSize--small link">Learn about custom redacting</Link>
                   </div>
                 </div>
                 <div className="flex1 right-block more">
@@ -154,7 +154,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about the analyze process. Maybe talk about the spec and include a link to create one.</p>
-                    <a className="u-fontSize--small link">Explore analyzer specs</a>
+                    <Link to="/docs/reference/analyzers/overview" className="u-fontSize--small link">Explore analyzer specs</Link>
                   </div>
                 </div>
               </div>
