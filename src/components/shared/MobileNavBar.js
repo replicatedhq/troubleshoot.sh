@@ -1,6 +1,6 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 import GitHubButton from "react-github-button";
 
 import "../../scss/components/shared/NavBar.scss";
