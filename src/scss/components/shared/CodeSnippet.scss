@@ -43,5 +43,32 @@
   word-wrap: normal;
   line-height: 1.4;
   tab-size: 4;
-  width: 400px;
+}
+
+/* ≥ 768px */
+@media screen and (min-width: 48em) {
+  .CodeSnippet--prism {
+    width: 300px;
+  }
+}
+
+/* ≥ 960px */
+@media screen and (min-width: 60em) {
+  .CodeSnippet--prism {
+    width: 400px;
+  }
+}
+
+/* ≥ 1024px */
+@media screen and (min-width: 64em) {
+  .CodeSnippet--prism {
+    width: 400px;
+  }
+}
+
+/* ≥ 1280px */
+@media screen and (min-width: 80em) {
+  .CodeSnippet--prism {
+    width: 400px;
+  }
 }
