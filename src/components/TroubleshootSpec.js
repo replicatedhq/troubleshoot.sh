@@ -164,7 +164,7 @@ class TroubleshootSpec extends React.Component {
                   <div className="RelatedSpecs--wrapper" key={`${spec.id}-${i}`}>
                     <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--10"> {spec.description} </p>
                     <div className="u-marginTop--15 flex flex1">
-                      <Link to={`/spec/${spec.id}`} className="u-fontSize--small link"> View spec </Link>
+                      <Link to={`/spec/${spec.slug}`} className="u-fontSize--small link"> View spec </Link>
                       <div className="flex flex1 justifyContent--flexEnd">
                         <span className="icon tag-icon" />
                         {spec.tags.map((tag, i) => (
