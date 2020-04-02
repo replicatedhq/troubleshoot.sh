@@ -18,7 +18,7 @@ export default class SidebarFileTree extends Component {
     return (
       (data.directory) ?
         <div
-          className={`SidebarFileTree depth-${depth} flex1 flex-column is-directory ${depth === 1 ? "sub-dir" : ""} ${isOpen() ? "active" : ""}`}
+          className={`SidebarFileTree depth-${depth} is-directory ${depth === 1 ? "sub-dir" : ""} ${isOpen() ? "active" : ""}`}
           onClick={e => {
             e.stopPropagation()
             if (pathname !== data.links[0].path) {
@@ -43,7 +43,7 @@ export default class SidebarFileTree extends Component {
 
         :
 
-        <div className={`SidebarFileTree depth-${depth} flex1 flex-column is-file ${depth === 2 && "sub-file"}`}>
+        <div className={`SidebarFileTree depth-${depth} is-file ${depth === 2 && "sub-file"}`}>
           <Link
             to={data.path}
             activeClassName="active"

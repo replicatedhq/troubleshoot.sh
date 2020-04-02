@@ -79,7 +79,7 @@ class DocumentationLayout extends Component {
           <title>{children.props.children.props.children[0].props.children}</title>
         </Helmet>
         <Navbar isMobile={isMobile} documentation={isMobile && true} />
-        <div className={`u-minHeight--full u-width--full u-overflow--auto flex-column flex1 ${isMobile ? "" : "u-marginBottom---40"}`}>
+        <div className={`u-minHeight--full u-width--full flex ${isMobile ? "flex-column" : "flex1 u-marginBottom---40"}`}>
           {isMobile ?
             <div className="flex1 u-background--alabaster u-marginTop--50 u-padding--row">
               {splitPathname.length === 4 ?
@@ -95,7 +95,7 @@ class DocumentationLayout extends Component {
                 </span>
               }
             </div> : null}
-          <div className={`${isMobile ? "Mobile--wrapper flex" : "Sidebar-wrapper"}`}>
+          <div className={`${isMobile ? "Mobile--wrapper flex" : "Sidebar-wrapper flex flex1"}`}>
             {isMobile ?
               <button className="Button secondary blue flex1" onClick={() => this.toggleTableOfContents()}> Table of contents </button>
               :
@@ -106,10 +106,10 @@ class DocumentationLayout extends Component {
               />
             }
           </div>
-          <div className={`${isMobile ? "docs-mobile-container" : "docs-container"} flex-column flex1`}>
+          <div className={`${isMobile ? "docs-mobile-container" : "u-marginTop--70 u-paddingTop--30 u-paddingLeft--30"} flex flex1`}>
             {!isMobile ?
               <div className="flex-column flex1 docsWidth u-padding--20">
-                <div className="flex1 u-marginBottom--20">
+                <div className="u-marginBottom--20">
                   {splitPathname.length === 4 ?
                     <span className="u-fontSize--small u-fontWeight--medium u-lineHeight--normal u-marginTop--small">
                       <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="link">{Utilities.titleize(splitPathname[2])}</Link>
