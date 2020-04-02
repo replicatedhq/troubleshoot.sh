@@ -6,7 +6,6 @@ export default class ExploreInfo extends React.Component {
   render() {
     const { name, specs, isMobile, infoKey } = this.props;
 
-
     return (
       <div className="flex flex-column u-marginTop--50" key={infoKey}>
         <p className="u-fontSize--largest u-fontWeight--bold u-color--biscay u-marginBottom--10"> {name} </p>
