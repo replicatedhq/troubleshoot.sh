@@ -101,6 +101,11 @@
   width: 10px;
   height: 6px;
   background-position: 0 -119px;
+  transition: transform .2s;
+
+  &.expanded {
+    transform: rotate(-180deg);
+  }
 }
 .icon.tag-icon {
   width: 12px;

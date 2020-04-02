@@ -20,23 +20,41 @@ $base-padding: 8px;
     font-weight: normal;
     font-size: 14px;
     line-height: 44px;
+    position: relative;
 
    &:visited{
      color: #9B9B9B;
    }
-
-   &.active {
-     font-weight: bold;
-     background-color: #E9F0FF;
-     color: #163166;
-   }
+  }
+  
+  .is-file a.active {
+    font-weight: bold;
+    color: #163166;
+  }
+  .sub-file a.active {
+    font-weight: bold;
+    color: #163166;
+    &::after {
+      position: absolute;
+      background-color: #E9F0FF;
+      content: "";
+      display: block;
+      height: 36px;
+      width: 100%;
+      z-index: -1;
+      left: -10px;
+      top: 3px;
+    }
   }
 }
 
 .is-directory {
-  font-weight: bold;
-  color: #163166;
-  margin-bottom:20px;
+  margin: 15px 0;
+  &.depth-0 {
+    font-weight: bold;
+    color: #163166;
+    margin: 0 0 30px 0;
+  }
 }
 
 .is-file {
@@ -45,8 +63,14 @@ $base-padding: 8px;
 }
 
 .sub-dir {
-  font-family: Helvetica Neue;
+  font-family: "Helvetica Neue", "Helvetica", sans-serif;
   font-size: 14px;
+  font-weight: 400;
+
+  &.active {
+    font-weight: bold;
+    color: #163166;
+  }
 }
 
 .sub-file {

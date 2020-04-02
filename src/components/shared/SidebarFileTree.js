@@ -15,11 +15,10 @@ export default class SidebarFileTree extends Component {
     const { depth = 0, data, whosOpen, path, onDirectoryClick, pathname } = this.props;
     const isOpen = () => whosOpen && !!whosOpen.find(el => isEqual(el, {depth, directoryName: data.directory}))
 
-
     return (
       (data.directory) ?
         <div
-          className={`SidebarFileTree depth-${depth} flex1 flex-column is-directory ${depth === 1 && "sub-dir"}`}
+          className={`SidebarFileTree depth-${depth} flex1 flex-column is-directory ${depth === 1 ? "sub-dir" : ""} ${isOpen() ? "active" : ""}`}
           onClick={e => {
             e.stopPropagation()
             if (pathname !== data.links[0].path) {
