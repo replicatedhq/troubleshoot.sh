@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import { Utilities } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
@@ -52,6 +52,10 @@ class ExploreSpec extends React.Component {
     import("../../static/specs.json").then(module => {
       this.setState({ specJson: module });
     });
+
+    if (this.props.tag) {
+      this.setState({ tagsToShow: [...this.state.tagsToShow, this.props.tag]})
+    }
   }
 
   searchInSpecs = (spec, searchQuery) => {
@@ -187,7 +191,7 @@ class ExploreSpec extends React.Component {
               </div>}
               {tagsToShow?.length > 0 &&
                 <div className="flex alignItems--center body-copy u-marginTop--20">
-                  <span className="u-fontSize--normal u-color--tuna"> {filteredTagsToShow.length} results </span>
+                  <span className="u-fontSize--normal u-color--tuna"> {filteredTagsToShow?.length} results </span>
                   <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
                   {tagsToShow?.map((tag, i) => (
                     <span className="u-fontSize--normal activeTag u-marginLeft--small flex alignItems--center" key={`${tag}-${i}`}> {tag} <span className="icon gray-x-icon u-cursor--pointer u-marginLeft--small" onClick={() => this.onCloseTagFilter(tag)} /> </span>

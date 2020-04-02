@@ -8,6 +8,7 @@
   "private": false,
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.6.0",
+    "@types/query-string": "^6.3.0",
     "add": "^2.0.6",
     "algoliasearch": "^4.1.0",
     "autoprefixer": "^9.7.4",

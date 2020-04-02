@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "@reach/router";
+import { Link } from "gatsby";
 
 import Tag from "./shared/Tag";
 import CodeSnippet from "./shared/CodeSnippet";
@@ -108,7 +108,10 @@ class TroubleshootSpec extends React.Component {
       <div className="u-width--full u-overflow--auto flex-column flex1">
         <div className="section landing-header">
           <div className={`${!isMobile ? "flex1" : "flex-column"} container flex justifyContent--center`}>
-            <div className="section">
+            <div className={`${!isMobile && "troubleshootSection troubleshootSectionWidth"}`}>
+              <Link to="/explore" className="flex flex1 u-marginBottom--15 u-fontSize--small link">
+                <span className="icon backArrow-icon u-marginRight--small" /> Find more specs
+                </Link>
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
               <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
               <div className="MonacoEditor--wrapper flex u-width--full">
@@ -121,7 +124,7 @@ class TroubleshootSpec extends React.Component {
                   : <span className="u-color--vidaLoca u-marginRight--30">{copySuccess}</span>}
               </div>
             </div>
-            <div className={`section ${!isMobile && "u-marginLeft--50"}`}>
+            <div className={`${!isMobile ? "troubleshootSection u-marginLeft--50 troubleshootSectionWidth" : "u-marginTop--30"}`}>
               <div className="flex alignItems--center">
               <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium"> Contributors </p>
               {currentSpec?.contributors?.map((contributor, i) => (
@@ -164,7 +167,7 @@ class TroubleshootSpec extends React.Component {
                   <div className="RelatedSpecs--wrapper" key={`${spec.id}-${i}`}>
                     <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--10"> {spec.description} </p>
                     <div className="u-marginTop--15 flex flex1">
-                      <Link to={`/spec/${spec.id}`} className="u-fontSize--small link"> View spec </Link>
+                      <Link to={`/spec/${spec.slug}`} className="u-fontSize--small link"> View spec </Link>
                       <div className="flex flex1 justifyContent--flexEnd">
                         <span className="icon tag-icon" />
                         {spec.tags.map((tag, i) => (
