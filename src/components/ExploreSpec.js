@@ -54,8 +54,14 @@ class ExploreSpec extends React.Component {
     });
   }
 
+  searchInSpecs = (spec, searchQuery) => {
+    return spec.title.toUpperCase().includes(searchQuery.toUpperCase()) ||
+      spec.category.toUpperCase().includes(searchQuery.toUpperCase()) ||
+      spec.description.toUpperCase().includes(searchQuery.toUpperCase())
+  }
+
   doesCategoryExistInSearch = (allSpecs, category, searchQuery) => {
-    return !!allSpecs.find(spec => spec.category === category.name && spec.title.toUpperCase().includes(searchQuery.toUpperCase()));
+    return !!allSpecs.find(spec => spec.category === category.name && this.searchInSpecs(spec, searchQuery));
   }
 
   onSearch = (e) => {
@@ -68,7 +74,7 @@ class ExploreSpec extends React.Component {
     const { categoryToShow, showTagsList, tagsToShow, specJson, query } = this.state;
     const { isMobile } = this.props;
 
-    const specsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)) && spec.title.toUpperCase().includes(query.toUpperCase()));
+    const specsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)) && this.searchInSpecs(spec, query));
     const categoriesToShow = specJson?.categories.filter(category => this.doesCategoryExistInSearch(specJson?.specs, category, query));
 
     return (
@@ -138,7 +144,7 @@ class ExploreSpec extends React.Component {
               {categoryToShow === "" && tagsToShow.length === 0 ?
                 categoriesToShow?.length > 0 ?
                   categoriesToShow?.map((category, i) => {
-                    const categorySpecs = specJson?.specs?.filter(spec => (category.name === spec.category) && spec.title.toUpperCase().includes(query.toUpperCase()));
+                    const categorySpecs = specJson?.specs?.filter(spec => (category.name === spec.category) && this.searchInSpecs(spec, query));
                     return (
                       <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} key={`${category.name}-${i}`} />
                     )
