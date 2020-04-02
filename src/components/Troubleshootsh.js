@@ -9,14 +9,35 @@ class Troubleshootsh extends React.Component {
     this.state = {};
   }
 
+  getExampleSpecs = (arr, n) => {
+    let result = new Array(n);
+    let len = arr.length;
+    let  taken = new Array(len);
+    if (n > len)
+      throw new RangeError("getRandom: more elements taken than available");
+    while (n--) {
+      let x = Math.floor(Math.random() * len);
+      result[n] = arr[x in taken ? taken[x] : x];
+      taken[x] = --len in taken ? taken[len] : len;
+    }
+    return result;
+}
+
   scrollToEl = (elId) => {
     const element = document.getElementById(elId);
     element.scrollIntoView({ behavior: "smooth" });
   }
 
+  componentDidMount() {
+    import("../../static/specs.json").then(module => {
+      this.setState({ specJson: module });
+    });
+  }
+
   render() {
     const { isMobile } = this.props;
     const logoStyle = isMobile ? { width: `320px`, height: `31px` } : { width: `489px`, height: `47px` };
+    const specs = this.state.specJson?.specs || [];
 
     return (
       <div className={`u-width--full u-overflow--auto flex-column flex1`}>
@@ -82,24 +103,16 @@ class Troubleshootsh extends React.Component {
                 <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Example preflight specs</p>
                 <div className="contain-1280">
                   <div className="u-flexMobileReflow u-marginTop--50">
-                    <div className="example-spec-block-wrapper flex1">
-                      <div className="example-spec-block">
-                        <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Cluster Information</p>
-                        <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">Validate that the cluster is large enough to run the application.</p>
+                    {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
+                      <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
+                        <Link to={`/spec/${item.slug}`}>
+                          <div className="example-spec-block">
+                            <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">{item.title}</p>
+                            <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">{item.description}</p>
+                          </div>
+                        </Link>
                       </div>
-                    </div>
-                    <div className="example-spec-block-wrapper flex1">
-                      <div className="example-spec-block">
-                        <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Networking</p>
-                        <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">Confirm that the network and firewalls are set up to work with your application.</p>
-                      </div>
-                    </div>
-                    <div className="example-spec-block-wrapper flex1">
-                      <div className="example-spec-block">
-                        <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Cloud &amp; External App</p>
-                        <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">Ensure that an external database is reachable and running the right version.</p>
-                      </div>
-                    </div>
+                    )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
                     <Link to="/explore/" className="Button primary u-marginRight--30">Browse specs</Link>
@@ -149,24 +162,16 @@ class Troubleshootsh extends React.Component {
                 <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Example support specs</p>
                 <div className="contain-1280">
                   <div className="u-flexMobileReflow u-marginTop--50">
-                    <div className="example-spec-block-wrapper flex1">
-                      <div className="example-spec-block">
-                        <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Cluster Information</p>
-                        <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">Collect logs from all pods or specify a single pod to get the logs from.</p>
+                    {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
+                      <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
+                        <Link to={`/spec/${item.slug}`}>
+                          <div className="example-spec-block">
+                            <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">{item.title}</p>
+                            <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">{item.description}</p>
+                          </div>
+                        </Link>
                       </div>
-                    </div>
-                    <div className="example-spec-block-wrapper flex1">
-                      <div className="example-spec-block">
-                        <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Storage</p>
-                        <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">Run commands to diagnose many common database issues.</p>
-                      </div>
-                    </div>
-                    <div className="example-spec-block-wrapper flex1">
-                      <div className="example-spec-block">
-                        <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">Cloud &amp; External App</p>
-                        <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">Run commands to diagnose a  database (managed or not).</p>
-                      </div>
-                    </div>
+                    )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
                     <Link to="/explore/" className="Button primary u-marginRight--30">Browse specs</Link>
