@@ -1,5 +1,6 @@
 import * as React from "react";
 import TroubleshootLifecycle from "./TroubleshootLifecycle";
+import { Link } from "gatsby";
 import "../scss/components/Troubleshootsh.scss";
 
 class Troubleshootsh extends React.Component {
@@ -101,8 +102,7 @@ class Troubleshootsh extends React.Component {
                     </div>
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <button className="Button primary u-marginRight--30">Browse specs</button>
-                    <button className="Button secondary">Write your own</button>
+                    <Link to="/explore/" className="Button primary u-marginRight--30">Browse specs</Link>
                   </div>
                 </div>
               </div>
@@ -169,8 +169,7 @@ class Troubleshootsh extends React.Component {
                     </div>
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <button className="Button primary u-marginRight--30">Browse specs</button>
-                    <button className="Button secondary">Write your own</button>
+                    <Link to="/explore/" className="Button primary u-marginRight--30">Browse specs</Link>
                   </div>
                 </div>
               </div>
