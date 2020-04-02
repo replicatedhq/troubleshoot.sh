@@ -5,7 +5,6 @@ import { Utilities } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
-import Search from "./shared/Search";
 
 
 class ExploreSpec extends React.Component {
@@ -14,7 +13,8 @@ class ExploreSpec extends React.Component {
     showTagsList: false,
     showMobileFilters: false,
     mobileFiltersOpen: false,
-    tagsToShow: []
+    tagsToShow: [],
+    query: ""
   }
 
   showingCategoryDetails = (category, e) => {
@@ -54,12 +54,22 @@ class ExploreSpec extends React.Component {
     });
   }
 
+  doesCategoryExistInSearch = (allSpecs, category, searchQuery) => {
+    return !!allSpecs.find(spec => spec.category === category.name && spec.title.toUpperCase().includes(searchQuery.toUpperCase()));
+  }
+
+  onSearch = (e) => {
+    const query = e.target.value
+    this.setState({ query })
+  }
+
 
   render() {
-    const { categoryToShow, showTagsList, tagsToShow, specJson } = this.state;
+    const { categoryToShow, showTagsList, tagsToShow, specJson, query } = this.state;
     const { isMobile } = this.props;
-    const specsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)));
 
+    const specsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)) && spec.title.toUpperCase().includes(query.toUpperCase()));
+    const categoriesToShow = specJson?.categories.filter(category => this.doesCategoryExistInSearch(specJson?.specs, category, query));
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
@@ -102,7 +112,15 @@ class ExploreSpec extends React.Component {
             <div className={`flex1 flex-column ${!isMobile && "u-marginLeft--50"}`}>
               <div className="ExploreSearch--wrapper u-overflow--scroll">
                 <div className="ExploreSearch--search">
-                  <Search classNames={"SearchBox--wrapper"}/>
+                  <div className="SearchBox--wrapper">
+                    <span className="SearchBox-SearchIcon"></span>
+                    <input className="SearchBox-input"
+                      type="text"
+                      value={query}
+                      onChange={this.onSearch}
+                      placeholder={"What type of spec do you need?"}
+                    />
+                  </div>
                 </div>
               </div>
               {isMobile && <div className="flex flex-column u-marginTop--20">
@@ -118,18 +136,25 @@ class ExploreSpec extends React.Component {
                 </div>
               }
               {categoryToShow === "" && tagsToShow.length === 0 ?
-                specJson?.categories?.map((category, i) => {
-                  const categorySpecs = specJson?.specs?.filter(spec => category.name === spec.category);
-                  return (
-                    <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} key={`${category.name}-${i}`} />
-                  )
-                })
+                categoriesToShow?.length > 0 ?
+                  categoriesToShow?.map((category, i) => {
+                    const categorySpecs = specJson?.specs?.filter(spec => (category.name === spec.category) && spec.title.toUpperCase().includes(query.toUpperCase()));
+                    return (
+                      <ExploreInfo name={category.display} specs={categorySpecs} isMobile={isMobile} infoKey={`${category.name}-${i}`} key={`${category.name}-${i}`} />
+                    )
+                  })
+                  :
+                  <div className="flex alignItems--center body-copy u-marginTop--20">
+                    <span className="u-fontSize--normal u-color--tuna"> {categoriesToShow?.length} results </span>
+                    <span className="u-fontSize--normal u-color--dustyGray u-marginLeft--small"> for </span>
+                    <span className="u-fontSize--normal activeTag u-marginLeft--small"> {query} </span>
+                  </div>
                 :
-                tagsToShow.length > 0 ?
+                tagsToShow.length > 0 || query ?
                   <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
                     {specsToShow?.map((spec, i) => (
                       <Link to={`/spec/${spec.id}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
-                        <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")`}}> </span>
+                        <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")` }}> </span>
                         <div className="flex-column u-marginLeft--12">
                           <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
                           <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>
