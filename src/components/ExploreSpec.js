@@ -53,8 +53,8 @@ class ExploreSpec extends React.Component {
       this.setState({ specJson: module });
     });
 
-    if (this.props.current) {
-      this.setState({ tagsToShow: [...this.state.tagsToShow, this.props.current]})
+    if (this.props.tag) {
+      this.setState({ tagsToShow: [...this.state.tagsToShow, this.props.tag]})
     }
   }
 

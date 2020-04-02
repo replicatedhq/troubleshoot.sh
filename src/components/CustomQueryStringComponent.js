@@ -4,8 +4,8 @@ import withLocation from "../withLocation";
 import ExploreSpec from "./ExploreSpec";
 
 const CustomQueryStringComponent = ({ search, isMobile }) => {
-  const { current } = search
-  return <ExploreSpec current={current} isMobile={isMobile} />
+  const { tag } = search
+  return <ExploreSpec tag={tag} isMobile={isMobile} />
 }
 
 CustomQueryStringComponent.propTypes = {
