@@ -159,7 +159,7 @@ class ExploreSpec extends React.Component {
                 tagsToShow.length > 0 || query ?
                   <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
                     {specsToShow?.map((spec, i) => (
-                      <Link to={`/spec/${spec.id}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
+                      <Link to={`/spec/${spec.slug}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
                         <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")` }}> </span>
                         <div className="flex-column u-marginLeft--12">
                           <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>

@@ -30,7 +30,7 @@ class Spec extends React.Component {
     return (
     <Layout isMobile={isMobile} title={"Troubleshoot Spec"}>
       <FadeTransitionRouter>
-        <TroubleshootSpec path="spec/:id" isMobile={isMobile} />
+        <TroubleshootSpec path="spec/:slug" isMobile={isMobile} />
       </FadeTransitionRouter>
     </Layout>
     )
