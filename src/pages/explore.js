@@ -1,6 +1,7 @@
 import React from "react";
+
 import Layout from "../components/Layout";
-import ExploreSpecComponent from "../components/ExploreSpec";
+import CustomQueryStringComponent from "../components/CustomQueryStringComponent";
 import { Resizer } from "../components/shared/Resize";
 import { BreakpointConfig } from "../services/breakpoints";
 
@@ -32,7 +33,7 @@ class ExploreSpec extends React.Component {
 
     return (
       <Layout isMobile={isMobile} title={"Explore spec"}> 
-        <ExploreSpecComponent isMobile={isMobile} />
+        <CustomQueryStringComponent isMobile={isMobile} />
       </Layout>
     )
   }
