@@ -115,7 +115,7 @@ class Troubleshootsh extends React.Component {
                     )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <Link to="/explore/" className="Button primary u-marginRight--30">Browse specs</Link>
+                    <Link to="/explore/" className="Button primary">Browse specs</Link>
                   </div>
                 </div>
               </div>
@@ -174,7 +174,7 @@ class Troubleshootsh extends React.Component {
                     )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <Link to="/explore/" className="Button primary u-marginRight--30">Browse specs</Link>
+                    <Link to="/explore/" className="Button primary">Browse specs</Link>
                   </div>
                 </div>
               </div>
