@@ -17,13 +17,14 @@ export class NavBar extends React.Component {
 
   componentDidMount() {
     window.addEventListener("scroll", this.handleNavScroll, true);
+    this.handleNavScroll();
   }
 
   handleNavScroll = () => {
     const { isMobile } = this.props;
     const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
     const distanceY = scrollTop,
-    shrinkOn = isMobile ? 100 : 220,
+    showNavOn = isMobile ? 100 : 220,
     troubleshootNav = document.getElementById("troubleshoot-header");
     let isHome;
     if (typeof window !== "undefined") {
@@ -31,7 +32,7 @@ export class NavBar extends React.Component {
       if (!isHome) {
         troubleshootNav && troubleshootNav.classList.add("scrolled");
         return;
-      } else if (distanceY > shrinkOn) {
+      } else if (distanceY > showNavOn) {
         troubleshootNav && troubleshootNav.classList.add("scrolled");
       } else {
         troubleshootNav && troubleshootNav.classList.remove("scrolled");
