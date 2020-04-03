@@ -9,19 +9,19 @@ import "../../scss/components/Sidebar.scss";
 export default class Sidebar extends Component {
 
   DFS = (targetPath, node, prevNodes, depth) => {
-    if ((node.path === targetPath) ||( (node.path + "/") === targetPath)) {
+    if ((node.path === targetPath) || ((node.path + "/") === targetPath)) {
       return prevNodes;
     }
-    
+
     if (node.directory) {
       for (let i = 0; i < node.links.length; ++i) {
-        const result = this.DFS(targetPath, node.links[i], prevNodes.concat({depth, directoryName: node.directory}), depth + 1)
+        const result = this.DFS(targetPath, node.links[i], prevNodes.concat({ depth, directoryName: node.directory }), depth + 1)
         if (result) {
           return result;
         }
       }
     }
-      
+
     return null
   }
 
@@ -50,23 +50,21 @@ export default class Sidebar extends Component {
           const path = this.DFS(this.props.pathname, tree[0].links[0], [], -1);
 
           return (
-            <div className={classNames("flex-column flex1", {
+            <div className={classNames({
               "Sidebar": !this.props.isMobile,
               "u-marginTop--20": this.props.isMobile
             })}>
-              <div className={`${this.props.isMobile ? "u-paddingBottom--20" : "Sidebar-content u-position--relative"}`}>
-                {tree[0].links[0].links.map((link, i) => {
-                  return (
-                    <SidebarFileTree
-                      key={i}
-                      data={link}
-                      path={[]}
-                      whosOpen={path}
-                      pathname={this.props.pathname}
-                    />
-                  )
-                })}
-              </div>
+              {tree[0].links[0].links.map((link, i) => {
+                return (
+                  <SidebarFileTree
+                    key={i}
+                    data={link}
+                    path={[]}
+                    whosOpen={path}
+                    pathname={this.props.pathname}
+                  />
+                )
+              })}
             </div>
           );
         }}
