@@ -134,7 +134,7 @@ class TroubleshootSpec extends React.Component {
               ))}
               </div>
               
-              <div className="flex u-marginTop--30 u-marginBottom--30">
+              <div className="flex u-marginTop--30 u-marginBottom--30 alignItems--center">
                 <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex"> Tags </p>
                 <div className="flex flex1 u-marginLeft--12">
                   {currentSpec?.tags?.map((tag, i) => (<Tag tag={tag} key={`${tag}-${i}`} />))}

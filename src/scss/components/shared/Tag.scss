@@ -6,8 +6,7 @@
   }
 
   .Tag-content {
-    border-radius: 2px;
-    padding: 4px 5px;
+    padding: 3px 5px 4px;
     text-align: center;
     position: relative;
     background-color: #E9F0FF;
@@ -16,20 +15,12 @@
     span {
       font-size: 14px;
       line-height: 14px;
-      font-family: Roboto Mono;
-      font-style: normal;
       font-weight: normal;
     }
   }
 }
 
 @media screen and (min-width: 64em) {
-  .Tag-wrapper .Tag-content {
-    padding: 6px 15px 8px;
-  }
-  .Tag-wrapper .Tag-content span {
-    font-size: 14px;
-  }
   .Tag-wrapper.new-tag .Tag-content span {
     font-size: 12px;
   }
