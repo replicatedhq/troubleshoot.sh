@@ -1,0 +1,74 @@
+.CodeSnippet {
+  &.variant-blue {
+    .CodeSnippet-content {
+      padding: 15px;
+      border: 1px solid #DFDFDF;
+      border-radius: 4px;
+      background-color: #F5F8FC;
+    }
+  }
+
+  // Any new styling for the plain variant can go here
+  // &.variant-plain {}
+}
+
+.CodeSnippet-copy {
+  color: #326DE6;
+  font-size: 12px;
+
+  &:hover {
+    cursor: pointer;
+    text-decoration: underline;
+
+    &.is-copied {
+      text-decoration: none;
+    }
+  }
+}
+
+.CodeSnippet--prism {
+  background: #4A4A4A;
+  padding: 1em;
+  margin: .5em 0;
+  overflow: auto;
+  border-radius: 0.3em;
+  color: #FFFFFF;
+  text-shadow: 0 1px rgba(0, 0, 0, 0.3);
+  font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+  text-align: left;
+  white-space: pre-wrap;
+  font-size: 12px;
+  word-spacing: normal;
+  word-break: normal;
+  word-wrap: normal;
+  line-height: 1.4;
+  tab-size: 4;
+}
+
+/* ≥ 768px */
+@media screen and (min-width: 48em) {
+  .CodeSnippet--prism {
+    width: 300px;
+  }
+}
+
+/* ≥ 960px */
+@media screen and (min-width: 60em) {
+  .CodeSnippet--prism {
+    width: 400px;
+  }
+}
+
+/* ≥ 1024px */
+@media screen and (min-width: 64em) {
+  .CodeSnippet--prism {
+    width: 400px;
+  }
+}
+
+/* ≥ 1280px */
+@media screen and (min-width: 80em) {
+  .CodeSnippet--prism {
+    width: 400px;
+  }
+}

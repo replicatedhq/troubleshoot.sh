@@ -1,12 +1,8 @@
 SHELL := /bin/bash -o pipefail
 
-.PHONY: index-site
-index-site:
-	yarn index-site
-
-.PHONY: index-and-send
-index-and-send:
-	yarn index-and-send
+.PHONY: build-production
+build-production:
+	gatsby build
 
 .PHONY: install
 install:
@@ -14,10 +10,4 @@ install:
 
 .PHONY: dev
 dev:
-	hugo serve --theme hugo-whisper-theme
-
-.PHONY: test
-test:
-	rm -rf public
-	hugo -v -s .
-	htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /troubleshoot.sh/css/ "./public" 
+	gatsby develop -p 1313

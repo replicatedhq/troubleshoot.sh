@@ -1,0 +1,36 @@
+.Tag-wrapper {
+  margin-right: 5px; 
+
+  :last-child {
+    margin-right: 0;
+  }
+
+  .Tag-content {
+    border-radius: 2px;
+    padding: 4px 5px;
+    text-align: center;
+    position: relative;
+    background-color: #E9F0FF;
+    color: #326DE6;
+  
+    span {
+      font-size: 14px;
+      line-height: 14px;
+      font-family: Roboto Mono;
+      font-style: normal;
+      font-weight: normal;
+    }
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .Tag-wrapper .Tag-content {
+    padding: 6px 15px 8px;
+  }
+  .Tag-wrapper .Tag-content span {
+    font-size: 14px;
+  }
+  .Tag-wrapper.new-tag .Tag-content span {
+    font-size: 12px;
+  }
+}
