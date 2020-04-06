@@ -28,6 +28,12 @@ metadata:
   name: sample
 spec:
   collectors:
+    - copy:
+        name: copy-my-file
+        selector:
+          - app=api
+        namespace: myappns
+        containerPath: /my/file/is/here.log
 ```
 
 
@@ -37,6 +43,6 @@ When this collector is executed, it will include the following files in a suppor
 
 ### /copy/\<namespace\>/\<pod-name\>/\<path\>
 
-This will contain the pod output (up to 10000 lines).
+This will contain the output file.
 
 
