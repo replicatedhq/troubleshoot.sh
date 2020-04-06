@@ -15,7 +15,7 @@ The logs collector requires the selector parameter to find the pods. There are a
 
 **namespace**: (Optional) The namespace to search for the pod selector in. If this is not provided, it will default to the current namespace of the context.
 
-**name**: Name will be used to create a folder in the support bundle where logs will be saved.  Name can contain slashes to create a path in the support bundle.
+**name**: (Required) Name will be used to create a folder in the support bundle where logs will be saved.  Name can contain slashes to create a path in the support bundle.
 
 **containerNames**: (Optional) Containers is an array of container names.  If specified, logs for each container in the list will be collected.  This can be omitted for pods with only one container.
 
@@ -50,5 +50,5 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### /logs/\<namespace\>/\<pod-name\>.txt
+### /logs/\<name\>/\<pod-name\>/\<container-name\>.txt
 This will be created for each pod that matches the selector.
