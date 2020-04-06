@@ -741,3 +741,57 @@
 .markdown-body .pl-12 {
   padding-left: 128px!important;
 }
+
+/* Media Queries */
+
+@media screen and (min-width: 15em) {
+  .markdown-body {
+    width: 300px;
+  }
+}
+
+@media screen and (min-width: 20em) {
+  .markdown-body {
+    width: 330px;
+  }
+}
+
+@media screen and (min-width: 25em) {
+  .markdown-body {
+    width: 400px;
+  }
+}
+
+@media screen and (min-width: 30em) {
+  .markdown-body {
+    width: 100%;
+  }
+}
+
+/* ≥ 768px */
+@media screen and (min-width: 48em) {
+  .markdown-body {
+    width: 100%;
+  }
+}
+
+/* ≥ 960px */
+@media screen and (min-width: 60em) {
+  .markdown-body {
+    width: 100%;
+  }
+}
+
+/* ≥ 1024px */
+@media screen and (min-width: 64em) {
+  .markdown-body {
+    width: 100%;
+  }
+}
+
+/* ≥ 1280px */
+@media screen and (min-width: 80em) {
+  .markdown-body {
+    width: 100%;
+  }
+}

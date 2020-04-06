@@ -54,7 +54,10 @@ class ExploreSpec extends React.Component {
     });
 
     if (this.props.tag) {
-      this.setState({ tagsToShow: [...this.state.tagsToShow, this.props.tag]})
+      this.setState({ 
+        tagsToShow: [...this.state.tagsToShow, this.props.tag],
+        showTagsList: true
+      })
     }
   }
 

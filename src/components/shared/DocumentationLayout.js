@@ -81,7 +81,7 @@ class DocumentationLayout extends Component {
         <Navbar isMobile={isMobile} documentation={isMobile && true} />
         <div className={`u-minHeight--full u-width--full flex ${isMobile ? "flex-column" : "flex1 u-marginBottom---40"}`}>
           {isMobile ?
-            <div className="flex1 u-background--alabaster u-marginTop--50 u-padding--row">
+            <div className="flex u-background--alabaster u-marginTop--50 u-padding--row">
               {splitPathname.length === 4 ?
                 <span className="u-fontSize--small u-fontWeight--medium u-lineHeight--normal u-marginTop--small">
                   <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="link">{Utilities.titleize(splitPathname[2])}</Link>
@@ -106,7 +106,7 @@ class DocumentationLayout extends Component {
               />
             }
           </div>
-          <div className={`${isMobile ? "docs-mobile-container" : "u-marginTop--70 u-paddingTop--30 u-paddingLeft--30"} flex flex1`}>
+          <div className={`${isMobile ? "docs-mobile-container flex-column" : "flex u-marginTop--70 u-paddingTop--30 u-paddingLeft--30"} flex1`}>
             {!isMobile ?
               <div className="flex-column flex1 docsWidth u-padding--20">
                 <div className="u-marginBottom--20">
