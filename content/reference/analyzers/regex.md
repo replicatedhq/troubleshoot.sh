@@ -32,7 +32,7 @@ spec:
 
     - textAnalyze:
         checkName: "run-ping"
-        filename: run/ping.txt
+        fileName: run/ping.txt
         data: '{{repl ConfigOption "replica_count" }}'
         regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+\.\d+)% packet loss'
         outcomes:
