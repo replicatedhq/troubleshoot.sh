@@ -35,6 +35,7 @@ metadata:
 spec:
   collectors:
     - run:
+        name: ping
         collectorName: "run-ping"
         image: busybox:1
         namespace: default
@@ -48,7 +49,7 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### /run/\<name\>.txt
+### /\<name\>/\<collectorName\>.log
 
-This will contain the pod output (up to 10000 lines).
+In this example `/ping/run-ping.log` will contain the pod output (up to 10000 lines).
 
