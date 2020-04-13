@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
-import { Utilities } from "../utils/utilities";
+import titleize from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
@@ -99,7 +99,7 @@ class ExploreSpec extends React.Component {
       }
     } else if (filteredCategoriesToShow?.length > 0) {
       return (
-        <ExploreInfo name={Utilities.titleize(categoryToShow.replace(/_/gi, " "))} specs={filteredCategoriesToShow} isMobile={isMobile} />
+        <ExploreInfo name={titleize(categoryToShow.replace(/_/gi, " "))} specs={filteredCategoriesToShow} isMobile={isMobile} />
       )
     } else if (tagsToShow.length > 0) {
       return (

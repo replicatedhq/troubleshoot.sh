@@ -8,6 +8,10 @@ build-production:
 install:
 	npm i
 
+.PHONY: generate-specs
+generate-specs:
+	node generate-specs.js
+
 .PHONY: run
 run:
 	gatsby develop -p 1313
