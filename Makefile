@@ -6,8 +6,8 @@ build-production:
 
 .PHONY: install
 install:
-	yarn --pure-lockfile
+	npm i
 
-.PHONY: dev
-dev:
+.PHONY: run
+run:
 	gatsby develop -p 1313
