@@ -6,7 +6,6 @@ import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
 
-
 class ExploreSpec extends React.Component {
   state = {
     categoryToShow: "",
