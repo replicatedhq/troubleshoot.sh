@@ -1,8 +1,13 @@
 import * as React from "react";
 import { Link } from "gatsby";
-
+import AceEditor from "react-ace";
 import Tag from "./shared/Tag";
 import CodeSnippet from "./shared/CodeSnippet";
+import debounce from "lodash/debounce";
+
+import "ace-builds/src-noconflict/ext-searchbox";
+import "ace-builds/src-noconflict/mode-yaml";
+import "ace-builds/src-noconflict/theme-chrome";
 
 const yaml = `
 apiVersion: kots.io/v1beta1
@@ -20,11 +25,18 @@ spec:
 
 
 class TroubleshootSpec extends React.Component {
-  state = {
-    showCodeSnippet: true,
-    copyingSpecYaml: false,
-    copySuccess: "",
-    isActive: "preflight"
+  constructor() {
+    super();
+    this.state = {
+      showCodeSnippet: true,
+      copyingSpecYaml: false,
+      specValue: yaml,
+      lintExpressionMarkers: [],
+      copySuccess: "",
+      isActive: "preflight"
+    }
+    this.lintKotsSpec = debounce(this.lintKotsSpec, 250);
+    this.sendToServer = debounce(this.sendToServer, 500);
   }
 
 
@@ -33,7 +45,6 @@ class TroubleshootSpec extends React.Component {
       window.monacoEditor = monaco.editor.create(document.getElementById("monaco"), {
         value: yaml,
         language: "yaml",
-        readOnly: true,
         minimap: {
           enabled: false
         },
@@ -47,7 +58,6 @@ class TroubleshootSpec extends React.Component {
     import("../../static/specs.json").then(module => {
       this.setState({ specJson: module });
     });
-    this.renderMonacoEditor();
   }
 
   componentDidUpdate(lastProps, lastState) {
@@ -96,9 +106,40 @@ class TroubleshootSpec extends React.Component {
     }
   }
 
+  sendToServer = (spec) => {
+    const specObj = {
+      spec
+    };
+    fetch(`https://analyzer-spec.free.beeceptor.com`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(specObj)
+    })
+      .then(res => console.log(res))
+      .catch(err => {
+        console.log(err);
+      })
+  }
+
+  lintKotsSpec = (spec) => {
+    // TODO: implement linting for specs
+    const lintingPassed = true;
+    if (lintingPassed) {
+      this.sendToServer(spec);
+    }
+  }
+
+  onSpecChange = (value) => {
+    this.setState({ specValue: value });
+    this.lintKotsSpec(value);
+  }
+
   render() {
     const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson } = this.state;
     const { isMobile } = this.props;
+    const { specValue, lintExpressionMarkers } = this.state;
 
     const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
     const relatedSpecs = specJson?.specs?.filter(spec => currentSpec?.tags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
@@ -115,7 +156,26 @@ class TroubleshootSpec extends React.Component {
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
               <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
               <div className="MonacoEditor--wrapper flex u-width--full">
-                <div className="flex u-width--full u-overflow--hidden" id="monaco">
+                <div className="flex u-width--full u-overflow--hidden">
+                  <AceEditor
+                    ref={el => (this.aceEditor = el)}
+                    mode="yaml"
+                    theme="chrome"
+                    className=""
+                    markers={lintExpressionMarkers}
+                    onChange={(specValue) => this.onSpecChange(specValue)}
+                    value={specValue}
+                    height="100vh"
+                    width="100%"
+                    editorProps={{
+                      $blockScrolling: Infinity,
+                      useSoftTabs: true,
+                      tabSize: 2,
+                    }}
+                    setOptions={{
+                      scrollPastEnd: true
+                    }}
+                  />
                 </div>
               </div>
               <div className="u-marginTop--30">
