@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import { Resizer } from "./Resize";
 import { BreakpointConfig } from "../../services/breakpoints";
 
-import { Utilities } from "../../utils/utilities";
+import titleize from "../utils/utilities";
 import Sidebar from "./Sidebar";
 import MobileSidebar from "./MobileSidebar";
 import Navbar from "./NavBar";
@@ -84,14 +84,14 @@ class DocumentationLayout extends Component {
             <div className="flex u-background--alabaster u-marginTop--50 u-padding--row">
               {splitPathname.length === 4 ?
                 <span className="u-fontSize--small u-fontWeight--medium u-lineHeight--normal u-marginTop--small">
-                  <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="link">{Utilities.titleize(splitPathname[2])}</Link>
-                  <span className="u-color--dustyGray"> / </span> <span className="u-fontWeight--bold u-color--dustyGray"> {splitPathname[3] === "" ? "Overview" : Utilities.titleize(splitPathname[3])} </span>
+                  <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="link">{titleize(splitPathname[2])}</Link>
+                  <span className="u-color--dustyGray"> / </span> <span className="u-fontWeight--bold u-color--dustyGray"> {splitPathname[3] === "" ? "Overview" : titleize(splitPathname[3])} </span>
                 </span>
                 :
                 <span className="u-fontSize--small u-fontWeight--medium u-lineHeight--normal u-marginTop--small">
-                  <Link to={`/${splitPathname[1]}/${splitPathname[2]}/`} className="link"> {Utilities.titleize(splitPathname[2])} </Link>
-                  <Link to={`/${splitPathname[1]}/${splitPathname[2]}/${splitPathname[3]}/overview`} className="link"> / {Utilities.titleize(splitPathname[3])} </Link>
-                  <span className="u-color--dustyGray"> / </span> <span className="u-fontWeight--bold u-color--dustyGray">{Utilities.titleize(splitPathname[4])} </span>
+                  <Link to={`/${splitPathname[1]}/${splitPathname[2]}/`} className="link"> {titleize(splitPathname[2])} </Link>
+                  <Link to={`/${splitPathname[1]}/${splitPathname[2]}/${splitPathname[3]}/overview`} className="link"> / {titleize(splitPathname[3])} </Link>
+                  <span className="u-color--dustyGray"> / </span> <span className="u-fontWeight--bold u-color--dustyGray">{titleize(splitPathname[4])} </span>
                 </span>
               }
             </div> : null}
@@ -112,14 +112,14 @@ class DocumentationLayout extends Component {
                 <div className="u-marginBottom--20">
                   {splitPathname.length === 4 ?
                     <span className="u-fontSize--small u-fontWeight--medium u-lineHeight--normal u-marginTop--small">
-                      <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="link">{Utilities.titleize(splitPathname[2])}</Link>
-                      <span className="u-color--dustyGray"> / </span> <span className="u-color--dustyGray u-fontWeight--bold"> {splitPathname[3] === "" ? "Overview" : Utilities.titleize(splitPathname[3])} </span>
+                      <Link to={splitPathname[3] === "" ? this.props.location.pathname : `/${splitPathname[1]}/${splitPathname[2]}/`} className="link">{titleize(splitPathname[2])}</Link>
+                      <span className="u-color--dustyGray"> / </span> <span className="u-color--dustyGray u-fontWeight--bold"> {splitPathname[3] === "" ? "Overview" : titleize(splitPathname[3])} </span>
                     </span>
                     :
                     <span className="u-fontSize--small u-fontWeight--medium u-lineHeight--normal u-marginTop--small">
-                      <Link to={`/${splitPathname[1]}/${splitPathname[2]}/`} className="link"> {Utilities.titleize(splitPathname[2])} </Link>
-                      <Link to={`/${splitPathname[1]}/${splitPathname[2]}/${splitPathname[3]}/overview`} className="link"> / {Utilities.titleize(splitPathname[3])} </Link>
-                      <span className="u-color--dustyGray"> / </span> <span className="u-color--dustyGray u-fontWeight--bold"> {Utilities.titleize(splitPathname[4])} </span>
+                      <Link to={`/${splitPathname[1]}/${splitPathname[2]}/`} className="link"> {titleize(splitPathname[2])} </Link>
+                      <Link to={`/${splitPathname[1]}/${splitPathname[2]}/${splitPathname[3]}/overview`} className="link"> / {titleize(splitPathname[3])} </Link>
+                      <span className="u-color--dustyGray"> / </span> <span className="u-color--dustyGray u-fontWeight--bold"> {titleize(splitPathname[4])} </span>
                     </span>
                   }
                 </div>

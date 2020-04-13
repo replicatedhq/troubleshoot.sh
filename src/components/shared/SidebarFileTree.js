@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Link, navigate } from "gatsby";
 import isEqual from "lodash/isEqual"
 
-import { Utilities } from "../../utils/utilities";
+import titleize from "../utils/utilities";
 import "../../scss/components/shared/SidebarFileTree.scss";
 
 export default class SidebarFileTree extends Component {
@@ -26,7 +26,7 @@ export default class SidebarFileTree extends Component {
             }
         }}
         >
-          {Utilities.titleize(data.directory)}
+          {titleize(data.directory)}
 
           {isOpen() && (data.links.map((link, idx) =>
             (<SidebarFileTree
