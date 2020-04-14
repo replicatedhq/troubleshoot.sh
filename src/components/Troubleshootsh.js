@@ -29,7 +29,7 @@ class Troubleshootsh extends React.Component {
   }
 
   componentDidMount() {
-    import("../../static/specs.json").then(module => {
+    import("../../static/specs-gen.json").then(module => {
       this.setState({ specJson: module });
     });
   }
