@@ -1,0 +1,19 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: load-balancer-support
+  annotations: 
+    title: "Kubernetes"
+    description: "Can support a Load Balancer"
+    category: "networking"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags:
+      - kubernetes
+      - load-balancer
+      - networking
+    contributors:
+      - name: "Marc Campbell"
+        avatarUri: "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+spec:
+  collectors:
+  analyzers:
