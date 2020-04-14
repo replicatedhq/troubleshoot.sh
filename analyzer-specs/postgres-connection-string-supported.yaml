@@ -1,10 +1,10 @@
 apiVersion: troubleshoot.replicated.com/v1beta1
 kind: Preflight
 metadata:
-  name: postgres-connection-string-valid
+  name: postgres-connection-string-supported
   annotations: 
     title: "Postgres connection string"
-    description: "Validate that the connection string is valid"
+    description: "Validate that the Postgres version is supported"
     category: "database"
     iconUri: "/category-icons/postgres.svg"
     tags:

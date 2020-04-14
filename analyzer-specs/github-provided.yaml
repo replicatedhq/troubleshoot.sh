@@ -1,0 +1,18 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: github-provided
+  annotations: 
+    title: "GitHub"
+    description: "Verify that a GitHub app / key / secret are valid"
+    category: "external_app_dependencies"
+    iconUri: "/category-icons/github.svg"
+    tags:
+      - github
+      - external-apps
+    contributors:
+      - name: "Marc Campbell"
+        avatarUri: "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+spec:
+  collectors:
+  analyzers:

@@ -1,0 +1,17 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: storage-class-exists
+  annotations: 
+    title: "Storage"
+    description: "Validate that a storage class exists"
+    category: "storage"
+    iconUri: "/category-icons/storage.svg"
+    tags:
+      - storage
+    contributors:
+      - name: "Marc Campbell"
+        avatarUri: "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+spec:
+  collectors:
+  analyzers:
