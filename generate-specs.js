@@ -60,14 +60,29 @@ fs.readdir(specDir, (err, files) => {
     const slug = doc.metadata.name;
     validateSlug(slug, file);
     
+    const contributorsArr = []
+    if (doc.metadata.annotations.contributors) {
+      doc.metadata.annotations.contributors.map(c => {
+        contributorsArr.push({
+          name: c.name,
+          avatarUri: c.avatarUri || "/default-contributor@2x.jpg"
+        })
+      })
+    } else {
+      contributorsArr.push({
+        name: "",
+        avatarUri: "/default-contributor@2x.jpg"
+      })
+    }
+
     // Build the spec object
     let specObj = new Object();
     specObj.slug = slug;
     specObj.category = doc.metadata.annotations.category;
     specObj.title = doc.metadata.annotations.title;
     specObj.description = doc.metadata.annotations.description;
-    specObj.iconUri = doc.metadata.annotations.iconUri;
-    specObj.contributors = doc.metadata.annotations.contributors;
+    specObj.iconUri = doc.metadata.annotations.iconUri || "/category-icons/default-category.svg";
+    specObj.contributors = contributorsArr;
     specObj.tags = doc.metadata.annotations.tags;
 
     // Remove annotations before setting the yaml spec
