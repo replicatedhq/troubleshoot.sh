@@ -241,7 +241,7 @@ class TroubleshootSpec extends React.Component {
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section landing-header">
+        <div className="section">
           <div className={`${!isMobile ? "flex1" : "flex-column"} container flex justifyContent--center`}>
             <div className={`${!isMobile && "troubleshootSection troubleshootSectionWidth"}`}>
               <Link to="/explore" className="flex flex1 u-marginBottom--15 u-fontSize--small link">
