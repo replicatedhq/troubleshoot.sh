@@ -124,6 +124,7 @@ class TroubleshootSpec extends React.Component {
 
     this.sendToServer("preflight", this.state.preflightYAML);
     this.sendToServer("support-bundle", this.state.supportBundleYAML);
+    this.onTryItOut("preflight");
   }
 
   copySpecYamlToClipboard = () => {
@@ -249,7 +250,7 @@ class TroubleshootSpec extends React.Component {
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
               <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
 
-              <div className="u-marginTop--30 flex">
+              <div className="u-marginTop--10 u-marginBottom--10 flex">
                 <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight</button>
                 <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "support-bundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("support-bundle")}><span className="icon support-small"></span>Support</button>
               </div>
