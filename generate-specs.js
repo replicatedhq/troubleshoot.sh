@@ -3,6 +3,7 @@ const fs = require("fs");
 const path = require("path");
 const uniqWith = require("lodash/uniqWith");
 const isEqual = require("lodash/isEqual");
+const sortBy = require("lodash/sortBy");
 const specDir = "./analyzer-specs";
 
 const tags = [];
@@ -54,12 +55,10 @@ fs.readdir(specDir, (err, files) => {
     let categoryObj = new Object();
     categoryObj.name = doc.metadata.annotations.category;
     const displayName = doc.metadata.annotations.category.charAt(0).toUpperCase() + doc.metadata.annotations.category.slice(1);
-    categoryObj.display = displayName.replace("_", " ");
+    categoryObj.display = displayName.replace(/_/gi, " ");
     categories.push(categoryObj);
-    
-    const slug = doc.metadata.name;
-    validateSlug(slug, file);
-    
+        
+    // Build and add a contributor object to the spec.contributors array
     const contributorsArr = []
     if (doc.metadata.annotations.contributors) {
       doc.metadata.annotations.contributors.map(c => {
@@ -74,6 +73,9 @@ fs.readdir(specDir, (err, files) => {
         avatarUri: "/default-contributor@2x.jpg"
       })
     }
+
+    const slug = doc.metadata.name;
+    validateSlug(slug, file);
 
     // Build the spec object
     let specObj = new Object();
@@ -97,8 +99,8 @@ fs.readdir(specDir, (err, files) => {
   // Build JSON file with filtered tags and categories
   const jsonFile = {
     _comment: `This file is generated! Last generated on ${new Date()}. To regenerate run 'make generate-specs'`,
-    tags: [...new Set(tags)],
-    categories: uniqWith(categories, isEqual),
+    tags: [...new Set(tags)].sort(),
+    categories: uniqWith(sortBy(categories, c => c.name), isEqual),
     specs
   };
 
@@ -112,6 +114,3 @@ fs.readdir(specDir, (err, files) => {
   });
   
 });
-
-
-
