@@ -9,8 +9,8 @@ import "ace-builds/src-noconflict/ext-searchbox";
 import "ace-builds/src-noconflict/mode-yaml";
 import "ace-builds/src-noconflict/theme-chrome";
 
-// const previewServer = `https://troubleshoot-preview.fly.dev`;
-const previewServer = `http://localhost:3000`;
+const previewServer = `https://troubleshoot-preview.fly.dev`;
+// const previewServer = `http://localhost:3000`;
 
 const supportBundleYAML = `
 apiVersion: troubleshoot.replicated.com/v1beta1
