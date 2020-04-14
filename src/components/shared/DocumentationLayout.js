@@ -4,7 +4,7 @@ import { Link } from "@reach/router";
 import { Resizer } from "./Resize";
 import { BreakpointConfig } from "../../services/breakpoints";
 
-import titleize from "../utils/utilities";
+import titleize from "../../utils/utilities";
 import Sidebar from "./Sidebar";
 import MobileSidebar from "./MobileSidebar";
 import Navbar from "./NavBar";
