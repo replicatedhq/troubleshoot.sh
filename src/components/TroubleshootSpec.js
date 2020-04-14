@@ -9,20 +9,75 @@ import "ace-builds/src-noconflict/ext-searchbox";
 import "ace-builds/src-noconflict/mode-yaml";
 import "ace-builds/src-noconflict/theme-chrome";
 
-const yaml = `
-apiVersion: kots.io/v1beta1
-kind: Config
+// const previewServer = `https://troubleshoot-preview.fly.dev`;
+const previewServer = `http://localhost:3000`;
+
+const supportBundleYAML = `
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
 metadata:
-  name: sentry-enterprise
+  name: collector-sample
+spec:
+  collectors: []
+`;
+
+const preflightYAML = `
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: example-preflight-checks
 spec:
   collectors:
-    - mysql:
-        ...
-  analyzers
-    - mysql
-        ...
-`
-
+    - secret:
+        name: myapp-postgres
+        namespace: default
+        key: uri
+        includeValue: false
+  analyzers:
+    - clusterVersion:
+        outcomes:
+          - fail:
+              when: "< 1.13.0"
+              message: The application requires at Kubernetes 1.13.0 or later, and recommends 1.15.0.
+              uri: https://www.kubernetes.io
+          - warn:
+              when: "< 1.15.0"
+              message: Your cluster meets the minimum version of Kubernetes, but we recommend you update to 1.15.0 or later.
+              uri: https://kubernetes.io
+          - pass:
+              when: ">= 1.15.0"
+              message: Your cluster meets the recommended and required versions of Kubernetes.
+    - customResourceDefinition:
+        customResourceDefinitionName: constrainttemplates.templates.gatekeeper.sh
+        checkName: Gatekeeper policy runtime
+        outcomes:
+          - fail:
+              message: Gatekeeper is required for the application, but not found in the cluster.
+              uri: https://enterprise.support.io/installing/gatekeeper
+          - pass:
+              message: Found a supported version of Gatekeeper installed and running in the cluster.
+    - imagePullSecret:
+        checkName: Registry credentials for Quay.io
+        registryName: quay.io
+        outcomes:
+          - fail:
+              message: |
+                Cannot pull from quay.io. An image pull secret should be deployed to the cluster that has credentials to pull the images. To obtain this secret, please contact your support rep.
+              uri: https://enterprise.support.io/installing/registry-credentials
+          - pass:
+              message: Found credentials to pull from quay.io
+    - secret:
+        checkName: Postgres connection string
+        secretName: myapp-postgres
+        namespace: default
+        key: uri
+        outcomes:
+          - fail:
+              message: A secret named "myapp-postgres" must be deployed with a "uri" key
+              uri: https://enterprise.support.io/installing/postgres
+          - pass:
+              message: Found a valid postgres connection string
+`;
 
 class TroubleshootSpec extends React.Component {
   constructor() {
@@ -30,17 +85,25 @@ class TroubleshootSpec extends React.Component {
     this.state = {
       showCodeSnippet: true,
       copyingSpecYaml: false,
-      specValue: yaml,
+
+      preflightYAML: preflightYAML,
+      supportBundleYAML: supportBundleYAML,
+
+      preflightPreviewId: null,
+      supportBundlePreviewId: null,
+
       lintExpressionMarkers: [],
+
       copySuccess: "",
+
       isActive: "preflight"
     }
-    this.lintKotsSpec = debounce(this.lintKotsSpec, 250);
-    this.sendToServer = debounce(this.sendToServer, 500);
+    this.lintKotsSpec = debounce(this.lintKotsSpec, 200);
   }
 
-
   renderMonacoEditor = () => {
+    const yaml = this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML;
+
     import("monaco-editor").then(monaco => {
       window.monacoEditor = monaco.editor.create(document.getElementById("monaco"), {
         value: yaml,
@@ -58,22 +121,14 @@ class TroubleshootSpec extends React.Component {
     import("../../static/specs.json").then(module => {
       this.setState({ specJson: module });
     });
-  }
 
-  componentDidUpdate(lastProps, lastState) {
-    if (this.state.specJson !== lastState.specJson && this.state.specJson) {
-      const currentSpec = this.state.specJson?.specs?.find(spec => spec.slug === this.props.slug);
-      if (currentSpec) {
-        this.setState({
-          currentCommand: `kubectl preflight https://preflight.com/${currentSpec?.id}`
-        })
-      }
-    }
+    this.sendToServer("preflight", this.state.preflightYAML);
+    this.sendToServer("support-bundle", this.state.supportBundleYAML);
   }
 
   copySpecYamlToClipboard = () => {
     const textField = document.createElement("textarea");
-    textField.innerText = yaml;
+    textField.innerText = this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML;
     document.body.appendChild(textField);
     textField.select();
     document.execCommand("copy");
@@ -88,9 +143,8 @@ class TroubleshootSpec extends React.Component {
   }
 
   onTryItOut = (type) => {
-    const currentSpec = this.state.specJson?.specs?.find(spec => spec.slug === this.props.slug);
-    const preflightCommand = `kubectl preflight https://preflight.com/${currentSpec?.id}`;
-    const bundleCommand = `kubectl supportbundle https://supportbundle.com/${currentSpec?.id}`;
+    const preflightCommand = `kubectl preflight ${previewServer}/${this.state.preflightPreviewId}`;
+    const bundleCommand = `kubectl supportbundle ${previewServer}/${this.state.supportBundlePreviewId}`;
     this.setState({ showCodeSnippet: true });
 
     if (type === "preflight") {
@@ -98,7 +152,7 @@ class TroubleshootSpec extends React.Component {
         currentCommand: preflightCommand,
         isActive: type
       });
-    } else {
+    } else if (type === "support-bundle") {
       this.setState({
         currentCommand: bundleCommand,
         isActive: type
@@ -106,44 +160,83 @@ class TroubleshootSpec extends React.Component {
     }
   }
 
-  sendToServer = (spec) => {
-    const specObj = {
-      spec
-    };
-    fetch(`https://analyzer-spec.free.beeceptor.com`, {
-      method: "POST",
+  sendToServer = (specType, spec) => {
+    let uri;
+    let method;
+
+    if (specType === "preflight") {
+      if (this.state.preflightPreviewId) {
+        method = "PUT";
+        uri = `${previewServer}/v1/preflight/${this.state.preflightPreviewId}`;
+      } else {
+        method = "POST";
+        uri = `${previewServer}/v1/preflight`;
+      }
+    } else if (specType === "support-bundle") {
+      if (this.state.supportBundlePreviewId) {
+        method = "PUT";
+        uri = `${previewServer}/v1/support-bundle/${this.state.supportBundlePreviewId}`;
+      } else {
+        method = "POST";
+        uri = `${previewServer}/v1/support-bundle`;
+      }
+    }
+
+    fetch(uri, {
+      method,
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(specObj)
+      body: JSON.stringify({spec})
     })
-      .then(res => console.log(res))
+      .then(async (res) => {
+        if (method === "POST") {
+          const result = await res.json();
+          if (specType === "preflight") {
+            this.setState({
+              preflightPreviewId: result.id,
+            });
+          } else if (specType === "support-bundle") {
+            this.setState({
+              supportBundlePreviewId: result.id,
+            });
+          }
+        }
+      })
       .catch(err => {
         console.log(err);
       })
   }
 
-  lintKotsSpec = (spec) => {
+  lintKotsSpec = (specType, spec) => {
     // TODO: implement linting for specs
     const lintingPassed = true;
     if (lintingPassed) {
-      this.sendToServer(spec);
+      this.sendToServer(specType, spec);
     }
   }
 
   onSpecChange = (value) => {
-    this.setState({ specValue: value });
-    this.lintKotsSpec(value);
+    const specType = this.state.isActive;
+    if (specType === "preflight") {
+      this.setState({
+        preflightYAML: value,
+      });
+    } else if (specType === "support-bundle") {
+      this.setState({
+        supportBundleYAML: value,
+      });
+    }
+
+    this.lintKotsSpec(specType, value);
   }
 
   render() {
-    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson } = this.state;
+    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson, lintExpressionMarkers } = this.state;
     const { isMobile } = this.props;
-    const { specValue, lintExpressionMarkers } = this.state;
 
     const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
-    const relatedSpecs = specJson?.specs?.filter(spec => currentSpec?.tags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
-
+    const relatedSpecs = specJson?.specs?.filter(spec => currentSpec?.tags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec)
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
@@ -155,6 +248,12 @@ class TroubleshootSpec extends React.Component {
                 </Link>
               <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
               <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
+
+              <div className="u-marginTop--30 flex">
+                <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight</button>
+                <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "support-bundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("support-bundle")}><span className="icon support-small"></span>Support</button>
+              </div>
+
               <div className="MonacoEditor--wrapper flex u-width--full">
                 <div className="flex u-width--full u-overflow--hidden">
                   <AceEditor
@@ -164,7 +263,7 @@ class TroubleshootSpec extends React.Component {
                     className=""
                     markers={lintExpressionMarkers}
                     onChange={(specValue) => this.onSpecChange(specValue)}
-                    value={specValue}
+                    value={this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML}
                     height="100vh"
                     width="100%"
                     editorProps={{
@@ -188,12 +287,12 @@ class TroubleshootSpec extends React.Component {
               <div className="flex alignItems--center">
               <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium"> Contributors </p>
               {currentSpec?.contributors?.map((contributor, i) => (
-                <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}> 
+                <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}>
                   <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
                 </div>
               ))}
               </div>
-              
+
               <div className="flex u-marginTop--30 u-marginBottom--30 alignItems--center">
                 <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex"> Tags </p>
                 <div className="flex flex1 u-marginLeft--12">
@@ -203,17 +302,12 @@ class TroubleshootSpec extends React.Component {
 
               <div className="u-borderTop--gray u-marginBottom--30">
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Try it out </p>
-                <p className="u-fontSize--large u-color--dustyGray u-marginTop--small body-copy"> Find select the type of command you want to try</p>
-                <div className="u-marginTop--30 flex">
-                  <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight</button>
-                  <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "supportbundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("supportbundle")}><span className="icon support-small"></span>Support</button>
-                </div>
                 {showCodeSnippet &&
                   <div className="flex flex-column u-marginTop--normal">
                     <CodeSnippet
                       canCopy={true}
                       onCopyText={<span className="u-color--vidaLoca">Copied!</span>}
-                      learnMore={<Link to={isActive === "supportbundle" ? `/docs/support-bundle/` : `/docs/preflight/`} className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "supportbundle" ? "Support Bundle" : "Preflight"}`}</Link>}
+                      learnMore={<Link to={isActive === "support-bundle" ? `/docs/support-bundle/` : `/docs/preflight/`} className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "support-bundle" ? "Support Bundle" : "Preflight"}`}</Link>}
                     >
                       {currentCommand ? currentCommand : ""}
                     </CodeSnippet>
