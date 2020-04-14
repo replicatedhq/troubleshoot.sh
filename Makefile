@@ -14,4 +14,5 @@ generate-specs:
 
 .PHONY: run
 run:
+	make generate-specs
 	gatsby develop -p 1313
