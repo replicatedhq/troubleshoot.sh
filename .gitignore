@@ -16,3 +16,4 @@ logs
 *.log
 
 hugo
+deps/
