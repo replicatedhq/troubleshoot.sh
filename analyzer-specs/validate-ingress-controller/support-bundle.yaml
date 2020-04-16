@@ -1,0 +1,19 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
+metadata:
+  name: validate-ingress-controller
+  annotations: 
+    title: "Kubernetes"
+    description: "Validate there is an ingress controller"
+    category: "networking"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags:
+      - kubernetes
+      - ingress
+      - networking
+    contributors:
+      - name: "Marc Campbell"
+        avatarUri: "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+spec:
+  collectors:
+  analyzers:
