@@ -13,7 +13,7 @@
 </html>
 {{else}}
 <h1 class="title">{{ .Title }}</h1>
-<div class="content">
+<div class="content {{if .Site.Params.enable_anchor_link}}{{ "anchor-link-enabled" }}{{ end }}">
   {{ .Content }}
 </div>
 {{ end }}

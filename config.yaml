@@ -25,11 +25,11 @@ Params:
   author: "Troubleshoot.sh"
   copyright: "Replicated, Inc"
   homepage_intro: "Deliver More Reliable and Predictable Kubernetes Applications"
-
   # matomo:
   #   host: "localhost:4000"
   #   site: "2"
 
+  enable_anchor_link: true
   favicon: ""
   logo:
     preflight: "/images/preflight.svg"
