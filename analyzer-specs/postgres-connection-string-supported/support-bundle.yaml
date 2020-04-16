@@ -1,0 +1,19 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
+metadata:
+  name: postgres-connection-string-supported
+  annotations: 
+    title: "Postgres connection string"
+    description: "Validate that the Postgres version is supported"
+    category: "database"
+    iconUri: "/category-icons/postgres.svg"
+    tags:
+      - database
+      - connection
+      - postgres
+    contributors:
+      - name: "Marc Campbell"
+        avatarUri: "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+spec:
+  collectors:
+  analyzers:

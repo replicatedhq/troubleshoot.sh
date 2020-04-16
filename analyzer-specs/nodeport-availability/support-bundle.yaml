@@ -1,0 +1,18 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
+metadata:
+  name: nodeport-availability
+  annotations: 
+    title: "Kubernetes"
+    description: "NodePort is available"
+    category: "networking"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags:
+      - kubernetes
+      - networking
+    contributors:
+      - name: "Marc Campbell"
+        avatarUri: "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+spec:
+  collectors:
+  analyzers:
