@@ -11,73 +11,6 @@ import "ace-builds/src-noconflict/theme-chrome";
 
 const previewServer = `https://troubleshoot-preview.fly.dev`;
 
-const supportBundleYAML = `
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
-metadata:
-  name: collector-sample
-spec:
-  collectors: []
-`;
-
-const preflightYAML = `
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Preflight
-metadata:
-  name: example-preflight-checks
-spec:
-  collectors:
-    - secret:
-        name: myapp-postgres
-        namespace: default
-        key: uri
-        includeValue: false
-  analyzers:
-    - clusterVersion:
-        outcomes:
-          - fail:
-              when: "< 1.13.0"
-              message: The application requires at Kubernetes 1.13.0 or later, and recommends 1.15.0.
-              uri: https://www.kubernetes.io
-          - warn:
-              when: "< 1.15.0"
-              message: Your cluster meets the minimum version of Kubernetes, but we recommend you update to 1.15.0 or later.
-              uri: https://kubernetes.io
-          - pass:
-              when: ">= 1.15.0"
-              message: Your cluster meets the recommended and required versions of Kubernetes.
-    - customResourceDefinition:
-        customResourceDefinitionName: constrainttemplates.templates.gatekeeper.sh
-        checkName: Gatekeeper policy runtime
-        outcomes:
-          - fail:
-              message: Gatekeeper is required for the application, but not found in the cluster.
-              uri: https://enterprise.support.io/installing/gatekeeper
-          - pass:
-              message: Found a supported version of Gatekeeper installed and running in the cluster.
-    - imagePullSecret:
-        checkName: Registry credentials for Quay.io
-        registryName: quay.io
-        outcomes:
-          - fail:
-              message: |
-                Cannot pull from quay.io. An image pull secret should be deployed to the cluster that has credentials to pull the images. To obtain this secret, please contact your support rep.
-              uri: https://enterprise.support.io/installing/registry-credentials
-          - pass:
-              message: Found credentials to pull from quay.io
-    - secret:
-        checkName: Postgres connection string
-        secretName: myapp-postgres
-        namespace: default
-        key: uri
-        outcomes:
-          - fail:
-              message: A secret named "myapp-postgres" must be deployed with a "uri" key
-              uri: https://enterprise.support.io/installing/postgres
-          - pass:
-              message: Found a valid postgres connection string
-`;
-
 class TroubleshootSpec extends React.Component {
   constructor() {
     super();
@@ -85,8 +18,8 @@ class TroubleshootSpec extends React.Component {
       showCodeSnippet: true,
       copyingSpecYaml: false,
 
-      preflightYAML: preflightYAML,
-      supportBundleYAML: supportBundleYAML,
+      preflightYAML: "",
+      supportBundleYAML: "",
 
       preflightPreviewId: null,
       supportBundlePreviewId: null,
@@ -118,11 +51,16 @@ class TroubleshootSpec extends React.Component {
 
   componentDidMount() {
     import("../../static/specs-gen.json").then(module => {
-      this.setState({ specJson: module });
+      const currentSpec = module?.specs?.find(spec => spec.slug === this.props.slug);
+      this.setState({ 
+        specJson: module,
+        preflightYAML: currentSpec.preflightSpecYaml,
+        supportBundleYAML: currentSpec.supportSpecYaml
+      });
+      this.sendToServer("preflight", currentSpec.preflightSpecYaml);
+      this.sendToServer("support-bundle", currentSpec.supportSpecYaml);
     });
 
-    this.sendToServer("preflight", this.state.preflightYAML);
-    this.sendToServer("support-bundle", this.state.supportBundleYAML);
     this.onTryItOut("preflight");
   }
 
