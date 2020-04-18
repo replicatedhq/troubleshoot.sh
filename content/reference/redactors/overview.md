@@ -1,7 +1,7 @@
 ---
 date: 2019-10-23
-linktitle: "Collectors Overview"
-title: "Collectors Overview"
+linktitle: "Redactors Overview"
+title: "Redactors Overview"
 weight: 20010
 ---
 
