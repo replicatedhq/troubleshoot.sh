@@ -24,6 +24,10 @@ By default, Replicated Troubleshoot contains a large number of commonly used, be
 
 Custom Collectors are specific items that are defined in a YAML document that is provided as an input to the support bundle generation process. These can change or supplement the built-in collectors.
 
+### Redactors
+
+Redactors remove sensitive information from support bundles and can be added by the app vendor or the end user.
+
 ### Analyzers
 
 When a support bundle is uploaded to the [Replicated Vendor Portal](https://vendor.replicated.com), it will be extracted and automatically analyzed. The goal of this process is to find insights that are known issues or hints of what might be a problem. Analyzers are designed to program the debugging and log reading skills into an application that is quick and easy to run for any support bundle collected.
