@@ -26,7 +26,7 @@ Custom Collectors are specific items that are defined in a YAML document that is
 
 ### Redactors
 
-Redactors remove sensitive information from support bundles and can be added by the app vendor or the end user.
+Redactors remove sensitive information from support bundles.
 
 ### Analyzers
 
