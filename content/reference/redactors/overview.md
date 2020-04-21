@@ -41,7 +41,7 @@ All entries in `values` will be replaced with the string `***HIDDEN***`.
 
 Matches to entries in `regex` will be removed or redacted depending on how the regex is constructed.
 Any portion of a match not contained within a capturing group will be removed entirely.
-For instance, the regex `abc(123)`, when applied to the string `test abc123`, will be redacted to `test 123`.
+For instance, the regex `abc(123)`, when applied to the string `test abc123`, will be redacted to `test 123`, because `abc` was matched but not included within a capturing group.
 The contents of capturing groups tagged `mask` will be masked with `***HIDDEN***`.
 Thus `(?P<mask>abc)(123)` applied to `test abc123` will become `test ***HIDDEN***123`.
 Capturing groups tagged `drop` will be dropped, just as if they were not within a capturing group.
