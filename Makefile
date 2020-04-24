@@ -20,9 +20,9 @@ deps:
 	   echo '-> Downloading Hugo CLI to ./deps '; \
 	   mkdir -p deps/; \
 	   if [[ "$(dist)" == "darwin" ]]; then \
-	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.68.3/hugo_0.68.3_macOS-64bit.tar.gz; \
+	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/$(upstream_version)/hugo_0.68.3_macOS-64bit.tar.gz; \
 	   else \
-	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/v0.68.3/hugo_0.68.3_Linux-64bit.tar.gz; \
+	     wget -O hugo.tar.gz https://github.com/gohugoio/hugo/releases/download/$(upstream_version)/hugo_0.68.3_Linux-64bit.tar.gz; \
 	   fi; \
 	   tar xvzf hugo.tar.gz -C deps; \
 	 fi;
