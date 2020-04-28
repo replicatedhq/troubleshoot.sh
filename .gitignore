@@ -17,3 +17,6 @@ logs
 
 hugo
 deps/
+resources/_gen/
+themes/hugo-whisper-theme/exampleSite/resources/_gen/
+hugo.tar.gz
