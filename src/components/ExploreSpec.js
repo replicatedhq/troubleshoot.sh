@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "gatsby";
 
-import titleize from "../utils/utilities";
+import { titleize } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
@@ -53,7 +53,7 @@ class ExploreSpec extends React.Component {
     });
 
     if (this.props.tag) {
-      this.setState({ 
+      this.setState({
         tagsToShow: [...this.state.tagsToShow, this.props.tag],
         showTagsList: true
       })
@@ -79,7 +79,7 @@ class ExploreSpec extends React.Component {
     const { specJson, categoryToShow, tagsToShow, query } = this.state;
     const { isMobile } = this.props;
 
-    
+
     if (categoryToShow === "" && tagsToShow.length === 0) {
       if (categoriesToShow?.length > 0) {
         return categoriesToShow?.map((category, i) => {
