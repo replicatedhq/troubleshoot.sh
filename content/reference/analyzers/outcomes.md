@@ -36,4 +36,4 @@ When the uri attribute is present, a small "Read More" icon will be displayed on
 
 ## When
 
-Some analyzers implement the "when" attribute. The details and implementation of this attribute vary between analyzers. For example, the [cluster version](../cluster-version) analyzer uses this as a semver comparator, while the [image-pull-secrets](../image-pull-secrets) analyzer doesn't need the when, it's a simple, binary output.
+Some analyzers implement the "when" attribute. The details and implementation of this attribute vary between analyzers. For example, the [cluster version](/reference/analyzers/cluster-version) analyzer uses this as a semver comparator, while the [image-pull-secrets](reference/analyzers/image-pull-secrets) analyzer doesn't need the when, it's a simple, binary output.

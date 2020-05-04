@@ -7,7 +7,7 @@ weight: 20120
 
 The distribution analyzer is used to check for known managed (hosted) and self-hosted versions of Kubernetes. The `when` attribute supports standard comparators to compare the result to.
 
-The distribution analyzer requires that the [clusterResources](../../collectors/cluster-resources) is included in the support bundle. The clusterResources collectors is automatically added and will always be present.
+The distribution analyzer requires that the [clusterResources](/reference/collectors/cluster-resources) is included in the support bundle. The clusterResources collectors is automatically added and will always be present.
 
 ## Parameters
 

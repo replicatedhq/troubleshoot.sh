@@ -6,7 +6,7 @@ weight: 20010
 ---
 
 
-Analyzers are YAML specifications that define a set of criteria and operations to run against files collected in a support bundle. Each analyzer included will result in either 0 or 1 [outcome](../outcomes). If an analyzer produces zero outcomes, it will not be displayed on the support bundle analysis page.
+Analyzers are YAML specifications that define a set of criteria and operations to run against files collected in a support bundle. Each analyzer included will result in either 0 or 1 [outcome](/reference/analyzers/outcomes). If an analyzer produces zero outcomes, it will not be displayed on the support bundle analysis page.
 
 All analyzers are specified in a single YAML file. To build a set of analyzers, start with a Kubernetes YAML file:
 
