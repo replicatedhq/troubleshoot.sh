@@ -49,4 +49,4 @@ test:
 	$(HUGO) -v -s .
 	
 	# Run htmlproofer 3.15.0, if installed. Can be installed with `gem install --user-install html-proofer -v 3.15.0`
-	-htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /kots.io/css/ "./public"
+	-htmlproofer --allow-hash-href --check-html --empty-alt-ignore --url-ignore /troubleshoot.sh/css/ "./public"
