@@ -1,0 +1,33 @@
+{{ define "header_css" }}{{ end }}
+{{ define "body_classes" }}page-default-list{{ end }}
+{{ define "header_classes" }}{{ end }}
+{{ define "main" }}
+  
+  {{ range $current_section := .Site.Menus.main}}
+
+  <h1 class="title">{{ $current_section.Name }}</h1>
+
+  <ul>
+    {{ range $page := $.Site.RegularPages }}
+        {{ if eq $page.Section $current_section.Identifier }}
+        <li><a href="#{{ substr .RelPermalink 1 -1 }}">{{ .Title }}</a></li>
+        {{ end }}
+    {{ end }}
+  </ul>
+
+  {{ range $page := $.Site.RegularPages }}
+   
+      {{ if eq .Section $current_section.Identifier }}
+      <br>
+      <h1 class="title" id="{{.Title | anchorize}}">{{.Title}}</h1>
+      <div class="content">
+        {{ .Content }}
+      </div>
+      {{ end }}
+    
+
+  {{ end }}
+
+  {{ end }}
+  
+{{ end }}
