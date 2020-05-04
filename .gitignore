@@ -5,7 +5,7 @@
 
 # Directories
 node_modules/
-public/
+
 java/
 
 tmp_swagger.adoc

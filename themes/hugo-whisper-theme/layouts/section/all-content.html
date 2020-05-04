@@ -10,7 +10,7 @@
   <ul>
     {{ range $page := $.Site.RegularPages }}
         {{ if eq $page.Section $current_section.Identifier }}
-        <li><a href="#{{ substr .RelPermalink 1 -1 }}">{{ .Title }}</a></li>
+        <li><a href="#{{.Title | anchorize}}">{{ .Title }}</a></li>
         {{ end }}
     {{ end }}
   </ul>
