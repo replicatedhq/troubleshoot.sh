@@ -26,7 +26,7 @@ spec:
         name: ping
         namespace: default
         command: ["ping"]
-        args: ["-w", "5", "www.google.com"]
+        args: ["-w", "25", "-c", "25", "-i", "0.3", "google.com"]
         imagePullPolicy: IfNotPresent
 
   analyzers:
