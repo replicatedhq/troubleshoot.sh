@@ -21,24 +21,26 @@ metadata:
 spec:
   collectors:
     - run:
-        collectorName: "run-ping"
+        collectorName: google-busybox
         image: busybox:1
-        name: ping.txt
+        name: ping
         namespace: default
         command: ["ping"]
         args: ["-w", "5", "www.google.com"]
         imagePullPolicy: IfNotPresent
-  analyzers:
 
+  analyzers:
     - textAnalyze:
-        checkName: "run-ping"
-        fileName: run/ping.txt
-        data: '{{repl ConfigOption "replica_count" }}'
-        regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+\.\d+)% packet loss'
+        checkName: Ping Google
+        fileName: ping/google-busybox.log
+        regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+)(\.\d+)?% packet loss'
         outcomes:
           - pass:
-              when: "Loss < 5.0"
-              message: Solid connection to google.com
+              when: "Loss < 5"
+              message: google.com resolves correctly
+          - warn:
+              when: "Loss < 20"
+              message: google.com resolves correctly, but with loss between 5% and 20%
           - fail:
               message: High packet loss
 ```
