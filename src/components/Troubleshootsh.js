@@ -45,7 +45,7 @@ class Troubleshootsh extends React.Component {
           <div className="container">
             <div className="contain-700">
               <span style={logoStyle} className="troubleshoot-logo" id="tblshootLogo"></span>
-              <p className="u-fontSize--24 u-marginTop--30 u-color--biscay u-lineHeight--more u-fontWeight--medium">Disconnected remote support and validation for Kubernetes applications</p>
+              <p className="u-fontSize--24 u-marginTop--30 u-color--biscay u-lineHeight--more u-fontWeight--medium">Disconnected support and validation for Kubernetes applications</p>
               <div className="u-marginTop--30 u-flexMobileReflow two-btn-wrapper justifyContent--center">
                 <button className="Button secondary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("preflightSection")}>
                   <span className="icon preflight-small"></span>
