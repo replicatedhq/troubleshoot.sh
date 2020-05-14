@@ -1,13 +1,8 @@
 import * as React from "react";
 import { Link } from "gatsby";
-import AceEditor from "react-ace";
 import Tag from "./shared/Tag";
 import CodeSnippet from "./shared/CodeSnippet";
 import debounce from "lodash/debounce";
-
-import "ace-builds/src-noconflict/ext-searchbox";
-import "ace-builds/src-noconflict/mode-yaml";
-import "ace-builds/src-noconflict/theme-chrome";
 
 const previewServer = `https://troubleshoot-preview.fly.dev`;
 
@@ -33,35 +28,39 @@ class TroubleshootSpec extends React.Component {
     this.lintKotsSpec = debounce(this.lintKotsSpec, 200);
   }
 
-  renderMonacoEditor = () => {
-    const yaml = this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML;
+  renderAceEditor = (preflightYaml) => {
+    import("brace").then(ace => {
+      const editor = ace.edit(document.getElementById("ace-editor"));
+      editor.setOptions({
+        scrollPastEnd: true,
 
-    import("monaco-editor").then(monaco => {
-      window.monacoEditor = monaco.editor.create(document.getElementById("monaco"), {
-        value: yaml,
-        language: "yaml",
-        minimap: {
-          enabled: false
-        },
-        scrollBeyondLastLine: false,
-        lineNumbers: "off",
       });
+      editor.setValue(preflightYaml);
+
+      window.aceEditor = editor;
     });
   }
 
   componentDidMount() {
     import("../../static/specs-gen.json").then(module => {
       const currentSpec = module?.specs?.find(spec => spec.slug === this.props.slug);
-      this.setState({ 
+      this.setState({
         specJson: module,
         preflightYAML: currentSpec.preflightSpecYaml,
         supportBundleYAML: currentSpec.supportSpecYaml
       });
       this.sendToServer("preflight", currentSpec.preflightSpecYaml);
       this.sendToServer("support-bundle", currentSpec.supportSpecYaml);
+      this.renderAceEditor(currentSpec.preflightSpecYaml);
     });
 
     this.onTryItOut("preflight");
+  }
+
+  componentDidUpdate(lastProps, lastState) {
+    if (this.state.isActive !== lastState.isActive && this.state.isActive) {
+      window.aceEditor.setValue(this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML)
+    }
   }
 
   copySpecYamlToClipboard = () => {
@@ -125,7 +124,7 @@ class TroubleshootSpec extends React.Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({spec})
+      body: JSON.stringify({ spec })
     })
       .then(async (res) => {
         if (method === "POST") {
@@ -169,6 +168,7 @@ class TroubleshootSpec extends React.Component {
     this.lintKotsSpec(specType, value);
   }
 
+
   render() {
     const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson, lintExpressionMarkers } = this.state;
     const { isMobile } = this.props;
@@ -193,26 +193,7 @@ class TroubleshootSpec extends React.Component {
               </div>
 
               <div className="MonacoEditor--wrapper flex u-width--full">
-                <div className="flex u-width--full u-overflow--hidden">
-                  <AceEditor
-                    ref={el => (this.aceEditor = el)}
-                    mode="yaml"
-                    theme="chrome"
-                    className=""
-                    markers={lintExpressionMarkers}
-                    onChange={(specValue) => this.onSpecChange(specValue)}
-                    value={this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML}
-                    height="100vh"
-                    width="100%"
-                    editorProps={{
-                      $blockScrolling: Infinity,
-                      useSoftTabs: true,
-                      tabSize: 2,
-                    }}
-                    setOptions={{
-                      scrollPastEnd: true
-                    }}
-                  />
+                <div className="flex u-width--full u-overflow--hidden" id="ace-editor">
                 </div>
               </div>
               <div className="u-marginTop--30">
@@ -223,12 +204,12 @@ class TroubleshootSpec extends React.Component {
             </div>
             <div className={`${!isMobile ? "troubleshootSection u-marginLeft--50 troubleshootSectionWidth" : "u-marginTop--30"}`}>
               <div className="flex alignItems--center">
-              <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium"> Contributors </p>
-              {currentSpec?.contributors?.map((contributor, i) => (
-                <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}>
-                  <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
-                </div>
-              ))}
+                <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium"> Contributors </p>
+                {currentSpec?.contributors?.map((contributor, i) => (
+                  <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}>
+                    <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
+                  </div>
+                ))}
               </div>
 
               <div className="flex u-marginTop--30 u-marginBottom--30 alignItems--center">

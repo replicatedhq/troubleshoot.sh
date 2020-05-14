@@ -12,6 +12,7 @@
     "add": "^2.0.6",
     "algoliasearch": "^4.1.0",
     "autoprefixer": "^9.7.4",
+    "brace": "^0.11.1",
     "classnames": "^2.2.6",
     "gatsby": "^2.20.8",
     "gatsby-plugin-create-client-paths": "^2.2.1",
