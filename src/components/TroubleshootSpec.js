@@ -29,16 +29,24 @@ class TroubleshootSpec extends React.Component {
   }
 
   renderAceEditor = (preflightYaml) => {
-    import("brace").then(ace => {
-      const editor = ace.edit(document.getElementById("ace-editor"));
-      editor.setOptions({
-        scrollPastEnd: true,
-
-      });
-      editor.setValue(preflightYaml);
-
-      window.aceEditor = editor;
-    });
+    import("brace").then((ace) => {
+      import("brace/theme/chrome").then(() => {
+        import("brace/mode/yaml").then(() => {
+          const editor = ace.edit(document.getElementById("ace-editor"));
+          editor.setOptions({
+            scrollPastEnd: true
+          });
+          editor.getSession().on("change", () => {
+            this.onSpecChange(editor.getSession().doc.$lines.join("\n"))
+          });
+          editor.getSession().setMode("ace/mode/yaml");
+          editor.setTheme("ace/theme/chrome");
+          // editor.getSession().addMarker(this.state.lintExpressionMarkers)
+          this.setState({ currentSpecCommand: editor.setValue(preflightYaml) });
+          window.aceEditor = editor;
+        });
+      })
+    })
   }
 
   componentDidMount() {
@@ -59,7 +67,7 @@ class TroubleshootSpec extends React.Component {
 
   componentDidUpdate(lastProps, lastState) {
     if (this.state.isActive !== lastState.isActive && this.state.isActive) {
-      window.aceEditor.setValue(this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML)
+      this.setState({ currentSpecCommand: window.aceEditor.setValue(this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML) })
     }
   }
 
@@ -170,11 +178,12 @@ class TroubleshootSpec extends React.Component {
 
 
   render() {
-    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson, lintExpressionMarkers } = this.state;
+    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson } = this.state;
     const { isMobile } = this.props;
 
     const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
     const relatedSpecs = specJson?.specs?.filter(spec => currentSpec?.tags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec)
+
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
