@@ -64,7 +64,7 @@ spec:
         checkName: Every node in the cluster must have at least 16Gi of memory
         outcomes:
           - fail:
-              when: "min(memoryCapacity) >= 16Gi"
+              when: "min(memoryCapacity) < 16Gi"
               message: All nodes must have at least 16 GB of memory
           - pass:
               message: All nodes have at least 16 GB of memory
