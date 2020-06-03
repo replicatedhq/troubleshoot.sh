@@ -1,0 +1,27 @@
+.Tag-wrapper {
+  margin-right: 5px; 
+
+  :last-child {
+    margin-right: 0;
+  }
+
+  .Tag-content {
+    padding: 3px 5px 4px;
+    text-align: center;
+    position: relative;
+    background-color: #E9F0FF;
+    color: #326DE6;
+  
+    span {
+      font-size: 14px;
+      line-height: 14px;
+      font-weight: normal;
+    }
+  }
+}
+
+@media screen and (min-width: 64em) {
+  .Tag-wrapper.new-tag .Tag-content span {
+    font-size: 12px;
+  }
+}

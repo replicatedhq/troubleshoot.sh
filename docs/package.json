@@ -1,0 +1,19 @@
+{
+  "private": true,
+  "name": "docs",
+  "version": "0.0.1",
+  "scripts": {
+    "prestart": "gatsby clean",
+    "start": "gatsby develop -p 1312",
+    "build": "gatsby build",
+    "serve": "gatsby serve"
+  },
+  "dependencies": {
+    "@mdx-js/mdx": "^1.1.0",
+    "@mdx-js/react": "^1.0.27",
+    "gatsby": "^2.22.15",
+    "gatsby-theme-troubleshoot": "*",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
