@@ -1,0 +1,23 @@
+{
+  "name": "gatsby-theme-troubleshoot",
+  "version": "0.0.1",
+  "main": "index.js",
+  "license": "Apache 2.0",
+  "scripts": {
+    "build": "gatsby build",
+    "clean": "gatsby clean",
+    "develop": "gatsby develop"
+  },
+  "peerDependencies": {
+    "gatsby": "^2.22.15",
+    "gatsby-theme-apollo-docs": "^4.2.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  },
+  "devDependencies": {
+    "gatsby": "^2.22.15",
+    "gatsby-theme-apollo-docs": "^4.2.3",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
+  }
+}
