@@ -2,6 +2,7 @@
   "private": true,
   "workspaces": [
     "gatsby-theme-troubleshoot",
+    "gatsby-theme-explore-categories",
     "docs",
     "analyze",
     "collect",
