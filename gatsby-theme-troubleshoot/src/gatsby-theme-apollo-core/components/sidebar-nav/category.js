@@ -7,11 +7,6 @@ const iconSize = 10;
 const headingStyles = {
   display: "flex",
   alignItems: "center",
-  fontFamily: "Roboto Mono",
-  fontStyle: "normal",
-  fontWeight: "bold",
-  fontSize: "16px",
-  lineHeight: "19px",
   width: "100%",
   border: 0,
   padding: "0.75em 0",
@@ -38,6 +33,13 @@ const headingStyles = {
 const StyledButton = styled.button(headingStyles, {
   ":not([disabled])": {
     cursor: "pointer"
+  },
+  "h6": {
+    fontFamily: "Roboto Mono",
+    fontStyle: "normal",
+    fontWeight: "bold",
+    fontSize: "16px",
+    lineHeight: "19px"
   }
 });
 

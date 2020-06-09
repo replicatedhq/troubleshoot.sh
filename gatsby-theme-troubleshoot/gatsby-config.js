@@ -1,38 +1,49 @@
 module.exports = options => ({
   plugins: [
     {
-    resolve: `gatsby-theme-apollo-docs`,
-    options: {
-      navConfig: {
-        'Troubleshoot Basics': {
-          url: '/docs',
-          description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
-          omitLandingPage: true
+      resolve: `gatsby-theme-apollo-docs`,
+      options: {
+        navConfig: {
+          "Troubleshoot Basics": {
+            url: "/overview",
+            description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
+            omitLandingPage: true,
+            main: true
+          },
+          "Collect": {
+            url: "/collect",
+            description: "Write specs to collect data from your application.",
+          },
+          "Redact": {
+            url: "/redact",
+            description: "Redact sensitive information from support bundles.",
+          },
+          "Analyze": {
+            url: "/analyze",
+            description: "Analyze data collected by your support bundles.",
+          }
         },
-        'Collectors': {
-          url: '/collect',
-          description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
+        footerNavConfig: {
+          Explore: {
+            href: "https://troubleshoot.sh/explore/",
+            target: "_blank",
+            rel: "noopener noreferrer"
+          },
+          Installing: {
+            href: ""
+          },
+          Kots: {
+            href: "https://kots.io",
+            target: "_blank",
+            rel: "noopener noreferrer"
+          }
         },
-        'Analyzers': {
-          url: '/analyze',
-          description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
-        },
-        'Redactors': {
-          url: '/redact',
-          description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
-        },
-      },
-      footerNavConfig: {
-        Changelog: {
-          href: '/changelog',
-        },
-      },
-      algoliaApiKey: 'cc18e896d9ebbcfbef43c3146b9f13ac',
-      algoliaIndexName: 'prod_troubleshoot',
-      baseUrl: 'https://troubleshoot.sh',
-      logoLink: 'https://troubleshoot.sh',
-        // gaTrackingId: 'UA-74643563-13',
-      ...options,
-    }
-  }]
+        algoliaApiKey: "cc18e896d9ebbcfbef43c3146b9f13ac",
+        algoliaIndexName: "prod_troubleshoot",
+        baseUrl: "https://troubleshoot.sh",
+        logoLink: "https://troubleshoot.sh",
+        // gaTrackingId: "UA-74643563-13",
+        ...options,
+      }
+    }]
 });
