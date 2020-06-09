@@ -61,7 +61,7 @@ const BodyContent = styled.div({
     fontSize: "18px",
     lineHeight: "28px"
   },
-  "h3": {
+  "h6": {
     fontSize: "16px",
     lineHeight: "26px"
   }
