@@ -1,6 +1,6 @@
 ---
-title: "HTTP"
-description: "HTTP"
+title: HTTP Requests
+description: Executing HTTP requests at collection time
 ---
 
 The `http` collector can be used to execute http requests from inside the cluster.

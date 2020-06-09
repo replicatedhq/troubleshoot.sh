@@ -1,6 +1,6 @@
 ---
-title: "Exec"
-description: "Exec"
+title: Executing Commands
+description: Using the exec collector to execute commands in pods
 ---
 
 The `exec` collector can be used to run a command in an existing pod and include the output in the collected data.

@@ -1,6 +1,6 @@
 ---
-title: "Copy"
-description: "Copy"
+title: Copy Files
+description: A description of the copy collector to copy files out of pods
 ---
 
 The `copy` collector can be used to copy files from pods and include the contents in the collected data.

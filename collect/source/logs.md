@@ -1,6 +1,6 @@
 ---
-title: "Logs"
-description: "Logs"
+title: Pod Logs
+description: Including logs from pods in the collected output
 ---
 
 The `logs` collectors can be used to include logs from running pods.
