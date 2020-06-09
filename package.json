@@ -7,6 +7,7 @@
     "analyze",
     "collect",
     "redact",
-    "explore-categories"
+    "explore-categories",
+    "landing"
   ]
 }

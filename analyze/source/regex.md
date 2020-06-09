@@ -1,6 +1,6 @@
 ---
-title: "Regex"
-description: "Regex"
+title: Regular Expression
+description: Using a regular expression to analyze arbirtrary data
 ---
 
 The regex analyzer is used to run arbitrary regular expressions against data collected in a run, copy or exec collector.
