@@ -6,7 +6,8 @@
     "prestart": "gatsby clean",
     "start": "gatsby develop -p 1313",
     "build": "gatsby build",
-    "serve": "gatsby serve"
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
   "dependencies": {
     "@mdx-js/mdx": "^1.1.0",
