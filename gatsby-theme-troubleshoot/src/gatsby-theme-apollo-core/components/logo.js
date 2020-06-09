@@ -1,9 +1,9 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import {ReactComponent as TroubleshootLogo} from '../../../images/troubleshoot-logo-medium.svg';
+import React from "react";
+import styled from "@emotion/styled";
+import {ReactComponent as TroubleshootLogo} from "../../../images/troubleshoot-logo-medium.svg";
 
 const Wrapper = styled.div({
-  display: 'flex',
+  display: "flex",
   fontSize: 24,
 });
 
