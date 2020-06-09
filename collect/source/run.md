@@ -1,6 +1,6 @@
 ---
-title: "Run"
-description: "Run"
+title: Run Pods
+description: Running pods during collection time to create data
 ---
 
 The `run` collector can be used to run a pod in the cluster with the parameters provided.
