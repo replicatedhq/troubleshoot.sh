@@ -1,8 +1,12 @@
+import Logo from "./logo";
 import PropTypes from "prop-types";
-import React, {Fragment} from "react";
-import {breakpoints} from "gatsby-theme-apollo-core";
+import React, { Fragment } from "react";
+import { breakpoints } from "gatsby-theme-apollo-core";
 import styled from "@emotion/styled";
-import {transparentize} from "polished";
+import { transparentize } from "polished";
+import GitHubButton from "react-github-button";
+
+require("react-github-button/assets/style.css");
 
 const Container = styled.aside({
   flexShrink: 0,
@@ -12,8 +16,12 @@ const Container = styled.aside({
   borderRight: `1px solid #E5E5E5`,
   overflowY: "auto",
   position: "sticky",
-  top: 0
-});
+  top: 0,
+  ".GithubStarButton": {
+    marginTop: "20px"
+  }
+}
+);
 
 const ResponsiveContainer = styled(Container)(props => ({
   [breakpoints.md]: {
@@ -36,11 +44,16 @@ const Header = styled.div({
   marginBottom: 24
 });
 
+const StyledLink = styled.a({
+  textDecoration: "none"
+});
+
 const Sidebar = React.forwardRef((props, ref) => {
   const content = (
     <Fragment>
       <Header>
         <StyledLink href={props.logoLink}>
+          <Logo />
         </StyledLink>
       </Header>
       <div className={props.className}>{props.children}</div>
@@ -51,6 +64,10 @@ const Sidebar = React.forwardRef((props, ref) => {
     return (
       <ResponsiveContainer ref={ref} open={props.open}>
         {content}
+        {props.open ?
+          <div className="GithubStarButton">
+            <GitHubButton type="stargazers" size="large" repo="troubleshoot" namespace="replicatedhq" />
+          </div> : null}
       </ResponsiveContainer>
     );
   }
