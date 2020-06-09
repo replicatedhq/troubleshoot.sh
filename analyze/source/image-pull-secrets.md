@@ -1,6 +1,6 @@
 ---
-title: "Image Pull Secrets"
-description: "Image Pull Secrets"
+title: Image Pull Secrets
+description: Analyzing the image pull secrets that are available in the cluster
 ---
 
 ```yaml

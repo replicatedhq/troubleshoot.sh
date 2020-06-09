@@ -1,6 +1,6 @@
 ---
-title: "Custom Resource Definition"
-description: "Custom Resource Definition"
+title: Custom Resource Definition
+description: Determining if certain custom resource definitions are available
 ---
 
 The customResourceDefinition analyzer is available to check for the existence of a Custom Resource Definition (CRD) that is expected to be installed.
@@ -15,16 +15,15 @@ This analyzer requires exactly 1 parameter:
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Preflight
+kind: Analyzer
 metadata:
-  name: preflight-sample
+  name: analyzer-sample
 spec:
-  analyzers:
-    - customResourceDefinition:
-        customResourceDefinitionName: rook
-        outcomes:
-          - fail:
-              message: The Rook CRD was not found in the cluster.
-          - pass:
-              message: Rook is installed and available.
+  - customResourceDefinition:
+      customResourceDefinitionName: rook
+      outcomes:
+        - fail:
+            message: The Rook CRD was not found in the cluster.
+        - pass:
+            message: Rook is installed and available.
 ```
