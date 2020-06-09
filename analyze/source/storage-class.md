@@ -1,6 +1,6 @@
 ---
-title: "Storage Class"
-description: "Storage Class"
+title: Storage Class
+description: Analyzer to check for the presence of a storage class in the cluster
 ---
 
 ```yaml

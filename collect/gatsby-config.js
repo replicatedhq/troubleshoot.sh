@@ -7,7 +7,7 @@ const themeOptions = {
 };
 
 module.exports = {
-  pathPrefix: '/collectors',
+  pathPrefix: '/collect',
   siteMetadata: {
     title: "Troubleshoot collectors"
   },
@@ -23,7 +23,7 @@ module.exports = {
         sidebarCategories: {
           Root: [
             'index',
-            'collectors',
+            'all',
           ],
           Collectors: [
             'cluster-info',
