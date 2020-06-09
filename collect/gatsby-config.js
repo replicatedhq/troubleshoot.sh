@@ -23,7 +23,7 @@ module.exports = {
         sidebarCategories: {
           Root: [
             'index',
-            'collectors',
+            'all',
           ],
           Collectors: [
             'cluster-info',

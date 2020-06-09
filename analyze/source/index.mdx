@@ -1,122 +1,69 @@
 ---
-title: Documentation Home
-description: SchemaHero Documentation
+title: Analyzing Data
+description: Introduction to the analyze phase
 ---
 
-import DocsetMenu from './components/docset-menu';
-import { MenuWrapper } from './components/menu';
-import WorkoutMenuItem from './components/workout-menu-item';
-import { Button } from '@apollo/space-kit/Button';
-import { IconRobot1 } from '@apollo/space-kit/icons/IconRobot1';
-import { Link } from 'gatsby';
-import { colors } from 'gatsby-theme-apollo-core';
-import {
-  ExpansionPanel,
-} from 'gatsby-theme-apollo-docs/src/components/expansion-panel';
-import { ReactComponent as BadmintonPlayer } from './assets/badminton-player.svg';
-import { ReactComponent as Paragliding } from './assets/paragliding.svg';
-import { ReactComponent as Weightlift } from './assets/weightlift.svg';
-import { ReactComponent as Diving } from './assets/diving.svg';
-import { ReactComponent as HeadLight } from './assets/head-light.svg';
+Analyzers are YAML specifications that define a set of criteria and operations to run against files collected in a support bundle. Each analyzer included will result in either 0 or 1 [outcome](https://troubleshoot.io). If an analyzer produces zero outcomes, it will not be displayed on the support bundle analysis page.
 
-Welcome! 👋 Apollo is a platform for building a **data graph**, a communication layer that seamlessly connects your application clients (such as React and iOS apps) to your back-end services.
+All analyzers are specified in a single YAML file. To build a set of analyzers, start with a Kubernetes YAML file:
 
-<DocsetMenu />
+```yaml
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Analyzer
+metadata:
+  name: my-application-name
+spec:
+  analyzers: []
+```
 
-## New to Apollo or GraphQL?
+The above file contains all of the necessary scaffolding and structure needed to write analyzers, but it does not contain any analyzers. Given this analyzer definition, there will be nothing on the analysis page.
 
-It's easy to adopt Apollo incrementally, meaning you can set it up alongside an existing solution (such as a REST API) and migrate functionality at your convenience.
+The troubleshoot project defines a number of built-in and easy-to-use analyzers, and many helper functions to build custom analyzers.
 
-<div>
-  <Button
-    size="large"
-    color={colors.primary}
-    as={<Link to="/tutorial/introduction" />}
-  >
-    Start the tutorial!
-  </Button>
-  <Button
-    size="large"
-    as={<Link to="/intro/platform" />}
-    style={{marginLeft: 16}}
-  >
-    Learn more
-  </Button>
-</div>
+To add additional analyzers to a manifgest, read the docs in this section to understand each one, and add them as an array item below `spec`.
 
-## Recommended workouts
+For example, a complete spec might be:
 
-<MenuWrapper>
-
-<WorkoutMenuItem
-  icon={HeadLight}
-  keyWord="Discover"
-  otherWords="Apollo"
->
-
-* [The Apollo GraphQL platform](https://www.apollographql.com/docs/apollo-server/)
-* [Why GraphQL?](https://www.apollographql.com/docs/apollo-server/)
-* Introduction to [Apollo Server](https://www.apollographql.com/docs/apollo-server/) and [Apollo Client](https://www.apollographql.com/docs/react/)
-* [Overview of Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/)
-* [Principled GraphQL](https://principledgraphql.com/)
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Diving}
-  keyWord="Dive in"
-  otherWords="to the basics"
->
-
-* Get started with [Apollo Server](https://www.apollographql.com/docs/apollo-server/getting-started/) and [Apollo Client](https://www.apollographql.com/docs/react/get-started/)
-* The [Apollo CLI](https://www.apollographql.com/docs/devtools/cli/) and [VS Code extension](https://www.apollographql.com/docs/apollo-server/)
-* [Resolvers](https://www.apollographql.com/docs/apollo-server/data/resolvers/) and [Data sources](https://www.apollographql.com/docs/apollo-server/data/data-sources/) (Apollo Server)
-* [Queries](https://www.apollographql.com/docs/react/data/queries/) and [Mutations](https://www.apollographql.com/docs/react/data/mutations/) (Apollo Client)
-* [Get started with Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/getting-started/)
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Weightlift}
-  keyWord="Develop"
-  otherWords="your graph"
->
-
-* [Registering your schema](https://www.apollographql.com/docs/graph-manager/schema-registry/) with Graph Manager
-* Caching in [Apollo Server](https://www.apollographql.com/docs/apollo-server/performance/caching/) and [Apollo Client](https://www.apollographql.com/docs/react/caching/cache-configuration/)
-* Mocking new features in [Apollo Server](https://www.apollographql.com/docs/apollo-server/testing/mocking/) and [Apollo Client](https://www.apollographql.com/docs/react/development-testing/client-schema-mocking/)
-* [Using schema directives](https://www.apollographql.com/docs/apollo-server/schema/directives/) (Apollo Server)
-* [Extending Apollo Server with plugins](https://www.apollographql.com/docs/apollo-server/integrations/plugins/)
-
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Paragliding}
-  keyWord="Deploy"
-  otherWords="to production"
->
-
-* Deploying Apollo Server to [Heroku](https://www.apollographql.com/docs/apollo-server/deployment/heroku/), [AWS Lambda](https://www.apollographql.com/docs/apollo-server/deployment/lambda/), [Zeit Now](https://www.apollographql.com/docs/apollo-server/deployment/now/), etc.
-* [Preventing breaking changes to your graph](https://www.apollographql.com/docs/graph-manager/schema-validation/)
-* Introduction to [Apollo Federation](https://www.apollographql.com/docs/apollo-server/federation/introduction/) and [Managed federation](https://www.apollographql.com/docs/graph-manager/managed-federation/overview/)
-* Authentication in [Apollo Server](https://www.apollographql.com/docs/apollo-server/security/authentication/) and [Apollo Client](https://www.apollographql.com/docs/react/networking/authentication/)
-* [Segmenting metrics by client](https://www.apollographql.com/docs/graph-manager/client-awareness/)
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={BadmintonPlayer}
-  keyWord="Debug"
-  otherWords="your solution"
->
-
-* Testing in [Apollo Server](https://www.apollographql.com/docs/apollo-server/testing/testing/) and [Apollo Client](https://www.apollographql.com/docs/react/development-testing/testing/)
-* Error handling in [Apollo Server](https://www.apollographql.com/docs/apollo-server/data/errors/) and [Apollo Client](https://www.apollographql.com/docs/react/data/error-handling/)
-* [Metrics and logging](https://www.apollographql.com/docs/apollo-server/monitoring/metrics/) (Apollo Server)
-* [Analyzing performance](https://www.apollographql.com/docs/graph-manager/performance/) with Graph Manager
-* [Pushing federated trace data](https://www.apollographql.com/docs/apollo-server/federation/metrics/)
-
-</WorkoutMenuItem>
-
-</MenuWrapper>
+```yaml
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Analyzer
+metadata:
+  name: my-application-name
+spec:
+  analyzers:
+    - imagePullSecret:
+          checkName: Has Access to Quay.io
+          registryName: quay.io
+          outcomes:
+            - fail:
+                message: Cannot pull from quay.io
+            - pass:
+                message: Found credentials to pull from quay.io
+      - clusterVersion:
+          outcomes:
+            - fail:
+                when: "< 1.13.0"
+                message: Sorry, my-application-name requires at least Kubernetes 1.14.0. Please update your Kubernetes cluster before installing.
+                uri: https://enterprise.my-application.com/install/requirements/kubernetes
+            - warn:
+                when: "< 1.15.0"
+                message: The version of Kubernetes you are running meets the minimum requirements to run my-application-name. It's recommended to run Kubernetes 1.15.0 or later.
+                uri: https://enterprise.my-application.com/install/requirements/kubernetes
+            - pass:
+                message: The version of Kubernetes you have installed meets the required and recommended versions.
+      - storageClass:
+          checkName: Required storage classes
+          storageClassName: "microk8s-hostpath"
+          outcomes:
+            - fail:
+                message: The required storage class was not found in the cluster.
+            - pass:
+                message: The required storage class was found in the cluster.
+      - customResourceDefinition:
+          customResourceDefinitionName: rook
+          outcomes:
+            - fail:
+                message: Rook is required for my-application. Rook was not found in the cluster.
+            - pass:
+                message: Found a supported version of Rook installed and running in the cluster.
+```
