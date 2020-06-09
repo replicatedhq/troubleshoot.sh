@@ -5,26 +5,26 @@ module.exports = options => ({
     options: {
       navConfig: {
         'Troubleshoot Basics': {
-          url: '',
+          url: '/docs',
           description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
           omitLandingPage: true
         },
         'Collectors': {
-          url: '',
+          url: '/collect',
           description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
         },
         'Analyzers': {
-          url: '',
+          url: '/analyze',
           description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
         },
         'Redactors': {
-          url: '',
+          url: '/redact',
           description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
         },
       },
       footerNavConfig: {
         Changelog: {
-          href: 'https://troubleshoot.io/docs/changelog',
+          href: '/changelog',
         },
       },
       algoliaApiKey: 'cc18e896d9ebbcfbef43c3146b9f13ac',
