@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: "Troubleshoot Explore Categories"
   },
-  pathPrefix: '/explore',
   plugins: [
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-netlify`,
