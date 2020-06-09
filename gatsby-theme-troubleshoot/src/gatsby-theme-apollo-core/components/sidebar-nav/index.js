@@ -29,7 +29,7 @@ const StyledListItem = styled.li({
   fontStyle: "normal",
   fontWeight: "500",
   fontSize: "14px",
-  marginBottom: "0.8125rem",
+  marginBottom: "12px",
   a: {
     ...listItemStyles,
     textDecoration: "none",

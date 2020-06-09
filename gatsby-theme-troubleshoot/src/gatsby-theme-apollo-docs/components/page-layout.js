@@ -20,11 +20,10 @@ import {
   useResponsiveSidebar
 } from "gatsby-theme-apollo-core";
 import {Helmet} from "react-helmet";
-import {IconLayoutModule} from "@apollo/space-kit/icons/IconLayoutModule";
+import {HamburgerMenu} from "./docs-icons";
 import { graphql, useStaticQuery} from "gatsby";
 import {MobileLogo} from "./mobile-logo";
 import {SelectedLanguageContext} from "./multi-code-block";
-import {size} from "polished";
 import {trackCustomEvent} from "gatsby-plugin-google-analytics";
 
 const Main = styled.main({
@@ -38,11 +37,13 @@ const ButtonWrapper = styled.div({
 const StyledButton = styled(Button)({
   width: "100%",
   ":not(:hover)": {
-    backgroundColor: colors.background
+    backgroundColor: "#F4F6F8"
   }
 });
 
-const StyledIcon = styled(IconLayoutModule)(size(16), {
+const StyledIcon = styled(HamburgerMenu)({
+  width: "15px",
+  height: "12px",
   marginLeft: "auto"
 });
 
@@ -142,10 +143,16 @@ export default function PageLayout(props) {
     [navConfig]
   );
 
+  console.log(navItems)
+
   const hasNavItems = navItems.length > 0;
   const sidebarTitle = (
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
+
+  const changeLogObj = {
+    title: "Changelog", href: "https://troubleshoot.io/docs/changelog"
+  }
 
   return (
     <Layout>
@@ -225,6 +232,8 @@ export default function PageLayout(props) {
           siteName={menuTitle || siteName}
           navItems={navItems}
           footerNavConfig={footerNavConfig}
+          hasChangeLog={true}
+          changeLogObj={changeLogObj}
           open={menuOpen}
           buttonRef={buttonRef}
           onClose={closeMenu}
