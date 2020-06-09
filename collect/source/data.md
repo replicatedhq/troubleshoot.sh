@@ -1,6 +1,6 @@
 ---
-title: "Data"
-description: "Data"
+title: Static Data
+description: A description of the data collector to include static content
 ---
 
 The `data` collector can be used to add static content to the collected data.

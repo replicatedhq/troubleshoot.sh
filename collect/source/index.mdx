@@ -1,122 +1,65 @@
 ---
-title: Documentation Home
-description: SchemaHero Documentation
+title: Collecting Data
+description: Introduction to the collect phase
 ---
 
-import DocsetMenu from './components/docset-menu';
-import { MenuWrapper } from './components/menu';
-import WorkoutMenuItem from './components/workout-menu-item';
-import { Button } from '@apollo/space-kit/Button';
-import { IconRobot1 } from '@apollo/space-kit/icons/IconRobot1';
-import { Link } from 'gatsby';
-import { colors } from 'gatsby-theme-apollo-core';
-import {
-  ExpansionPanel,
-} from 'gatsby-theme-apollo-docs/src/components/expansion-panel';
-import { ReactComponent as BadmintonPlayer } from './assets/badminton-player.svg';
-import { ReactComponent as Paragliding } from './assets/paragliding.svg';
-import { ReactComponent as Weightlift } from './assets/weightlift.svg';
-import { ReactComponent as Diving } from './assets/diving.svg';
-import { ReactComponent as HeadLight } from './assets/head-light.svg';
+Every support bundle or preflight check starts with a collect phase.
+During this time, information is collected from the cluster, the environment, the application and other sources to be used later in the analysis or preflight results.
 
-Welcome! 👋 Apollo is a platform for building a **data graph**, a communication layer that seamlessly connects your application clients (such as React and iOS apps) to your back-end services.
+When designing a support bundle or preflight checks, be sure to add all necessary data to the collectors.
+The [analyze phase](https://troubleshoot.sh/analyze) can only use the output of the collect phase to perform analysis and provide results.
 
-<DocsetMenu />
+## Including Collectors
 
-## New to Apollo or GraphQL?
+To specify the data to include for later phases, the collect phase accepts a Kubernetes custom resource as defined here.
+A [full reference of the Collector kind](/reference/collector) is also available.
 
-It's easy to adopt Apollo incrementally, meaning you can set it up alongside an existing solution (such as a REST API) and migrate functionality at your convenience.
+All collectors are specified in a single YAML file.
+To build a set of collectors, start with a Kubernetes YAML file:
 
-<div>
-  <Button
-    size="large"
-    color={colors.primary}
-    as={<Link to="/tutorial/introduction" />}
-  >
-    Start the tutorial!
-  </Button>
-  <Button
-    size="large"
-    as={<Link to="/intro/platform" />}
-    style={{marginLeft: 16}}
-  >
-    Learn more
-  </Button>
-</div>
+```yaml
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
+metadata:
+  name: my-application-name
+spec:
+  collectors: []
+```
 
-## Recommended workouts
+The above file is a simple but valid set of collectors.
+It will collect only the default data.
 
-<MenuWrapper>
+To add additional collectors, specify each one in the `collectors` array.
+Each collector can be included multiple times, if there are different sets of options to use.
 
-<WorkoutMenuItem
-  icon={HeadLight}
-  keyWord="Discover"
-  otherWords="Apollo"
->
+For example, a complete spec might be:
 
-* [The Apollo GraphQL platform](https://www.apollographql.com/docs/apollo-server/)
-* [Why GraphQL?](https://www.apollographql.com/docs/apollo-server/)
-* Introduction to [Apollo Server](https://www.apollographql.com/docs/apollo-server/) and [Apollo Client](https://www.apollographql.com/docs/react/)
-* [Overview of Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/)
-* [Principled GraphQL](https://principledgraphql.com/)
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Diving}
-  keyWord="Dive in"
-  otherWords="to the basics"
->
-
-* Get started with [Apollo Server](https://www.apollographql.com/docs/apollo-server/getting-started/) and [Apollo Client](https://www.apollographql.com/docs/react/get-started/)
-* The [Apollo CLI](https://www.apollographql.com/docs/devtools/cli/) and [VS Code extension](https://www.apollographql.com/docs/apollo-server/)
-* [Resolvers](https://www.apollographql.com/docs/apollo-server/data/resolvers/) and [Data sources](https://www.apollographql.com/docs/apollo-server/data/data-sources/) (Apollo Server)
-* [Queries](https://www.apollographql.com/docs/react/data/queries/) and [Mutations](https://www.apollographql.com/docs/react/data/mutations/) (Apollo Client)
-* [Get started with Apollo Graph Manager](https://www.apollographql.com/docs/graph-manager/getting-started/)
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Weightlift}
-  keyWord="Develop"
-  otherWords="your graph"
->
-
-* [Registering your schema](https://www.apollographql.com/docs/graph-manager/schema-registry/) with Graph Manager
-* Caching in [Apollo Server](https://www.apollographql.com/docs/apollo-server/performance/caching/) and [Apollo Client](https://www.apollographql.com/docs/react/caching/cache-configuration/)
-* Mocking new features in [Apollo Server](https://www.apollographql.com/docs/apollo-server/testing/mocking/) and [Apollo Client](https://www.apollographql.com/docs/react/development-testing/client-schema-mocking/)
-* [Using schema directives](https://www.apollographql.com/docs/apollo-server/schema/directives/) (Apollo Server)
-* [Extending Apollo Server with plugins](https://www.apollographql.com/docs/apollo-server/integrations/plugins/)
-
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={Paragliding}
-  keyWord="Deploy"
-  otherWords="to production"
->
-
-* Deploying Apollo Server to [Heroku](https://www.apollographql.com/docs/apollo-server/deployment/heroku/), [AWS Lambda](https://www.apollographql.com/docs/apollo-server/deployment/lambda/), [Zeit Now](https://www.apollographql.com/docs/apollo-server/deployment/now/), etc.
-* [Preventing breaking changes to your graph](https://www.apollographql.com/docs/graph-manager/schema-validation/)
-* Introduction to [Apollo Federation](https://www.apollographql.com/docs/apollo-server/federation/introduction/) and [Managed federation](https://www.apollographql.com/docs/graph-manager/managed-federation/overview/)
-* Authentication in [Apollo Server](https://www.apollographql.com/docs/apollo-server/security/authentication/) and [Apollo Client](https://www.apollographql.com/docs/react/networking/authentication/)
-* [Segmenting metrics by client](https://www.apollographql.com/docs/graph-manager/client-awareness/)
-
-</WorkoutMenuItem>
-
-<WorkoutMenuItem
-  icon={BadmintonPlayer}
-  keyWord="Debug"
-  otherWords="your solution"
->
-
-* Testing in [Apollo Server](https://www.apollographql.com/docs/apollo-server/testing/testing/) and [Apollo Client](https://www.apollographql.com/docs/react/development-testing/testing/)
-* Error handling in [Apollo Server](https://www.apollographql.com/docs/apollo-server/data/errors/) and [Apollo Client](https://www.apollographql.com/docs/react/data/error-handling/)
-* [Metrics and logging](https://www.apollographql.com/docs/apollo-server/monitoring/metrics/) (Apollo Server)
-* [Analyzing performance](https://www.apollographql.com/docs/graph-manager/performance/) with Graph Manager
-* [Pushing federated trace data](https://www.apollographql.com/docs/apollo-server/federation/metrics/)
-
-</WorkoutMenuItem>
-
-</MenuWrapper>
+```yaml
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
+metadata:
+  name: my-application-name
+spec:
+  collectors:
+    - clusterInfo: {}
+    - clusterResources: {}
+    - logs:
+        selector:
+          - app=api
+        namespace: default
+        limits:
+          maxAge: 720h
+          maxLines: 1000
+    - http:
+        name: healthz
+        get:
+          url: http://api:3000/healthz
+    - exec:
+        name: mysql-version
+        selector:
+          - app=mysql
+        namespace: default
+        command: ["mysql"]
+        args: ["-V"]
+        timeout: 5s
+```

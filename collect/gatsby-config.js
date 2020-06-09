@@ -17,24 +17,32 @@ module.exports = {
       options: {
         ...themeOptions,
         root: __dirname,
-        subtitle: 'Troubleshoot Documentation',
+        subtitle: 'Troubleshoot Collectors',
         description: 'The Official Troubleshoot Documentation',
         githubRepo: 'replicatedhq/troubleshoot',
         sidebarCategories: {
-          Collectors: [
-            'collect/cluster-info',
-            'collect/cluster-resources',
-            'collect/copy',
-            'collect/data',
-            'collect/exec',
-            'collect/http',
-            'collect/logs',
-            'collect/overview',
-            'collect/reference',
-            'collect/run',
-            'collect/secret',
+          Root: [
+            'index',
+            'collectors',
           ],
-        },  
+          Collectors: [
+            'cluster-info',
+            'cluster-resources',
+            'copy',
+            'data',
+            'exec',
+            'http',
+            'logs',
+            'run',
+            'secret',
+            'postgresql',
+            'mysql',
+            'redis',
+          ],
+          Reference: [
+            'reference/collectors'
+          ]
+        },
       },
     },
   ],

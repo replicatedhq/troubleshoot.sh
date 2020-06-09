@@ -1,6 +1,6 @@
 ---
-title: "Secret"
-description: "Secret"
+title: Kubernetes Secrets
+description: Including details about Kubernetes Secrets in collected output
 ---
 
 The `secret` collector can be used to include metadata about secrets (and optionally the value) in the collected data.
