@@ -3,9 +3,11 @@ date: 2019-10-23
 linktitle: "Redactors Overview"
 title: "Redactors Overview"
 weight: 20010
+isAlpha: true
 ---
 
 Redactors are YAML specifications that define which data to remove when generating a support bundle.
+Redactors are currently in alpha.
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
