@@ -46,12 +46,16 @@ const ExpandAll = styled.button(listItemStyles, {
   marginBottom: 12,
   padding: "4px 0",
   border: 0,
+  fontFamily: "Helvetica Neue",
   fontSize: 12,
-  fontWeight: 600,
+  fontWeight: 500,
   lineHeight: 1,
+  letterSpacing: "2px",
   background: "none",
   outline: "none",
   cursor: "pointer",
+  textTransform: "uppercase",
+  color: "#9B9B9B",
   svg: {
     ...size(12),
     marginRight: 8

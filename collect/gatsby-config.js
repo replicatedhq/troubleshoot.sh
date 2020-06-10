@@ -21,7 +21,7 @@ module.exports = {
         description: 'The Official Troubleshoot Documentation',
         githubRepo: 'replicatedhq/troubleshoot',
         sidebarCategories: {
-          Root: [
+          null: [
             'index',
             'all',
           ],
