@@ -124,6 +124,10 @@ export default function SidebarNav(props) {
     }
   }, [props.contents, props.pathname, prevPathname, state, setState]);
 
+  useEffect(() => {
+    toggleAll();
+  }, []);
+
   function toggleCategory(title) {
     setState(prevState => {
       const id = getId(title);
