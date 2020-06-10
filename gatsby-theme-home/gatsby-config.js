@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: "Troubleshoot Explore Categories"
+    title: "Troubleshoot.sh"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -20,10 +20,6 @@ module.exports = {
           camelCase: false,
         }
       },
-    },
-    {
-      resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/*`] },
     },
   ],
 }

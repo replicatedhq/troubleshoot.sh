@@ -24,6 +24,7 @@ publish:
 
 .PHONY: build
 build:
+	make generate-specs
 	# yarn workspace landing build --prefix-paths
 	yarn workspace docs build --prefix-paths
 	yarn workspace collect build --prefix-paths
@@ -42,3 +43,7 @@ clean:
 	yarn workspace collect clean
 	yarn workspace analyze clean
 	yarn workspace redact clean
+
+.PHONY: generate-specs
+generate-specs:
+	node generate-specs.js
