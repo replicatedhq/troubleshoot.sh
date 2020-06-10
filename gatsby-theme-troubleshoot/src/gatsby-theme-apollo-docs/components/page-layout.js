@@ -143,8 +143,6 @@ export default function PageLayout(props) {
     [navConfig]
   );
 
-  console.log(navItems)
-
   const hasNavItems = navItems.length > 0;
   const sidebarTitle = (
     <span className="title-sidebar">{subtitle || siteName}</span>

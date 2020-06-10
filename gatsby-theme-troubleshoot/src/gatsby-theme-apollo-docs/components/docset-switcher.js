@@ -105,7 +105,7 @@ const NavItem = styled.div({
   cursor: "pointer",
   clipPath: "polygon(20px 50%, 0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%)",
 
-  "&:first-child": {
+  "&:first-of-type": {
     clipPath: "polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%)"
   },
   
@@ -173,7 +173,7 @@ export const NavItemTitle = styled.h4({
   marginBottom: 0,
   fontWeight: "bold",
   color: "#163166",
-  ":first-child": {
+  ":first-of-type": {
     marginBottom: 8
   }
 });
