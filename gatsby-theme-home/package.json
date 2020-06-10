@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "gatsby-theme-explore-categories",
+  "name": "gatsby-theme-home",
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {

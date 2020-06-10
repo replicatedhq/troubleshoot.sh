@@ -1,0 +1,215 @@
+/* Header */
+
+.NavBarWrapper {
+  width: 100%;
+  padding: 0;
+  background-color: transparent;
+  margin-bottom: 0;
+  min-height: 66px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+}
+
+.NavBarWrapper .scrolled {
+  background-color: #ffffff;
+  box-shadow: 0 1px 4px rgba(0,0,0,.16);
+}
+
+.MobileNavBarWrapper {
+  width: 100%;
+  padding: 0;
+  background-color: #ffffff;
+  margin-bottom: 0;
+  min-height: 50px;
+  transition: height 0.3s;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,.16);
+}
+
+.MobileDocNavBarWrapper {
+  width: 100%;
+  padding: 0;
+  background-color: #F5F8FC;
+  margin-bottom: 0;
+  min-height: 50px;
+  transition: height 0.3s;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 100;
+  box-shadow: 0 1px 4px rgba(0,0,0,.16);
+}
+
+.NavBarContainer {
+  width: 100%;
+  padding: 0 20px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.HeaderText {
+  font-size: 26px;
+  color: #163166;
+  font-weight: 700;
+  align-self: center;
+}
+
+/* Nav Items */
+
+.NavItem,
+.NavItem a {
+  padding: 0;
+  margin: 0;
+  cursor: pointer;
+  color: #163166;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 14px;
+  transition: color .15s;
+  user-select: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
+
+.left-items {
+  .NavItem {
+    padding: 0 15px;
+  }
+}
+
+/* ≥ 960px */
+@media screen and (min-width: 60em) {
+
+}
+
+/* ≥ 1024px */
+@media screen and (min-width: 64em) {
+
+}
+
+.MobileNav {
+  position: fixed;
+  background: #ffffff;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .35s,visibility .35s,height .35s;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  transform: translateX(-100%);
+}
+
+.MobileNav-menu {
+  background-color: #ffffff;
+  position: relative;
+  width: 100%;
+  z-index: 90;
+
+  ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  li {
+    list-style-type: none;
+    padding-bottom: 10px;
+    margin-top: 10px;
+  }
+}
+
+.MobileNav.is-open {
+  transform: translateX(0);
+  opacity: .9;
+  visibility: visible;
+  height: 100%;
+  z-index: 300;
+}
+
+.MobileNav-bg {
+  opacity: 0;
+  background-color: rgba(0,0,0,.16);
+  transition: all .1s ease-in-out;
+}
+
+
+.MobileNav-items {
+  margin: 0;
+  padding-top: 10px;
+  width: 100%;
+  background-color: #ffffff;
+  display: block;
+  visibility: collapse;
+  opacity: 0;
+  transition: all .15s cubic-bezier(.25, 0, .25, 1.75), opacity .1s linear;
+}
+
+.MobileNav-item {
+  position: relative;
+
+  a {
+    text-align: center;
+    display: block;
+    font-size: 26px;
+    color: #326de6;
+    font-weight: medium;
+    cursor: pointer;
+    line-height: normal;
+    transition: color .2s linear;
+  }
+}
+
+.MobileNav-item:hover a {
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.MobileNav.is-open .MobileNav-items {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Logo on scroll styles */
+
+.TroubleshootHeader .troubleshoot-logo {
+  position: absolute;
+  visibility: hidden;
+  left: 50%;
+  margin-left: -101px;
+  top: -28px;
+  transition: all .1s ease;
+}
+
+.TroubleshootHeader.scrolled .troubleshoot-logo {
+  top: 21px;
+  visibility: visible;
+}
+
+.MobileTroubleshootHeader .troubleshoot-logo {
+  position: absolute;
+  visibility: hidden;
+  left: 50%;
+  margin-left: -101px;
+  top: -24px;
+  transition: all .1s ease;
+}
+
+.MobileTroubleshootHeader.scrolled .troubleshoot-logo {
+  top: 16px;
+  visibility: visible;
+}

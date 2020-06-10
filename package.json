@@ -3,11 +3,14 @@
   "workspaces": [
     "gatsby-theme-troubleshoot",
     "gatsby-theme-explore-categories",
+    "gatsby-theme-view-spec",
+    "gatsby-theme-home",
+    "home",
     "docs",
     "analyze",
     "collect",
     "redact",
     "explore-categories",
-    "landing"
+    "view-spec"
   ]
 }
