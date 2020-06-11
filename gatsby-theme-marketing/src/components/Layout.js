@@ -9,6 +9,27 @@ import "../scss/index.scss";
 const Layout = ({ children, isMobile, title }) => {
   return (
     <div className="flex flex1">
+      {!isMobile ?
+        <div className="suite-banner">
+          <div className="flex flex-row justifyContent--spaceBetween">
+            <div className="repl-logo-white"></div>
+            <div>
+              <a href="https://blog.replicated.com/announcing-kots/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your KOTS app<span className="banner-arrow"></span></a>
+            </div>
+          </div>
+        </div>
+        :
+        <div className="mobile-suite-banner">
+          <div className="flex flex-row justifyContent--spaceBetween">
+            <div className="flex flex1 alignItems--center">
+              <div className="repl-logo-white"></div>
+            </div>
+            <div className="u-marginLeft--normal">
+              <a href="https://blog.replicated.com/announcing-kots/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your KOTS app<span className="banner-arrow"></span></a>
+            </div>
+          </div>
+        </div>
+      }
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
