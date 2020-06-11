@@ -3,7 +3,7 @@
 publish: deps clean build
 publish:
 	mkdir -p public
-	cp -r home/public * public
+	cp -r home/public/* public
 	rm -rf home/social-cards
 
 	mkdir -p public/docs
