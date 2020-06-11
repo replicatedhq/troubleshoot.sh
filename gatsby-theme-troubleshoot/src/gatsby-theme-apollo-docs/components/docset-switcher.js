@@ -26,9 +26,8 @@ const Wrapper = styled.div({
 
 const transitionDuration = 150; // in ms
 const Menu = styled.div({
-  width: 820,
+  width: 900,
   marginBottom: 24,
-  borderRadius: 4,
   boxShadow,
   backgroundColor: "white",
   overflow: "hidden",
@@ -147,7 +146,11 @@ const NavItemInner = styled.a({
   ".Description": {
     display: "flex",
     alignItems: "center",
-    marginTop: 15
+    marginTop: 15,
+
+    "p": {
+      marginLeft: 10
+    }
   },
   ".circleNumber": {
     display: "inline-block",
@@ -316,7 +319,7 @@ export default function DocsetSwitcher(props) {
         <StyledNav>
           {otherItems.map((navItem, i) => (
             <NavItem key={navItem.url}>
-              <NavItemInner>
+              <NavItemInner href={navItem.url}r>
                 <div className="Title">
                   <div className="circleNumber"> {i + 1} </div>
                   <NavItemTitle>{navItem.title}</NavItemTitle>
@@ -325,7 +328,6 @@ export default function DocsetSwitcher(props) {
                   {renderIcons(navItem)}
                   <NavItemDescription>{navItem.description}</NavItemDescription>
                 </div>
-
               </NavItemInner>
             </NavItem>
           ))}
