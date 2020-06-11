@@ -7824,6 +7824,11 @@ gatsby-plugin-google-analytics@^2.1.31, gatsby-plugin-google-analytics@^2.2.5:
     "@babel/runtime" "^7.10.2"
     minimatch "3.0.4"
 
+gatsby-plugin-google-fonts@^1.0.1:
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-google-fonts/-/gatsby-plugin-google-fonts-1.0.1.tgz#d71054f7bf207b9a8da227380369e18e6f4e0201"
+  integrity sha512-p1NVkn27GUnDA5qHM+Z4cCcLCJIardzZXMon3640sT4xuL/AZJbsx3HEt2KY/5oZu0UXIkytkxzV2Da4rQeUIg==
+
 gatsby-plugin-less@^3.0.1:
   version "3.2.3"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-less/-/gatsby-plugin-less-3.2.3.tgz#c8589bd6ddb900bad2c2a64050944f15052b0b1d"
