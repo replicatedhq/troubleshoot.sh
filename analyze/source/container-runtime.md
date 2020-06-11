@@ -3,12 +3,15 @@ title: Container Runtime
 description: Analyzing the container runtime on each node of the Kubernetes cluster
 ---
 
-The `containerRuntime` analyzer is used to report on each nodes container runtime that's installed.
+The `containerRuntime` analyzer is used to analyze the container runtime(s) available in the cluster.
 The `when` attribute supports standard comparators to compare to the detected runtime.
+
+The `contrainerRuntime` analyzer uses the data collected in the [clusterResources](https://troubleshoot.sh/collect/cluster-resources) is included in the support bundle.
+The `clusterResources` collector is automatically added and will always be present.
 
 ## Parameters
 
-*This analyzer does not support any parameters.*
+*There are no parameters available for this analyzer.*
 
 ## Example Analyzer Definition
 

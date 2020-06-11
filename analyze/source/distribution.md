@@ -1,17 +1,17 @@
 ---
-title: Distribution
+title: Kubernetes Distribution
 description: Analyzing the Kubernetes ditribution that's running
 ---
 
-The distribution analyzer is used to check for known managed (hosted) and self-hosted versions of Kubernetes.
+The `distribution` analyzer is used to check for known managed (hosted) and self-hosted versions of Kubernetes.
 The `when` attribute supports standard comparators to compare the result to.
 
-The distribution analyzer requires that the [clusterResources](https://troubleshoot.io) is included in the support bundle.
-The clusterResources collectors is automatically added and will always be present.
+The `distribution` analyzer uses the data collected in the [clusterResources](https://troubleshoot.sh/collect/cluster-resources) is included in the support bundle.
+The `clusterResources` collector is automatically added and will always be present.
 
 ## Parameters
 
-*There are no parameters in this analyzer.*
+*There are no parameters available for this analyzer.*
 
 ## Example Analyzer Definition
 
