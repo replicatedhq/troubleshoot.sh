@@ -17,8 +17,9 @@ const Container = styled.aside({
   overflowY: "auto",
   position: "sticky",
   top: 0,
+  marginTop: 20,
   ".GithubStarButton": {
-    marginTop: "20px"
+    marginTop: 20
   }
 }
 );

@@ -246,9 +246,9 @@ export default function DocsetSwitcher(props) {
 
   function renderIcons(item) {
     if (item.title === "Collect") {
-      return <Collect width={170} />
+      return <Collect width={190} />
     } else if (item.title === "Redact") {
-      return <Redact width={160} />
+      return <Redact width={150} />
     } else {
       return <Analyze width={160} />
     }
