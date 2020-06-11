@@ -44,7 +44,7 @@ export class NavBar extends React.Component {
     const { mobileNavIsOpen } = this.state;
     const { isMobile } = this.props;
     const navBarItems = [
-      { linkTo: "/docs/reference/", label: "Docs" },
+      { linkTo: "/learn", label: "Learn" },
       { linkTo: "/explore", label: "Explore specs" },
     ];
 
@@ -77,7 +77,7 @@ export class NavBar extends React.Component {
                     <div className="flex flex-auto">
                       <div className="flex alignItems--center flex1 flex-verticalCenter u-position--relative u-marginRight--20">
                         <div className="flex-column flex-auto u-marginRight--50 justifyContent--center NavItem">
-                          <Link to="/docs/reference/" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Docs</Link>
+                          <Link to="/learn" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Learn</Link>
                         </div>
                         <div className="flex-column flex-auto justifyContent--center NavItem">
                           <Link to="/explore" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Explore specs</Link>
