@@ -10,22 +10,26 @@ module.exports = {
   siteMetadata: {
     title: "Troubleshoot redactors"
   },
-  pathPrefix: '/redactors',
+  pathPrefix: '/redact',
   plugins: [
     {
       resolve: '../gatsby-theme-troubleshoot',
       options: {
         ...themeOptions,
         root: __dirname,
-        subtitle: 'Troubleshoot Documentation',
+        subtitle: 'Troubleshoot readactors',
         description: 'The Official Troubleshoot Documentation',
         githubRepo: 'replicatedhq/troubleshoot',
         sidebarCategories: {
-          Redact: [
-            'redact/overview',
-            'redact/reference',
+          null: [
+            'index',
+            'reference',
           ],
-        },  
+          Redactors: [
+            'database-connection-strings',
+            'aws-credentials',
+          ]
+        },
       },
     },
   ],
