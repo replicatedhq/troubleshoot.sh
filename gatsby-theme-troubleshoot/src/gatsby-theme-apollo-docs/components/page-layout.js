@@ -4,11 +4,11 @@ import DocsetSwitcher from "./docset-switcher";
 import Header from "./header";
 import HeaderButton from "./header-button";
 import PropTypes from "prop-types";
-import React, {createContext, useMemo, useRef, useState} from "react";
+import React, { createContext, useMemo, useRef, useState } from "react";
 import Search from "./search";
 import styled from "@emotion/styled";
 import useLocalStorage from "react-use/lib/useLocalStorage";
-import {Button} from "@apollo/space-kit/Button";
+import { Button } from "@apollo/space-kit/Button";
 import {
   FlexWrapper,
   Layout,
@@ -19,12 +19,13 @@ import {
   colors,
   useResponsiveSidebar
 } from "gatsby-theme-apollo-core";
-import {Helmet} from "react-helmet";
-import {HamburgerMenu} from "./docs-icons";
-import { graphql, useStaticQuery} from "gatsby";
-import {MobileLogo} from "./mobile-logo";
-import {SelectedLanguageContext} from "./multi-code-block";
-import {trackCustomEvent} from "gatsby-plugin-google-analytics";
+import { Helmet } from "react-helmet";
+import { HamburgerMenu } from "./docs-icons";
+import { graphql, useStaticQuery } from "gatsby";
+import { MobileLogo } from "./mobile-logo";
+import { SelectedLanguageContext } from "./multi-code-block";
+import { trackCustomEvent } from "gatsby-plugin-google-analytics";
+import { ReplicatedWhiteIcon, BannerArrow } from "./suite-banner";
 
 const Main = styled.main({
   flexGrow: 1
@@ -63,6 +64,51 @@ const HeaderInner = styled.span({
   justifyContent: "space-between",
   marginBottom: 32
 });
+
+const SuiteBanner = styled.div({
+  backgroundColor: "#073551",
+  color: "#ffffff",
+  position: "fixed",
+  top: 0,
+  right: 0,
+  left: 0,
+  zIndex: 100,
+  padding: "14px 30px"
+});
+
+const LearnMoreBanner = styled.div({
+  display: "flex",
+  "a": {
+    fontSize: "14px",
+    fontWeight: "400",
+    textDecoration: "none",
+    color: "#ffffff",
+    fontFamily: "Roboto Mono"
+  },
+
+  ".banner-arrow": {
+    position: "relative",
+    marginLeft: "6px",
+    top: "3px",
+    right: 0,
+    width: "9px",
+    height: "16px",
+    backgroundRepeat: "no-repeat",
+    backgroundSize: "100%",
+    display: "inline-block",
+    transition: "all 0.2s"
+  },
+
+  "&:hover .banner-arrow": {
+    right: "-4px"
+  }
+})
+
+const InnerBanner = styled.div({
+  display: "flex",
+  flexDirection: "flex-row",
+  justifyContent: "space-between"
+})
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
 
@@ -119,8 +165,8 @@ export default function PageLayout(props) {
     setMenuOpen(false);
   }
 
-  const {pathname} = props.location;
-  const {siteName, title} = data.site.siteMetadata;
+  const { pathname } = props.location;
+  const { siteName, title } = data.site.siteMetadata;
   const {
     subtitle,
     sidebarContents
@@ -154,6 +200,17 @@ export default function PageLayout(props) {
 
   return (
     <Layout>
+      <SuiteBanner>
+        <InnerBanner>
+          <ReplicatedWhiteIcon />
+          <LearnMoreBanner>
+            <a href="https://blog.replicated.com/announcing-kots/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your KOTS app</a>
+            <span className="banner-arrow">
+              <BannerArrow />
+            </span>
+          </LearnMoreBanner>
+        </InnerBanner>
+      </SuiteBanner>
       <Helmet
         titleTemplate={["%s", subtitle, title].filter(Boolean).join(" - ")}
       >
@@ -183,15 +240,15 @@ export default function PageLayout(props) {
                   color={colors.primary}
                   size="small"
                   onClick={openMenu}
-                  style={{display: "block"}}
+                  style={{ display: "block" }}
                 >
                   {sidebarTitle}
                   <StyledIcon />
                 </StyledButton>
               </ButtonWrapper>
             ) : (
-              sidebarTitle
-            )}
+                sidebarTitle
+              )}
           </HeaderInner>
           {sidebarContents && (
             <SidebarNav

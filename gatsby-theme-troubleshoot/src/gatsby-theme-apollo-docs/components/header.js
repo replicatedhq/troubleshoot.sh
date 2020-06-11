@@ -19,19 +19,18 @@ const InnerWrapper = styled.div({
   backgroundColor: "white",
   [breakpoints.md]: {
     padding: "0 24px"
-  }
+  },
+  marginTop: 20
 });
 
 export default function Header(props) {
   return (
     <Wrapper>
-      {props.beforeContent}
       <InnerWrapper>{props.children}</InnerWrapper>
     </Wrapper>
   );
 }
 
 Header.propTypes = {
-  beforeContent: PropTypes.node.isRequired,
   children: PropTypes.node.isRequired
 };
