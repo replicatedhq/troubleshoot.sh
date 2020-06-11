@@ -1,0 +1,18 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Collector
+metadata:
+  name: validate-pod-bandwidth
+  annotations: 
+    title: "Kubernetes"
+    description: "Validate that pod to pod networking bandwidth"
+    category: "performance"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags:
+      - kubernetes
+      - pod
+    contributors:
+      - name: "Marc Campbell"
+        avatarUri: "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"
+spec:
+  collectors:
+  analyzers:
