@@ -21,6 +21,9 @@ module.exports = {
         description: 'The Official Troubleshoot Documentation',
         githubRepo: 'replicatedhq/troubleshoot',
         sidebarCategories: {
+          null: [
+            "index",
+          ],
           "Preflight Checks": [
             'preflight/introduction',
             'preflight/install-preflight',
