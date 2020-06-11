@@ -278,6 +278,8 @@ export default function DocsetSwitcher(props) {
   const mainItem = props.navItems.find(item => item.main);
   const otherItems = props.navItems.filter(item => !item.main);
 
+  console.log(otherItems)
+
   return (
     <Wrapper
       onClick={handleWrapperClick}
@@ -316,7 +318,7 @@ export default function DocsetSwitcher(props) {
         <StyledNav>
           {otherItems.map((navItem, i) => (
             <NavItem key={navItem.url}>
-              <NavItemInner>
+              <NavItemInner href={navItem.url}r>
                 <div className="Title">
                   <div className="circleNumber"> {i + 1} </div>
                   <NavItemTitle>{navItem.title}</NavItemTitle>
@@ -325,7 +327,6 @@ export default function DocsetSwitcher(props) {
                   {renderIcons(navItem)}
                   <NavItemDescription>{navItem.description}</NavItemDescription>
                 </div>
-
               </NavItemInner>
             </NavItem>
           ))}
