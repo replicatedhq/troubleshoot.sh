@@ -132,12 +132,12 @@ fs.readdir(specDir, (err, files) => {
   };
 
   // Write finalized JSON file to static directory
-  fs.writeFile("./static/specs-gen.json", JSON.stringify(jsonFile), (err) => {
+  fs.writeFile("./gatsby-theme-marketing/static/specs-gen.json", JSON.stringify(jsonFile), (err) => {
     if (err) throw err;
     console.log("\x1b[34m%s\x1b[0m", "Tags generated:", jsonFile.tags.length);
     console.log("\x1b[34m%s\x1b[0m", "Categories generated:", jsonFile.categories.length);
     console.log("\x1b[34m%s\x1b[0m", "Specs generated:", jsonFile.specs.length);
-    console.log("\x1b[32m%s\x1b[0m", "Successfully generated specs-gen.json to the ./static directory");
+    console.log("\x1b[32m%s\x1b[0m", "Successfully generated specs-gen.json to the ./gatsby-theme-marketing/static directory");
   });
 
 });
