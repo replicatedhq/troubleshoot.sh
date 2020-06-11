@@ -27,7 +27,6 @@ spec:
         args: ["-w", "5", "www.google.com"]
         imagePullPolicy: IfNotPresent
   analyzers:
-
     - textAnalyze:
         checkName: "run-ping"
         filename: run/ping.txt

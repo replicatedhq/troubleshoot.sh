@@ -23,24 +23,23 @@ module.exports = {
         sidebarCategories: {
           null: [
             'index',
+            'reference/analyzers',
           ],
           Analyze: [
             'node-resources',
             'cluster-version',
-            'container-runtime',
-            'crd',
-            'deployment-status',
             'distribution',
+            'container-runtime',
+            'node-resources',
+            'deployment-status',
+            'statefulset-status',
             'image-pull-secrets',
             'ingress',
-            'regex',
-            'secrets',
-            'statefulset-status',
             'storage-class',
+            'secrets',
+            'crd',
+            'regex',
           ],
-          Reference: [
-            'reference/analyzers'
-          ]
         },
       },
     },
