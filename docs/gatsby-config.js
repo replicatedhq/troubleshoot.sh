@@ -9,7 +9,7 @@ const themeOptions = {
 module.exports = {
   pathPrefix: '/docs',
   siteMetadata: {
-    title: "Troubleshoot docs"
+    title: "Troubleshoot Documentation"
   },
   plugins: [
     {
