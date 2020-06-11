@@ -2,17 +2,11 @@
   "private": true,
   "workspaces": [
     "gatsby-theme-troubleshoot",
-    "gatsby-theme-explore-categories",
-    "gatsby-theme-view-spec",
-    "gatsby-theme-home",
     "gatsby-theme-marketing",
     "marketing",
-    "home",
     "learn",
     "analyze",
     "collect",
-    "redact",
-    "explore-categories",
-    "view-spec"
+    "redact"
   ]
 }
