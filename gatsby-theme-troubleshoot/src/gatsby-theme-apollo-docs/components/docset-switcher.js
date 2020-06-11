@@ -319,7 +319,7 @@ export default function DocsetSwitcher(props) {
         <StyledNav>
           {otherItems.map((navItem, i) => (
             <NavItem key={navItem.url}>
-              <NavItemInner href={navItem.url}r>
+              <NavItemInner href={navItem.url}>
                 <div className="Title">
                   <div className="circleNumber"> {i + 1} </div>
                   <NavItemTitle>{navItem.title}</NavItemTitle>
