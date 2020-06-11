@@ -1,6 +1,6 @@
 ---
-title: "Cluster Info"
-description: "Cluster Info"
+title: Cluster Info
+description: Including details about the Kubernetes cluster
 ---
 
 The `clusterInfo` collector will add common information about a Kubernetes cluster.
