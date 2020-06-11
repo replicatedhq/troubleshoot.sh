@@ -4,35 +4,35 @@ module.exports = options => ({
       resolve: `gatsby-theme-apollo-docs`,
       options: {
         navConfig: {
-          "Troubleshoot Basics": {
-            url: "/overview",
-            description: "Get started with the basics of what Troubleshoot is and how to use to successfully with your application.",
+          "Getting Started": {
+            url: "/learn",
+            description: "Learn how to use Troubleshoot to build preflight checks and build disconnected support processes for Kubernetes.",
             omitLandingPage: true,
             main: true
           },
           "Collect": {
             url: "/collect",
-            description: "Write specs to collect data from your application.",
+            description: "Describe the data to collect from an application running in Kubernetes.",
           },
           "Redact": {
             url: "/redact",
-            description: "Redact sensitive information from support bundles.",
+            description: "Redact sensitive information from the collected data.",
           },
           "Analyze": {
             url: "/analyze",
-            description: "Analyze data collected by your support bundles.",
+            description: "Perform analysis to identify common problems with the collected data.",
           }
         },
         footerNavConfig: {
           Explore: {
-            href: "https://troubleshoot.sh/explore/",
+            href: "/explore/",
             target: "_blank",
             rel: "noopener noreferrer"
           },
           Installing: {
             href: ""
           },
-          Kots: {
+          KOTS: {
             href: "https://kots.io",
             target: "_blank",
             rel: "noopener noreferrer"

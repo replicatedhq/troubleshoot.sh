@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "docs",
+  "name": "learn",
   "version": "0.0.1",
   "scripts": {
     "prestart": "gatsby clean",

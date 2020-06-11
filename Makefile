@@ -6,9 +6,9 @@ publish:
 	cp -r home/public/* public
 	rm -rf home/social-cards
 
-	mkdir -p public/docs
-	cp -r docs/public/* public/docs
-	rm -rf public/docs/social-cards
+	mkdir -p public/learn
+	cp -r learn/public/* public/learn
+	rm -rf public/learn/social-cards
 
 	mkdir -p public/collect
 	cp -r collect/public/* public/collect
@@ -34,7 +34,7 @@ publish:
 build:
 	make generate-specs
 	yarn workspace home build --prefix-paths
-	yarn workspace docs build --prefix-paths
+	yarn workspace learn build --prefix-paths
 	yarn workspace collect build --prefix-paths
 	yarn workspace analyze build --prefix-paths
 	yarn workspace redact build --prefix-paths
@@ -49,7 +49,7 @@ deps:
 clean:
 	rm -rf public
 	yarn workspace home clean
-	yarn workspace docs clean
+	yarn workspace learn clean
 	yarn workspace collect clean
 	yarn workspace analyze clean
 	yarn workspace redact clean
