@@ -1,6 +1,8 @@
 import PropTypes from "prop-types";
 import React, { useRef } from "react";
 import styled from "@emotion/styled";
+import {PageNav} from "gatsby-theme-apollo-core";
+import {withPrefix} from "gatsby";
 
 const Wrapper = styled.div({
   display: "flex",
@@ -71,12 +73,24 @@ const BodyContent = styled.div({
 export default function PageContent(props) {
   const contentRef = useRef(null);
 
+  const pageIndex = props.pages.findIndex(page => {
+    const prefixedPath = withPrefix(page.path);
+    return (
+      prefixedPath === props.pathname ||
+      prefixedPath.replace(/\/$/, '') === props.pathname
+    );
+  });
+
   return (
     <Wrapper>
       <InnerWrapper>
         <BodyContent ref={contentRef} className="content-wrapper">
           {props.children}
         </BodyContent>
+        <PageNav
+          prevPage={props.pages[pageIndex - 1]}
+          nextPage={props.pages[pageIndex + 1]}
+        />
       </InnerWrapper>
     </Wrapper>
   );

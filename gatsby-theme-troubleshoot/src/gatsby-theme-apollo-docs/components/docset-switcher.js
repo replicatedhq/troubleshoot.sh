@@ -26,9 +26,8 @@ const Wrapper = styled.div({
 
 const transitionDuration = 150; // in ms
 const Menu = styled.div({
-  width: 820,
+  width: 900,
   marginBottom: 24,
-  borderRadius: 4,
   boxShadow,
   backgroundColor: "white",
   overflow: "hidden",
@@ -147,7 +146,11 @@ const NavItemInner = styled.a({
   ".Description": {
     display: "flex",
     alignItems: "center",
-    marginTop: 15
+    marginTop: 15,
+
+    "p": {
+      marginLeft: 10
+    }
   },
   ".circleNumber": {
     display: "inline-block",
@@ -277,8 +280,6 @@ export default function DocsetSwitcher(props) {
 
   const mainItem = props.navItems.find(item => item.main);
   const otherItems = props.navItems.filter(item => !item.main);
-
-  console.log(otherItems)
 
   return (
     <Wrapper
