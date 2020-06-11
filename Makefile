@@ -3,8 +3,8 @@
 publish: deps clean build
 publish:
 	mkdir -p public
-	cp -r home/public/* public
-	rm -rf home/social-cards
+	cp -r marketing/public/* public
+	rm -rf marketing/social-cards
 
 	mkdir -p public/learn
 	cp -r learn/public/* public/learn
@@ -22,24 +22,14 @@ publish:
 	cp -r redact/public/* public/redact
 	rm -rf public/redact/social-cards
 
-	mkdir -p public/explore
-	cp -r explore-categories/public/* public/explore
-	rm -rf public/explore/social-card
-
-	mkdir -p public/spec
-	cp -r view-spec/public/* public/spec
-	rm -rf public/spec/social-card
-
 .PHONY: build
 build:
 	make generate-specs
-	yarn workspace home build --prefix-paths
+	yarn workspace marketing build --prefix-paths
 	yarn workspace learn build --prefix-paths
 	yarn workspace collect build --prefix-paths
 	yarn workspace analyze build --prefix-paths
 	yarn workspace redact build --prefix-paths
-	yarn workspace explore-categories build --prefix-paths
-	yarn workspace view-spec build --prefix-paths
 
 .PHONY: deps
 deps:
@@ -48,13 +38,11 @@ deps:
 .PHONY: clean
 clean:
 	rm -rf public
-	yarn workspace home clean
+	yarn workspace marketing clean
 	yarn workspace learn clean
 	yarn workspace collect clean
 	yarn workspace analyze clean
 	yarn workspace redact clean
-	yarn workspace explore-categories clean
-	yarn workspace view-spec clean
 
 .PHONY: generate-specs
 generate-specs:
