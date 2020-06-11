@@ -1,6 +1,15 @@
 module.exports = options => ({
   plugins: [
     {
+      resolve: "gatsby-plugin-google-fonts",
+      options: {
+        fonts: [
+          "Roboto Mono\:400,500,700",
+        ],
+        display: "swap"
+      }
+    },
+    {
       resolve: `gatsby-theme-apollo-docs`,
       options: {
         navConfig: {
