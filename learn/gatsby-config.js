@@ -2,12 +2,12 @@ const themeOptions = {
   siteName: 'Learn Troubleshoot',
   pageTitle: 'Learn Troubleshot',
   menuTitle: 'Troubleshoot',
-  baseDir: 'docs',
+  baseDir: 'learn',
   contentDir: 'source',
 };
 
 module.exports = {
-  pathPrefix: '/docs',
+  pathPrefix: '/learn',
   siteMetadata: {
     title: "Learn Troubleshoot"
   },
