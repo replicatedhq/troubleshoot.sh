@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 
 import { titleize } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
@@ -36,6 +36,9 @@ class ExploreSpec extends React.Component {
   }
 
   onCloseTagFilter = (tag) => {
+    this.setState({ tagsToShow: "" }, () => {
+      navigate("/explore");
+    });
     this.setState({ tagsToShow: this.state.tagsToShow.filter(stateTag => stateTag !== tag) });
   }
 
