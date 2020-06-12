@@ -189,51 +189,55 @@ class TroubleshootSpec extends React.Component {
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section" style={{marginTop: "50px"}}>
-          <div className={`${!isMobile ? "flex1" : "flex-column"} container flex justifyContent--center`}>
-            <div className={`${!isMobile && "troubleshootSection troubleshootSectionWidth"}`}>
+        <div className="section" style={{ marginTop: "30px" }}>
+          <div className="flex-column container flex justifyContent--center">
+            <div className="troubleshootSection">
               <Link to="/explore" className="flex flex1 u-marginBottom--15 u-fontSize--small link">
                 <span className="icon backArrow-icon u-marginRight--small" /> Find more specs
                 </Link>
-              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
-              <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
+              <div className="flex flex1 justifyContent--spaceBetween">
+                <div className="flex flex-column">
+                  <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
+                  <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
+                </div>
+
+                <div className="flex flex-column">
+                  <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium u-marginBottom--10"> Contributors </p>
+                  {currentSpec?.contributors?.map((contributor, i) => (
+                    <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}>
+                      <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
+                    </div>
+                  ))}
+                </div>
+              </div>
 
               <div className="u-marginTop--10 u-marginBottom--10 flex">
-                <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight</button>
-                <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "support-bundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("support-bundle")}><span className="icon support-small"></span>Support</button>
+                <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight checks</button>
+                <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "support-bundle" ? "primary darkBlue is-active-blue" : "gray-disabled"}`} onClick={() => this.onTryItOut("support-bundle")} disabled={true}><span className="icon graySupport-icon"></span>
+                  <div className="flex flex-column alignItems--flexStart">
+                    <p> Support bundle </p>
+                    <span className="u-fontSize--small link u-marginTop--small"> Coming soon </span>
+                  </div>
+                </button>
               </div>
 
               <div className="MonacoEditor--wrapper flex u-width--full">
                 <div className="flex u-width--full u-overflow--hidden" id="ace-editor">
                 </div>
               </div>
-              <div className="u-marginTop--30">
+              <div className="AbsoulteCopyYaml--wrapper">
                 {!copySuccess ?
-                  <button className="Button primary blue u-marginRight--30" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</button>
+                  <button className="Button copy blue u-marginRight--30" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</button>
                   : <span className="u-color--vidaLoca u-marginRight--30">{copySuccess}</span>}
               </div>
             </div>
-            <div className={`${!isMobile ? "troubleshootSection u-marginLeft--50 troubleshootSectionWidth" : "u-marginTop--30"}`}>
-              <div className="flex alignItems--center">
-                <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium"> Contributors </p>
-                {currentSpec?.contributors?.map((contributor, i) => (
-                  <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}>
-                    <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
-                  </div>
-                ))}
-              </div>
 
-              <div className="flex u-marginTop--30 u-marginBottom--30 alignItems--center">
-                <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex"> Tags </p>
-                <div className="flex flex1 u-marginLeft--12">
-                  {currentSpec?.tags?.map((tag, i) => (<Tag tag={tag} key={`${tag}-${i}`} />))}
-                </div>
-              </div>
-
-              <div className="u-borderTop--gray u-marginBottom--30">
-                <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Try it out </p>
+            <div className="flex flex1 justifyContent--spaceBetween u-marginTop--20">
+              <div className="flex1 flex-column" style={{ marginRight: "70px" }}>
+                <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginBottom--10"> Try it out </p>
+                <div className="u-borderTop--gray"></div>
                 {showCodeSnippet &&
-                  <div className="flex flex-column u-marginTop--normal">
+                  <div className="flex flex-column u-marginTop--normal u-marginTop--10">
                     <CodeSnippet
                       canCopy={true}
                       onCopyText={<span className="u-color--vidaLoca">Copied!</span>}
@@ -245,21 +249,33 @@ class TroubleshootSpec extends React.Component {
                 }
               </div>
 
-              <div className="u-borderTop--gray u-marginBottom--15">
-                <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30"> Related specs </p>
+              <div className="flex1 flex-column u-marginBottom--30">
+                <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex u-marginBottom--10"> Tags </p>
+                <div className="u-borderTop--gray"></div>
+                <div className="flex flex1 u-marginTop--15">
+                  {currentSpec?.tags?.map((tag, i) => (<Tag tag={tag} key={`${tag}-${i}`} />))}
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-column u-marginBottom--15">
+              <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30 u-marginBottom--10"> Related specs </p>
+              <div className="u-borderTop--gray"></div>
+              <div className="flex flex1 u-marginTop--15">
                 {relatedSpecs?.slice(0, 2).map((spec, i) => (
-                  <div className="RelatedSpecs--wrapper" key={`${spec.id}-${i}`}>
-                    <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--10"> {spec.description} </p>
-                    <div className="u-marginTop--15 flex flex1">
-                      <Link to={`/spec/${spec.slug}`} className="u-fontSize--small link"> View spec </Link>
-                      <div className="flex flex1 justifyContent--flexEnd">
-                        <span className="icon tag-icon" />
-                        {spec.tags.map((tag, i) => (
-                          <p className="u-fontSize--small u-color--dustyGray u-marginLeft--10" key={`${tag}-${i}`}> {tag} </p>
-                        )
-                        )}
+                  <div className="RelatedSpecs--wrapper flex" key={`${spec.id}-${i}`}>
+                    <Link to={`/spec/${spec.slug}`}>
+                      <div className="example-spec-block">
+                        <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold"> {spec.description} </p>
+                        <div className="flex flex1 u-marginTop--10 alignItems--flexEnd">
+                          <span className="icon tag-icon" />
+                          {spec.tags.map((tag, i) => (
+                            <p className="u-fontSize--small u-color--dustyGray u-marginLeft--10" key={`${tag}-${i}`}> {tag} </p>
+                          )
+                          )}
+                        </div>
                       </div>
-                    </div>
+                    </Link>
                   </div>
                 )
                 )}
