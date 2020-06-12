@@ -178,7 +178,6 @@ body a {
 
 .troubleshootSection {
   padding-top: 60px;
-  padding-bottom: 60px;
 }
 
 .suite-banner {
@@ -265,6 +264,12 @@ body a {
       right: -4px;
     }
   }
+}
+
+.AbsoulteCopyYaml--wrapper {
+  position: absolute;
+  top: 350px;
+  right: 10px;
 }
 
 
