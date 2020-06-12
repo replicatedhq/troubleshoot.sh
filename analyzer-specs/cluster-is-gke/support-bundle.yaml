@@ -1,0 +1,21 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: SupportBundle
+metadata:
+  name: cluster-is-gke
+  annotations: 
+    title: "Check if Google Cloud GKE Managed Kubernetes"
+    description: "Verify that the Kubernetes cluster is a manaegd Google Cloud GKE Cluster"
+    category: "cloud_provider"
+    iconUri: "/category-icons/cloud-provider.svg"
+    tags: '["kubernetes", "cloud", "google", "gcp", "gke"]'
+    contributors: '[{"name": "Marc Campbell", "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"}]'
+spec:
+  collectors: []
+  analyzers:
+    - distribution:
+        outcomes:
+          - pass:
+              when: "== gke"
+              message: Google Cloud GKE is a supported distribution
+          - warn:
+              message: The cluster is not running on Google Cloud GKE
