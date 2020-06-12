@@ -216,7 +216,7 @@ class TroubleshootSpec extends React.Component {
                 <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "support-bundle" ? "primary darkBlue is-active-blue" : "gray-disabled"}`} onClick={() => this.onTryItOut("support-bundle")} disabled={true}><span className="icon graySupport-icon"></span>
                   <div className="flex flex-column alignItems--flexStart">
                     <p> Support bundle </p>
-                    <span className="u-fontSize--small link u-marginTop--small"> Coming soon </span>
+                    <span className="u-fontSize--small u-color--royalBlue u-marginTop--small"> Coming soon </span>
                   </div>
                 </button>
               </div>
