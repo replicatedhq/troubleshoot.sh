@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Link } from "gatsby";
+import { Link, navigate } from "gatsby";
 
 import { titleize } from "../utils/utilities";
 import "../scss/components/ExploreSpec.scss";
@@ -36,6 +36,9 @@ class ExploreSpec extends React.Component {
   }
 
   onCloseTagFilter = (tag) => {
+    this.setState({ tagsToShow: "" }, () => {
+      navigate("/explore");
+    });
     this.setState({ tagsToShow: this.state.tagsToShow.filter(stateTag => stateTag !== tag) });
   }
 
@@ -138,7 +141,7 @@ class ExploreSpec extends React.Component {
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section u-marginTop--70 gradient border justifyContent--center alignItems--center">
+        <div className="section gradient border justifyContent--center alignItems--center" style={{marginTop: "120px"}}>
           <div className="container">
             <p className="u-fontSize--jumbo u-fontWeight--bold u-color--biscay u-lineHeight--more"> Explore troubleshoot specs </p>
             <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy">

@@ -57,12 +57,10 @@ class TroubleshootSpec extends React.Component {
         preflightYAML: currentSpec.preflightSpecYaml,
         supportBundleYAML: currentSpec.supportSpecYaml
       });
-      this.sendToServer("preflight", currentSpec.preflightSpecYaml);
-      this.sendToServer("support-bundle", currentSpec.supportSpecYaml);
+      this.sendToServer("preflight", currentSpec.preflightSpecYaml, true);
+      this.sendToServer("support-bundle", currentSpec.supportSpecYaml, true);
       this.renderAceEditor(currentSpec.preflightSpecYaml);
     });
-
-    this.onTryItOut("preflight");
   }
 
   componentDidUpdate(lastProps, lastState) {
@@ -105,7 +103,7 @@ class TroubleshootSpec extends React.Component {
     }
   }
 
-  sendToServer = (specType, spec) => {
+  sendToServer = (specType, spec, onMount) => {
     let uri;
     let method;
 
@@ -140,6 +138,10 @@ class TroubleshootSpec extends React.Component {
           if (specType === "preflight") {
             this.setState({
               preflightPreviewId: result.id,
+            }, () => {
+              if (onMount) {
+                this.onTryItOut("preflight")
+              }
             });
           } else if (specType === "support-bundle") {
             this.setState({
@@ -187,7 +189,7 @@ class TroubleshootSpec extends React.Component {
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section">
+        <div className="section" style={{marginTop: "50px"}}>
           <div className={`${!isMobile ? "flex1" : "flex-column"} container flex justifyContent--center`}>
             <div className={`${!isMobile && "troubleshootSection troubleshootSectionWidth"}`}>
               <Link to="/explore" className="flex flex1 u-marginBottom--15 u-fontSize--small link">
