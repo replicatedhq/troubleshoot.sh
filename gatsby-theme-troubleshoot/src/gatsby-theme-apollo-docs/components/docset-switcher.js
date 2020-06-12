@@ -50,18 +50,19 @@ const MenuTitle = styled.div({
   marginTop: "24px"
 });
 
-const StyledNav = styled.nav({
+const StyledNav = styled.nav(props => ({
   display: "flex",
   justifyContent: "center",
   alignItems: "center",
   margin: "20px",
-  position: "relative"
-});
+  position: "relative",
+  flexDirection: props.isMobileSidebar ? "column" : ""
+}));
 
 const Timeline = styled.div({
   height: "2px",
   background: "#E5E5E5",
-  width: "512px",
+  width: "590px",
   position: "relative",
   top: "1px",
   left: "150px",
@@ -107,35 +108,51 @@ const NavItem = styled.div({
   "&:first-of-type": {
     clipPath: "polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%)"
   },
-  
+
   "&:last-child": {
     clipPath: "polygon(20px 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%)"
   }
 });
 
-const NavMainItem = styled.div({
+const MobileNavItem = styled.div({
   display: "flex",
-  width: "70%",
-  padding: 15,
+  [breakpoints.md]: {
+    width: "100%"
+  },
+  background: "#F8F8F8",
+  boxShadow: "3px 0px 0px #FFFFFF",
+  cursor: "pointer",
+  justifyContent: "center",
+  // clipPath: "polygon(0% 80%,0% 0%,100% 0%,100% 80%,0% 100%,80% 100%)",
+  // "&:last-child": {
+  //   clipPath: "polygon(0% 0%, 0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+  // }
+});
+
+const NavMainItem = styled.div(props => ({
+  display: "flex",
+  padding: props.isMobileSidebar ? "15px 10px 15px 10px" : "15px 20px",
   background: "#F8F8F8",
   alignItems: "center",
   [breakpoints.md]: {
     width: "100%"
   },
-  '@media (hover: hover)': {
-    ':hover': {
+  "@media (hover: hover)": {
+    ":hover": {
       backgroundColor: "#E9F0FF",
     }
   }
-})
+}))
 
-const NavItemInner = styled.a({
-  display: "block",
+const NavItemInner = styled.a(props => ({
+  display: props.isMobileSidebar ? "flex" : "block",
+  alignItems: "center",
+  width: props.isMobileSidebar ? "100%" : props.main ? "400px" : "260px",
   height: "100%",
-  padding: "15px 20px",
+  padding: props.isMobileSidebar ? "15px 10px 15px 10px" : "15px 20px",
   textDecoration: "none",
-  '@media (hover: hover)': {
-    ':hover': {
+  "@media (hover: hover)": {
+    ":hover": {
       backgroundColor: "#E9F0FF",
     }
   },
@@ -152,22 +169,26 @@ const NavItemInner = styled.a({
       marginLeft: 10
     }
   },
-  ".circleNumber": {
-    display: "inline-block",
-    fontFamily: "Roboto Mono",
-    color: "#FFFFFF",
-    textAlign: "center",
-    fontWeight: "bold",
-    fontSize: "20px",
-    lineHeight: "20px",
-    borderRadius: "50%",
-    width: "34px",
-    height: "34px",
-    padding: "5px 10px 11px 9px",
-    background: "#7A9FEA",
-    marginRight: "10px"
+  ".MobileDescription": {
+    marginLeft: 10
   }
-});
+}));
+
+export const CircleNumber = styled.div(props => ({
+  display: "inline-block",
+  fontFamily: "Roboto Mono",
+  color: "#FFFFFF",
+  textAlign: "center",
+  fontWeight: "bold",
+  fontSize: "20px",
+  lineHeight: "20px",
+  borderRadius: "50%",
+  width: "34px",
+  height: "34px",
+  padding: "5px 10px 11px 9px",
+  background: "#7A9FEA",
+  marginRight: props.isMobileSidebar ? "15px" : "10px"
+}))
 
 export const NavItemTitle = styled.h4({
   fontFamily: "Roboto Mono",
@@ -189,16 +210,14 @@ export const NavItemDescription = styled.p({
   fontFamily: "Helvetica Neue"
 });
 
-const FooterNav = styled.nav({
+const FooterNav = styled.nav(props => ({
   display: "flex",
   alignItems: "center",
   padding: "16px 24px",
   backgroundColor: "#F8F8F8",
-  [breakpoints.md]: {
-    display: "block"
-  },
-  marginTop: 40
-});
+  marginTop: 40,
+  flexWrap: props.isMobileSidebar && "wrap"
+}));
 
 const FooterNavItem = styled.a({
   color: "#9B9B9B",
@@ -212,8 +231,8 @@ const FooterNavItem = styled.a({
 });
 
 const RightFooter = styled.div({
-  display: 'flex',
-  marginLeft: 'auto',
+  display: "flex",
+  marginLeft: "auto",
   [breakpoints.md]: {
     marginTop: 8
   }
@@ -225,10 +244,18 @@ const RightLink = styled.a({
   ":hover": {
     color: colors.text3
   },
-  ':not(:last-child)': {
+  ":not(:last-child)": {
     marginRight: 24
   }
 });
+
+const MobileFooter = styled.div({
+  display: "flex",
+  width: "50%",
+  height: 40,
+  alignItems: "center",
+  justifyContent: "center"
+})
 
 export default function DocsetSwitcher(props) {
   const menuRef = useRef(null);
@@ -246,11 +273,11 @@ export default function DocsetSwitcher(props) {
 
   function renderIcons(item) {
     if (item.title === "Collect") {
-      return <Collect width={190} />
+      return <Collect width={230} />
     } else if (item.title === "Redact") {
-      return <Redact width={150} />
+      return <Redact width={180} />
     } else {
-      return <Analyze width={160} />
+      return <Analyze width={230} />
     }
   }
 
@@ -273,10 +300,6 @@ export default function DocsetSwitcher(props) {
       props.onClose();
     }
   }
-
-  const hasChangeLog = Boolean(
-    props.hasChangeLog
-  );
 
   const mainItem = props.navItems.find(item => item.main);
   const otherItems = props.navItems.filter(item => !item.main);
@@ -303,58 +326,87 @@ export default function DocsetSwitcher(props) {
         </MenuTitle>
         <StyledNav>
           {mainItem &&
-            <NavMainItem key={mainItem.url}>
-              <TroubleshootLogo width={95} />
-              <NavItemInner href={mainItem.url}>
+            <NavMainItem key={mainItem.url} isMobileSidebar={props.openSidebar}>
+              <TroubleshootLogo width={props.openSidebar ? 140 : 70} />
+              <NavItemInner href={mainItem.url} main={!!mainItem}>
                 <NavItemTitle>{mainItem.title}</NavItemTitle>
                 <NavItemDescription>{mainItem.description}</NavItemDescription>
               </NavItemInner>
             </NavMainItem>}
         </StyledNav>
-        <Timeline>
-          <span className="first"></span>
-          <span className="second"></span>
-          <span className="last"></span>
-        </Timeline>
-        <StyledNav>
-          {otherItems.map((navItem, i) => (
-            <NavItem key={navItem.url}>
-              <NavItemInner href={navItem.url}>
-                <div className="Title">
-                  <div className="circleNumber"> {i + 1} </div>
-                  <NavItemTitle>{navItem.title}</NavItemTitle>
-                </div>
-                <div className="Description">
-                  {renderIcons(navItem)}
-                  <NavItemDescription>{navItem.description}</NavItemDescription>
-                </div>
-              </NavItemInner>
-            </NavItem>
-          ))}
+        {!props.openSidebar &&
+          <Timeline>
+            <span className="first"></span>
+            <span className="second"></span>
+            <span className="last"></span>
+          </Timeline>}
+        <StyledNav isMobileSidebar={props.openSidebar}>
+          {otherItems.map((navItem, i) => {
+            if (props.openSidebar) {
+              return (
+                <MobileNavItem key={navItem.url}>
+                  <NavItemInner href={navItem.url} isMobileSidebar={props.openSidebar}>
+                    <CircleNumber isMobileSidebar={props.openSidebar}> {i + 1} </CircleNumber>
+                    {renderIcons(navItem)}
+                    <div className="MobileDescription">
+                      <NavItemTitle isMobileSidebar={props.openSidebar}>{navItem.title}</NavItemTitle>
+                      <NavItemDescription>{navItem.description}</NavItemDescription>
+                    </div>
+                  </NavItemInner>
+                </MobileNavItem>
+              )
+            } else {
+              return (
+                <NavItem key={navItem.url}>
+                  <NavItemInner href={navItem.url}>
+                    <div className="Title">
+                      <CircleNumber> {i + 1} </CircleNumber>
+                      <NavItemTitle>{navItem.title}</NavItemTitle>
+                    </div>
+                    <div className="Description">
+                      {renderIcons(navItem)}
+                      <NavItemDescription>{navItem.description}</NavItemDescription>
+                    </div>
+                  </NavItemInner>
+                </NavItem>
+              )
+            }
+          })}
         </StyledNav>
-        {(props.footerNavConfig || hasChangeLog) && (
-          <FooterNav>
-            <Fragment>
-              {props.footerNavConfig &&
-                Object.entries(props.footerNavConfig).map(([text, props]) => (
-                  <FooterNavItem key={text} {...props}>
-                    {text}
-                  </FooterNavItem>
-                ))}
-              {hasChangeLog && (
-                <RightFooter>
-                  {props.changeLogObj && (
-                    <RightLink
-                      href={props.changeLogObj.href}
-                      title="Changelog"
-                      target="_blank"
-                    >
-                      {props.changeLogObj.title}
-                    </RightLink>
-                  )}
-                </RightFooter>
-              )}
-            </Fragment>
+        {(props.footerNavConfig) && (
+          <FooterNav isMobileSidebar={props.openSidebar}>
+            {props.openSidebar ?
+              <Fragment>
+                {props.footerNavConfig &&
+                  Object.entries(props.footerNavConfig).map(([text, props]) => (
+                    <MobileFooter key={text}>
+                      <FooterNavItem key={text} {...props}>
+                        {text}
+                      </FooterNavItem>
+                    </MobileFooter>
+                  ))}
+              </Fragment>
+              :
+              <Fragment>
+                {props.footerNavConfig &&
+                  Object.entries(props.footerNavConfig).map(([text, props]) => {
+                    if (text !== "Changelog") {
+                      return (
+                        <FooterNavItem key={text} {...props}>
+                          {text}
+                        </FooterNavItem>
+                      )
+                    } else {
+                      return (
+                        <RightFooter>
+                          <RightLink key={text} {...props}>
+                            {text}
+                          </RightLink>
+                        </RightFooter>
+                      )
+                    }
+                  })}
+              </Fragment>}
           </FooterNav>
         )}
       </Menu>

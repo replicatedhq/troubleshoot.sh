@@ -19,8 +19,7 @@ const InnerWrapper = styled.div({
   backgroundColor: "white",
   [breakpoints.md]: {
     padding: "0 24px"
-  },
-  marginTop: 20
+  }
 });
 
 export default function Header(props) {

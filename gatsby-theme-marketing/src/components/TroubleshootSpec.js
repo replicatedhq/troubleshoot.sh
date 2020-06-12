@@ -49,16 +49,16 @@ class TroubleshootSpec extends React.Component {
     })
   }
 
-  componentDidMount() {
-    import("../../static/specs-gen.json").then(module => {
+  componentDidMount = async() => {
+    await import("../../static/specs-gen.json").then(module => {
       const currentSpec = module?.specs?.find(spec => spec.slug === this.props.slug);
+      console.log(1)
       this.setState({
         specJson: module,
         preflightYAML: currentSpec.preflightSpecYaml,
         supportBundleYAML: currentSpec.supportSpecYaml
       });
       this.sendToServer("preflight", currentSpec.preflightSpecYaml);
-      this.sendToServer("support-bundle", currentSpec.supportSpecYaml);
       this.renderAceEditor(currentSpec.preflightSpecYaml);
     });
 
@@ -88,6 +88,7 @@ class TroubleshootSpec extends React.Component {
   }
 
   onTryItOut = (type) => {
+    console.log(2, this.state.preflightPreviewId)
     const preflightCommand = `kubectl preflight ${previewServer}/${this.state.preflightPreviewId}`;
     const bundleCommand = `kubectl supportbundle ${previewServer}/${this.state.supportBundlePreviewId}`;
     this.setState({ showCodeSnippet: true });
@@ -138,6 +139,7 @@ class TroubleshootSpec extends React.Component {
         if (method === "POST") {
           const result = await res.json();
           if (specType === "preflight") {
+            console.log("----", method, uri, result, specType)
             this.setState({
               preflightPreviewId: result.id,
             });
@@ -187,7 +189,7 @@ class TroubleshootSpec extends React.Component {
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section">
+        <div className="section" style={{marginTop: "50px"}}>
           <div className={`${!isMobile ? "flex1" : "flex-column"} container flex justifyContent--center`}>
             <div className={`${!isMobile && "troubleshootSection troubleshootSectionWidth"}`}>
               <Link to="/explore" className="flex flex1 u-marginBottom--15 u-fontSize--small link">

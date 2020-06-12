@@ -27,9 +27,10 @@ import { SelectedLanguageContext } from "./multi-code-block";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 import { ReplicatedWhiteIcon, BannerArrow } from "./suite-banner";
 
-const Main = styled.main({
-  flexGrow: 1
-});
+const Main = styled.main(props => ({
+  flexGrow: 1,
+  marginTop: props.isMobile && "30px"
+}));
 
 const ButtonWrapper = styled.div({
   flexGrow: 1
@@ -194,10 +195,6 @@ export default function PageLayout(props) {
     <span className="title-sidebar">{subtitle || siteName}</span>
   );
 
-  const changeLogObj = {
-    title: "Changelog", href: "https://troubleshoot.io/docs/changelog"
-  }
-
   return (
     <Layout>
       <SuiteBanner>
@@ -260,7 +257,7 @@ export default function PageLayout(props) {
             />
           )}
         </Sidebar>
-        <Main>
+        <Main isMobile={!sidebarOpen}>
           <Header>
             <MobileNav>
               <MenuButton onClick={openSidebar} />
@@ -287,9 +284,8 @@ export default function PageLayout(props) {
           siteName={menuTitle || siteName}
           navItems={navItems}
           footerNavConfig={footerNavConfig}
-          hasChangeLog={true}
-          changeLogObj={changeLogObj}
           open={menuOpen}
+          openSidebar={sidebarOpen}
           buttonRef={buttonRef}
           onClose={closeMenu}
         />
