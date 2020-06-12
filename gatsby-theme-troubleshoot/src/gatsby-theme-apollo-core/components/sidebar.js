@@ -36,7 +36,8 @@ const ResponsiveContainer = styled(Container)(props => ({
     transform: props.open ? "none" : "translateX(-100%)",
     transitionProperty: "transform, opacity, visibility",
     transitionDuration: "150ms",
-    transitionTimingFunction: "ease-in-out"
+    transitionTimingFunction: "ease-in-out",
+    marginTop: props.open ? "60px" : "none"
   }
 }));
 

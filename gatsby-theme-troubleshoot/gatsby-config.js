@@ -45,6 +45,11 @@ module.exports = options => ({
             href: "https://kots.io",
             target: "_blank",
             rel: "noopener noreferrer"
+          },
+          Changelog: {
+            href: "https://troubleshoot.io/docs/changelog",
+            target: "_blank",
+            rel: "noopener noreferrer"
           }
         },
         algoliaApiKey: "cc18e896d9ebbcfbef43c3146b9f13ac",
