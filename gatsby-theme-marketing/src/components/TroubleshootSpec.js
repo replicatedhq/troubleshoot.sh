@@ -49,20 +49,18 @@ class TroubleshootSpec extends React.Component {
     })
   }
 
-  componentDidMount = async() => {
-    await import("../../static/specs-gen.json").then(module => {
+  componentDidMount() {
+    import("../../static/specs-gen.json").then(module => {
       const currentSpec = module?.specs?.find(spec => spec.slug === this.props.slug);
-      console.log(1)
       this.setState({
         specJson: module,
         preflightYAML: currentSpec.preflightSpecYaml,
         supportBundleYAML: currentSpec.supportSpecYaml
       });
-      this.sendToServer("preflight", currentSpec.preflightSpecYaml);
+      this.sendToServer("preflight", currentSpec.preflightSpecYaml, true);
+      this.sendToServer("support-bundle", currentSpec.supportSpecYaml, true);
       this.renderAceEditor(currentSpec.preflightSpecYaml);
     });
-
-    this.onTryItOut("preflight");
   }
 
   componentDidUpdate(lastProps, lastState) {
@@ -88,7 +86,6 @@ class TroubleshootSpec extends React.Component {
   }
 
   onTryItOut = (type) => {
-    console.log(2, this.state.preflightPreviewId)
     const preflightCommand = `kubectl preflight ${previewServer}/${this.state.preflightPreviewId}`;
     const bundleCommand = `kubectl supportbundle ${previewServer}/${this.state.supportBundlePreviewId}`;
     this.setState({ showCodeSnippet: true });
@@ -106,7 +103,7 @@ class TroubleshootSpec extends React.Component {
     }
   }
 
-  sendToServer = (specType, spec) => {
+  sendToServer = (specType, spec, onMount) => {
     let uri;
     let method;
 
@@ -139,9 +136,12 @@ class TroubleshootSpec extends React.Component {
         if (method === "POST") {
           const result = await res.json();
           if (specType === "preflight") {
-            console.log("----", method, uri, result, specType)
             this.setState({
               preflightPreviewId: result.id,
+            }, () => {
+              if (onMount) {
+                this.onTryItOut("preflight")
+              }
             });
           } else if (specType === "support-bundle") {
             this.setState({
