@@ -1,0 +1,30 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: supported-redis-version
+  annotations: 
+    title: "Redis Version Check"
+    description: "Verify that a Redis cluster is running a compatible version"
+    category: "database"
+    iconUri: "/category-icons/redis.svg"
+    tags: '["database", "redis"]'
+    contributors: '[{"name": "Marc Campbell", "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"}]'
+spec:
+  collectors:
+    - redis:
+        collectorName: redis
+        uri: rediss://default:password@hostname:6379
+  analyzers:
+    - redis:
+        checkName: Must be redis 5.x or later
+        collectorName: redis
+        outcomes:
+          - fail:
+              when: "connected == false"
+              message: Cannot connect to redis server
+          - fail:
+              when: "version < 5.0.0"
+              message: The redis server must be at least version 5
+          - pass:
+              message: The redis connection checks out
+  

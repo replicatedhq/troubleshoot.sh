@@ -1,0 +1,25 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: SupportBundle
+metadata:
+  name: minimum-node-count
+  annotations: 
+    title: "Minimum Node Count"
+    description: "Require that there are at least 3 nodes, recommend at least 6 nodes in the cluster"
+    category: "cluster_info"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags: '["kubernetes"]'
+    contributors: '[{"name": "Marc Campbell", "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"}]'
+spec:
+  collectors: []
+  analyzers:
+    - nodeResources:
+        checkName: Must have at least 3 nodes in the cluster
+        outcomes:
+          - fail:
+              when: "count() < 3"
+              message: This application requires at least 3 nodes
+          - warn:
+              when: "count() < 6"
+              message: This application recommends at last 6 nodes.
+          - pass:
+              message: This cluster has enough nodes.
