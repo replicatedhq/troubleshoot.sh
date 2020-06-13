@@ -184,7 +184,12 @@ class TroubleshootSpec extends React.Component {
     const { isMobile } = this.props;
 
     const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
-    const relatedSpecs = specJson?.specs?.filter(spec => currentSpec?.tags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec)
+    let parsedTags;
+    let relatedSpecs;
+    if (currentSpec?.tags) {
+      parsedTags = JSON.parse(currentSpec?.tags);
+      relatedSpecs = specJson?.specs?.filter(spec => parsedTags?.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
+    }
 
 
     return (
@@ -253,7 +258,7 @@ class TroubleshootSpec extends React.Component {
                 <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex u-marginBottom--10"> Tags </p>
                 <div className="u-borderTop--gray"></div>
                 <div className="flex flex1 u-marginTop--15">
-                  {currentSpec?.tags?.map((tag, i) => (<Tag tag={tag} key={`${tag}-${i}`} />))}
+                  {parsedTags?.map((tag, i) => (<Tag tag={tag} key={`${tag}-${i}`} />))}
                 </div>
               </div>
             </div>
@@ -269,7 +274,7 @@ class TroubleshootSpec extends React.Component {
                         <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold"> {spec.description} </p>
                         <div className="flex flex1 u-marginTop--10 alignItems--flexEnd">
                           <span className="icon tag-icon" />
-                          {spec.tags.map((tag, i) => (
+                          {JSON.parse(spec.tags).map((tag, i) => (
                             <p className="u-fontSize--small u-color--dustyGray u-marginLeft--10" key={`${tag}-${i}`}> {tag} </p>
                           )
                           )}
