@@ -1,0 +1,30 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: SupportBundle
+metadata:
+  name: supported-mysql-version
+  annotations: 
+    title: "MySQL Version Check"
+    description: "Verify that a MySQL server is running a compatible version"
+    category: "database"
+    iconUri: "/category-icons/mysql.svg"
+    tags: '["database", "mysql"]'
+    contributors: '[{"name": "Marc Campbell", "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"}]'
+spec:
+  collectors:
+    - mysql:
+        collectorName: mysql
+        uri: testuser:password@tcp(mysql:3306)/dbname?tls=false
+  analyzers:
+    - mysql:
+        checkName: Must be MySQL 8.x or later
+        collectorName: mysql
+        outcomes:
+          - fail:
+              when: "connected == false"
+              message: Cannot connect to MySQL server
+          - fail:
+              when: "version < 8.x"
+              message: The MySQL server must be at least version 8
+          - pass:
+              message: The MySQL server is ready
+  
