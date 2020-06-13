@@ -61,7 +61,8 @@ fs.readdir(specDir, (err, files) => {
       const doc = yaml.safeLoad(fs.readFileSync(path.resolve(subDirPath + "/" + f)));
       
       // Add all tags from spec to the tags array (will be filtered later)
-      doc.metadata.annotations.tags.map(tag =>  {
+      const tags = JSON.parse(doc.metadata.annotations.tags)
+      tags.map(tag =>  {
         validateTag(tag, f);
         tags.push(tag)
       });
@@ -76,8 +77,9 @@ fs.readdir(specDir, (err, files) => {
       
       // Build and add a contributor object to the spec.contributors array
       const contributorsArr = []
-      if (doc.metadata.annotations.contributors) {
-        doc.metadata.annotations.contributors.map(c => {
+      const contributors = JSON.parse(doc.metadata.annotations.contributors);
+      if (contributors.length > 0) {
+       contributors.map(c => {
           contributorsArr.push({
             name: c.name,
             avatarUri: c.avatarUri || "/default-contributor@2x.jpg"
