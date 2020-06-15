@@ -55,8 +55,8 @@ class TroubleshootSpec extends React.Component {
       const currentSpec = module?.specs?.find(spec => spec.slug === this.props.slug);
       this.setState({
         specJson: module,
-        preflightYAML: currentSpec.preflightSpecYaml,
-        supportBundleYAML: currentSpec.supportSpecYaml ? currentSpec.supportSpecYaml : ""
+        preflightYAML: currentSpec?.preflightSpecYaml ? currentSpec?.preflightSpecYaml : "",
+        supportBundleYAML: currentSpec?.supportSpecYaml ? currentSpec?.supportSpecYaml : ""
       });
       this.sendToServer("preflight", currentSpec.preflightSpecYaml, true);
       this.sendToServer("support-bundle", currentSpec.supportSpecYaml, true);
