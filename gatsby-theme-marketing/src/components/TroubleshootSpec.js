@@ -34,7 +34,8 @@ class TroubleshootSpec extends React.Component {
         import("brace/mode/yaml").then(() => {
           const editor = ace.edit(document.getElementById("ace-editor"));
           editor.setOptions({
-            scrollPastEnd: true
+            scrollPastEnd: true,
+            fontSize: 16
           });
           editor.getSession().on("change", () => {
             this.onSpecChange(editor.getSession().doc.$lines.join("\n"))
@@ -55,7 +56,7 @@ class TroubleshootSpec extends React.Component {
       this.setState({
         specJson: module,
         preflightYAML: currentSpec.preflightSpecYaml,
-        supportBundleYAML: currentSpec.supportSpecYaml
+        supportBundleYAML: currentSpec.supportSpecYaml ? currentSpec.supportSpecYaml : ""
       });
       this.sendToServer("preflight", currentSpec.preflightSpecYaml, true);
       this.sendToServer("support-bundle", currentSpec.supportSpecYaml, true);
@@ -215,13 +216,8 @@ class TroubleshootSpec extends React.Component {
               </div>
 
               <div className="u-marginTop--10 u-marginBottom--10 flex">
-                <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight checks</button>
-                <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "support-bundle" ? "primary darkBlue is-active-blue" : "gray-disabled"}`} onClick={() => this.onTryItOut("support-bundle")} disabled={true}><span className="icon graySupport-icon"></span>
-                  <div className="flex flex-column alignItems--flexStart">
-                    <p> Support bundle </p>
-                    <span className="u-fontSize--small u-color--royalBlue u-marginTop--small"> Coming soon </span>
-                  </div>
-                </button>
+                <button className={`Button tab flex alignItems--center ${isActive === "preflight" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("preflight")}><span className="icon preflight-small"></span>Preflight checks</button>
+                <button className={`Button tab u-marginLeft--10 flex alignItems--center ${isActive === "support-bundle" ? "primary darkBlue is-active-blue" : "secondary gray"}`} onClick={() => this.onTryItOut("support-bundle")}><span className="icon support-small"></span>Support bundle</button>
               </div>
 
               <div className="MonacoEditor--wrapper flex u-width--full">
@@ -243,7 +239,7 @@ class TroubleshootSpec extends React.Component {
             </div>
 
             <div className={`flex ${isMobile ? "flex-column" : "flex1"} justifyContent--spaceBetween u-marginTop--20`}>
-              <div className="flex1 flex-column" style={{ marginRight: "70px" }}>
+              <div className={`flex1 flex-column ${!isMobile && "u-marginRight--70"}`}>
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginBottom--10"> Try it out </p>
                 <div className="u-borderTop--gray"></div>
                 {showCodeSnippet &&
