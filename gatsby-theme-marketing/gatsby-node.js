@@ -1,5 +1,14 @@
 const MonacoWebpackPlugin = require(`monaco-editor-webpack-plugin`);
 
+exports.onCreateBabelConfig = ({ actions }) => {
+  actions.setBabelPlugin({
+    name: `@babel/plugin-proposal-decorators`,
+    options: {
+      legacy: true
+    }
+  })
+}
+
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html') {
     actions.setWebpackConfig({

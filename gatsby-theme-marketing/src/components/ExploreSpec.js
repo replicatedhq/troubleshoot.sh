@@ -134,6 +134,8 @@ class ExploreSpec extends React.Component {
     const { categoryToShow, showTagsList, tagsToShow, specJson, query } = this.state;
     const { isMobile } = this.props;
 
+    console.log(tagsToShow)
+
     const filteredTagsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)) && this.searchInSpecs(spec, query));
     const categoriesToShow = specJson?.categories.filter(category => this.doesCategoryExistInSearch(specJson?.specs, category, query));
     const filteredCategoriesToShow = specJson?.specs?.filter(spec => (categoryToShow === spec.category) && this.searchInSpecs(spec, query));
