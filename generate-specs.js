@@ -107,7 +107,7 @@ fs.readdir(specDir, (err, files) => {
       if (doc.kind === "Preflight") {
         specObj.preflightSpecYaml = yaml.safeDump(doc);
       }
-      if (doc.kind === "Collector") {
+      if (doc.kind === "SupportBundle") {
         specObj.supportSpecYaml = yaml.safeDump(doc);
       }
 
