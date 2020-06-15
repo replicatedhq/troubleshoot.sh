@@ -4,7 +4,7 @@ import Tag from "./shared/Tag";
 import CodeSnippet from "./shared/CodeSnippet";
 import debounce from "lodash/debounce";
 
-const previewServer = `https://troubleshoot-preview.fly.dev`;
+const previewServer = `https://troubleshoot.run`;
 
 class TroubleshootSpec extends React.Component {
   constructor() {
@@ -130,7 +130,7 @@ class TroubleshootSpec extends React.Component {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ spec })
+      body: JSON.stringify({ spec: btoa(spec) })
     })
       .then(async (res) => {
         if (method === "POST") {
