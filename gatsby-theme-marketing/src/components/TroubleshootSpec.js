@@ -203,15 +203,15 @@ class TroubleshootSpec extends React.Component {
                   <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
                   <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
                 </div>
-
-                <div className="flex flex-column">
-                  <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium u-marginBottom--10"> Contributors </p>
-                  {currentSpec?.contributors?.map((contributor, i) => (
-                    <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}>
-                      <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
-                    </div>
-                  ))}
-                </div>
+                {!isMobile &&
+                  <div className="flex flex-column">
+                    <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium u-marginBottom--10"> Contributors </p>
+                    {currentSpec?.contributors?.map((contributor, i) => (
+                      <div className="Contributors--wrapper" key={`${contributor.name}-${i}`}>
+                        <span className="contributer-icon" style={{ backgroundImage: `url(${contributor.avatarUri})` }} />
+                      </div>
+                    ))}
+                  </div>}
               </div>
 
               <div className="u-marginTop--10 u-marginBottom--10 flex">
@@ -228,14 +228,21 @@ class TroubleshootSpec extends React.Component {
                 <div className="flex u-width--full u-overflow--hidden" id="ace-editor">
                 </div>
               </div>
-              <div className="AbsoulteCopyYaml--wrapper">
-                {!copySuccess ?
-                  <button className="Button copy blue u-marginRight--30" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</button>
-                  : <span className="u-color--vidaLoca u-marginRight--30">{copySuccess}</span>}
-              </div>
+              {!isMobile ?
+                <div className="AbsoulteCopyYaml--wrapper">
+                  {!copySuccess ?
+                    <button className="Button copy blue u-marginRight--30" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</button>
+                    : <span className="u-color--vidaLoca u-marginRight--30">{copySuccess}</span>}
+                </div> :
+                <div className="u-marginTop--10">
+                  {!copySuccess ?
+                    <span className="link u-fontSize--small" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</span>
+                    : <span className="u-color--vidaLoca u-fontSize--small u-marginTop--20">{copySuccess}</span>}
+                </div>
+              }
             </div>
 
-            <div className="flex flex1 justifyContent--spaceBetween u-marginTop--20">
+            <div className={`flex ${isMobile ? "flex-column" : "flex1"} justifyContent--spaceBetween u-marginTop--20`}>
               <div className="flex1 flex-column" style={{ marginRight: "70px" }}>
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginBottom--10"> Try it out </p>
                 <div className="u-borderTop--gray"></div>
@@ -244,7 +251,7 @@ class TroubleshootSpec extends React.Component {
                     <CodeSnippet
                       canCopy={true}
                       onCopyText={<span className="u-color--vidaLoca">Copied!</span>}
-                      learnMore={<Link to={isActive === "support-bundle" ? `/docs/support-bundle/` : `/docs/preflight/`} className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "support-bundle" ? "Support Bundle" : "Preflight"}`}</Link>}
+                      learnMore={<a href={isActive === "support-bundle" ? `/learn/support-bundle/introduction/` : `/learn/preflight/introduction/`} target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "support-bundle" ? "Support Bundle" : "Preflight"}`}</a>}
                     >
                       {currentCommand ? currentCommand : ""}
                     </CodeSnippet>
@@ -252,7 +259,7 @@ class TroubleshootSpec extends React.Component {
                 }
               </div>
 
-              <div className="flex1 flex-column u-marginBottom--30">
+              <div className={`flex1 flex-column u-marginBottom--30 ${isMobile && "u-marginTop--15"}`}>
                 <p className="u-fontSize--large u-color--biscay u-lineHeight--more u-fontWeight--medium flex u-marginBottom--10"> Tags </p>
                 <div className="u-borderTop--gray"></div>
                 <div className="flex flex1 u-marginTop--15">
@@ -264,9 +271,9 @@ class TroubleshootSpec extends React.Component {
             <div className="flex flex-column u-marginBottom--15">
               <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30 u-marginBottom--10"> Related specs </p>
               <div className="u-borderTop--gray"></div>
-              <div className="flex flex1 u-marginTop--15">
+              <div className={`flex ${isMobile ? "flex-column" : "flex1"} u-marginTop--15`}>
                 {relatedSpecs?.slice(0, 2).map((spec, i) => (
-                  <div className="RelatedSpecs--wrapper flex" key={`${spec.id}-${i}`}>
+                  <div className={`RelatedSpecs--wrapper flex ${isMobile && ""}`} key={`${spec.id}-${i}`}>
                     <Link to={`/spec/${spec.slug}`}>
                       <div className="example-spec-block">
                         <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold"> {spec.description} </p>
