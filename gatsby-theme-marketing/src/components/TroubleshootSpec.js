@@ -251,7 +251,7 @@ class TroubleshootSpec extends React.Component {
                     <CodeSnippet
                       canCopy={true}
                       onCopyText={<span className="u-color--vidaLoca">Copied!</span>}
-                      learnMore={<Link to={isActive === "support-bundle" ? `/docs/support-bundle/` : `/docs/preflight/`} className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "support-bundle" ? "Support Bundle" : "Preflight"}`}</Link>}
+                      learnMore={<a href={isActive === "support-bundle" ? `/learn/support-bundle/introduction/` : `/learn/preflight/introduction/`} target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-lineHeight--normal u-fontSize--small u-textDecoration--underlineOnHover"> {`Learn more about ${isActive === "support-bundle" ? "Support Bundle" : "Preflight"}`}</a>}
                     >
                       {currentCommand ? currentCommand : ""}
                     </CodeSnippet>
