@@ -95,7 +95,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A visual report is generated to highlight where the environment doesn’t meet your&nbsp;requirements.</p>
-                    <Link to="/learn/" className="u-fontSize--small link">Learn more about reporting</Link>
+                    <Link to="/learn/support-bundle/introduction" className="u-fontSize--small link">Learn more about reporting</Link>
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define information to be collected from the cluster, environment, and application for analysis.</p>
-                    <Link to="/collect/" className="u-fontSize--small link">Explore collectorss</Link>
+                    <Link to="/collect/" className="u-fontSize--small link">Explore collectors</Link>
                   </div>
                 </div>
                 <div className="flex1 next-step-arrow center-block">
