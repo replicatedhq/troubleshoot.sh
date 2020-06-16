@@ -186,7 +186,7 @@ class TroubleshootSpec extends React.Component {
 
     const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
 
-    const tags = currentSpec?.tags ? JSON.parse(currentSpec.tags) : [];
+    const tags = currentSpec?.tags ? currentSpec.tags : [];
 
     const relatedSpecs = specJson?.specs?.filter(spec => tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec)
 
@@ -275,7 +275,7 @@ class TroubleshootSpec extends React.Component {
                         <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold"> {spec.description} </p>
                         <div className="flex flex1 u-marginTop--10 alignItems--flexEnd">
                           <span className="icon tag-icon" />
-                          {JSON.parse(spec.tags).map((tag, i) => (
+                          {spec.tags.map((tag, i) => (
                             <p className="u-fontSize--small u-color--dustyGray u-marginLeft--10" key={`${tag}-${i}`}> {tag} </p>
                           )
                           )}

@@ -27,10 +27,14 @@ module.exports = {
           "Preflight Checks": [
             "preflight/introduction",
             "preflight/install-preflight",
-            "preflight/first-check",
+            "preflight/cluster-checks",
+            "preflight/node-checks",
+            "preflight/next-steps",
           ],
           "Support Bundle": [
             "support-bundle/introduction",
+            "support-bundle/install-supportbundle",
+            "support-bundle/collecting",
           ],
         },
       },
