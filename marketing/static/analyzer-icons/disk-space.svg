@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="13px" height="16px" viewBox="0 0 13 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 62 (91390) - https://sketch.com -->
+    <title>Group-5</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Kotsadm" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="main_spritesheet" transform="translate(-29.000000, -360.000000)">
+            <g id="Group-5" transform="translate(29.000000, 360.000000)">
+                <path d="M1.48477157,0.993103448 C1.21143267,0.993103448 0.989847716,1.21541723 0.989847716,1.48965517 L0.989847716,14.5103448 C0.989847716,14.7845828 1.21143267,15.0068966 1.48477157,15.0068966 L11.5152284,15.0068966 C11.7885673,15.0068966 12.0101523,14.7845828 12.0101523,14.5103448 L12.0101523,1.48965517 C12.0101523,1.21541723 11.7885673,0.993103448 11.5152284,0.993103448 L1.48477157,0.993103448 Z" id="Rectangle-11-Copy-path" fill="#FFFFFF" fill-rule="nonzero"></path>
+                <path d="M1.48477157,0.993103448 C1.21143267,0.993103448 0.989847716,1.21541723 0.989847716,1.48965517 L0.989847716,14.5103448 C0.989847716,14.7845828 1.21143267,15.0068966 1.48477157,15.0068966 L11.5152284,15.0068966 C11.7885673,15.0068966 12.0101523,14.7845828 12.0101523,14.5103448 L12.0101523,1.48965517 C12.0101523,1.21541723 11.7885673,0.993103448 11.5152284,0.993103448 L1.48477157,0.993103448 Z M1.48477157,0 L11.5152284,0 C12.3352451,0 13,0.666941338 13,1.48965517 L13,14.5103448 C13,15.3330587 12.3352451,16 11.5152284,16 L1.48477157,16 C0.664754877,16 0,15.3330587 0,14.5103448 L0,1.48965517 C0,0.666941338 0.664754877,0 1.48477157,0 Z" id="Rectangle-11-Copy" fill="#76B6E4" fill-rule="nonzero"></path>
+                <g id="Oval-11" transform="translate(2.600000, 2.666667)">
+                    <g id="path-16-link" transform="translate(0.000000, 0.888889)" fill="#FFFFFF">
+                        <ellipse id="path-16" cx="4.00833333" cy="3.55555556" rx="3.46666667" ry="3.55555556"></ellipse>
+                    </g>
+                    <ellipse id="Oval" stroke="#76B6E4" cx="4.00833333" cy="4.44444444" rx="3.9" ry="4"></ellipse>
+                </g>
+                <g id="Oval-11" transform="translate(4.333333, 5.333333)">
+                    <g id="path-17-link" transform="translate(0.866667, 0.000000)" fill="#FFFFFF">
+                        <ellipse id="path-17" cx="1.40833333" cy="1.77777778" rx="1.02916667" ry="1.05555556"></ellipse>
+                    </g>
+                    <ellipse id="Oval" stroke="#76B6E4" cx="2.275" cy="1.77777778" rx="1.4625" ry="1.5"></ellipse>
+                </g>
+                <circle id="Oval-12" fill="#76B6E4" cx="2.6" cy="2.64126984" r="1"></circle>
+                <circle id="Oval-12-Copy-2" fill="#76B6E4" cx="2.55857843" cy="13.2666667" r="1"></circle>
+                <circle id="Oval-12-Copy" fill="#76B6E4" cx="10.3458333" cy="2.58730159" r="1"></circle>
+                <circle id="Oval-12-Copy-3" fill="#76B6E4" cx="10.3458333" cy="13.2793651" r="1"></circle>
+            </g>
+        </g>
+    </g>
+</svg>
