@@ -13,7 +13,7 @@ export default function TroubleshootLifecycle({ isMobile }) {
             </div>
             <div>
               <div style={{ width: `156px`, height: `15px` }} className="troubleshoot-logo" />
-              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Start with a YAML spec to collect and analyze.</p>
+              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Start by codifying what you want to collect and analyze.</p>
             </div>
           </div>
         </div>
@@ -21,7 +21,7 @@ export default function TroubleshootLifecycle({ isMobile }) {
         <div className="step add-spec u-paddingTop--10 u-paddingBottom--10">
           <div className="flex alignItems--center step-content">
             <span className="icon add-blue-icon" />
-            <p className="u-fontSize--small u-marginLeft--10 u-fontWeight--medium u-color--dustyGray u-lineHeight--normal">Add spec</p>
+            <p className="u-fontSize--small u-marginLeft--10 u-fontWeight--medium u-color--dustyGray u-lineHeight--normal">Add preflights</p>
           </div>
         </div>
 
@@ -33,7 +33,7 @@ export default function TroubleshootLifecycle({ isMobile }) {
             </div>
             <div>
               <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Preflight check</p>
-              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Spec is used to validate ENV before installation.</p>
+              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Checks are used to validate ENV before installation.</p>
             </div>
           </div>
         </div>
@@ -73,7 +73,7 @@ export default function TroubleshootLifecycle({ isMobile }) {
             </div>
             <div>
               <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Support</p>
-              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Same spec is used to debug when errors occur.</p>
+              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors are used to debug when errors occur.</p>
             </div>
           </div>
         </div>
@@ -96,13 +96,13 @@ export default function TroubleshootLifecycle({ isMobile }) {
           </div>
           <div>
             <div style={{ width: `156px`, height: `15px` }} className="troubleshoot-logo" />
-            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Start with a YAML spec to collect and analyze.</p>
+            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Start by codifying what you want to collect and analyze.</p>
           </div>
         </div>
         <div className="step add-spec">
           <div className="flex alignItems--center step-content">
             <span className="icon add-blue-icon" />
-            <p className="u-fontSize--small u-marginLeft--10 u-fontWeight--medium u-color--dustyGray u-lineHeight--normal">Add spec</p>
+            <p className="u-fontSize--small u-marginLeft--10 u-fontWeight--medium u-color--dustyGray u-lineHeight--normal">Add preflights</p>
           </div>
         </div>
         <div className="tbl-lifecycle-block preflight flex">
@@ -111,7 +111,7 @@ export default function TroubleshootLifecycle({ isMobile }) {
           </div>
           <div>
             <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Preflight check</p>
-            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Spec is used to validate ENV before installation.</p>
+            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Checks are used to validate ENV before installation.</p>
           </div>
         </div>
         <div className="step checks-pass">
@@ -141,7 +141,7 @@ export default function TroubleshootLifecycle({ isMobile }) {
           </div>
           <div>
             <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Support</p>
-            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Same spec is used to debug when errors occur.</p>
+            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors are used to debug when errors occur.</p>
           </div>
         </div>
         <div className="step repeat-cycle">

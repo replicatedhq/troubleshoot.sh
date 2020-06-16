@@ -63,7 +63,7 @@ class Troubleshootsh extends React.Component {
         <div className="section border">
           <div className="container">
             <div className="contain-700">
-              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Write one spec and use it for preflight checks and support&nbsp;bundle analysis</p>
+              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Codify your support analysis to run offline and enable your customers to self-remediate</p>
             </div>
             <div className="contain-1280 flex">
               <div className="troubleshoot-lifecycle-container u-marginTop--30 u-position--relative">
@@ -86,7 +86,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Without installing anything to the cluster, Preflight analyzes  the environment, comparing it to your requirements.</p>
-                    <Link to="/docs/reference/analyze/overview" className="u-fontSize--small link">Explore analyzer specs</Link>
+                    <Link to="/docs/reference/analyze/overview" className="u-fontSize--small link">Explore analyzers</Link>
                   </div>
                 </div>
                 <div className="flex1 right-block">
@@ -100,7 +100,7 @@ class Troubleshootsh extends React.Component {
                 </div>
               </div>
               <div className="u-marginTop--50">
-                <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Example preflight specs</p>
+                <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Examples</p>
                 <div className="contain-1280">
                   <div className="u-flexMobileReflow u-marginTop--50">
                     {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
@@ -115,7 +115,7 @@ class Troubleshootsh extends React.Component {
                     )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <Link to="/explore/" className="Button primary">Browse specs</Link>
+                    <Link to="/explore/" className="Button primary">Browse more</Link>
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about the collection process. Maybe talk about the spec and include a link to create one.</p>
-                    <Link to="/docs/reference/collect/overview" className="u-fontSize--small link">Explore collector specs</Link>
+                    <Link to="/docs/reference/collect/overview" className="u-fontSize--small link">Explores</Link>
                   </div>
                 </div>
                 <div className="flex1 next-step-arrow center-block">
@@ -154,12 +154,12 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about the analyze process. Maybe talk about the spec and include a link to create one.</p>
-                    <Link to="/docs/reference/analyze/overview" className="u-fontSize--small link">Explore analyzer specs</Link>
+                    <Link to="/docs/reference/analyze/overview" className="u-fontSize--small link">Explore analyzers</Link>
                   </div>
                 </div>
               </div>
               <div className="u-marginTop--50">
-                <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Example support specs</p>
+                <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Examples </p>
                 <div className="contain-1280">
                   <div className="u-flexMobileReflow u-marginTop--50">
                     {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
@@ -174,7 +174,7 @@ class Troubleshootsh extends React.Component {
                     )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <Link to="/explore/" className="Button primary">Browse specs</Link>
+                    <Link to="/explore/" className="Button primary">Browse more</Link>
                   </div>
                 </div>
               </div>
