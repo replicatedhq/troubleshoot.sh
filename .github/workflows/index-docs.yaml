@@ -1,0 +1,22 @@
+name: Index Documentation
+
+on: 
+  schedule:
+    - cron: '0 * * * *'
+
+jobs:
+  index-docs:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Install JQ
+        run: |
+          sudo apt-get install jq && chmod +x jq
+
+      - uses: actions/checkout@v2
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+        
+        run: |
+          docker run -it -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY -e "CONFIG=$(cat ./troubleshoot-algolia-config.json | jq -r tostring)" algolia/docsearch-scraper
