@@ -1,5 +1,5 @@
 ---
-title: Create A Basic Check
+title: Add Cluster Checks
 description: Learn how to create prelight checks by creating your first check
 ---
 
