@@ -27,10 +27,13 @@ import { SelectedLanguageContext } from "./multi-code-block";
 import { trackCustomEvent } from "gatsby-plugin-google-analytics";
 import { ReplicatedWhiteIcon, BannerArrow } from "./suite-banner";
 
-const Main = styled.main(props => ({
+const Main = styled.main({
   flexGrow: 1,
-  marginTop: props.isMobile && "30px"
-}));
+  marginTop: 20,
+  [breakpoints.md]: {
+    marginTop: 30
+  }
+});
 
 const ButtonWrapper = styled.div({
   flexGrow: 1
@@ -79,12 +82,17 @@ const SuiteBanner = styled.div({
 
 const LearnMoreBanner = styled.div({
   display: "flex",
+  alignItems: "center",
   "a": {
     fontSize: "14px",
     fontWeight: "400",
     textDecoration: "none",
     color: "#ffffff",
-    fontFamily: "Roboto Mono"
+    fontFamily: "Roboto Mono",
+    [breakpoints.md]: {
+      fontSize: "12px",
+      marginLeft: 20
+    }
   },
 
   ".banner-arrow": {
@@ -108,7 +116,13 @@ const LearnMoreBanner = styled.div({
 const InnerBanner = styled.div({
   display: "flex",
   flexDirection: "flex-row",
-  justifyContent: "space-between"
+  justifyContent: "space-between",
+  alignItems: "center",
+  ".replicatedIcon": {
+    [breakpoints.md]: {
+      width: 150
+    }
+  }
 })
 
 const GA_EVENT_CATEGORY_SIDEBAR = "Sidebar";
@@ -199,7 +213,7 @@ export default function PageLayout(props) {
     <Layout>
       <SuiteBanner>
         <InnerBanner>
-          <ReplicatedWhiteIcon />
+          <ReplicatedWhiteIcon className="replicatedIcon" />
           <LearnMoreBanner>
             <a href="https://blog.replicated.com/announcing-kots/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your KOTS app</a>
             <span className="banner-arrow">
@@ -257,7 +271,7 @@ export default function PageLayout(props) {
             />
           )}
         </Sidebar>
-        <Main isMobile={!sidebarOpen}>
+        <Main>
           <Header>
             <MobileNav>
               <MenuButton onClick={openSidebar} />
