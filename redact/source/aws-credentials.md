@@ -3,7 +3,7 @@ title: AWS Credentials
 description: Automatically redacted AWS credentials
 ---
 
-Troubleshoot automatically redacts AWS credential env vars in JSON. 
+Troubleshoot automatically redacts AWS credential environment variables in JSON. 
 
 This redaction is equivalent to the following redact yaml:
 

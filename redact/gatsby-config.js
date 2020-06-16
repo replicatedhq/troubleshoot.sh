@@ -23,11 +23,15 @@ module.exports = {
         sidebarCategories: {
           null: [
             "index",
-            "reference",
           ],
           "Default Redactors": [
             "database-connection-strings",
             "aws-credentials",
+            "generic-connection-strings",
+            "passwords-and-tokens",
+          ],
+          "Reference": [
+            "reference",
           ]
         },
       },
