@@ -61,8 +61,8 @@ fs.readdir(specDir, (err, files) => {
       const doc = yaml.safeLoad(fs.readFileSync(path.resolve(subDirPath + "/" + f)));
       
       // Add all tags from spec to the tags array (will be filtered later)
-      const tags = JSON.parse(doc.metadata.annotations.tags)
-      tags.map(tag =>  {
+      let newTags = JSON.parse(doc.metadata.annotations.tags)
+      newTags.map(tag =>  {
         validateTag(tag, f);
         tags.push(tag)
       });
@@ -100,7 +100,7 @@ fs.readdir(specDir, (err, files) => {
       specObj.description = doc.metadata.annotations.description;
       specObj.iconUri = doc.metadata.annotations.iconUri || "/category-icons/default-category.svg";
       specObj.contributors = contributorsArr;
-      specObj.tags = doc.metadata.annotations.tags;
+      specObj.tags = JSON.parse(doc.metadata.annotations.tags);
 
       // Remove annotations before setting the yaml spec
       delete doc["metadata"]["annotations"];
