@@ -25,7 +25,7 @@ module.exports = {
             "index",
             "reference",
           ],
-          Redactors: [
+          "Default Redactors": [
             "database-connection-strings",
             "aws-credentials",
           ]
