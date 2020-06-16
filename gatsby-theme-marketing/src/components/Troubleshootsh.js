@@ -86,7 +86,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Without installing anything to the cluster, Preflight analyzes  the environment, comparing it to your requirements.</p>
-                    <Link to="/docs/reference/analyze/overview" className="u-fontSize--small link">Explore analyzers</Link>
+                    <Link to="/analyze/" className="u-fontSize--small link">Explore analyzers</Link>
                   </div>
                 </div>
                 <div className="flex1 right-block">
@@ -95,7 +95,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A visual report is generated to highlight where the environment doesn’t meet your&nbsp;requirements.</p>
-                    <a className="u-fontSize--small link">Learn more about reporting</a>
+                    <Link to="/learn/" className="u-fontSize--small link">Learn more about reporting</Link>
                   </div>
                 </div>
               </div>
@@ -136,7 +136,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define information to be collected from the cluster, environment, and application for analysis.</p>
-                    <Link to="/docs/reference/collect/overview" className="u-fontSize--small link">Explore collectorss</Link>
+                    <Link to="/collect/" className="u-fontSize--small link">Explore collectorss</Link>
                   </div>
                 </div>
                 <div className="flex1 next-step-arrow center-block">
@@ -145,7 +145,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define sensitive information to be redacted while collcting information from your application.</p>
-                    <Link to="/docs/support-bundle/redact" className="u-fontSize--small link">Learn about custom redacting</Link>
+                    <Link to="/redact/" className="u-fontSize--small link">Learn about custom redacting</Link>
                   </div>
                 </div>
                 <div className="flex1 right-block more">
@@ -154,7 +154,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define a set of criteria and operations to run against files collected in a support bundle.</p>
-                    <Link to="/docs/reference/analyze/overview" className="u-fontSize--small link">Explore analyzers</Link>
+                    <Link to="/analyze/" className="u-fontSize--small link">Explore analyzers</Link>
                   </div>
                 </div>
               </div>
