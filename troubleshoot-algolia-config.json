@@ -1,0 +1,18 @@
+{
+  "index_name": "troubleshoot-algolia-config",
+  "start_urls": [
+    "https://www.troubleshoot.sh/learn",
+    "https://www.troubleshoot.sh/collect",
+    "https://www.troubleshoot.sh/analyze",
+    "https://www.troubleshoot.sh/redact"
+  ],
+  "selectors": {
+    "lvl0": ".header-wrapper h1",
+    "lvl1": ".content-wrapper h2",
+    "lvl2": ".content-wrapper h3",
+    "lvl3": ".content-wrapper h4",
+    "lvl4": ".content-wrapper h5",
+    "lvl5": ".content-wrapper h6",
+    "text": ".content-wrapper p,.content-wrapper li"
+  }
+}
