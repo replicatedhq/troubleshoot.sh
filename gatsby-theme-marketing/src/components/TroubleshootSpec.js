@@ -242,6 +242,13 @@ class TroubleshootSpec extends React.Component {
               <div className={`flex1 flex-column ${!isMobile && "u-marginRight--70"}`}>
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginBottom--10"> Try it out </p>
                 <div className="u-borderTop--gray"></div>
+                <div className="u-marginTop--10">
+                  {isActive === "preflight" ? 
+                  <span className="u-color--dustyGray u-fontSize--large body-copy u-lineHeight--normal"><a href="/learn/preflight/install-preflight/" target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-fontWeight--medium  u-textDecoration--underlineOnHover"> Install the plugin </a> and then you can try out this preflight check </span>
+                  :
+                  <span className="u-color--dustyGray u-fontSize--large body-copy u-lineHeight--normal"><a href="/learn/support-bundle/install-supportbundle/" target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-fontWeight--medium u-textDecoration--underlineOnHover"> Install the plugin </a> and then you can try out these analyzers </span>
+                  }
+                </div>
                 {showCodeSnippet &&
                   <div className="flex flex-column u-marginTop--normal u-marginTop--10">
                     <CodeSnippet
