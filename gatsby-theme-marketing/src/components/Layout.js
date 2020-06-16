@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import NavBar from "./shared/NavBar";
 import Footer from "./shared/Footer";
 import { Helmet } from "react-helmet"
+import favicon from "../images/favicon.ico";
+
 
 import "../scss/index.scss";
 
@@ -33,6 +35,7 @@ const Layout = ({ children, isMobile, title }) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>{title}</title>
+        <link rel="icon" href={favicon} />
       </Helmet>
       <NavBar isMobile={isMobile} title={title} />
       <div className="u-minHeight--full flex-column flex1">
