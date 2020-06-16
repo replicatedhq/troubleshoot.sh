@@ -3,6 +3,7 @@ import React, { useRef } from "react";
 import styled from "@emotion/styled";
 import {PageNav} from "gatsby-theme-apollo-core";
 import {withPrefix} from "gatsby";
+import { breakpoints } from "gatsby-theme-apollo-core";
 
 const Wrapper = styled.div({
   display: "flex",
@@ -66,6 +67,11 @@ const BodyContent = styled.div({
   "h6": {
     fontSize: "16px",
     lineHeight: "26px"
+  },
+  [breakpoints.md]: {
+    "img": {
+      maxWidth: "350px !important"
+    }
   }
 });
 
