@@ -38,19 +38,16 @@ module.exports = options => ({
             target: "_blank",
             rel: "noopener noreferrer"
           },
-          Installing: {
-            href: ""
-          },
           KOTS: {
             href: "https://kots.io",
             target: "_blank",
             rel: "noopener noreferrer"
           },
-          Changelog: {
-            href: "https://troubleshoot.io/docs/changelog",
-            target: "_blank",
-            rel: "noopener noreferrer"
-          }
+          // Changelog: {
+          //   href: "https://troubleshoot.io/docs/changelog",
+          //   target: "_blank",
+          //   rel: "noopener noreferrer"
+          // }
         },
         algoliaApiKey: "cc18e896d9ebbcfbef43c3146b9f13ac",
         algoliaIndexName: "prod_troubleshoot",
