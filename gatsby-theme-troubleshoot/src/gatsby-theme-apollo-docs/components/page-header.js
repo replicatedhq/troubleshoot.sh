@@ -15,14 +15,20 @@ const Heading = styled.h1({
   }
 });
 
+const Subheading = styled.h4({
+  color: "#163166"
+});
+
 export default function PageHeader(props) {
   return (
     <div className="header-wrapper">
       <Heading>{props.title}</Heading>
+      {props.description && <Subheading>{props.description}</Subheading>}
     </div>
   );
 }
 
 PageHeader.propTypes = {
-  title: PropTypes.string.isRequired
+  title: PropTypes.string.isRequired,
+  description: PropTypes.string
 };
