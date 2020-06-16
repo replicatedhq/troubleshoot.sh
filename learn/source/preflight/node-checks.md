@@ -75,7 +75,7 @@ This attribute is available for any analyzer.
 
 **Line 40**: The following section will define the possible outcomes of this analyzer.
 
-**Line 41**: Define the failure outcome first. 
+**Line 41**: Define the failure outcome first.
 This outcome will be evaluated and, if true, evaluation of this analyzer will stop.
 
 **Line 42**: The criteria for this analyzer to evalate.
@@ -145,7 +145,7 @@ spec:
         checkName: One node must have 16 GB RAM and 8 CPU Cores
         filters:
           allocatableMemory: 16Gi
-          cpuCapacity: 8"
+          cpuCapacity: "8"
         outcomes:
           - fail:
               when: count() < 1
@@ -162,8 +162,8 @@ By filtering, we can use the simple `count()` function in the outcomes to analyz
 ## Executing the preflights
 
 Let's stop here and execute the preflight checks.
-For this demo, I'm running this on my local Kubernetes cluster that has 1 node, but it has 40 GB RAM and 8 CPUs.
-The expectation here is that my local cluster will fail on the 3 node minimum check, but pass on the second one because I do have sufficient memory and CPU.
+For this demo, I'm running this on my local Kubernetes cluster that has 5 nodes, but each node only has 2 cores and 8GB of RAM.
+The expectation here is that my local cluster will pass on the 3 node minimum check, but fail on the second one because I do not have sufficient memory and CPU.
 
 I'll run this file using:
 
@@ -173,4 +173,8 @@ kubectl preflight ./preflight.yaml
 
 And the results are:
 
+<img src="../images/preflight-nodes.png" style="width: 700px" />
 
+## Next Steps
+
+Continue to the final part of this tutorial to learn how to distribution Preflight Checks as part of your application or documentation.

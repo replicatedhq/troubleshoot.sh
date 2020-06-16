@@ -1,69 +1,40 @@
 ---
-title: "Analyzers Overview"
-description: "Analyzers Overview"
+title: "Introduction"
+description: "An introduction to the Support Bundle tutorial"
 ---
 
-Analyzers are YAML specifications that define a set of criteria and operations to run against files collected in a support bundle. Each analyzer included will result in either 0 or 1 [outcome](https://troubleshoot.io). If an analyzer produces zero outcomes, it will not be displayed on the support bundle analysis page.
+This tutorial will walk you through defining a Supporrt Bundle that your customer can execute when something isn't working quite right.
+A support bundle will collect data from the cluster, redact sensitive fields, and then perform analysis on the data to provide remediation steps.
 
-All analyzers are specified in a single YAML file. To build a set of analyzers, start with a Kubernetes YAML file:
+## Goals
 
-```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Analyzer
-metadata:
-  name: my-application-name
-spec:
-  analyzers: []
+By completing this tutorial, you will know how to write a Support Bundle, including:
+
+1. How to collect data
+2. How to analyze collected data
+3. How to generate a support bundle from a cluster.
+---
+title: Install Support Bundle Plugin
+description: Learn how to install the Support Bundle kubectl plugin
+---
+
+## Installing the `kubectl` plugin
+
+Collecting a support bundle relies on a client-side utility, packages as a `kubectl` plugin and distributed through the [krew](https://krew.dev/) pacakge manager.
+If you don't already have krew installed, head over to the [krew installation guide](https://krew.sigs.k8s.io/docs/user-guide/setup/install/), follow the steps there and then come back here.
+
+Install the Support Bundle plugin using:
+
+```shell
+kubectl krew install support-bundle
 ```
 
-The above file contains all of the necessary scaffolding and structure needed to write analyzers, but it does not contain any analyzers. Given this analyzer definition, there will be nothing on the analysis page.
+Note: This will not install anything to your cluster, it only places a single binary named `kubectl-support_bundle` on your path.
 
-The troubleshoot project defines a number of built-in and easy-to-use analyzers, and many helper functions to build custom analyzers.
 
-To add additional analyzers to a manifgest, read the docs in this section to understand each one, and add them as an array item below `spec`.
+## Prerequisites
 
-For example, a complete spec might be:
+Before starting this tutorial, you should have the following:
 
-```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Analyzer
-metadata:
-  name: my-application-name
-spec:
-  analyzers:
-    - imagePullSecret:
-          checkName: Has Access to Quay.io
-          registryName: quay.io
-          outcomes:
-            - fail:
-                message: Cannot pull from quay.io
-            - pass:
-                message: Found credentials to pull from quay.io
-      - clusterVersion:
-          outcomes:
-            - fail:
-                when: "< 1.13.0"
-                message: Sorry, my-application-name requires at least Kubernetes 1.14.0. Please update your Kubernetes cluster before installing.
-                uri: https://enterprise.my-application.com/install/requirements/kubernetes
-            - warn:
-                when: "< 1.15.0"
-                message: The version of Kubernetes you are running meets the minimum requirements to run my-application-name. It's recommended to run Kubernetes 1.15.0 or later.
-                uri: https://enterprise.my-application.com/install/requirements/kubernetes
-            - pass:
-                message: The version of Kubernetes you have installed meets the required and recommended versions.
-      - storageClass:
-          checkName: Required storage classes
-          storageClassName: "microk8s-hostpath"
-          outcomes:
-            - fail:
-                message: The required storage class was not found in the cluster.
-            - pass:
-                message: The required storage class was found in the cluster.
-      - customResourceDefinition:
-          customResourceDefinitionName: rook
-          outcomes:
-            - fail:
-                message: Rook is required for my-application. Rook was not found in the cluster.
-            - pass:
-                message: Found a supported version of Rook installed and running in the cluster.
-```
+1. A Kubernetes cluster and local kubectl access to the cluster. If you don't have one for testing, consider [kURL](https://kurl.sh), [KiND](https://github.com/kubernetes-sigs/kind), or [K3S](https://k3s.io).
+

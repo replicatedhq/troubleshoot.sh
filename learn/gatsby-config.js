@@ -33,6 +33,8 @@ module.exports = {
           ],
           "Support Bundle": [
             "support-bundle/introduction",
+            "support-bundle/install-supportbundle",
+            "support-bundle/collecting",
           ],
         },
       },
