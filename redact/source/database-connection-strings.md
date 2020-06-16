@@ -3,7 +3,7 @@ title: Database Connection Strings
 description: Automatically redacted database connection strings
 ---
 
-Troubleshoot automatically redacts database connection strings containing a username and password, standard Postgres and MySQL connection string components, and 'database' env vars in JSON.
+Troubleshoot automatically redacts database connection strings containing a username and password, standard Postgres and MySQL connection string components, and 'database' environment variables in JSON.
 
 This redaction is equivalent to the following redact yaml:
 
@@ -18,6 +18,10 @@ spec:
     removals:
       regex:
       - redactor: '\b(?P<mask>[^:\"\/]*){1}(:)(?P<mask>[^:\"\/]*){1}(@tcp\()(?P<mask>[^:\"\/]*){1}(?P<port>:[\d]*)?(\)\/)(?P<mask>[\w\d\S-_]+){1}\b'
+  - name: Redact values for environment variables with names beginning with 'database'
+    removals:
+      regex:
+      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*database[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\"'
   - name: Redact 'Data Source' values commonly found in database connection strings
     removals:
       regex:
