@@ -45,7 +45,7 @@ export class NavBar extends React.Component {
     const { isMobile } = this.props;
     const navBarItems = [
       { linkTo: "/learn", label: "Learn" },
-      { linkTo: "/explore", label: "Explore specs" },
+      { linkTo: "/explore", label: "Explore" },
     ];
 
     let isHome;
@@ -80,7 +80,7 @@ export class NavBar extends React.Component {
                           <Link to="/learn" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Learn</Link>
                         </div>
                         <div className="flex-column flex-auto justifyContent--center NavItem">
-                          <Link to="/explore" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Explore specs</Link>
+                          <Link to="/explore" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Explore</Link>
                         </div>
                       </div>
                     </div>
