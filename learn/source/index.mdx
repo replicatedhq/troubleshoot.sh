@@ -1,22 +1,41 @@
 ---
-title: Learn Troubleshoot
+title: Troubleshoot Tutorials
 description: Learn how to create Preflight Checks and Support Bundles
 ---
+
+import { Link } from "gatsby";
+import { Button } from '@apollo/space-kit/Button';
+import { colors } from 'gatsby-theme-apollo-core';
 
 Welcome.
 The easiest way to get started with the Troubleshoot project is to go through a few short tutorials.
 Once you've completed these tutorials, you'll be set to add custom Preflight Checks to your application and build your own Support Bundle for disconnected troubleshooting.
 
-## Tutorials
 
-#### [Preflight Checks](./preflight/introduction)
+<h4>Preflight Checks</h4>
 Start here to learn how to add custom preflight checks to your application.
-[(get started)](./preflight/introduction)
+<br />
+<Button
+  size="large"
+  color={colors.primary}
+  as={<Link to="/preflight/introduction" />}
+>
+  Start the tutorial!
+</Button>
 
-#### [Support Bundle](./support-bundle/introduction)
+<br /><br />
+
+<h4>Support Bundle</h4>
 When you have an application to support, start here to learn how to define a custom support bundle.
 We'll walk through collecting data from the application and analyzing it for known errors and problems.
-[(get started)](./support-bundle/introduction)
+<br />
+<Button
+  size="large"
+  color={colors.primary}
+  as={<Link to="/support-bundle/introduction" />}
+>
+  Start the tutorial!
+</Button>
 
-#### [Redactors]
-If you need to redact some sensitive data that isn't automatically redacted, start here to learn how to write custom redactors.
+
+
