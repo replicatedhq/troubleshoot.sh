@@ -22,6 +22,8 @@ publish:
 	cp -r redact/public/* public/redact
 	rm -rf public/redact/social-cards
 
+	cp -r static/* public
+
 .PHONY: build
 build:
 	make generate-specs

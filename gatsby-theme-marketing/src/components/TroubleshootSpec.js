@@ -88,7 +88,7 @@ class TroubleshootSpec extends React.Component {
 
   onTryItOut = (type) => {
     const preflightCommand = `kubectl preflight ${previewServer}/${this.state.preflightPreviewId}`;
-    const bundleCommand = `kubectl supportbundle ${previewServer}/${this.state.supportBundlePreviewId}`;
+    const bundleCommand = `kubectl support-bundle ${previewServer}/${this.state.supportBundlePreviewId}`;
     this.setState({ showCodeSnippet: true });
 
     if (type === "preflight") {
