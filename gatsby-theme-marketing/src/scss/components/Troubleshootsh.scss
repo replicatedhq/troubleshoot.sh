@@ -51,11 +51,17 @@
   text-align: left;
 }
 .example-spec-block {
-  padding: 15px 30px 15px 15px;
-  min-height: 72px;
+  padding: 20px 30px 20px 20px;
   background-color: #ffffff;
   position: relative;
   cursor: pointer;
+  max-width: 360px;
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
 
   &::after {
     content: "";

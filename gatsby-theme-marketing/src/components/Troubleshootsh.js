@@ -135,8 +135,8 @@ class Troubleshootsh extends React.Component {
                     <div className="icon collect-icon-large"><span className="illustration-text">Collect</span></div>
                   </div>
                   <div className="u-textAlign--left">
-                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about the collection process. Maybe talk about the spec and include a link to create one.</p>
-                    <Link to="/docs/reference/collect/overview" className="u-fontSize--small link">Explores</Link>
+                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define information to be collected from the cluster, environment, and application for analysis.</p>
+                    <Link to="/docs/reference/collect/overview" className="u-fontSize--small link">Explore collectorss</Link>
                   </div>
                 </div>
                 <div className="flex1 next-step-arrow center-block">
@@ -144,7 +144,7 @@ class Troubleshootsh extends React.Component {
                     <div className="icon redact-icon-large"><span className="illustration-text">Redact</span></div>
                   </div>
                   <div className="u-textAlign--left">
-                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about redacting. Maybe talk about how it’s customizable and include a link to the docs.</p>
+                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define sensitive information to be redacted while collcting information from your application.</p>
                     <Link to="/docs/support-bundle/redact" className="u-fontSize--small link">Learn about custom redacting</Link>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ class Troubleshootsh extends React.Component {
                     <div className="icon analyze-icon-large"><span className="illustration-text">Analyze</span></div>
                   </div>
                   <div className="u-textAlign--left">
-                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A short blurb about the analyze process. Maybe talk about the spec and include a link to create one.</p>
+                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define a set of criteria and operations to run against files collected in a support bundle.</p>
                     <Link to="/docs/reference/analyze/overview" className="u-fontSize--small link">Explore analyzers</Link>
                   </div>
                 </div>
