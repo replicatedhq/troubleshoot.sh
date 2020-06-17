@@ -24,7 +24,7 @@ module.exports = {
           null: [
             "index",
           ],
-          "Default Redactors": [
+          "Redactors": [
             "database-connection-strings",
             "aws-credentials",
             "generic-connection-strings",
