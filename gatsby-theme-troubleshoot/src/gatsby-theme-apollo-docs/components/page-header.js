@@ -1,7 +1,6 @@
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "@emotion/styled";
-import Img from "gatsby-image";
 
 const Heading = styled.h1(props => ({
   fontFamily: "Roboto Mono",
@@ -21,6 +20,12 @@ const Subheading = styled.h4({
   color: "#163166"
 });
 
+const HeadingImage = styled.div({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center"
+})
+
 
 export default function PageHeader(props) {
   let headingImage;
@@ -30,7 +35,10 @@ export default function PageHeader(props) {
 
   return (
     <div className="header-wrapper">
-      {props.headingImage && <Img fluid={headingImage} />}
+      {props.headingImage &&
+        <HeadingImage>
+          <img src={headingImage.src} width={500} />
+        </HeadingImage>}
       <Heading hasHeadingImage={!!props.headingImage}>{props.title}</Heading>
       {props.description && <Subheading>{props.description}</Subheading>}
     </div>
