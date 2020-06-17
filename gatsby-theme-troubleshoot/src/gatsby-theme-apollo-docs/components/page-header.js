@@ -1,8 +1,9 @@
 import PropTypes from "prop-types";
 import React from "react";
 import styled from "@emotion/styled";
+import Img from "gatsby-image";
 
-const Heading = styled.h1({
+const Heading = styled.h1(props => ({
   fontFamily: "Roboto Mono",
   fontWeight: "bold",
   fontStyle: "normal",
@@ -12,19 +13,13 @@ const Heading = styled.h1({
   marginBottom: "5px",
   ":not(:last-child)": {
     marginBottom: 8,
-  }
-});
+  },
+  marginTop: props.hasHeadingImage && 30
+}));
 
 const Subheading = styled.h4({
   color: "#163166"
 });
-
-const HeadingImage = styled.div({
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-  marginBottom: 30
-})
 
 
 export default function PageHeader(props) {
@@ -35,11 +30,8 @@ export default function PageHeader(props) {
 
   return (
     <div className="header-wrapper">
-      {props.headingImage &&
-        <HeadingImage>
-          <img src={headingImage.src} />
-        </HeadingImage>}
-      <Heading>{props.title}</Heading>
+      {props.headingImage && <Img fluid={headingImage} />}
+      <Heading hasHeadingImage={!!props.headingImage}>{props.title}</Heading>
       {props.description && <Subheading>{props.description}</Subheading>}
     </div>
   );
