@@ -1,9 +1,10 @@
 ---
-title: "Reference"
-description: "Reference"
+title: "API Reference"
+description: "API Reference"
 ---
 
 Redactors are YAML specifications that define which data to remove when generating a support bundle.
+Redactors are currently an alpha feature.
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -12,22 +13,27 @@ metadata:
   name: my-redactor-name
 spec:
   redactors:
-  - name: replace password # names are not used internally, but are useful for record keeping
-    file: data/my-password-dump # this targets a single file
-    values:
-    - abc123 # this value is my password, and should never appear in a support bundle
+  - name: replace password # names are not used internally, but are useful for recordkeeping
+    fileSelector:
+      file: data/my-password-dump # this targets a single file
+    removals:
+      values:
+      - abc123 # this value is my password, and should never appear in a support bundle
   - name: all files # as no file is specified, this redactor will run against all files
-    regex:
-    - (another)(?P<mask>.*)(here) # this will replace anything between the strings `another` and `here` with `***HIDDEN***`
-    multiLine:
-    - selector: 'S3_ENDPOINT' # remove the value in lines following those that contain the string S3_ENDPOINT
-      redactor: '("value": ").*(")'
-    yaml:
-    - "abc.xyz.*" # redact all items in the array at key xyz within key abc in yaml documents
+    removals:
+      regex:
+      - redactor: (another)(?P<mask>.*)(here) # this will replace anything between the strings `another` and `here` with `***HIDDEN***`
+      - selector: 'S3_ENDPOINT' # remove the value in lines following those that contain the string S3_ENDPOINT
+        redactor: '("value": ").*(")'
+      yamlPath:
+      - "abc.xyz.*" # redact all items in the array at key xyz within key abc in yaml documents
 ```
 
-Each redactor consists of a set of files which it can apply to, a set of string literals to replace, and a set of regex replacements to be run.
-Any of the three can be omitted.
+Each redactor consists of a set of files which it can apply to, a set of string literals to replace, a set of regex replacements to be run, and a list of yaml paths to redact.
+Any of the four can be omitted.
+
+This is divided into two subobjects - `fileSelector` (containing `file` and `files`) and `removals` (containing `values`, `regex` and `yamlPath`).
+`fileSelector` determines what files the redactor applies to, and `removals` determines what it removes.
 
 ### `file` and `files`
 
@@ -42,17 +48,9 @@ All entries in `values` will be replaced with the string `***HIDDEN***`.
 
 ### `regex`
 
-Matches to entries in `regex` will be removed or redacted depending on how the regex is constructed.
-Any portion of a match not contained within a capturing group will be removed entirely.
-For instance, the regex `abc(123)`, when applied to the string `test abc123`, will be redacted to `test 123`, because `abc` was matched but not included within a capturing group.
-The contents of capturing groups tagged `mask` will be masked with `***HIDDEN***`.
-Thus `(?P<mask>abc)(123)` applied to `test abc123` will become `test ***HIDDEN***123`.
-Capturing groups tagged `drop` will be dropped, just as if they were not within a capturing group.
-
-### `multiline`
-
-Multiline allows applying a regex to lines following a line that matches a filter.
+Regex allows applying a regex to lines following a line that matches a filter.
 `selector` is used to identify lines, and then `redactor` is run on the next line.
+If `selector` is empty, the redactor will run on every line.
 This can be useful for removing values from prettyprinted json, among other things.
 For instance, a `selector` of `S3_ENDPOINT`, when combined with a `redactor` of `("value": ").*(")` and run on the following string removoes `this is a secret` while leaving `this is NOT a secret` untouched.
 
@@ -67,11 +65,16 @@ For instance, a `selector` of `S3_ENDPOINT`, when combined with a `redactor` of 
 },
 ```
 
-The capturing group redaction/removal behavior within `redactor` is the same as the `regex` redactor type.
+Matches to entries in `regex` will be removed or redacted depending on how the regex is constructed.
+Any portion of a match not contained within a capturing group will be removed entirely.
+For instance, the regex `abc(123)`, when applied to the string `test abc123`, will be redacted to `test 123`, because `abc` was matched but not included within a capturing group.
+The contents of capturing groups tagged `mask` will be masked with `***HIDDEN***`.
+Thus `(?P<mask>abc)(123)` applied to `test abc123` will become `test ***HIDDEN***123`.
+Capturing groups tagged `drop` will be dropped, just as if they were not within a capturing group.
 
-### `yaml`
+### `yamlPath`
 
-The yaml redactor redacts items within yaml documents.
+The yamlPath redactor redacts items within yaml documents.
 Input is a `.`-delimited path to the items to be redacted.
 If an item in the path is the literal string `*`, the redactor will apply to all options at that level.
 For instance, with the following yaml doc:
