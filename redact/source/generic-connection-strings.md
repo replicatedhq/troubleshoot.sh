@@ -1,9 +1,9 @@
 ---
-title: Connection Strings and IPs
-description: Automatically redacted connection strings and IPs
+title: Connection Strings
+description: Automatically redacted connection strings
 ---
 
-Troubleshoot automatically redacts http/ftp connection strings containing a username and password, as well as all ipv4 addresses.
+Troubleshoot automatically redacts http/ftp connection strings containing a username and password.
 
 This redaction is equivalent to the following redact yaml:
 
@@ -18,8 +18,4 @@ spec:
     removals:
       regex:
       - redactor: '(?i)(https?|ftp)(:\/\/)(?P<mask>[^:\"\/]+){1}(:)(?P<mask>[^@\"\/]+){1}(?P<host>@[^:\/\s\"]+){1}(?P<port>:[\d]+)?'
-  - name: Redact ipv4 addresses
-    removals:
-      regex:
-      - redactor: '(?P<mask>\b(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\.(?P<drop>25[0-5]|2[0-4][0-9]|[01]?[0-9][0-9]?)\b)'
 ```
