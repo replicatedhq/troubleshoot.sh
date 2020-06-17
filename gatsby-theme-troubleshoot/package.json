@@ -21,5 +21,9 @@
     "gatsby-theme-apollo-docs": "^4.2.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
+  },
+  "dependencies": {
+    "gatsby-plugin-sharp": "^2.6.11",
+    "gatsby-transformer-sharp": "^2.5.5"
   }
 }

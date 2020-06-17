@@ -19,9 +19,26 @@ const Subheading = styled.h4({
   color: "#163166"
 });
 
+const HeadingImage = styled.div({
+  display: "flex",
+  alignItems: "center",
+  justifyContent: "center",
+  marginBottom: 30
+})
+
+
 export default function PageHeader(props) {
+  let headingImage;
+  if (props.headingImage) {
+    headingImage = props.headingImage.childImageSharp.fluid;
+  }
+
   return (
     <div className="header-wrapper">
+      {props.headingImage &&
+        <HeadingImage>
+          <img src={headingImage.src} />
+        </HeadingImage>}
       <Heading>{props.title}</Heading>
       {props.description && <Subheading>{props.description}</Subheading>}
     </div>
@@ -30,5 +47,6 @@ export default function PageHeader(props) {
 
 PageHeader.propTypes = {
   title: PropTypes.string.isRequired,
-  description: PropTypes.string
+  description: PropTypes.string,
+  headingImage: PropTypes.object
 };

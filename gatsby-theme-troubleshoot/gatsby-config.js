@@ -57,5 +57,8 @@ module.exports = options => ({
         gaTrackingId: "UA-61420213-14",
         ...options,
       }
-    }]
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`
+  ]
 });
