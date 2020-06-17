@@ -1,8 +1,9 @@
 name: Index Documentation
 
 on:
-  watch:
-    types: [started]
+  push:
+    branches:
+      - grayson/troubleshoot-2.0
     
 # on: 
 #   schedule:
