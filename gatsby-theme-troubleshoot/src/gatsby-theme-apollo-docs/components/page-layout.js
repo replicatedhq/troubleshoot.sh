@@ -192,6 +192,7 @@ export default function PageLayout(props) {
     footerNavConfig,
     logoLink,
     algoliaApiKey,
+    algoliaAppId,
     algoliaIndexName,
     menuTitle
   } = props.pluginOptions;
@@ -282,6 +283,7 @@ export default function PageLayout(props) {
               <Search
                 siteName={siteName}
                 apiKey={algoliaApiKey}
+                appId={algoliaAppId}
                 indexName={algoliaIndexName}
               />
             )}

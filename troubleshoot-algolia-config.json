@@ -7,7 +7,10 @@
     "https://troubleshootsh.netlify.app/redact"
   ],
   "selectors": {
-    "lvl0": ".header-wrapper h1",
+    "lvl0": {
+      "selector": ".header-wrapper h1",
+      "default_value": "Documentation"
+    },
     "lvl1": ".content-wrapper h2",
     "lvl2": ".content-wrapper h3",
     "lvl3": ".content-wrapper h4",
