@@ -1,10 +1,10 @@
 ---
 title: "API Reference"
-description: "Redactor API Reference"
+description: "API Reference"
 ---
 
 Redactors are YAML specifications that define which data to remove when generating a support bundle.
-Redactors are currently in alpha.
+Redactors are currently an alpha feature.
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
