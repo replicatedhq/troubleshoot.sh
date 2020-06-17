@@ -16,7 +16,7 @@ jobs:
     steps:
       - name: Install JQ
         run: |
-          sudo apt-get install jq && chmod +x jq
+          sudo apt-get install jq
 
       - name: Index the docs
         env:
