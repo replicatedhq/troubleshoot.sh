@@ -28,7 +28,10 @@ module.exports = {
             "database-connection-strings",
             "aws-credentials",
             "generic-connection-strings",
-            "passwords-and-tokens",
+            "ip-addresses",
+            "passwords",
+            "api-tokens",
+            "usernames",
           ],
           "Reference": [
             "reference",
