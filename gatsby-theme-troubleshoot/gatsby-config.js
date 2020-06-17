@@ -57,5 +57,15 @@ module.exports = options => ({
         gaTrackingId: "UA-61420213-14",
         ...options,
       }
-    }]
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/images/`,
+      },
+    },
+    `gatsby-plugin-sharp`,
+    `gatsby-transformer-sharp`,
+  ]
 });
