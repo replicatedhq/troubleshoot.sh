@@ -1,8 +1,12 @@
 name: Index Documentation
 
-on: 
-  schedule:
-    - cron: '0 * * * *'
+on:
+  watch:
+    types: [started]
+    
+# on: 
+#   schedule:
+#     - cron: '0 * * * *'
 
 jobs:
   index-docs:
