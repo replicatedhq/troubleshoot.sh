@@ -49,11 +49,12 @@ module.exports = options => ({
           //   rel: "noopener noreferrer"
           // }
         },
-        algoliaApiKey: "cc18e896d9ebbcfbef43c3146b9f13ac",
+        algoliaApiKey: "04e0447a5b04544cadccdbd4357bc18b",
         algoliaIndexName: "prod_troubleshoot",
+        algoliaAppId: "NHTIKUBZ4C",
         baseUrl: "https://troubleshoot.sh",
         logoLink: "https://troubleshoot.sh",
-        // gaTrackingId: "UA-74643563-13",
+        gaTrackingId: "UA-61420213-14",
         ...options,
       }
     }]
