@@ -1,5 +1,5 @@
 {
-  "index_name": "troubleshoot-algolia-config",
+  "index_name": "prod_troubleshoot",
   "start_urls": [
     "https://troubleshootsh.netlify.app/learn",
     "https://troubleshootsh.netlify.app/collect",
@@ -7,10 +7,7 @@
     "https://troubleshootsh.netlify.app/redact"
   ],
   "selectors": {
-    "lvl0": {
-      "selector": ".header-wrapper h1",
-      "default_value": "Documentation"
-    },
+    "lvl0": ".header-wrapper h1",
     "lvl1": ".content-wrapper h2",
     "lvl2": ".content-wrapper h3",
     "lvl3": ".content-wrapper h4",
