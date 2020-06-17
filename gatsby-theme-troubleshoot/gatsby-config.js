@@ -50,7 +50,7 @@ module.exports = options => ({
           // }
         },
         algoliaApiKey: "04e0447a5b04544cadccdbd4357bc18b",
-        algoliaIndexName: "prod_troubleshoot",
+        algoliaIndexName: "troubleshoot-algolia-config",
         algoliaAppId: "NHTIKUBZ4C",
         baseUrl: "https://troubleshoot.sh",
         logoLink: "https://troubleshoot.sh",

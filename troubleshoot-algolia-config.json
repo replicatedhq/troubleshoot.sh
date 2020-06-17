@@ -1,5 +1,5 @@
 {
-  "index_name": "prod_troubleshoot",
+  "index_name": "troubleshoot-algolia-config",
   "start_urls": [
     "https://troubleshootsh.netlify.app/learn",
     "https://troubleshootsh.netlify.app/collect",

@@ -26,4 +26,4 @@ jobs:
           APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
           API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
         run: |
-          docker run -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY -e "CONFIG=$(cat ./prod_troubleshoot.json | jq -r tostring)" algolia/docsearch-scraper
+          docker run -e APPLICATION_ID=$APPLICATION_ID -e API_KEY=$API_KEY -e "CONFIG=$(cat ./troubleshoot-algolia-config.json | jq -r tostring)" algolia/docsearch-scraper
