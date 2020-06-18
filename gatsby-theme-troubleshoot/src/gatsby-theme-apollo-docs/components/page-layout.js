@@ -33,6 +33,13 @@ const Main = styled.main({
   marginTop: 20,
   [breakpoints.md]: {
     marginTop: 50
+  },
+  ".scrolledHeader": {
+    background: "none",
+    boxShadow: "none"
+  },
+  ".scrolled": {
+    visibility: "hidden"
   }
 });
 
@@ -183,6 +190,11 @@ export default function PageLayout(props) {
 
   const { pathname } = props.location;
   const { siteName, title } = data.site.siteMetadata;
+  let frontmatter;
+  if (props.data) {
+    frontmatter = props.data?.file?.childMdx?.frontmatter || props.data.file?.childMarkdownRemark?.frontmatter;
+  }
+
   const {
     subtitle,
     sidebarContents
@@ -273,28 +285,28 @@ export default function PageLayout(props) {
             />
           )}
         </Sidebar>
-        <Main>
-          <Header>
-            <MobileNav>
-              <MenuButton onClick={openSidebar} />
-              <MobileLogo width={40} fill="currentColor" />
-            </MobileNav>
-            {algoliaApiKey && algoliaIndexName && (
-              <Search
-                siteName={siteName}
-                apiKey={algoliaApiKey}
-                appId={algoliaAppId}
-                indexName={algoliaIndexName}
-              />
-            )}
-            <HeaderButton />
-          </Header>
-          <SelectedLanguageContext.Provider value={selectedLanguageState}>
-            <NavItemsContext.Provider value={navItems}>
-              {props.children}
-            </NavItemsContext.Provider>
-          </SelectedLanguageContext.Provider>
-        </Main>
+          <Main>
+            <Header frontmatter={frontmatter}>
+              <MobileNav>
+                <MenuButton onClick={openSidebar} />
+                <MobileLogo width={40} fill="currentColor" />
+              </MobileNav>
+              {algoliaApiKey && algoliaIndexName && (
+                <Search
+                  siteName={siteName}
+                  apiKey={algoliaApiKey}
+                  appId={algoliaAppId}
+                  indexName={algoliaIndexName}
+                />
+              )}
+              <HeaderButton />
+            </Header>
+            <SelectedLanguageContext.Provider value={selectedLanguageState}>
+              <NavItemsContext.Provider value={navItems}>
+                {props.children}
+              </NavItemsContext.Provider>
+            </SelectedLanguageContext.Provider>
+          </Main>
       </FlexWrapper>
       {hasNavItems && (
         <DocsetSwitcher
@@ -315,5 +327,6 @@ PageLayout.propTypes = {
   children: PropTypes.node.isRequired,
   location: PropTypes.object.isRequired,
   pageContext: PropTypes.object.isRequired,
-  pluginOptions: PropTypes.object.isRequired
+  pluginOptions: PropTypes.object.isRequired,
+  data: PropTypes.object.isRequired
 };

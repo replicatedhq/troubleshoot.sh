@@ -218,6 +218,8 @@ const pageFragment = `
           ...GatsbyImageSharpFluid
         }
       }
+      extension
+      publicURL
     }
   }
   fields {
