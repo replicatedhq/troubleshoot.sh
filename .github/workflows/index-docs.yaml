@@ -1,13 +1,13 @@
 name: Index Documentation
 
-on:
-  push:
-    branches:
-      - grayson/troubleshoot-2.0
+# on:
+#   push:
+#     branches:
+#       - grayson/troubleshoot-2.0
     
-# on: 
-#   schedule:
-#     - cron: '0 * * * *'
+on: 
+  schedule:
+    - cron: '0 * * * *'
 
 jobs:
   index-docs:
