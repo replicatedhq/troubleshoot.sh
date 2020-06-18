@@ -1,10 +1,12 @@
 import * as React from "react";
 import { Link, navigate } from "gatsby";
+import isEmpty from "lodash/isEmpty";
 
-import { titleize } from "../utils/utilities";
-import "../scss/components/ExploreSpec.scss";
 import ExploreInfo from "./shared/ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
+import { titleize } from "../utils/utilities";
+
+import "../scss/components/ExploreSpec.scss";
 
 class ExploreSpec extends React.Component {
   state = {
@@ -13,7 +15,9 @@ class ExploreSpec extends React.Component {
     showMobileFilters: false,
     mobileFiltersOpen: false,
     tagsToShow: [],
-    query: ""
+    query: "",
+    queryStringTag: "",
+    queryStringCategory: ""
   }
 
   showingCategoryDetails = (category, e) => {
@@ -26,19 +30,21 @@ class ExploreSpec extends React.Component {
     if (!e.target.classList.contains("icon")) {
       const doesTagAlreadyExist = this.state.tagsToShow.find(stateTag => stateTag === tag);
       if (!doesTagAlreadyExist) {
-        this.setState({ tagsToShow: [...this.state.tagsToShow, tag], categoryToShow: "" });
+        this.setState({ 
+          tagsToShow: [...this.state.tagsToShow, tag], 
+          categoryToShow: ""
+        });
       }
     }
   }
 
   onCloseCategory = () => {
-    this.setState({ categoryToShow: "" });
+    this.setState({ categoryToShow: "" }, () => {
+      navigate("/explore");
+    });
   }
 
   onCloseTagFilter = (tag) => {
-    this.setState({ tagsToShow: "" }, () => {
-      navigate("/explore");
-    });
     this.setState({ tagsToShow: this.state.tagsToShow.filter(stateTag => stateTag !== tag) });
   }
 
@@ -50,15 +56,52 @@ class ExploreSpec extends React.Component {
     this.setState({ mobileFiltersOpen: !this.state.mobileFiltersOpen });
   }
 
+  componentDidUpdate(lastProps, lastState) {
+    if (this.state.tagsToShow !== lastState.tagsToShow && this.state.tagsToShow) {
+      if (this.state.tagsToShow.length > 1) {
+        this.setState({ queryStringTag: this.state.tagsToShow.toString().split(",").join("&tag=")}, () => {
+          navigate(`/explore/?tag=${this.state.queryStringTag}`)
+        })
+      } else if (isEmpty(this.state.categoryToShow)) {
+        this.setState({ queryStringTag: this.state.tagsToShow.toString()}, () => {
+          if (this.state.queryStringTag === "") {
+            navigate("/explore")
+          } else {
+            navigate(`/explore/?tag=${this.state.queryStringTag}`)
+          }
+        })
+      }
+    }
+
+    if(this.state.categoryToShow !== lastState.categoryToShow && this.state.categoryToShow) {
+      this.setState({ queryStringCategory: this.state.categoryToShow}, () => {
+        navigate(`/explore/?category=${this.state.queryStringCategory}`)
+      })
+    }
+  }
+
   componentDidMount() {
     import("../../static/specs-gen.json").then(module => {
       this.setState({ specJson: module });
     });
 
     if (this.props.tag) {
+      if (Array.isArray(this.props.tag)) {
+        this.setState({
+          tagsToShow: [...this.state.tagsToShow, ...this.props.tag],
+          showTagsList: true
+        })
+      } else {
+        this.setState({
+          tagsToShow: [...this.state.tagsToShow, this.props.tag],
+          showTagsList: true
+        })
+      }
+    }
+
+    if (this.props.category) {
       this.setState({
-        tagsToShow: [...this.state.tagsToShow, this.props.tag],
-        showTagsList: true
+        categoryToShow: this.props.category
       })
     }
   }
@@ -131,7 +174,7 @@ class ExploreSpec extends React.Component {
 
 
   render() {
-    const { categoryToShow, showTagsList, tagsToShow, specJson, query } = this.state;
+    const { categoryToShow, showTagsList, tagsToShow, specJson, query, queryStringTag } = this.state;
     const { isMobile } = this.props;
 
     const filteredTagsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)) && this.searchInSpecs(spec, query));
