@@ -35,25 +35,28 @@ const HeadingImage = styled.div({
 function handleHeaderScroll() {
   const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
   const distanceY = scrollTop,
-  showHeaderOn = 100,
-  wrapperTop = document.getElementById("heading");
+    showHeaderOn = 100,
+    wrapperTop = document.getElementById("heading");
   if (typeof window !== "undefined") {
-     if(distanceY > showHeaderOn) {
-      wrapperTop && wrapperTop.classList.add("scrolledHeader");
-    } else {
-      wrapperTop && wrapperTop.classList.remove("scrolledHeader");
+    if (wrapperTop) {
+      if (distanceY > showHeaderOn) {
+        wrapperTop && wrapperTop.classList.add("scrolledHeader");
+      } else {
+        wrapperTop && wrapperTop.classList.remove("scrolledHeader");
+      }
     }
   }
   const imageTop = document.getElementById("heading_image");
   if (typeof window !== "undefined") {
-     if(distanceY > showHeaderOn) {
-      wrapperTop && imageTop.classList.add("scrolled");
-    } else {
-      wrapperTop && imageTop.classList.remove("scrolled");
+    if (imageTop) {
+      if (distanceY > showHeaderOn) {
+        imageTop && imageTop.classList.add("scrolled");
+      } else  {
+        imageTop && imageTop.classList.remove("scrolled");
+      }
     }
   }
 }
-
 export default function Header(props) {
   let headingImage;
   if (props?.frontmatter?.headingImage) {
