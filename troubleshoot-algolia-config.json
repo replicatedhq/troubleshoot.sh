@@ -1,12 +1,12 @@
 {
   "index_name": "troubleshoot-algolia-config",
   "start_urls": [
-    "https://troubleshootsh.netlify.app/learn",
-    "https://troubleshootsh.netlify.app/collect",
-    "https://troubleshootsh.netlify.app/analyze",
-    "https://troubleshootsh.netlify.app/redact",
+    "https://troubleshoot.sh/learn",
+    "https://troubleshoot.sh/collect",
+    "https://troubleshoot.sh/analyze",
+    "https://troubleshoot.sh/redact",
     {
-      "url": "https://troubleshootsh.netlify.app/explore",
+      "url": "https://troubleshoot.sh/explore",
       "selectors_key": "explore"
     }
   ],
