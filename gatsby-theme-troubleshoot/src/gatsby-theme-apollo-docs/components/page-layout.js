@@ -32,7 +32,7 @@ const Main = styled.main({
   flexGrow: 1,
   marginTop: 20,
   [breakpoints.md]: {
-    marginTop: 30
+    marginTop: 50
   }
 });
 
