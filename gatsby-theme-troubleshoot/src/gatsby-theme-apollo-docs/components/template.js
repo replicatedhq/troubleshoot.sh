@@ -5,13 +5,13 @@ import MDXRenderer from "gatsby-plugin-mdx/mdx-renderer";
 import PageContent from "./page-content";
 import PageHeader from "./page-header";
 import PropTypes from "prop-types";
-import React, {Fragment, createContext, useContext} from "react";
+import React, { Fragment, createContext, useContext } from "react";
 import rehypeReact from "rehype-react";
 import styled from "@emotion/styled";
-import {ContentWrapper, colors, smallCaps} from "gatsby-theme-apollo-core";
-import {MDXProvider} from "@mdx-js/react";
-import {TypescriptApiBoxContext} from "./typescript-api-box";
-import {graphql, navigate} from "gatsby";
+import { ContentWrapper, colors, smallCaps } from "gatsby-theme-apollo-core";
+import { MDXProvider } from "@mdx-js/react";
+import { TypescriptApiBoxContext } from "./typescript-api-box";
+import { graphql, navigate } from "gatsby";
 
 const StyledContentWrapper = styled(ContentWrapper)({
   paddingBottom: 0
@@ -20,9 +20,9 @@ const StyledContentWrapper = styled(ContentWrapper)({
 const CustomLinkContext = createContext();
 
 function CustomLink(props) {
-  const {pathPrefix, baseUrl} = useContext(CustomLinkContext);
+  const { pathPrefix, baseUrl } = useContext(CustomLinkContext);
 
-  const linkProps = {...props};
+  const linkProps = { ...props };
   if (props.href) {
     if (props.href.startsWith("/")) {
       linkProps.onClick = function handleClick(event) {
@@ -91,7 +91,7 @@ function CustomTable(props) {
 
 function createCustomHeading(tag) {
   // eslint-disable-next-line react/display-name, react/prop-types
-  return ({children, ...props}) =>
+  return ({ children, ...props }) =>
     React.createElement(
       tag,
       props,
@@ -119,12 +119,13 @@ const renderAst = new rehypeReact({
   components
 }).Compiler;
 
+
 export default function Template(props) {
-  const {hash, pathname} = props.location;
-  const {file, site} = props.data;
-  const {frontmatter, headings, fields} =
+  const { hash, pathname } = props.location;
+  const { file, site } = props.data;
+  const { frontmatter, headings, fields } =
     file.childMarkdownRemark || file.childMdx;
-  const {title, description} = site.siteMetadata;
+  const { title, description } = site.siteMetadata;
   const {
     sidebarContents,
     githubUrl,
@@ -135,7 +136,7 @@ export default function Template(props) {
   } = props.pageContext;
 
   const pages = sidebarContents
-    .reduce((acc, {pages}) => acc.concat(pages), [])
+    .reduce((acc, { pages }) => acc.concat(pages), [])
     .filter(page => !page.anchor);
 
   return (
@@ -174,8 +175,8 @@ export default function Template(props) {
                 </MDXProvider>
               </TypescriptApiBoxContext.Provider>
             ) : (
-              renderAst(file.childMarkdownRemark.htmlAst)
-            )}
+                renderAst(file.childMarkdownRemark.htmlAst)
+              )}
           </CustomLinkContext.Provider>
         </PageContent>
         <Footer />
@@ -224,6 +225,8 @@ export const pageQuery = graphql`
                 ...GatsbyImageSharpFluid
               }
             }
+            extension
+            publicURL
           }
         }
         headings(depth: h2) {
