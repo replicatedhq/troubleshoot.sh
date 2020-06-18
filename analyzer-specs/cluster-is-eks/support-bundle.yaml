@@ -1,0 +1,21 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: SupportBundle
+metadata:
+  name: cluster-is-eks
+  annotations: 
+    title: "Check if Amazon EKS Managed Kubernetes"
+    description: "Verify that the Kubernetes cluster is a manaegd Amazon EKS Cluster"
+    category: "cloud_provider"
+    iconUri: "/category-icons/cloud-provider.svg"
+    tags: '["kubernetes", "cloud", "aws", "eks"]'
+    contributors: '[{"name": "Marc Campbell", "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"}]'
+spec:
+  collectors: []
+  analyzers:
+    - distribution:
+        outcomes:
+          - pass:
+              when: "== eks"
+              message: Amazon EKS is a supported distribution
+          - warn:
+              message: The cluster is not running on Amazon EKS

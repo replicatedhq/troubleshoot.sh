@@ -1,0 +1,138 @@
+.Info--wrapper {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+
+  .Info--item {
+    width: 40%;
+    margin-bottom: 30px;
+    padding: 10px;
+    margin-right: 20px;
+
+    &:nth-child(2n) {
+      margin-right: 0;
+    }
+
+    &:hover {
+      cursor: pointer;
+      background-color: #F8F8F8;
+    }
+  }
+
+  .InfoMobile--item {
+    width: 100%;
+    margin-bottom: 30px;
+    padding: 10px;
+
+    &:hover {
+      cursor: pointer;
+      background-color: #F8F8F8;
+    }
+  }
+}
+
+.List--item {
+  cursor: pointer;
+  padding: 10px 10px;
+ 
+  &:hover {
+    background-color: #f8f8f8;
+    color: #326DE6;
+  }
+
+  .icon.white-x-icon {
+    position: relative;
+    top: 2px;
+  }
+}
+
+.List--item.is-active,
+.List--item.is-active .Lits--item:hover {
+  background-color: #326DE6;
+  color: #ffffff;
+}
+
+.close {
+  float:right;
+  margin-left:10px;
+}
+
+.RelatedSpecs--wrapper {
+  background-color: #fff;
+  margin-right: 30px;
+  margin-bottom: 30px;
+  box-sizing: border-box;
+  box-shadow: 0px 0px 4px rgba(22, 49, 102, 0.25);
+}
+
+.category-icon {
+  height: 50px;
+  width: 50px;
+  border-radius: 50%;
+  background-position: center;
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+}
+
+.activeTag {
+  background-color: #E9F0FF;
+  padding: 5px;
+  color: #4A4A4A;
+}
+
+.Contributors--wrapper {
+    border-top: 1px solid #C4C8CA;
+
+  .contributer-icon {
+    display: block;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    border-radius: 100%;
+    overflow: hidden;
+    width: 30px;
+    height: 30px;
+    border: 2px solid #ffffff;
+    margin-top: 10px;
+  }
+}
+
+.ExploreSearch--wrapper {
+  max-height: 100vh;
+
+  .SearchBox--wrapper {
+    position: relative;
+    width: 100%;
+  }
+
+  .SearchBox-input {
+    display: block;
+    box-sizing: border-box;
+    width: 100%;
+    border: 1px solid #E5E5E5;
+    outline: 0;
+    font-size: 14px;
+    font-size: 14px;
+    line-height: 14px;
+    color: #323232;
+    padding: 10px 11px 11px;
+    transition: border .2s;
+    padding-left: 35px;
+    min-height: 50px;
+
+    ::placeholder {
+      color: #C5C5C5
+    }
+  }
+
+  .SearchBox-SearchIcon {
+    position: absolute;
+    left: 10px;
+    top: 15px;
+    background: transparent url("../../images/main_spritesheet.svg") left no-repeat;
+    background-position: -24px 0px;
+    width: 22px;
+    height: 22px;
+  }
+}

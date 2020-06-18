@@ -1,0 +1,147 @@
+.MonacoEditor--wrapper {
+  overflow: auto;
+  border: 1px solid #DFDFDF;
+  border-radius: 4px;
+  height: 400px;
+  position: relative;
+  
+  .error-highlight {
+    background:#FBEDEB;
+    position: absolute;
+  }
+
+  .disabled-ace-editor {
+    opacity: .5;
+  }
+
+  .ace_search {
+    left: 0;
+    right: auto;
+  }
+
+  .ace_print-margin {
+    visibility: hidden !important;
+  }
+}
+
+.section.landing-header {
+  margin-top: 60px;
+}
+
+.left-block {
+  padding-bottom: 50px;
+}
+
+.center-block {
+  padding-bottom: 50px;
+}
+
+.illustration-text {
+  padding: 6px 8px;
+  background-color: #163166;
+  color: #ffffff;
+  font-weight: 500;
+  position: absolute;
+  bottom: -8px;
+  left: -25px;
+}
+
+.example-spec-block-wrapper {
+  margin-bottom: 30px;
+  text-align: left;
+}
+.example-spec-block {
+  padding: 20px 30px 20px 20px;
+  background-color: #ffffff;
+  position: relative;
+  cursor: pointer;
+  max-width: 360px;
+
+  p {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &::after {
+    content: "";
+    background-image: url("../../images/main_spritesheet.svg");
+    background-repeat: no-repeat;
+    background-size: initial;
+    display: inline-block;
+    width: 10px;
+    height: 17px;
+    background-position: 0 -74px;
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    margin-top: -8px;
+    transition: all .2s ease;
+  }
+
+  &:hover::after {
+    right: 12px;
+  }
+}
+
+
+/* ≥ 768px */
+@media screen and (min-width: 48em) {
+  .section.landing-header {
+    margin-top: 120px;
+  }
+
+  .left-block {
+    padding-right: 50px;
+    padding-bottom: 0;
+  
+    &.more {
+      padding-right: 70px;
+    }
+  }
+
+  .center-block {
+    padding-bottom: 0;
+  }
+  
+  .right-block {
+    padding-left: 50px;
+    padding-bottom: 0;
+  
+    &.more {
+      padding-left: 70px;
+    }
+  }
+  
+  .next-step-arrow {
+    position: relative;
+  
+    &::after {
+      position: absolute;
+      content: "";
+      background-image: url("../../images/main_spritesheet.svg");
+      background-repeat: no-repeat;
+      background-size: initial;
+      display: block;
+      width: 106px;
+      height: 30px;
+      background-position: -48px 0;
+      right: -30px;
+      top: 60px;
+    }
+  
+    &.center-block::after {
+      right: -80px;
+    }
+  }
+
+  .example-spec-block-wrapper {
+    margin-right: 30px;
+    margin-bottom: 0;
+
+    &:last-child {
+      margin-right: 0;
+    }
+  }
+
+}

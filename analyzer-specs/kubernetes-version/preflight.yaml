@@ -1,0 +1,26 @@
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: kubernetes-version
+  annotations: 
+    title: "Check the version of Kubernetes"
+    description: "Require a minimum of Kubernetes 1.16.0"
+    category: "cluster_info"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags: '["kubernetes"]'
+    contributors: '[{"name": "Marc Campbell", "avatarUri": "https://avatars3.githubusercontent.com/u/173451?s=460&v=4"}]'
+spec:
+  collectors: []
+  analyzers:
+    - clusterVersion:
+        outcomes:
+          - fail:
+              when: "< 1.16.0"
+              message: The application requires at Kubernetes 1.16.0 or later, and recommends 1.18.0.
+              uri: https://kubernetes.io
+          - warn:
+              when: "< 1.18.0"
+              message: Your cluster meets the minimum version of Kubernetes, but we recommend you update to 1.18.0 or later.
+              uri: https://kubernetes.io
+          - pass:
+              message: Your cluster meets the recommended and required versions of Kubernetes.

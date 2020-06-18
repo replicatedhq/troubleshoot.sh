@@ -1,6 +1,8 @@
 *.DS_Store
 .vscode/
 .idea/
+.cache/
+**/.cache
 *.swp
 
 # Directories
@@ -15,9 +17,5 @@ swagger2markup-*.jar
 logs
 *.log
 
-hugo
-deps/
-resources/_gen/
-themes/hugo-whisper-theme/exampleSite/resources/_gen/
-hugo.tar.gz
-
+# Yarn Integrity file
+.yarn-integrity

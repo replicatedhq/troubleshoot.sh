@@ -1,10 +1,12 @@
 {
-  "scripts": {
-    "index-site": "hugo-algolia --all",
-    "index-and-send": "hugo-algolia -s --all"
-  },
-  "dependencies": {
-    "algoliasearch": "^3.35.1",
-    "hugo-algolia": "^1.2.14"
-  }
+  "private": true,
+  "workspaces": [
+    "gatsby-theme-troubleshoot",
+    "gatsby-theme-marketing",
+    "marketing",
+    "learn",
+    "analyze",
+    "collect",
+    "redact"
+  ]
 }
