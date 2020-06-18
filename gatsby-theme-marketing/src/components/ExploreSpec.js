@@ -60,14 +60,14 @@ class ExploreSpec extends React.Component {
     if (this.state.tagsToShow !== lastState.tagsToShow && this.state.tagsToShow) {
       if (this.state.tagsToShow.length > 1) {
         this.setState({ queryStringTag: this.state.tagsToShow.toString().split(",").join("&tag=")}, () => {
-          navigate(`/explore/?tag=${this.state.queryStringTag}`)
+          navigate(`/explore?tag=${this.state.queryStringTag}`)
         })
       } else if (isEmpty(this.state.categoryToShow)) {
         this.setState({ queryStringTag: this.state.tagsToShow.toString()}, () => {
           if (this.state.queryStringTag === "") {
             navigate("/explore")
           } else {
-            navigate(`/explore/?tag=${this.state.queryStringTag}`)
+            navigate(`/explore?tag=${this.state.queryStringTag}`)
           }
         })
       }
@@ -75,7 +75,7 @@ class ExploreSpec extends React.Component {
 
     if(this.state.categoryToShow !== lastState.categoryToShow && this.state.categoryToShow) {
       this.setState({ queryStringCategory: this.state.categoryToShow}, () => {
-        navigate(`/explore/?category=${this.state.queryStringCategory}`)
+        navigate(`/explore?category=${this.state.queryStringCategory}`)
       })
     }
   }
