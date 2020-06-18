@@ -21,8 +21,8 @@
       "text": ".content-wrapper p,.content-wrapper li"
     },
     "explore": {
-      "lvl0": ".Info--wrapper .info-title",
-      "text": ".Info--wrapper .info-desc"
+      "lvl0": ".Info--wrapper--info p",
+      "text": ".Info--wrapper--info span"
     }
   }
 }
