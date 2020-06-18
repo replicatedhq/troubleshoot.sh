@@ -4,15 +4,25 @@
     "https://troubleshootsh.netlify.app/learn",
     "https://troubleshootsh.netlify.app/collect",
     "https://troubleshootsh.netlify.app/analyze",
-    "https://troubleshootsh.netlify.app/redact"
+    "https://troubleshootsh.netlify.app/redact",
+    {
+      "url": "https://troubleshootsh.netlify.app/explore",
+      "selectors_key": "explore"
+    }
   ],
   "selectors": {
-    "lvl0": ".header-wrapper h1",
-    "lvl1": ".content-wrapper h2",
-    "lvl2": ".content-wrapper h3",
-    "lvl3": ".content-wrapper h4",
-    "lvl4": ".content-wrapper h5",
-    "lvl5": ".content-wrapper h6",
-    "text": ".content-wrapper p,.content-wrapper li"
+    "default" : {
+      "lvl0": ".header-wrapper h1",
+      "lvl1": ".content-wrapper h2",
+      "lvl2": ".content-wrapper h3",
+      "lvl3": ".content-wrapper h4",
+      "lvl4": ".content-wrapper h5",
+      "lvl5": ".content-wrapper h6",
+      "text": ".content-wrapper p,.content-wrapper li"
+    },
+    "explore": {
+      "lvl0": ".Info--wrapper .info-title",
+      "text": ".Info--wrapper .info-desc"
+    }
   }
 }

@@ -111,8 +111,8 @@ class ExploreSpec extends React.Component {
           <Link to={`/spec/${spec.slug}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
             <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")` }}> </span>
             <div className="flex-column u-marginLeft--12">
-              <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more"> {spec.title} </p>
-              <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8"> {spec.description} </p>
+              <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more info-title"> {spec.title} </p>
+              <p className="u-fontSize--small u-color--tundora body-copy u-marginTop--8 info-desc"> {spec.description} </p>
             </div>
           </Link>
         ))}
