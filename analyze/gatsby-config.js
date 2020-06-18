@@ -9,7 +9,7 @@ const themeOptions = {
 module.exports = {
   pathPrefix: '/analyze',
   siteMetadata: {
-    title: "Troubleshoot analyzers"
+    title: "Troubleshoot Analyzers"
   },
   plugins: [
     {
