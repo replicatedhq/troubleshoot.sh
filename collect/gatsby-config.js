@@ -9,7 +9,7 @@ const themeOptions = {
 module.exports = {
   pathPrefix: '/collect',
   siteMetadata: {
-    title: "Troubleshoot collectors"
+    title: "Troubleshoot Collectors"
   },
   plugins: [
     {

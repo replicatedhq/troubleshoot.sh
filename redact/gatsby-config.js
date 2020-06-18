@@ -17,7 +17,7 @@ module.exports = {
       options: {
         ...themeOptions,
         root: __dirname,
-        subtitle: "Troubleshoot readactors",
+        subtitle: "Troubleshoot Readactors",
         description: "The Official Troubleshoot Documentation",
         githubRepo: "replicatedhq/troubleshoot",
         sidebarCategories: {
