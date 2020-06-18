@@ -37,4 +37,5 @@
 /support-bundle/collecting                     /learn/
 /support-bundle/overview                       /learn/support-bundle/introduction/
 /support-bundle/redact                         /learn/
+/spec/* /spec.html                             200
 /*  /index.html                                200
