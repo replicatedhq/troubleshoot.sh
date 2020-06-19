@@ -219,15 +219,7 @@ export const pageQuery = graphql`
         frontmatter {
           title
           description
-          headingImage {
-            childImageSharp {
-              fluid(maxWidth: 700, quality: 100, webpQuality: 90) {
-                ...GatsbyImageSharpFluid
-              }
-            }
-            extension
-            publicURL
-          }
+          introHeader
         }
         headings(depth: h2) {
           value
