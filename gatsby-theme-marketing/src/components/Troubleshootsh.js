@@ -102,7 +102,7 @@ class Troubleshootsh extends React.Component {
               <div className="u-marginTop--50">
                 <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Examples</p>
                 <div className="contain-1280">
-                  <div className="u-flexMobileReflow u-marginTop--50">
+                  <div className="u-flexTabletReflow u-marginTop--50 justifyContent--center">
                     {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
                       <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
                         <Link to={`/spec/${item.slug}`}>
@@ -161,7 +161,7 @@ class Troubleshootsh extends React.Component {
               <div className="u-marginTop--50">
                 <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Examples </p>
                 <div className="contain-1280">
-                  <div className="u-flexMobileReflow u-marginTop--50">
+                  <div className="u-flexTabletReflow u-marginTop--50 justifyContent--center">
                     {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
                       <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
                         <Link to={`/spec/${item.slug}`}>

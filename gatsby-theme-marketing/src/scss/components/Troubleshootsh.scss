@@ -55,7 +55,6 @@
   background-color: #ffffff;
   position: relative;
   cursor: pointer;
-  max-width: 360px;
 
   p {
     white-space: nowrap;
@@ -138,10 +137,18 @@
   .example-spec-block-wrapper {
     margin-right: 30px;
     margin-bottom: 0;
+    max-width: 260px;
 
     &:last-child {
       margin-right: 0;
     }
   }
 
+}
+
+/* ≥ 1280px */
+@media screen and (min-width: 80em) {
+  .example-spec-block-wrapper {
+    max-width: 360px;
+  }
 }

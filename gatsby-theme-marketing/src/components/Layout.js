@@ -10,7 +10,7 @@ import "../scss/index.scss";
 
 const Layout = ({ children, isMobile, title }) => {
   return (
-    <div className="flex flex1">
+    <div className="flex-column flex1">
       {!isMobile ?
         <div className="suite-banner">
           <div className="flex flex-row justifyContent--spaceBetween">
