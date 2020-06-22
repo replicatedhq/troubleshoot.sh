@@ -276,7 +276,7 @@ class TroubleshootSpec extends React.Component {
               <div className="u-borderTop--gray"></div>
               <div className={`flex ${isMobile ? "flex-column" : "flex1"} u-marginTop--15`}>
                 {relatedSpecs?.slice(0, 2).map((spec, i) => (
-                  <div className={`RelatedSpecs--wrapper flex ${isMobile && ""}`} key={`${spec.id}-${i}`}>
+                  <div className={`RelatedSpecs--wrapper ${!isMobile && "flex"}`} key={`${spec.id}-${i}`}>
                     <Link to={`/spec/${spec.slug}`}>
                       <div className="example-spec-block">
                         <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold"> {spec.description} </p>

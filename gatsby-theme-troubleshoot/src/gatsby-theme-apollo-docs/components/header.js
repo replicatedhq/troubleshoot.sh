@@ -29,7 +29,14 @@ const HeadingImage = styled.div({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
-  marginTop: 30
+  marginTop: 30,
+
+  "img": {
+    width: 500,
+    [breakpoints.md]: {
+      width: 300
+    }
+  }
 })
 
 function handleHeaderScroll() {
@@ -75,7 +82,7 @@ export default function Header(props) {
       <InnerWrapper>{props.children}</InnerWrapper>
       {props?.frontmatter?.headingImage &&
         <HeadingImage id="heading_image">
-          <img src={headingImage} alt="header_image" width={500} />
+          <img src={headingImage} alt="header_image" />
         </HeadingImage>
       }
     </Wrapper>
