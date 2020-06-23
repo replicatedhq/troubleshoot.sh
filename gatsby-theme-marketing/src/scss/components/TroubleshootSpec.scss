@@ -1,0 +1,22 @@
+.error-highlight {
+  background:#FBEDEB;
+  position: absolute;
+}
+
+.warn-highlight {
+  background:#FBF6EB;
+  position: absolute;
+}
+
+.info-highlight {
+  background:#EBF0FB;
+  position: absolute;
+}
+
+.AbsoulteLintExpressions-wrapper {
+  position: absolute;
+  top: 323px;
+  right: 18px;
+  z-index: 10;
+  height: 409px;
+}
