@@ -3,6 +3,11 @@ import { Link } from "gatsby";
 import Tag from "./shared/Tag";
 import CodeSnippet from "./shared/CodeSnippet";
 import debounce from "lodash/debounce";
+import find from "lodash/find";
+import get from "lodash/get";
+
+import "../scss/components/TroubleshootSpec.scss";
+import KotsLinter from "./shared/KotsLinter";
 
 const previewServer = `https://troubleshoot.run`;
 
@@ -19,13 +24,14 @@ class TroubleshootSpec extends React.Component {
       preflightPreviewId: null,
       supportBundlePreviewId: null,
 
+      lintExpressions: [],
       lintExpressionMarkers: [],
 
       copySuccess: "",
 
       isActive: "preflight"
     }
-    this.lintKotsSpec = debounce(this.lintKotsSpec, 200);
+    this.lintTroubleshootSpec = debounce(this.lintTroubleshootSpec, 200);
   }
 
   renderAceEditor = (preflightYaml) => {
@@ -42,12 +48,39 @@ class TroubleshootSpec extends React.Component {
           });
           editor.getSession().setMode("ace/mode/yaml");
           editor.setTheme("ace/theme/chrome");
-          // editor.getSession().addMarker(this.state.lintExpressionMarkers)
           this.setState({ currentSpecCommand: editor.setValue(preflightYaml) });
           window.aceEditor = editor;
         });
       })
     })
+  }
+
+  removeLintExpressionMarkers = () => {
+    this.state.lintExpressionMarkers.forEach(marker => {
+      window.aceEditor.session.removeMarker(marker.id);
+    });
+  }
+
+  generateLintExpressionMarkers = lintExpressions => {
+    import("brace").then((ace) => {
+      const markers = [];
+      const Range = ace.acequire('ace/range').Range;
+      for (let i = 0; i < lintExpressions.length; i++) {
+        const expression = lintExpressions[i];
+        if (expression.positions) {
+          for (let position of expression.positions) {
+          let line = get(position, "start.line");
+          if (line) {
+              const marker = new Range(line - 1, 0, line, 0);
+              marker.type = expression.type;
+              marker.id = window.aceEditor.session.addMarker(marker, `${marker.type}-highlight`, "text");
+              markers.push(marker);
+            }
+          }
+        }
+      }
+      this.setState({ lintExpressionMarkers: markers });
+    });
   }
 
   componentDidMount() {
@@ -66,7 +99,9 @@ class TroubleshootSpec extends React.Component {
 
   componentDidUpdate(lastProps, lastState) {
     if (this.state.isActive !== lastState.isActive && this.state.isActive) {
-      this.setState({ currentSpecCommand: window.aceEditor.setValue(this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML) })
+      const specYaml = this.state.isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML;
+      this.lintTroubleshootSpec(specYaml);
+      this.setState({ currentSpecCommand: window.aceEditor.setValue(specYaml) });
     }
   }
 
@@ -156,12 +191,37 @@ class TroubleshootSpec extends React.Component {
       })
   }
 
-  lintKotsSpec = (specType, spec) => {
-    // TODO: implement linting for specs
-    const lintingPassed = true;
-    if (lintingPassed) {
-      this.sendToServer(specType, spec);
-    }
+  lintTroubleshootSpec = (specType, spec) => {
+    fetch("https://lint.replicated.com/v1/troubleshoot-lint", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        spec: `${spec}`,
+      }),
+    })
+      .then(async (res) => {
+        const response = await res.json();
+
+        // clear current markers
+        this.removeLintExpressionMarkers();
+
+        // update lint expressions
+        const lintExpressions = response.lintExpressions;
+        this.setState({ lintExpressions });
+
+        // add new markers
+        this.generateLintExpressionMarkers(lintExpressions);
+
+        const haveErrors = find(lintExpressions, { type: "error" });
+        if (!haveErrors) {
+          this.sendToServer(specType, spec);
+        }
+      })
+      .catch(err => {
+        console.log(err);
+      })
   }
 
   onSpecChange = (value) => {
@@ -176,12 +236,12 @@ class TroubleshootSpec extends React.Component {
       });
     }
 
-    this.lintKotsSpec(specType, value);
+    this.lintTroubleshootSpec(specType, value);
   }
 
 
   render() {
-    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson } = this.state;
+    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson, lintExpressions } = this.state;
     const { isMobile } = this.props;
 
     const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
@@ -224,6 +284,16 @@ class TroubleshootSpec extends React.Component {
                 <div className="flex u-width--full u-overflow--hidden" id="ace-editor">
                 </div>
               </div>
+
+              {!isMobile ?
+                <div className="AbsoulteLintExpressions-wrapper flex-column u-width--fourth u-marginRight--10">
+                  <KotsLinter lintExpressions={lintExpressions} />
+                </div> :
+                <div className="u-marginTop--10">
+                  <KotsLinter lintExpressions={lintExpressions} className={lintExpressions.length === 0 ? "u-padding--10" : ""} />
+                </div>
+              }
+
               {!isMobile ?
                 <div className="AbsoulteCopyYaml--wrapper">
                   {!copySuccess ?
