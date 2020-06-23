@@ -286,7 +286,7 @@ class TroubleshootSpec extends React.Component {
               </div>
 
               {!isMobile ?
-                <div className="AbsoulteLintExpressions-wrapper flex-column u-width--third u-marginRight--10">
+                <div className="AbsoulteLintExpressions-wrapper flex-column u-width--fourth u-marginRight--10">
                   <KotsLinter lintExpressions={lintExpressions} />
                 </div> :
                 <div className="u-marginTop--10">
