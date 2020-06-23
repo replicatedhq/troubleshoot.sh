@@ -8,6 +8,10 @@
     {
       "url": "https://troubleshoot.sh/explore",
       "selectors_key": "explore"
+    },
+    {
+      "url": "https://troubleshoot.sh/spec",
+      "selectors_key": "specs"
     }
   ],
   "selectors": {
@@ -23,6 +27,10 @@
     "explore": {
       "lvl0": ".Info--wrapper--info p",
       "text": ".Info--wrapper--info span"
+    },
+    "specs": {
+      "lvl0": ".spec-title-wrapper p",
+      "text": ".spec-title-wrapper span"
     }
   }
 }

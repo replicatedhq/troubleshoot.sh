@@ -200,9 +200,9 @@ class TroubleshootSpec extends React.Component {
                 <span className="icon backArrow-icon u-marginRight--small" /> Find more specs
                 </Link>
               <div className="flex flex1 justifyContent--spaceBetween">
-                <div className="flex flex-column">
+                <div className="flex flex-column spec-title-wrapper">
                   <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium"> {currentSpec?.title} </p>
-                  <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </p>
+                  <span className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy"> {currentSpec?.description} </span>
                 </div>
                 {!isMobile &&
                   <div className="flex flex-column">
