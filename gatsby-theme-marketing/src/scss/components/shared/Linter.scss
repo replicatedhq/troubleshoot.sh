@@ -4,7 +4,6 @@
   right: 12px;
   top: 7px;
   padding: 4px;
-  border-radius: 4px;
   cursor: pointer;
 }
 .console-wrapper {
@@ -28,7 +27,6 @@
     width: 100%;
     height: 42px;
     border: 1px solid #C4C8CA;
-    border-radius: 4px;
     outline: 0;
     font-size: 12px;
     font-weight: normal;
@@ -72,7 +70,6 @@
 .Linter-wrapper {
   border: 1px solid #C4C8CA;
   background-color: #ffffff;
-  border-radius: 6px;
 }
 .Linter-wrapper .Linter-header {
   padding: 8px 12px;
@@ -133,15 +130,6 @@
     border: solid 1px #9B9B9B;
     cursor: pointer;
     text-align: center;
-  }
-
-  span:first-of-type {
-    border-top-left-radius: 3px;
-    border-bottom-left-radius: 3px;
-  }
-  span:last-of-type {
-    border-top-right-radius: 3px;
-    border-bottom-right-radius: 3px;
   }
 
   .is-active {
