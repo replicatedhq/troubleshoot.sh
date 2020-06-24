@@ -43,6 +43,9 @@ module.exports = options => ({
             target: "_blank",
             rel: "noopener noreferrer"
           },
+          Reference: {
+            href: "/reference/collectors/",
+          }
           // Changelog: {
           //   href: "https://troubleshoot.io/docs/changelog",
           //   target: "_blank",
