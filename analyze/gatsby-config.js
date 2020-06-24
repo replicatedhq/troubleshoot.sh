@@ -23,7 +23,6 @@ module.exports = {
         sidebarCategories: {
           null: [
             'index',
-            'reference/analyzers',
           ],
           Analyze: [
             'node-resources',
@@ -40,6 +39,9 @@ module.exports = {
             'crd',
             'regex',
           ],
+          Reference: [
+            'reference/analyzers'
+          ]
         },
       },
     },
