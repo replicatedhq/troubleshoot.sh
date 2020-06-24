@@ -22,9 +22,9 @@ module.exports = {
         githubRepo: 'replicatedhq/troubleshoot',
         sidebarCategories: {
           null: [
-            'reference/collectors',
-            'reference/redactors',
-            'reference/analyzers'
+            'reference/collect',
+            'reference/redact',
+            'reference/analyze'
           ],
         },
       },
