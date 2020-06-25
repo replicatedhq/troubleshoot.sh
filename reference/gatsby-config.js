@@ -7,7 +7,7 @@ const themeOptions = {
 };
 
 module.exports = {
-  pathPrefix: '/reference',
+  pathPrefix: '/api-reference',
   siteMetadata: {
     title: "Troubleshoot Reference Documentation"
   },
@@ -22,9 +22,9 @@ module.exports = {
         githubRepo: 'replicatedhq/troubleshoot',
         sidebarCategories: {
           null: [
-            'reference/collect',
-            'reference/redact',
-            'reference/analyze'
+            'collect',
+            'redact',
+            'analyze'
           ],
         },
       },

@@ -84,7 +84,7 @@ export class NavBar extends React.Component {
                           <Link to="/explore" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Examples</Link>
                         </div>
                         <div className="flex-column flex-auto justifyContent--center NavItem">
-                          <Link to="/reference/collect/" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Reference</Link>
+                          <Link to="/api-reference/collect/" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Reference</Link>
                         </div>
                       </div>
                     </div>

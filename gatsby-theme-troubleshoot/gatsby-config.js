@@ -44,7 +44,7 @@ module.exports = options => ({
             rel: "noopener noreferrer"
           },
           Reference: {
-            href: "/reference/collect/",
+            href: "/api-reference/collect/",
           }
           // Changelog: {
           //   href: "https://troubleshoot.io/docs/changelog",
