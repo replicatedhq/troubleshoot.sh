@@ -257,7 +257,7 @@ class TroubleshootSpec extends React.Component {
           <div className="flex-column container flex justifyContent--center">
             <div className="troubleshootSection">
               <Link to="/explore" className="flex flex1 u-marginBottom--15 u-fontSize--small link">
-                <span className="icon backArrow-icon u-marginRight--small" /> Find more specs
+                <span className="icon backArrow-icon u-marginRight--small" /> Find more examples
                 </Link>
               <div className="flex flex1 justifyContent--spaceBetween">
                 <div className="flex flex-column spec-title-wrapper">
@@ -297,12 +297,12 @@ class TroubleshootSpec extends React.Component {
               {!isMobile ?
                 <div className="AbsoulteCopyYaml--wrapper">
                   {!copySuccess ?
-                    <button className="Button copy blue u-marginRight--30" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</button>
-                    : <span className="u-color--vidaLoca u-marginRight--30">{copySuccess}</span>}
+                    <button className="Button copy blue u-marginRight--30" onClick={this.copySpecYamlToClipboard}>Copy YAML</button>
+                    : <span className="u-color--vidaLoca u-fontSize--small u-marginRight--30">{copySuccess}</span>}
                 </div> :
                 <div className="u-marginTop--10">
                   {!copySuccess ?
-                    <span className="link u-fontSize--small" onClick={this.copySpecYamlToClipboard}>Copy spec YAML</span>
+                    <span className="link u-fontSize--small" onClick={this.copySpecYamlToClipboard}>Copy YAML</span>
                     : <span className="u-color--vidaLoca u-fontSize--small u-marginTop--20">{copySuccess}</span>}
                 </div>
               }
@@ -342,7 +342,7 @@ class TroubleshootSpec extends React.Component {
             </div>
 
             <div className="flex flex-column u-marginBottom--15">
-              <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30 u-marginBottom--10"> Related specs </p>
+              <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginTop--30 u-marginBottom--10"> Related examples </p>
               <div className="u-borderTop--gray"></div>
               <div className={`flex ${isMobile ? "flex-column" : "flex1"} u-marginTop--15`}>
                 {relatedSpecs?.slice(0, 2).map((spec, i) => (

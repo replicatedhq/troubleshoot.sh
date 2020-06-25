@@ -186,9 +186,8 @@ class ExploreSpec extends React.Component {
       <div className="u-width--full u-overflow--auto flex-column flex1">
         <div className="section gradient border justifyContent--center alignItems--center" style={{marginTop: "120px"}}>
           <div className="container">
-            <p className="u-fontSize--jumbo u-fontWeight--bold u-color--biscay u-lineHeight--more"> Explore troubleshoot specs </p>
-            <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy">
-              Find collector and analyzer specs. You can search for a tag like “database” or something even more specific like “mysql”. </p>
+            <p className="u-fontSize--jumbo u-fontWeight--bold u-color--biscay u-lineHeight--more">Expand pre and post-installation diagnostic capabilities</p>
+            <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy">Explore example Collectors and Analyzers. All of these examples are editable and include a command for you to securly try in your cluster.</p>
           </div>
         </div>
 
