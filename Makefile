@@ -22,6 +22,10 @@ publish:
 	cp -r redact/public/* public/redact
 	rm -rf public/redact/social-cards
 
+	mkdir -p public/api-reference
+	cp -r api-reference/public/* public/api-reference
+	rm -rf public/api-reference/social-cards
+
 	cp -r static/* public
 
 .PHONY: build
@@ -32,6 +36,7 @@ build:
 	yarn workspace collect build --prefix-paths
 	yarn workspace analyze build --prefix-paths
 	yarn workspace redact build --prefix-paths
+	yarn workspace api-reference build --prefix-paths
 
 .PHONY: deps
 deps:
@@ -45,6 +50,7 @@ clean:
 	yarn workspace collect clean
 	yarn workspace analyze clean
 	yarn workspace redact clean
+	yarn workspace api-reference clean
 
 .PHONY: generate-specs
 generate-specs:
