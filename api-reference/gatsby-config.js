@@ -2,7 +2,7 @@ const themeOptions = {
   siteName: 'Troubleshoot Docs',
   pageTitle: 'Troubleshoot Docs',
   menuTitle: 'Troubleshoot',
-  baseDir: 'reference',
+  baseDir: 'api-reference',
   contentDir: 'source',
 };
 

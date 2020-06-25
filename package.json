@@ -8,6 +8,6 @@
     "analyze",
     "collect",
     "redact",
-    "reference"
+    "api-reference"
   ]
 }

@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "reference",
+  "name": "api-reference",
   "version": "0.0.1",
   "scripts": {
     "prestart": "gatsby clean",
