@@ -1,5 +1,5 @@
 ---
-title: "API Reference"
+title: "Redactors API Reference"
 description: "Redactors API Reference"
 ---
 

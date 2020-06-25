@@ -43,6 +43,9 @@ module.exports = options => ({
             target: "_blank",
             rel: "noopener noreferrer"
           },
+          Reference: {
+            href: "/api-reference/collect/",
+          }
           // Changelog: {
           //   href: "https://troubleshoot.io/docs/changelog",
           //   target: "_blank",
