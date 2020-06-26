@@ -228,7 +228,7 @@ class ExploreSpec extends React.Component {
                       type="text"
                       value={query}
                       onChange={this.onSearch}
-                      placeholder={"What type of spec do you need?"}
+                      placeholder={"What type of data do you want to collect and analyze?"}
                     />
                   </div>
                 </div>

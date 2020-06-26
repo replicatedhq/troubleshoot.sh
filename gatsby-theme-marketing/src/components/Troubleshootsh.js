@@ -95,7 +95,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A visual report is generated to highlight where the environment doesn’t meet your&nbsp;requirements.</p>
-                    <Link to="/learn/support-bundle/introduction" className="u-fontSize--small link">Learn more about reporting</Link>
+                    <a target="_blank" rel="noopener noreferrer" href="https://kots.io/kotsadm/troubleshooting/support-bundle/" className="u-fontSize--small link">Learn more about reporting</a>
                   </div>
                 </div>
               </div>
