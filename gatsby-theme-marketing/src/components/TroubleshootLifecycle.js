@@ -32,8 +32,8 @@ export default function TroubleshootLifecycle({ isMobile }) {
               <span className="icon preflight-small" />
             </div>
             <div>
-              <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Preflight check</p>
-              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Checks are used to validate ENV before installation.</p>
+              <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Preflight checks</p>
+              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors and Analyzers validate before installation.</p>
             </div>
           </div>
         </div>
@@ -72,8 +72,8 @@ export default function TroubleshootLifecycle({ isMobile }) {
               <span className="icon support-small" />
             </div>
             <div>
-              <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Support</p>
-              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors are used to debug when errors occur.</p>
+              <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Support bundle</p>
+              <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors and Analyzers reveal the source of issues.</p>
             </div>
           </div>
         </div>
@@ -110,8 +110,8 @@ export default function TroubleshootLifecycle({ isMobile }) {
             <span className="icon preflight-small" />
           </div>
           <div>
-            <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Preflight check</p>
-            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Checks are used to validate ENV before installation.</p>
+            <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Preflight checks</p>
+            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors and Analyzers validate before installation.</p>
           </div>
         </div>
         <div className="step checks-pass">
@@ -140,8 +140,8 @@ export default function TroubleshootLifecycle({ isMobile }) {
             <span className="icon support-small" />
           </div>
           <div>
-            <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Support</p>
-            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors are used to debug when errors occur.</p>
+            <p className="u-fontSize--large u-color--biscay u-lineHeight--default">Support bundle</p>
+            <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Collectors and Analyzers reveal the source of issues.</p>
           </div>
         </div>
         <div className="step repeat-cycle">
