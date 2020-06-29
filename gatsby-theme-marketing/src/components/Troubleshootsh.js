@@ -49,11 +49,11 @@ class Troubleshootsh extends React.Component {
               <div className="u-marginTop--30 u-flexMobileReflow two-btn-wrapper justifyContent--center">
                 <button className="Button secondary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("preflightSection")}>
                   <span className="icon preflight-small"></span>
-                  <span>Explore preflight</span>
+                  <span>Learn about Preflight checks</span>
                 </button>
                 <button className="Button secondary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("supportSection")}>
                   <span className="icon support-small"></span>
-                  <span>Explore support</span>
+                  <span>Learn about Support bundles</span>
                 </button>
               </div>
             </div>
@@ -95,7 +95,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A visual report is generated to highlight where the environment doesn’t meet your&nbsp;requirements.</p>
-                    <Link to="/learn/support-bundle/introduction" className="u-fontSize--small link">Learn more about reporting</Link>
+                    <a target="_blank" rel="noopener noreferrer" href="https://kots.io/kotsadm/troubleshooting/support-bundle/" className="u-fontSize--small link">Learn more about reporting</a>
                   </div>
                 </div>
               </div>
@@ -115,7 +115,7 @@ class Troubleshootsh extends React.Component {
                     )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <Link to="/explore/" className="Button primary">Browse more</Link>
+                    <Link to="/explore/" className="Button primary">Browse more examples</Link>
                   </div>
                 </div>
               </div>
@@ -135,7 +135,7 @@ class Troubleshootsh extends React.Component {
                     <div className="icon collect-icon-large"><span className="illustration-text">Collect</span></div>
                   </div>
                   <div className="u-textAlign--left">
-                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define information to be collected from the cluster, environment, and application for analysis.</p>
+                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Without installing anything in to the cluster, data is collected from your application based on what was defined in your collector.</p>
                     <Link to="/collect/" className="u-fontSize--small link">Explore collectors</Link>
                   </div>
                 </div>
@@ -144,7 +144,7 @@ class Troubleshootsh extends React.Component {
                     <div className="icon redact-icon-large"><span className="illustration-text">Redact</span></div>
                   </div>
                   <div className="u-textAlign--left">
-                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define sensitive information to be redacted while collcting information from your application.</p>
+                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Sensitive information is redacted from a support bundle and is never stored, keeping your data safe and secure.</p>
                     <Link to="/redact/" className="u-fontSize--small link">Learn about custom redacting</Link>
                   </div>
                 </div>
@@ -153,7 +153,7 @@ class Troubleshootsh extends React.Component {
                     <div className="icon analyze-icon-large"><span className="illustration-text">Analyze</span></div>
                   </div>
                   <div className="u-textAlign--left">
-                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Define a set of criteria and operations to run against files collected in a support bundle.</p>
+                    <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Without installing anything to the cluster, your Support bundle is analyzed and insights are surfaced to help you debug and resolve issues.</p>
                     <Link to="/analyze/" className="u-fontSize--small link">Explore analyzers</Link>
                   </div>
                 </div>
@@ -174,7 +174,7 @@ class Troubleshootsh extends React.Component {
                     )) : null}
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
-                    <Link to="/explore/" className="Button primary">Browse more</Link>
+                    <Link to="/explore/" className="Button primary">Browse more examples</Link>
                   </div>
                 </div>
               </div>
