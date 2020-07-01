@@ -1,6 +1,5 @@
 ---
-title: "Redactors API Reference"
-description: "Redactors API Reference"
+title: "Redactors"
 ---
 
 Redactors are YAML specifications that define which data to remove when generating a support bundle.
