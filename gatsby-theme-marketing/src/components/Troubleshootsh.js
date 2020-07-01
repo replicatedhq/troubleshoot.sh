@@ -6,13 +6,15 @@ import "../scss/components/Troubleshootsh.scss";
 class Troubleshootsh extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      activeTab: "preflight-checks"
+    };
   }
 
   getExampleSpecs = (arr, n) => {
     let result = new Array(n);
     let len = arr.length;
-    let  taken = new Array(len);
+    let taken = new Array(len);
     if (n > len)
       throw new RangeError("getRandom: more elements taken than available");
     while (n--) {
@@ -21,7 +23,7 @@ class Troubleshootsh extends React.Component {
       taken[x] = --len in taken ? taken[len] : len;
     }
     return result;
-}
+  }
 
   scrollToEl = (elId) => {
     const element = document.getElementById(elId);
@@ -34,6 +36,10 @@ class Troubleshootsh extends React.Component {
     });
   }
 
+  toggleView = (activeTab) => {
+    this.setState({ activeTab })
+  }
+
   render() {
     const { isMobile } = this.props;
     const logoStyle = isMobile ? { width: `320px`, height: `31px` } : { width: `489px`, height: `47px` };
@@ -43,18 +49,27 @@ class Troubleshootsh extends React.Component {
       <div className={`u-width--full u-overflow--auto flex-column flex1`}>
         <div className="section landing-header border">
           <div className="container">
-            <div className="contain-700">
-              <span style={logoStyle} className="troubleshoot-logo" id="tblshootLogo"></span>
-              <p className="u-fontSize--24 u-marginTop--30 u-color--biscay u-lineHeight--more u-fontWeight--medium">Disconnected support and validation for Kubernetes applications</p>
-              <div className="u-marginTop--30 u-flexMobileReflow two-btn-wrapper justifyContent--center">
-                <button className="Button secondary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("preflightSection")}>
-                  <span className="icon preflight-small"></span>
-                  <span>Learn about Preflight checks</span>
-                </button>
-                <button className="Button secondary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("supportSection")}>
-                  <span className="icon support-small"></span>
-                  <span>Learn about Support bundles</span>
-                </button>
+            <div className="contain-1280">
+              <div className="u-flexMobileReflow u-marginTop--50 u-paddingBottom--20">
+                <div className="flex1 left-block">
+                  <span style={logoStyle} className="troubleshoot-logo" id="tblshootLogo"></span>
+                  <p className="u-fontSize--24 u-marginTop--30 u-color--biscay u-lineHeight--more u-fontWeight--medium">A kubectl plugin providing diagnostic tools for Kubernetes applications</p>
+                  <div className="u-marginTop--30 u-flexMobileReflow two-btn-wrapper">
+                    <button className="Button primary flex alignItems--center justifyContent--center" onClick={() => this.scrollToEl("preflightSection")}>
+                      <span>Learn how it works</span>
+                    </button>
+                    <Link to="/learn" className="Button secondary flex alignItems--center justifyContent--center">
+                      <span>Get started</span>
+                    </Link>
+                  </div>
+                </div>
+                <div className="flex1 right-block">
+                  {this.state.activeTab === "preflight-checks" ? <div> TODO - add preflight video </div> : <div> TODO - add support bundle video </div>}
+                  <div className="flex two-btn-wrapper justifyContent--center alignItems--center u-marginTop--10">
+                    <span className={`landing-page-tab u-marginRight--30 ${this.state.activeTab === "preflight-checks" && "is-active-tab"}`} onClick={() => this.toggleView("preflight-checks")}> Preflight checks </span>
+                    <span className={`landing-page-tab ${this.state.activeTab === "support-bundle" && "is-active-tab"}`} onClick={() => this.toggleView("support-bundle")}> Support bundle </span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -76,7 +91,8 @@ class Troubleshootsh extends React.Component {
         <div className="section gradient border" id="preflightSection">
           <div className="container">
             <div className="contain-700">
-              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Validate an environment before an application is installed to&nbsp;prevent common errors</p>
+              <span className="icon preflight-checks-small-icon" />
+              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium u-marginTop--30">Validate an environment before an application is installed to&nbsp;prevent common errors</p>
             </div>
             <div className="contain-1280">
               <div className="u-flexMobileReflow u-marginTop--50 u-paddingBottom--20">
@@ -127,7 +143,8 @@ class Troubleshootsh extends React.Component {
         <div className="section gradient" id="supportSection">
           <div className="container">
             <div className="contain-700">
-              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">When something isn’t working right, eliminate the back and forth, async debugging by collecting everything at once</p>
+            <span className="icon support-bundle-small-icon" />
+              <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium u-marginTop--30">When something isn’t working right, eliminate the back and forth, async debugging by collecting everything at once</p>
             </div>
             <div className="contain-1280">
               <div className="u-flexMobileReflow u-marginTop--50">
