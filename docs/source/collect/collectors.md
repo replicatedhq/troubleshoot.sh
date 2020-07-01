@@ -1,6 +1,5 @@
 ---
-title: "API Reference"
-description: "Collectors API Reference"
+title: "Collectors"
 ---
 
 An OpenAPI Schema for this type is published at: https://github.com/replicatedhq/kots-lint/blob/master/kubernetes-json-schema/v1.17.0-standalone-strict/collector-troubleshoot-v1beta1.json.

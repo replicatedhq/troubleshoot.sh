@@ -1,11 +1,9 @@
 ---
-title: "API Reference"
-description: "Analyzers API Reference"
+title: "Outcomes"
+description: "Analyzer Outcomes"
 ---
 
-Analyzer Outcomes are the output of an analyzer running against a support bundle.
-
-An outcome contains up to 4 attributes:
+Analyzer Outcomes are the output of an analyzer and contain up to 4 attributes:
 
 ```yaml
 outcomes:
