@@ -70,3 +70,5 @@
 /docs/analyze/secrets                          /analyze/secrets/
 /docs/analyze/statefulset-status               /analyze/statefulset-status/
 /docs/analyze/storage-class                    /analyze/storage-class/
+
+/docs/example/preflight                        https://raw.githubusercontent.com/replicatedhq/replicated-starter-kots/main/manifests/preflight.yaml
