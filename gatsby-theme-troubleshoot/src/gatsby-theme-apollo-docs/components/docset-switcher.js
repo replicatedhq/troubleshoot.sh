@@ -62,7 +62,7 @@ const StyledNav = styled.nav(props => ({
 const Timeline = styled.div({
   height: "2px",
   background: "#E5E5E5",
-  width: "590px",
+  width: "600px",
   position: "relative",
   top: "1px",
   left: "150px",
@@ -95,26 +95,7 @@ const Timeline = styled.div({
   }
 })
 
-const NavItem = styled.div({
-  display: "flex",
-  [breakpoints.md]: {
-    width: "100%"
-  },
-  background: "#F8F8F8",
-  boxShadow: "3px 0px 0px #FFFFFF",
-  cursor: "pointer",
-  clipPath: "polygon(20px 50%, 0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%)",
-
-  "&:first-of-type": {
-    clipPath: "polygon(0% 0%, calc(100% - 20px) 0%, 100% 50%, calc(100% - 20px) 100%, 0% 100%)"
-  },
-
-  "&:last-child": {
-    clipPath: "polygon(20px 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-  }
-});
-
-const MobileNavItem = styled.div({
+const MobileNavItem = styled.a({
   display: "flex",
   [breakpoints.md]: {
     width: "100%"
@@ -123,10 +104,12 @@ const MobileNavItem = styled.div({
   boxShadow: "3px 0px 0px #FFFFFF",
   cursor: "pointer",
   justifyContent: "center",
-  // clipPath: "polygon(0% 80%,0% 0%,100% 0%,100% 80%,0% 100%,80% 100%)",
-  // "&:last-child": {
-  //   clipPath: "polygon(0% 0%, 0% 0%, 100% 0%, 100% 100%, 0% 100%)"
-  // }
+  alignItems: "center",
+  padding: "30px 15px",
+  textDecoration: "none",
+  ".MobileDescription": {
+    marginLeft: 10
+  }
 });
 
 const NavMainItem = styled.div(props => ({
@@ -144,34 +127,18 @@ const NavMainItem = styled.div(props => ({
   }
 }))
 
-const NavItemInner = styled.a(props => ({
-  display: props.isMobileSidebar ? "flex" : "block",
+const NavItemInner = styled.a(props =>({
+  display: "block",
   alignItems: "center",
-  width: props.isMobileSidebar ? "100%" : props.main ? "400px" : "260px",
+  width: props.main ? "400px" : "260px",
   height: "100%",
-  padding: props.isMobileSidebar ? "15px 10px 15px 10px" : "15px 20px",
+  padding: "15px 20px",
   textDecoration: "none",
   "@media (hover: hover)": {
     ":hover": {
       backgroundColor: "#E9F0FF",
     }
   },
-  ".Title": {
-    display: "flex",
-    alignItems: "center"
-  },
-  ".Description": {
-    display: "flex",
-    alignItems: "center",
-    marginTop: 15,
-
-    "p": {
-      marginLeft: 10
-    }
-  },
-  ".MobileDescription": {
-    marginLeft: 10
-  }
 }));
 
 export const CircleNumber = styled.div(props => ({
@@ -194,12 +161,9 @@ export const NavItemTitle = styled.h4({
   fontFamily: "Roboto Mono",
   fontSize: "16px",
   lineHeight: "19px",
-  marginBottom: 0,
   fontWeight: "bold",
   color: "#163166",
-  ":first-of-type": {
-    marginBottom: 8
-  }
+  marginBottom: 8
 });
 
 export const NavItemDescription = styled.p({
@@ -257,6 +221,68 @@ const MobileFooter = styled.div({
   justifyContent: "center"
 })
 
+const Stepper = styled.div(props => ({
+  display: "flex",
+  padding: 0,
+  background: "#FFFFFF",
+  justifyContent: "center",
+  alignItems: "center",
+  margin: "20px",
+  position: "relative",
+  flexDirection: props.isMobileSidebar ? "column" : ""
+}))
+
+const Step = styled.a({
+  display: "flex",
+  flexDirection: "column",
+  alignItems: "center",
+  paddingTop: 15,
+  paddingBottom: 15,
+  paddingLeft: 50,
+  paddingRight: 30,
+  background: "#F8F8F8",
+  margin: "0 0 0 -35px",
+  cursor: "pointer",
+  maxWidth: 300,
+  textDecoration: "none",
+  clipPath: "polygon(40px 50%, 0% 0%, calc(100% - 40px) 0%, 100% 50%, calc(100% - 40px) 100%, 0% 100%)",
+
+  "&:first-of-type": {
+    clipPath: "polygon(0% 0%, calc(100% - 40px) 0%, 100% 50%, calc(100% - 40px) 100%, 0% 100%)",
+    marginLeft: 0,
+    paddingLeft: 15,
+  },
+
+  "&:last-child": {
+    clipPath: "polygon(40px 50%, 0% 0%, 100% 0%, 100% 100%, 0% 100%)"
+  },
+
+  ":hover": {
+    background: "#E9F0FF",
+    color: "#163166"
+  },
+
+  ".Title": {
+    display: "flex",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    fontFamily: "Roboto Mono",
+    fontSize: "16px",
+    lineHeight: "19px",
+    fontWeight: "bold",
+    color: "#163166"
+  },
+  ".Description": {
+    display: "flex",
+    alignItems: "center",
+    alignSelf: "flex-start",
+    marginTop: 15,
+    "p": {
+      marginLeft: 10
+    }
+  }
+})
+
 export default function DocsetSwitcher(props) {
   const menuRef = useRef(null);
   const { width } = useWindowSize();
@@ -273,11 +299,11 @@ export default function DocsetSwitcher(props) {
 
   function renderIcons(item) {
     if (item.title === "Collect") {
-      return <Collect width={230} />
+      return <Collect width={180} />
     } else if (item.title === "Redact") {
-      return <Redact width={180} />
+      return <Redact width={150} />
     } else {
-      return <Analyze width={230} />
+      return <Analyze width={180} />
     }
   }
 
@@ -340,39 +366,34 @@ export default function DocsetSwitcher(props) {
             <span className="second"></span>
             <span className="last"></span>
           </Timeline>}
-        <StyledNav isMobileSidebar={props.openSidebar}>
+        <Stepper isMobileSidebar={props.openSidebar}>
           {otherItems.map((navItem, i) => {
             if (props.openSidebar) {
               return (
-                <MobileNavItem key={navItem.url}>
-                  <NavItemInner href={navItem.url} isMobileSidebar={props.openSidebar}>
-                    <CircleNumber isMobileSidebar={props.openSidebar}> {i + 1} </CircleNumber>
-                    {renderIcons(navItem)}
-                    <div className="MobileDescription">
-                      <NavItemTitle isMobileSidebar={props.openSidebar}>{navItem.title}</NavItemTitle>
-                      <NavItemDescription>{navItem.description}</NavItemDescription>
-                    </div>
-                  </NavItemInner>
+                <MobileNavItem href={navItem.url} key={navItem.url}>
+                  <CircleNumber isMobileSidebar={props.openSidebar}> {i + 1} </CircleNumber>
+                  {renderIcons(navItem)}
+                  <div className="MobileDescription">
+                    <NavItemTitle isMobileSidebar={props.openSidebar}>{navItem.title}</NavItemTitle>
+                    <NavItemDescription>{navItem.description}</NavItemDescription>
+                  </div>
                 </MobileNavItem>
               )
             } else {
               return (
-                <NavItem key={navItem.url}>
-                  <NavItemInner href={navItem.url}>
-                    <div className="Title">
-                      <CircleNumber> {i + 1} </CircleNumber>
-                      <NavItemTitle>{navItem.title}</NavItemTitle>
-                    </div>
-                    <div className="Description">
-                      {renderIcons(navItem)}
-                      <NavItemDescription>{navItem.description}</NavItemDescription>
-                    </div>
-                  </NavItemInner>
-                </NavItem>
+                <Step href={navItem.url}>
+                  <div className="Title">
+                    <CircleNumber> {i + 1} </CircleNumber> {navItem.title}
+                  </div>
+                  <div className="Description">
+                    {renderIcons(navItem)}
+                    <NavItemDescription>{navItem.description}</NavItemDescription>
+                  </div>
+                </Step>
               )
             }
           })}
-        </StyledNav>
+        </Stepper>
         {(props.footerNavConfig) && (
           <FooterNav isMobileSidebar={props.openSidebar}>
             {props.openSidebar ?
