@@ -116,6 +116,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
                     <Link to="/explore/" className="Button primary">Browse more examples</Link>
+                    <Link to="/learn/preflight/introduction" className="Button secondary u-marginLeft--20">Get started writing Preflight Checks</Link>
                   </div>
                 </div>
               </div>
@@ -145,7 +146,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Sensitive information is redacted from a support bundle and is never stored, keeping your data safe and secure.</p>
-                    <Link to="/redact/" className="u-fontSize--small link">Learn about custom redacting</Link>
+                    <Link to="/redact/" className="u-fontSize--small link">Learn about redacting</Link>
                   </div>
                 </div>
                 <div className="flex1 right-block more">
@@ -175,6 +176,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-marginTop--40 u-textAlign--center">
                     <Link to="/explore/" className="Button primary">Browse more examples</Link>
+                    <Link to="/learn/support-bundle/introduction" className="Button secondary u-marginLeft--20">Get started writing Support Bundles</Link>
                   </div>
                 </div>
               </div>
