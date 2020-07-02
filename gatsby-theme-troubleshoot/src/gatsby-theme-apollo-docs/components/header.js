@@ -182,9 +182,9 @@ function handleHeaderScroll() {
 function renderArrowsHeader(type) {
   return (
     <Stepper>
-      <Step active={type === "collect"} href="/collect"> <CircleNumber> 1 </CircleNumber>Collect</Step>
-      <Step active={type === "redact"} href="/redact"> <CircleNumber> 2 </CircleNumber> Redact</Step>
-      <Step active={type === "analyze"} href="/analyze"> <CircleNumber> 3 </CircleNumber>Analyze</Step>
+      <Step active={type === "collect"} href="/docs/collect"> <CircleNumber> 1 </CircleNumber>Collect</Step>
+      <Step active={type === "redact"} href="/docs/redact"> <CircleNumber> 2 </CircleNumber> Redact</Step>
+      <Step active={type === "analyze"} href="/docs/analyze"> <CircleNumber> 3 </CircleNumber>Analyze</Step>
     </Stepper>
   )
 }
