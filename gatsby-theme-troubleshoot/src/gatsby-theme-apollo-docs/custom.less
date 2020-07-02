@@ -9,6 +9,7 @@
   outline: none;
   position: relative;
   text-decoration: none;
+  display: inline-block;
 
   .icon {
     margin-right: 10px;
@@ -78,41 +79,41 @@
 
 .side-by-side {
   display: flex;
-	flex-direction: column;
+  flex-direction: column;
 }
 .side-by-side > div {
   margin-top: 30px;
+  background-color: #ffffff;
+  padding: 15px;
+  box-shadow: 0 0 4px rgba(22,49,102, .2);
 }
 
-.flex1 {
-  flex: 1
+.flex-column {
+	display: flex;
+  flex-direction: column;
 }
+.flex1 { flex: 1 }
+.justifyContent--spaceBetween { justify-content: space-between; }
 
 @media screen and (min-width: 35.5em) {
-	.side-by-side {
-		flex-direction: row;
-  }
-  .side-by-side > div {
-    margin-top: 0;
-  }
+
 }
 
 /* ≥ 768px */
 @media screen and (min-width: 48em) {
 	.side-by-side {
-		flex-direction: row;
+    flex-direction: row;
   }
   .side-by-side > div {
     margin-top: 0;
+    margin-right: 20px;
+  }
+  .side-by-side > div:last-child {
+    margin-right: 0;
   }
 }
 
 /* ≥ 1024px */
 @media screen and (min-width: 64em) {
-  .side-by-side {
-		flex-direction: row;
-  }
-  .side-by-side > div {
-    margin-top: 0;
-  }
+  
 }
