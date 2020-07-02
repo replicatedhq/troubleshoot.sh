@@ -29,7 +29,7 @@ Now that you have the plugins installed lets look at a simple example of a Prefl
 
 ### Example Preflight check
 
-Preflight Checks can be executed by your customer before installing your application into their Kubernetes cluster. The checks are defined in a YAML file. Here is an example of a simle Preflight Check that could be used to enforce a minimum Kubernetes version on your cluster.
+Preflight Checks can be executed by your customer before installing your application into their Kubernetes cluster. The checks are defined in a YAML file. Here is an example of a simple Preflight Check that could be used to enforce a minimum Kubernetes version on your cluster.
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -59,17 +59,17 @@ spec:
                 Kubernetes.
 ```
 
-Ready to try it out? Execute the following command to see the results of this Kubernetes version check Preflight Check.
+Ready to try it out? Copy that YAML into a local file named `check.yaml` and run the following command to see the results of this Kubernetes version check Preflight Check.
 
 ```shell
-kubectl preflight https://troubleshoot.run/nCA5lOsuA
+kubectl preflight check.yaml
 ```
-
-Now lets use the same YAML to define a Support Bundle
 
 ### Example Support Bundle
 
-A Support Bundle needs to know what to collect and optionally, what to analyze. This is defined in a YAML file. Here is an example of a Support Bundle that collects the version of Kubernetes using the same YAML we wrote for the Preflight Check
+Now lets use similar YAML to define a Support Bundle.
+
+A Support Bundle needs to know what to collect and optionally, what to analyze. This is defined in a YAML file. There's a lot already included in the default collectors. Here is an example of a Support Bundle that collects the version of Kubernetes using similar YAML we wrote for the Preflight Check.
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
@@ -99,18 +99,10 @@ spec:
                 Kubernetes.
 ```
 
-Lets try it out and see what is collected by our Support Bundle. Execute the following command.
+Lets try it out and see what is collected by our Support Bundle. Save the YAML into a local file named `bundle.yaml` and execute the following command.
 
 ```shell
-kubectl support-bundle https://troubleshoot.run/nRzwLhV0z
-```
-
-### Using local files
-
-If you have an analyzer or support bundle definition as a file, you can run it with:
-
-```shell
-kubectl preflight <filename>
+kubectl support-bundle bundle.yaml
 ```
 
 ## What's next?
