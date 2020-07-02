@@ -1,41 +1,72 @@
-/preflight/creating                            /learn/
-/preflight/executing                           /learn/
-/preflight/other-installation-options          /learn/
-/preflight/overview                            /learn/preflight/introduction/
+/preflight/creating                            /docs/preflight/introduction/
+/preflight/executing                           /docs/preflight/introduction/
+/preflight/other-installation-options          /docs/
+/preflight/overview                            /docs/preflight/introduction/
+/preflight/introduction                        /docs/preflight/introduction/
 
-/reference/analyzers/cluster-version           /analyze/cluster-version/
-/reference/analyzers/container-runtime         /analyze/container-runtime/
-/reference/analyzers/crd                       /analyze/crd/
-/reference/analyzers/deployment-status         /analyze/deployment-status/
-/reference/analyzers/distribution              /analyze/distribution/
-/reference/analyzers/image-pull-secrets        /analyze/image-pull-secrets/
-/reference/analyzers/ingress                   /analyze/ingress/
-/reference/analyzers/node-resources            /analyze/node-resources/
-/reference/analyzers/outcomes                  /analyze/
-/reference/analyzers/overview                  /analyze/
-/reference/analyzers/regex                     /analyze/regex/
-/reference/analyzers/secrets                   /analyze/secrets/
-/reference/analyzers/statefulset-status        /analyze/statefulset-status/
-/reference/analyzers/storage-class             /analyze/storage-class/
+/reference/analyzers/cluster-version           /docs/analyze/cluster-version/
+/reference/analyzers/container-runtime         /docs/analyze/container-runtime/
+/reference/analyzers/crd                       /docs/analyze/crd/
+/reference/analyzers/deployment-status         /docs/analyze/deployment-status/
+/reference/analyzers/distribution              /docs/analyze/distribution/
+/reference/analyzers/image-pull-secrets        /docs/analyze/image-pull-secrets/
+/reference/analyzers/ingress                   /docs/analyze/ingress/
+/reference/analyzers/node-resources            /docs/analyze/node-resources/
+/reference/analyzers/outcomes                  /docs/analyze/outcomes/
+/reference/analyzers/overview                  /docs/analyze/
+/reference/analyzers/regex                     /docs/analyze/regex/
+/reference/analyzers/secrets                   /docs/analyze/secrets/
+/reference/analyzers/statefulset-status        /docs/analyze/statefulset-status/
+/reference/analyzers/storage-class             /docs/analyze/storage-class/
 
-/reference/collectors/cluster-info             /collect/cluster-info/     
-/reference/collectors/cluster-resources        /collect/cluster-resources/
-/reference/collectors/copy                     /collect/copy/
-/reference/collectors/data                     /collect/data/
-/reference/collectors/exec                     /collect/exec/
-/reference/collectors/http                     /collect/http/
-/reference/collectors/overview                 /collect/ 
-/reference/collectors/pod-logs                 /collect/logs/
-/reference/collectors/run                      /collect/run/
-/reference/collectors/secret                   /collect/secret/
-/reference/collectors/shared                   /collect/
+/reference/collectors/cluster-info             /docs/collect/cluster-info/     
+/reference/collectors/cluster-resources        /docs/collect/cluster-resources/
+/reference/collectors/copy                     /docs/collect/copy/
+/reference/collectors/data                     /docs/collect/data/
+/reference/collectors/exec                     /docs/collect/exec/
+/reference/collectors/http                     /docs/collect/http/
+/reference/collectors/overview                 /docs/collect/ 
+/reference/collectors/pod-logs                 /docs/collect/logs/
+/reference/collectors/run                      /docs/collect/run/
+/reference/collectors/secret                   /docs/collect/secret/
+/reference/collectors/shared                   /docs/collect/
 
-/reference/getting-started/overview            /learn
+/reference/getting-started/overview            /docs/
 
-/reference/redactors/overview                  /redact/
+/reference/redactors/overview                  /docs/redact/
 
-/support-bundle/collecting                     /learn/
-/support-bundle/overview                       /learn/support-bundle/introduction/
-/support-bundle/redact                         /learn/
+/support-bundle/collecting                     /docs/
+/support-bundle/overview                       /docs/support-bundle/introduction/
+/support-bundle/redact                         /docs/
 /spec/* /spec.html                             200
 /*  /index.html                                200
+
+/learn                                         /docs/
+
+/collect                                       /docs/collect/
+/docs/collect/cluster-info                     /collect/cluster-info/
+/docs/collect/cluster-resources                /collect/cluster-resources/
+/docs/collect/copy                             /collect/copy/
+/docs/collect/data                             /collect/data/
+/docs/collect/exec                             /collect/exec/
+/docs/collect/http                             /collect/http/
+/docs/collect/logs                             /collect/logs/
+/docs/collect/run                              /collect/run/
+/docs/collect/secret                           /collect/secret/
+
+/docs/redact                                   /redact/
+
+/docs/analyze                                  /analyze/
+/docs/analyze/cluster-version                  /analyze/cluster-version/
+/docs/analyze/container-runtime                /analyze/container-runtime/
+/docs/analyze/crd                              /analyze/crd/
+/docs/analyze/deployment-status                /analyze/deployment-status/
+/docs/analyze/distribution                     /analyze/distribution/
+/docs/analyze/image-pull-secrets               /analyze/image-pull-secrets/
+/docs/analyze/ingress                          /analyze/ingress/
+/docs/analyze/node-resources                   /analyze/node-resources/
+/docs/analyze/outcomes                         /analyze/outcomes/
+/docs/analyze/regex                            /analyze/regex/
+/docs/analyze/secrets                          /analyze/secrets/
+/docs/analyze/statefulset-status               /analyze/statefulset-status/
+/docs/analyze/storage-class                    /analyze/storage-class/

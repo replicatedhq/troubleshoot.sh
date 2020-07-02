@@ -4,10 +4,6 @@
     "gatsby-theme-troubleshoot",
     "gatsby-theme-marketing",
     "marketing",
-    "learn",
-    "analyze",
-    "collect",
-    "redact",
-    "api-reference"
+    "docs"
   ]
 }
