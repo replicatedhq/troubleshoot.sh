@@ -12,7 +12,7 @@
 /reference/analyzers/image-pull-secrets        /docs/analyze/image-pull-secrets/
 /reference/analyzers/ingress                   /docs/analyze/ingress/
 /reference/analyzers/node-resources            /docs/analyze/node-resources/
-/reference/analyzers/outcomes                  /docs/analyze/outcomes
+/reference/analyzers/outcomes                  /docs/analyze/outcomes/
 /reference/analyzers/overview                  /docs/analyze/
 /reference/analyzers/regex                     /docs/analyze/regex/
 /reference/analyzers/secrets                   /docs/analyze/secrets/
@@ -42,6 +42,31 @@
 /*  /index.html                                200
 
 /learn                                         /docs/
+
 /collect                                       /docs/collect/
-/redact                                        /docs/redact/
-/analyze                                       /docs/analyze/
+/docs/collect/cluster-info                     /collect/cluster-info/
+/docs/collect/cluster-resources                /collect/cluster-resources/
+/docs/collect/copy                             /collect/copy/
+/docs/collect/data                             /collect/data/
+/docs/collect/exec                             /collect/exec/
+/docs/collect/http                             /collect/http/
+/docs/collect/logs                             /collect/logs/
+/docs/collect/run                              /collect/run/
+/docs/collect/secret                           /collect/secret/
+
+/docs/redact                                   /redact/
+
+/docs/analyze                                  /analyze/
+/docs/analyze/cluster-version                  /analyze/cluster-version/
+/docs/analyze/container-runtime                /analyze/container-runtime/
+/docs/analyze/crd                              /analyze/crd/
+/docs/analyze/deployment-status                /analyze/deployment-status/
+/docs/analyze/distribution                     /analyze/distribution/
+/docs/analyze/image-pull-secrets               /analyze/image-pull-secrets/
+/docs/analyze/ingress                          /analyze/ingress/
+/docs/analyze/node-resources                   /analyze/node-resources/
+/docs/analyze/outcomes                         /analyze/outcomes/
+/docs/analyze/regex                            /analyze/regex/
+/docs/analyze/secrets                          /analyze/secrets/
+/docs/analyze/statefulset-status               /analyze/statefulset-status/
+/docs/analyze/storage-class                    /analyze/storage-class/
