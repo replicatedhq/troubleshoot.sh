@@ -14,21 +14,21 @@ module.exports = options => ({
       options: {
         navConfig: {
           "Getting Started": {
-            url: "/learn",
+            url: "/docs",
             description: "Learn how to use Troubleshoot to build preflight checks and build disconnected support processes for Kubernetes.",
             omitLandingPage: true,
             main: true
           },
           "Collect": {
-            url: "/collect",
+            url: "/docs/collect",
             description: "Describe the data to collect from an application running in Kubernetes.",
           },
           "Redact": {
-            url: "/redact",
+            url: "/docs/redact",
             description: "Redact sensitive information from the collected data.",
           },
           "Analyze": {
-            url: "/analyze",
+            url: "/docs/analyze",
             description: "Perform analysis to identify common problems with the collected data.",
           }
         },
@@ -43,9 +43,6 @@ module.exports = options => ({
             target: "_blank",
             rel: "noopener noreferrer"
           },
-          Reference: {
-            href: "/api-reference/collect/",
-          }
           // Changelog: {
           //   href: "https://troubleshoot.io/docs/changelog",
           //   target: "_blank",

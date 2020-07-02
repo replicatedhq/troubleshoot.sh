@@ -4,8 +4,6 @@
     "gatsby-theme-troubleshoot",
     "gatsby-theme-marketing",
     "marketing",
-    "docs",
-    "redact",
-    "api-reference"
+    "docs"
   ]
 }
