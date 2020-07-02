@@ -1,8 +1,8 @@
-/preflight/creating                            /docs/preflight/introduction
-/preflight/executing                           /docs/preflight/introduction
+/preflight/creating                            /docs/preflight/introduction/
+/preflight/executing                           /docs/preflight/introduction/
 /preflight/other-installation-options          /docs/
 /preflight/overview                            /docs/preflight/introduction/
-/preflight/introduction/                       /docs/preflight/introduction/
+/preflight/introduction                        /docs/preflight/introduction/
 
 /reference/analyzers/cluster-version           /docs/analyze/cluster-version/
 /reference/analyzers/container-runtime         /docs/analyze/container-runtime/
@@ -31,7 +31,7 @@
 /reference/collectors/secret                   /docs/collect/secret/
 /reference/collectors/shared                   /docs/collect/
 
-/reference/getting-started/overview            /docs
+/reference/getting-started/overview            /docs/
 
 /reference/redactors/overview                  /docs/redact/
 
@@ -40,3 +40,8 @@
 /support-bundle/redact                         /docs/
 /spec/* /spec.html                             200
 /*  /index.html                                200
+
+/learn                                         /docs/
+/collect                                       /docs/collect/
+/redact                                        /docs/redact/
+/analyze                                       /docs/analyze/
