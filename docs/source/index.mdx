@@ -31,7 +31,7 @@ Now that you have the plugins installed lets look at a simple example of a Prefl
 
 Preflight Checks can be executed by your customer before installing your application into their Kubernetes cluster. The checks are defined in a YAML file. Here is an example of a simle Preflight Check that could be used to enforce a minimum Kubernetes version on your cluster.
 
-```
+```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
 kind: Preflight
 metadata:
@@ -62,7 +62,7 @@ spec:
 
 Ready to try it out? Execute the following command to see the results of this Kubernetes version check Preflight Check.
 
-```
+```shell
 kubectl preflight https://troubleshoot.run/nCA5lOsuA
 ```
 
@@ -72,7 +72,7 @@ Now lets use the same YAML to define a Support Bundle
 
 A Support Bundle needs to know what to collect and optionally, what to analyze. This is defined in a YAML file. Here is an example of a Support Bundle that collects the version of Kubernetes using the same YAML we wrote for the Preflight Check
 
-```
+```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
 kind: SupportBundle
 metadata:
@@ -103,7 +103,7 @@ spec:
 
 Lets try it out and see what is collected by our Support Bundle. Execute the following command.
 
-```
+```shell
 kubectl support-bundle https://troubleshoot.run/nRzwLhV0z
 ```
 
@@ -111,7 +111,7 @@ kubectl support-bundle https://troubleshoot.run/nRzwLhV0z
 
 If you have an analyzer or support bundle definition as a file, you can run it with:
 
-```
+```shell
 kubectl preflight <filename>
 ```
 
