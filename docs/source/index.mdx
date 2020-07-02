@@ -1,0 +1,138 @@
+---
+title: Getting Started
+description: Get started with Preflight Checks and Support Bundles
+---
+
+import { Link } from "gatsby";
+import { Button } from '@apollo/space-kit/Button';
+import { colors } from 'gatsby-theme-apollo-core';
+
+Welcome.
+The easiest way to get started with the Troubleshoot project is to see it in action through a couple examples. 
+
+## Installation
+Executing Preflight Checks and Support Bundles relies on a client-side utility, packages as a `kubectl` plugin and distributed through the [krew](https://krew.dev/) package manager.
+If you don't already have krew installed, head over to the [krew installation guide](https://krew.sigs.k8s.io/docs/user-guide/setup/install/), follow the steps there and then come back here.
+
+Install the Preflight and Support Bundle plugin using:
+
+```shell
+kubectl krew install preflight
+kubectl krew install support-bundle
+```
+
+Note: This will not install anything to your cluster, it only places a single binary per plugin in your path.
+
+## Examples
+
+Now that you have the plugins installed lets look at a simple example of a Preflight Check and a Support Bundle to get a sense for how they are structured and how to run them.
+
+### Example Preflight check
+
+Preflight Checks can be executed by your customer before installing your application into their Kubernetes cluster. The checks are defined in a YAML file. Here is an example of a simple Preflight Check that could be used to enforce a minimum Kubernetes version on your cluster.
+
+```yaml
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
+metadata:
+  name: kubernetes-version
+spec:
+  collectors: []
+  analyzers:
+    - clusterVersion:
+        outcomes:
+          - fail:
+              when: < 1.16.0
+              message: >-
+                The application requires at Kubernetes 1.16.0 or later, and
+                recommends 1.18.0.
+              uri: 'https://kubernetes.io'
+          - warn:
+              when: < 1.18.0
+              message: >-
+                Your cluster meets the minimum version of Kubernetes, but we
+                recommend you update to 1.18.0 or later.
+              uri: 'https://kubernetes.io'
+          - pass:
+              message: >-
+                Your cluster meets the recommended and required versions of
+                Kubernetes.
+```
+
+Ready to try it out? Copy that YAML into a local file named `check.yaml` and run the following command to see the results of this Kubernetes version check Preflight Check.
+
+```shell
+kubectl preflight check.yaml
+```
+
+### Example Support Bundle
+
+Now lets use similar YAML to define a Support Bundle.
+
+A Support Bundle needs to know what to collect and optionally, what to analyze. This is defined in a YAML file. There's a lot already included in the default collectors. Here is an example of a Support Bundle that collects the version of Kubernetes using similar YAML we wrote for the Preflight Check.
+
+```yaml
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: SupportBundle
+metadata:
+  name: kubernetes-version
+spec:
+  collectors: []
+  analyzers:
+    - clusterVersion:
+        outcomes:
+          - fail:
+              when: < 1.16.0
+              message: >-
+                The application requires at Kubernetes 1.16.0 or later, and
+                recommends 1.18.0.
+              uri: 'https://kubernetes.io'
+          - warn:
+              when: < 1.18.0
+              message: >-
+                Your cluster meets the minimum version of Kubernetes, but we
+                recommend you update to 1.18.0 or later.
+              uri: 'https://kubernetes.io'
+          - pass:
+              message: >-
+                Your cluster meets the recommended and required versions of
+                Kubernetes.
+```
+
+Lets try it out and see what is collected by our Support Bundle. Save the YAML into a local file named `bundle.yaml` and execute the following command.
+
+```shell
+kubectl support-bundle bundle.yaml
+```
+
+## What's next?
+
+<div class="side-by-side">
+  <div class="flex1">
+    <h4>Create your own</h4>
+    <p>Learn how to add custom preflight checks and support bundles to your application.</p>
+    <Link to="/preflight/introduction" class="custom-button primary">
+      Start the tutorial!
+    </Link>
+  </div>
+
+  <div class="flex1">
+    <h4>Browse examples</h4>
+    <p>
+    Looking for something specific or a place to start? Browse through some examples.
+    </p>
+    <Link to="/explore" class="custom-button primary">
+      Browse examples!
+    </Link>
+  </div>
+
+  <div class="flex1">
+    <h4>Read the docs</h4>
+    <p>
+    Ready to dig to the reference docs?
+    </p>
+    <Link to="/collect/idex" class="custom-button primary">
+      Read docs!
+    </Link>
+  </div>
+</div>

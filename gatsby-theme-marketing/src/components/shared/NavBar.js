@@ -44,9 +44,9 @@ export class NavBar extends React.Component {
     const { mobileNavIsOpen } = this.state;
     const { isMobile } = this.props;
     const navBarItems = [
-      { linkTo: "/learn", label: "Get started" },
+      { linkTo: "/docs", label: "Get started" },
       { linkTo: "/explore", label: "Examples" },
-      { linkTo: "/collect/reference/collectors/", label: "Reference" },
+      { linkTo: "/docs/collect", label: "Docs" },
     ];
 
     let isHome;
@@ -78,13 +78,13 @@ export class NavBar extends React.Component {
                     <div className="flex flex-auto">
                       <div className="flex alignItems--center flex1 flex-verticalCenter u-position--relative u-marginRight--20">
                         <div className="flex-column flex-auto u-marginRight--50 justifyContent--center NavItem">
-                          <Link to="/learn" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Get started</Link>
+                          <Link to="/docs" className="u-fontWeight--medium u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Get started</Link>
                         </div>
                         <div className="flex-column flex-auto u-marginRight--50 justifyContent--center NavItem">
                           <Link to="/explore" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Examples</Link>
                         </div>
                         <div className="flex-column flex-auto justifyContent--center NavItem">
-                          <Link to="/api-reference/collect/" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Reference</Link>
+                          <Link to="/docs/collect/" className="u-fontWeight--medium  u-color--royalBlue u-lineHeight--normal u-fontSize--normal u-textDecoration--underlineOnHover">Docs</Link>
                         </div>
                       </div>
                     </div>
