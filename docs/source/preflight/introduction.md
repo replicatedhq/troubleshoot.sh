@@ -7,7 +7,7 @@ This tutorial will walk you through defining a set of Preflight Checks that your
 
 ## Goals
 
-By completing this tutorial, you will know how to include Preflight Checks, including:
+By completing this tutorial, you will know how to write Preflight Checks, including:
 
 1. How to write a new Preflight Check
 2. How to execute Preflight Checks against a new environment
@@ -16,5 +16,5 @@ By completing this tutorial, you will know how to include Preflight Checks, incl
 
 Before starting this tutorial, you should have the following:
 
+1. The Troubleshoot plugins [installed](/#installation).
 1. A Kubernetes cluster and local kubectl access to the cluster. If you don't have one for testing, consider [kURL](https://kurl.sh), [KiND](https://github.com/kubernetes-sigs/kind), or [K3S](https://k3s.io).
-

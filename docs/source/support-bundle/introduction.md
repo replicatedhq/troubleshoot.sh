@@ -3,7 +3,7 @@ title: "Introduction"
 description: "An introduction to the Support Bundle tutorial"
 ---
 
-This tutorial will walk you through defining a Supporrt Bundle that your customer can execute when something isn't working quite right.
+This tutorial will walk you through defining a Support Bundle that your customer can execute when something isn't working quite right.
 A support bundle will collect data from the cluster, redact sensitive fields, and then perform analysis on the data to provide remediation steps.
 
 ## Goals
@@ -18,5 +18,5 @@ By completing this tutorial, you will know how to write a Support Bundle, includ
 
 Before starting this tutorial, you should have the following:
 
+1. The Troubleshoot plugins [installed](/#installation).
 1. A Kubernetes cluster and local kubectl access to the cluster. If you don't have one for testing, consider [kURL](https://kurl.sh), [KiND](https://github.com/kubernetes-sigs/kind), or [K3S](https://k3s.io).
-
