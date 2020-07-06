@@ -8,7 +8,7 @@ spec:
         outcomes:
           - fail:
               when: "< 1.13.0"
-              message: Sentry requires at Kubernetes 1.13.0 or later, and recommends 1.15.0.
+              message: This application requires at Kubernetes 1.13.0 or later, and recommends 1.15.0.
               uri: https://www.kubernetes.io
           - warn:
               when: "< 1.15.0"
