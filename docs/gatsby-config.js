@@ -65,7 +65,6 @@ const themeOptions = {
             Analyze: [
               'analyze/index',
               'analyze/outcomes',
-              'analyze/node-resources',
               'analyze/cluster-version',
               'analyze/distribution',
               'analyze/container-runtime',
