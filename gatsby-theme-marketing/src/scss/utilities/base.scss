@@ -290,6 +290,20 @@ body a {
   right: 25.75%;
 }
 
+.videos {
+  position: relative;
+  padding-bottom: 77.58620689655173%;
+  height: 0;
+
+  .video-frame {
+    position: absolute; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+  }
+}
+
 
 /* Media Queries */
 
