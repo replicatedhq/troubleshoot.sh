@@ -66,12 +66,12 @@ class Troubleshootsh extends React.Component {
                 <div className="flex1 right-block">
                   {this.state.activeTab === "preflight-checks" ?
                     <div className="videos">
-                      <iframe src="https://www.loom.com/embed/1b3725cd6e9e4c35951c9ae36206c814" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen className="video-frame">
+                      <iframe src="https://www.loom.com/embed/1b3725cd6e9e4c35951c9ae36206c814?autoplay=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen className="video-frame">
                       </iframe>
                     </div>
                     :
                     <div className="videos">
-                      <iframe src="https://www.loom.com/embed/1d56e6d342eb4095af44dd5846922f1a" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen className="video-frame">
+                      <iframe src="https://www.loom.com/embed/1d56e6d342eb4095af44dd5846922f1a?autoplay=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen className="video-frame">
                       </iframe>
                     </div>}
                   <div className="flex two-btn-wrapper justifyContent--center alignItems--center u-marginTop--10">
