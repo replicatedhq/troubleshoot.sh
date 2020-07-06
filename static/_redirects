@@ -38,8 +38,6 @@
 /support-bundle/collecting                     /docs/
 /support-bundle/overview                       /docs/support-bundle/introduction/
 /support-bundle/redact                         /docs/
-/spec/* /spec.html                             200
-/*  /index.html                                200
 
 /learn                                         /docs/
 
@@ -70,3 +68,6 @@
 /analyze/secrets                               /docs/analyze/secrets/
 /analyze/statefulset-status                    /docs/analyze/statefulset-status/
 /analyze/storage-class                         /docs/analyze/storage-class/
+
+/spec/* /spec.html                             200
+/*  /index.html                                200
