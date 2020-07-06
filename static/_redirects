@@ -38,35 +38,36 @@
 /support-bundle/collecting                     /docs/
 /support-bundle/overview                       /docs/support-bundle/introduction/
 /support-bundle/redact                         /docs/
-/spec/* /spec.html                             200
-/*  /index.html                                200
 
 /learn                                         /docs/
 
 /collect                                       /docs/collect/
-/docs/collect/cluster-info                     /collect/cluster-info/
-/docs/collect/cluster-resources                /collect/cluster-resources/
-/docs/collect/copy                             /collect/copy/
-/docs/collect/data                             /collect/data/
-/docs/collect/exec                             /collect/exec/
-/docs/collect/http                             /collect/http/
-/docs/collect/logs                             /collect/logs/
-/docs/collect/run                              /collect/run/
-/docs/collect/secret                           /collect/secret/
+/collect/cluster-info                          /docs/collect/cluster-info/
+/collect/cluster-resources                     /docs/collect/cluster-resources/
+/collect/copy                                  /docs/collect/copy/
+/collect/data                                  /docs/collect/data/
+/collect/exec                                  /docs/collect/exec/
+/collect/http                                  /docs/collect/http/
+/collect/logs                                  /docs/collect/logs/
+/collect/run                                   /docs/collect/run/
+/collect/secret                                /docs/collect/secret/
 
-/docs/redact                                   /redact/
+/redact                                        /docs/redact/
 
-/docs/analyze                                  /analyze/
-/docs/analyze/cluster-version                  /analyze/cluster-version/
-/docs/analyze/container-runtime                /analyze/container-runtime/
-/docs/analyze/crd                              /analyze/crd/
-/docs/analyze/deployment-status                /analyze/deployment-status/
-/docs/analyze/distribution                     /analyze/distribution/
-/docs/analyze/image-pull-secrets               /analyze/image-pull-secrets/
-/docs/analyze/ingress                          /analyze/ingress/
-/docs/analyze/node-resources                   /analyze/node-resources/
-/docs/analyze/outcomes                         /analyze/outcomes/
-/docs/analyze/regex                            /analyze/regex/
-/docs/analyze/secrets                          /analyze/secrets/
-/docs/analyze/statefulset-status               /analyze/statefulset-status/
-/docs/analyze/storage-class                    /analyze/storage-class/
+/analyze                                       /docs/analyze/
+/analyze/cluster-version                       /docs/analyze/cluster-version/
+/analyze/container-runtime                     /docs/analyze/container-runtime/
+/analyze/crd                                   /docs/analyze/crd/
+/analyze/deployment-status                     /docs/analyze/deployment-status/
+/analyze/distribution                          /docs/analyze/distribution/
+/analyze/image-pull-secrets                    /docs/analyze/image-pull-secrets/
+/analyze/ingress                               /docs/analyze/ingress/
+/analyze/node-resources                        /docs/analyze/node-resources/
+/analyze/outcomes                              /docs/analyze/outcomes/
+/analyze/regex                                 /docs/analyze/regex/
+/analyze/secrets                               /docs/analyze/secrets/
+/analyze/statefulset-status                    /docs/analyze/statefulset-status/
+/analyze/storage-class                         /docs/analyze/storage-class/
+
+/spec/* /spec.html                             200
+/*  /index.html                                200
