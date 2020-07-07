@@ -49,7 +49,7 @@ class Troubleshootsh extends React.Component {
       <div className={`u-width--full u-overflow--auto flex-column flex1`}>
         <div className="section landing-header border">
           <div className="container flex justifyContent--center alignItems--center">
-            <div style={{maxWidth: "1280px"}}>
+            <div style={{ maxWidth: "1280px" }}>
               <div className="u-flexMobileReflow u-marginTop--50 u-paddingBottom--20">
                 <div className="flex1 flex-column justifyContent--center left-block">
                   <span style={logoStyle} className="troubleshoot-logo" id="tblshootLogo"></span>
@@ -65,15 +65,9 @@ class Troubleshootsh extends React.Component {
                 </div>
                 <div className="flex1 right-block">
                   {this.state.activeTab === "preflight-checks" ?
-                    <div className="videos">
-                      <iframe src="https://www.loom.com/embed/1b3725cd6e9e4c35951c9ae36206c814?autoplay=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen className="video-frame">
-                      </iframe>
-                    </div>
+                    <asciinema-player src="https://asciinema.org/a/V8k8IrIw6T5Fi2dwWb2we5qdO.js" autoplay />
                     :
-                    <div className="videos">
-                      <iframe src="https://www.loom.com/embed/1d56e6d342eb4095af44dd5846922f1a?autoplay=1" frameborder="0" webkitallowfullscreen mozallowfullscreen allowfullscreen className="video-frame">
-                      </iframe>
-                    </div>}
+                    <asciinema-player src="https://asciinema.org/a/Pv4Dw6Ux6aGATvDcQGPn6F5TM.js" autoplay />}
                   <div className="flex two-btn-wrapper justifyContent--center alignItems--center u-marginTop--10">
                     <span className={`landing-page-tab u-marginRight--30 ${this.state.activeTab === "preflight-checks" && "is-active-tab"}`} onClick={() => this.toggleView("preflight-checks")}> Preflight checks </span>
                     <span className={`landing-page-tab ${this.state.activeTab === "support-bundle" && "is-active-tab"}`} onClick={() => this.toggleView("support-bundle")}> Support bundle </span>

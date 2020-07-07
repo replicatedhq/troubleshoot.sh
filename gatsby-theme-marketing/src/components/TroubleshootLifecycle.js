@@ -81,7 +81,7 @@ export default function TroubleshootLifecycle({ isMobile }) {
     );
   } else {
     return (
-      <div class="flex flex-column">
+      <div className="flex flex-column">
         <div className="u-flexTabletReflow">
           <div className="flex flex-column justifyContent--center alignItems--center">
             <span className="icon preflight-checks-icon"> </span>
