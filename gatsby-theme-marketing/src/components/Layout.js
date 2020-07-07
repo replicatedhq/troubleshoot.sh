@@ -36,6 +36,7 @@ const Layout = ({ children, isMobile, title }) => {
         <meta charSet="utf-8" />
         <title>{title}</title>
         <link rel="icon" href={favicon} />
+        <link rel="stylesheet" type="text/css" href="/asciinema-player.css" />
       </Helmet>
       <NavBar isMobile={isMobile} title={title} />
       <div className="u-minHeight--full flex-column flex1">

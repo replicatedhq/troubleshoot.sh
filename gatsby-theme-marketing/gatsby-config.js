@@ -24,6 +24,12 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/spec/*`, `/explore/*`] },
-    }
+    },
+    {
+      resolve: `gatsby-plugin-load-script`,
+      options: {
+        src: '/asciinema-player.js',
+      },
+    },
   ],
 }

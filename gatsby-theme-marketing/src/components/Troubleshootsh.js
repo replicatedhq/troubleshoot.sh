@@ -63,15 +63,8 @@ class Troubleshootsh extends React.Component {
                     </Link>
                   </div>
                 </div>
-                <div className="flex-column flex1 justifyContent--center right-block">
-                  {this.state.activeTab === "preflight-checks" ?
-                    <div className="iframe-placeholder">
-                      <script id="asciicast-V8k8IrIw6T5Fi2dwWb2we5qdO" src="https://asciinema.org/a/V8k8IrIw6T5Fi2dwWb2we5qdO.js" async data-autoplay="true"></script>
-                    </div>
-                    :
-                    <div className="iframe-placeholder">
-                      <script id="asciicast-Pv4Dw6Ux6aGATvDcQGPn6F5TM" src="https://asciinema.org/a/Pv4Dw6Ux6aGATvDcQGPn6F5TM.js" async data-autoplay="true"></script>
-                    </div>}
+                <div className="flex1 right-block">
+                  <asciinema-player src={this.state.activeTab === "preflight-checks" ? "/345773.cast" : "/345774.cast"} cols="80" rows="30" preload autoplay loop />
                   <div className="flex two-btn-wrapper justifyContent--center alignItems--center u-marginTop--10">
                     <span className={`landing-page-tab u-marginRight--30 ${this.state.activeTab === "preflight-checks" && "is-active-tab"}`} onClick={() => this.toggleView("preflight-checks")}> Preflight checks </span>
                     <span className={`landing-page-tab ${this.state.activeTab === "support-bundle" && "is-active-tab"}`} onClick={() => this.toggleView("support-bundle")}> Support bundle </span>
