@@ -1,6 +1,8 @@
 import * as React from "react";
 import TroubleshootLifecycle from "./TroubleshootLifecycle";
 import { Link } from "gatsby";
+import preflightGif from "../images/preflight.gif";
+import supportBundleGif from "../images/support-bundle.gif";
 import "../scss/components/Troubleshootsh.scss";
 
 class Troubleshootsh extends React.Component {
@@ -64,7 +66,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                 </div>
                 <div className="flex1 right-block">
-                  <asciinema-player src={this.state.activeTab === "preflight-checks" ? "/345773.cast" : "/345774.cast"} cols="80" rows="30" preload autoplay loop />
+                  <img src={this.state.activeTab === "preflight-checks" ? preflightGif : supportBundleGif} width={"100%"} height={"100%"} />
                   <div className="flex two-btn-wrapper justifyContent--center alignItems--center u-marginTop--10">
                     <span className={`landing-page-tab u-marginRight--30 ${this.state.activeTab === "preflight-checks" && "is-active-tab"}`} onClick={() => this.toggleView("preflight-checks")}> Preflight checks </span>
                     <span className={`landing-page-tab ${this.state.activeTab === "support-bundle" && "is-active-tab"}`} onClick={() => this.toggleView("support-bundle")}> Support bundle </span>
