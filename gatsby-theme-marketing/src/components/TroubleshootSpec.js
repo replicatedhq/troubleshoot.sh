@@ -69,8 +69,8 @@ class TroubleshootSpec extends React.Component {
         const expression = lintExpressions[i];
         if (expression.positions) {
           for (let position of expression.positions) {
-          let line = get(position, "start.line");
-          if (line) {
+            let line = get(position, "start.line");
+            if (line) {
               const marker = new Range(line - 1, 0, line, 0);
               marker.type = expression.type;
               marker.id = window.aceEditor.session.addMarker(marker, `${marker.type}-highlight`, "text");
@@ -313,10 +313,10 @@ class TroubleshootSpec extends React.Component {
                 <p className="u-fontSize--18 u-color--biscay u-lineHeight--more u-fontWeight--bold u-marginBottom--10"> Try it out </p>
                 <div className="u-borderTop--gray"></div>
                 <div className="u-marginTop--10">
-                  {isActive === "preflight" ? 
-                  <span className="u-color--dustyGray u-fontSize--large body-copy u-lineHeight--normal"><a href="/learn/preflight/install-preflight/" target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-fontWeight--medium  u-textDecoration--underlineOnHover"> Install the plugin </a> and then you can try out this preflight check </span>
-                  :
-                  <span className="u-color--dustyGray u-fontSize--large body-copy u-lineHeight--normal"><a href="/learn/support-bundle/install-supportbundle/" target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-fontWeight--medium u-textDecoration--underlineOnHover"> Install the plugin </a> and then you can try out these analyzers </span>
+                  {isActive === "preflight" ?
+                    <span className="u-color--dustyGray u-fontSize--large body-copy u-lineHeight--normal"><a href="/learn/preflight/install-preflight/" target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-fontWeight--medium  u-textDecoration--underlineOnHover"> Install the plugin </a> and then you can try out this preflight check </span>
+                    :
+                    <span className="u-color--dustyGray u-fontSize--large body-copy u-lineHeight--normal"><a href="/learn/support-bundle/install-supportbundle/" target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-fontWeight--medium u-textDecoration--underlineOnHover"> Install the plugin </a> and then you can try out these analyzers </span>
                   }
                 </div>
                 {showCodeSnippet &&
@@ -346,7 +346,7 @@ class TroubleshootSpec extends React.Component {
               <div className="u-borderTop--gray"></div>
               <div className={`flex ${isMobile ? "flex-column" : "flex1"} u-marginTop--15`}>
                 {relatedSpecs?.slice(0, 2).map((spec, i) => (
-                  <div className={`RelatedSpecs--wrapper flex ${isMobile && ""}`} key={`${spec.id}-${i}`}>
+                  <div className={`RelatedSpecs--wrapper u-flexTabletReflow ${isMobile && ""}`} key={`${spec.id}-${i}`}>
                     <Link to={`/spec/${spec.slug}`}>
                       <div className="example-spec-block">
                         <p className="u-fontSize--normal u-color--biscay u-lineHeight--more u-fontWeight--bold"> {spec.description} </p>
@@ -360,8 +360,7 @@ class TroubleshootSpec extends React.Component {
                       </div>
                     </Link>
                   </div>
-                )
-                )}
+                ))}
               </div>
             </div>
           </div>

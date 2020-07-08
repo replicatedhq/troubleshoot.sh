@@ -45,8 +45,8 @@ export class NavBar extends React.Component {
     const { isMobile } = this.props;
 
     const navBarItems = [
-      { linkTo: "/learn", label: "Get started" },
-      { linkTo: "/collect/reference/collectors/", label: "Docs" },
+      { linkTo: "/docs", label: "Get started" },
+      { linkTo: "/docs/collect/", label: "Docs" },
       { linkTo: "/explore", label: "Examples" },
     ];
 
