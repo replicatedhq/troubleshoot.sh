@@ -50,9 +50,9 @@
 /* ≥ 768px */
 @media screen and (min-width: 48em) {
   .troubleshoot-lifecycle-container {
-    max-width: 600px;
+    max-width: 1280px;
     margin: 30px auto 0;
-    height: 353px;
+    height: 220px;
 
     .tbl-lifecycle-block {
       position: absolute;
@@ -86,9 +86,8 @@
     }
 
     .step {
-      width: 78px;
+      width: 190px;
       height: 72px;
-      position: absolute;
       left: auto;
 
       &::before {
@@ -99,68 +98,40 @@
         background-image: url("../../images/main_spritesheet.svg");
         background-repeat: no-repeat;
         background-size: initial;
-        background-position: -200px -322px;
+        background-position: -277px -327px;
         position: absolute;
-        top: 0;
-        left: 0;
+        top: -80px;
+        left: 1px;
         z-index: -1;
-      }
-
-      &:last-child::before {
-        height: 72px;
+        transform: rotate(-90deg);
       }
 
       .step-content {
         position: absolute;
         width: 130px;
       }
-
-      &.add-spec {
-        right: 60px;
-        top: 44px;
-
-        .step-content {
-          left: 44px;
-          top: 8px;
-        }
-      }
       &.checks-pass {
-        right: 60px;
-        bottom: 44px;
-
-        &::before {
-          transform: rotate(90deg);
-        }
+        bottom: 5px;
 
         .step-content {
-          left: 50px;
-          top: 42px;
+          left: 20px;
+          top: 40px;
         }
       }
       &.customer-issue {
-        left: 84px;
-        bottom: 48px;
-
-        &::before {
-          transform: rotate(180deg);
-        }
+        bottom: 5px;
 
         .step-content {
-          right: 46px;
-          top: 44px;
+          right: 35px;
+          top: 38px
         }
       }
-      &.repeat-cycle {
-        left: 88px;
-        top: 40px;
-
-        &::before {
-          transform: rotate(-90deg);
-        }
+      &.escalation-needed {
+        top: -5px;
 
         .step-content {
-          right: 34px;
-          top: 12px;
+          right: 35px;
+          top: 38px;
         }
       }
     }
