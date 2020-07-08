@@ -132,9 +132,9 @@ class Troubleshootsh extends React.Component {
                       </div>
                     )) : null}
                   </div>
-                  <div className="u-marginTop--40 u-textAlign--center">
+                  <div className="u-marginTop--40 u-flexMobileReflow two-btn-wrapper justifyContent--center">
                     <Link to="/explore/" className="Button primary">Browse more examples</Link>
-                    <Link to="/docs/preflight/introduction/" className="Button secondary u-marginLeft--20">Get started writing Preflight Checks</Link>
+                    <Link to="/docs/preflight/introduction/" className="Button secondary">Get started writing Preflight Checks</Link>
                   </div>
                 </div>
               </div>
@@ -193,9 +193,9 @@ class Troubleshootsh extends React.Component {
                       </div>
                     )) : null}
                   </div>
-                  <div className="u-marginTop--40 u-textAlign--center">
+                  <div className="u-marginTop--40 u-flexMobileReflow two-btn-wrapper justifyContent--center">
                     <Link to="/explore/" className="Button primary">Browse more examples</Link>
-                    <Link to="/docs/support-bundle/introduction/" className="Button secondary u-marginLeft--20">Get started writing Support Bundles</Link>
+                    <Link to="/docs/support-bundle/introduction/" className="Button secondary">Get started writing Support Bundles</Link>
                   </div>
                 </div>
               </div>
