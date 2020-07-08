@@ -66,7 +66,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                 </div>
                 <div className="flex1 right-block">
-                  <img src={this.state.activeTab === "preflight-checks" ? preflightGif : supportBundleGif} width={"100%"} height={"100%"} />
+                  <img src={this.state.activeTab === "preflight-checks" ? preflightGif : supportBundleGif} width={"100%"} />
                   <div className="flex two-btn-wrapper justifyContent--center alignItems--center u-marginTop--10">
                     <span className={`landing-page-tab u-marginRight--30 ${this.state.activeTab === "preflight-checks" && "is-active-tab"}`} onClick={() => this.toggleView("preflight-checks")}> Preflight checks </span>
                     <span className={`landing-page-tab ${this.state.activeTab === "support-bundle" && "is-active-tab"}`} onClick={() => this.toggleView("support-bundle")}> Support bundle </span>
