@@ -381,7 +381,7 @@ export default function DocsetSwitcher(props) {
               )
             } else {
               return (
-                <Step href={navItem.url}>
+                <Step href={navItem.url} key={navItem.url}>
                   <div className="Title">
                     <CircleNumber> {i + 1} </CircleNumber> {navItem.title}
                   </div>
