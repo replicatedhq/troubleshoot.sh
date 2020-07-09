@@ -1,10 +1,8 @@
 import React from "react";
 import { Link } from "gatsby";
-import GitHubButton from "react-github-button";
 import MobileNavBar from "./MobileNavBar";
 
 import "../../scss/components/shared/NavBar.scss";
-require("react-github-button/assets/style.css");
 
 export class NavBar extends React.Component {
   state = {
@@ -24,8 +22,8 @@ export class NavBar extends React.Component {
     const { isMobile } = this.props;
     const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
     const distanceY = scrollTop,
-    showNavOn = isMobile ? 100 : 220,
-    troubleshootNav = document.getElementById("troubleshoot-header");
+      showNavOn = isMobile ? 100 : 220,
+      troubleshootNav = document.getElementById("troubleshoot-header");
     let isHome;
     if (typeof window !== "undefined") {
       isHome = window.location.pathname === "/";
@@ -57,7 +55,7 @@ export class NavBar extends React.Component {
 
     return (
       <div className="flex flex-auto">
-        <div className={`flex flex-auto ${isMobile ? "MobileNavBarWrapper": "NavBarWrapper"} ${!isHome && "scrolled"}`}>
+        <div className={`flex flex-auto ${isMobile ? "MobileNavBarWrapper" : "NavBarWrapper"} ${!isHome && "scrolled"}`}>
           <div className={`${isMobile ? "MobileTroubleshootHeader" : "TroubleshootHeader"} flex flex1 ${!isHome && "scrolled"}`} id="troubleshoot-header">
             {isMobile ?
               <div className="flex flex1 alignItems--center">
@@ -91,7 +89,10 @@ export class NavBar extends React.Component {
                     </div>
                     <div className="flex flex1 justifyContent--flexEnd right-items">
                       <div className="flex-column flex-auto justifyContent--center">
-                        <GitHubButton type="stargazers" size="large" repo="troubleshoot" namespace="replicatedhq" />
+                        <a href="https://github.com/replicatedhq/troubleshoot/" target="_blank" rel="noopener noreferrer" className="github-btn flex justifyContent--center alignItems--center">
+                          <span className="icon github-icon" />
+                        View on GitHub
+                        </a>
                       </div>
                     </div>
                   </div>

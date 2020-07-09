@@ -4,9 +4,7 @@ import React, { Fragment } from "react";
 import { breakpoints } from "gatsby-theme-apollo-core";
 import styled from "@emotion/styled";
 import { transparentize } from "polished";
-import GitHubButton from "react-github-button";
-
-require("react-github-button/assets/style.css");
+import {ReactComponent as GitHubIcon} from "../../../images/GH_icon.svg";
 
 const Container = styled.aside({
   flexShrink: 0,
@@ -23,6 +21,26 @@ const Container = styled.aside({
   }
 }
 );
+
+const GitHubButton = styled.a({
+  display: "flex",
+  alignItems: "center",
+  font: "700 11px/14px Helvetica Neue,Helvetica,Arial,sans-serif",
+  backgroundColor: "#eee",
+  backgroundImage: "linear-gradient(180deg,#fcfcfc 0,#eee)",
+  border: "1px solid #d5d5d5",
+  padding: "3px 10px 3px 8px",
+  fontSize: "16px",
+  lineHeight: "22px",
+  borderRadius: "4px",
+  color: "#333",
+  textDecoration: "none",
+  whiteSpace: "nowrap",
+  cursor: "pointer"
+});
+
+const StyledGitHubIcon = styled(GitHubIcon)({
+});
 
 const ResponsiveContainer = styled(Container)(props => ({
   [breakpoints.md]: {
@@ -68,7 +86,7 @@ const Sidebar = React.forwardRef((props, ref) => {
         {content}
         {props.open ?
           <div className="GithubStarButton">
-            <GitHubButton type="stargazers" size="large" repo="troubleshoot" namespace="replicatedhq" />
+            <GitHubButton href="https://github.com/replicatedhq/troubleshoot/"> <StyledGitHubIcon style={{ marginRight: "5px" }} /> View on GitHub </GitHubButton>
           </div> : null}
       </ResponsiveContainer>
     );
