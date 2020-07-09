@@ -1,10 +1,8 @@
 import * as React from "react";
 import * as PropTypes from "prop-types";
 import { Link } from "gatsby";
-import GitHubButton from "react-github-button";
 
 import "../../scss/components/shared/NavBar.scss";
-require("react-github-button/assets/style.css");
 
 export default class MobileNavBar extends React.Component {
   static propTypes = {
@@ -50,7 +48,12 @@ export default class MobileNavBar extends React.Component {
                 </li>
               ))
               }
-              <li> <GitHubButton type="stargazers" size="large" repo="troubleshoot" namespace="replicatedhq" /> </li>
+              <li>
+                <a href="https://github.com/replicatedhq/troubleshoot/" target="_blank" rel="noopener noreferrer" className="github-btn flex justifyContent--center alignItems--center">
+                  <span className="icon github-icon" />
+                        View on GitHub
+                        </a>
+              </li>
             </ul>
           </div>
         </div>

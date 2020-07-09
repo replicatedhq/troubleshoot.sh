@@ -33,7 +33,6 @@
     "prop-types": "^15.7.2",
     "react": "^16.13.0",
     "react-dom": "^16.13.0",
-    "react-github-button": "^0.1.11",
     "react-helmet": "^5.2.1",
     "react-instantsearch-dom": "^6.4.0",
     "react-monaco-editor": "^0.34.0",

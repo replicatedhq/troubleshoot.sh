@@ -15203,13 +15203,6 @@ react-focus-lock@^2.3.1:
     use-callback-ref "^1.2.1"
     use-sidecar "^1.0.1"
 
-react-github-button@^0.1.11:
-  version "0.1.11"
-  resolved "https://registry.yarnpkg.com/react-github-button/-/react-github-button-0.1.11.tgz#fc61e1f1e1371169d3618c1ba37306ba04081e56"
-  integrity sha1-/GHh8eE3EWnTYYwbo3MGugQIHlY=
-  dependencies:
-    prop-types "^15.5.10"
-
 react-helmet@^5.2.0, react-helmet@^5.2.1:
   version "5.2.1"
   resolved "https://registry.yarnpkg.com/react-helmet/-/react-helmet-5.2.1.tgz#16a7192fdd09951f8e0fe22ffccbf9bb3e591ffa"
