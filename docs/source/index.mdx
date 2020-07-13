@@ -29,7 +29,7 @@ Now that you have the plugins installed lets look at a simple example of a Prefl
 
 ### Example Preflight check
 
-Preflight Checks can be executed by your customer before installing your application into their Kubernetes cluster. The checks are defined in a YAML file. Here is an example of a simple Preflight Check that could be used to enforce a minimum Kubernetes version on your cluster. Run the following command on your cluster to see an example Preflight Check.
+Preflight Checks can be executed before installing an application into a Kubernetes cluster. The checks are defined in a YAML file. Run the following command on your cluster to see an example Preflight Check.
 
 ```shell
 kubectl preflight https://preflight.replicated.com
@@ -37,10 +37,10 @@ kubectl preflight https://preflight.replicated.com
 
 ### Example Support Bundle
 
-A Support Bundle needs to know what to collect and optionally, what to analyze. This is defined in a YAML file. There's a lot already included in the default collectors. Here is an example of a Support Bundle that collects the version of Kubernetes. Run the following command on your cluster to see an example Support Bundle.
+A Support Bundle needs to know what to collect and optionally, what to analyze. This is defined in a YAML file. There's a lot already included in the default collectors. Run the following command on your cluster to see an example Support Bundle.
 
 ```shell
-kubectl support-bundle https://troubleshoot.replicated.com
+kubectl support-bundle https://support-bundle.replicated.com
 ```
 
 ## What's next?
