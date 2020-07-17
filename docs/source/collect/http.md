@@ -42,7 +42,7 @@ metadata:
 spec:
   collectors:
     - http:
-        name: healthz
+        collectorName: healthz
         get:
           url: http://api:3000/healthz
 ```
@@ -59,7 +59,7 @@ metadata:
   name: sample
 spec:
   - http:
-      name: service-control
+      collectorName: service-control
       post:
         url: https://api:3000/service-control
         insecureSkipVerify: true
@@ -72,7 +72,7 @@ spec:
 
 Result of each collector will be stored in the `http` directory of the support bundle.
 
-### `/http/\<collector name\>.json`
+### `\<collector name\>.json`
 
 Response received from the server will be stored in the `"response"` key of the resulting JSON file:
 
