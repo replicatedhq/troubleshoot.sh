@@ -70,7 +70,7 @@ spec:
 
 ## Included resources
 
-Result of each collector will be stored in the `http` directory of the support bundle.
+Result of each collector will be stored in the root directory of the support bundle.
 
 ### `\<collector name\>.json`
 
