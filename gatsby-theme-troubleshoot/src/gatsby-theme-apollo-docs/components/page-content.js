@@ -4,6 +4,7 @@ import styled from "@emotion/styled";
 import {PageNav} from "gatsby-theme-apollo-core";
 import {withPrefix} from "gatsby";
 import { breakpoints } from "gatsby-theme-apollo-core";
+import { IconGithub } from "@apollo/space-kit/icons/IconGithub";
 
 const Wrapper = styled.div({
   display: "flex",
@@ -75,6 +76,54 @@ const BodyContent = styled.div({
   }
 });
 
+const EditLink = styled.div({
+  fontFamily: "Helvetica Neue",
+  marginTop: 48,
+  display: "flex",
+  [breakpoints.lg]: {
+    display: "flex"
+  },
+  [breakpoints.md]: {
+    display: "flex"
+  },
+  [breakpoints.sm]: {
+    display: "flex",
+    marginTop: 24
+  }
+});
+
+const AsideLinkWrapper = styled.h5({
+  display: "flex",
+  marginBottom: 0,
+  ":not(:last-child)": {
+    marginBottom: 16
+  }
+});
+
+const AsideLinkInner = styled.a({
+  display: "flex",
+  alignItems: "center",
+  color: "#5A6270",
+  textDecoration: "none",
+  ":hover": {
+    color: "#a1a2a5"
+  },
+  svg: {
+    width: 20,
+    height: 20,
+    marginRight: 6,
+    fill: "currentColor"
+  }
+});
+
+function AsideLink(props) {
+  return (
+    <AsideLinkWrapper>
+      <AsideLinkInner target="_blank" rel="noopener noreferrer" {...props} />
+    </AsideLinkWrapper>
+  );
+}
+
 
 export default function PageContent(props) {
   const contentRef = useRef(null);
@@ -87,12 +136,19 @@ export default function PageContent(props) {
     );
   });
 
+  const editLink = props.githubUrl && (
+    <AsideLink href={props.githubUrl}>
+      <IconGithub /> Edit on GitHub
+    </AsideLink>
+  );
+
   return (
     <Wrapper>
       <InnerWrapper>
         <BodyContent ref={contentRef} className="content-wrapper">
           {props.children}
         </BodyContent>
+        <EditLink>{editLink}</EditLink>
         <PageNav
           prevPage={props.pages[pageIndex - 1]}
           nextPage={props.pages[pageIndex + 1]}
