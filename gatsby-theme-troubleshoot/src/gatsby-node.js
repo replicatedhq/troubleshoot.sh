@@ -321,8 +321,6 @@ exports.createPages = async (
     const {id, relativePath} = edge.node;
     const {fields} = getPageFromEdge(edge);
 
-    console.log("----fields", getPageFromEdge(edge))
-
     let versionDifference = 0;
     if (defaultVersionNumber) {
       try {
