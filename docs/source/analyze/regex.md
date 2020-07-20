@@ -24,17 +24,16 @@ spec:
         name: ping.txt
         namespace: default
         command: ["ping"]
-        args: ["-w", "5", "www.google.com"]
+        args: ["-w", "10", "-c", "10", "-i", "0.3", "www.google.com"]
         imagePullPolicy: IfNotPresent
   analyzers:
     - textAnalyze:
         checkName: "run-ping"
-        filename: run/ping.txt
-        data: '{{repl ConfigOption "replica_count" }}'
-        regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+\.\d+)% packet loss'
+        fileName: ping.txt/run-ping.log
+        regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+)(\.\d+)?% packet loss'
         outcomes:
           - pass:
-              when: "Loss < 5.0"
+              when: "Loss < 5"
               message: Solid connection to google.com
           - fail:
               message: High packet loss
