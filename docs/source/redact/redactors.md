@@ -31,7 +31,7 @@ spec:
 Each redactor consists of a set of files which it can apply to, a set of string literals to replace, a set of regex replacements to be run, and a list of yaml paths to redact.
 Any of the four can be omitted.
 
-This is divided into two subobjects - `fileSelector` (containing `file` and `files`) and `removals` (containing `values`, `regex` and `yamlPath`).
+This is divided into two subobjects - `fileSelector` (containing `file` or `files`) and `removals` (containing `values`, `regex` and/or `yamlPath`).
 `fileSelector` determines what files the redactor applies to, and `removals` determines what it removes.
 
 ### `file` and `files`
