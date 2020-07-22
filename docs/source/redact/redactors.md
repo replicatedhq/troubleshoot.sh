@@ -31,7 +31,7 @@ spec:
 Each redactor consists of a set of files which it can apply to, a set of string literals to replace, a set of regex replacements to be run, and a list of yaml paths to redact.
 Any of the four can be omitted.
 
-This is divided into two subobjects - `fileSelector` (containing `file` and `files`) and `removals` (containing `values`, `regex` and `yamlPath`).
+This is divided into two subobjects - `fileSelector` (containing `file` or `files`) and `removals` (containing `values`, `regex` and/or `yamlPath`).
 `fileSelector` determines what files the redactor applies to, and `removals` determines what it removes.
 
 ### `file` and `files`
@@ -132,4 +132,4 @@ Files that fail to parse as yaml, or that do not contain any matches, will not b
 Files that _do_ contain matches will be rerendered, which will strip comments and custom formatting.
 
 Multidoc yaml is not yet fully supported.
-Only the first document is checked for matches, and if a match is found later documents are discared entirely.
+Only the first document is checked for matches, and if a match is found, later documents are discarded entirely.
