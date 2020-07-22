@@ -132,4 +132,4 @@ Files that fail to parse as yaml, or that do not contain any matches, will not b
 Files that _do_ contain matches will be rerendered, which will strip comments and custom formatting.
 
 Multidoc yaml is not yet fully supported.
-Only the first document is checked for matches, and if a match is found later documents are discared entirely.
+Only the first document is checked for matches, and if a match is found, later documents are discarded entirely.
