@@ -5,9 +5,9 @@ import CodeSnippet from "./shared/CodeSnippet";
 import debounce from "lodash/debounce";
 import find from "lodash/find";
 import get from "lodash/get";
+import KotsLinter from "./shared/KotsLinter";
 
 import "../scss/components/TroubleshootSpec.scss";
-import KotsLinter from "./shared/KotsLinter";
 
 const previewServer = `https://troubleshoot.run`;
 
@@ -29,7 +29,8 @@ class TroubleshootSpec extends React.Component {
 
       copySuccess: "",
 
-      isActive: "preflight"
+      isActive: "preflight",
+      fetchingError: false
     }
     this.lintTroubleshootSpec = debounce(this.lintTroubleshootSpec, 200);
   }
@@ -143,6 +144,8 @@ class TroubleshootSpec extends React.Component {
     let uri;
     let method;
 
+    this.setState({ fetchingError: false });
+
     if (specType === "preflight") {
       if (this.state.preflightPreviewId) {
         method = "PUT";
@@ -171,23 +174,30 @@ class TroubleshootSpec extends React.Component {
       .then(async (res) => {
         if (method === "POST") {
           const result = await res.json();
-          if (specType === "preflight") {
-            this.setState({
-              preflightPreviewId: result.id,
-            }, () => {
-              if (onMount) {
-                this.onTryItOut("preflight")
-              }
-            });
-          } else if (specType === "support-bundle") {
-            this.setState({
-              supportBundlePreviewId: result.id,
-            });
+          if (!result) {
+            this.setState({ fetchingError: true });
+          } else {
+            if (specType === "preflight") {
+              this.setState({
+                preflightPreviewId: result.id,
+              }, () => {
+                if (onMount || this.state.isActive === "preflight") {
+                  this.onTryItOut("preflight");
+                } else if( onMount || this.state.isActive === "support-bundle") {
+                  this.onTryItOut("support-bundle");
+                }
+              });
+            } else if (specType === "support-bundle") {
+              this.setState({
+                supportBundlePreviewId: result.id,
+              });
+            }
           }
         }
       })
       .catch(err => {
         console.log(err);
+        this.setState({ fetchingError: true });
       })
   }
 
@@ -241,15 +251,12 @@ class TroubleshootSpec extends React.Component {
 
 
   render() {
-    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson, lintExpressions } = this.state;
+    const { copySuccess, showCodeSnippet, currentCommand, isActive, specJson, lintExpressions, fetchingError } = this.state;
     const { isMobile } = this.props;
 
     const currentSpec = specJson?.specs?.find(spec => spec.slug === this.props.slug);
-
     const tags = currentSpec?.tags ? currentSpec.tags : [];
-
-    const relatedSpecs = specJson?.specs?.filter(spec => tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec)
-
+    const relatedSpecs = specJson?.specs?.filter(spec => tags.find(tag => spec.tags.includes(tag))).filter(spec => spec !== currentSpec);
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
@@ -319,7 +326,10 @@ class TroubleshootSpec extends React.Component {
                     <span className="u-color--dustyGray u-fontSize--large body-copy u-lineHeight--normal"><a href="/learn/support-bundle/install-supportbundle/" target="_blank" rel="noopener noreferrer" className="u-color--royalBlue u-fontWeight--medium u-textDecoration--underlineOnHover"> Install the plugin </a> and then you can try out these analyzers </span>
                   }
                 </div>
-                {showCodeSnippet &&
+                {fetchingError ?
+                  <div className="ErrorBlock u-marginTop--10"> There was a problem fetching the command. Please <span className="u-color--royalBlue u-fontWeight--medium  u-textDecoration--underlineOnHover" onClick={() => this.sendToServer(isActive, isActive === "preflight" ? this.state.preflightYAML : this.state.supportBundleYAML, true)}> try again  </span> </div>
+                  :
+                  showCodeSnippet &&
                   <div className="flex flex-column u-marginTop--normal u-marginTop--10">
                     <CodeSnippet
                       canCopy={true}
