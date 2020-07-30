@@ -1,6 +1,6 @@
 ---
 title: Next Steps
-description: Hpw to integrate Preflight Checks into your Kubernetes application
+description: How to integrate Preflight Checks into your Kubernetes application
 ---
 
 Congratulations.
