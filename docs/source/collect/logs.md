@@ -8,7 +8,7 @@ This collector can be included multiple times with different label selectors and
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.io), the `logs` collector accepts the following parameters:
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `logs` collector accepts the following parameters:
 
 ##### `selector` (Required)
 The selector to use to find matching pods.
