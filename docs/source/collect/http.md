@@ -9,7 +9,7 @@ The http collector can be specified multiple times in a collector spec.
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.io), the `http` collector accepts the following parameters:
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `http` collector accepts the following parameters:
 
 ##### `uri` (Required)
 The URI to make the HTTP request against
