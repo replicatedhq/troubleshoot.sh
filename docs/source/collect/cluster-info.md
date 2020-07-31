@@ -10,7 +10,7 @@ This collector cannot be removed.
 
 ## Parameters
 
-The `clusterInfo` collector supports the [shared collector properties](https://troubleshoot.io) and no additional parameters.
+The `clusterInfo` collector supports the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties) and no additional parameters.
 
 ## Example Collector Definition
 
