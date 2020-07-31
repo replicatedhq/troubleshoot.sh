@@ -9,7 +9,7 @@ This collector can be included multiple times, each defining different commands 
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.io), the `run` collector accepts the following parameters:
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `run` collector accepts the following parameters:
 
 ##### `name` (Optional)
 The name of the collector. This will be map to the path that the output is written to in the support bundle. If name is not provided, it will default to a calculated and deterministic value that is made from the label selector and the command.
