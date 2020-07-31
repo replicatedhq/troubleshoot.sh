@@ -8,7 +8,7 @@ This collector can be included multiple times to copy different files from diffe
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.io), the `copy` collector accepts the following parameters:
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `copy` collector accepts the following parameters:
 
 ##### `selector` (Required)
 The selector to use to locate the pod when copying files.
