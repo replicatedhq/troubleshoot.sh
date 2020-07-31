@@ -6,7 +6,7 @@ description: Analyze the current status of a Kubernetes StatefulSet
 The statefulsetStatus analyzer is used to report on the number of replicas that are "Ready" in a statefulset.
 The `when` attribute supports standard comparators to compare the number of ready replicas.
 
-The statefulsetStatus analyzer requires that the [clusterResources](https://troubleshoot.io) is included in the support bundle.
+The statefulsetStatus analyzer requires that the [clusterResources](https://troubleshoot.sh/docs/collect/cluster-resources/) is included in the support bundle.
 The clusterResources collectors is automatically added and will always be present.
 
 The target statefulset can be identified by name.
