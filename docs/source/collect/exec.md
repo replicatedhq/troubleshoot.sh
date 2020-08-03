@@ -10,7 +10,7 @@ This spec can be included multiple times, each defining different commands and/o
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.io), the `exec` collector accepts the following parameters:
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `exec` collector accepts the following parameters:
 
 ##### `name` (Optional)
 The name of the collector.
