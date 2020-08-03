@@ -8,7 +8,7 @@ This collector can be included multiple times, reference difference secrets.
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.io), the `secret` collector accepts the following parameters:
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `secret` collector accepts the following parameters:
 
 ##### `secretName` (Required)
 
