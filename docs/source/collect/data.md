@@ -7,7 +7,7 @@ The `data` collector can be used to add static content to the collected data.
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.io), the `data` collector accepts the following parameters:
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `data` collector accepts the following parameters:
 
 ##### `name` (Optional)
 This will be used as part of the output path in the support bundle.
