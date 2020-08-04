@@ -37,7 +37,8 @@ metadata:
 spec:
   collectors:
     - copy:
-        selector: app=api
+        selector: 
+          - app=api
         namespace: default
         containerPath: /etc/resolv.conf
         containerName: api
