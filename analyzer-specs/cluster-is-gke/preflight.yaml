@@ -4,7 +4,7 @@ metadata:
   name: cluster-is-gke
   annotations: 
     title: "Check if Google Cloud GKE Managed Kubernetes"
-    description: "Verify that the Kubernetes cluster is a manaegd Google Cloud GKE Cluster"
+    description: "Verify that the Kubernetes cluster is a managed Google Cloud GKE Cluster"
     category: "cloud_provider"
     iconUri: "/category-icons/cloud-provider.svg"
     tags: '["kubernetes", "cloud", "google", "gcp", "gke"]'

@@ -4,7 +4,7 @@ metadata:
   name: cluster-is-eks
   annotations: 
     title: "Check if Amazon EKS Managed Kubernetes"
-    description: "Verify that the Kubernetes cluster is a manaegd Amazon EKS Cluster"
+    description: "Verify that the Kubernetes cluster is a managed Amazon EKS Cluster"
     category: "cloud_provider"
     iconUri: "/category-icons/cloud-provider.svg"
     tags: '["kubernetes", "cloud", "aws", "eks"]'
