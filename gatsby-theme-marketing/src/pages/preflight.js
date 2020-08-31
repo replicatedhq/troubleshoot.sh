@@ -1,12 +1,12 @@
 import React from "react"
 import { Router, Location } from "@reach/router";
 import Layout from "../components/Layout";
-import TroubleshootSpec from "../components/TroubleshootSpec";
+import TroubleshootPreflight from "../components/TroubleshootPreflight";
 import { Resizer } from "../components/shared/Resize";
 import { BreakpointConfig } from "../services/breakpoint";
 
 @Resizer(BreakpointConfig)
-class Spec extends React.Component {
+class Preflight extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -30,7 +30,7 @@ class Spec extends React.Component {
     return (
     <Layout title="Try troubleshoot specs" isMobile={this.state.isMobile}>
       <FadeTransitionRouter>
-        <TroubleshootSpec path="spec/:slug" isMobile={this.state.isMobile} />
+        <TroubleshootPreflight path="preflight/:slug" isMobile={this.state.isMobile} />
       </FadeTransitionRouter>
     </Layout>
     )
@@ -47,4 +47,4 @@ const FadeTransitionRouter = props => (
   </Location>
 )
 
-export default Spec;
+export default Preflight;
