@@ -1,10 +1,10 @@
 ---
-title: Copy Files
+title: Copy Files and Folders
 description: A description of the copy collector to copy files out of pods
 ---
 
-The `copy` collector can be used to copy files from pods and include the contents in the collected data.
-This collector can be included multiple times to copy different files from different pods.
+The `copy` collector can be used to copy files or an etire folder from pods and include the contents in the collected data.
+This collector can be included multiple times to copy different files or folders from different pods.
 
 ## Parameters
 
@@ -36,11 +36,19 @@ metadata:
   name: sample
 spec:
   collectors:
+  #Copies resolv.conf file
     - copy:
-        selector: app=api
+        selector: 
+          - app=api
         namespace: default
         containerPath: /etc/resolv.conf
         containerName: api
+  #Copies htdocs folder
+    - copy:
+        selector: 
+          - app=myhttpd
+        namespace: default
+        containerPath: /usr/local/apache2/htdocs
 
 ```
 
@@ -49,6 +57,6 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/copy/\<namespace\>/\<pod-name\>/\<path\>`
+### `/\<namespace\>/\<pod-name\>/\<path\>`
 
-This will contain the pod output (up to 10000 lines).
+This will contain the pod's folder or file specified in the collector

@@ -11,7 +11,7 @@ description: A list of all available collectors
 ## Data and logs
 
 - [logs](./logs): collects logs (stdout and stderr) from pods and includes them in the collected output
-- [copy](./copy): copies files from a pod into the collected output
+- [copy](./copy): copies files or folders from a pod into the collected output
 - [data](./data): writes static or predefined data into the collected output
 - [secret](./secret): includes information about Kubernetes secrets in the collected output
 
