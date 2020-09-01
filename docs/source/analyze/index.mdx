@@ -4,30 +4,43 @@ description: Introduction to the analyze phase
 introHeader: analyze
 ---
 
-Analyzers are YAML specifications that define a set of criteria and operations to run against files collected in a support bundle. Each analyzer included will result in either 0 or 1 [outcome](https://troubleshoot.io). If an analyzer produces zero outcomes, it will not be displayed on the support bundle analysis page.
+Analyzers are YAML specifications that define a set of criteria and operations to run against data collected in a preflight check or support bundle. Each analyzer included will result in either 0 or 1 [outcomes](https://troubleshoot.io). If an analyzer produces zero outcomes, it will not be displayed in the results.
 
-All analyzers are specified in a single YAML file. To build a set of analyzers, start with a Kubernetes YAML file:
+Analyzers are specified inside either a Preflight or a SupportBundle YAML file. To build a set of analyzers, start with a Kubernetes YAML file:
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Analyzer
+kind: Preflight
 metadata:
   name: my-application-name
 spec:
   analyzers: []
 ```
 
-The above file contains all of the necessary scaffolding and structure needed to write analyzers, but it does not contain any analyzers. Given this analyzer definition, there will be nothing on the analysis page.
-
-The troubleshoot project defines a number of built-in and easy-to-use analyzers, and many helper functions to build custom analyzers.
-
-To add additional analyzers to a manifgest, read the docs in this section to understand each one, and add them as an array item below `spec`.
-
-For example, a complete spec might be:
+or
 
 ```yaml
 apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Analyzer
+kind: SupportBundle
+metadata:
+  name: my-application-name
+spec:
+  analyzers: []
+```
+
+*Note: Previously, Analyzers could be specified in a standalone file, with `Kind: Analyzer`, however this syntax is depcrecated in Kots and not supported at all in the CLI tools.*
+
+The above files contain all of the necessary scaffolding and structure needed to write analyzers, but don't contain any analyzers. Given this analyzer definition, there will be nothing on the analysis page.
+
+The troubleshoot project defines a number of built-in and easy-to-use analyzers, and many helper functions to build custom analyzers.
+
+To add additional analyzers to a manifest, read the docs in this section to understand each one, and add them as an array item below `spec`.
+
+For example, a complete Preflight check might be:
+
+```yaml
+apiVersion: troubleshoot.replicated.com/v1beta1
+kind: Preflight
 metadata:
   name: my-application-name
 spec:
