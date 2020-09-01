@@ -344,3 +344,45 @@ The below is a partial example only. Actual results will be significantly longer
       },
 ...
 ```
+### `/cluster-resources/events/<namespace>.json`
+
+The file contains information about Kubernetes events in each namespace of the cluster. To each namespace corresponds a .json file with its events. 
+
+The below is a partial example only. Actual results will be significantly longer.
+
+```json
+[
+  {
+    "metadata": {
+      "name": "coredns-5644d7b6d9-dqt6l.1630b6076a8d13b4",
+      "namespace": "kube-system",
+      "selfLink": "/api/v1/namespaces/kube-system/events/coredns-5644d7b6d9-dqt6l.1630b6076a8d13b4",
+      "uid": "f0e347ac-910f-4a14-bb54-e6805425e09b",
+      "resourceVersion": "325449",
+      "creationTimestamp": "2020-09-01T16:33:30Z"
+    },
+    "involvedObject": {
+      "kind": "Pod",
+      "namespace": "kube-system",
+      "name": "coredns-5644d7b6d9-dqt6l",
+      "uid": "6e57304c-af69-4d91-a0e3-bb15112a0e94",
+      "apiVersion": "v1",
+      "resourceVersion": "100939",
+      "fieldPath": "spec.containers{coredns}"
+    },
+    "reason": "Unhealthy",
+    "message": "Readiness probe failed: Get http://***HIDDEN***:8181/ready: net/http: request canceled while waiting for connection (Client.Timeout exceeded while awaiting headers)",
+    "source": {
+      "component": "kubelet",
+      "host": "docker-desktop"
+    },
+    "firstTimestamp": "2020-09-01T16:33:30Z",
+    "lastTimestamp": "2020-09-01T16:33:30Z",
+    "count": 1,
+    "type": "Warning",
+    "eventTime": null,
+    "reportingComponent": "",
+    "reportingInstance": ""
+  }
+]
+```
