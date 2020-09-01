@@ -128,9 +128,8 @@ spec:
 
 ```yaml
     - nodeResources:
-        checkName: Must have at least 3 nodes with 2 cores, OS Linux and Role set as DB Primary Replica
+        checkName: Must have at least 3 nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
         filters:
-          cpuCapacity: "2"
           selector: 
             matchLabel: 
                beta.kubernetes.io/os: linux
@@ -138,12 +137,12 @@ spec:
         outcomes:
         - fail:
             when: "count() < 3"
-            message: This application requires at least 3 nodes, with 5 recommended.
+            message: This application requires at least 3 nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
             uri: https://kurl.sh/docs/install-with-kurl/adding-nodes
         - warn:
             when: "count() < 5"
-            message: This application recommends at last 5 nodes.
+            message: This application recommends at last 5 nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
             uri: https://kurl.sh/docs/install-with-kurl/adding-nodes
         - pass:
-            message: This cluster has enough nodes.
+            message: This cluster has enough nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
 ```
