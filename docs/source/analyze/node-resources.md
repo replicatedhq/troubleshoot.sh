@@ -26,6 +26,7 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 | `podAllocatable` | The number of pods that can be stated on the node after Kubernetes is running |
 | `ephemeralStorageCapacity` | The amount of ephemeral storage on the node |
 | `ephemeralStorageAllocatable` | The amount of ephemeral storage on the node after Kubernetes is running |
+| `matchLabel` | Specific selector label or labels the node must contain in its metadata |
 
 ## Outcomes
 
@@ -123,4 +124,26 @@ spec:
               message: This application requires at least 1 node with 16GB available memory
           - pass:
               message: This cluster has a node with enough memory.
+```
+
+```yaml
+    - nodeResources:
+        checkName: Must have at least 3 nodes with 2 cores and labels kubernetes.io/hostname=docker-desktop and kubernetes.io/role=database-primary-replica
+        filters:
+          cpuCapacity: "2"
+          selector: 
+            matchLabel: 
+               kubernetes.io/hostname  : docker-desktop
+               kubernetes.io/role : database-primary-replica
+        outcomes:
+        - fail:
+            when: "count() < 3"
+            message: This application requires at least 3 nodes.
+            uri: https://kurl.sh/docs/install-with-kurl/adding-nodes
+        - warn:
+            when: "count() < 5"
+            message: This application recommends at last 5 nodes.
+            uri: https://kurl.sh/docs/install-with-kurl/adding-nodes
+        - pass:
+            message: This cluster has enough nodes.
 ```
