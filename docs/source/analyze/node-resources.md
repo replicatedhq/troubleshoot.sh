@@ -128,17 +128,17 @@ spec:
 
 ```yaml
     - nodeResources:
-        checkName: Must have at least 3 nodes with 2 cores and labels kubernetes.io/hostname=docker-desktop and kubernetes.io/role=database-primary-replica
+        checkName: Must have at least 3 nodes with 2 cores, OS Linux and Role set as DB Primary Replica
         filters:
           cpuCapacity: "2"
           selector: 
             matchLabel: 
-               kubernetes.io/hostname: docker-desktop
+               beta.kubernetes.io/os: linux
                kubernetes.io/role: database-primary-replica
         outcomes:
         - fail:
             when: "count() < 3"
-            message: This application requires at least 3 nodes.
+            message: This application requires at least 3 nodes, with 5 recommended.
             uri: https://kurl.sh/docs/install-with-kurl/adding-nodes
         - warn:
             when: "count() < 5"

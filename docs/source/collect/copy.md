@@ -3,7 +3,7 @@ title: Copy Files and Folders
 description: A description of the copy collector to copy files out of pods
 ---
 
-The `copy` collector can be used to copy files or an etire folder from pods and include the contents in the collected data.
+The `copy` collector can be used to copy files or an entire folder from pods and include the contents in the collected data.
 This collector can be included multiple times to copy different files or folders from different pods.
 
 ## Parameters
