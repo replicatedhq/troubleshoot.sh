@@ -104,33 +104,39 @@ export default function TroubleshootLifecycle({ isMobile }) {
             <p className="u-fontSize--normal u-color--tundora u-lineHeight--more u-fontWeight--normal u-marginTop--10 body-copy">Share your bundle with a vendor for support.</p>
           </div>
         </div>
-        <div className="u-flexTabletReflow justifyContent--center alignItems--center u-marginTop--20">
-          <div className="step-number flex-auto">1</div>
+        <div className="u-flexTabletReflow u-marginTop--20 justifyContent--center alignItems--center">
 
-          <div className="step checks-pass u-paddingTop--10 u-paddingBottom--10">
-            <div className="flex flex-column alignItems--center step-content">
-              <span className="icon green-checkmark-icon" />
-              <p className="u-fontSize--small u-fontWeight--medium u-color--silver u-lineHeight--normal">Check pass</p>
+          <div className="flex alignItems--center u-marginRight--30 u-marginLeft--40">
+            <div className="step-number flex-auto">1</div>
+            <div className="flex step checks-pass">
+              <div className="flex flex-column alignItems--center step-content">
+                <span className="icon green-checkmark-icon" />
+                <p className="u-fontSize--small u-fontWeight--medium u-color--silver u-lineHeight--normal">Check pass</p>
+              </div>
             </div>
           </div>
 
-          <div className="step-number flex-auto">2</div>
-          <div className="step customer-issue u-paddingTop--10 u-paddingBottom--10">
-            <div className="flex flex-column alignItems--center step-content">
+          <div className="flex alignItems--center u-marginRight--30">
+            <div className="step-number flex-auto">2</div>
+            <div className="flex step customer-issue ">
+              <div className="flex flex-column alignItems--center step-content">
               <span className="icon red-warning-icon" />
               <p className="u-fontSize--small u-fontWeight--medium u-color--silver u-lineHeight--normal">Customer issue</p>
+              </div>
             </div>
           </div>
 
-          <div className="step-number flex-auto">3</div>
-          <div className="step escalation-needed u-paddingTop--10 u-paddingBottom--10">
+          <div className="flex alignItems--center u-marginRight--30">
+            <div className="step-number flex-auto">3</div>
+            <div className="flex step escalation-needed">
             <div className="flex flex-column alignItems--center step-content">
               <span className="icon repeat-cycle-icon" />
               <p className="u-fontSize--small u-fontWeight--medium u-color--silver u-lineHeight--normal">Escalation needed</p>
             </div>
+            </div>
           </div>
 
-          <div className="step-number flex-auto">4</div>
+          <div className="step-number flex-auto justifyContent--center alignItems--center">4</div>
         </div>
       </div>
     );

@@ -1,7 +1,6 @@
 .MonacoEditor--wrapper {
   overflow: auto;
   border: 1px solid #DFDFDF;
-  border-radius: 4px;
   height: 400px;
   position: relative;
   
@@ -21,6 +20,17 @@
 
   .ace_print-margin {
     visibility: hidden !important;
+  }
+
+  .ace-chrome .ace_gutter {
+    background: #F8F8F8;
+    box-shadow: 1px 0px 0px #C5C5C5;
+    border-radius: 0px;
+    color: #9B9B9B;
+  }
+
+  .ace_gutter-cell {
+    text-align: center;
   }
 }
 
@@ -80,6 +90,19 @@
 
   &:hover::after {
     right: 12px;
+  }
+}
+
+.AbsoluteTest-wrapper {
+  position: absolute;
+  right: -10px;
+  z-index: 10;
+  height: 408px;
+
+  .Test-wrapper {
+    border-left: 1px solid #C4C8CA;
+    background-color: #ffffff;
+    padding: 15px 10px 15px 10px;
   }
 }
 
