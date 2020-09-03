@@ -12,7 +12,7 @@ export default class ExploreInfo extends React.Component {
         <div className="u-borderTop--gray">
           <div className={`Info--wrapper flex ${isMobile ? "flex-column" : "flexWrap--wrap"} u-marginTop--30`}>
             {specs && specs.map((spec, i) => (
-              <ExploreCard name={name} spec={spec} i={i} isMobile={isMobile} />
+              <ExploreCard name={name} spec={spec} i={i} isMobile={isMobile} key={`${spec.slug}-${i}`} />
             ))}
           </div>
         </div>
