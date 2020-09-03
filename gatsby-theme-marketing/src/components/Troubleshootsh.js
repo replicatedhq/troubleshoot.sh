@@ -113,7 +113,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A visual report is generated to highlight where the environment doesn’t meet your&nbsp;requirements.</p>
-                    <a target="_blank" rel="noopener noreferrer" href="https://troubleshoot.sh/docs/preflight/node-checks/#executing-the-preflights" className="u-fontSize--small link">Learn more about reporting</a>
+                    <Link to={"/docs/preflight/node-checks/#executing-the-preflights"} className="u-fontSize--small link">Learn more about reporting</Link>
                   </div>
                 </div>
               </div>
