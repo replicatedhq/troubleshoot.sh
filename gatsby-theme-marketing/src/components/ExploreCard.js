@@ -7,7 +7,7 @@ export default class ExploreCard extends React.Component {
     const { name, i, spec, isMobile } = this.props;
 
     return (
-      <div className={`${isMobile ? "InfoMobile--item" : "Info--item"} flex flex-column`} key={`${spec.id}-${i}`}>
+      <div className={`${isMobile ? "InfoMobile--item" : "Info--item"} flex flex-column`} key={`${spec.slug}-${i}`}>
         <div className="flex alignItems--center u-marginBottom--15">
           <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")` }}> </span>
           <div className="flex flex-column u-marginLeft--10">
@@ -15,7 +15,7 @@ export default class ExploreCard extends React.Component {
             <div className="flex flex1 u-marginTop--small">
               <span className="icon tagLight-icon" />
               {spec.tags.map((tag, i) => (
-                <div className="Tags-wrapper tag-card u-fontSize--small u-color--silver">
+                <div className="Tags-wrapper tag-card u-fontSize--small u-color--silver" key={`tag-${i}`}>
                   <span className="u-color--silver u-marginLeft--small" key={`${tag}-${i}`}>
                     {tag}
                   </span>

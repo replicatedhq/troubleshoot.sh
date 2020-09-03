@@ -239,8 +239,8 @@ class TroubleshootPreflight extends React.Component {
                   <div className="flex flex1">
                     <span className="icon tag-icon" />
                     {tags.map((tag, i) => (
-                      <div className="Tags-wrapper u-fontSize--small u-color--dustyGray">
-                        <Link to={`/explore?tag=${tag}`} className="u-color--dustyGray u-textDecoration--underline u-marginLeft--small" key={`${tag}-${i}`}>
+                      <div className="Tags-wrapper u-fontSize--small u-color--dustyGray" key={`${tag}-${i}`}>
+                        <Link to={`/explore?tag=${tag}`} className="u-color--dustyGray u-textDecoration--underline u-marginLeft--small">
                           {tag}
                         </Link>
                         <span className="comma"></span>
@@ -344,7 +344,7 @@ class TroubleshootPreflight extends React.Component {
               <div className="u-borderTop--gray"></div>
               <div className={`flex ${isMobile ? "flex-column" : "flex1"} u-marginTop--15`}>
                 {relatedSpecs?.slice(0, 2).map((spec, i) => (
-                  <div className={`Info--wrapper flex ${isMobile ? "flex-column" : "flexWrap--wrap"}`}>
+                  <div className={`Info--wrapper flex ${isMobile ? "flex-column" : "flexWrap--wrap"}`} key={`${spec.slug}-${i}`} >
                     <ExploreCard spec={spec} i={i} isMobile={isMobile} name={titleize(spec.category.replace(/_/gi, " "))} />
                   </div>
                 ))}

@@ -2,7 +2,7 @@ import * as React from "react";
 import { navigate } from "gatsby";
 import isEmpty from "lodash/isEmpty";
 
-import ExploreInfo from "./shared/ExploreInfo";
+import ExploreInfo from "./ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
 import ExploreCard from "./ExploreCard";
 import { titleize } from "../utils/utilities";
@@ -68,7 +68,7 @@ class ExploreSpec extends React.Component {
           if (this.state.queryStringTag === "") {
             navigate("/explore")
           } else {
-            navigate(`/explore?tag=${this.state.queryStringTag}`)
+            navigate(`/explore?tag=${this.state.queryStringTag}`, { replace: true })
           }
         })
       }
@@ -146,13 +146,13 @@ class ExploreSpec extends React.Component {
       }
     } else if (filteredCategoriesToShow?.length > 0) {
       return (
-        <ExploreInfo name={titleize(categoryToShow.replace(/_/gi, " "))} specs={filteredCategoriesToShow} isMobile={isMobile} />
+        <ExploreInfo name={titleize(categoryToShow.replace(/_/gi, " "))} specs={filteredCategoriesToShow} isMobile={isMobile} infoKey={`${categoryToShow}`} />
       )
     } else if (tagsToShow.length > 0) {
       return (
         <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
           {filteredTagsToShow?.map((spec, i) => (
-            <ExploreCard name={titleize(spec.category.replace(/_/gi, " "))} spec={spec} i={i} isMobile={isMobile} />
+            <ExploreCard name={titleize(spec.category.replace(/_/gi, " "))} spec={spec} i={i} isMobile={isMobile} key={`${spec.category.name}-${i}`} />
           ))}
         </div>
       )
