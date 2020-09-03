@@ -1,5 +1,5 @@
 import * as React from "react";
-import ExploreCard from "../ExploreCard";
+import ExploreCard from "./ExploreCard";
 
 
 export default class ExploreInfo extends React.Component {
