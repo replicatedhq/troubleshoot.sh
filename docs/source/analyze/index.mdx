@@ -4,12 +4,12 @@ description: Introduction to the analyze phase
 introHeader: analyze
 ---
 
-Analyzers are YAML specifications that define a set of criteria and operations to run against data collected in a preflight check or support bundle. Each analyzer included will result in either 0 or 1 [outcomes](https://troubleshoot.io). If an analyzer produces zero outcomes, it will not be displayed in the results.
+Analyzers are YAML specifications that define a set of criteria and operations to run against data collected in a preflight check or support bundle. Each analyzer included will result in either 0 or 1 [outcomes](outcomes). If an analyzer produces zero outcomes, it will not be displayed in the results.
 
 Analyzers are specified inside either a Preflight or a SupportBundle YAML file. To build a set of analyzers, start with a Kubernetes YAML file:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: my-application-name
@@ -20,7 +20,7 @@ spec:
 or
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
   name: my-application-name
@@ -28,7 +28,7 @@ spec:
   analyzers: []
 ```
 
-*Note: Previously, Analyzers could be specified in a standalone file, with `Kind: Analyzer`, however this syntax is depcrecated in Kots and not supported at all in the CLI tools.*
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2). Also note: Previously, Analyzers could be specified in a standalone file, with `Kind: Analyzer`, however this syntax is depcrecated in Kots 1.19.0 and not supported at all in the krew plugins.*
 
 The above files contain all of the necessary scaffolding and structure needed to write analyzers, but don't contain any analyzers. Given this analyzer definition, there will be nothing on the analysis page.
 
@@ -39,7 +39,7 @@ To add additional analyzers to a manifest, read the docs in this section to unde
 For example, a complete Preflight check might be:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: my-application-name

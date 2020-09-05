@@ -1,6 +1,6 @@
 ---
 title: Kubernetes Distribution
-description: Analyzing the Kubernetes ditribution that's running
+description: Analyzing the Kubernetes distribution that's running
 ---
 
 The `distribution` analyzer is used to check for known managed (hosted) and self-hosted versions of Kubernetes.
@@ -16,7 +16,7 @@ The `clusterResources` collector is automatically added and will always be prese
 ## Example Analyzer Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: require-hosted-k8s
@@ -45,3 +45,5 @@ spec:
           - warn:
               message: Unable to determine the distribution of Kubernetes
 ```
+
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](v1beta2).*

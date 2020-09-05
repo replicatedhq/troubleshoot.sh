@@ -21,7 +21,7 @@ he outcomes on this analyzer will be processed in order, and execution will stop
 ## Example Analyzer Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: api-deployment-running
@@ -40,3 +40,5 @@ spec:
           - pass:
               message: There are multiple replicas of the API deployment ready.
 ```
+
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](v1beta2).*

@@ -15,7 +15,7 @@ Let's add a Preflight Check to show an error message if the cluster does not hav
 To add this check, open that `./preflight.yaml` again and edit the contents to match:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: preflight-tutorial
@@ -25,7 +25,7 @@ spec:
         outcomes:
           - fail:
               when: "< 1.16.0"
-              message: The application requires at Kubernetes 1.16.0 or later, and recommends 1.18.0.
+              message: The application requires at least Kubernetes 1.16.0, and recommends 1.18.0.
               uri: https://kubernetes.io
           - warn:
               when: "< 1.18.0"
@@ -62,13 +62,15 @@ spec:
               message: This cluster has enough nodes.
 ```
 
-Reviewing this YAML, we've added a additional analyzer in the `analyzers` key starting at line 38.
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2).*
+
+Reviewing this YAML, we've added an additional analyzer in the `analyzers` key starting at line 38.
 
 Let's review the changes to this YAML:
 
 **Line 38**: We are adding a new `nodeResources` analyzer to be evaluated when Preflight Checks are running.
 This key tells the Preflight application how to interpret and parse the `outcomes` below.
-The documentation for `nodeResources` is in the [Analyze documentation](https://troubleshoot.sh/analyze/node-resources/).
+The documentation for `nodeResources` is in the [Analyze documentation](/analyze/node-resources/).
 
 **Line 39**: Provide a custom title to show up on the results page for this check.
 This attribute is available for any analyzer.
@@ -96,7 +98,7 @@ Next, we will add another analyzer to ensure that at least 1 node has a minimum 
 To add this check, open that `./preflight.yaml` again and edit the contents to match:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: preflight-tutorial
@@ -106,7 +108,7 @@ spec:
         outcomes:
           - fail:
               when: "< 1.16.0"
-              message: The application requires at Kubernetes 1.16.0 or later, and recommends 1.18.0.
+              message: The application requires at least Kubernetes 1.16.0, and recommends 1.18.0.
               uri: https://kubernetes.io
           - warn:
               when: "< 1.18.0"
@@ -177,4 +179,4 @@ And the results are:
 
 ## Next Steps
 
-Continue to the final part of this tutorial to learn how to distribution Preflight Checks as part of your application or documentation.
+Continue to the final part of this tutorial to learn how to distribute Preflight Checks as part of your application or documentation.

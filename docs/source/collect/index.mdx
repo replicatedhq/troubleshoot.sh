@@ -7,27 +7,39 @@ introHeader: collect
 Every support bundle or preflight check starts with a collect phase.
 During this time, information is collected from the cluster, the environment, the application and other sources to be used later in the analysis or preflight results.
 
-When designing a support bundle or preflight checks, be sure to add all necessary data to the collectors.
-The [analyze phase](https://troubleshoot.sh/analyze) can only use the output of the collect phase to perform analysis and provide results.
+When designing a support bundle or preflight check, be sure to add all necessary data to the collectors.
+The [analyze phase](/analyze) can only use the output of the collect phase to perform analysis and provide results, however a large set of collectors are included automatically.
 
 ## Including Collectors
 
 To specify the data to include for later phases, the collect phase accepts a Kubernetes custom resource as defined here.
-A [full reference of the Collector kind](./collectors) is also available.
+A [full reference of the collectors](/collect/collectors) is also available.
 
-All collectors are specified in a single YAML file.
-To build a set of collectors, start with a Kubernetes YAML file:
+Collectors are specified inside either a Preflight or a SupportBundle YAML file. To build a set of collectors, start with a Kubernetes YAML file:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
 metadata:
   name: my-application-name
 spec:
   collectors: []
 ```
 
-The above file is a simple but valid set of collectors.
+or
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: my-application-name
+spec:
+  collectors: []
+```
+
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2). Also note: Previously, Collectors could be specified in a standalone file, with `Kind: Collector`, however this syntax is depcrecated in Kots 1.19.0 and not supported at all in the krew plugins.*
+
+The above file is a simple, but valid set of collectors.
 It will collect only the default data.
 
 To add additional collectors, specify each one in the `collectors` array.
@@ -36,8 +48,8 @@ Each collector can be included multiple times, if there are different sets of op
 For example, a complete spec might be:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: my-application-name
 spec:

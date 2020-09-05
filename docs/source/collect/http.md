@@ -9,7 +9,7 @@ The http collector can be specified multiple times in a collector spec.
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `http` collector accepts the following parameters:
+In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `http` collector accepts the following parameters:
 
 ##### `uri` (Required)
 The URI to make the HTTP request against
@@ -35,8 +35,8 @@ The `get` method will issue an HTTP or HTTPS request to the specified URL
 The body parameter is not supported in the get method.
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
@@ -47,26 +47,30 @@ spec:
           url: http://api:3000/healthz
 ```
 
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2).*
 
 ### POST/PUT
 
 The `post` and `put` methods will issue an HTTP or HTTPS POST or PUT request to the specified URL.
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
-  - http:
-      collectorName: service-control
-      post:
-        url: https://api:3000/service-control
-        insecureSkipVerify: true
-        body: '{"disable-service": true}'
-        headers:
-          Content-Type: "application/json"
+  collectors:
+    - http:
+        collectorName: service-control
+        post:
+          url: https://api:3000/service-control
+          insecureSkipVerify: true
+          body: '{"disable-service": true}'
+          headers:
+            Content-Type: "application/json"
 ```
+
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2).*
 
 ## Included resources
 

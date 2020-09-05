@@ -10,7 +10,7 @@ This spec can be included multiple times, each defining different commands and/o
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `exec` collector accepts the following parameters:
+In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `exec` collector accepts the following parameters:
 
 ##### `name` (Optional)
 The name of the collector.
@@ -38,8 +38,8 @@ This cannot be greater than 20 seconds (20s) and if not specified, the default i
 ## Example Collector Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
@@ -53,6 +53,8 @@ spec:
         args: ["-V"]
         timeout: 5s
 ```
+
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2).*
 
 ## Included Resources
 
@@ -79,5 +81,3 @@ In case an error occurs, the error text will be stored  in the error key:
   }
 }
 ```
-
-

@@ -1,6 +1,6 @@
 ---
 title: Regular Expression
-description: Using a regular expression to analyze arbirtrary data
+description: Using a regular expression to analyze arbitrary data
 ---
 
 The regex analyzer is used to run arbitrary regular expressions against data collected in a run, copy or exec collector.
@@ -12,8 +12,8 @@ The regex analyzer is used to run arbitrary regular expressions against data col
 ## Example Analyzer Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Preflight
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: require-hosted-k8s
 spec:
@@ -38,3 +38,5 @@ spec:
           - fail:
               message: High packet loss
 ```
+
+*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2).*
