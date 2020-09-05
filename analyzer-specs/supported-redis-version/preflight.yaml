@@ -13,7 +13,7 @@ spec:
   collectors:
     - redis:
         collectorName: redis
-        uri: rediss://default:password@hostname:6379
+        uri: redis://default:password@hostname:6379
   analyzers:
     - redis:
         checkName: Must be redis 5.x or later

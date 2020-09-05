@@ -28,7 +28,7 @@ spec:
   collectors:
     - redis:
         collectorName: redis
-        uri: rediss://default:password@hostname:6379
+        uri: redis://default:password@hostname:6379
 ```
 
 ## Included resources
