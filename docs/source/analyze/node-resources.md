@@ -125,24 +125,23 @@ spec:
           - pass:
               message: This cluster has a node with enough memory.
 ```
+### Filter by labels
+Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. Labels can be used to organize and to select subsets of objects.
+Troubleshoot allows users to analyze nodes that match one or more labels. For example, to require a certain number of nodes with certain labels as a preflight check, e.g. to run the Mongo Operator. Further filters may be applied to the nodes matching the labels. 
 
 ```yaml
     - nodeResources:
-        checkName: Must have at least 3 nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
+        checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) with label kubernets.io/role=database-primary-replica
         filters:
-          selector: 
-            matchLabel: 
-               beta.kubernetes.io/os: linux
-               kubernetes.io/role: database-primary-replica
+          allocatableMemory: 16Gi
+          cpuCapacity: "5"
+          selector:
+            matchLabels: 
+               kubernetes.io/role=database-primary-replica
         outcomes:
-        - fail:
-            when: "count() < 3"
-            message: This application requires at least 3 nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
-            uri: https://kurl.sh/docs/install-with-kurl/adding-nodes
-        - warn:
-            when: "count() < 5"
-            message: This application recommends at last 5 nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
-            uri: https://kurl.sh/docs/install-with-kurl/adding-nodes
-        - pass:
-            message: This cluster has enough nodes with labels beta.kubernetes.io/os=linux and kubernetes.io/rol=database-primary-replica
+          - fail:
+              when: "count() < 1"
+              message: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) with label kubernets.io/role=database-primary-replica
+          - pass:
+              message: This cluster has a node with enough memory and cpu capacity.
 ```
