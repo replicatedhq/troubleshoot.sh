@@ -2,7 +2,7 @@
 title: "Collectors"
 ---
 
-An OpenAPI Schema for this type is published at: https://github.com/replicatedhq/kots-lint/blob/master/kubernetes-json-schema/v1.17.0-standalone-strict/v1.17.0-standalone-strict/supportbundle-troubleshoot-v1beta2.json.
+An OpenAPI Schema for this type is published at: https://github.com/replicatedhq/kots-lint/blob/master/kubernetes-json-schema/v1.17.0-standalone-strict/supportbundle-troubleshoot-v1beta2.json.
 
 ## Collectors Schema
 
