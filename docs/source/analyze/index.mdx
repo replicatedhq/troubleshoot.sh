@@ -28,7 +28,7 @@ spec:
   analyzers: []
 ```
 
-*Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/). Also note: Previously, Analyzers could be specified in a standalone file, with `Kind: Analyzer`, however this syntax is deprecated in Kots 1.19.0 and not supported at all in the krew plugins.*
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/). Also note: Previously, Analyzers could be specified in a standalone file, with `Kind: Analyzer`, however this syntax is deprecated in Kots 1.19.0 and not supported at all in the krew plugins.
 
 The above files contain all of the necessary scaffolding and structure needed to write analyzers, but don't contain any analyzers. Given this analyzer definition, there will be nothing on the analysis page.
 
