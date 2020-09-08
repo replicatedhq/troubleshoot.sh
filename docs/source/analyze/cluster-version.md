@@ -23,7 +23,7 @@ An example `clusterVersion` analyzer that reports a failure on Kubernetes less t
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
-kind: Analyzer
+kind: Preflight
 metadata:
   name: check-kubernetes-version
 spec:

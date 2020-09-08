@@ -17,7 +17,7 @@ The `clusterResources` collector is automatically added and will always be prese
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
-kind: Analyzer
+kind: Preflight
 metadata:
   name: no-gvisor
 spec:

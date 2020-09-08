@@ -16,7 +16,7 @@ The `clusterInfo` collector supports the [shared collector properties](https://t
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
-kind: Collector
+kind: SupportBundle
 metadata:
   name: sample
 spec:

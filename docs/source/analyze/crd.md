@@ -15,7 +15,7 @@ This analyzer requires exactly 1 parameter:
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
-kind: Analyzer
+kind: Preflight
 metadata:
   name: analyzer-sample
 spec:
