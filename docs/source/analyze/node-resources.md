@@ -127,11 +127,11 @@ spec:
 ```
 ### Filter by labels
 Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. Labels can be used to organize and to select subsets of objects.
-Troubleshoot allows users to analyze nodes that match one or more labels. For example, to require a certain number of nodes with certain labels as a preflight check, e.g. to run the Mongo Operator. Further filters may be applied to the nodes matching the labels. 
+Troubleshoot allows users to analyze nodes that match one or more labels. For example, to require a certain number of nodes with certain labels as a preflight check, e.g. to check if a node has the label ```kubernetes.io/role=database-primary-replica```, indicating that it is running the Mongo Operator. Further filters may be applied to the nodes matching the labels. 
 
 ```yaml
     - nodeResources:
-        checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) with label kubernets.io/role=database-primary-replica
+        checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) running Mongo Operator (label kubernetes.io/role=database-primary-replica expected in node).
         filters:
           allocatableMemory: 16Gi
           cpuCapacity: "5"
@@ -141,7 +141,7 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
         outcomes:
           - fail:
               when: "count() < 1"
-              message: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) with label kubernets.io/role=database-primary-replica
+              message: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) running Mongo Operator.
           - pass:
-              message: This cluster has a node with enough memory and cpu capacity.
+              message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
 ```
