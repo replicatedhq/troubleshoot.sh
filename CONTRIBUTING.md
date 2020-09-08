@@ -15,6 +15,5 @@ To build completely:
 
 ```
 yarn install
-make build
 make publish
 ```

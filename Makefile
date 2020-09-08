@@ -1,6 +1,6 @@
 
 .PHONY: publish
-publish: deps clean build
+publish: deps cleanpublic build
 publish:
 	mkdir -p public
 	cp -r marketing/public/* public
@@ -21,6 +21,10 @@ build:
 .PHONY: deps
 deps:
 	yarn
+
+.PHONY: cleanpublic
+cleanpublic:
+	rm -rf public
 
 .PHONY: clean
 clean:
