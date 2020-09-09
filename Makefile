@@ -12,6 +12,11 @@ publish:
 
 	cp -r static/* public
 
+	mkdir -p .cache/marketing
+	mkdir -p .cache/docs
+	cp -r marketing/.cache/ .cache/marketing
+	cp -r docs/.cache/ .cache/docs
+
 .PHONY: build
 build:
 	make generate-specs
@@ -25,6 +30,10 @@ deps:
 .PHONY: cleanpublic
 cleanpublic:
 	rm -rf public
+	mkdir -p marketing/.cache
+	mkdir -p docs/.cache
+	cp -r .cache/marketing/ marketing/.cache || :
+	cp -r .cache/docs/ docs/.cache || :
 
 .PHONY: clean
 clean:
