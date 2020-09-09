@@ -4,7 +4,7 @@ description: Executing HTTP requests at collection time
 ---
 
 The `http` collector can be used to execute http requests from inside the cluster.
-The response code and response body will be included in the collected data
+The response code and response body will be included in the collected data.
 The http collector can be specified multiple times in a collector spec.
 
 ## Parameters
@@ -76,7 +76,9 @@ spec:
 
 Result of each collector will be stored in the root directory of the support bundle.
 
-### `\<collector name\>.json`
+### `[collector-name].json`
+
+If the `collectorName` field is unset it will be named `result.json`.
 
 Response received from the server will be stored in the `"response"` key of the resulting JSON file:
 

@@ -35,13 +35,13 @@ spec:
 
 ## Included resources
 
-A single JSON file will be added to the support bundle, in the path `/postgres/<collector-name>.json`:
+A single JSON file will be added to the support bundle, in the path `/postgres/[collector-name].json`:
 
 ```json
 {
     "isConnected": false,
     "error": "invalid password",
-    "version": "10.12.0",
+    "version": "10.12",
 }
 ```
 

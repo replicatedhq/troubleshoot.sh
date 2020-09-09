@@ -11,6 +11,8 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `name` (Optional)
 This will be used as part of the output path in the support bundle.
+This field is required if `collectorName` is not set.
+If both are set then `collectorName` will be appended to `name`.
 
 ##### `data` (Required)
 The contents of this field will be written to the file.

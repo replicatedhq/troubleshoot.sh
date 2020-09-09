@@ -28,20 +28,20 @@ spec:
   collectors:
     - mysql:
         collectorName: mysql
-        uri: mysql://user:password
+        uri: 'testuser:password@tcp(mysql:3306)/dbname?tls=false'
 ```
 
 > Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 
-A single JSON file will be added to the support bundle, in the path `/mysql/<collector-name>.json`:
+A single JSON file will be added to the support bundle, in the path `/mysql/[collector-name].json`:
 
 ```json
 {
     "isConnected": false,
     "error": "invalid password",
-    "version": "10.12.0",
+    "version": "5.6.49"
 }
 ```
 

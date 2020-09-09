@@ -35,7 +35,7 @@ spec:
 
 ## Included resources
 
-A single JSON file will be added to the support bundle, in the path `/redis/<collector-name>.json`:
+A single JSON file will be added to the support bundle, in the path `/redis/[collector-name].json`:
 
 ```json
 {

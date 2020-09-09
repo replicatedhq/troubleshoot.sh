@@ -30,7 +30,7 @@ spec:
 
 When the `clusterInfo` collector is executed it will include the following file(s):
 
-### `/cluster-info/cluster-version.json`
+### `/cluster-info/cluster_version.json`
 
 This file contains information describing the Kubernetes cluster version.
 
