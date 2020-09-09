@@ -1,0 +1,10 @@
+---
+title: Maintaining compatibility
+description: 
+---
+
+`troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Users writing preflight checks or support-bundle definitions targetting those releases or later should make use of `v1beta2`. If you are writing checks and bundles solely for the standalone krew plugins, then you can reasonably expect people can easily upgrade to a newer version, so you can still target `v1beta2`. But if you are bundling up your preflight checks and support-bundle definitions into a Kots application, and your users are using older versions, or you have a mix of users on older and newer versions, you need to take care to maintain backwards and forwards compatibility.
+
+Kots 1.19.0+ supports both `troubleshoot.replicated.com/v1beta1` and `troubleshoot.sh/v1beta2`, so the easiest thing to do would be simply keep using `v1beta1` until you are sure your users have all upgraded.
+
+Prior to Kots 1.17.0 (and support bundle plugin version 0.9.37), support bundles were distributed as separate `Analyzer` and `Collector` objects. Kots would take the two objects and combine them into the support bundle. To maintain maximum compatibility, use `troubleshoot.replicated.com/v1beta1` with separate `kind: Analyzer` and `kind: Collector` files. Only remove them once all of your users have upgraded to Kots 1.19.0 or later.

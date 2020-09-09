@@ -14,7 +14,7 @@ The most common use of this analyzer it to detect the existence of a specific ke
 ## Example Analyzer Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: preflight-sample
@@ -37,3 +37,5 @@ spec:
           - pass:
               message: The Postgres URI was found in a secret in the cluster.
 ```
+
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
