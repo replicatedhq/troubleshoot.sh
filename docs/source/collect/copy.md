@@ -37,7 +37,8 @@ metadata:
 spec:
   collectors:
     - copy:
-        selector: app=api
+        selector:
+          - app=api
         namespace: default
         containerPath: /etc/resolv.conf
         containerName: api
@@ -50,6 +51,6 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/copy/\<namespace\>/\<pod-name\>/\<path\>`
+### `/[namespace]/[pod-name]/[container-name]/[path]`
 
 This will contain the pod output (up to 10000 lines).
