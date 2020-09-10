@@ -12,11 +12,11 @@ restore_deps() {
             mv $PKG_CACHE ./$PKG/node_modules
             echo "Restored node modules for $PKG"
         else
-            echo "Unable to restore cache for $PKG"
+            echo "Unable to restore node modules for $PKG"
         fi
     done
 }
 
 restore_deps `jq -r '.workspaces|join(" ")' < package.json`
 
-rm -r "$YARN_CACHE"
+[ -d "$YARN_CACHE" ] && rm -r "$YARN_CACHE"

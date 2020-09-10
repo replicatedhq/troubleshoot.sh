@@ -1,0 +1,10 @@
+#!/bin/sh
+for WORKSPACE in $@
+do
+    if [ -d ".cache/$WORKSPACE" ]; then
+        mv ".cache/$WORKSPACE" "./$WORKSPACE/.cache"
+        echo "Restored cache for $WORKSPACE"
+    else
+        echo "Unable to restore cache for $WORKSPACE"
+    fi
+done
