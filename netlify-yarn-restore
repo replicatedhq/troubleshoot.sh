@@ -1,0 +1,22 @@
+#!/bin/sh
+YARN_CACHE="./node_modules/yarn-cache"
+
+restore_deps() {
+    PACKAGES=$@
+
+    for PKG in $PACKAGES
+    do
+        PKG_CACHE="$YARN_CACHE/$PKG"
+        if [ -d $PKG_CACHE ];
+        then
+            mv $PKG_CACHE ./$PKG/node_modules
+            echo "Restored node modules for $PKG"
+        else
+            echo "Unable to restore cache for $PKG"
+        fi
+    done
+}
+
+restore_deps `jq -r '.workspaces|join(" ")' < package.json`
+
+rm -r "$YARN_CACHE"
