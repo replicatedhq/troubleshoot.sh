@@ -22,8 +22,8 @@ An example `clusterVersion` analyzer that reports a failure on Kubernetes less t
 ## Example Analyzer Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Analyzer
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
 metadata:
   name: check-kubernetes-version
 spec:
@@ -40,3 +40,4 @@ spec:
         - pass:
             message: Your cluster meets the recommended and required versions of Kubernetes.
 ```
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).

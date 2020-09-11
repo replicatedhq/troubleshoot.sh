@@ -69,5 +69,6 @@
 /analyze/statefulset-status                    /docs/analyze/statefulset-status/
 /analyze/storage-class                         /docs/analyze/storage-class/
 
-/spec/* /spec.html                             200
+/preflight/* /preflight.html                   200
+/support-bundle/* /support-bundle.html         200
 /*  /index.html                                200

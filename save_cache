@@ -1,0 +1,17 @@
+#!/bin/sh
+mkdir -p .cache/public
+for WORKSPACE in $@
+do
+    if [ -d "$WORKSPACE/.cache" ]; then
+        mv "$WORKSPACE/.cache" ".cache/$WORKSPACE"
+        echo "Saved cache for $WORKSPACE"
+    else
+        echo "Unable to save cache for $WORKSPACE"
+    fi
+    if [ -d "$WORKSPACE/public" ]; then
+        mv "$WORKSPACE/public" ".cache/public/$WORKSPACE"
+        echo "Saved public cache for $WORKSPACE"
+    else
+        echo "Unable to save public cache for $WORKSPACE"
+    fi
+done

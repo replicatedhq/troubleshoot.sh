@@ -6,7 +6,7 @@ Redactors are YAML specifications that define which data to remove when generati
 Redactors are currently an alpha feature.
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Redactor
 metadata:
   name: my-redactor-name
@@ -28,10 +28,12 @@ spec:
       - "abc.xyz.*" # redact all items in the array at key xyz within key abc in yaml documents
 ```
 
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
+
 Each redactor consists of a set of files which it can apply to, a set of string literals to replace, a set of regex replacements to be run, and a list of yaml paths to redact.
 Any of the four can be omitted.
 
-This is divided into two subobjects - `fileSelector` (containing `file` or `files`) and `removals` (containing `values`, `regex` and/or `yamlPath`).
+This is divided into two sub-objects - `fileSelector` (containing `file` or `files`) and `removals` (containing `values`, `regex` and/or `yamlPath`).
 `fileSelector` determines what files the redactor applies to, and `removals` determines what it removes.
 
 ### `file` and `files`
@@ -129,7 +131,7 @@ xyz:
 ```
 
 Files that fail to parse as yaml, or that do not contain any matches, will not be modified by this redactor.
-Files that _do_ contain matches will be rerendered, which will strip comments and custom formatting.
+Files that _do_ contain matches will be re-rendered, which will strip comments and custom formatting.
 
 Multidoc yaml is not yet fully supported.
 Only the first document is checked for matches, and if a match is found, later documents are discarded entirely.

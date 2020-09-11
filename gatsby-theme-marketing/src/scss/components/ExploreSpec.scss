@@ -4,30 +4,20 @@
   padding-left: 0;
 
   .Info--item {
-    width: 40%;
-    margin-bottom: 30px;
+    max-width: 332px;
+    min-width: 332px;
+    margin-bottom: 40px;
     padding: 10px;
-    margin-right: 20px;
-
-    &:nth-child(2n) {
-      margin-right: 0;
-    }
-
-    &:hover {
-      cursor: pointer;
-      background-color: #F8F8F8;
-    }
+    margin-right: 40px;
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(22, 49, 102, 0.2);
   }
 
   .InfoMobile--item {
-    width: 100%;
     margin-bottom: 30px;
     padding: 10px;
-
-    &:hover {
-      cursor: pointer;
-      background-color: #F8F8F8;
-    }
+    background: #FFFFFF;
+    box-shadow: 0px 0px 4px rgba(22, 49, 102, 0.2);
   }
 }
 
@@ -63,11 +53,19 @@
   margin-bottom: 30px;
   box-sizing: border-box;
   box-shadow: 0px 0px 4px rgba(22, 49, 102, 0.25);
+
+  .example-spec-block {
+    padding: 20px 30px 20px 20px;
+    background-color: #ffffff;
+    position: relative;
+    cursor: pointer;
+    width: 300px;
+  }
 }
 
 .category-icon {
-  height: 50px;
-  width: 50px;
+  height: 40px;
+  width: 40px;
   border-radius: 50%;
   background-position: center;
   background-size: contain;
@@ -134,5 +132,16 @@
     background-position: -24px 0px;
     width: 22px;
     height: 22px;
+  }
+}
+
+.Link-wrapper {
+  background: #F0F3FA;
+  color: #326DE6;
+  padding: 6px 10px 6px 10px;
+  width: 50%;
+
+  &:hover {
+    background: #D9E1F5;
   }
 }

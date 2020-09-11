@@ -1,9 +1,10 @@
 import * as React from "react";
-import { Link, navigate } from "gatsby";
+import { navigate } from "gatsby";
 import isEmpty from "lodash/isEmpty";
 
-import ExploreInfo from "./shared/ExploreInfo";
+import ExploreInfo from "./ExploreInfo";
 import MobileExploreFilters from "./MobileExploreFilters";
+import ExploreCard from "./ExploreCard";
 import { titleize } from "../utils/utilities";
 
 import "../scss/components/ExploreSpec.scss";
@@ -30,8 +31,8 @@ class ExploreSpec extends React.Component {
     if (!e.target.classList.contains("icon")) {
       const doesTagAlreadyExist = this.state.tagsToShow.find(stateTag => stateTag === tag);
       if (!doesTagAlreadyExist) {
-        this.setState({ 
-          tagsToShow: [...this.state.tagsToShow, tag], 
+        this.setState({
+          tagsToShow: [...this.state.tagsToShow, tag],
           categoryToShow: ""
         });
       }
@@ -59,22 +60,22 @@ class ExploreSpec extends React.Component {
   componentDidUpdate(lastProps, lastState) {
     if (this.state.tagsToShow !== lastState.tagsToShow && this.state.tagsToShow) {
       if (this.state.tagsToShow.length > 1) {
-        this.setState({ queryStringTag: this.state.tagsToShow.toString().split(",").join("&tag=")}, () => {
+        this.setState({ queryStringTag: this.state.tagsToShow.toString().split(",").join("&tag=") }, () => {
           navigate(`/explore?tag=${this.state.queryStringTag}`)
         })
       } else if (isEmpty(this.state.categoryToShow)) {
-        this.setState({ queryStringTag: this.state.tagsToShow.toString()}, () => {
+        this.setState({ queryStringTag: this.state.tagsToShow.toString() }, () => {
           if (this.state.queryStringTag === "") {
             navigate("/explore")
           } else {
-            navigate(`/explore?tag=${this.state.queryStringTag}`)
+            navigate(`/explore?tag=${this.state.queryStringTag}`, { replace: true })
           }
         })
       }
     }
 
-    if(this.state.categoryToShow !== lastState.categoryToShow && this.state.categoryToShow) {
-      this.setState({ queryStringCategory: this.state.categoryToShow}, () => {
+    if (this.state.categoryToShow !== lastState.categoryToShow && this.state.categoryToShow) {
+      this.setState({ queryStringCategory: this.state.categoryToShow }, () => {
         navigate(`/explore?category=${this.state.queryStringCategory}`)
       })
     }
@@ -145,21 +146,15 @@ class ExploreSpec extends React.Component {
       }
     } else if (filteredCategoriesToShow?.length > 0) {
       return (
-        <ExploreInfo name={titleize(categoryToShow.replace(/_/gi, " "))} specs={filteredCategoriesToShow} isMobile={isMobile} />
+        <ExploreInfo name={titleize(categoryToShow.replace(/_/gi, " "))} specs={filteredCategoriesToShow} isMobile={isMobile} infoKey={`${categoryToShow}`} />
       )
     } else if (tagsToShow.length > 0) {
       return (
-      <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
-        {filteredTagsToShow?.map((spec, i) => (
-          <Link to={`/spec/${spec.slug}`} className={`${isMobile ? "InfoMobile--item" : "Info--item"}  flex alignItems--center`} key={`${spec.id}-${i}`}>
-            <span className={`category-icon`} style={{ backgroundImage: `url("${spec.iconUri}")` }}> </span>
-            <div className="flex-column u-marginLeft--12 Info--wrapper--info">
-              <p className="u-fontSize--largest u-color--biscay u-fontWeight--bold u-lineHeight--more">{spec.title}</p>
-              <span className="u-fontSize--small u-color--tundora body-copy u-marginTop--8">{spec.description}</span>
-            </div>
-          </Link>
-        ))}
-      </div>
+        <div className="Info--wrapper flex flexWrap--wrap u-marginTop--30">
+          {filteredTagsToShow?.map((spec, i) => (
+            <ExploreCard name={titleize(spec.category.replace(/_/gi, " "))} spec={spec} i={i} isMobile={isMobile} key={`${spec.category.name}-${i}`} />
+          ))}
+        </div>
       )
     } else {
       return (
@@ -174,7 +169,7 @@ class ExploreSpec extends React.Component {
 
 
   render() {
-    const { categoryToShow, showTagsList, tagsToShow, specJson, query, queryStringTag } = this.state;
+    const { categoryToShow, showTagsList, tagsToShow, specJson, query } = this.state;
     const { isMobile } = this.props;
 
     const filteredTagsToShow = specJson?.specs?.filter(spec => tagsToShow?.find(tag => spec.tags.includes(tag)) && this.searchInSpecs(spec, query));
@@ -184,7 +179,7 @@ class ExploreSpec extends React.Component {
 
     return (
       <div className="u-width--full u-overflow--auto flex-column flex1">
-        <div className="section gradient border justifyContent--center alignItems--center" style={{marginTop: "120px"}}>
+        <div className="section gradient border justifyContent--center alignItems--center" style={{ marginTop: "120px" }}>
           <div className="container">
             <p className="u-fontSize--jumbo u-fontWeight--bold u-color--biscay u-lineHeight--more">Expand pre and post-installation diagnostic capabilities</p>
             <p className="u-fontSize--large u-color--dustyGray u-lineHeight--normal u-marginBottom--20 u-marginTop--small body-copy">Explore example Collectors and Analyzers. All of these examples are editable and include a command for you to securely try in your cluster.</p>

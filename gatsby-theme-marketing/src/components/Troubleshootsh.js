@@ -113,7 +113,7 @@ class Troubleshootsh extends React.Component {
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">A visual report is generated to highlight where the environment doesn’t meet your&nbsp;requirements.</p>
-                    <a target="_blank" rel="noopener noreferrer" href="https://troubleshoot.sh/docs/preflight/node-checks/#executing-the-preflights" className="u-fontSize--small link">Learn more about reporting</a>
+                    <Link to={"/docs/preflight/node-checks/#executing-the-preflights"} className="u-fontSize--small link">Learn more about reporting</Link>
                   </div>
                 </div>
               </div>
@@ -123,7 +123,7 @@ class Troubleshootsh extends React.Component {
                   <div className="u-flexTabletReflow u-marginTop--50 justifyContent--center">
                     {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
                       <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
-                        <Link to={`/spec/${item.slug}`}>
+                        <Link to={`/preflight/${item.slug}`}>
                           <div className="example-spec-block">
                             <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">{item.title}</p>
                             <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">{item.description}</p>
@@ -184,7 +184,7 @@ class Troubleshootsh extends React.Component {
                   <div className="u-flexTabletReflow u-marginTop--50 justifyContent--center">
                     {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
                       <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
-                        <Link to={`/spec/${item.slug}`}>
+                        <Link to={`/support-bundle/${item.slug}`}>
                           <div className="example-spec-block">
                             <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">{item.title}</p>
                             <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">{item.description}</p>

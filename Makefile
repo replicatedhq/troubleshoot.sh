@@ -1,16 +1,17 @@
 
 .PHONY: publish
-publish: deps clean build
+publish: deps prep build
 publish:
 	mkdir -p public
 	cp -r marketing/public/* public
-	rm -rf marketing/social-cards
 
 	mkdir -p public/docs
 	cp -r docs/public/* public/docs
 	rm -rf public/docs/social-cards
 
 	cp -r static/* public
+
+	./save_cache marketing docs
 
 .PHONY: build
 build:
@@ -21,6 +22,11 @@ build:
 .PHONY: deps
 deps:
 	yarn
+
+.PHONY: prep
+prep:
+	rm -rf public
+	./restore_cache marketing docs
 
 .PHONY: clean
 clean:
