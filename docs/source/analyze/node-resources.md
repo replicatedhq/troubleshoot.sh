@@ -126,6 +126,9 @@ spec:
               message: This cluster has a node with enough memory.
 ```
 ### Filter by labels
+
+> Filtering by labels was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
+
 Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. Labels can be used to organize and to select subsets of objects.
 Troubleshoot allows users to analyze nodes that match one or more labels. For example, to require a certain number of nodes with certain labels as a preflight check, e.g. to check if a node has the label ```kubernetes.io/role=database-primary-replica```, indicating that it is running the Mongo Operator. Further filters may be applied to the nodes matching the labels. 
 
