@@ -1,10 +1,11 @@
 ---
-title: Copy Files
+title: Copy Files and Folders
 description: A description of the copy collector to copy files out of pods
 ---
+> The ability to copy folders was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
-The `copy` collector can be used to copy files from pods and include the contents in the collected data.
-This collector can be included multiple times to copy different files from different pods.
+The `copy` collector can be used to copy files or entire folders from pods and include the contents in the collected data.
+This collector can be included multiple times to copy different files or folders from different pods.
 
 ## Parameters
 
@@ -36,13 +37,19 @@ metadata:
   name: sample
 spec:
   collectors:
+  #Copies resolv.conf file
     - copy:
         selector:
           - app=api
         namespace: default
         containerPath: /etc/resolv.conf
         containerName: api
-
+  #Copies htdocs folder
+    - copy:
+        selector: 
+          - app=myhttpd
+        namespace: default
+        containerPath: /usr/local/apache2/htdocs
 ```
 
 > Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
@@ -53,4 +60,4 @@ When this collector is executed, it will include the following files in a suppor
 
 ### `/[namespace]/[pod-name]/[container-name]/[path]`
 
-This will contain the pod output (up to 10000 lines).
+This will contain the pod's folder or file specified in the collector
