@@ -134,7 +134,7 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
 
 ```yaml
     - nodeResources:
-        checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) running Mongo Operator (label kubernetes.io/role=database-primary-replica expected in node).
+        checkName: Must have Mongo running
         filters:
           allocatableMemory: 16Gi
           cpuCapacity: "5"
