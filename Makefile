@@ -11,7 +11,6 @@ publish:
 
 	cp -r static/* public
 
-	mkdir -p .cache
 	./save_cache marketing docs
 
 .PHONY: build

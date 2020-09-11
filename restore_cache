@@ -7,4 +7,10 @@ do
     else
         echo "Unable to restore cache for $WORKSPACE"
     fi
+    if [ -d ".cache/public/$WORKSPACE" ]; then
+        mv ".cache/public/$WORKSPACE" "$WORKSPACE/public" 
+        echo "Restored public cache for $WORKSPACE"
+    else
+        echo "Unable to restore public cache for $WORKSPACE"
+    fi
 done
