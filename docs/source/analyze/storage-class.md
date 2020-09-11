@@ -5,14 +5,16 @@ description: Analyzer to check for the presence of a storage class in the cluste
 
 ### Use Cases
 
+> The ability to check for a default storage class was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
+
 There are two use cases for the Storage Class Analyzer:
 
 - Check for the presence of a specific storage class, in which case ```storageClassName``` must be provided (Example 1)
-- Check if there is a Storage Class set as default. The analyzer checks if there is any storage with the ```isDefaultStorageClass``` field set to true. (Examples 2 and 3)
+- Check if there is a storage class set as default. The analyzer checks if there is any storage with the ```isDefaultStorageClass``` field set to true. (Examples 2 and 3)
 
-In the second case, all arguments are optional. If none are provided, default messages will indicate the user that no default Storage Class was found.
+In the second case, all arguments are optional. If none are provided, default messages will indicate that no default Storage Class was found.
 
-#### Example 1: Check for a specific Storage Class
+#### Example 1: Check for a specific storage class
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
@@ -44,7 +46,7 @@ spec:
         checkName: Check for default storage class
         outcomes:
           - fail:
-              message: No Storage Class set as default found
+              message: No default storage class found
           - pass:
               message: Default storage class found
 ```
