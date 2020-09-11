@@ -348,6 +348,9 @@ The below is a partial example only. Actual results will be significantly longer
 ```
 
 ### `/cluster-resources/events/\<namespace\>.json`
+
+> Kubernetes events collection was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
+
 Each file contains information about Kubernetes events in each namespace of the cluster.
 
 The below is a partial example only. Actual results will be significantly longer.
