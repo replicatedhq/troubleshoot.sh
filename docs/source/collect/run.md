@@ -36,7 +36,10 @@ This cannot be greater than 30 seconds (30s) and if not specified, the default i
 A valid, string representation of the pull policy to use when delivering the image the nodes.
 If not specified, this will be set to IfNotPresent.
 
-#### ```imagePullSecret``` (Optional) 
+#### `imagePullSecret` (Optional) 
+
+> `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
+
 This field accepts either opaque secrets, or secrets of type dockerconfigjson (path to a config.json file or base64 encoded config.json file).
 See example for use cases.
 
@@ -58,11 +61,11 @@ spec:
         imagePullPolicy: IfNotPresent
 
 ```
-## Examples using ```imagePullSecret```
+## Examples using `imagePullSecret`
 
 ### Using dockerconfigjson secrets
 
-In order to use dockerconfigjson secrets, ```type: kubernetes.io/dockerconfigjson``` must be added to the specs. It only accepts one argument, ```.dockerconfigjson```, in data field. 
+In order to use dockerconfigjson secrets, `type: kubernetes.io/dockerconfigjson` must be added to the specs. It only accepts one argument, `.dockerconfigjson`, in data field. 
 Either a valid path to a docker config.json file, or a base64 encoded config.json file must be provided. An option to encode the file in macOS or Linux based systems is running the following command in the console (if base64 is installed): 
 
 ```shell
