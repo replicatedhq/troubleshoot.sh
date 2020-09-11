@@ -26,6 +26,7 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 | `podAllocatable` | The number of pods that can be stated on the node after Kubernetes is running |
 | `ephemeralStorageCapacity` | The amount of ephemeral storage on the node |
 | `ephemeralStorageAllocatable` | The amount of ephemeral storage on the node after Kubernetes is running |
+| `matchLabel` | Specific selector label or labels the node must contain in its metadata |
 
 ## Outcomes
 
@@ -125,4 +126,27 @@ spec:
               message: This application requires at least 1 node with 16GB available memory
           - pass:
               message: This cluster has a node with enough memory.
+```
+### Filter by labels
+
+> Filtering by labels was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
+
+Labels are intended to be used to specify identifying attributes of objects that are meaningful and relevant to users, but do not directly imply semantics to the core system. Labels can be used to organize and to select subsets of objects.
+Troubleshoot allows users to analyze nodes that match one or more labels. For example, to require a certain number of nodes with certain labels as a preflight check. Multiple filters may be specified and all are required to match for the node to match.
+
+```yaml
+    - nodeResources:
+        checkName: Must have Mongo running
+        filters:
+          allocatableMemory: 16Gi
+          cpuCapacity: "5"
+          selector:
+            matchLabels: 
+               kubernetes.io/role=database-primary-replica
+        outcomes:
+          - fail:
+              when: "count() < 1"
+              message: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) running Mongo Operator.
+          - pass:
+              message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
 ```
