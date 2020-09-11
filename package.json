@@ -6,6 +6,7 @@
     "marketing",
     "docs"
   ],
+  "version": "0.0.0",
   "scripts": {
     "yarn:cache": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-cache || :",
     "yarn:restore": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-restore || :",

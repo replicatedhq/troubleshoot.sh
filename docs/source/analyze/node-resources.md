@@ -21,7 +21,7 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 | `cpuCapacity` | The amount of CPU available to the node |
 | `cpuAllocatable` | The amount of allocatable CPU after the Kubernetes components have been started |
 | `memoryCapacity` | The amount of memory available to the node |
-| `memoryAllocatable` | The amount of allocatable Memmory after the Kubernetes compenents have been stated |
+| `memoryAllocatable` | The amount of allocatable Memory after the Kubernetes components have been stated |
 | `podCapacity` | The number of pods that can be started on the node |
 | `podAllocatable` | The number of pods that can be stated on the node after Kubernetes is running |
 | `ephemeralStorageCapacity` | The amount of ephemeral storage on the node |
@@ -44,7 +44,7 @@ The conditional in the `when` value supports the following:
 ## Example Analyzer Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: sample
@@ -62,6 +62,8 @@ spec:
           - pass:
               message: This cluster has enough nodes.
 ```
+
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ```yaml
     - nodeResources:

@@ -3,7 +3,7 @@ title: "Cluster Resources"
 description: "Cluster Resources"
 ---
 
-The `clusterResources` collector will enumerate all resources of known types that are deployed the to cluster.
+The `clusterResources` collector will enumerate all resources of known types that are deployed to the cluster.
 This will attempt to collect information from all namespaces, but if RBAC policies prevent the collector from accessing a namespace or resource, it will still include the resources that are accessible.
 Any RBAC policy errors will be included in the collected output.
 
@@ -18,14 +18,16 @@ The `clusterInfo` collector supports the [shared collector properties](https://t
 ## Example Collector Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
   collectors:
     - clusterResources: {}
 ```
+
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 
@@ -228,23 +230,23 @@ This file contains information about all installed CRDs in the cluster.
 ]
 ```
 
-### `/cluster-resources/deployments/\<namespace\>/\<name\>.json`
+### `/cluster-resources/deployments/[namespace]/[name].json`
 
 This file contains information about all deployments, separated by namespace.
 
-### `/cluster-resources/statefulsets/\<namespace\>/\<name\>.json`
+### `/cluster-resources/statefulsets/[namespace]/[name].json`
 
 This file contains information about all statefulsets, separated by namespace.
 
-### `/cluster-resources/services/\<namespace\>/\<name\>.json`
+### `/cluster-resources/services/[namespace]/[name].json`
 
 This file contains information about all services, separated by namespace.
 
-### `/cluster-resources/pods/\<namespace\>/\<name\>.json`
+### `/cluster-resources/pods/[namespace]/[name].json`
 
 This file contains information about all pods, separated by namespace.
 
-### `/cluster-resources/ingress/\<namespace\>/\<name\>.json`
+### `/cluster-resources/ingress/[namespace]/[name].json`
 
 This file contains information about all ingresses, separated by namespace.
 

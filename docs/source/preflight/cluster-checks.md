@@ -1,6 +1,6 @@
 ---
 title: Add Cluster Checks
-description: Learn how to create prelight checks by creating your first check
+description: Learn how to create preflight checks by creating your first check
 ---
 
 In this step, we'll add a few basic preflight checks to:
@@ -15,13 +15,15 @@ These checks are designed to show how easy it is to add new preflight checks to 
 To start, create a new file on your computer named `preflight.yaml` and paste the following content into it:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: preflight-tutorial
 spec:
   analyzers: []
 ```
+
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 We aren't going to deploy this file to our cluster.
 Once you've saved this file, let's run it using the `kubectl` plugin:
@@ -47,7 +49,7 @@ For this example, let's assume that our application requires Kubernetes 1.16.0 o
 Edit the `./preflight.yaml` and add a new analyzer:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: preflight-tutorial
@@ -57,7 +59,7 @@ spec:
         outcomes:
           - fail:
               when: "< 1.16.0"
-              message: The application requires at Kubernetes 1.16.0 or later, and recommends 1.18.0.
+              message: The application requires at least Kubernetes 1.16.0, and recommends 1.18.0.
               uri: https://kubernetes.io
           - warn:
               when: "< 1.18.0"
@@ -71,12 +73,12 @@ Let's review the changes to this YAML:
 
 **Line 7**: We are adding a new `clusterVersion` analyzer to be evaluated when Preflight Checks are running.
 This key tells the Preflight application how to interpret and parse the `outcomes` below.
-The documentation for `clusterVersion` is in the [Analyze documentation](https://troubleshoot.sh/analyze/cluster-version/).
+The documentation for `clusterVersion` is in the [Analyze documentation](/analyze/cluster-version/).
 
 **Line 8**: We are defining all possible outcomes for this analysis.
 An outcome is the result of a preflight analysis.
 Outcomes are evaluated in order, much like a switch statement is evaluated in code.
-If an outcome matches, then exceute of this preflight terminates with the result being the matching outcome.
+If an outcome matches, then execution of this preflight terminates with the result being the matching outcome.
 
 **Lines 9-12**: We are defining an outcome where where the message, icon and colors will be "fail".
 The `clusterVersion` analyzer accepts semver ranges for the `when` clause, and we are declaring that all versions of Kubernetes less than 1.16.0 will match this outcome.
@@ -94,7 +96,7 @@ Just like before, save and execute these preflight checks with:
 kubectl preflight ./preflight.yaml
 ```
 
-It will take a few seconds for the Prefight Checks to collect the required data, and then you'll see a screen similar to below.
+It will take a few seconds for the Preflight Checks to collect the required data, and then you'll see a screen similar to below.
 Note that you might see a failure, warning or pass message, depending on the version of Kubernetes you are running.
 
 <img src="../images/first-preflight.png" style="max-width: 700px" >
@@ -112,7 +114,7 @@ Any other distribution is supported on a best-effort basis and not validated.
 To add this check, open that `./preflight.yaml` again and edit the contents to match:
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
+apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: preflight-tutorial
@@ -122,7 +124,7 @@ spec:
         outcomes:
           - fail:
               when: "< 1.16.0"
-              message: The application requires at Kubernetes 1.16.0 or later, and recommends 1.18.0.
+              message: The application requires at least Kubernetes 1.16.0, and recommends 1.18.0.
               uri: https://kubernetes.io
           - warn:
               when: "< 1.18.0"
@@ -151,8 +153,8 @@ spec:
               message: The Kubernetes platform is not validated, but there are no known compatibility issues.
 ```
 
-Reviewing this YAML, we've added a additional analyzer in the `analyzers` key.
-This analyzer uses the built in [distribution](https://troubleshoot.sh/analyze/distribution/) check that has the capabilities of detecting where the cluster is located.
+Reviewing this YAML, we've added an additional analyzer in the `analyzers` key.
+This analyzer uses the built in [distribution](/analyze/distribution/) check that has the capabilities of detecting where the cluster is located.
 
 Once again, save and run this file with:
 

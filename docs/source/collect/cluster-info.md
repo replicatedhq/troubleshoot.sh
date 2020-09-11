@@ -15,8 +15,8 @@ The `clusterInfo` collector supports the [shared collector properties](https://t
 ## Example Collector Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
@@ -24,11 +24,13 @@ spec:
     - clusterInfo: {}
 ```
 
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
+
 ## Included resources
 
 When the `clusterInfo` collector is executed it will include the following file(s):
 
-### `/cluster-info/cluster-version.json`
+### `/cluster-info/cluster_version.json`
 
 This file contains information describing the Kubernetes cluster version.
 

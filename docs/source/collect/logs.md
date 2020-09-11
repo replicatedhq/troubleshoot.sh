@@ -41,8 +41,8 @@ The number of lines to include, starting from the newest.
 ## Example Collector Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
@@ -61,11 +61,22 @@ spec:
 
 ```
 
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
+
 ## Included resources
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/logs/\<namespace\>/\<pod-name\>.txt`
+### `/[name]/[pod-name]/[container-name].log
+
 This will be created for each pod that matches the selector.
 
+If any errors are encounted, the following file will be created:
 
+### `/[name]/[pod-name]/[container-name]-errors.json`
+
+```json
+[
+  "failed to get log stream: container node is not valid for pod api-6fd69d8f78-tmtf7"
+]
+```

@@ -11,6 +11,8 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `name` (Optional)
 This will be used as part of the output path in the support bundle.
+This field is required if `collectorName` is not set.
+If both are set then `collectorName` will be appended to `name`.
 
 ##### `data` (Required)
 The contents of this field will be written to the file.
@@ -18,8 +20,8 @@ The contents of this field will be written to the file.
 ## Example Collector Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
@@ -31,6 +33,8 @@ spec:
 
           data can be used here
 ```
+
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 

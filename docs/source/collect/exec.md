@@ -10,12 +10,11 @@ This spec can be included multiple times, each defining different commands and/o
 
 ## Parameters
 
-In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `exec` collector accepts the following parameters:
+In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `exec` collector accepts the following parameters:
 
 ##### `name` (Optional)
 The name of the collector.
-This will be map to the path that the output is written to in the support bundle.
-If name is not provided, it will default to a calculated and deterministic value that is made from the label selector and the command.
+This will be the path prefix that the output is written to in the support bundle.
 
 ##### `selector` (Required)
 The selector to use when locating the pod.
@@ -38,8 +37,8 @@ This cannot be greater than 20 seconds (20s) and if not specified, the default i
 ## Example Collector Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
@@ -54,30 +53,30 @@ spec:
         timeout: 5s
 ```
 
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
+
 ## Included Resources
 
-When this collector is executed, it will include the following files in a support bundle:
+When this collector is executed, it will include the following file in a support bundle:
 
-### `/exec/\<namespace\>/\<pod name\>/\<collector name\>.json`
+### `/[name]/[namespace]/[pod-name]/[collector-name]-stdout.txt`
 
-The result of running a command in a container may produce data in `stdout`, `stderr`, as well as the execution `error` if there was one, including the process exit code.
-
-```json
-{
-  "stdout": "mysql  Ver 14.14 Distrib 5.6.44, for Linux (x86_64) using  EditLine wrapper\n"
-}
+```
+mysql  Ver 14.14 Distrib 5.6.44, for Linux (x86_64) using  EditLine wrapper
 ```
 
-In case an error occurs, the error text will be stored  in the error key:
+The result of running a command in a container may produce the following files if there was an error:
 
-```json
-{
-  "stderr": "Warning: Using a password on the command line interface can be insecure.\nERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'process list' at line 1\n",
-  "error": {
-    "Err": {},
-    "Code": 1
-  }
-}
+### `/[name]/[namespace]/[pod-name]/[collector-name]-stderr.txt`
+
+```
+Warning: Using a password on the command line interface can be insecure.\nERROR 1064 (42000) at line 1: You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'process list' at line 1
 ```
 
-
+### `/[name]/[namespace]/[pod-name]/[collector-name]-errors.json`
+ 
+```json
+[
+  "command terminated with exit code 1"
+]
+```

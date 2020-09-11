@@ -20,8 +20,8 @@ The connection URI to use when connecting to the PostgreSQL server.
 ## Example Collector Definition
 
 ```yaml
-apiVersion: troubleshoot.replicated.com/v1beta1
-kind: Collector
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
 metadata:
   name: sample
 spec:
@@ -31,15 +31,17 @@ spec:
         uri: postgresql://user:password@hostname:5432/defaultdb?sslmode=require
 ```
 
+> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
+
 ## Included resources
 
-A single JSON file will be added to the support bundle, in the path `/postgres/<collector-name>.json`:
+A single JSON file will be added to the support bundle, in the path `/postgres/[collector-name].json`:
 
 ```json
 {
     "isConnected": false,
     "error": "invalid password",
-    "version": "10.12.0",
+    "version": "10.12",
 }
 ```
 
