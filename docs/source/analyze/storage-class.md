@@ -28,7 +28,7 @@ spec:
         storageClassName: "microk8s-hostpath"
         outcomes:
           - fail:
-              message: The microk8s storage class thing was not found
+              message: The microk8s storage class was not found
           - pass:
               message: All good on storage classes
 ```

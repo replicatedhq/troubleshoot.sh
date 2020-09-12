@@ -21,9 +21,9 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 | `cpuCapacity` | The amount of CPU available to the node |
 | `cpuAllocatable` | The amount of allocatable CPU after the Kubernetes components have been started |
 | `memoryCapacity` | The amount of memory available to the node |
-| `memoryAllocatable` | The amount of allocatable Memory after the Kubernetes components have been stated |
+| `memoryAllocatable` | The amount of allocatable Memory after the Kubernetes components have been started |
 | `podCapacity` | The number of pods that can be started on the node |
-| `podAllocatable` | The number of pods that can be stated on the node after Kubernetes is running |
+| `podAllocatable` | The number of pods that can be started on the node after Kubernetes is running |
 | `ephemeralStorageCapacity` | The amount of ephemeral storage on the node |
 | `ephemeralStorageAllocatable` | The amount of ephemeral storage on the node after Kubernetes is running |
 | `matchLabel` | Specific selector label or labels the node must contain in its metadata |
@@ -37,7 +37,7 @@ The conditional in the `when` value supports the following:
 
 | Aggregate | Description |
 |-----------|-------------|
-| `count` (default if not specified) | The number of nodes that match the filter |
+| `count`( ) | The number of nodes that match the filter (default if not specified) |
 | `sum(filterName)` | Sum of filterName in all nodes that match any filter specified |
 | `min(filterName)` | Min of filterName in all nodes that match any filter specified |
 | `max(filterName)` | Max of filterName in all nodes that match any filter specified |
@@ -93,12 +93,12 @@ spec:
         checkName: Nodes that have 6 cores have at least 16 GB of memory also
         filters:
           cpuCapacity: "6"
-          outcomes:
-            - fail:
-                when: "min(memoryCapacity) < 16Gi"
-                message: All nodes that have 6 or more cores must have at least 16 GB of memory
-            - pass:
-                message:  All nodes with 6 or more cores have at least 16 GB of memory
+        outcomes:
+          - fail:
+              when: "min(memoryCapacity) < 16Gi"
+              message: All nodes that have 6 or more cores must have at least 16 GB of memory
+          - pass:
+              message:  All nodes with 6 or more cores have at least 16 GB of memory
 ```
 
 ```yaml
@@ -111,7 +111,7 @@ spec:
               when: "count() < 3"
               message: This application requires at least 3 nodes with 6 cores each
           - pass:
-              message: This cluster has enough nodes with enough codes
+              message: This cluster has enough nodes with enough cores
 ```
 
 ```yaml
@@ -123,9 +123,9 @@ spec:
         outcomes:
           - fail:
               when: "count() < 1"
-              message: This application requires at least 1 node with 16GB available memory
+              message: This application requires at least 1 node with 16GB available memory and 5 cpu cores
           - pass:
-              message: This cluster has a node with enough memory.
+              message: This cluster has a node with enough memory and cpu cores
 ```
 ### Filter by labels
 

@@ -11,7 +11,7 @@ outcomes:
       message: The message to display below the title
       title: The title of the analyzer card
       uri: A link to display in the Read More icon
-      when: A conditional to use when deciding is this analysis outcome is truthy
+      when: A conditional to use when deciding if this analysis outcome is truthy
 ```
 
 The `outcomes` attribute in an analyzer is an array of outcomes, each under a field that identifies if it's a `pass`, `warn` or `fail` result.
@@ -20,7 +20,7 @@ Outcomes are evaluated in order until one returns true for the analyzer. Once an
 
 ## Title
 
-The title attribute contains a title to display in the analyzer card on the UI. This should be a short message, it's limited to one line. If the text provided extends over 1 line, it will be truncated with an ellipsis. The title attribute does not support markdown, it's rendered as a header element. Each analyzer contains a default title, if one is not provided in the spec.
+The title attribute contains a title to display in the analyzer card on the UI. This should be a short message since it's limited to one line. If the text provided extends over 1 line, it will be truncated with an ellipsis. The title attribute does not support markdown, it's rendered as a header element. Each analyzer contains a default title, if one is not provided in the spec.
 
 ## Message
 
