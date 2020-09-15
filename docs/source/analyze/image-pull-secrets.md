@@ -25,7 +25,7 @@ spec:
         registryName: quay.io
         outcomes:
           - fail:
-              message: You won't be able to pull from Quay
+              message: Did not find credentials to pull from Quay
           - pass:
               message: Found credentials to pull from Quay
 ```
