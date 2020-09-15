@@ -27,7 +27,7 @@ spec:
           - fail:
               message: You won't be able to pull from Quay
           - pass:
-              message: Images can probably be pulled from Quay
+              message: Found credentials to pull from Quay
 ```
 
 > Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
