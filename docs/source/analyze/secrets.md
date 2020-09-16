@@ -7,7 +7,7 @@ The secret analyzer is a available to require or warn if a specific Kubernetes s
 The `when` attribute is not supported in the outcomes of this analyzer.
 
 Collectors do not automatically include secrets because these often contain sensitive information.
-The [secret collector](https://troubleshoot.io), can be included in a set of collectors to include data about the secret.
+The [secret collector](https://troubleshoot.sh/docs/collect/secret/), can be included in a set of collectors to include data about the secret.
 It's not recommend, and therefore not default, to include the value of secrets.
 The most common use of this analyzer it to detect the existence of a specific key in a specific secret.
 
