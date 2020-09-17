@@ -3,7 +3,6 @@ title: "Redactors"
 ---
 
 Redactors are YAML specifications that define which data to remove when generating a support bundle.
-Redactors are currently an alpha feature.
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
