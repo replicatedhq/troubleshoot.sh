@@ -3,7 +3,7 @@ title: Ingress
 description: Analyzing the what is this
 ---
 
-Ingress Analyzer checks if a given Ingress is listed in the cluster resources in a given namespace
+Ingress Analyzer checks if a given Ingress is listed within the cluster resources in a given namespace.
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
