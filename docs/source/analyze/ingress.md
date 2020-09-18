@@ -3,6 +3,8 @@ title: Ingress
 description: Analyzing the what is this
 ---
 
+Ingress Analyzer checks if a given Ingress is listed in the cluster resources in a given namespace
+
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
@@ -15,9 +17,9 @@ spec:
         ingressName: connect-to-me
         outcomes:
           - fail:
-              message: The ingress isn't ingressing
+              message: The ingress isn't listed in  the cluster
           - pass:
-              message: All systems ok on ingress
+              message: Ingress rule found
 ```
 
 > Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
