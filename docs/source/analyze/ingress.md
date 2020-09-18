@@ -1,6 +1,6 @@
 ---
 title: Ingress
-description: Analyzing the what is this
+description: Analyzer to check for the presence of Ingress rules
 ---
 
 Ingress Analyzer checks if a given Ingress is listed within the cluster resources in a given namespace.
