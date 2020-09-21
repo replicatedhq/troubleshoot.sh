@@ -20,7 +20,7 @@ spec:
         ingressName: connect-to-me
         outcomes:
           - fail:
-              message: The ingress isn't listed in  the cluster
+              message: The ingress isn't listed in the cluster
           - pass:
               message: Ingress rule found
 ```
