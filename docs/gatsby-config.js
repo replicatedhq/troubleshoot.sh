@@ -72,6 +72,7 @@ const themeOptions = {
               'analyze/deployment-status',
               'analyze/statefulset-status',
               'analyze/image-pull-secrets',
+              'analyze/ingress',
               'analyze/storage-class',
               'analyze/secrets',
               'analyze/crd',
