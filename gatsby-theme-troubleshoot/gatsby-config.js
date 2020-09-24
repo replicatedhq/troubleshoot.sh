@@ -54,7 +54,7 @@ module.exports = options => ({
         algoliaAppId: "NHTIKUBZ4C",
         baseUrl: "https://troubleshoot.sh",
         logoLink: "https://troubleshoot.sh",
-        gaTrackingId: "UA-61420213-14",
+        gaTrackingId: process.env.GA_TRACKING_ID,
         ...options,
       }
     },
