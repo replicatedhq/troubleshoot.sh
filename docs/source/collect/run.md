@@ -75,7 +75,7 @@ Further info about config.json file and .dockerconfigjson secrets may be found h
 ```yaml
 spec:
   collectors:
-     - run
+     - run:
          collectorName: "run-ping"
          image: busybox:1
          namespace: default
@@ -88,7 +88,7 @@ spec:
 ```yaml
 spec:
   collectors:
-     - run
+     - run:
          collectorName: "run-ping"
          image: busybox:1
          namespace: default
@@ -104,7 +104,7 @@ spec:
 ```yaml
 spec:
   collectors:
-     - run
+     - run:
          collectorName: "run-ping"
          image: busybox:1
          namespace: default
