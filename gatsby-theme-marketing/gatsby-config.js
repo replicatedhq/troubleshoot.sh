@@ -33,5 +33,11 @@ module.exports = {
         anonymize: true,
       },
     },
+    {
+      resolve: `gatsby-plugin-load-script`,
+      options: {
+        src: `/matomo.js`,
+      },
+    }
   ],
 }
