@@ -4,7 +4,6 @@ publish: deps prep build
 publish:
 	mkdir -p public
 	cp -r marketing/public/* public
-	cp -r marketing/.env.production public
 
 	mkdir -p public/docs
 	cp -r docs/public/* public/docs
