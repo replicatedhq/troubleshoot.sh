@@ -36,7 +36,7 @@ module.exports = {
     {
       resolve: `gatsby-plugin-load-script`,
       options: {
-        src: `/matomo.js`,
+        src: `./matomo.js`,
       },
     }
   ],
