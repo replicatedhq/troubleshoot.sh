@@ -77,6 +77,8 @@ const themeOptions = {
               'analyze/secrets',
               'analyze/crd',
               'analyze/regex',
+              'analyze/postgresql',
+              'analyze/mysql',
             ],
           },
         },
