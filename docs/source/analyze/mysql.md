@@ -9,7 +9,7 @@ The `MySQL` analyzer relies on the data collected by the [MySQL collector](https
 The `when` attribute may be used to evaluate either the connection status to the database or a semver range to compare the running version against the actual, and supports all standard comparison operators.
 
   - `conected`: returns true if the database is connected. Admits the `==` operator against a boolean value. 
-  - `version`:  retruns true if the actual version of the database matches a range or specific version. Admits operators `<`, `<=`, `>`, `>=`, `==`, `!=` and the use of the letter 'x' as a version wildcard (10.x). The 'x' is parsed as '0'.
+  - `version`:  returns true if the actual version of the database matches a range or specific version. Admits operators `<`, `<=`, `>`, `>=`, `==`, `!=` and the use of the letter 'x' as a version wildcard (10.x). The 'x' is parsed as '0'.
 
  ### Test MySQL Analyzer locally
 
@@ -24,13 +24,13 @@ uri: 'root:mysecretpassword@tcp(localhost:3306)/mysql'
 ```
 Once its running, you can run preflight and test the results. 
 
-### Example for PostgreSQL analyzer
+### Example for MySQL analyzer
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
-  name: supported-postgres-version
+  name: supported-mysql-version
 spec:
   collectors:
     - mysql:

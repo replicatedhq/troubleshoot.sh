@@ -9,7 +9,7 @@ The `PostgreSQL` analyzer relies on the data collected by the [PostgreSQL collec
 The `when` attribute may be used to evaluate either the connection status to the database or a semver range to compare the running version against the actual, and supports all standard comparison operators.
 
   - `conected`: returns true if the database is connected. Admits the `==` operator against a boolean value. 
-  - `version`:  retruns true if the actual version of the database matches a range or specific version. Admits operators `<`, `<=`, `>`, `>=`, `==`, `!=` and the use of the letter 'x' as a version wildcard (10.x). The x is parsed as '0'.
+  - `version`:  returns true if the actual version of the database matches a range or specific version. Admits operators `<`, `<=`, `>`, `>=`, `==`, `!=` and the use of the letter 'x' as a version wildcard (10.x). The x is parsed as '0'.
 
  ### Test PostgreSQL Analyzer locally
 
