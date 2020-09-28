@@ -15,7 +15,7 @@ publish:
 
 .PHONY: build
 build:
-	echo "This is the GA tracking id ------>" ${GA_TRACKING_ID}
+	echo "This is the GA tracking id ------>" ${GATSBY_GA_TRACKING_ID}
 	make generate-specs
 	yarn workspace marketing build --prefix-paths
 	yarn workspace docs build --prefix-paths
