@@ -3,7 +3,6 @@
 publish: deps prep build
 publish:
 	mkdir -p public
-	cp -r .env.production public
 	cp -r marketing/public/* public
 
 	mkdir -p public/docs
@@ -17,7 +16,6 @@ publish:
 .PHONY: build
 build:
 	make generate-specs
-	make create-env
 	yarn workspace marketing build --prefix-paths
 	yarn workspace docs build --prefix-paths
 
@@ -40,6 +38,3 @@ clean:
 generate-specs:
 	node generate-specs.js
 
-.PHONY: create-env
-create-env:
-	node create-env.js
