@@ -41,6 +41,7 @@ module.exports = {
       resolve: `gatsby-plugin-load-script`,
       options: {
         src: `/matomo.js`,
+        disable: !process.env.CONTEXT === "production"
       },
     }
   ],
