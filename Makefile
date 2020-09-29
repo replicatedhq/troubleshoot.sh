@@ -3,6 +3,7 @@
 publish: deps prep build
 publish:
 	mkdir -p public
+	cp -r .env.production public
 	cp -r marketing/public/* public
 
 	mkdir -p public/docs
@@ -15,8 +16,8 @@ publish:
 
 .PHONY: build
 build:
-	echo "This is the GA tracking id ------>" ${GATSBY_GA_TRACKING_ID}
 	make generate-specs
+	make create-env
 	yarn workspace marketing build --prefix-paths
 	yarn workspace docs build --prefix-paths
 
@@ -38,3 +39,7 @@ clean:
 .PHONY: generate-specs
 generate-specs:
 	node generate-specs.js
+
+.PHONY: create-env
+create-env:
+	node create-env.js

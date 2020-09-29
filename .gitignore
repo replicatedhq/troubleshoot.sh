@@ -4,6 +4,7 @@
 .cache/
 **/.cache
 *.swp
+.env.*
 
 # Directories
 node_modules/
