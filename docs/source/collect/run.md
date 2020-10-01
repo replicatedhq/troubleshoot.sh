@@ -39,8 +39,8 @@ If not specified, this will be set to IfNotPresent.
 
 > `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
-This field accepts either opaque secrets, or secrets of type dockerconfigjson (path to a config.json file or base64 encoded config.json file).
-See example for use cases.
+This field accepts secrets of type dockerconfigjson or the name of a preexisting secret in the cluster, to be used as ImagePullSecret.
+See the examples below for use cases.
 
 ## Example Collector Definition
 
@@ -62,56 +62,39 @@ spec:
 ```
 ## Examples using `imagePullSecret`
 
+### Using a preexisting secret
+
+If the secret used to pull the image exists already in the cluster, you can use it by providing the run colector with the name of such secret.
+
+```yaml
+spec:
+  collectors:
+     - run:
+         collectorName: "run-ping"
+         image: busybox:1
+         namespace: default
+         imagePullSecret:
+            name: mysecret
+```
+
 ### Using dockerconfigjson secrets
 
-In order to use dockerconfigjson secrets, `type: kubernetes.io/dockerconfigjson` must be added to the specs. It only accepts one argument, `.dockerconfigjson`, in data field. 
-Either a valid path to a docker config.json file, or a base64 encoded config.json file must be provided. An option to encode the file in macOS or Linux based systems is running the following command in the console (if base64 is installed): 
+ImagePullSecret accepts only secrets of type `type: kubernetes.io/dockerconfigjson`. ImagePullSecret.data field takes only one argument, `.dockerconfigjson`, which must contain a valid base64 encoded config.json string. Further information about config.json file and .dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
 
-```shell
-   cat path_to_file/config.json | base64
-```
-Further info about config.json file and .dockerconfigjson secrets may be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
+Troubleshoot will create a temporary secret, use it to pull the image from the private repository and delete it after the run collector is completed.
 
 ```yaml
 spec:
   collectors:
-     - run
+     - run:
          collectorName: "run-ping"
          image: busybox:1
          namespace: default
          imagePullSecret:
             name: mysecret
             data: 
-              .dockerconfigjson: path/to/file/config.json
+              .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
             type: kubernetes.io/dockerconfigjson
-```
-```yaml
-spec:
-  collectors:
-     - run
-         collectorName: "run-ping"
-         image: busybox:1
-         namespace: default
-         imagePullSecret:
-            name: mysecret
-            data: 
-              .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQkiaHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
-            type: kubernetes.io/dockerconfigjson
-```
-
-### Using opaque secrets
-
-```yaml
-spec:
-  collectors:
-     - run
-         collectorName: "run-ping"
-         image: busybox:1
-         namespace: default
-         imagePullSecret:
-            name: mysecret
-            data: 
-               foo: bar
 ```
 
 > Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
