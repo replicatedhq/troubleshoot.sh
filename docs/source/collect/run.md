@@ -39,7 +39,7 @@ If not specified, this will be set to IfNotPresent.
 
 > `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
-Troubleshoot offers two possibilities to use ImagePullSecrets, either to use the name of a pre-existing secret in the cluster, or to dynamically create a temporary secret to pull the image and destroy it after run-collector is done. 
+Troubleshoot offers two possibilities to use ImagePullSecrets, either using the name of a pre-existing secret in the cluster or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
 
 ImagePullSecret field accepts the following parameters:
 
