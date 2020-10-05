@@ -39,8 +39,36 @@ If not specified, this will be set to IfNotPresent.
 
 > `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
-This field accepts secrets of type dockerconfigjson or the name of a preexisting secret in the cluster, to be used as ImagePullSecret.
-See the examples below for use cases.
+Troubleshoot offers two possibilities to use ImagePullSecrets, either to use the name of a pre-existing secret in the cluster, or to dynamically create a temporary secret to pull the image and destroy it after run-collector is done. 
+
+ImagePullSecret field accepts the following parameters:
+
+- If a pre-existing ImagePullSecret is used:
+  - ##### `name` (required):
+  The  name of the pre-existing secret.
+```yaml 
+imagePullSecret:
+            name: my-image-pull-secret
+```
+
+- If an ImagePullSecret will be created for the run collector to pull the image:
+  - ##### `name` (optional)
+  - ##### `data`
+      - ###### `.dockerconfigjson` (required)
+      A string containing a valid base64-encoded docker config.json file.
+  - ##### `type` (required)
+    A string indicating that the secret is of type "kubernetes.io/dockerconfigjson".
+```yaml
+imagePullSecret:
+            name: mysecret
+            data: 
+              .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
+            type: kubernetes.io/dockerconfigjson
+```
+
+Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+
+See the examples below for use cases.  
 
 ## Example Collector Definition
 
@@ -60,26 +88,29 @@ spec:
         imagePullPolicy: IfNotPresent
 
 ```
-## Examples using `imagePullSecret`
+## Examples using private images with `imagePullSecret`
 
 ### Using a preexisting secret
 
-If the secret used to pull the image exists already in the cluster, you can use it by providing the run colector with the name of such secret.
+If a pull secret already exists in the cluster, you can use it by providing the run collector with the name of the secret.
 
 ```yaml
 spec:
   collectors:
      - run:
-         collectorName: "run-ping"
-         image: busybox:1
+         collectorName: "myPrivateApp"
+         image: my-private-repository/myRestApi
          namespace: default
+         args: ["go", "run", "main.go"]
          imagePullSecret:
             name: mysecret
 ```
 
 ### Using dockerconfigjson secrets
 
-ImagePullSecret accepts only secrets of type `type: kubernetes.io/dockerconfigjson`. ImagePullSecret.data field takes only one argument, `.dockerconfigjson`, which must contain a valid base64 encoded config.json string. Further information about config.json file and .dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+ImagePullSecret accepts only secrets of type `type: kubernetes.io/dockerconfigjson`. ImagePullSecret.data field takes only one argument, `.dockerconfigjson`, which must contain a valid base64 encoded config.json string. 
+
+Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
 
 Troubleshoot will create a temporary secret, use it to pull the image from the private repository and delete it after the run collector is completed.
 
@@ -87,13 +118,14 @@ Troubleshoot will create a temporary secret, use it to pull the image from the p
 spec:
   collectors:
      - run:
-         collectorName: "run-ping"
-         image: busybox:1
+         collectorName: "myPrivateApp"
+         image: my-private-repository/myRestApi
          namespace: default
+         args: ["go", "run", "main.go"]
          imagePullSecret:
-            name: mysecret
+            name: my-temporary-secret
             data: 
-              .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
+              .dockerconfigjson: ewoJICJhdXRocyI6IHsKzCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
             type: kubernetes.io/dockerconfigjson
 ```
 
