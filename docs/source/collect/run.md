@@ -90,7 +90,7 @@ spec:
 ```
 ## Examples using private images with `imagePullSecret`
 
-### Using a preexisting secret
+### Using a pre-existing secret
 
 If a pull secret already exists in the cluster, you can use it by providing the run collector with the name of the secret.
 
