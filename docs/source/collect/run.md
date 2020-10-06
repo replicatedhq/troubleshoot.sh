@@ -108,10 +108,6 @@ spec:
 
 ### Using dockerconfigjson secrets
 
-ImagePullSecret accepts only secrets of type `type: kubernetes.io/dockerconfigjson`. ImagePullSecret.data field takes only one argument, `.dockerconfigjson`, which must contain a valid base64 encoded config.json string. 
-
-Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
-
 Troubleshoot will create a temporary secret, use it to pull the image from the private repository and delete it after the run collector is completed.
 
 ```yaml
