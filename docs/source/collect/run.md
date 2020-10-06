@@ -66,7 +66,7 @@ imagePullSecret:
             type: kubernetes.io/dockerconfigjson
 ```
 
-Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/)
+Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 
 See the examples below for use cases.  
 
