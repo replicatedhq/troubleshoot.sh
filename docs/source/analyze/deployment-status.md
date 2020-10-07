@@ -6,11 +6,11 @@ description: Analyzing the current status of a Kubernetes Deployment
 The `deploymentStatus` analyzer is used to report on the number of replicas that are "Ready" in a deployment.
 The `when` attribute supports standard comparators to compare the number of ready replicas.
 
-The `deploymentStatus` analyzer requires that the [clusterResources](https://troubleshoot.sh/collect/cluster-resources) is included in the support bundle.
-The `clusterResources` collectors is automatically added and will always be present.
+The `deploymentStatus` analyzer uses data from the [clusterResources collector](https://troubleshoot.sh/collect/cluster-resources).
+The `clusterResources` collector is automatically added and will always be present.
 
-The target deployment can be identified by name. T
-he outcomes on this analyzer will be processed in order, and execution will stop after the first outcome that is truthy.
+The target deployment can be identified by name.
+The outcomes on this analyzer will be processed in order, and execution will stop after the first outcome that is truthy.
 
 ## Parameters
 

@@ -6,7 +6,7 @@ description: Analyzing the Kubernetes distribution that's running
 The `distribution` analyzer is used to check for known managed (hosted) and self-hosted versions of Kubernetes.
 The `when` attribute supports standard comparators to compare the result to.
 
-The `distribution` analyzer uses the data collected in the [clusterResources](https://troubleshoot.sh/collect/cluster-resources) is included in the support bundle.
+The `distribution` analyzer uses data from the [clusterResources collector](https://troubleshoot.sh/collect/cluster-resources).
 The `clusterResources` collector is automatically added and will always be present.
 
 ## Parameters

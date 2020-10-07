@@ -23,6 +23,7 @@
     "react-dom": "^16.13.1"
   },
   "dependencies": {
+    "dotenv": "^8.2.0",
     "gatsby-plugin-sharp": "^2.6.11",
     "gatsby-transformer-sharp": "^2.5.5"
   }

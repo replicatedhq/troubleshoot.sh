@@ -7,7 +7,11 @@ The regex analyzer is used to run arbitrary regular expressions against data col
 
 ## Parameters
 
-*There are no parameters in this analyzer.*
+Either `regex` or `regexGroups` must be set but not both.
+
+**regex**: (Optional) A regex pattern to test. If the pattern matches the file then the outcome is pass.
+
+**regexGroups**: (Optional)  A regex pattern to match. Matches from named capturing groups are available to `when` expressions in outcomes.
 
 ## Example Analyzer Definition
 
@@ -15,7 +19,7 @@ The regex analyzer is used to run arbitrary regular expressions against data col
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
-  name: require-hosted-k8s
+  name: ping
 spec:
   collectors:
     - run:

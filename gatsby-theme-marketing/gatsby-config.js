@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: `.env.${process.env.NODE_ENV}`
+})
+
 module.exports = {
   siteMetadata: {
     title: "Troubleshoot.sh"
@@ -24,6 +28,21 @@ module.exports = {
     {
       resolve: `gatsby-plugin-create-client-paths`,
       options: { prefixes: [`/explore/*`, `/preflight/*`, `/support-bundle/*`] },
+    },
+    {
+      resolve: `gatsby-plugin-google-analytics`,
+      options: {
+        trackingId: process.env.GA_TRACKING_ID,
+        head: true,
+        anonymize: true,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-load-script`,
+      options: {
+        src: `/matomo.js`,
+        disable: !process.env.CONTEXT === "production"
+      },
     }
   ],
 }
