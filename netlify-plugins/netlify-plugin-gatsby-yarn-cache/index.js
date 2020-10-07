@@ -1,14 +1,8 @@
 const path = require('path');
 
-// Should fetch workspaces like `jq -r '.workspaces|join(" ")' < package.json`
-
 const getCacheDirs = (constants) => [
   constants.PUBLISH_DIR,
   path.normalize(`${constants.PUBLISH_DIR}/../.cache`),
-  './marketing/.cache',
-  './marketing/public',
-  './docs/.cache',
-  './docs/public',
 ];
 
 module.exports = {
@@ -20,7 +14,9 @@ module.exports = {
       );
     }
 
-    const cacheDirs = getCacheDirs(constants);
+    const package = require(process.cwd() + "/package.json");
+
+    const cacheDirs = getCacheDirs(constants).concat(package.workspaces.map(w => (w + "/.cache")), package.workspaces.map(w => (w + "/public")));
 
     if (await utils.cache.restore(cacheDirs)) {
       console.log('Found a Gatsby cache. We’re about to go FAST. ⚡️');

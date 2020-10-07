@@ -1,6 +1,6 @@
 {
   "name": "netlify-plugin-gatsby-yarn-cache",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Persist the Gatsby cache between Netlify builds, with support for multiple yarn workspaces",
   "main": "index.js",
   "repository": "https://github.com/replicatedhq/netlify-plugin-gatsby-yarn-ache.git",
