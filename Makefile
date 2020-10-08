@@ -11,8 +11,6 @@ publish:
 
 	cp -r static/* public
 
-	./save_cache marketing docs
-
 .PHONY: build
 build:
 	make generate-specs
@@ -26,7 +24,6 @@ deps:
 .PHONY: prep
 prep:
 	rm -rf public
-	./restore_cache marketing docs
 
 .PHONY: clean
 clean:
