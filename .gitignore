@@ -23,3 +23,5 @@ logs
 
 # Local Netlify folder
 .netlify
+
+gatsby-theme-marketing/static/specs-gen.json
