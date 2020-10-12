@@ -47,7 +47,7 @@ spec:
               message: Minikube is not suitable for production environments
           - warn:
               when: "= ibm"
-              message: IBM is not yet supported by kots
+              message: The application does not support IBM Cloud
           - warn:
               message: Unable to determine the distribution of Kubernetes
 ```
