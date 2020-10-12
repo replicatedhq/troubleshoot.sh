@@ -43,6 +43,12 @@ spec:
               when: "= digitalocean"
               message: DigitalOcean is a supported distribution
           - warn:
+              when: "= minikube"
+              message: Minikube is not suitable for production environments
+          - warn:
+              when: "= ibm"
+              message: The application does not support IBM Cloud
+          - warn:
               message: Unable to determine the distribution of Kubernetes
 ```
 
