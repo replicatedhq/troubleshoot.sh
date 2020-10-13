@@ -54,10 +54,12 @@ spec:
 
 If you want to test it locally, you can spin up a mysql database running the following Docker command. Be sure to specify the image version `mysql:<version_tag>`. In this case, the version is 8.0:
 
- ```Shell
- docker run --rm --name mysql_db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysecretpassword -d mysql:8.0
- ```
+```shell
+docker run --rm --name mysql_db -p 3306:3306 -e MYSQL_ROOT_PASSWORD=mysecretpassword -d mysql:8.0
+```
+ 
 You should use the following `uri` in the collector:
+
 ```yaml
 uri: 'root:mysecretpassword@tcp(localhost:3306)/mysql'
 ```
