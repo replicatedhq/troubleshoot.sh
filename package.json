@@ -12,5 +12,8 @@
     "yarn:restore": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-restore || :",
     "preinstall": "yarn yarn:restore",
     "build": "make publish; yarn yarn:cache"
+  },
+  "dependencies": {
+    "netlify-plugin-gatsby-yarn-cache": "^0.1.1"
   }
 }
