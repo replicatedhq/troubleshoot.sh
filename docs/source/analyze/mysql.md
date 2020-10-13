@@ -63,4 +63,4 @@ You should use the following `uri` in the collector:
 ```yaml
 uri: 'root:mysecretpassword@tcp(localhost:3306)/mysql'
 ```
-Once its running, you can run preflight and test the results. 
+Once it's running, you can run preflight and test the results. 
