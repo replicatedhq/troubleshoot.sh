@@ -65,4 +65,4 @@ You should use the following `uri` in the collector:
 uri: postgresql://postgres:mysecretpassword@localhost:5432/postgres?sslmode=disable
 ```
 
-Once its running, you can run preflight and test the results. 
+Once it's running, you can run preflight and test the results. 
