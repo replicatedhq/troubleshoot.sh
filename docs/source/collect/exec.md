@@ -24,6 +24,9 @@ The exec command will execute in the first pod that is returned from the Kuberne
 The namespace to look for the pod selector in.
 If not specified, it will assume the "current" namespace that the kubectl context is set to.
 
+##### `containerName` (Optional)
+The name of the container in which to execute the command. if not specified, the first container in the pod will be used.
+
 ##### `command` (Required)
 An array of strings containing the command to execute in the pod.
 
