@@ -13109,6 +13109,11 @@ neo-async@^2.5.0, neo-async@^2.6.1:
   resolved "https://registry.yarnpkg.com/neo-async/-/neo-async-2.6.1.tgz#ac27ada66167fa8849a6addd837f6b189ad2081c"
   integrity sha512-iyam8fBuCUpWeKPGpaNMetEocMt364qkCsfL9JuhjXX6dRnguRVOfk2GZaDpPjcOKiiXCPINZC1GczQ7iTq3Zw==
 
+netlify-plugin-gatsby-yarn-cache@^0.1.1:
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/netlify-plugin-gatsby-yarn-cache/-/netlify-plugin-gatsby-yarn-cache-0.1.1.tgz#4a6b4b015f5e2afe5f64f2aa5e0fea0e9c4f880e"
+  integrity sha512-tn9xK+uZu/jGi/d9QGiOjUQxIxn6cALM+kiwnV9+yNw6+IyKJwlpKYRdpXjsf8WovMCb6rMX4mW5O4MnEGYoEA==
+
 next-tick@^1.0.0:
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/next-tick/-/next-tick-1.1.0.tgz#1836ee30ad56d67ef281b22bd199f709449b35eb"
