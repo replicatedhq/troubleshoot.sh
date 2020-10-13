@@ -55,7 +55,7 @@ module.exports = options => ({
         },
         algoliaApiKey: process.env.ALGOLIA_API_KEY,
         algoliaIndexName: "troubleshoot-algolia-config",
-        algoliaAppId: "NHTIKUBZ4C",
+        algoliaAppId: process.env.ALGOLIA_APP_ID,
         baseUrl: "https://troubleshoot.sh",
         logoLink: "https://troubleshoot.sh",
         gaTrackingId: process.env.GA_TRACKING_ID,
