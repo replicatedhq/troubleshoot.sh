@@ -53,7 +53,7 @@ module.exports = options => ({
           //   rel: "noopener noreferrer"
           // }
         },
-        algoliaApiKey: "04e0447a5b04544cadccdbd4357bc18b",
+        algoliaApiKey: process.env.ALGOLIA_API_KEY,
         algoliaIndexName: "troubleshoot-algolia-config",
         algoliaAppId: "NHTIKUBZ4C",
         baseUrl: "https://troubleshoot.sh",

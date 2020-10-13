@@ -1,6 +1,6 @@
 [build]
   publish = "public"
-  command = "GA_TRACKING_ID=$GA_TRACKING_ID yarn build"
+  command = "yarn build"
 [build.environment]
   NETLIFY_RESTORE = "1"
   # Also GA_TRACKING_ID and ALGOLIA_WRITE_KEY which are specified in Netlify UI
