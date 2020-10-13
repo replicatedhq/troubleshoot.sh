@@ -25,8 +25,7 @@ The namespace to look for the pod selector in.
 If not specified, it will assume the "current" namespace that the kubectl context is set to.
 
 ##### `containerName` (Optional)
-The container name in a pod in which command should be executed if pod has multiple container.
-If not default container would be picked.
+The name of the container in which to execute the command. if not specified, the first container in the pod will be used.
 
 ##### `command` (Required)
 An array of strings containing the command to execute in the pod.
