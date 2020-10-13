@@ -14,8 +14,6 @@ publish:
 .PHONY: build
 build:
 	make generate-specs
-	echo "ALGOLIA_API_KEY =====> " $(ALGOLIA_API_KEY)
-	echo "GA_TRACKING_ID =====> " $(GA_TRACKING_ID)
 	yarn workspace marketing build --prefix-paths
 	yarn workspace docs build --prefix-paths
 
