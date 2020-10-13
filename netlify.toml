@@ -2,4 +2,4 @@
   publish = "public"
   command = "GA_TRACKING_ID=$GA_TRACKING_ID yarn build"
 [[plugins]]
-  package = "./netlify-plugins/netlify-plugin-gatsby-yarn-cache"
+  package = "netlify-plugin-gatsby-yarn-cache"
