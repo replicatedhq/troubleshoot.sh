@@ -11,7 +11,7 @@ The analyzer's outcome `when` clause may be used to evaluate the database connec
 
 **checkName:** Optional name.
 
-**collectorName:** (Required) Must be "mysql".
+**collectorName:** (Recommended) Must match the `collectorName` specified by the MySQL collector.
 
 ## Outcomes
 
