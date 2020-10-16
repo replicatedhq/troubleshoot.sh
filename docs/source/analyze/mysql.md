@@ -3,7 +3,7 @@ title: MySQL
 description: Check version and connection status 
 ---
 
-The `MySQL` analyzer is available to check version and connection status of a MySQL database. It relies on the data collected by the [MySQL collector](/docs/collect/mysql/).
+The `MySQL` analyzer is available to check version and connection status of a MySQL database. It relies on the data collected by the [MySQL collector](/collect/mysql/).
 
 The analyzer's outcome `when` clause may be used to evaluate the database connection status or a semver range to compare against the running version, and supports standard comparison operators.
 
