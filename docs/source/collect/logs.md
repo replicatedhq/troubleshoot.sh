@@ -48,7 +48,9 @@ $ kubectl support-bundle --since-time="2020-10-19T12:36:23Z" file_or_url
 ```
 
 ### `--since`
-Only return logs newer than a relative duration like 5s, 2m, or 3h. Only one of since-time / since may be used. Overrides  `limits.maxAge` specified in the specs.
+Only return logs newer than a relative duration like 5s, 2m, or 3h.
+Only one of since-time / since may be used.
+Overrides  `limits.maxAge` specified in the specs.
 
 ```SHELL
 $ kubectl support-bundle --since=56m file_or_url
