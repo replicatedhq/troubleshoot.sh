@@ -41,7 +41,9 @@ The number of lines to include, starting from the newest.
 ## Flags
 
 #### `--since-time`
-Only return logs after a specific date (RFC3339). Only one of since-time / since may be used. Overrides  `limits.maxAge` specified in the specs.
+Only return logs after a specific date (RFC3339).
+Only one of since-time / since may be used.
+Overrides  `limits.maxAge` specified in the specs.
 
 ```SHELL
 $ kubectl support-bundle --since-time="2020-10-19T12:36:23Z" file_or_url 
