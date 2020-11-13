@@ -2,7 +2,7 @@
 
 This project requires Node 10.x and gatsby installed.
 
-To run locally, pick a workspace, like collect, analyze, etc and:
+To run locally, pick a workspace (`docs` or `marketing`):
 
 ```shell
 yarn install
