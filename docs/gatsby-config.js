@@ -5,7 +5,7 @@ const themeOptions = {
     baseDir: 'docs',
     contentDir: 'source',
   };
-  
+
   module.exports = {
     pathPrefix: '/docs',
     siteMetadata: {
@@ -46,6 +46,7 @@ const themeOptions = {
               'collect/http',
               'collect/logs',
               'collect/run',
+              'collect/collectd',
               'collect/secret',
               'collect/postgresql',
               'collect/mysql',
@@ -87,4 +88,3 @@ const themeOptions = {
       },
     ],
   };
-  
