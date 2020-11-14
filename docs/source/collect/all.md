@@ -14,7 +14,7 @@ description: A list of all available collectors
 - [copy](./copy): copies files or folders from a pod into the collected output
 - [data](./data): writes static or predefined data into the collected output
 - [secret](./secret): includes information about Kubernetes secrets in the collected output
-- [collectd](./collectd): includes collectd files found on all host in the cluster
+- [collectd](./collectd): includes collectd files from all hosts in the cluster
 
 ## Generated and dynamic data
 
