@@ -92,4 +92,4 @@ When this collector is executed, it will include the following files in a suppor
 
 ### `/collectd/rrd`
 
-This will contain a tar archive with rrd files or files with error information if collector fails.
+This will contain a tar archive with rrd files or files with error information if the collector fails.
