@@ -50,6 +50,7 @@ const themeOptions = {
               'collect/postgresql',
               'collect/mysql',
               'collect/redis',
+              'collect/ceph',
             ],
             "Redact": [
               "redact/index",
@@ -79,6 +80,7 @@ const themeOptions = {
               'analyze/regex',
               'analyze/postgresql',
               'analyze/mysql',
+              'analyze/ceph-status',
             ],
           },
         },
