@@ -34,7 +34,7 @@ If not specified, this will be set to IfNotPresent.
 
 Troubleshoot offers two possibilities to use ImagePullSecrets, either using the name of a pre-existing secret in the cluster or dynamically creating a temporary secret to extract the image and destroy it after the collector is done.
 
-ImagePullSecret field accepts the following parameters:
+The ImagePullSecret field accepts the following parameters:
 
 - If a pre-existing ImagePullSecret is used:
   - ##### `name` (required):
