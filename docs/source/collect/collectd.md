@@ -4,7 +4,7 @@ description: Include collectd files
 ---
 
 The `collectd` collector can be used to run a DaemonSet in the cluster with the parameters provided.
-The collector will delete and clean up this DaemonSet and any artifacts after it's created
+The collector will delete and clean up this DaemonSet and any artifacts after it completes.
 
 ## Parameters
 
