@@ -16,7 +16,8 @@ If not specified, it will assume the "current" namespace that the kubectl contex
 
 ##### `image` (Required)
 The image to use for the pods controlled by this DaemonSet.
-This should be accessible to the nodes in the cluster.
+This image should be accessible to the nodes in the cluster.
+The commands `sleep` and `tar` must be available in the image.
 
 ##### `hostPath` (Required)
 Location of the files on the host systems.
@@ -84,7 +85,6 @@ spec:
              .dockerconfigjson: ewoJICJhdXRocyI6IHsKzCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
            type: kubernetes.io/dockerconfigjson
 ```
-## Examples using private images with `imagePullSecret`
 
 ## Included resources
 
