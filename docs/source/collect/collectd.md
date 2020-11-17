@@ -17,7 +17,7 @@ If not specified, it will assume the "current" namespace that the kubectl contex
 ##### `image` (Required)
 The image to use for the pods controlled by this DaemonSet.
 This image should be accessible to the nodes in the cluster.
-Commands `sleep` and `tar` must be available in the image.
+The commands `sleep` and `tar` must be available in the image.
 
 ##### `hostPath` (Required)
 Location of the files on the host systems.
