@@ -12,7 +12,29 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `selector` (Required)
 The selector to use to find matching pods.
-If this selector returns more than one pod, all matching pods will be collected.
+If this selector returns more than one pod, all matching pods will be collected. 
+
+Multiple selectors are possible, but the results are a logical `AND`, not a logical `OR`, meaning that the resulting set of pod may not contain the expected results (possibly no results). It is best to use separate collectors to generate individual logs for different service pods.
+
+**Example**
+
+The pod labels in `service1-deployment.yaml`:
+
+```yaml
+metadata:
+  name: user-service
+  labels:
+    app.kubernetes.io/name: service1
+```
+
+The collector YAML in `support-bundle.yaml`:
+
+```yaml
+  collectors:
+    - logs:
+        selector:
+                  - app.kubernetes.io/name=service1
+```
 
 ##### `namespace` (Optional)
 The namespace to search for the pod selector in.
