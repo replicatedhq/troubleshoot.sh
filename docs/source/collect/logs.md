@@ -22,7 +22,7 @@ The pod labels in `service1-deployment.yaml`:
 
 ```yaml
 metadata:
-  name: user-service
+  name: service1
   labels:
     app.kubernetes.io/name: service1
 ```
