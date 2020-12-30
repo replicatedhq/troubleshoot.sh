@@ -5,6 +5,9 @@
 **/.cache
 *.swp
 .env.*
+troubleshoot.txt
+pdf-source
+troubleshoot.pdf
 
 # Directories
 node_modules/
