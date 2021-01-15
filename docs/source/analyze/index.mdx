@@ -81,3 +81,17 @@ spec:
           - pass:
               message: Found a supported version of Rook installed and running in the cluster.
 ```
+
+### Shared Properties
+
+The following properties are supported on all analyzers:
+
+#### `checkName`
+
+Optionally, an analyzer can specify the `checkName` property.
+
+#### `exclude`
+
+For analyzer that are optional, based on runtime available configuration, the conditional can be specified in the `exclude` property.
+This is useful for deployment techniques that allow templating for optional components (Helm and [KOTS](https://kots.io/vendor/packaging/template-functions/)).
+When this value is `false`, the analyzer will not be called.
