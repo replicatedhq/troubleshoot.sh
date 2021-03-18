@@ -12,7 +12,7 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `selector` (Required)
 The selector to use to find matching pods.
-If this selector returns more than one pod, all matching pods will be collected. 
+If this selector returns more than one pod, all matching pods will be collected.
 
 Multiple selectors are possible, but the results are a logical `AND`, not a logical `OR`, meaning that the resulting set of pod may not contain the expected results (possibly no results). It is best to use separate collectors to generate individual logs for different service pods.
 
@@ -89,7 +89,7 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/[name]/[pod-name]/[container-name].log
+### `/[name]/[pod-name]/[container-name].log`
 
 This will be created for each pod that matches the selector.
 
