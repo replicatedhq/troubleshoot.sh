@@ -89,7 +89,7 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/[name]/[pod-name]/[container-name].log
+### `/[name]/[pod-name]/[container-name].log`
 
 This will be created for each pod that matches the selector.
 
