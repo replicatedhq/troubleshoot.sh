@@ -11,7 +11,7 @@ The `registryImages` collector has the following parameters:
 
 #### `collectorName`
 The name of the collector.
-This is sting is used to generate the output file name.
+This is a string used to generate the output file name.
 If unset, this will be set to the string "images", and the output will be stored in `/registry/images.json` file.
 
 #### `images` (Required)
