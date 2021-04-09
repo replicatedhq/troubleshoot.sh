@@ -27,3 +27,7 @@ description: A list of all available collectors
 - [postgresql](./postgresql): collects information related to a postgresql server
 - [mysql](./mysql): collects information related to a mysql server
 - [redis](./redis): collects information related to a redis cluster
+
+## Registry
+
+- [registryImages](./registry-images): collects information about image existence in a registry
