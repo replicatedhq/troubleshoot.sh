@@ -7,7 +7,7 @@ Congratulations.
 You've just completed the introduction to Preflight Checks tutorial.
 
 Next, you write your own `kind: Preflight` manifest to ensure the enviornment and configuration provided by your customer meets expectations.
-Head over to the [Analyzers](https://troubleshoot.sh/analyzers) documentation to browse all of the built-in analyzers.
+Head over to the [Analyzers](https://troubleshoot.sh/docs/analyze/) documentation to browse all of the built-in analyzers.
 Alternatively, you can visit the [Explore](https://troubleshoot.sh/explore) page to view additional examples of Preflight Checks.
 
 ## Including Preflight Checks
