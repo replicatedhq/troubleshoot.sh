@@ -32,34 +32,34 @@ spec:
 
 ## Included resources
 
-### `/ceph/([collector-name]/)status.json
+### `/ceph/([collector-name]/)status.json`
 
 The output of command `ceph status -f json-pretty`.
 
-### `/ceph/([collector-name]/)fs.json
+### `/ceph/([collector-name]/)fs.json`
 
 The output of command `ceph fs -f json-pretty`.
 
-### `/ceph/([collector-name]/)fs-ls.json
+### `/ceph/([collector-name]/)fs-ls.json`
 
 The output of command `ceph fs ls -f json-pretty`.
 
-### `/ceph/([collector-name]/)osd-status.txt
+### `/ceph/([collector-name]/)osd-status.txt`
 
 The output of command `ceph osd status -f json-pretty`.
 
-### `/ceph/([collector-name]/)osd-tree.json
+### `/ceph/([collector-name]/)osd-tree.json`
 
 The output of command `ceph osd tree -f json-pretty`.
 
-### `/ceph/([collector-name]/)osd-pool.json
+### `/ceph/([collector-name]/)osd-pool.json`
 
 The output of command `ceph osd pool ls detail -f json-pretty`.
 
-### `/ceph/([collector-name]/)health.json
+### `/ceph/([collector-name]/)health.json`
 
 The output of command `ceph health detail -f json-pretty`.
 
-### `/ceph/([collector-name]/)auth.json
+### `/ceph/([collector-name]/)auth.json`
 
 The output of command `ceph auth ls -f json-pretty`.
