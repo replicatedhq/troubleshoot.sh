@@ -28,6 +28,10 @@ description: A list of all available collectors
 - [mysql](./mysql): collects information related to a mysql server
 - [redis](./redis): collects information related to a redis cluster
 
+## CSI
+- [ceph](./ceph): collects information about a ceph installation
+- [longhorn](./longhorn): collects information about a longhorn installation
+
 ## Registry
 
 - [registryImages](./registry-images): collects information about image existence in a registry
