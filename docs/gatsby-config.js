@@ -52,6 +52,7 @@ const themeOptions = {
               'collect/mysql',
               'collect/redis',
               'collect/ceph',
+              'collect/longhorn',
               'collect/registry-images',
             ],
             "Redact": [
@@ -83,6 +84,7 @@ const themeOptions = {
               'analyze/postgresql',
               'analyze/mysql',
               'analyze/ceph-status',
+              'analyze/longhorn',
               'analyze/registry-images',
             ],
           },
