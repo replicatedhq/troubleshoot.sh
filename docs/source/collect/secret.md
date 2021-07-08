@@ -3,24 +3,28 @@ title: Kubernetes Secrets
 description: Including details about Kubernetes Secrets in collected output
 ---
 
-The `secret` collector can be used to include metadata about secrets (and optionally the value) in the collected data.
-This collector can be included multiple times, referencing different secrets.
+The `secret` collector can be used to include metadata about Secrets (and optionally the value) in the collected data.
+This collector can be included multiple times, referencing different Secrets.
 
 ## Parameters
 
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `secret` collector accepts the following parameters:
 
-##### `name` (Required)
+##### `name` (Required if no selector)
 
-The name of the secret.
+The name of the Secret.
+
+##### `selector` (Required if no name)
+
+The selector to use to locate the Secrets.
 
 ##### `namespace` (Required)
 
-The namespace where the secret exists.
+The namespace where the Secret exists.
 
 ##### `key` (Optional)
 
-A key within the secret. Required if `includeValue` is `true`.
+A key within the Secret. Required if `includeValue` is `true`.
 
 ##### `includeValue` (Optional)
 
