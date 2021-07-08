@@ -8,7 +8,7 @@ The `when` attribute is not supported in the outcomes of this analyzer.
 
 Collectors do not automatically include ConfigMaps because these often contain sensitive information.
 The [configMap collector](https://troubleshoot.sh/docs/collect/configmap/), can be included in a set of collectors to include data about the ConfigMap.
-It's not recommend, and therefore not default, to include the value of ConfigMaps.
+It's not recommend, and therefore not the default, to include the values of ConfigMaps.
 The most common use of this analyzer it to detect the existence of a specific key in a specific ConfigMap.
 
 ## Example Analyzer Definition
