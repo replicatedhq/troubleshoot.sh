@@ -41,6 +41,7 @@ const themeOptions = {
               'collect/cluster-info',
               'collect/cluster-resources',
               'collect/copy',
+              'collect/copy-from-host',
               'collect/data',
               'collect/exec',
               'collect/http',
