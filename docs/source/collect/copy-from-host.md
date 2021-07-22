@@ -94,6 +94,6 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/[name or hostPath]/[node name].tar`
+### `/[name or hostPath]/[node name]/archive.tar`
 
 This will contain tar archives of the directory or file from all nodes.
