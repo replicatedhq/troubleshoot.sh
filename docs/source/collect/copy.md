@@ -1,6 +1,6 @@
 ---
 title: Copy Files and Folders
-description: A description of the copy collector to copy files out of pods
+description: The copy collector copies files and folders out of pods.
 ---
 
 > The ability to copy folders was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
