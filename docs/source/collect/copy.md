@@ -29,6 +29,9 @@ All glob patterns should match exactly one file.
 When specified, this will collect files from the requested container name. For single container pods, this is not required.
 If a pod has multiple containers and this parameter is not provided, the files will be copied from the first container in pod that matches the selector.
 
+##### `extractArchive` (Optional)
+By default the archive will not be extracted. Set to `true` to extract.
+
 ## Example Collector Definition
 
 ```yaml

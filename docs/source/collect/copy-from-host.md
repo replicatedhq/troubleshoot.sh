@@ -27,6 +27,9 @@ The commands `sleep` and `tar` must be available in the image.
 ##### `hostPath` (Required)
 Location of the files on the host systems.
 
+##### `extractArchive` (Optional)
+By default the archive will not be extracted. Set to `true` to extract.
+
 ##### `timeout` (Optional)
 A [duration](https://golang.org/pkg/time/#Duration) that will be honored when collecting files.
 Timer starts after all pods in the DaemonSet become ready.
