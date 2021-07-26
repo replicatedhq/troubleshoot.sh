@@ -30,6 +30,10 @@ A key within the ConfigMap. Required if `includeValue` is `true`.
 
 Whether to include the key value. Defaults to false.
 
+##### `includeAllData` (Optional)
+
+Whether to include all of the key-value pairs from the ConfigMap data. Defaults to false.
+
 ## Example Collector Definition
 
 ```yaml
@@ -44,6 +48,20 @@ spec:
         name: my-configmap
         includeValue: true
         key: password
+        includeAllData: true
+```
+
+## Example ConfigMap
+
+```
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: my-configmap
+  namespace: default
+data:
+  other-key: other-value
+  password: mypass
 ```
 
 ## Included resources
@@ -59,7 +77,11 @@ When this collector is executed, it will include the following file in a support
   "key": "password",
   "configMapExists": true,
   "keyExists": true,
-  "value": "mypass"
+  "value": "mypass",
+  "data:": {
+    "other-key": "other-value",
+    "password": "mypass"
+  }
 }
 ```
 
