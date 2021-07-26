@@ -48,6 +48,7 @@ spec:
         name: my-configmap
         includeValue: true
         key: password
+        includeAllData: true
 ```
 
 ## Example ConfigMap
