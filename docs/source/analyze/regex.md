@@ -9,11 +9,38 @@ The regex analyzer is used to run arbitrary regular expressions against data col
 
 Either `regex` or `regexGroups` must be set but not both.
 
-**regex**: (Optional) A regex pattern to test. If the pattern matches the file then the outcome is pass.
+**regex**: (Optional) A regex pattern to test. If the pattern matches the file, the outcome that has set `when` to `"true"` will be executed. If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
 
 **regexGroups**: (Optional)  A regex pattern to match. Matches from named capturing groups are available to `when` expressions in outcomes.
 
-## Example Analyzer Definition
+## Example Analyzer Definition for regex
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: my-app
+spec:
+  collectors:
+    - logs:
+        selector:
+          - app=my-app
+        name: my-app
+  analyzers:
+    - textAnalyze:
+      checkName: Database Authentication
+      fileName: my-app/my-app-0/my-app.log
+      regex: 'FATAL: password authentication failed for user'
+      outcomes:
+        - pass:
+            when: "false"
+            message: "Database credentials okay"
+        - fail:
+            when: "true"
+            message: "Problem with database credentials"
+```
+
+## Example Analyzer Definition for regexGroups
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
