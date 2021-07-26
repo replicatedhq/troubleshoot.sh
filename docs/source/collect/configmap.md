@@ -32,7 +32,7 @@ Whether to include the key value. Defaults to false.
 
 ##### `includeAllData` (Optional)
 
-Whether to include all of the key-value pairs in the ConfigMap. Defaults to false.
+Whether to include all of the key-value pairs from the ConfigMap data. Defaults to false.
 
 ## Example Collector Definition
 
