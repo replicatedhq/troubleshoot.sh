@@ -56,6 +56,7 @@ Either `maxAge` or `maxLines` can be provided, but not both.
 
 ##### `limits.maxAge`
 The duration of the maximum oldest log to include.
+For duration string format see [time.ParseDuration](https://pkg.go.dev/time#ParseDuration).
 
 ##### `limits.maxLines`
 The number of lines to include, starting from the newest.
