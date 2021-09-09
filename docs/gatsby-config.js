@@ -89,6 +89,7 @@ const themeOptions = {
               'analyze/ceph-status',
               'analyze/longhorn',
               'analyze/registry-images',
+              'analyze/weave-report',
             ],
           },
         },
