@@ -3,7 +3,7 @@ title: Weave Report
 description: Analyze Weave reports
 ---
 
-The weave analyzer runs several checks to detect problems with the [weave](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/) CNI provider.
+The Weave analyzer runs several checks to detect problems with the [Weave](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/) Container Network Interface (CNI) provider.
 
 ## Paramaters
 
