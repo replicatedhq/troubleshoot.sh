@@ -7,7 +7,7 @@ The Weave analyzer runs several checks to detect problems with the [Weave](https
 
 ## Paramaters
 
-**reportFileGlob:** Filepath in the support bundle for collected weave reports.
+**reportFileGlob:** Filepath in the support bundle for collected Weave reports.
 
 ## Example Analyzer Definition
 
