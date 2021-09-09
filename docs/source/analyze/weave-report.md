@@ -42,7 +42,7 @@ spec:
 
 ### IPAM Pool Utilization
 
-A warning will be generated when at least 85% of the available IPs in the weave subnet are in use by pods.
+A warning will be generated when at least 85% of the available IPs in the Weave subnet are in use by pods.
 
 ### IPAM Pending Allocation
 
