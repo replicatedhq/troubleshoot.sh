@@ -1,6 +1,6 @@
 ---
 title: Weave Report
-description: Analyze weave reports
+description: Analyze Weave reports
 ---
 
 The weave analyzer runs several checks to detect problems with the [weave](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/) CNI provider.
