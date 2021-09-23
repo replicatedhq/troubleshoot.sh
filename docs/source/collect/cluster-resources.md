@@ -12,8 +12,11 @@ This collector cannot be removed.
 
 ## Parameters
 
-The `clusterInfo` collector supports the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties) and no additional parameters.
+In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `clusterResources` collector accepts the following parameters:
 
+##### `namespaces` (Optional)
+The list of namespaces from which the resources and information will be collected.
+If not specified, it will default to collecting information from all namespaces.
 
 ## Example Collector Definition
 
@@ -24,7 +27,10 @@ metadata:
   name: sample
 spec:
   collectors:
-    - clusterResources: {}
+    - clusterResources:
+        namespaces:
+        - default
+        - myapp-namespace
 ```
 
 > Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
