@@ -3,7 +3,7 @@ title: Sysctl
 description: Collect kernel parameters related to networking
 ---
 
-The `sysctl` collector will read kernel parameter settings from /proc/sys/net/ipv4 and /proc/sys/net/bridge on all nodes.
+The `sysctl` collector reads kernel parameter settings from /proc/sys/net/ipv4 and /proc/sys/net/bridge on all nodes.
 This collector schedules a pod on every node using the specified image.
 
 ## Parameters
@@ -12,7 +12,7 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `namespace` (Optional)
 The namespace where the pods will be created.
-If not specified, it will assume the "current" namespace that the kubectl context is set to.
+ If not specified, the namespace that is currently set for the kubectl context is used.
 
 ##### `image` (Required)
 The image to use for the pods scheduled on each node.
@@ -22,11 +22,11 @@ The image must have a shell with the `find`, `cat`, and `echo` commands availabl
 ##### `timeout` (Optional)
 A [duration](https://golang.org/pkg/time/#Duration) that will be honored when collecting data.
 The timer should allow enough time to pull images if needed.
-If not specified, the timeout will be 1 minute.
+Default: 1 minute
 
 ##### `imagePullPolicy` (Optional)
 A valid, string representation of the policy to use when pulling the image.
-If not specified, this will be set to IfNotPresent.
+Default: IfNotPresent
 
 #### `imagePullSecret` (Optional)
 
@@ -55,11 +55,12 @@ spec:
 
 ## Included resources
 
-When this collector is executed, it will include the following files in a support bundle:
+When this collector is executed, it includes the following files in a support bundle:
 
 ### `/sysctl/[node name]`
 
-The sysctl parameters collected for each node will be aggregated into a single file with the following format:
+The sysctl parameters collected for each node are aggregated into a single file with the following format:
+
 
 ```
 /proc/sys/net/ipv4/cipso_cache_bucket_size = 10

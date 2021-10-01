@@ -3,7 +3,7 @@ title: Sysctl
 description: Analyze sysctl parameter values
 ---
 
-The `sysctl` analyzer is available to check the output of the [Sysctl](/collect/sysctl/) collector.
+The `sysctl` analyzer checks the output of the [Sysctl](/collect/sysctl/) collector.
 
 ## Paramaters
 
@@ -11,10 +11,10 @@ The `sysctl` analyzer is available to check the output of the [Sysctl](/collect/
 
 ## Outcomes
 
-The conditional in the `when` tests whether a sysctl parameter is equal to a value for at least one node.
-For example, the conditional `when: net.ipv4.ip_forward = 0` evaluates to true if at least one node is found to have IP forwarding disabled.
+The conditional in the `when` tests whether a `sysctl` parameter is equal to a value for at least one node.
+For example, the conditional `when: net.ipv4.ip_forward = 0` evaluates to `true` if at least one node is found to have IP forwarding disabled.
 
-All nodes for which the condition is true will be prefixed to the message in the outcome.
+All nodes for which the condition is `true` ared prefixed to the message in the outcome.
 For example, if the outcome message is `IP forwarding not enabled`, and the nodes `a.example.com` and `c.example.com` were matching the condition, the result message would be `Nodes a.example.com, b.example.com: IP forwarding not enabled`.
 
 
