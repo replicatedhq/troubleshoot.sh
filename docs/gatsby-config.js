@@ -56,6 +56,7 @@ const themeOptions = {
               'collect/ceph',
               'collect/longhorn',
               'collect/registry-images',
+              'collect/sysctl',
             ],
             "Redact": [
               "redact/index",
@@ -90,6 +91,7 @@ const themeOptions = {
               'analyze/longhorn',
               'analyze/registry-images',
               'analyze/weave-report',
+              'analyze/sysctl',
             ],
           },
         },
