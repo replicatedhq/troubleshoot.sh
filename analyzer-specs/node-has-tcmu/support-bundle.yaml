@@ -1,0 +1,15 @@
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: node-has-tcmu
+  annotations: 
+    title: "Check Node Kernel Modules"
+    description: "Verify that the Kubernetes node supports TCMU-based storage"
+    category: "node"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags: '["kubernetes", "node", "storage"]'
+    contributors: '[{"name": "Simon Croome", "avatarUri": "https://avatars.githubusercontent.com/u/211994?s=460&v=4"}]'
+spec:
+  # Host Collectors can not be used with SupportBundles.
+  collectors: []
+  analyzers: {}

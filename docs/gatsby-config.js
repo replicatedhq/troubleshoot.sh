@@ -28,6 +28,7 @@ const themeOptions = {
               "preflight/introduction",
               "preflight/cluster-checks",
               "preflight/node-checks",
+              "preflight/hostpreflight",
               "preflight/next-steps",
             ],
             "Support Bundle": [
@@ -57,6 +58,7 @@ const themeOptions = {
               'collect/longhorn',
               'collect/registry-images',
               'collect/sysctl',
+              'collect/kernel-modules',
             ],
             "Redact": [
               "redact/index",
@@ -92,6 +94,7 @@ const themeOptions = {
               'analyze/registry-images',
               'analyze/weave-report',
               'analyze/sysctl',
+              'analyze/kernel-modules',
             ],
           },
         },

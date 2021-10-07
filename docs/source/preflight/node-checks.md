@@ -179,4 +179,4 @@ And the results are:
 
 ## Next Steps
 
-Continue to the final part of this tutorial to learn how to distribute Preflight Checks as part of your application or documentation.
+Continue to the next part of this tutorial to learn how to run preflight checks on remote nodes.

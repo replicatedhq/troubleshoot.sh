@@ -15,7 +15,7 @@ The [analyze phase](/analyze/) can only use the output of the collect phase to p
 To specify the data to include for later phases, the collect phase accepts a Kubernetes custom resource as defined here.
 A [full reference of the collectors](/collect/collectors/) is also available.
 
-Collectors are specified inside either a Preflight or a SupportBundle YAML file. To build a set of collectors, start with a Kubernetes YAML file:
+Collectors are specified inside either a Preflight, HostPreflight or a SupportBundle YAML file. To build a set of collectors, start with a Kubernetes YAML file:
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
@@ -24,6 +24,18 @@ metadata:
   name: my-application-name
 spec:
   collectors: []
+```
+
+or
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: HostPreflight
+metadata:
+  name: my-application-name
+spec:
+  collectors: []
+  remoteCollectors: []
 ```
 
 or
@@ -39,7 +51,7 @@ spec:
 
 > Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/). Also note: Previously, Collectors could be specified in a standalone file, with `Kind: Collector`, however this syntax is deprecated in Kots 1.19.0 and not supported at all in the krew plugins.
 
-The above file is a simple, but valid set of collectors.
+The above files are simple, but valid sets of collectors.
 It will collect only the default data.
 
 To add additional collectors, specify each one in the `collectors` array.
@@ -76,3 +88,75 @@ spec:
         args: ["-V"]
         timeout: 5s
 ```
+
+## Host Collectors
+
+The default collectors are intended to gather information using the Kubernetes
+API or from other remote services.
+
+Host Collectors can provide more detailed information about nodes than what the
+Kubernetes API provides.  Troubleshoot achieves this by running host collectors
+on nodes directly. Host collectors can be used to list a node's kernel modules
+or perform network connectivity checks.
+
+Host Collectors can only be run using the `HostPreflight` Kind.  They can be
+specified in either the `collectors` or `remoteCollectors` arrays.
+
+When specified in the `collectors` array they are only run on the local host.
+This is useful is you are running preflight checks by logging on to each host.
+
+When a Host Collector is specified in the `remoteCollectors` array, it will be
+run on all available Kubernetes nodes.  The list of nodes can be filtered using
+a [nodeSelector](https://v1-18.docs.kubernetes.io/docs/concepts/scheduling-eviction/assign-pod-node/#nodeselector).
+
+For example, a complete spec might be:
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: HostPreflight
+metadata:
+  name: example
+spec:
+  remoteCollectors:
+    - blockDevices: {}
+    - certificate:
+        certificatePath: /etc/ssl/corp.crt
+        keyPath: /etc/ssl/corp.key
+    - cpu: {}
+    - diskUsage:
+        collectorName: ephemeral
+        path: /var/lib/kubelet
+    - filesystemPerformance:
+        collectorName: etcd-perf
+        directory: /var/lib/etcd
+        fileSize: 22Mi
+        operationSizeBytes: 2300
+        datasync: true
+    - httpLoadBalancer:
+        collectorName: httploadbalancer
+        port: 80
+        address: http://app.corporate.internal
+        timeout: 10s
+    - http:
+        collectorName: registry
+        get:
+          url: https://registry.replicated.com
+    - ipv4Interfaces: {}
+    - kernelModules: {}    
+    - memory: {}
+    - time: {}
+    - tcpConnect:
+        collectorName: weave host 1
+        address: 10.128.0.2:6783
+        timeout: 2s
+    - tcpLoadBalancer:
+        collectorName: LB1
+        address: 10.128.0.20:6443
+        port: 6443
+        timeout: 5000ms
+    - tcpPortStatus:
+        collectorName: k8s
+        port: 6443
+```
+
+Host collectors are intended to be used with Analyzers.
