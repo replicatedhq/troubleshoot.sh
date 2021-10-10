@@ -141,8 +141,8 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
           allocatableMemory: 16Gi
           cpuCapacity: "5"
           selector:
-            matchLabels: 
-               kubernetes.io/role=database-primary-replica
+            matchLabel: 
+               kubernetes.io/role: database-primary-replica
         outcomes:
           - fail:
               when: "count() < 1"
