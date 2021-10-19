@@ -34,15 +34,22 @@ When the uri attribute is present, a small "Read More" icon will be displayed on
 
 Some analyzers implement the "when" attribute. The details and implementation of this attribute vary between analyzers. For example, the [cluster version](https://troubleshoot.sh/docs/analyze/cluster-version/) analyzer uses this as a semver comparator, while the [image-pull-secrets](https://troubleshoot.sh/docs/analyze/image-pull-secrets/) analyzer doesn't need the when, it's a simple, binary output.
 
-The `when` attribute can be used with the operators `=`, `==`, and `===` in expression language. The value to the left of the operator should be a variable. The value to the right of the operator should be a data type, such as a string or number.
+The `when` attribute can be used with the operators `=`, `==`, and `===` interchangeably to compare values. The value to the left of the operator should be a variable. The value to the right of the operator should be a data type, such as a string or number.
 
-Typically, these operators function as follows:
+### Example
 
----
-| Assignment Operator | Description|
-| ----- | ---------------------------------|
-| = | Functions as an assignment operator that sets the value on the left of `=` to the value on the right.|
-| == | Functions as a comparison operator, and transforms the operands to the same type before running a comparison. If a string is compared with a number, the string is converted to a number for the comparison. And empty string converts to zero. A string with no numeric value returns as `false`.|
-| === | Functions as a strict equality comparison operator, and returns as `false` when the compared values are not the same type.|
-                         
----
+```
+switch operator {
+	case "=", "==", "===":
+		return compareResult == 0, nil
+	case "<":
+		return compareResult == -1, nil
+	case ">":
+		return compareResult == 1, nil
+	case "<=":
+		return compareResult <= 0, nil
+	case ">=":
+		return compareResult >= 0, nil
+	default:
+		return false, errors.New("unknown operator")
+```
