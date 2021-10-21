@@ -32,4 +32,6 @@ When the uri attribute is present, a small "Read More" icon will be displayed on
 
 ## When
 
-Some analyzers implement the "when" attribute. The details and implementation of this attribute vary between analyzers. For example, the [cluster version](https://troubleshoot.sh/docs/analyze/cluster-version/) analyzer uses this as a semver comparator, while the [image-pull-secrets](https://troubleshoot.sh/docs/analyze/image-pull-secrets/) analyzer doesn't need the when, it's a simple, binary output.
+Some analyzers implement the `when` attribute. The details and implementation of this attribute vary between analyzers. For example, the [cluster version](https://troubleshoot.sh/docs/analyze/cluster-version/) analyzer uses this as a semver comparator, while the [image-pull-secrets](https://troubleshoot.sh/docs/analyze/image-pull-secrets/) analyzer does not need `when`, it's a simple, binary output.
+
+In some cases, the `when` attribute can be used with logical operators `=` or`==` to compare values. Which of these operators are supported depends on the specific analyzer, but they both compare values. Other logical operators may be supported. For more information about the analyzers and example definitions, see the [Troubleshoot Analyzer documentation](https://troubleshoot.sh/docs/analyze/) and select a specific analyzer from the content list.
