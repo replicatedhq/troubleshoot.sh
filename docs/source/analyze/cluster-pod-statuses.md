@@ -13,7 +13,7 @@ The outcomes on this analyzer will be processed in order for each pod, and execu
 
 ## Parameters
 
-**namespaces**: (Optional) The namespaces to look for the pods in.
+**namespaces**: (Optional) The namespaces to look for the pods in. If not specified, it will default to all namespaces.
 
 ## Example Analyzer Definition
 
@@ -26,7 +26,9 @@ spec:
   analyzers:
     - clusterPodStatuses:
         name: unhealthy
-        namespace: default
+        namespaces:
+          - default
+          - myapp-namespace
         outcomes:
           - fail:
               when: "== CrashLoopBackOff"
