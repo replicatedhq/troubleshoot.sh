@@ -3,7 +3,7 @@ title: Cluster Pod Statuses
 description: Detecting Kubernetes pods with certain statuses
 ---
 
-The `clusterPodStatuses` analyzer is used to detect all pods that have a certain status.
+The `clusterPodStatuses` analyzer is used to detect pods that have a certain status.
 The `when` attribute supports standard comparators to compare the status of the pod.
 
 The `clusterPodStatuses` analyzer uses data from the [clusterResources collector](https://troubleshoot.sh/collect/cluster-resources).
