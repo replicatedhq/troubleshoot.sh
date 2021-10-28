@@ -26,7 +26,9 @@ spec:
   analyzers:
     - clusterPodStatuses:
         name: unhealthy
-        namespace: default
+        namespaces:
+          - default
+          - myapp-namespace
         outcomes:
           - fail:
               when: "== CrashLoopBackOff"
