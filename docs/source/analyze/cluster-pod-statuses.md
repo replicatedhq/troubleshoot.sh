@@ -24,8 +24,8 @@ metadata:
   name: pods-are-healthy
 spec:
   analyzers:
-    - deploymentStatus:
-        name: api
+    - clusterPodStatuses:
+        name: unhealthy
         namespace: default
         outcomes:
           - fail:
