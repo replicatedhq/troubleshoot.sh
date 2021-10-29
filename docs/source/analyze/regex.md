@@ -9,9 +9,17 @@ The regex analyzer is used to run arbitrary regular expressions against data col
 
 Either `regex` or `regexGroups` must be set but not both.
 
-**regex**: (Optional) A regex pattern to test. If the pattern matches the file, the outcome that has set `when` to `"true"` will be executed. If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
+**regex**: (Optional) A regex pattern to test.
+If the pattern matches the file, the outcome that has set `when` to `"true"` will be executed.
+If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
 
-**regexGroups**: (Optional)  A regex pattern to match. Matches from named capturing groups are available to `when` expressions in outcomes.
+**regexGroups**: (Optional)  A regex pattern to match.
+Matches from named capturing groups are available to `when` expressions in outcomes.
+
+**fileName** (Required) Path to the file in support bundle to analyze.
+This can be an exact name, a prefix, or a file path pattern as defined by Go's [`filepath.Match`](https://pkg.go.dev/path/filepath#Match) function.
+
+**ignoreIfNoFiles** (Optional)  If no file matches, this analyzer will produce a warn outcome by default. This flag can be set to `true` in order to suppress the warning.
 
 ## Example Analyzer Definition for regex
 
