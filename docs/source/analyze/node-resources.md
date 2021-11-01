@@ -41,6 +41,7 @@ The conditional in the `when` value supports the following:
 | `sum(filterName)` | Sum of filterName in all nodes that match any filter specified |
 | `min(filterName)` | Min of filterName in all nodes that match any filter specified |
 | `max(filterName)` | Max of filterName in all nodes that match any filter specified |
+| `nodeCondition(conditionType)` | used for checking node conditions such as Ready, PIDPressure, etc |
 
 ## Example Analyzer Definition
 
