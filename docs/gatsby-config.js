@@ -79,6 +79,7 @@ const themeOptions = {
               'analyze/node-resources',
               'analyze/deployment-status',
               'analyze/statefulset-status',
+              'analyze/replicaset-status',
               'analyze/job-status',
               'analyze/image-pull-secrets',
               'analyze/ingress',
