@@ -12,8 +12,8 @@ The `clusterResources` collector is automatically added and will always be prese
 The target statefulset can be identified by name.
 The outcomes on this analyzer will be processed in order, and execution will stop after the first outcome that is truthy.
 Outcomes are optional in this analyzer.
-If no outcomes are specified, the Job's spec and status will be examined to automatically determine its status.
-In this case, only failed jobs will be reported in the results.
+If no outcomes are specified, the statefulset's spec and status will be examined to automatically determine its status.
+In this case, only failed statefulsets will be reported in the results.
 
 ## Parameters
 
