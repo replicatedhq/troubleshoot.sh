@@ -17,9 +17,14 @@ In this case, only failed statefulsets will be reported in the results.
 
 ## Parameters
 
-**name**: (Optional) The name of the statefulset to check
+**name**: (Optional) The name of the statefulset to check.
+If name is omitted, all statefulsets will be analyzed.
 
 **namespace**: (Optional) The namespace to look for the statefulset in.
+If specified, analysis will be limited to statefulsets in this namespace.
+
+**namespaces**: (Optional) The namespaces to look for the statefulset in.
+If specified, analysis will be limited to statefulsets in these namespaces.
 
 ## Example Analyzer Definition
 
