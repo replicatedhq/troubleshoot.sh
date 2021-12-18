@@ -14,9 +14,14 @@ The outcomes on this analyzer will be processed in order, and execution will sto
 
 ## Parameters
 
-**name**: (Required) The name of the deployment to check
+**name**: (Optional) The name of the deployment to check.
+If name is omitted, all deployments will be analyzed.
 
-**namespace**: (Required) The namespace to look for the deployment in.
+**namespace**: (Optional) The namespace to look for the deployment in.
+If specified, analysis will be limited to deployments in this namespace.
+
+**namespaces**: (Optional) The namespaces to look for the deployment in.
+If specified, analysis will be limited to deployments in these namespaces.
 
 ## Example Analyzer Definition
 

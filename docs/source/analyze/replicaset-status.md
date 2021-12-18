@@ -26,6 +26,10 @@ If neither selector nor name is specified, all replicasets will be analyzed.
 If replicaset name is specified, selector will be ignored, and only the replicaset with the matching name will be analyzed.
 
 **namespace**: (Optional) The namespace to look for the replicaset in.
+If specified, analysis will be limited to replicasets in this namespace.
+
+**namespaces**: (Optional) The namespaces to look for the replicasets in.
+If specified, analysis will be limited to replicasets in these namespaces.
 
 ## Example Analyzer Definition
 

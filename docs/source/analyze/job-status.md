@@ -17,10 +17,14 @@ In this case, only failed jobs will be reported in the results.
 
 ## Parameters
 
-**name**: (Optional) The name of the statefulset to check.
+**name**: (Optional) The name of the job to check.
 If name is not specified, all jobs will be analyzed.
 
-**namespace**: (Optional) The namespace to look for the statefulset in.
+**namespace**: (Optional) The namespace to look for the job in.
+If specified, analysis will be limited to jobs in this namespace.
+
+**namespaces**: (Optional) The namespaces to look for the job in.
+If specified, analysis will be limited to jobs in these namespaces.
 
 ## Example Analyzer Definition
 
