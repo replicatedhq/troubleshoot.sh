@@ -30,7 +30,6 @@ spec:
     - "abc.xyz.*" # redact all items in the array at key xyz within key abc in yaml documents
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 Each redactor consists of a set of files which it can apply to, a set of string literals to replace, and a set of regex replacements to be run.
 Any of the three can be omitted.
