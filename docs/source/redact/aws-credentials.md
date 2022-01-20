@@ -3,7 +3,7 @@ title: AWS Credentials
 description: Automatically redacted AWS credentials
 ---
 
-Troubleshoot automatically redacts AWS credential environment variables in JSON. 
+Troubleshoot automatically redacts AWS credential environment variables in JSON.
 
 This redaction is equivalent to the following redact yaml:
 
@@ -42,5 +42,3 @@ spec:
       - selector: '(?i)"name": *"[^\"]*OWNER_?ACCOUNT[^\"]*"'
         redactor: '(?i)("value": *")(?P<mask>.*[^\"]*)(")'
 ```
-
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).

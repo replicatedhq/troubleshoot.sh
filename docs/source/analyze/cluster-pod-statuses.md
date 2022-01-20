@@ -55,5 +55,3 @@ spec:
               when: "!= Healthy" # Catch all unhealthy pods. A pod is considered healthy if it has a status of Completed, or Running and all of its containers are ready.
               message: Pod {{ .Namespace }}/{{ .Name }} is unhealthy with a status of {{ .Status.Reason }}.
 ```
-
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).

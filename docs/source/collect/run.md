@@ -35,7 +35,7 @@ This cannot be greater than 30 seconds (30s) and if not specified, the default i
 A valid, string representation of the policy to use when pulling the image.
 If not specified, this will be set to IfNotPresent.
 
-#### `imagePullSecret` (Optional) 
+#### `imagePullSecret` (Optional)
 
 > `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
@@ -46,7 +46,7 @@ ImagePullSecret field accepts the following parameters:
 - If a pre-existing ImagePullSecret is used:
   - ##### `name` (required):
   The  name of the pre-existing secret.
-```yaml 
+```yaml
 imagePullSecret:
             name: my-image-pull-secret
 ```
@@ -61,7 +61,7 @@ imagePullSecret:
 ```yaml
 imagePullSecret:
             name: mysecret
-            data: 
+            data:
               .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
             type: kubernetes.io/dockerconfigjson
 ```
@@ -120,12 +120,11 @@ spec:
          args: ["go", "run", "main.go"]
          imagePullSecret:
             name: my-temporary-secret
-            data: 
+            data:
               .dockerconfigjson: ewoJICJhdXRocyI6IHsKzCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
             type: kubernetes.io/dockerconfigjson
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 
