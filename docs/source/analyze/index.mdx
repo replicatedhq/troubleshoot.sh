@@ -93,3 +93,7 @@ Optionally, an analyzer can specify the `checkName` property.
 For analyzer that are optional, based on runtime available configuration, the conditional can be specified in the `exclude` property.
 This is useful for deployment techniques that allow templating for optional components (Helm and [KOTS](https://kots.io/vendor/packaging/template-functions/)).
 When this value is `false`, the analyzer will not be called.
+
+#### `Strict`
+
+Optionally, an analyzer can be set to strict. Setting an analyzer to `strict` is useful as an additional datapoint for analyzers where `outcomes` should not be ignored.
