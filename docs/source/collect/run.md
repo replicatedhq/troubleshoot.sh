@@ -31,6 +31,10 @@ An array of strings containing the arguments to pass to the command when startin
 A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod.
 This cannot be greater than 30 seconds (30s) and if not specified, the default is 20s.
 
+#### `serviceAccountName` (Optional)
+A service account to be used as the identity for processes running in the pod.
+If not specified, it will assume the "default" service account.
+
 ##### `imagePullPolicy` (Optional)
 A valid, string representation of the policy to use when pulling the image.
 If not specified, this will be set to IfNotPresent.
@@ -86,6 +90,7 @@ spec:
         command: ["ping"]
         args: ["-w", "5", "www.google.com"]
         imagePullPolicy: IfNotPresent
+        serviceAccountName: default
 
 ```
 ## Examples using private images with `imagePullSecret`
