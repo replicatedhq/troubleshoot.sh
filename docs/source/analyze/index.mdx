@@ -94,9 +94,8 @@ For analyzer that are optional, based on runtime available configuration, the co
 This is useful for deployment techniques that allow templating for optional components (Helm and [KOTS](https://kots.io/vendor/packaging/template-functions/)).
 When this value is `true`, the analyzer will not be called.
 
-#### `Strict`
+#### `strict`
 
-Optionally, an analyzer can be set to strict. Setting an analyzer  `strict: true` is useful as it provides an additional datapoint for analyzers where `outcomes` should not be ignored.
+Optionally, an analyzer can be set to strict. Setting `strict: true` for an analyzer prevents failure outcomes from being ignored.
 
 When `exclude: true` is specified, `exclude` will override `strict` and the analyzer will not be executed.
-
