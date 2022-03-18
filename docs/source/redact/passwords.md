@@ -17,7 +17,7 @@ spec:
   - name: Redact values for environment variables with names beginning with 'password'
     removals:
       regex:
-      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*password[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\"'
+      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*password[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\")'
   - name: Redact password environment variables in multiline JSON
     removals:
       regex:
