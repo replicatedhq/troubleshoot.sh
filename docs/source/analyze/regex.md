@@ -36,16 +36,16 @@ spec:
         name: my-app
   analyzers:
     - textAnalyze:
-      checkName: Database Authentication
-      fileName: my-app/my-app-0/my-app.log
-      regex: 'FATAL: password authentication failed for user'
-      outcomes:
-        - pass:
-            when: "false"
-            message: "Database credentials okay"
-        - fail:
-            when: "true"
-            message: "Problem with database credentials"
+        checkName: Database Authentication
+        fileName: my-app/my-app-0/my-app.log
+        regex: 'FATAL: password authentication failed for user'
+        outcomes:
+          - pass:
+              when: "false"
+              message: "Database credentials okay"
+          - fail:
+              when: "true"
+              message: "Problem with database credentials"
 ```
 
 ## Example Analyzer Definition for regexGroups
