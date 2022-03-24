@@ -8,7 +8,7 @@ It relies on the data collected by the [MySQL collector](/collect/mysql/).
 
 The analyzer's outcome `when` clause may be used to evaluate the database connection status or a semver range to compare against the running version, and supports standard comparison operators.
 
-## Paramaters
+## Parameters
 
 **checkName:** Optional name.
 

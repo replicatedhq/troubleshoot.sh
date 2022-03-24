@@ -5,7 +5,7 @@ description: Analyze sysctl parameter values
 
 The `sysctl` analyzer checks the output of the [Sysctl](/collect/sysctl/) collector.
 
-## Paramaters
+## Parameters
 
 *There are no parameters available for this analyzer.*
 

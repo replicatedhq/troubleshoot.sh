@@ -7,7 +7,7 @@ The `Ceph Status` analyzer is available to check that Ceph is reporting healthy.
 
 The analyzer's outcome `when` clause may be used to evaluate and compare against the actual Ceph health status, and supports standard comparison operators.
 
-## Paramaters
+## Parameters
 
 **checkName:** (Optional) Analyzer name.
 

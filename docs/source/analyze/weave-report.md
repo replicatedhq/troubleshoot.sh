@@ -5,7 +5,7 @@ description: Analyze Weave reports
 
 The Weave analyzer runs several checks to detect problems with the [Weave](https://www.weave.works/docs/net/latest/kubernetes/kube-addon/) Container Network Interface (CNI) provider.
 
-## Paramaters
+## Parameters
 
 **reportFileGlob:** Filepath in the support bundle for collected Weave reports.
 
