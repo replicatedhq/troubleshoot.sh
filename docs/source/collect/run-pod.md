@@ -3,7 +3,7 @@ title: Run Pods
 description: Running pods during collection time to create data
 ---
 
-**Looking for the old Run collector?** See: [Run (Deprecated)]((https://troubleshoot.sh/docs/collect/deprecated/run))
+**Looking for the old Run collector?** See: [Run (Deprecated)](https://troubleshoot.sh/docs/collect/deprecated/run)
 
 The `runPod` collector can be used to run a pod in the cluster with the parameters provided.
 The collector will delete and clean up this pod and any artifacts after it's created.
