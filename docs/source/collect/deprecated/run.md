@@ -1,5 +1,5 @@
 ---
-title: Run Pods
+title: Run (Deprecated)
 description: Running pods during collection time to create data
 ---
 
