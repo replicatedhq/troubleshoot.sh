@@ -46,7 +46,7 @@ const themeOptions = {
               'collect/exec',
               'collect/http',
               'collect/logs',
-              'collect/run',
+              'collect/run-pod',
               'collect/collectd',
               'collect/configmap',
               'collect/secret',
