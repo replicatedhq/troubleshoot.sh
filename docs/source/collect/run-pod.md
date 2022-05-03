@@ -21,7 +21,7 @@ The namespace to look for the pod selector in.
 If not specified, it will assume the "current" namespace that the kubectl context is set to.
 
 ##### `podSpec` (Required)
-The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Reference for PodSpec](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core) for all available properties.
+The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core) for all available properties.
 
 ##### `timeout` (Optional)
 A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod.
@@ -31,19 +31,19 @@ This cannot be greater than 30 seconds (30s) and if not specified, the default i
 
 > `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
-Troubleshoot offers two possibilities to use ImagePullSecrets, either using the name of a pre-existing secret in the cluster or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
+Troubleshoot offers the ability to use ImagePullSecrets, either using the name of a pre-existing secret in the `podSpec` or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
 
-ImagePullSecret field accepts the following parameters:
-
-- If a pre-existing ImagePullSecret is used:
-  - ##### `name` (required):
-  The  name of the pre-existing secret.
+- To use an existing ImagePullSecret:
 ```yaml
-imagePullSecret:
-            name: my-image-pull-secret
+         podSpec:
+           containers:
+           - args: ["go", "run", "main.go"]
+             image: my-private-repository/myRestApi
+           imagePullSecrets:
+             - my-image-pull-secret
 ```
 
-- If an ImagePullSecret will be created for the run collector to pull the image:
+- To let Troubleshoot create an ImagePullSecret for the run collector to pull the image:
   - ##### `name` (optional)
   - ##### `data`
       - ###### `.dockerconfigjson` (required)
@@ -52,10 +52,10 @@ imagePullSecret:
     A string indicating that the secret is of type "kubernetes.io/dockerconfigjson".
 ```yaml
 imagePullSecret:
-            name: mysecret
-            data:
-              .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
-            type: kubernetes.io/dockerconfigjson
+  name: mysecret
+  data:
+    .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
+  type: kubernetes.io/dockerconfigjson
 ```
 
 Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
@@ -82,9 +82,7 @@ spec:
             args: ["-w", "5", "www.google.com"]
 
 ```
-## Examples using private images with `imagePullSecret`
-
-**NOTE**: You can specify an existing `imagePullSecret` name in the `podSpec`, but if you want Troubleshoot to create a temporary secret for you, use the example below.
+## Example using a private images with `imagePullSecret`
 
 ### Using dockerconfigjson secrets
 
@@ -93,7 +91,7 @@ Troubleshoot will create a temporary secret, use it to pull the image from the p
 ```yaml
 spec:
   collectors:
-     - run:
+     - runPod:
          name: "myPrivateApp"
          namespace: default
          imagePullSecret:
