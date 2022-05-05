@@ -43,13 +43,15 @@ Troubleshoot offers the ability to use ImagePullSecrets, either using the name o
              - my-image-pull-secret
 ```
 
-- To let Troubleshoot create an ImagePullSecret for the run collector to pull the image:
+The ImagePullSecret field at the collector level accepts the following parameters:
   - ##### `name` (optional)
   - ##### `data`
       - ###### `.dockerconfigjson` (required)
       A string containing a valid base64-encoded docker config.json file.
   - ##### `type` (required)
     A string indicating that the secret is of type "kubernetes.io/dockerconfigjson".
+
+To let Troubleshoot create an ImagePullSecret for the run collector to pull the image:
 ```yaml
 imagePullSecret:
   name: mysecret
