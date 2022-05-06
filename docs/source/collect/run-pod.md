@@ -3,7 +3,9 @@ title: Run Pods
 description: Running pods during collection time to create data
 ---
 
-**Looking for the old Run collector?** See: [Run (Deprecated)](https://troubleshoot.sh/docs/collect/deprecated/run)
+> Introduced in Troubleshoot v0.33.0.
+
+> Looking for the old Run collector? See: [Run (Deprecated)](https://troubleshoot.sh/docs/collect/deprecated/run)
 
 The `runPod` collector can be used to run a pod in the cluster with the parameters provided.
 The collector will delete and clean up this pod and any artifacts after it's created.
@@ -93,18 +95,18 @@ Troubleshoot will create a temporary secret, use it to pull the image from the p
 ```yaml
 spec:
   collectors:
-     - runPod:
-         name: "myPrivateApp"
-         namespace: default
-         imagePullSecret:
-            name: my-temporary-secret
-            data:
-              .dockerconfigjson: ewoJICJhdXRocyI6IHsKzCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
-            type: kubernetes.io/dockerconfigjson
-         podSpec:
-           containers:
-           - args: ["go", "run", "main.go"]
-             image: my-private-repository/myRestApi
+    - runPod:
+        name: "myPrivateApp"
+        namespace: default
+        imagePullSecret:
+           name: my-temporary-secret
+           data:
+             .dockerconfigjson: ewoJICJhdXRocyI6IHsKzCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
+           type: kubernetes.io/dockerconfigjson
+        podSpec:
+          containers:
+          - args: ["go", "run", "main.go"]
+            image: my-private-repository/myRestApi
 ```
 
 ## Included resources
