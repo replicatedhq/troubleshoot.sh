@@ -35,16 +35,6 @@ This cannot be greater than 30 seconds (30s) and if not specified, the default i
 
 Troubleshoot offers the ability to use ImagePullSecrets, either using the name of a pre-existing secret in the `podSpec` or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
 
-- To use an existing ImagePullSecret:
-```yaml
-         podSpec:
-           containers:
-           - args: ["go", "run", "main.go"]
-             image: my-private-repository/myRestApi
-           imagePullSecrets:
-             - my-image-pull-secret
-```
-
 The ImagePullSecret field at the collector level accepts the following parameters:
   - ##### `name` (optional)
   - ##### `data`
@@ -63,6 +53,16 @@ imagePullSecret:
 ```
 
 Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
+
+- To use an existing ImagePullSecret:
+```yaml
+         podSpec:
+           containers:
+           - args: ["go", "run", "main.go"]
+             image: my-private-repository/myRestApi
+           imagePullSecrets:
+             - my-image-pull-secret
+```
 
 See the examples below for use cases.  
 
