@@ -3,8 +3,6 @@ title: Run Pods
 description: Running pods during collection time to create data
 ---
 
-> Introduced in Troubleshoot v0.33.0.
-
 > Looking for the old Run collector? See: [Run (Deprecated)](https://troubleshoot.sh/docs/collect/deprecated/run)
 
 The `runPod` collector can be used to run a pod in the cluster with the parameters provided.
@@ -23,6 +21,9 @@ The namespace to look for the pod selector in.
 If not specified, it will assume the "current" namespace that the kubectl context is set to.
 
 ##### `podSpec` (Required)
+
+> Introduced in Troubleshoot v0.33.0.
+
 The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core) for all available properties.
 
 ##### `timeout` (Optional)
