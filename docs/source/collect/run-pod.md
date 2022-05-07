@@ -24,15 +24,13 @@ If not specified, it will assume the "current" namespace that the kubectl contex
 
 > Introduced in Troubleshoot v0.33.0.
 
-The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Reference](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.23/#podspec-v1-core) for all available properties.
+The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec) for all available properties.
 
 ##### `timeout` (Optional)
 A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod.
 This cannot be greater than 30 seconds (30s) and if not specified, the default is 20s.
 
 #### `imagePullSecret` (Optional)
-
-> `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
 Troubleshoot offers the ability to use ImagePullSecrets, either using the name of a pre-existing secret in the `podSpec` or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
 
