@@ -88,6 +88,8 @@ const themeOptions = {
               'analyze/secrets',
               'analyze/crd',
               'analyze/regex',
+              'analyze/json-compare',
+              'analyze/yaml-compare',
               'analyze/postgresql',
               'analyze/mysql',
               'analyze/ceph-status',
