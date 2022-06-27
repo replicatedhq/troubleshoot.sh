@@ -7,12 +7,12 @@ The YAML compare analyzer is used to compare a YAML snippet with part or all of 
 
 ## Parameters
 
-**fileName** (Required) Path to the file in support bundle to analyze.
+**fileName**: (Required) Path to the file in support bundle to analyze.
 
-**value** (Required) YAML value to compare.
+**value**: (Required) YAML value to compare.
 If the value matches the collected file, the outcome that has set `when` to `"true"` will be executed.
 
-**path** (Optional) Portion of the collected YAML file to compare against.
+**path**: (Optional) Portion of the collected YAML file to compare against.
 The default behavior is to compare against the entire collected file.
 
 ## Example Analyzer Definition

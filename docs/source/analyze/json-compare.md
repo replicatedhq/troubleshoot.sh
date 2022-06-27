@@ -1,18 +1,18 @@
 ---
 title: JSON Compare
-description: Compare JSON snippets
+description: Compare JSON values
 ---
 
 The JSON compare analyzer is used to compare a JSON snippet with part or all of a collected JSON file.
 
 ## Parameters
 
-**fileName** (Required) Path to the file in support bundle to analyze.
+**fileName**: (Required) Path to the file in support bundle to analyze.
 
-**value** (Required) JSON value to compare.
+**value**: (Required) JSON value to compare.
 If the value matches the collected file, the outcome that has set `when` to `"true"` will be executed.
 
-**path** (Optional) Portion of the collected JSON file to compare against.
+**path**: (Optional) Portion of the collected JSON file to compare against.
 The default behavior is to compare against the entire collected file.
 
 ## Example Analyzer Definition
