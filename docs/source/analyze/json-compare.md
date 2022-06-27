@@ -7,10 +7,11 @@ The JSON compare analyzer is used to compare a JSON snippet with part or all of 
 
 ## Parameters
 
-**fileName**: (Required) Path to the file in support bundle to analyze.
+**fileName**: (Required) Path of the collected file to analyze.
 
 **value**: (Required) JSON value to compare.
 If the value matches the collected file, the outcome that has set `when` to `"true"` will be executed.
+If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
 
 **path**: (Optional) Portion of the collected JSON file to compare against.
 The default behavior is to compare against the entire collected file.
