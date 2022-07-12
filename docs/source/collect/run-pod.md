@@ -60,7 +60,7 @@ Further information about config.json file and dockerconfigjson secrets may be f
            - args: ["go", "run", "main.go"]
              image: my-private-repository/myRestApi
            imagePullSecrets:
-             - my-image-pull-secret
+             - name: my-image-pull-secret
 ```
 
 See the examples below for use cases.  
