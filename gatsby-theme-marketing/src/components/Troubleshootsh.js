@@ -152,7 +152,7 @@ class Troubleshootsh extends React.Component {
               <div className="u-flexMobileReflow u-marginTop--50">
                 <div className="flex1 left-block more next-step-arrow">
                   <div className="u-position--relative u-textAlign--center">
-                    <div className="icon collect-icon-large"><span className="illustration-text">Collect</span></div>
+                    <div className="icon collect-icon-large"><span className="illustration-text">Collecct</span></div>
                   </div>
                   <div className="u-textAlign--left">
                     <p className="u-fontSize--large u-color--dustyGray u-lineHeight--more u-marginBottom--20 u-marginTop--20 body-copy">Without installing anything in to the cluster, data is collected from your application based on what was defined in your collector.</p>
