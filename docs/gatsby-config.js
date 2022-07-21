@@ -58,7 +58,7 @@ const themeOptions = {
               'collect/registry-images',
               'collect/sysctl',
             ],
-            "Host Collect": [
+            HostCollect: [
               'hostcollect/host-collectors',
             ],
             "Redact": [
