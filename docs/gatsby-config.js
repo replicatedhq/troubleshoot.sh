@@ -59,7 +59,7 @@ const themeOptions = {
               'collect/sysctl',
             ],
             "Host Collect": [
-              'host-collect/host-collectors',
+              'hostcollect/host-collectors',
             ],
             "Redact": [
               "redact/index",
