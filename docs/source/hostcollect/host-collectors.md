@@ -52,11 +52,11 @@ spec:
 ### Networking
 - [certificate](./certificate): collects information about the TLS certificate at the specified path
 - [http](./http): collects information about the ability to connect to the specified HTTP address
-- [httploadbalancer](./httploadbalancer): collect information about the ability to connect to the the specified HTTP load balancer address
+- [httpLoadBalancer](./httpLoadBalancer): collect information about the ability to connect to the the specified HTTP load balancer address
 - [ipv4Interfaces](./ipv4Interfaces) collects information about the host system ipv4 interfaces
 - [tcpConnect](./tcpConnect): collects information about the ability to connect to the the specified TCP address
 - [tcpLoadBalancer](./tcpLoadBalancer): collect information about the ability to connect to the the specified TCP load balancer address
-- [tcpPortStatus](tcpPortStatus): collects information about the specified TCP port
+- [tcpPortStatus](./tcpPortStatus): collects information about the specified TCP port
 
 ### Generated and dynamic data
 - [run](./run): runs a specified command and includes the results in the collected output
