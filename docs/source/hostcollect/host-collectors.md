@@ -64,5 +64,5 @@ spec:
 ### Other
 - [hostServices](./hostServices): collect information about the available host system services
 - [hostOS](./hostOS): collects information about the OS installed on the machine
-- [systemPackages](./systemPackages) collects information about the specified host system packages depending on the operating system the packages are listed under
+- [systemPackages](./systemPackages) collects information about the host system packages for the operating system specified
 - [time](./time): collects information about the system clock
