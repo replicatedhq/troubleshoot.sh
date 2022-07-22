@@ -1,88 +1,64 @@
 ---
 title: System Packages
-description: Collect information about the host system packages for the operating system specified
+description: Collect and analyze information about the host system packages for the operating system specified
 ---
+
+## System Packages Collector
 
 The `systemPackages` collector can be used to collect information about the host system packages for the operating system specified
 
-## Parameters
+### Parameters
 
-### `ubuntu` (Optional)
+#### `ubuntu` (Optional)
 An array of the names of packages to collect information about if the operating system is `Ubuntu`, regardless of the version.
 
-### `ubuntu16` (Optional)
+#### `ubuntu16` (Optional)
 An array of the names of packages to collect information about if the operating system is `Ubuntu` version `16.x`.
 
-### `ubuntu18` (Optional)
+#### `ubuntu18` (Optional)
 An array of the names of packages to collect information about if the operating system is `Ubuntu` version `18.x`.
 
-### `ubuntu20` (Optional)
+#### `ubuntu20` (Optional)
 An array of the names of packages to collect information about if the operating system is `Ubuntu` version `20.x`.
 
-### `rhel` (Optional)
+#### `rhel` (Optional)
 An array of the names of packages to collect information about if the operating system is `RHEL`, regardless of the version.
 
-### `rhel7` (Optional)
+#### `rhel7` (Optional)
 An array of the names of packages to collect information about if the operating system is `RHEL` version `7.x`.
 
-### `rhel8` (Optional)
+#### `rhel8` (Optional)
 An array of the names of packages to collect information about if the operating system is `RHEL` version `8.x`.
 
-### `centos` (Optional)
+#### `centos` (Optional)
 An array of the names of packages to collect information about if the operating system is `CentOS`, regardless of the version.
 
-### `centos7` (Optional)
+#### `centos7` (Optional)
 An array of the names of packages to collect information about if the operating system is `CentOS` version `7.x`.
 
-### `centos8` (Optional)
+#### `centos8` (Optional)
 An array of the names of packages to collect information about if the operating system is `CentOS` version `8.x`.
 
-### `ol` (Optional)
+#### `ol` (Optional)
 An array of the names of packages to collect information about if the operating system is `Oracle Linux`, regardless of the version.
 
-### `ol7` (Optional)
+#### `ol7` (Optional)
 An array of the names of packages to collect information about if the operating system is `Oracle Linux` version `7.x`.
 
-### `ol8` (Optional)
+#### `ol8` (Optional)
 An array of the names of packages to collect information about if the operating system is `Oracle Linux` version `8.x`.
 
-### `amzn` (Optional)
+#### `amzn` (Optional)
 An array of the names of packages to collect information about if the operating system is `Amazon Linux`, regardless of the version.
 
-### `amzn2` (Optional)
+#### `amzn2` (Optional)
 An array of the names of packages to collect information about if the operating system is `Amazon Linux` version `2.x`.
 
-## Example Collector Definition
-
-```yaml
-apiVersion: troubleshoot.sh/v1beta2
-kind: SupportBundle
-metadata:
-  name: systemPackages
-spec:
-  hostCollectors:
-    - systemPackages:
-        collectorName: "system-packages"
-        ubuntu:
-          - open-iscsi
-        ubuntu20:
-          - nmap
-          - nfs-common
-        centos:
-          - iscsi-initiator-utils
-        centos7:
-          - libzstd
-        centos8:
-          - nfs-utils
-          - openssl
-```
-
-
-## Included resources
+### Included resources
 
 Result of the systemPackages collector will be stored in the `host-collectors/system` directory of the support bundle.
 
-### `[collector-name].json`
+#### `[collector-name].json`
 
 If the `collectorName` field is unset it will be named `packages.json`.
 
@@ -106,4 +82,59 @@ Example of the resulting JSON file:
       }
     ]
 }
+```
+
+## System Packages Analyzer
+
+The systemPackages analyzer is used to analyze information about the collected packages. For example, the analyzer can check whether a certain package is installed, if the version of a package is greater than or equal to a certain version, and more. The analyzer also supports template functions to help customize the outcomes as desired.
+
+Some of the fields that are accessible using template functions are detailed in the following JSON object:
+
+```json
+{
+  "OS": "ubuntu",
+  "OSVersion": "18.04",
+  "OSVersionMajor": "18",
+  "OSVersionMinor": "4",
+  "Name": "openssl",
+  "Error": "",
+  "ExitCode": "0",
+  "IsInstalled": true,
+}
+```
+
+The analyzer also has access to the fields in the details field for a package from the collector. For example, in the details field in the collector output above, you can reference the Version field with {{ .Version }}.
+
+## Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: systemPackages
+spec:
+  hostCollectors:
+    - systemPackages:
+        collectorName: system-packages
+        ubuntu:
+          - open-iscsi
+        ubuntu20:
+          - nmap
+          - nfs-common
+        centos:
+          - iscsi-initiator-utils
+        centos7:
+          - libzstd
+        centos8:
+          - nfs-utils
+          - openssl
+  analyzers:
+    - systemPackages:
+        collectorName: system-packages
+        outcomes:
+        - fail:
+            when: '{{ not .IsInstalled }}'
+            message: Package {{ .Name }} is not installed
+        - pass:
+            message: Package {{ .Name }} is installed
 ```

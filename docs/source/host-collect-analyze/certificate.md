@@ -1,6 +1,6 @@
 ---
 title: TLS Certificates
-description: Collect information about a certificate key pair
+description: Collect and analyze information about a certificate key pair
 ---
 
 The `certificate` collector can collect information about a certificate key pair on the host

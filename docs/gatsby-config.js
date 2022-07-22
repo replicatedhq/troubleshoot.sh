@@ -58,9 +58,6 @@ const themeOptions = {
               'collect/registry-images',
               'collect/sysctl',
             ],
-            HostCollect: [
-              'hostcollect/host-collectors',
-            ],
             "Redact": [
               "redact/index",
               "redact/redactors",
@@ -101,6 +98,9 @@ const themeOptions = {
               'analyze/weave-report',
               'analyze/sysctl',
               "host-analyze/all",
+            ],
+            HostCollect: [
+              'host-collect-analyze/host-collectors',
             ],
           },
         },
