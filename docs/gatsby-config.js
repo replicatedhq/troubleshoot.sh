@@ -38,6 +38,7 @@ const themeOptions = {
               'collect/index',
               'collect/collectors',
               'collect/all',
+              'host-collect-analyze/host-collectors',
               'collect/cluster-info',
               'collect/cluster-resources',
               'collect/copy',
@@ -98,9 +99,6 @@ const themeOptions = {
               'analyze/weave-report',
               'analyze/sysctl',
               "host-analyze/all",
-            ],
-            HostCollect: [
-              'host-collect-analyze/host-collectors',
             ],
           },
         },
