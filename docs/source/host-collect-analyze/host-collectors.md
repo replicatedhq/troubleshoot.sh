@@ -3,7 +3,7 @@ title: Host Collectors and Analyzers
 description: Host Collectors and Analyzers in Support Bundles
 ---
 
-In the event you need to collect and analyze information that isn't available when using [in-cluster collectors](/collect/all), you can use Host Collectors to gather information about the environment such as CPU, memory, available block devices, etc. This can be useful in situations where the Kubernetes cluster and you need to collect information at the host level.
+In the event you need to collect and analyze information that isn't available when using in-cluster collectors, you can use Host Collectors to gather information about the environment such as CPU, memory, available block devices, etc. This can be useful in situations where the Kubernetes cluster and you need to collect information at the host level.
 
 ## Including Host Collectors
 
