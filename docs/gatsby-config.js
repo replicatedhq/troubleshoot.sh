@@ -101,7 +101,7 @@ const themeOptions = {
             ],
             "Host Collect and Analyze": [
               'host-collect-analyze/host-collectors',
-              'host-collect-ananlyze/all',
+              'host-collect-analyze/all',
             ],
           },
         },
