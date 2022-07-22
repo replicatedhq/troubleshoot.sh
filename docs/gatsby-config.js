@@ -99,8 +99,9 @@ const themeOptions = {
               'analyze/sysctl',
               "host-analyze/all",
             ],
-            "Host Collectors and Analyzers": [
+            "Host Collect and Analyze": [
               'host-collect-analyze/host-collectors',
+              'host-collect-ananlyze/all'
             ],
           },
         },
