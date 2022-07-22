@@ -47,6 +47,30 @@ Specifies the number of threads to use for background write IOPS. This should be
 #### `backgroundReadIOPSJobs` (Optional)
 Specifies the number of threads to use for background read IOPS. This should be set high enough to reach the target specified in backgroundReadIOPS.
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: filesystem-performance
+spec:
+  hostCollectors:
+    - filesystemPerformance:
+        collectorName: filesystem-latency-two-minute-benchmark
+        timeout: 2m
+        directory: /var/lib/etcd
+        fileSize: 22Mi
+        operationSizeBytes: 2300
+        datasync: true
+        enableBackgroundIOPS: true
+        backgroundIOPSWarmupSeconds: 10
+        backgroundWriteIOPS: 300
+        backgroundWriteIOPSJobs: 6
+        backgroundReadIOPS: 50
+        backgroundReadIOPSJobs: 1
+```
+
 ### Included resources
 
 Result of the filesystemPerformance collector will be stored in the `host-collectors/filesystemPerformance` directory of the support bundle.
@@ -89,7 +113,7 @@ The filesystemPerformance analyzer supports multiple outcomes by validating the 
 `p99 < 10ms`: The p99 write latency is less than 10ms.
 `p90 > 20ms`: The p90 write latency is greater than 20ms.
 
-## Example Collector Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

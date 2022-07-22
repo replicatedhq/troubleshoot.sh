@@ -14,36 +14,40 @@ In addition to the [shared collector properties](/collect/collectors/#shared-pro
 ##### `get` 
 GET
 
-###### `url`
-The URL to issue the GET request to.
-###### `insecureSkipVerify`
-(boolean): Whether to enable insecure TLS verification.
-###### `headers`
-A map of the headers to send with the request.
+* `url`: The URL to issue the GET request to.
+* `insecureSkipVerify`: (boolean): Whether to enable insecure TLS verification.
+* `headers`: A map of the headers to send with the request.
 
 ##### `post` 
 POST
 
-###### `url`
-The URL to issue the GET request to.
-###### `insecureSkipVerify`
-(boolean): Whether to enable insecure TLS verification.
-###### `headers`
-A map of the headers to send with the request.
-###### `body`
-The body to send with the request as a string.
+* `url`: The URL to issue the GET request to.
+* `insecureSkipVerify`: (boolean): Whether to enable insecure TLS verification.
+* `headers`: A map of the headers to send with the request.
+* `body`: The body to send with the request as a string.
 
 ##### `put` 
 PUT
 
-###### `url`
-The URL to issue the GET request to.
-###### `insecureSkipVerify`
-(boolean): Whether to enable insecure TLS verification.
-###### `headers`
-A map of the headers to send with the request.
-###### `body`
-The body to send with the request as a string.
+* `url`: The URL to issue the GET request to.
+* `insecureSkipVerify`: (boolean): Whether to enable insecure TLS verification.
+* `headers`: A map of the headers to send with the request.
+* `body`: The body to send with the request as a string.
+
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: http
+spec:
+  hostCollectors:
+    - http:
+        collectorName: get-replicated-app
+        get:
+          url: https://replicated.app
+```
 
 ### Included resources
 
@@ -83,13 +87,13 @@ The http analyzer supports multiple outcomes. For example:
 `error`: Error occurred connecting to the URL.
 `statusCode == 200`: Successfully connected to the URL.
 
-## Example Collector Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
-  name: certificate
+  name: http
 spec:
   hostCollectors:
     - http:

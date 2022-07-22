@@ -54,6 +54,31 @@ An array of the names of packages to collect information about if the operating 
 #### `amzn2` (Optional)
 An array of the names of packages to collect information about if the operating system is `Amazon Linux` version `2.x`.
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: systemPackages
+spec:
+  hostCollectors:
+    - systemPackages:
+        collectorName: system-packages
+        ubuntu:
+          - open-iscsi
+        ubuntu20:
+          - nmap
+          - nfs-common
+        centos:
+          - iscsi-initiator-utils
+        centos7:
+          - libzstd
+        centos8:
+          - nfs-utils
+          - openssl
+```
+
 ### Included resources
 
 Result of the systemPackages collector will be stored in the `host-collectors/system` directory of the support bundle.
@@ -105,7 +130,7 @@ Some of the fields that are accessible using template functions are detailed in 
 
 The analyzer also has access to the fields in the details field for a package from the collector. For example, in the details field in the collector output above, you can reference the Version field with {{ .Version }}.
 
-## Example Collector Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

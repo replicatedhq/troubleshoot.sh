@@ -17,6 +17,21 @@ The address to check the connection to
 #### `timeout` (Optional)
 Specifies the total timeout
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: tcpConnect
+spec:
+  hostCollectors:
+    - tcpConnect:
+        collectorName: kubernetes-api-tcp-conn-status
+        address: 10.128.0.29:6443
+        timeout: 10s
+```
+
 ### Included resources
 
 Result of the tcpConnect collector will be stored in the `host-collectors/connect` directory of the support bundle.
@@ -40,7 +55,7 @@ The tcpConnect analyzer supports multiple outcomes:
 `connected`: Successfully connected to the address.
 `error`: Unexpected error connecting to the address.
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

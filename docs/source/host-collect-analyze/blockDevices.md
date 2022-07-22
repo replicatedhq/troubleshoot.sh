@@ -11,6 +11,57 @@ The `blockDevices` collector can collect information about all of the block devi
 
 `None`
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: block-devices
+spec:
+  hostCollectors:
+    - blockDevices: {}
+```
+
+### Included resources
+
+Result of the blockDevices collector will be stored in the `host-collectors/system` directory of the support bundle.
+
+#### `block_devices.json`
+
+Example of the resulting JSON file:
+
+```json
+{
+   "name":"sda1",
+   "kernel_name":"sda1",
+   "parent_kernel_name":"sda",
+   "type":"part",
+   "major":8,
+   "minor":1,
+   "size":85782937088,
+   "filesystem_type":"ext4",
+   "mountpoint":"/",
+   "serial":"",
+   "read_only":false,
+   "removable":false
+},
+{
+   "name":"sda14",
+   "kernel_name":"sda14",
+   "parent_kernel_name":"sda",
+   "type":"part",
+   "major":8,
+   "minor":14,
+   "size":4194304,
+   "filesystem_type":"",
+   "mountpoint":"",
+   "serial":"",
+   "read_only":false,
+   "removable":false
+}
+```
+
 ## Block Devices Analyzer
 
 The blockDevices analyzer supports multiple outcomes. It accepts “<regex> <operator> <count>”, e.g. “sdb > 0”.
@@ -31,7 +82,7 @@ Include unmounted partitions in the analysis. Disabled by default.
 #### `minimumAcceptableSize` (Optional)
 The minimum acceptable size to filter the available block devices during analysis. Disabled by default
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

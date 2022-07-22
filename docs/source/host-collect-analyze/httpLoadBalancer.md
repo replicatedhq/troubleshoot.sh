@@ -20,6 +20,22 @@ The address to check the connection to
 #### `timeout` (Optional)
 Specifies the total timeout
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: httpLoadBalancer
+spec:
+  hostCollectors:
+    - httpLoadBalancer:
+        collectorName: httploadbalancer
+        port: 80
+        address: http://app.corporate.internal
+        timeout: 10s
+```
+
 ### Included resources
 
 Result of the httpLoadBalancer collector will be stored in the `host-collectors/httpLoadBalancer` directory of the support bundle.
@@ -46,7 +62,7 @@ The httpLoadBalancer analyzer supports multiple outcomes:
 `bind-permission-denied`: Failed to bind to the address:port.
 `error`: Unexpected error connecting to the load balancer address.
 
-## Example Collector Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

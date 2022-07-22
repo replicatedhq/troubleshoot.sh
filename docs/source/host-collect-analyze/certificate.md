@@ -17,6 +17,20 @@ Include unmounted partitions in the analysis. Disabled by default.
 #### `keyPath` (Required)
 The minimum acceptable size to filter the available block devices during analysis. Disabled by default
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: certificate
+spec:
+  hostCollectors:
+    - certificate:
+        certificatePath: /etc/ssl/corp.crt
+        keyPath: /etc/ssl/corp.key
+```
+
 ### Included resources
 
 Result of the blockDevices collector will be stored in the `host-collectors/certificate` directory of the support bundle.
@@ -42,7 +56,7 @@ The diskUsage analyzer supports multiple outcomes. For example:
 `key-pair-invalid`: Key pair is invalid
 `key-pair-valid`: Key pair is invalid
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

@@ -11,6 +11,18 @@ The `hostServices` collector can be used to collect information about the availa
 
 `None`
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: hostServices
+spec:
+  hostCollectors:
+    - hostServices: {}
+```
+
 ### Included resources
 
 Result of the hostServices collector will be stored in the `host-collectors/system` directory of the support bundle.
@@ -42,7 +54,7 @@ The hostServices analyzer supports multiple outcomes by validating the status of
 `ufw = active`: UFW system service is active.
 `connman = inactive`: ConnMan system service is inactive.
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

@@ -20,6 +20,22 @@ The address to check the connection to
 #### `timeout` (Optional)
 Specifies the total timeout
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: loadbalancer
+spec:
+  hostCollectors:
+    - tcpLoadBalancer:
+        collectorName: kubernetes-api-lb
+        port: 6443
+        address: 10.128.0.29:6443
+        timeout: 10s
+```
+
 ### Included resources
 
 Result of the tcpLoadBalancer collector will be stored in the `host-collectors/tcpLoadBalancer` directory of the support bundle.
@@ -46,7 +62,7 @@ The tcpLoadBalancer analyzer supports multiple outcomes:
 `bind-permission-denied`: Failed to bind to the address:port.
 `error`: Unexpected error connecting to the load balancer address.
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

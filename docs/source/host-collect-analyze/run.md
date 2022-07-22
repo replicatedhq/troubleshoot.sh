@@ -16,6 +16,21 @@ The command to execute on the host
 ##### `args` (Required)
 The arguments to pass to the specified command
 
+## Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: run
+spec:
+  hostCollectors:
+    - run:
+        collectorName: "ping-google"
+        command: "ping"
+        args: ["-c", "5", "google.com"]
+```
+
 ### Included resources
 
 Result of the run collector will be stored in the `host-collectors/run-host` directory of the support bundle.
@@ -37,19 +52,4 @@ PING google.com (***HIDDEN***) 56(84) bytes of data.
 --- google.com ping statistics ---
 5 packets transmitted, 5 received, 0% packet loss, time 4006ms
 rtt min/avg/max/mdev = 1.252/1.478/2.171/0.348 ms
-```
-
-## Example Definition
-
-```yaml
-apiVersion: troubleshoot.sh/v1beta2
-kind: SupportBundle
-metadata:
-  name: run
-spec:
-  hostCollectors:
-    - run:
-        collectorName: "ping-google"
-        command: "ping"
-        args: ["-c", "5", "google.com"]
 ```

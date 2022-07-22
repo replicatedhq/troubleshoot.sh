@@ -11,6 +11,18 @@ The `ipv4Interfaces` collector can be used to collect information about the IPv4
 
 `None`
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: ipv4Interfaces
+spec:
+  hostCollectors:
+    - ipv4Interfaces: {}
+```
+
 ### Included resources
 
 Result of the ipv4Interfaces collector will be stored in the `host-collectors/system` directory of the support bundle.
@@ -55,7 +67,7 @@ The ipv4Interfaces analyzer supports multiple outcomes:
 `count >`: Number of interfaces is greater than
 `count <`: number of interfaces is less than
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

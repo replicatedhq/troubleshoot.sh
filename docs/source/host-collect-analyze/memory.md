@@ -1,5 +1,5 @@
 ---
-title: Memoery
+title: Memory
 description: Collect and analyze information about the total amount of memory on the machine
 ---
 
@@ -10,6 +10,18 @@ The `memory` collector can be used to collect information about the total amount
 ### Parameters
 
 `None`
+
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: memory
+spec:
+  hostCollectors:
+    - memory: {}
+```
 
 ### Included resources
 
@@ -30,7 +42,7 @@ The memory analyzer supports multiple outcomes by validating the total amount of
 `< 32G`: Less than 32G of memory was detected.
 `> 4G`: More than 4G of memory was detected.
 
-## Example Collector Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

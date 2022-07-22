@@ -11,6 +11,18 @@ The `time` collector can be used to collect information about the system clock
 
 `None`
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: time
+spec:
+  hostCollectors:
+    - time: {}
+```
+
 ### Included resources
 
 Result of the time collector will be stored in the `host-collectors/system` directory of the support bundle.
@@ -33,7 +45,7 @@ The time analyzer supports multiple outcomes, by checking either the ntp status 
 `timezone != UTC`: Timezone is not set to UTC.
 `timezone == UTC`: Timezone is set to UTC.
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

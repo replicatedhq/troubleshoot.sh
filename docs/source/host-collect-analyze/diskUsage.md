@@ -14,6 +14,20 @@ In addition to the [shared collector properties](/collect/collectors/#shared-pro
 #### `path` (Required)
 Path host filesystem to evaluate disk usage
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: disk-usage
+spec:
+  hostCollectors:
+    - diskUsage:
+        collectorName: var-lib-kubelet
+        path: /var/lib/kubelet
+```
+
 ### Included resources
 
 Result of the diskUage collector will be stored in the `host-collectors/diskUsage` directory of the support bundle.
@@ -36,7 +50,7 @@ The diskUsage analyzer supports multiple outcomes by validating the disk usage o
 `used/total > 80%`: The disk containing the directory is more than 80% full.
 `available < 10Gi`: The disk containing the directory has less than 10Gi of disk space available.
 
-## Example Collector Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

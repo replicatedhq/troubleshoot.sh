@@ -11,6 +11,18 @@ The `hostOS` collector can be used to collect information about the OS installed
 
 `None`
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: hostOS
+spec:
+  hostCollectors:
+    - hostOS: {}
+```
+
 ### Included resources
 
 Result of the hostOS collector will be stored in the `host-collectors/system` directory of the support bundle.
@@ -35,7 +47,7 @@ The hostOS analyzer supports multiple outcomes by validating the name and versio
 `centos = 7`: The detected OS is CentOS 7.
 `ubuntu = 20.04`: The detected OS is Ubuntu 20.04.
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

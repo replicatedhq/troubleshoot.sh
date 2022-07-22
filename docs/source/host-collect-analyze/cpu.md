@@ -11,6 +11,18 @@ The `cpu` collector can be used to collect information about the number of CPU c
 
 `None`
 
+### Example Collector Definition
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: cpu
+spec:
+  hostCollectors:
+    - cpu: {}
+```
+
 ### Included resources
 
 Result of the cpu collector will be stored in the `host-collectors/system` directory of the support bundle.
@@ -30,7 +42,7 @@ The cpu analyzer supports multiple outcomes by validating the number of CPU core
 `count < 32`: Less than 32 CPU cores were detected.
 `count > 4`: More than 4 CPU cores were detected.
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

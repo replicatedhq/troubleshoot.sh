@@ -17,6 +17,20 @@ The port number to check on the host where the collector is run
 #### `interface` (Optional)
 If set, the collector will use the IP address of the of the specified interface
 
+### Example Collector Definition
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: tcpPortStatus
+spec:
+  hostCollectors:
+    - tcpPortStatus:
+        collectorName: kubernetes-api-tcp-port
+        port: 6443
+        interface: eth0
+```
+
 ### Included resources
 
 Result of the tcpPortStatus collector will be stored in the `host-collectors/tcpPortStatus` directory of the support bundle.
@@ -41,7 +55,7 @@ The tcpPortStatus analyzer supports multiple outcomes:
 `connected`: Successfully connected to the port.
 `error`: Unexpected error connecting to the port.
 
-## Example Definition
+### Example Analyzer Definition
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
