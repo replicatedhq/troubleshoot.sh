@@ -1,5 +1,5 @@
 ---
-title: All Host Collectors and Analyze
+title: All Host Collectors and Analyzers
 description: A list of all available host collectors and analyzers
 ---
 
