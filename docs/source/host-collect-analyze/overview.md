@@ -16,7 +16,7 @@ Host Collectors gather information directly from the host which they are run on 
 1. Download the Support Bundle binary from Github:
 
 ```
-curl -L https://github.com/replicatedhq/troubleshoot/releases/download/v0.39./preflight_linux_amd64.tar.gz | tar xzvf -
+curl -L https://github.com/replicatedhq/troubleshoot/releases/download/v0.39.0/support-bundle_linux_amd64.tar.gz | tar xzvf -
 ```
 
 **NOTE**: You can see the latest available releases here - https://github.com/replicatedhq/troubleshoot/releases
