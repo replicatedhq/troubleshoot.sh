@@ -7,7 +7,7 @@ description: Host Collectors and Analyzers in Support Bundles
 In the event you need to collect and analyze information that isn't available when using in-cluster collectors, you can use Host Collectors to gather information about the environment such as CPU, memory, available block devices, etc. This is especially useful when you need to debug a Kubernetes cluster that is down.
 
 ### In-Cluster Collectors vs. Host Collectors
-In-cluster Collectors, specified with the `collectors` property in the `SupportBundle` spec, collect information from a running Kubernetes cluster or schedule a resource in the cluster to dynamically generate data. 
+[In-cluster Collectors](https://troubleshoot.sh/collect/collectors), specified with the `collectors` property in the `SupportBundle` spec, collect information from a running Kubernetes cluster or schedule a resource in the cluster to dynamically generate data. 
 
 Host Collectors gather information directly from the host which they are run on and don't have Kubernetes as a dependency. They can be used to test network connectivity, collect information about the Operating System, and gather the output of provided commands.
 
