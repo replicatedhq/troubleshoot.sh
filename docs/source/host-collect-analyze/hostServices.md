@@ -9,7 +9,7 @@ To collect information about the available host system services, you can use the
 
 ### Parameters
 
-`None`
+None.
 
 ### Example Collector Definition
 
