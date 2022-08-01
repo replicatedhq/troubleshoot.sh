@@ -49,9 +49,9 @@ spec:
           url: https://replicated.app
 ```
 
-### Included resources
+### Included Resources
 
-The results of the http collector are stored in the `host-collectors/http` directory of the support bundle.
+The results of the `http` collector are stored in the `host-collectors/http` directory of the support bundle.
 
 #### `[collector-name].json`
 
