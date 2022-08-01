@@ -23,7 +23,7 @@ spec:
     - hostServices: {}
 ```
 
-### Included resources
+### Included Resources
 
 The results of the `hostServices` collector are stored in the `host-collectors/system` directory of the support bundle.
 
