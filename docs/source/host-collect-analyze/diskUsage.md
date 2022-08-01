@@ -28,7 +28,7 @@ spec:
         path: /var/lib/kubelet
 ```
 
-### Included resources
+### Included Resources
 
 The results of the `diskUsage` collector are stored in the `host-collectors/diskUsage` directory of the support bundle.
 
