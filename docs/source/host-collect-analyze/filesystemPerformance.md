@@ -3,7 +3,7 @@ title: Filesystem Performance
 description: Benchmarks sequential write latency on a single file.
 ---
 
-## Filesystm Performance Collector
+## Filesystem Performance Collector
 
 The `filesystemPerformance` collector benchmarks sequential write latency on a single file. The optional background IOPS feature attempts to mimic real-world conditions by running read and write workloads prior to and during benchmark execution.
 
@@ -71,9 +71,9 @@ spec:
         backgroundReadIOPSJobs: 1
 ```
 
-### Included resources
+### Included Resources
 
-The results of the filesystemPerformance collector are stored in the `host-collectors/filesystemPerformance` directory of the support bundle.
+The results of the `filesystemPerformance` collector are stored in the `host-collectors/filesystemPerformance` directory of the support bundle.
 
 #### `[collector-name].json`
 
