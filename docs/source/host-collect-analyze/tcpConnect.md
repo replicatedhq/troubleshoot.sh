@@ -1,21 +1,21 @@
 ---
 title: TCP Connect 
-description: Collect and analyze information about the ability to connect to the the specified TCP address
+description: Collect and analyze information about the ability to connect to the specified TCP address.
 ---
 
 ## TCP Connect Collector
 
-The `tcpConnect` collector can collect information about the ability to connect to the the specified TCP address
+To collect information about the ability to connect to a specified TCP address, you can use the `tcpConnect` collector.
 
 ### Parameters
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `tcpConnect` collector accepts the following parameters:
 
 #### `address` (Required)
-The address to check the connection to
+The address to check the connection to.
 
 #### `timeout` (Optional)
-Specifies the total timeout
+Specifies the total timeout.
 
 ### Example Collector Definition
 
@@ -32,13 +32,13 @@ spec:
         timeout: 10s
 ```
 
-### Included resources
+### Included Resources
 
-Result of the tcpConnect collector will be stored in the `host-collectors/connect` directory of the support bundle.
+The results of the `tcpConnect` collector are stored in the `host-collectors/connect` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset it will be named `connect.json`.
+If the `collectorName` field is unset, it will be named `connect.json`.
 
 Example of the resulting file:
 
@@ -48,12 +48,12 @@ connection-refused
 
 ## TCP Connect Analyzer
 
-The tcpConnect analyzer supports multiple outcomes:
+The `tcpConnect` analyzer supports multiple outcomes:
 
-`connection-refused`: Connection to the address was refused.
-`connection-timeout`: Timed out connecting to the address.
-`connected`: Successfully connected to the address.
-`error`: Unexpected error connecting to the address.
+- `connection-refused`: Connection to the address was refused.
+- `connection-timeout`: Timed out connecting to the address.
+- `connected`: Successfully connected to the address.
+- `error`: Unexpected error connecting to the address.
 
 ### Example Analyzer Definition
 
