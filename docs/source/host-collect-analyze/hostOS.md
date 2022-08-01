@@ -9,7 +9,7 @@ To collect information about the operating system installed on the machine, you 
 
 ### Parameters
 
-`None`
+None.
 
 ### Example Collector Definition
 
