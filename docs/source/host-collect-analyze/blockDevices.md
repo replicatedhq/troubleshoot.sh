@@ -5,7 +5,7 @@ description: Collect and analyze information about the host system block devices
 
 ## Block Devices Collector
 
-The `blockDevices` collector can collect information about all of the block devices on a host.
+To collect information about all of the block devices on a host, use the `blockDevices` collector.
 
 ### Parameters
 
