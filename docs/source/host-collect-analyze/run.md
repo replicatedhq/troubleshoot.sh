@@ -1,20 +1,20 @@
 ---
 title: Run
-description: Run a specified command and output the results to a file
+description: Run a specified command and output the results to a file.
 ---
 ## Run Collector
 
-The `run` collector runs the specified command and includes the results in the collected output
+The `run` collector runs the specified command and includes the results in the collected output.
 
 ### Parameters
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `run` collector accepts the following parameters:
 
 ##### `command` (Required)
-The command to execute on the host
+The command to execute on the host.
 
 ##### `args` (Required)
-The arguments to pass to the specified command
+The arguments to pass to the specified command.
 
 ## Example Collector Definition
 
@@ -31,13 +31,13 @@ spec:
         args: ["-c", "5", "google.com"]
 ```
 
-### Included resources
+### Included Resources
 
-Result of the run collector will be stored in the `host-collectors/run-host` directory of the support bundle.
+The results of the `run` collector are stored in the `host-collectors/run-host` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset it will be named `run-host.json`.
+If the `collectorName` field is unset, it will be named `run-host.json`.
 
 Example of the resulting file:
 
