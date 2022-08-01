@@ -1,15 +1,15 @@
 ---
 title: Time
-description: Collect and analyze information about the system clock
+description: Collect and analyze information about the system clock.
 ---
 
 ## Time Collector
 
-The `time` collector can be used to collect information about the system clock
+To collect information about the system clock, you can use the `time` collector.
 
 ### Parameters
 
-`None`
+None.
 
 ### Example Collector Definition
 
@@ -23,9 +23,9 @@ spec:
     - time: {}
 ```
 
-### Included resources
+### Included Resources
 
-Result of the time collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the `time` collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `time.json`
 
@@ -39,11 +39,11 @@ Example of the resulting JSON file:
 
 The time analyzer supports multiple outcomes, by checking either the ntp status or the timezone. For example:
 
-`ntp == unsynchronized+inactive`: System clock is not synchronized.
-`ntp == unsynchronized+active`: System clock not yet synchronized.
-`ntp == synchronized+active`: System clock is synchronized.
-`timezone != UTC`: Timezone is not set to UTC.
-`timezone == UTC`: Timezone is set to UTC.
+- `ntp == unsynchronized+inactive`: System clock is not synchronized.
+- `ntp == unsynchronized+active`: System clock not yet synchronized.
+- `ntp == synchronized+active`: System clock is synchronized.
+- `timezone != UTC`: Timezone is not set to UTC.
+- `timezone == UTC`: Timezone is set to UTC.
 
 ### Example Analyzer Definition
 
