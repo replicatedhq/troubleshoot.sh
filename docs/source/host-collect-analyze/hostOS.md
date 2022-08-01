@@ -1,11 +1,11 @@
 ---
 title: Host OS
-description: Collect and analyze information about the OS installed on the machine
+description: Collect and analyze information about the operating system (OS) installed on the machine.
 ---
 
 ## Host OS Collector
 
-The `hostOS` collector can be used to collect information about the OS installed on the machine
+To collect information about the operating system installed on the machine, you can use the `hostOS` collector.
 
 ### Parameters
 
@@ -25,7 +25,7 @@ spec:
 
 ### Included resources
 
-Result of the hostOS collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the hostOS collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `hostos_info.json`
 
@@ -42,10 +42,10 @@ Example of the resulting JSON file:
 
 ## Host OS Analyzer
 
-The hostOS analyzer supports multiple outcomes by validating the name and version of the detected operating system. For example:
+The `hostOS` analyzer supports multiple outcomes by validating the name and version of the detected operating system. For example:
 
-`centos = 7`: The detected OS is CentOS 7.
-`ubuntu = 20.04`: The detected OS is Ubuntu 20.04.
+- `centos = 7`: The detected OS is CentOS 7.
+- `ubuntu = 20.04`: The detected OS is Ubuntu 20.04.
 
 ### Example Analyzer Definition
 
