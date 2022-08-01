@@ -36,7 +36,7 @@ spec:
         timeout: 10s
 ```
 
-### Included resources
+### Included Resources
 
 The results of the `httpLoadBalancer` collector are stored in the `host-collectors/httpLoadBalancer` directory of the support bundle.
 
