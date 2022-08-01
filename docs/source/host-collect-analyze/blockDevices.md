@@ -9,7 +9,7 @@ To collect information about all of the block devices on a host, use the `blockD
 
 ### Parameters
 
-`None`
+None.
 
 ### Example Collector Definition
 
