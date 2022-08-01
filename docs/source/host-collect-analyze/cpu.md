@@ -39,8 +39,8 @@ Example of the resulting JSON file:
 
 The `cpu` analyzer supports multiple outcomes by validating the number of CPU cores, for example:
 
-`count < 32`: Less than 32 CPU cores were detected.
-`count > 4`: More than 4 CPU cores were detected.
+- `count < 32`: Less than 32 CPU cores were detected.
+- `count > 4`: More than 4 CPU cores were detected.
 
 ### Example Analyzer Definition
 
