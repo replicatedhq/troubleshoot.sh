@@ -1,11 +1,11 @@
 ---
 title: HTTP
-description:  Collect and analyze information about the ability to connect to the specified HTTP address
+description:  Collect and analyze information about the ability to connect to the specified HTTP address.
 ---
 
 ## HTTP Collector
 
-The `http` collector can collect information about the ability to connect to the specified HTTP address
+To collect information about the ability to connect to a specified HTTP address, you can use the `http` collector.
 
 ### Parameters
 
@@ -51,11 +51,11 @@ spec:
 
 ### Included resources
 
-Result of the http collector will be stored in the `host-collectors/http` directory of the support bundle.
+The results of the http collector are stored in the `host-collectors/http` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset it will be named `http.json`.
+If the `collectorName` field is unset, it will be named `http.json`.
 
 Example of the resulting JSON file:
 
@@ -82,10 +82,10 @@ Example of the resulting JSON file:
 
 ## HTTP Analyzer
 
-The http analyzer supports multiple outcomes. For example:
+The `http` analyzer supports multiple outcomes. For example:
 
-`error`: Error occurred connecting to the URL.
-`statusCode == 200`: Successfully connected to the URL.
+- `error`: Error occurred connecting to the URL.
+- `statusCode == 200`: Successfully connected to the URL.
 
 ### Example Analyzer Definition
 
