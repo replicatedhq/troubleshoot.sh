@@ -6,24 +6,24 @@ description: Host Collectors and Analyzers in Support Bundles
 > New in v0.40.0 of Troubleshoot!
 
 ## Introduction
-In the event you need to collect and analyze information that isn't available when using In-cluster collectors, you can use Host Collectors to gather information about the environment such as CPU, memory, available block devices, etc. This is especially useful when you need to debug a Kubernetes cluster that is down.
+If you need to collect and analyze information that is not available when using in-cluster collectors, you can use host collectors to gather information about the environment, such as CPU, memory, available block devices, and so on. This is especially useful when you need to debug a Kubernetes cluster that is down.
 
-### In-Cluster Collectors vs. Host Collectors
-[In-cluster Collectors](https://troubleshoot.sh/collect/collectors), specified with the `collectors` property in the `SupportBundle` spec, collect information from a running Kubernetes cluster or schedule a resource in the cluster to dynamically generate data. 
+### Differences Between In-Cluster and Host Collectors
+[In-cluster collectors](https://troubleshoot.sh/collect/collectors), specified with the `collectors` property in the `SupportBundle` specification, collect information from a running Kubernetes cluster or schedule a resource in the cluster to dynamically generate data. 
 
-Host Collectors gather information directly from the host which they are run on and don't have Kubernetes as a dependency. They can be used to test network connectivity, collect information about the Operating System, and gather the output of provided commands.
+Host collectors gather information directly from the host that they are run on and do not have Kubernetes as a dependency. They can be used to test network connectivity, collect information about the operating system, and gather the output of provided commands.
 
 ## Getting Started
 
-1. Download the Support Bundle binary from Github:
+1. Download the support bundle binary from Github:
 
 ```
 curl -L https://github.com/replicatedhq/troubleshoot/releases/download/v0.40.0/support-bundle_linux_amd64.tar.gz | tar xzvf -
 ```
 
-**NOTE**: You can see the latest available releases here - https://github.com/replicatedhq/troubleshoot/releases
+**Note**: You can see the latest available releases at https://github.com/replicatedhq/troubleshoot/releases
 
-2. Create a YAML file of `kind: SupportBundle` and specify all your Host Collectors and Analyzers. You can use the following example to test:
+2. Create a YAML file using `kind: SupportBundle` and specify all of your host collectors and analyzers. You can use the following example as a test:
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
@@ -52,7 +52,7 @@ spec:
               message: The system has at least 8G of memory
 ```
 
-3. Generate the Support Bundle
+3. Generate the support bundle:
 
 ```
 ./support-bundle --interactive=false support-bundle.yaml
@@ -60,6 +60,6 @@ spec:
 
 ## Known Limitations and Considerations
 
-1. Although Host Collectors can technically be included in Vendored Support Bundle specs, they are intended to be run directly on the host and not via [KOTS](https://kots.io/). If run from KOTS they are likely not to produce the desired result as they'll run in the context of the Kotsadm Pod.
+1. Although host collectors can technically be included in vendor support bundle specifications, host collectors are intended to run directly on the host and not using [KOTS](https://kots.io/). If host collectors run from KOTS, they are likely not to produce the desired result as they run in the context of the Kotsadm pod.
 
-2. Root access isn't required to run any of the Host Collectors, but depending on what you desire to collect, you'll need to run the binary with elevated permissions. For example, if you run the `filesystemPerformance` Host Collector against `/var/lib/etcd` and the user running the binary doesn't have permissions on this directory, collection will fail.
+2. Root access is not required to run any of the host collectors. However, depending on what you want to collect, you must run the binary with elevated permissions. For example, if you run the `filesystemPerformance` host collector against `/var/lib/etcd` and the user running the binary does not have permissions on this directory, collection fails.
