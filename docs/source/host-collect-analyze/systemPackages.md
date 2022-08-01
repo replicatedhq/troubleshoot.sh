@@ -1,11 +1,11 @@
 ---
 title: System Packages
-description: Collect and analyze information about the host system packages for the operating system specified
+description: Collect and analyze information about the host system packages for the operating system specified.
 ---
 
 ## System Packages Collector
 
-The `systemPackages` collector can be used to collect information about the host system packages for the operating system specified
+To collect information about the host system packages for the specified operating system, you can use the `systemPackages` collector.
 
 ### Parameters
 
@@ -79,13 +79,13 @@ spec:
           - openssl
 ```
 
-### Included resources
+### Included Resources
 
-Result of the systemPackages collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the `systemPackages` collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset it will be named `packages.json`.
+If the `collectorName` field is unset, it will be named `packages.json`.
 
 Example of the resulting JSON file:
 
@@ -111,7 +111,7 @@ Example of the resulting JSON file:
 
 ## System Packages Analyzer
 
-The systemPackages analyzer is used to analyze information about the collected packages. For example, the analyzer can check whether a certain package is installed, if the version of a package is greater than or equal to a certain version, and more. The analyzer also supports template functions to help customize the outcomes as desired.
+The `systemPackages` analyzer is used to analyze information about the collected packages. For example, the analyzer can check whether a certain package is installed, if the version of a package is greater than or equal to a certain version, and more. The analyzer also supports template functions to help customize the outcomes as desired.
 
 Some of the fields that are accessible using template functions are detailed in the following JSON object:
 
