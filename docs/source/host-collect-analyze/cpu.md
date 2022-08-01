@@ -23,7 +23,7 @@ spec:
     - cpu: {}
 ```
 
-### Included resources
+### Included Resources
 
 The results of the cpu collector are stored in the `host-collectors/system` directory of the support bundle.
 
