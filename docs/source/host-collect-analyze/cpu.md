@@ -1,11 +1,11 @@
 ---
 title: CPU
-description: Collect and analyze information about the number of CPU cores
+description: Collect and analyze information about the number of CPU cores.
 ---
 
 ## CPU Collector
 
-The `cpu` collector can be used to collect information about the number of CPU cores on a host
+To collect information about the number of CPU cores on a host, use the `cpu` collector.
 
 ### Parameters
 
@@ -25,7 +25,7 @@ spec:
 
 ### Included resources
 
-Result of the cpu collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the cpu collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `cpu.json`
 
@@ -37,7 +37,7 @@ Example of the resulting JSON file:
 
 ## CPU Analyzer
 
-The cpu analyzer supports multiple outcomes by validating the number of CPU cores.
+The `cpu` analyzer supports multiple outcomes by validating the number of CPU cores, for example:
 
 `count < 32`: Less than 32 CPU cores were detected.
 `count > 4`: More than 4 CPU cores were detected.
