@@ -1,11 +1,11 @@
 ---
 title: Block Devices
-description: Collect and analyze information about the host system block devices
+description: Collect and analyze information about the host system block devices.
 ---
 
 ## Block Devices Collector
 
-The `blockDevices` collector can collect information about all of the block devices on a host
+The `blockDevices` collector can collect information about all of the block devices on a host.
 
 ### Parameters
 
@@ -25,7 +25,7 @@ spec:
 
 ### Included resources
 
-Result of the blockDevices collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the `blockDevices` collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `block_devices.json`
 
@@ -64,7 +64,7 @@ Example of the resulting JSON file:
 
 ## Block Devices Analyzer
 
-The blockDevices analyzer supports multiple outcomes. It accepts “<regex> <operator> <count>”, e.g. “sdb > 0”.
+The `blockDevices` analyzer supports multiple outcomes. It accepts “<regex> <operator> <count>”, for example `“sdb > 0”`.
 
 The following block devices are not counted:
 
@@ -77,10 +77,10 @@ The following block devices are not counted:
 ### Parameters
 
 #### `includeUnmountedPartitions` (Optional)
-Include unmounted partitions in the analysis. Disabled by default.
+Includes unmounted partitions in the analysis. Disabled by default.
 
 #### `minimumAcceptableSize` (Optional)
-The minimum acceptable size to filter the available block devices during analysis. Disabled by default
+The minimum acceptable size to filter the available block devices during analysis. Disabled by default.
 
 ### Example Analyzer Definition
 
