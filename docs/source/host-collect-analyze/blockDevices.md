@@ -23,7 +23,7 @@ spec:
     - blockDevices: {}
 ```
 
-### Included resources
+### Included Resources
 
 The results of the `blockDevices` collector are stored in the `host-collectors/system` directory of the support bundle.
 
