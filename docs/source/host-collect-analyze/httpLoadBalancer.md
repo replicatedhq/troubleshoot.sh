@@ -1,24 +1,24 @@
 ---
 title: HTTP Load Balancer 
-description: Collect and analyze information about the ability to connect to the the specified HTTP load balancer address
+description: Collect and analyze information about the ability to connect to the the specified HTTP load balancer address.
 ---
 
 ## HTTP Load Balancer Collector
 
-The `httpLoadBalancer` collector can collect information about the ability to connect to the the specified HTTP load balancer address. This collector listens on a host port on “0.0.0.0” and then attempts to connect through a HTTP load balancer. A successful connection requires sending and receiving a random token through the load balancer to the test server.
+To collect information about the ability to connect to a specified HTTP load balancer address, you can use the `httpLoadBalancer` collector. This collector listens on a host port on `0.0.0.0` and then attempts to connect through an HTTP load balancer. A successful connection requires sending and receiving a random token through the load balancer to the test server.
 
 ### Parameters
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `httpLoadBalancer` collector accepts the following parameters:
 
 #### `port` (Required)
-The port number to use
+The port number to use.
 
 #### `address` (Required)
-The address to check the connection to
+The address to check the connection to.
 
 #### `timeout` (Optional)
-Specifies the total timeout
+Specifies the total timeout.
 
 ### Example Collector Definition
 
@@ -38,11 +38,11 @@ spec:
 
 ### Included resources
 
-Result of the httpLoadBalancer collector will be stored in the `host-collectors/httpLoadBalancer` directory of the support bundle.
+The results of the `httpLoadBalancer` collector are stored in the `host-collectors/httpLoadBalancer` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset it will be named `httpLoadBalancer.json`.
+If the `collectorName` field is unset, it will be named `httpLoadBalancer.json`.
 
 Example of the resulting file:
 
@@ -52,15 +52,15 @@ address-in-use
 
 ## HTTP Load Balancer Analyzer
 
-The httpLoadBalancer analyzer supports multiple outcomes:
+The `httpLoadBalancer` analyzer supports multiple outcomes:
 
-`invalid-address`: The load balancer address is not valid.
-`connection-refused`: Connection to the load balancer address was refused.
-`connection-timeout`: Timed out connecting to the load balancer address.
-`address-in-use`: Specified port is unavailable.
-`connected`: Successfully connected to the load balancer address.
-`bind-permission-denied`: Failed to bind to the address:port.
-`error`: Unexpected error connecting to the load balancer address.
+- `invalid-address`: The load balancer address is not valid.
+- `connection-refused`: Connection to the load balancer address was refused.
+- `connection-timeout`: Timed out connecting to the load balancer address.
+- `address-in-use`: Specified port is unavailable.
+- `connected`: Successfully connected to the load balancer address.
+- `bind-permission-denied`: Failed to bind to the address:port.
+- `error`: Unexpected error connecting to the load balancer address.
 
 ### Example Analyzer Definition
 
