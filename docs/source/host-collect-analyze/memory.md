@@ -1,15 +1,15 @@
 ---
 title: Memory
-description: Collect and analyze information about the total amount of memory on the machine
+description: Collect and analyze information about the total amount of memory on the machine.
 ---
 
 ## Memory Collector
 
-The `memory` collector can be used to collect information about the total amount of memory on the machine in bytes
+To collect information about the total amount of memory on the machine in bytes, you can use the `memory` collector.
 
 ### Parameters
 
-`None`
+None.
 
 ### Example Collector Definition
 
@@ -23,9 +23,9 @@ spec:
     - memory: {}
 ```
 
-### Included resources
+### Included Resources
 
-Result of the memory collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the `memory` collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `memory.json`
 
@@ -37,10 +37,10 @@ Example of the resulting JSON file:
 
 ## Memory Analyzer
 
-The memory analyzer supports multiple outcomes by validating the total amount of memory. For example:
+The `memory` analyzer supports multiple outcomes by validating the total amount of memory. For example:
 
-`< 32G`: Less than 32G of memory was detected.
-`> 4G`: More than 4G of memory was detected.
+- `< 32G`: Less than 32G of memory was detected.
+- `> 4G`: More than 4G of memory was detected.
 
 ### Example Analyzer Definition
 
