@@ -1,11 +1,11 @@
 ---
 title: Host Services
-description: Collect and analyze information about the available host system services
+description: Collect and analyze information about the available host system services.
 ---
 
 ## Host Services Collector
 
-The `hostServices` collector can be used to collect information about the available host system services
+To collect information about the available host system services, you can use the `hostServices` collector.
 
 ### Parameters
 
@@ -25,7 +25,7 @@ spec:
 
 ### Included resources
 
-Result of the hostServices collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the `hostServices` collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `systemctl_services.json`
 
@@ -49,10 +49,10 @@ Example of the resulting JSON file:
 ```
 
 ## Host Services Analyzer
-The hostServices analyzer supports multiple outcomes by validating the status of certain host system services. For example:
+The `hostServices` analyzer supports multiple outcomes by validating the status of certain host system services. For example:
 
-`ufw = active`: UFW system service is active.
-`connman = inactive`: ConnMan system service is inactive.
+- `ufw = active`: UFW system service is active.
+- `connman = inactive`: ConnMan system service is inactive.
 
 ### Example Analyzer Definition
 
