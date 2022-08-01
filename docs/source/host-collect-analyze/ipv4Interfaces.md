@@ -1,15 +1,15 @@
 ---
 title: IPv4 Interfaces
-description: Collect and analyze information about the host IPv4 interfaces available
+description: Collect and analyze information about the available host IPv4 interfaces.
 ---
 
 ## IPv4 Interfaces Collector 
 
-The `ipv4Interfaces` collector can be used to collect information about the IPv4 interfaces on the host
+To collect information about the IPv4 interfaces on the host, you can use `ipv4Interfaces` collector.
 
 ### Parameters
 
-`None`
+None.
 
 ### Example Collector Definition
 
@@ -23,9 +23,9 @@ spec:
     - ipv4Interfaces: {}
 ```
 
-### Included resources
+### Included Resources
 
-Result of the ipv4Interfaces collector will be stored in the `host-collectors/system` directory of the support bundle.
+The results of the `ipv4Interfaces` collector are stored in the `host-collectors/system` directory of the support bundle.
 
 #### `ipv4Interfaces.json`
 
@@ -61,11 +61,11 @@ Example of the resulting JSON file:
 
 The ipv4Interfaces analyzer supports multiple outcomes:
 
-`count ==`: Number of interfaces is equal to
-`count >=`: Number of interfaces is greater than equal to
-`count <=`: Number of interfaces is less than or equal to
-`count >`: Number of interfaces is greater than
-`count <`: number of interfaces is less than
+- `count ==`: Number of interfaces is equal to
+- `count >=`: Number of interfaces is greater than equal to
+- `count <=`: Number of interfaces is less than or equal to
+- `count >`: Number of interfaces is greater than
+- `count <`: Number of interfaces is less than
 
 ### Example Analyzer Definition
 
