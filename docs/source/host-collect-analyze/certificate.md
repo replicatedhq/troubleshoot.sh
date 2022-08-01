@@ -31,7 +31,7 @@ spec:
         keyPath: /etc/ssl/corp.key
 ```
 
-### Included resources
+### Included Resources
 
 The results of the `blockDevices` collector are stored in the `host-collectors/certificate` directory of the support bundle.
 
@@ -49,12 +49,12 @@ key-pair-valid
 
 The `diskUsage` analyzer supports multiple outcomes. For example:
 
-`key-pair-missing`: Key pair fails do not exist.
-`key-pair-switched`: PEM inputs may have been switched.
-`key-pair-encrypted`: Key pair is encrypted, could not read the key.
-`key-pair-mismatch`: Private key does not match the public key.
-`key-pair-invalid`: Key pair is invalid.
-`key-pair-valid`: Key pair is invalid.
+- `key-pair-missing`: Key pair fails do not exist.
+- `key-pair-switched`: PEM inputs may have been switched.
+- `key-pair-encrypted`: Key pair is encrypted, could not read the key.
+- `key-pair-mismatch`: Private key does not match the public key.
+- `key-pair-invalid`: Key pair is invalid.
+- `key-pair-valid`: Key pair is invalid.
 
 ### Example Analyzer Definition
 
