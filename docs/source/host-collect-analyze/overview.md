@@ -1,6 +1,6 @@
 ---
 title: Overview
-description: Host Collectors and Analyzers in Support Bundles
+description: Host collectors and analyzers in support bundles
 ---
 
 > New in v0.40.0 of Troubleshoot!
