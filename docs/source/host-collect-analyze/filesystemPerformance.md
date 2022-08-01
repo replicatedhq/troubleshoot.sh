@@ -1,6 +1,6 @@
 ---
 title: Filesystem Performance
-description: Benchmarks sequential write latency on a single file
+description: Benchmarks sequential write latency on a single file.
 ---
 
 ## Filesystm Performance Collector
@@ -18,10 +18,10 @@ Specifies the total timeout, including background IOPS setup and warmup if enabl
 Specifies the directory where the benchmark will create files.
 
 #### `fileSize` (Required)
-Specifies the size of the file used in the benchmark. The number of IO operations for the benchmark will be fileSize / operationSizeBytes. This accepts valid Kubernetes resource units, such as Mi.
+Specifies the size of the file used in the benchmark. The number of IO operations for the benchmark will be fileSize / operationSizeBytes. This parameter accepts valid Kubernetes resource units, such as Mi.
 
 #### `operationSizeBytes` (Required)
-Specifies the size of each write operation performed while benchmarking. This does not apply to the background IOPS feature if enabled, since those must be fixed at 4096.
+Specifies the size of each write operation performed while benchmarking. This parameter does not apply to the background IOPS feature if enabled, since those must be fixed at 4096.
 
 #### `sync` (Optional)
 Specifies whether to call sync on the file after each write. This does not apply to background IOPS task.
@@ -42,10 +42,10 @@ Specifies the target write IOPS to run while benchmarking. This is a limit and t
 Specifies the target read IOPS to run while benchmarking. This is a limit and there is no guarantee it will be reached. This is the total IOPS for all background read jobs.
 
 #### `backgroundWriteIOPS` (Optional)
-Specifies the number of threads to use for background write IOPS. This should be set high enough to reach the target specified in backgroundWriteIOPS. For example, if backgroundWriteIOPS is 100 and write latency is 10ms, then a single job would barely be able to reach 100 IOPS, so this should be at least 2.
+Specifies the number of threads to use for background write IOPS. This value should be set high enough to reach the target specified in `backgroundWriteIOPS`. For example, if `backgroundWriteIOPS` is 100 and write latency is 10ms, then a single job would barely be able to reach 100 IOPS, so this value should be at least 2.
 
 #### `backgroundReadIOPSJobs` (Optional)
-Specifies the number of threads to use for background read IOPS. This should be set high enough to reach the target specified in backgroundReadIOPS.
+Specifies the number of threads to use for background read IOPS. This should be set high enough to reach the target specified in `backgroundReadIOPS`.
 
 ### Example Collector Definition
 
@@ -73,11 +73,11 @@ spec:
 
 ### Included resources
 
-Result of the filesystemPerformance collector will be stored in the `host-collectors/filesystemPerformance` directory of the support bundle.
+The results of the filesystemPerformance collector are stored in the `host-collectors/filesystemPerformance` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset it will be named `filesystemPerformance.json`.
+If the `collectorName` field is unset, it will be named `filesystemPerformance.json`.
 
 Example of the resulting JSON file:
 
@@ -108,10 +108,10 @@ Example of the resulting JSON file:
 
 ## Filesystem Performance Analyzer
 
-The filesystemPerformance analyzer supports multiple outcomes by validating the filesystem latency results. For example:
+The `filesystemPerformance` analyzer supports multiple outcomes by validating the filesystem latency results. For example:
 
-`p99 < 10ms`: The p99 write latency is less than 10ms.
-`p90 > 20ms`: The p90 write latency is greater than 20ms.
+- `p99 < 10ms`: The p99 write latency is less than 10ms.
+- `p90 > 20ms`: The p90 write latency is greater than 20ms.
 
 ### Example Analyzer Definition
 
