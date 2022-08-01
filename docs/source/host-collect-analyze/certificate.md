@@ -1,21 +1,21 @@
 ---
 title: TLS Certificates
-description: Collect and analyze information about a certificate key pair
+description: Collect and analyze information about a certificate key pair.
 ---
 
 ## TLS Certificate Collector
 
-The `certificate` collector can collect information about a certificate key pair on the host
+To collect information about a certificate key pair on the host, use the `certificate` collector.
 
 ### Parameters
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `certificate` collector accepts the following parameters:
 
 #### `certificatePath` (Required)
-Include unmounted partitions in the analysis. Disabled by default.
+Includes unmounted partitions in the analysis. Disabled by default.
 
 #### `keyPath` (Required)
-The minimum acceptable size to filter the available block devices during analysis. Disabled by default
+The minimum acceptable size to filter the available block devices during the analysis. Disabled by default.
 
 ### Example Collector Definition
 
@@ -33,11 +33,11 @@ spec:
 
 ### Included resources
 
-Result of the blockDevices collector will be stored in the `host-collectors/certificate` directory of the support bundle.
+The results of the `blockDevices` collector are stored in the `host-collectors/certificate` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset it will be named `certificate.json`.
+If the `collectorName` field is unset, it will be named `certificate.json`.
 
 Example of the resulting file:
 
@@ -47,14 +47,14 @@ key-pair-valid
 
 ## TLS Certificate Analyzer
 
-The diskUsage analyzer supports multiple outcomes. For example:
+The `diskUsage` analyzer supports multiple outcomes. For example:
 
-`key-pair-missing`: Key pair fails don't exists
-`key-pair-switched`: PEM inputs may have been switched
-`key-pair-encrypted`: Key pair is encrypted, could not read the key
-`key-pair-mismatch`: Private key does not match the public key
-`key-pair-invalid`: Key pair is invalid
-`key-pair-valid`: Key pair is invalid
+`key-pair-missing`: Key pair fails do not exist.
+`key-pair-switched`: PEM inputs may have been switched.
+`key-pair-encrypted`: Key pair is encrypted, could not read the key.
+`key-pair-mismatch`: Private key does not match the public key.
+`key-pair-invalid`: Key pair is invalid.
+`key-pair-valid`: Key pair is invalid.
 
 ### Example Analyzer Definition
 
