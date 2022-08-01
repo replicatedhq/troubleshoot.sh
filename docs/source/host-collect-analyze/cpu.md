@@ -9,7 +9,7 @@ To collect information about the number of CPU cores on a host, use the `cpu` co
 
 ### Parameters
 
-`None`
+None.
 
 ### Example Collector Definition
 
