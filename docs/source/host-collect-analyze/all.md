@@ -1,6 +1,6 @@
 ---
 title: All Host Collectors and Analyzers
-description: A list of all available host collectors and analyzers
+description: A list of all available host collectors and analyzers.
 ---
 
 ## All Host Collectors and Analyzers
