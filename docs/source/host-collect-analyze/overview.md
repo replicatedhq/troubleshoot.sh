@@ -60,6 +60,8 @@ spec:
 
 ## Known Limitations and Considerations
 
-1. Although host collectors can technically be included in vendor support bundle specifications, host collectors are intended to run directly on the host and not using [KOTS](https://kots.io/). If host collectors run from KOTS, they are likely not to produce the desired result as they run in the context of the Kotsadm pod.
+1. Although host collectors can technically be included in vendor support bundle specifications, host collectors are intended to run directly on the host using the CLI and not with [KOTS](https://kots.io/). If host collectors run from KOTS, they are likely not to produce the desired result as they run in the context of the Kotsadm pod.
 
 2. Root access is not required to run any of the host collectors. However, depending on what you want to collect, you must run the binary with elevated permissions. For example, if you run the `filesystemPerformance` host collector against `/var/lib/etcd` and the user running the binary does not have permissions on this directory, collection fails.
+
+3. There is no method in Troubleshoot today to run Host Collectors on remote nodes. If you have a multi-node kURL cluster, you will need to run the Support Bundle binary on each node an generate a bundle for each.
