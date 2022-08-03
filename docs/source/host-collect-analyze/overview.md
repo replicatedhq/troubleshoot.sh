@@ -64,4 +64,4 @@ spec:
 
 2. Root access is not required to run any of the host collectors. However, depending on what you want to collect, you must run the binary with elevated permissions. For example, if you run the `filesystemPerformance` host collector against `/var/lib/etcd` and the user running the binary does not have permissions on this directory, collection fails.
 
-3. There is no method in Troubleshoot today to run host collectors on remote nodes. If you have a multi-node Kubernetes cluster, you will need to run the support bundle binary on each node and generate a bundle for each.
+3. There is no method in Troubleshoot to run host collectors on remote nodes. If you have a multi-node Kubernetes cluster, you must run the support bundle binary on each node and generate a bundle for each.
