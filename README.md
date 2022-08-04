@@ -1,4 +1,6 @@
 # Replicated Troubleshoot
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Freplicatedhq%2Ftroubleshoot.sh.svg?type=shield)](https://app.fossa.com/projects/git%2Bgithub.com%2Freplicatedhq%2Ftroubleshoot.sh?ref=badge_shield)
+
 
 Replicated Troubleshoot is a CLI tool that provides pre-installation cluster conformance testing and validation (preflight checks) and post-installation troubleshooting and diagnostics (support bundles).
 
@@ -21,3 +23,7 @@ To collect a sample support bundle, [install the troubleshoot kubectl plugin](ht
 ```shell
 kubectl support-bundle https://support-bundle.replicated.com
 ```
+
+
+## License
+[![FOSSA Status](https://app.fossa.com/api/projects/git%2Bgithub.com%2Freplicatedhq%2Ftroubleshoot.sh.svg?type=large)](https://app.fossa.com/projects/git%2Bgithub.com%2Freplicatedhq%2Ftroubleshoot.sh?ref=badge_large)
