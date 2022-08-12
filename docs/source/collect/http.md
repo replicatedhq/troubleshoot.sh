@@ -11,8 +11,8 @@ The http collector can be specified multiple times in a collector spec.
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `http` collector accepts the following parameters:
 
-##### `uri` (Required)
-The URI to make the HTTP request against
+##### `url` (Required)
+The URL to make the HTTP request against
 
 ##### `insecureSkipVerify` (Optional)
 When set to true, this will make connections to untrusted or self-signed certs.
