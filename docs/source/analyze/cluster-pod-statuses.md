@@ -7,7 +7,7 @@ The `clusterPodStatuses` analyzer is used to detect pods that have a certain sta
 The `when` attribute supports standard comparators to compare the status of the pod.
 
 The `clusterPodStatuses` analyzer uses data from the [clusterResources collector](https://troubleshoot.sh/collect/cluster-resources).
-The `clusterResources` collector is automatically added and will always be present.
+The `clusterPodStatuses` analyzer is automatically added and will always be present.
 
 The outcomes on this analyzer will be processed in order for each pod, and execution will stop after the first outcome that is truthy.
 
