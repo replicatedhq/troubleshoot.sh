@@ -11,7 +11,7 @@ The `run` collector runs the specified command and includes the results in the c
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `run` collector accepts the following parameters:
 
 ##### `command` (Required)
-The command to execute on the host.  The command gets executed directly from the binary, and by default does not get processed by a shell.  You can specify a shell to use if you want to use shell constructs like pipes, redirection, loops, etc.  Note that if you want to run your command in a shell, then your command should be a single string argument passed to something like `sh -c`.  See the `run-with-shell` example.
+The command to execute on the host.  The command gets executed directly and is not processed by a shell.  You can specify a shell if you want to use constructs like pipes, redirection, loops, etc.  Note that if you want to run your command in a shell, then your command should be a single string argument passed to something like `sh -c`.  See the `run-with-shell` example.
 
 ##### `args` (Required)
 The arguments to pass to the specified command.
