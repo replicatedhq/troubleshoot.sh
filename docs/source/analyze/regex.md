@@ -23,8 +23,6 @@ This can be an exact name, a prefix, or a file path pattern as defined by Go's [
 
 **ignoreIfNoFiles** (Optional)  If no file matches, this analyzer will produce a warn outcome by default. This flag can be set to `true` in order to suppress the warning.
 
-
-
 ## Example Analyzer Definition for regex
 
 ```yaml
