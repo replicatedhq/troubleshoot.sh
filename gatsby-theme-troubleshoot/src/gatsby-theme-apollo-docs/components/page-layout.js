@@ -228,7 +228,7 @@ export default function PageLayout(props) {
         <InnerBanner>
           <ReplicatedWhiteIcon className="replicatedIcon" />
           <LearnMoreBanner>
-            <a href="https://replicated.com/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your KOTS app</a>
+            <a href="https://replicated.com/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your application</a>
             <span className="banner-arrow">
               <BannerArrow />
             </span>
