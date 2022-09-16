@@ -15,6 +15,7 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `name` (Optional)
 The name of the collector. This will be prefixed to the path that the output is written to in the support bundle.
+This is also used as the name of the pod and must meet pod naming criteria
 
 ##### `namespace` (Optional)
 The namespace to look for the pod selector in.
