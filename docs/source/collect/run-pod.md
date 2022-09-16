@@ -35,7 +35,7 @@ This cannot be greater than 30 seconds (30s) and if not specified, the default i
 Troubleshoot offers the ability to use ImagePullSecrets, either using the name of a pre-existing secret in the `podSpec` or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
 
 The ImagePullSecret field at the collector level accepts the following parameters:
-  - ##### `name` (optional)
+  - ##### `name` (optional) This will use the collector name if not specified.
   - ##### `data`
       - ###### `.dockerconfigjson` (required)
       A string containing a valid base64-encoded docker config.json file.
