@@ -15,6 +15,7 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `name` (Optional)
 The name of the collector. This will be prefixed to the path that the output is written to in the support bundle.
+This is also used as the name of the pod and must meet pod naming criteria
 
 ##### `namespace` (Optional)
 The namespace to look for the pod selector in.
@@ -35,7 +36,7 @@ This cannot be greater than 30 seconds (30s) and if not specified, the default i
 Troubleshoot offers the ability to use ImagePullSecrets, either using the name of a pre-existing secret in the `podSpec` or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
 
 The ImagePullSecret field at the collector level accepts the following parameters:
-  - ##### `name` (optional) This will use the collector name if not specified.
+  - ##### `name` (optional)
   - ##### `data`
       - ###### `.dockerconfigjson` (required)
       A string containing a valid base64-encoded docker config.json file.
