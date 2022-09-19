@@ -16,7 +16,7 @@ const Layout = ({ children, isMobile, title }) => {
           <div className="flex flex-row justifyContent--spaceBetween">
             <div className="repl-logo-white"></div>
             <div>
-              <a href="https://replicated.com/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your KOTS app<span className="banner-arrow"></span></a>
+              <a href="https://replicated.com/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your application<span className="banner-arrow"></span></a>
             </div>
           </div>
         </div>
@@ -27,7 +27,7 @@ const Layout = ({ children, isMobile, title }) => {
               <div className="repl-logo-white"></div>
             </div>
             <div className="u-marginLeft--normal">
-              <a href="https://replicated.com/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your KOTS app<span className="banner-arrow"></span></a>
+              <a href="https://replicated.com/" target="_blank" rel="noopener noreferrer">Learn more about Replicated to operationalize your application<span className="banner-arrow"></span></a>
             </div>
           </div>
         </div>
