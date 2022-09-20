@@ -7,7 +7,7 @@ The `clusterPodStatuses` analyzer is used to detect pods that have a certain sta
 The `when` attribute supports standard comparators to compare the status of the pod.
 
 The `clusterPodStatuses` analyzer uses data from the [clusterResources collector](https://troubleshoot.sh/collect/cluster-resources).
-While the `clusterResources` collector is automatically added and will always be present for cluster-scoped resources, to use the Cluster Pod Statuses analyzer you will need to specify specific `namespaces` from which to collect namespace-scoped resources like Pods:
+The `clusterResources` collector is automatically added and is always present for cluster-scoped resources. However, to use the Cluster Pod Statuses analyzer you must specify specific `namespaces` from which to collect namespace-scoped resources, such as Pods:
 
 ```yaml
   collectors:
@@ -16,7 +16,9 @@ While the `clusterResources` collector is automatically added and will always be
          - default
 ```
 
-The outcomes on this analyzer will be processed in order for each pod, and execution will stop after the first outcome that is truthy.
+The outcomes on this analyzer are processed in order for each pod, and execution stops after the first outcome that is truthy.
+
+For more information about the cluster resources collector, see [Cluster Resources](https://troubleshoot.sh/collect/cluster-resources). For more information about the cluster Pod statuses analyzer, see [Cluster Pod Statuses](https://troubleshoot.sh/docs/analyze/cluster-pod-statuses/).
 
 ## Parameters
 
