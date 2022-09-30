@@ -22,8 +22,6 @@ The value for `containerRuntimeVersion` can also be retrieved by manually runnin
 
 As an example, the output will look like the following: `containerd://1.6.8`
 
-Troubleshoot uses a url parser to retrieve the scheme from the runtime. This is referenced in the Troubleshoot code at: https://github.com/replicatedhq/troubleshoot/blob/d5c7522be50d7e310d05e7a9679183f4056a89f5/pkg/analyze/container_runtime.go#L116)
-
 Some common container runtimes are:
  - `containerd`
  - `docker`
