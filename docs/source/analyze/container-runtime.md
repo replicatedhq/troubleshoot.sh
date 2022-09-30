@@ -10,7 +10,7 @@ The `containerRuntime` analyzer uses data from the [clusterResources collector](
 The `clusterResources` collector is automatically added and will always be present.
 
 The `containerRuntime` analyzer is based on the `containerRuntimeVersion` field that is available on each Kubernetes node. 
-This is reflected in an (**example**) support bundle under `cluster-resources/nodes.json` as:
+This is reflected in the following support bundle example under `cluster-resources/nodes.json` as:
 
 ```
 "nodeInfo": {
