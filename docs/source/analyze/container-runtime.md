@@ -20,7 +20,9 @@ This is reflected in the following support bundle example under `cluster-resourc
 The value for `containerRuntimeVersion` can also be retrieved by manually running the following command:
 `kubectl get node [nodename] --no-headers -o=jsonpath='{.status..nodeInfo.containerRuntimeVersion}'`
 
-As an example, the output will look like the following: `containerd://1.6.8`
+**Example Output:**
+
+`containerd://1.6.8`
 
 Some common container runtimes are:
  - `containerd`
