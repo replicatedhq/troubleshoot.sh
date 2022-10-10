@@ -42,6 +42,9 @@ spec:
         namespace: default
         outcomes:
           - fail:
+              when: "absent" # note that the "absent" failure state must be listed first if used.
+              message: The redis statefulset is not present.
+          - fail:
               when: "< 1"
               message: The redis statefulset does not have any ready replicas.
           - warn:
