@@ -28,28 +28,26 @@ spec:
               when: "== docker-desktop"
               message: The application does not support Docker Desktop
           - warn:
-              when: "= microk8s"
+              when: "== microk8s"
               message: The application does not support Microk8s
           - pass:
-              when: "= eks"
+              when: "== eks"
               message: EKS is a supported distribution
           - pass:
-              when: "= gke"
+              when: "== gke"
               message: GKE is a supported distribution
           - pass:
-              when: "= aks"
+              when: "== aks"
               message: AKS is a supported distribution
           - pass:
-              when: "= digitalocean"
+              when: "== digitalocean"
               message: DigitalOcean is a supported distribution
           - warn:
-              when: "= minikube"
+              when: "== minikube"
               message: Minikube is not suitable for production environments
           - warn:
-              when: "= ibm"
+              when: "== ibm"
               message: The application does not support IBM Cloud
           - warn:
               message: Unable to determine the distribution of Kubernetes
 ```
-
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).

@@ -1,7 +1,9 @@
 ---
-title: Run Pods
+title: Run (Deprecated)
 description: Running pods during collection time to create data
 ---
+
+> Deprecated as of v0.33.0. See the new [Run Pod](https://troubleshoot.sh/docs/collect/run-pod) collector
 
 The `run` collector can be used to run a pod in the cluster with the parameters provided.
 The collector will delete and clean up this pod and any artifacts after it's created.
@@ -31,11 +33,15 @@ An array of strings containing the arguments to pass to the command when startin
 A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod.
 This cannot be greater than 30 seconds (30s) and if not specified, the default is 20s.
 
+#### `serviceAccountName` (Optional)
+A service account to be used as the identity for processes running in the pod.
+If not specified, it will assume the "default" service account.
+
 ##### `imagePullPolicy` (Optional)
 A valid, string representation of the policy to use when pulling the image.
 If not specified, this will be set to IfNotPresent.
 
-#### `imagePullSecret` (Optional) 
+#### `imagePullSecret` (Optional)
 
 > `imagePullSecret` support was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
 
@@ -46,7 +52,7 @@ ImagePullSecret field accepts the following parameters:
 - If a pre-existing ImagePullSecret is used:
   - ##### `name` (required):
   The  name of the pre-existing secret.
-```yaml 
+```yaml
 imagePullSecret:
             name: my-image-pull-secret
 ```
@@ -61,7 +67,7 @@ imagePullSecret:
 ```yaml
 imagePullSecret:
             name: mysecret
-            data: 
+            data:
               .dockerconfigjson: ewoJICJhdXRocyI6IHsKCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
             type: kubernetes.io/dockerconfigjson
 ```
@@ -86,6 +92,7 @@ spec:
         command: ["ping"]
         args: ["-w", "5", "www.google.com"]
         imagePullPolicy: IfNotPresent
+        serviceAccountName: default
 
 ```
 ## Examples using private images with `imagePullSecret`
@@ -120,12 +127,11 @@ spec:
          args: ["go", "run", "main.go"]
          imagePullSecret:
             name: my-temporary-secret
-            data: 
+            data:
               .dockerconfigjson: ewoJICJhdXRocyI6IHsKzCQksHR0cHM6Ly9pbmRleC5kb2NrZXIuaW8vdjEvIjoge30KCX0sCgkiSHR0cEhlYWRlcnMiOiB7CgkJIlVzZXItQWdlbnQiOiAiRG9ja2VyLUNsaWVudC8xOS4wMy4xMiAoZGFyd2luKSIKCX0sCgkiY3JlZHNTdG9yZSI6ICJkZXNrdG9wIiwKCSJleHBlcmltZW50YWwiOiAiZGlzYWJsZWQiLAoJInN0YWNrT3JjaGVzdHJhdG9yIjogInN3YXJtIgp9
             type: kubernetes.io/dockerconfigjson
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 

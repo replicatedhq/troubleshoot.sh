@@ -14,9 +14,14 @@ The outcomes on this analyzer will be processed in order, and execution will sto
 
 ## Parameters
 
-**name**: (Required) The name of the deployment to check
+**name**: (Optional) The name of the deployment to check.
+If name is omitted, all deployments will be analyzed.
 
-**namespace**: (Required) The namespace to look for the deployment in.
+**namespace**: (Optional) The namespace to look for the deployment in.
+If specified, analysis will be limited to deployments in this namespace.
+
+**namespaces**: (Optional) The namespaces to look for the deployment in.
+If specified, analysis will be limited to deployments in these namespaces.
 
 ## Example Analyzer Definition
 
@@ -32,6 +37,9 @@ spec:
         namespace: default
         outcomes:
           - fail:
+              when: "absent" # note that the "absent" failure state must be listed first if used.
+              message: The API deployment is not present.
+          - fail:
               when: "< 1"
               message: The API deployment does not have any ready replicas.
           - warn:
@@ -41,4 +49,4 @@ spec:
               message: There are multiple replicas of the API deployment ready.
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
+## Example

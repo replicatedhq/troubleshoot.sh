@@ -27,7 +27,6 @@ spec:
       - "abc.xyz.*" # redact all items in the array at key xyz within key abc in yaml documents
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 Each redactor consists of a set of files which it can apply to, a set of string literals to replace, a set of regex replacements to be run, and a list of yaml paths to redact.
 Any of the four can be omitted.
@@ -51,8 +50,8 @@ All entries in `values` will be replaced with the string `***HIDDEN***`.
 Regex allows applying a regex to lines following a line that matches a filter.
 `selector` is used to identify lines, and then `redactor` is run on the next line.
 If `selector` is empty, the redactor will run on every line.
-This can be useful for removing values from prettyprinted json, among other things.
-For instance, a `selector` of `S3_ENDPOINT`, when combined with a `redactor` of `("value": ").*(")` and run on the following string removoes `this is a secret` while leaving `this is NOT a secret` untouched.
+This can be useful for removing values from pretty-printed JSON, among other things.
+For instance, a `selector` of `S3_ENDPOINT`, when combined with a `redactor` of `("value": ").*(")` and run on the following string removes `this is a secret` while leaving `this is NOT a secret` untouched.
 
 ```json
 {
@@ -132,5 +131,5 @@ xyz:
 Files that fail to parse as yaml, or that do not contain any matches, will not be modified by this redactor.
 Files that _do_ contain matches will be re-rendered, which will strip comments and custom formatting.
 
-Multidoc yaml is not yet fully supported.
+Multi-doc yaml is not yet fully supported.
 Only the first document is checked for matches, and if a match is found, later documents are discarded entirely.

@@ -56,6 +56,7 @@ Either `maxAge` or `maxLines` can be provided, but not both.
 
 ##### `limits.maxAge`
 The duration of the maximum oldest log to include.
+Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
 For duration string format see [time.ParseDuration](https://pkg.go.dev/time#ParseDuration).
 
 ##### `limits.maxLines`
@@ -80,11 +81,17 @@ spec:
           - node
         limits:
           maxAge: 720h
+    - logs:
+        selector:
+          - app=backend
+        namespace: default
+        name: backend/container/logs
+        containerNames:
+          - db
+        limits:
           maxLines: 1000
-
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 

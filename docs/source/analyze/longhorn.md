@@ -5,7 +5,7 @@ description: Check that Longhorn is healthy
 
 The longhorn analyzer runs several checks to detect problems with a [longhorn](https://longhorn.io) installation.
 
-## Paramaters
+## Parameters
 
 **namespace:** (Optional) Namespace where longhorn is installed. Will default to `longhorn-system` if not set.
 

@@ -33,7 +33,6 @@ spec:
         - myapp-namespace
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 
@@ -240,6 +239,18 @@ This file contains information about all installed CRDs in the cluster.
 
 This file contains information about all deployments, separated by namespace.
 
+### `/cluster-resources/cronjobs/[namespace]/[name].json`
+
+This file contains information about all cronjobs, separated by namespace.
+
+### `/cluster-resources/jobs/[namespace]/[name].json`
+
+This file contains information about all jobs, separated by namespace.
+
+### `/cluster-resources/replicasets/[namespace]/[name].json`
+
+This file contains information about all replicasets, separated by namespace.
+
 ### `/cluster-resources/statefulsets/[namespace]/[name].json`
 
 This file contains information about all statefulsets, separated by namespace.
@@ -251,6 +262,18 @@ This file contains information about all services, separated by namespace.
 ### `/cluster-resources/pods/[namespace]/[name].json`
 
 This file contains information about all pods, separated by namespace.
+
+### `/cluster-resources/pods/logs/[namespace]/[name].json`
+
+This file contains information about all pods, separated by namespace.
+
+### `/cluster-resources/pods/logs/[namespace]/[pod]/[container].log`
+
+This file contains logs from current containers for pods that have terminated with an error or are crash-looping.
+
+### `/cluster-resources/pods/logs/[namespace]/[pod]/[container]-previous.log`
+
+This file contains logs from previous containers for pods that have terminated with an error or are crash-looping.
 
 ### `/cluster-resources/ingress/[namespace]/[name].json`
 

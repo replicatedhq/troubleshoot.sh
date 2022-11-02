@@ -23,7 +23,6 @@ spec:
   analyzers: []
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 We aren't going to deploy this file to our cluster.
 Once you've saved this file, let's run it using the `kubectl` plugin:
@@ -82,7 +81,7 @@ If an outcome matches, then execution of this preflight terminates with the resu
 
 **Lines 9-12**: We are defining an outcome where where the message, icon and colors will be "fail".
 The `clusterVersion` analyzer accepts semver ranges for the `when` clause, and we are declaring that all versions of Kubernetes less than 1.16.0 will match this outcome.
-Finally, we are defining the mewssage and URI to show in the results, when this outcome matches.
+Finally, we are defining the message and URI to show in the results, when this outcome matches.
 
 **Lines 13-16**: Much like the failure outcome above, we are defining a warning level outcome for Kubernetes versions less than 1.18.0.
 Because the failure outcome is listed above this outcome, all Kubernetes versions less than 1.16.0 will already be removed from analysis.

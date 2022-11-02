@@ -7,7 +7,7 @@ The `Ceph Status` analyzer is available to check that Ceph is reporting healthy.
 
 The analyzer's outcome `when` clause may be used to evaluate and compare against the actual Ceph health status, and supports standard comparison operators.
 
-## Paramaters
+## Parameters
 
 **checkName:** (Optional) Analyzer name.
 
@@ -56,5 +56,3 @@ spec:
               uri: "https://rook.io/docs/rook/v1.4/ceph-common-issues.html"
               when: "<= HEALTH_WARN"
 ```
-
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).

@@ -56,7 +56,6 @@ spec:
         timeout: 5s
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included Resources
 
@@ -77,7 +76,7 @@ Warning: Using a password on the command line interface can be insecure.\nERROR 
 ```
 
 ### `/[name]/[namespace]/[pod-name]/[collector-name]-errors.json`
- 
+
 ```json
 [
   "command terminated with exit code 1"

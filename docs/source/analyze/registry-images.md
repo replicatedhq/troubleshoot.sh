@@ -7,7 +7,7 @@ The `registryImages` analyzer is available to check the output of [Registry Imag
 
 The analyzer provides as set of predefined results that can be used in the analyzer's outcome `when` clauses.
 
-## Paramaters
+## Parameters
 
 **checkName:** Optional name.
 

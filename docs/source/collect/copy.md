@@ -43,21 +43,20 @@ spec:
   collectors:
   #Copies resolv.conf file
     - copy:
-        selector: 
+        selector:
           - app=api
         namespace: default
         containerPath: /etc/resolv.conf
         containerName: api
   #Copies htdocs folder
     - copy:
-        selector: 
+        selector:
           - app=myhttpd
         namespace: default
         containerPath: /usr/local/apache2/htdocs
 
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ## Included resources
 

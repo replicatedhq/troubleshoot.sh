@@ -41,6 +41,7 @@ The conditional in the `when` value supports the following:
 | `sum(filterName)` | Sum of filterName in all nodes that match any filter specified |
 | `min(filterName)` | Min of filterName in all nodes that match any filter specified |
 | `max(filterName)` | Max of filterName in all nodes that match any filter specified |
+| `nodeCondition(conditionType)` | used for checking node conditions such as Ready, PIDPressure, etc |
 
 ## Example Analyzer Definition
 
@@ -64,7 +65,6 @@ spec:
               message: This cluster has enough nodes.
 ```
 
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
 
 ```yaml
     - nodeResources:
@@ -141,8 +141,8 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
           allocatableMemory: 16Gi
           cpuCapacity: "5"
           selector:
-            matchLabels: 
-               kubernetes.io/role=database-primary-replica
+            matchLabel:
+               kubernetes.io/role: database-primary-replica
         outcomes:
           - fail:
               when: "count() < 1"

@@ -9,9 +9,19 @@ The regex analyzer is used to run arbitrary regular expressions against data col
 
 Either `regex` or `regexGroups` must be set but not both.
 
-**regex**: (Optional) A regex pattern to test. If the pattern matches the file, the outcome that has set `when` to `"true"` will be executed. If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
+This analyzer uses the Go library [`regexp`](https://pkg.go.dev/regexp) from the Go standard library and uses Go's [RE2 regular expression syntax](https://github.com/google/re2/wiki/Syntax)
 
-**regexGroups**: (Optional)  A regex pattern to match. Matches from named capturing groups are available to `when` expressions in outcomes.
+**regex**: (Optional) A regex pattern to test.
+If the pattern matches the file, the outcome that has set `when` to `"true"` will be executed.
+If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
+
+**regexGroups**: (Optional)  A regex pattern to match.
+Matches from named capturing groups are available to `when` expressions in outcomes.
+
+**fileName** (Required) Path to the file in support bundle to analyze.
+This can be an exact name, a prefix, or a file path pattern as defined by Go's [`filepath.Match`](https://pkg.go.dev/path/filepath#Match) function.
+
+**ignoreIfNoFiles** (Optional)  If no file matches, this analyzer will produce a warn outcome by default. This flag can be set to `true` in order to suppress the warning.
 
 ## Example Analyzer Definition for regex
 
@@ -28,16 +38,16 @@ spec:
         name: my-app
   analyzers:
     - textAnalyze:
-      checkName: Database Authentication
-      fileName: my-app/my-app-0/my-app.log
-      regex: 'FATAL: password authentication failed for user'
-      outcomes:
-        - pass:
-            when: "false"
-            message: "Database credentials okay"
-        - fail:
-            when: "true"
-            message: "Problem with database credentials"
+        checkName: Database Authentication
+        fileName: my-app/my-app-0/my-app.log
+        regex: 'FATAL: password authentication failed for user'
+        outcomes:
+          - pass:
+              when: "false"
+              message: "Database credentials okay"
+          - fail:
+              when: "true"
+              message: "Problem with database credentials"
 ```
 
 ## Example Analyzer Definition for regexGroups
@@ -69,5 +79,3 @@ spec:
           - fail:
               message: High packet loss
 ```
-
-> Note: `troubleshoot.sh/v1beta2` was introduced in preflight and support-bundle krew plugin version 0.9.39 and Kots version 1.19.0. Kots vendors should [read the guide to maintain backwards compatibility](/v1beta2/).
