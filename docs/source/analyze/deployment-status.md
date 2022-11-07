@@ -37,6 +37,9 @@ spec:
         namespace: default
         outcomes:
           - fail:
+              when: "absent" # note that the "absent" failure state must be listed first if used.
+              message: The API deployment is not present.
+          - fail:
               when: "< 1"
               message: The API deployment does not have any ready replicas.
           - warn:
@@ -45,3 +48,5 @@ spec:
           - pass:
               message: There are multiple replicas of the API deployment ready.
 ```
+
+## Example
