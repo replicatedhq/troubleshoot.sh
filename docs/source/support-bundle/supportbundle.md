@@ -1,0 +1,82 @@
+---
+title: "SupportBundle"
+---
+
+An OpenAPI Schema for this type is published at: [https://github.com/replicatedhq/kots-lint/blob/main/kubernetes-json-schema/v1.23.6-standalone-strict/supportbundle-troubleshoot-v1beta2.json](https://github.com/replicatedhq/kots-lint/blob/main/kubernetes-json-schema/v1.23.6-standalone-strict/supportbundle-troubleshoot-v1beta2.json).
+
+## SupportBundle Schema
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: supportbundle
+spec:
+  collectors: []
+  hostcollectors: []
+  analyzers: []
+  hostanalyzers: []
+  uri: ""
+```
+
+## Properties
+
+### `collectors`
+
+Optional. A list of [`collectors`](https://troubleshoot.sh/docs/collect/).  Returns information collected from the current `kubectl` context.
+
+### `analyzers`
+
+Optional. A list of [`analyzers`](https://troubleshoot.sh/docs/analyze/).  Returns information collected from the current `kubectl` context.
+
+### `hostcollectors`
+
+Optional. A list of [`hostcollector`](https://troubleshoot.sh/docs/host-collect-analyze/overview/) properties.  Returns information from the host where the `support-bundle` or `collect` binary is executed.
+
+### `hostanalyzers`
+
+Optional. A list of [`hostanalyzer`](https://troubleshoot.sh/docs/host-collect-analyze/overview/) properties.  Returns information from the host where the `support-bundle` or `collect` binary is executed.
+
+### `uri`
+
+Optional.  A string containing a URI for a support bundle spec YAML file, in `http://` or `https://` protocols.
+
+**Usage**: if a `uri` is set in a support bundle spec, Troubleshoot will attempt to download that resource and if it is retrieved, it entirely replaces the contents of the given spec.  Example, given the following spec:
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+  name: supportbundle
+spec:
+  uri: https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/host/cluster-down.yaml
+  collectors:
+    - cluster-info: {}
+    - cluster-resources: {}
+```
+
+Troubleshoot will attempt to retrieve <https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/host/cluster-down.yaml> and will use that spec in its entirety:
+
+```yaml
+# Spec to run when a kURL cluster is down and in-cluster specs can't be run
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: cluster-down
+spec:
+  hostCollectors:
+    # System Info Collectors
+    - blockDevices: {}
+    - cpu: {}
+    - hostOS: {}
+...
+```
+
+If Troubleshoot is unable to retrieve that file, or if the upstream file fails to parse as valid YAML, then it will fall back to what was given in the original spec:
+
+```yaml
+spec:
+  # uri: https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/host/cluster-down.yaml
+  collectors:
+    - cluster-info: {}
+    - cluster-resources: {}
+```
