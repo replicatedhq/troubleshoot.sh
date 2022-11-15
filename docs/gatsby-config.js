@@ -33,7 +33,7 @@ const themeOptions = {
             "Support Bundle": [
               "support-bundle/introduction",
               "support-bundle/collecting",
-              "support-bundle/supportbundle.md",
+              "support-bundle/supportbundle",
             ],
             Collect: [
               'collect/index',
