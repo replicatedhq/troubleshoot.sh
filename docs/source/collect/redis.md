@@ -17,8 +17,12 @@ If unset, this will be set to the string "redis".
 #### `uri` (Required)
 The connection URI to use when connecting to the Redis server.
 
-## Example Collector Definition
+#### `tls` (Optional)
+TLS parameters are required whenever connections to the target redis server are encrypted using TLS. The server can be configured to authenticate clients (`mTLS`) or just secure the connection (`TLS`). In `mTLS` mode, the required parameters are `client certificate`, `private key` and a `CA certificate`. If the server is configured to only encrypt the connection, only the `CA certificate` is required. There is also a `skipVerify` option where when `true`, verifying the server certificate can be skipped. It only works in `TLS` mode.
 
+## Example Collector Definitions
+
+Plain text connection to server
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
@@ -31,6 +35,93 @@ spec:
         uri: rediss://default:password@hostname:6379
 ```
 
+Secured (`mTLS`) connection to server with inline TLS parameter configurations. The parameters need to be in `PEM` format.
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: sample
+spec:
+  collectors:
+    - redis:
+        collectorName: redis
+        uri: rediss://default:password@server:6379
+        tls:
+          cacert: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            <truncated>
+            ...
+            -----END CERTIFICATE-----
+          clientCert: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            <truncated>
+            ...
+            -----END CERTIFICATE-----
+          clientKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            ...
+            <truncated>
+            ...
+            -----END RSA PRIVATE KEY-----
+```
+
+Secured (`mTLS`) connection to server with TLS parameters stored in a kubernetes secret as `stringData`. The parameters need to be in `PEM` format.
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: sample
+spec:
+  collectors:
+    - redis:
+        collectorName: redis
+        uri: rediss://default:replicated@server:6379
+        tls:
+          secret:
+            # This secret must contain the following keys:
+            # cacert: <CA PEM cert>
+            # clientCert: <Client PEM cert> if mTLS
+            # clientKey: <Client PEM key> if mTLS
+            name: redis-tls-secret
+            namespace: default
+```
+
+Encrypted (`TLS`) connection to server with TLS parameters inline. The parameters need to be in `PEM` format. In this case the server is configured not to authenticate clients.
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: dbs-collector
+spec:
+  collectors:
+    - redis:
+        collectorName: my-redis
+        uri: rediss://default:replicated@server:6380
+        tls:
+          cacert: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            <truncated>
+            ...
+            -----END CERTIFICATE-----
+```
+
+Skip verification of server certificate when creating an encrypted connection. This will only work if the redis server is configured not to authenticate clients. The connection remains encrypted
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: dbs-collector
+spec:
+  collectors:
+    - redis:
+        collectorName: my-redis
+        uri: rediss://default:replicated@server:6380
+        tls:
+          skipVerify: true
+```
 
 ## Included resources
 
