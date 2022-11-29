@@ -20,6 +20,8 @@ The connection URI to use when connecting to the Redis server.
 #### `tls` (Optional)
 TLS parameters are required whenever connections to the target redis server are encrypted using TLS. The server can be configured to authenticate clients (`mTLS`) or just secure the connection (`TLS`). In `mTLS` mode, the required parameters are `client certificate`, `private key` and a `CA certificate`. If the server is configured to only encrypt the connection, only the `CA certificate` is required. There is also a `skipVerify` option where when `true`, verifying the server certificate can be skipped. It only works in `TLS` mode.
 
+_**NOTE:** Parameters to pass in Certificate Revocation Lists (CRL) and Online Certificate Status Protocol (OSCP) links are not supported_
+
 ## Example Collector Definitions
 
 Plain text connection to server
