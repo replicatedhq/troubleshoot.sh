@@ -17,8 +17,14 @@ If unset, this will be set to the string "postgres".
 #### `uri` (Required)
 The connection URI to use when connecting to the PostgreSQL server.
 
-## Example Collector Definition
+#### `tls` (Optional)
+TLS parameters are required whenever connections to the target postgres server are encrypted using TLS. The server can be configured to authenticate clients (`mTLS`) or just secure the connection (`TLS`). In `mTLS` mode, the required parameters are `client certificate`, `private key` and a `CA certificate`. If the server is configured to only encrypt the connection, only the `CA certificate` is required. There is also a `skipVerify` option where when `true`, verifying the server certificate can be skipped. It only works in `TLS` mode.
 
+_**NOTE:** Parameters to pass in Certificate Revocation Lists (CRL) and Online Certificate Status Protocol (OSCP) links are not supported_
+
+## Example Collector Definitions
+
+Plain text connection to server
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
@@ -31,6 +37,93 @@ spec:
         uri: postgresql://user:password@hostname:5432/defaultdb?sslmode=require
 ```
 
+Secured (`mTLS`) connection to server with inline TLS parameter configurations. The parameters need to be in `PEM` format.
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: sample
+spec:
+  collectors:
+    - postgres:
+        collectorName: pg
+        uri: postgresql://user:password@hostname:5432/defaultdb?sslmode=require
+        tls:
+          cacert: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            <truncated>
+            ...
+            -----END CERTIFICATE-----
+          clientCert: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            <truncated>
+            ...
+            -----END CERTIFICATE-----
+          clientKey: |
+            -----BEGIN RSA PRIVATE KEY-----
+            ...
+            <truncated>
+            ...
+            -----END RSA PRIVATE KEY-----
+```
+
+Secured (`mTLS`) connection to server with TLS parameters stored in a kubernetes secret as `stringData`. The parameters need to be in `PEM` format.
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: sample
+spec:
+  collectors:
+    - postgres:
+        collectorName: my-db
+        uri: postgresql://user:password@hostname:5432/defaultdb?sslmode=require
+        tls:
+          secret:
+            # This secret must contain the following keys:
+            # cacert: <CA PEM cert>
+            # clientCert: <Client PEM cert> if mTLS
+            # clientKey: <Client PEM key> if mTLS
+            name: pg-tls-secret
+            namespace: default
+```
+
+Encrypted (`TLS`) connection to server with TLS parameters inline. The parameters need to be in `PEM` format. In this case the server is configured not to authenticate clients.
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: dbs-collector
+spec:
+  collectors:
+    - postgres:
+        collectorName: my-db
+        uri: postgresql://user:password@hostname:5432/defaultdb?sslmode=require
+        tls:
+          cacert: |
+            -----BEGIN CERTIFICATE-----
+            ...
+            <truncated>
+            ...
+            -----END CERTIFICATE-----
+```
+
+Skip verification of server certificate when creating an encrypted connection. This will only work if the postgres server is configured not to authenticate clients. The connection remains encrypted
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: dbs-collector
+spec:
+  collectors:
+    - postgres:
+        collectorName: my-db
+        uri: postgresql://user:password@hostname:5432/defaultdb?sslmode=require
+        tls:
+          skipVerify: true
+```
 
 ## Included resources
 
