@@ -3,9 +3,9 @@ title: IP Addresses
 description: Automatically redacted IPs
 ---
 
-Troubleshoot versions earlier than 0.48.0 redact IPv4 addresses automatically.
+Troubleshoot versions earlier than 0.49.0 redact IPv4 addresses automatically.
 
-To redact IPv4 addresses in Troubleshoot version 0.48.0 and later, add the following regex to your redactor specification:
+To redact IPv4 addresses in Troubleshoot version 0.49.0 and later, add the following regex to your redactor specification:
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
