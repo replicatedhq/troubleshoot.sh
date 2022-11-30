@@ -1,6 +1,6 @@
 ---
 title: IP Addresses
-description: Automatically redacted IPs
+description: Redacting IPv4 addresses
 ---
 
 Troubleshoot versions earlier than 0.49.0 redact IPv4 addresses automatically.
