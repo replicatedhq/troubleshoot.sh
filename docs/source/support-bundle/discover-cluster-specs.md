@@ -67,8 +67,8 @@ Generate a Support Bundle with specs found in the cluster
 
 Generate a Support Bundle with a spec from a cli argument as well as the specs discovered in the cluster
 
-`./bin/support-bundle https://raw.githubusercontent.com/replicatedhq/troubleshoot/main/sample-troubleshoot.yaml --load-cluster-specs`
+`./support-bundle https://raw.githubusercontent.com/replicatedhq/troubleshoot/main/sample-troubleshoot.yaml --load-cluster-specs`
 
 Generate a Support Bundle with specs found in the cluster matching a custom label
 
-`./bin/support-bundle --load-cluster-specs -l troubleshoot.io/kind=something-else`
+`./support-bundle --load-cluster-specs -l troubleshoot.io/kind=something-else`
