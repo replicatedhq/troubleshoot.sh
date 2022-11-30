@@ -18,13 +18,13 @@ If unset, this will be set to the string "redis".
 The connection URI to use when connecting to the Redis server.
 
 #### `tls` (Optional)
-TLS parameters are required whenever connections to the target redis server are encrypted using TLS. The server can be configured to authenticate clients (`mTLS`) or just secure the connection (`TLS`). In `mTLS` mode, the required parameters are `client certificate`, `private key` and a `CA certificate`. If the server is configured to only encrypt the connection, only the `CA certificate` is required. There is also a `skipVerify` option where when `true`, verifying the server certificate can be skipped. It only works in `TLS` mode.
+TLS parameters are required whenever connections to the target redis server are encrypted using TLS. The server can be configured to authenticate clients (`mTLS`) or to secure the connection (`TLS`). In `mTLS` mode, the required parameters are `client certificate`, `private key` and a `CA certificate`. If the server is configured to encrypt only the connection, then only the `CA certificate` is required. When the `skipVerify` option is set to `true`, then verifying the server certificate can be skipped. The `skipVerify` option is available only in `TLS` mode.
 
-_**NOTE:** Parameters to pass in Certificate Revocation Lists (CRL) and Online Certificate Status Protocol (OSCP) links are not supported_
+**Note:** Parameters to pass in Certificate Revocation Lists (CRL) and Online Certificate Status Protocol (OSCP) links are not supported.
 
 ## Example Collector Definitions
 
-Plain text connection to server
+Plain text connection to a server.
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
@@ -37,7 +37,7 @@ spec:
         uri: rediss://default:password@hostname:6379
 ```
 
-Secured (`mTLS`) connection to server with inline TLS parameter configurations. The parameters need to be in `PEM` format.
+Secured (`mTLS`) connection to a server with inline TLS parameter configurations. The parameters must be in `PEM` format.
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
@@ -69,7 +69,7 @@ spec:
             -----END RSA PRIVATE KEY-----
 ```
 
-Secured (`mTLS`) connection to server with TLS parameters stored in a kubernetes secret as `stringData`. The parameters need to be in `PEM` format.
+Secured (`mTLS`) connection to a server with TLS parameters stored in a Kubernetes secret as `stringData`. The parameters must be in `PEM` format.
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
@@ -90,7 +90,7 @@ spec:
             namespace: default
 ```
 
-Encrypted (`TLS`) connection to server with TLS parameters inline. The parameters need to be in `PEM` format. In this case the server is configured not to authenticate clients.
+Encrypted (`TLS`) connection to a server with TLS parameters inline. The parameters must be in `PEM` format. In this case, the server is configured not to authenticate clients.
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
@@ -110,7 +110,7 @@ spec:
             -----END CERTIFICATE-----
 ```
 
-Skip verification of server certificate when creating an encrypted connection. This will only work if the redis server is configured not to authenticate clients. The connection remains encrypted
+Skip verification of the server certificate when creating an encrypted connection. This works only if the redis server is configured not to authenticate clients. The connection remains encrypted.
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
