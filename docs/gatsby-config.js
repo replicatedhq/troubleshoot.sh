@@ -34,6 +34,7 @@ const themeOptions = {
               "support-bundle/introduction",
               "support-bundle/collecting",
               "support-bundle/supportbundle",
+              "support-bundle/discover-cluster-specs",
             ],
             Collect: [
               'collect/index',
