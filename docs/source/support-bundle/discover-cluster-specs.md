@@ -5,7 +5,7 @@ description: "Discovering support bundle and redactor specs in cluster secrets a
 
 > Introduced in Troubleshoot v0.47.0.
 
-Support Bundle and Redactor specs can be discovered in both Secrets and ConfigMaps using the `load-cluster-specs` flag with the `support-bundle` cli. This removes the need to specify every desired spec individually, and instead allows you to discover additional specs as runtime.
+Support Bundle and Redactor specs can be discovered in both Secrets and ConfigMaps using the `load-cluster-specs` flag with the `support-bundle` cli. This removes the need to specify every desired spec individually, and instead allows you to discover additional specs at runtime.
 
 As of Troubleshoot `v0.42.0` multiple specs can be specified on the command line. When you use the `load-cluster-specs` flag, all specs provided on the command line as well as those discovered in the cluster will be used.
 
