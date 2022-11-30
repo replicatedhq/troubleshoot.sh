@@ -33,3 +33,5 @@ Note: This does not deploy anything to the cluster, it's all client-side code.
 In my case, the file created was named `support-bundle.tar.gz`.
 
 You can `tar xzvf` the file and open it in your editor to look at the contents.
+
+For Troubleshoot v0.47.0 and later, you can also use the `--load-cluster-specs` flag with the `support-bundle` CLI to collect a Support Bundle by automatically discovering Support Bundle and Redactor specs in Secrets and ConfigMaps in the cluster. For more information, see [Discover Cluster Specs](discover-cluster-specs). 
