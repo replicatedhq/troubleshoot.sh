@@ -5,17 +5,23 @@ description: "Discovering support bundle and redactor specs in cluster secrets a
 
 > Introduced in Troubleshoot v0.47.0.
 
-Support Bundle and Redactor specs can be discovered in both Secrets and ConfigMaps using the `load-cluster-specs` flag with the `support-bundle` cli. This removes the need to specify every desired spec individually, and instead allows you to discover additional specs at runtime.
+You can use the `--load-cluster-specs` flag with the `support-bundle` CLI to discover Support Bundle and Redactor specs in Secrets and ConfigMaps in the cluster. This allows you to use the `support-bundle` CLI to automatically discover specs at runtime, rather than manually specifying each spec individually on the command line.
 
-As of Troubleshoot `v0.42.0` multiple specs can be specified on the command line. When you use the `load-cluster-specs` flag, all specs provided on the command line as well as those discovered in the cluster will be used.
+For Troubleshoot v0.42.0 and later, you can specify multiple specs on the command line. When you use the `--load-cluster-specs` flag, Troubleshoot applies the specs that you provide on the command line as well as any specs discovered in the cluster.
 
 ## Requirements
 
-1. A Secret or ConfigMap existing in the cluster with a matching label of `troubleshoot.io/kind: supportbundle-spec`.
+To use the `--load-cluster-specs` flag with the `support-bundle` CLI, there must be an existing Secret or ConfigMap object in the cluster.
 
-**NOTE**: The expected label can be overrwritten with the `-l` or `--selector` flag (eg. `./support-bundle -l troubleshoot.io/kind=something-else`)
+The Secret and ConfigMap objects in the cluster must meet the following requirements:
 
-2. The data key in the Secret or ConfigMap object must match `support-bundle-spec` or `redactor-spec`.
+* The `labels` key must have a matching label of `troubleshoot.io/kind: supportbundle-spec`.
+
+   **NOTE**: You can overwrite the expected label with the `-l` or `--selector` flag. For example, `./support-bundle -l troubleshoot.io/kind=something-else`.
+
+* The `data` key in the Secret or ConfigMap object must match `support-bundle-spec` or `redactor-spec`.
+
+The following is an example of a ConfigMap with a `troubleshoot.io/kind: supportbundle-spec` label and a `data` key matching `support-bundle-spec`:
 
 ```yaml
 apiVersion: v1
@@ -61,14 +67,14 @@ data:
 
 ## Usage
 
-Generate a Support Bundle with specs found in the cluster
+Generate a Support Bundle with specs found in the cluster:
 
 `./support-bundle --load-cluster-specs`
 
-Generate a Support Bundle with a spec from a cli argument as well as the specs discovered in the cluster
+Generate a Support Bundle with a spec from a CLI argument as well as the specs discovered in the cluster:
 
 `./support-bundle https://raw.githubusercontent.com/replicatedhq/troubleshoot/main/sample-troubleshoot.yaml --load-cluster-specs`
 
-Generate a Support Bundle with specs found in the cluster matching a custom label
+Generate a Support Bundle with specs found in the cluster matching a custom label:
 
 `./support-bundle --load-cluster-specs -l troubleshoot.io/kind=something-else`
