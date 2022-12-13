@@ -48,26 +48,23 @@ apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
   name: supportbundle
 spec:
-  uri: https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/host/cluster-down.yaml
+  uri: hhttps://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/in-cluster/default.yaml
   collectors:
     - cluster-info: {}
     - cluster-resources: {}
 ```
 
-Troubleshoot will attempt to retrieve <https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/host/cluster-down.yaml> and will use that spec in its entirety:
+Troubleshoot will attempt to retrieve <https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/in-cluster/default.yaml> and will use that spec in its entirety:
 
 ```yaml
-# Spec to run when a kURL cluster is down and in-cluster specs can't be run
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
-  name: cluster-down
+  name: default
 spec:
-  hostCollectors:
-    # System Info Collectors
-    - blockDevices: {}
-    - cpu: {}
-    - hostOS: {}
+  collectors:
+    - clusterInfo: {}
+    - clusterResources: {}
 ...
 ```
 
@@ -75,7 +72,7 @@ If Troubleshoot is unable to retrieve that file, or if the upstream file fails t
 
 ```yaml
 spec:
-  # uri: https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/host/cluster-down.yaml
+  # uri: https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/in-cluster/default.yaml
   collectors:
     - cluster-info: {}
     - cluster-resources: {}

@@ -17,7 +17,6 @@ There are several ways to include Preflight Checks in your application.
 #### KOTS
 If you are packing a [KOTS](https://kots.io) application, you can simply include a `kind: Preflight` document in your application and the KOTS Admin Console will show a browser-based representation of the Preflight results.
 
-
 #### Documentation Only
 Another approach to including Preflight Checks is to host the Preflight YAML on a server (even a GitHub Gist) and include instructions to manually run them before installing.
 Adding this to your installation documentation is just asking the user to run `kubectl preflight <https-your-server/preflight.yaml>.
