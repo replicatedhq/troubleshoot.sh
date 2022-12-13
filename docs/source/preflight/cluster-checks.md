@@ -170,9 +170,9 @@ You can use the arrow keys to move up and down to select different preflight che
 Again, press `q` to exit when finished.
 
 ## Run preflights using multiple specs
-> Introduced in Troubleshoot v0.42.0
+> Introduced in Troubleshoot v0.50.0
 
-You may need to run preflights using the collectors and analyzers specified in multiple different specs. As of Troubleshoot `v0.42.0`, you can now pass multiple specs as arguments to the `preflight` CLI.
+You may need to run preflights using the collectors and analyzers specified in multiple different specs. As of Troubleshoot `v0.50.0`, you can now pass multiple specs as arguments to the `preflight` CLI.
 
 Run preflights using multiple specs from the filesystem
  ```shell
