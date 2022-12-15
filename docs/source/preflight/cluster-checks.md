@@ -168,3 +168,20 @@ After collecting and analyzing, you'll see a screen similar to below:
 You can use the arrow keys to move up and down to select different preflight checks and see the results.
 
 Again, press `q` to exit when finished.
+
+## Run preflights using multiple specs
+> Introduced in Troubleshoot v0.50.0
+
+You may need to run preflights using the collectors and analyzers specified in multiple different specs. As of Troubleshoot `v0.50.0`, you can now pass multiple specs as arguments to the `preflight` CLI.
+
+Run preflights using multiple specs from the filesystem
+ ```shell
+./preflight ./preflight-1.yaml ./preflight-2.yaml
+ ```
+
+Run preflights using a spec from a URL, a file, and from a Kubernetes secret
+ ```shell
+./preflight https://raw.githubusercontent.com/replicatedhq/troubleshoot/main/examples/preflight/sample-preflight.yaml \
+./preflight-1.yaml \
+secret/path/to/my/spec 
+ ```
