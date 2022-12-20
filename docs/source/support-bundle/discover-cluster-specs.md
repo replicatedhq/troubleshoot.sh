@@ -15,7 +15,7 @@ To use the `--load-cluster-specs` flag with the `support-bundle` CLI, there must
 
 The Secret and ConfigMap objects in the cluster must meet the following requirements:
 
-* The `labels` key must have a matching label of `troubleshoot.io/kind: supportbundle-spec`.
+* The `labels` key must have a matching label of `troubleshoot.io/kind: support-bundle`.
 
    **NOTE**: You can overwrite the expected label with the `-l` or `--selector` flag. For example, `./support-bundle -l troubleshoot.io/kind=something-else`.
 
@@ -28,7 +28,7 @@ apiVersion: v1
 kind: ConfigMap
 metadata:
   labels:
-    troubleshoot.io/kind: supportbundle-spec
+    troubleshoot.io/kind: support-bundle
   name: some-bundle
 data:
   support-bundle-spec: |
