@@ -6,6 +6,9 @@ description: Including logs from pods in the collected output
 The `logs` collectors can be used to include logs from running pods.
 This collector can be included multiple times with different label selectors and/or namespaces.
 
+The maximum file size of a collected pod log, is set to 5MB as this will ensure a support bundle will not grow excessively due
+to large logfiles.
+
 ## Parameters
 
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `logs` collector accepts the following parameters:
