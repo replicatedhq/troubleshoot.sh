@@ -18,6 +18,7 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 
 | Filter Name | Description |
 |----|----|
+| `cpuArchitecture` | The architecture of the CPU available to the node, e.g. `amd64` |
 | `cpuCapacity` | The amount of CPU available to the node |
 | `cpuAllocatable` | The amount of allocatable CPU after the Kubernetes components have been started |
 | `memoryCapacity` | The amount of memory available to the node |
@@ -64,7 +65,6 @@ spec:
           - pass:
               message: This cluster has enough nodes.
 ```
-
 
 ```yaml
     - nodeResources:
@@ -116,17 +116,19 @@ spec:
 
 ```yaml
     - nodeResources:
-        checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node)
+        checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) with amd64 architecture
         filters:
           allocatableMemory: 16Gi
+          cpuArchitecture: amd64
           cpuCapacity: "5"
         outcomes:
           - fail:
               when: "count() < 1"
-              message: This application requires at least 1 node with 16GB available memory and 5 cpu cores
+              message: This application requires at least 1 node with 16GB available memory and 5 cpu cores with amd64 architecture
           - pass:
               message: This cluster has a node with enough memory and cpu cores
 ```
+
 ### Filter by labels
 
 > Filtering by labels was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
