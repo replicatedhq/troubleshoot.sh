@@ -18,8 +18,8 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 
 | Filter Name | Description |
 |----|----|
-| `cpuArchitecture` | The architecture of the CPU available to the node, e.g. `amd64` |
-| `cpuCapacity` | The amount of CPU available to the node |
+| `cpuArchitecture` | The architecture of the CPU available to the node. Expressed as a string, e.g. `amd64` |
+| `cpuCapacity` | The amount of CPU available to the node. |
 | `cpuAllocatable` | The amount of allocatable CPU after the Kubernetes components have been started |
 | `memoryCapacity` | The amount of memory available to the node |
 | `memoryAllocatable` | The amount of allocatable Memory after the Kubernetes components have been started |
@@ -28,6 +28,8 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 | `ephemeralStorageCapacity` | The amount of ephemeral storage on the node |
 | `ephemeralStorageAllocatable` | The amount of ephemeral storage on the node after Kubernetes is running |
 | `matchLabel` | Specific selector label or labels the node must contain in its metadata |
+
+CPU and Memory units are expressed as Go [Quantities](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity): `16Gi`, `8Mi`, `1.5m`, `5` etc.
 
 ## Outcomes
 
