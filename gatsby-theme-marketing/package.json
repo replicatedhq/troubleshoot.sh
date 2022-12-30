@@ -18,7 +18,7 @@
     "brace": "^0.11.1",
     "classnames": "^2.2.6",
     "dotenv": "^8.2.0",
-    "gatsby": "^2.20.8",
+    "gatsby": "^2.32.13",
     "gatsby-plugin-create-client-paths": "^2.3.4",
     "gatsby-plugin-env-variables": "^1.0.1",
     "gatsby-plugin-google-analytics": "^2.3.14",
