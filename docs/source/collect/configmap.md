@@ -16,7 +16,16 @@ The name of the ConfigMap.
 
 ##### `selector` (Required if no name)
 
-The selector to use to locate the ConfigMaps.
+The selector to use to locate the ConfigMaps.  Specified as a list of labels.  If multiple labels are specified, only resources which match ALL of the labels will be collected.
+
+> Example:
+```yaml
+collectors:
+  - configMap:
+      selector:
+        - app.kubernetes.io/name=nginx
+        - app.kubernetes.io/component=frontend
+```
 
 ##### `namespace` (Required)
 
