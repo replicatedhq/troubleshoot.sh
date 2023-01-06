@@ -6,9 +6,6 @@ description: Including logs from pods in the collected output
 The `logs` collectors can be used to include logs from running pods.
 This collector can be included multiple times with different label selectors and/or namespaces.
 
-The maximum file size of a collected pod log, is set to 5MB as this will ensure a support bundle will not grow excessively due
-to large logfiles.
-
 ## Parameters
 
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `logs` collector accepts the following parameters:
@@ -64,6 +61,10 @@ For duration string format see [time.ParseDuration](https://pkg.go.dev/time#Pars
 
 ##### `limits.maxLines`
 The number of lines to include, starting from the newest.
+
+##### `Limits.maxBytes`
+The maximum file size of a collected pod log, is currently set to 5MB as this will ensure a support bundle will not grow excessively due
+to large logfiles. Neither will the logs contain information that is too old or no longer relevant.
 
 ## Example Collector Definition
 
