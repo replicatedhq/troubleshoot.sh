@@ -62,7 +62,7 @@ For duration string format see [time.ParseDuration](https://pkg.go.dev/time#Pars
 ##### `limits.maxLines`
 The number of lines to include, starting from the newest.
 
-##### `Limits.maxBytes`
+##### `limits.maxBytes`
 The maximum file size of a collected pod log, is currently set to 5MB as this will ensure a support bundle will not grow excessively due
 to large logfiles. Neither will the logs contain information that is too old or no longer relevant.
 
