@@ -266,14 +266,17 @@ This file contains information about all pods, separated by namespace.
 ### `/cluster-resources/pods/logs/[namespace]/[name].json`
 
 This file contains information about all pods, separated by namespace.
+The maximum file size limit for a pods logfile is set to 5MB via the `maxBytes` limit.
 
 ### `/cluster-resources/pods/logs/[namespace]/[pod]/[container].log`
 
 This file contains logs from current containers for pods that have terminated with an error or are crash-looping.
+The maximum file size limit for a pods logfile is set to 5MB via the `maxBytes` limit.
 
 ### `/cluster-resources/pods/logs/[namespace]/[pod]/[container]-previous.log`
 
 This file contains logs from previous containers for pods that have terminated with an error or are crash-looping.
+The maximum file size limit for a pods logfile is set to 5MB via the `maxBytes` limit.
 
 ### `/cluster-resources/ingress/[namespace]/[name].json`
 
