@@ -17,4 +17,4 @@ By completing this tutorial, you will know how to write Preflight Checks, includ
 Before starting this tutorial, you should have the following:
 
 1. The Troubleshoot plugins [installed](/#installation).
-1. A Kubernetes cluster and local kubectl access to the cluster. If you don't have one for testing, consider [kURL](https://kurl.sh), [KiND](https://github.com/kubernetes-sigs/kind), or [K3S](https://k3s.io).
+2. A Kubernetes cluster and local kubectl access to the cluster. If you don't have one for testing, consider [kURL](https://kurl.sh), [KiND](https://github.com/kubernetes-sigs/kind), or [K3S](https://k3s.io).
