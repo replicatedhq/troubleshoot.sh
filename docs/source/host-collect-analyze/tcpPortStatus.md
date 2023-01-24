@@ -5,7 +5,7 @@ description: Collect and analyze information about the specified TCP port.
 
 ## TCP Port Status Collector
 
-To collect information about the specified TCP port on the host where the collector runs, you can use the `tcpPortStatus` collector. If an interface is specified in the collector, this preflight check looks up the IPv4 address of that interface, binds to it, and connects to the same address. If no interface is specified, the test server binds to `0.0.0.0` and attempts to connect to the first non-loopback IPv4 address found on a network interface on the host. Typically, no interface should be specified.
+To collect information about the specified TCP port on the host where the collector runs, you can use the `tcpPortStatus` collector. If an interface is specified in the collector, this preflight check looks up the IPv4 address of that interface, binds to it, and connects to the same address. If no interface is specified, the test server binds to `0.0.0.0` and attempts to connect to the first non-loopback IPv4 address found on a network interface on the host.
 
 ### Parameters
 

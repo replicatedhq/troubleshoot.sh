@@ -5,7 +5,7 @@ description: Collect and analyze information about the specified UDP port.
 
 ## UDP Port Status Collector
 
-To collect information about the specified UDP port on the host where the collector runs, you can use the `udpPortStatus` collector. If an interface is specified in the collector, this preflight check looks up the IPv4 address of that interface and binds to it. If no interface is specified, the test server binds to `0.0.0.0`. Typically, no interface should be specified.
+To collect information about the specified UDP port on the host where the collector runs, you can use the `udpPortStatus` collector. If an interface is specified in the collector, this preflight check looks up the IPv4 address of that interface and binds to it. If no interface is specified, the test server binds to `0.0.0.0`.
 
 ### Parameters
 
