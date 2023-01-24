@@ -24,6 +24,7 @@ description: A list of all available host collectors and analyzers.
 - [tcpConnect](./tcpConnect): Collects and analyzes information about the ability to connect to the the specified TCP address.
 - [tcpLoadBalancer](./tcpLoadBalancer): Collects and analyzes information about the ability to connect to the specified TCP load balancer address.
 - [tcpPortStatus](./tcpPortStatus): Collects and analyzes information about the specified TCP port.
+- [udpPortStatus](./udpPortStatus): Collects and analyzes information about the specified UDP port.
 
 ### Generated and Dynamic Data
 - [run](./run): Runs a specified command and includes the results in the collected output.

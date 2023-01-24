@@ -42,7 +42,7 @@ If the `collectorName` field is unset, it will be named `tcpPortStatus.json`.
 Example of the resulting file:
 
 ```
-connected
+{"status":"connected","message":""}
 ```
 
 ## TCP Port Status Analyzer
@@ -71,6 +71,7 @@ spec:
   hostAnalyzers:
     - tcpPortStatus:
         checkName: "Kubernetes API TCP Port Status"
+        collectorName: kubernetes-api-tcp-port
         outcomes:
           - fail:
               when: "connection-refused"
