@@ -40,7 +40,7 @@ A single JSON file will be added to the support bundle, in the path `/mssql/[col
 {
     "isConnected": false,
     "error": "invalid password",
-    "version": "10.12",
+    "version": "15.0.2000.1565",
 }
 ```
 
