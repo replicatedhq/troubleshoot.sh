@@ -24,7 +24,7 @@ The conditional in the when value supports the following:
 Can be compared to a boolean value with the `==` operator.
 
 **version:** A string representing the version of the database.
-Can be compared to a semver string using `<`, `<=`, `>`, `>=`, `==`, `!=`, with the letter 'x' as a version wildcard (10.x).
+Can be compared to a an assembly version string using `<`, `<=`, `>`, `>=`, `==`, `!=`, with the letter 'x' as a version wildcard (10.x).
 The 'x' is parsed as '0'.
 
 ## Example Analyzer Definition
