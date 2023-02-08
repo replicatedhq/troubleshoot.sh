@@ -120,6 +120,7 @@ const themeOptions = {
               'host-collect-analyze/tcpConnect',
               'host-collect-analyze/tcpLoadBalancer',
               'host-collect-analyze/tcpPortStatus',
+              'host-collect-analyze/udpPortStatus',
               'host-collect-analyze/time',
             ],
           },

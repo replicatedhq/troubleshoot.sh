@@ -15,7 +15,7 @@ This is recommended to set to a string identifying the Redis instance, and can b
 If unset, this will be set to the string "redis".
 
 #### `uri` (Required)
-The connection URI to use when connecting to the Redis server.
+The connection URI to use when connecting to the Redis server. You can use `redis://` for standard connections and `rediss://` for SSL connections.
 
 #### `tls` (Optional)
 TLS parameters are required whenever connections to the target redis server are encrypted using TLS. The server can be configured to authenticate clients (`mTLS`) or to secure the connection (`TLS`). In `mTLS` mode, the required parameters are `client certificate`, `private key` and a `CA certificate`. If the server is configured to encrypt only the connection, then only the `CA certificate` is required. When the `skipVerify` option is set to `true`, then verifying the server certificate can be skipped. The `skipVerify` option is available only in `TLS` mode.
@@ -34,7 +34,7 @@ spec:
   collectors:
     - redis:
         collectorName: redis
-        uri: rediss://default:password@hostname:6379
+        uri: redis://default:password@hostname:6379
 ```
 
 Secured (`mTLS`) connection to a server with inline TLS parameter configurations. The parameters must be in `PEM` format:
