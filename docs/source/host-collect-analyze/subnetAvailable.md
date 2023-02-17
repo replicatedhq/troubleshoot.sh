@@ -1,25 +1,25 @@
 ---
 title: Subnet Available
-description:  Collect and analyze information about if there is an available (IPv4) subnet.
+description:  Collect and analyze information about checking for an available (IPv4) subnet.
 ---
 
 ## Subnet Available Collector
 
 To check if there is an available (IPv4) subnet on a node, you can use the `subnetAvailable` collector. This is useful for Pod/Service CIDR ranges.
 
-This collector will search for any overlap with the routing table of the node, ensuring no conflicts.
+This collector searches for overlap with the routing table of the node to help avoid conflicts.
 
 ### Parameters
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `subnetAvailable` collector accepts the following parameters:
 
 #### `CIDRRangeAlloc` (Required)
-The overarching subnet range to search for available CIDR blocks for use. This should be in the format of `"x.x.x.x/y"`, with an IPv4 network then `y` being a CIDR mask between 1 and 32.
+The overarching subnet range to search for available CIDR blocks to use. The format must be `"x.x.x.x/y"`, with an IPv4 network and `y` being a CIDR mask between 1 and 32.
 
 #### `desiredCIDR` (Required)
-Integer (between 1 and 32)
+An integer between 1 and 32.
 
-Search within `CIDRRangeAlloc` for an IP subnet of this CIDR block size.
+Searches in `CIDRRangeAlloc` for an IP subnet of this CIDR block size.
 
 ### Example Collector Definition
 
@@ -42,7 +42,7 @@ The results of the `subnetAvailable` collector are stored in the `host-collector
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset, it will be named `result.json`.
+If the `collectorName` field is not set, the file is named `result.json`.
 
 Example of the resulting JSON file:
 
@@ -56,10 +56,10 @@ Example of the resulting JSON file:
 
 ## Subnet Available Analyzer
 
-The `subnetAvailable` analyzer supports multiple outcomes:
+The `subnetAvailable` analyzer supports the following outcomes:
 
-- `a-subnet-is-available`: Indicates that a subnet of the `desiredCIDR` size is available within `CIDRRangeAlloc`
-- `no-subnet-available`: Indicates that the entirety of `CIDRRangeAlloc` is exhausted by the node routing table, and no subnets can be allocated of `desiredCIDR` size.
+- `a-subnet-is-available`: Indicates that a subnet of the `desiredCIDR` size is available within `CIDRRangeAlloc`.
+- `no-subnet-available`: Indicates that the entirety of `CIDRRangeAlloc` is exhausted by the node routing table, and that no subnets can be allocated of the `desiredCIDR` size.
 
 ### Example Analyzer Definition
 
