@@ -33,6 +33,22 @@ spec:
         collectorName: "run-with-shell"
         command: "sh"
         args: ["-c", "du -sh | sort -rh | head -5"]
+    # Multiline shell script
+    - run:
+        collectorName: "hostnames"
+        command: "sh"
+        args:
+          - -c
+          - |
+            echo "\$HOSTNAME = $HOSTNAME"
+            echo "hostname = $(hostname)"
+            echo "/proc/sys/kernel/hostname = $(cat /proc/sys/kernel/hostname)"
+            echo "uname -n = $(uname -n)"
+    # Redirect stderr to stdout
+    - run:
+        collectorName: "docker-logs-etcd"
+        command: "sh"
+        args: ["-c", "docker logs $(docker ps -a --filter label=io.kubernetes.container.name=etcd -q -l) 2>&1"]
 ```
 
 ### Included Resources
