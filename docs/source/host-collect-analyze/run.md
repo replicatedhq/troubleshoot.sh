@@ -40,7 +40,6 @@ spec:
         args:
           - -c
           - |
-            echo "\$HOSTNAME = $HOSTNAME"
             echo "hostname = $(hostname)"
             echo "/proc/sys/kernel/hostname = $(cat /proc/sys/kernel/hostname)"
             echo "uname -n = $(uname -n)"
