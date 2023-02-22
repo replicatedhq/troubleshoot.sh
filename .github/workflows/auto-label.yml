@@ -1,0 +1,20 @@
+on:
+  pull_request:
+    types: [opened]
+
+name: Auto-label new PRs
+
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/github-script@v6
+        with:
+          github-token: ${{ secrets.DOCS_GH_PAT }}
+          script: |
+            const labels = ['type::feature', 'type::docs']
+            github.rest.issues.addLabels({
+              ...context.repo,
+              issue_number: context.issue.number,
+              labels
+            })
