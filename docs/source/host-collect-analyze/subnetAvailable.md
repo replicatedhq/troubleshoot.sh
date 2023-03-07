@@ -1,6 +1,6 @@
 ---
 title: Subnet Available
-description:  Collect and analyze information about checking for an available (IPv4) subnet.
+description: Collect and analyze information about checking for an available (IPv4) subnet.
 ---
 
 ## Subnet Available Collector
