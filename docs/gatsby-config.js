@@ -116,6 +116,7 @@ const themeOptions = {
               'host-collect-analyze/ipv4Interfaces',
               'host-collect-analyze/memory',
               'host-collect-analyze/run',
+              'host-collect-analyze/subnetAvailable',
               'host-collect-analyze/systemPackages',
               'host-collect-analyze/tcpConnect',
               'host-collect-analyze/tcpLoadBalancer',
