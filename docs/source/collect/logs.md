@@ -62,6 +62,10 @@ For duration string format see [time.ParseDuration](https://pkg.go.dev/time#Pars
 ##### `limits.maxLines`
 The number of lines to include, starting from the newest.
 
+##### `limits.maxBytes`
+The maximum file size of a collected pod log. Defaults to an integer value of`5000000` bytes, which is 5MB. The value
+can only be set as an integer value for the `maxBytes` limit.
+
 ## Example Collector Definition
 
 ```yaml
@@ -90,6 +94,7 @@ spec:
           - db
         limits:
           maxLines: 1000
+          maxBytes: 5000000
 ```
 
 
