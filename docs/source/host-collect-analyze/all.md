@@ -21,6 +21,7 @@ description: A list of all available host collectors and analyzers.
 - [http](./http): Collects and analyzes information about the ability to connect to the specified HTTP address.
 - [httpLoadBalancer](./httpLoadBalancer): Collects and analyzes information about the ability to connect to the specified HTTP load balancer address.
 - [ipv4Interfaces](./ipv4Interfaces) Collects and analyzes information about the host system ipv4 interfaces.
+- [subnetAvailable](./subnetAvailable): Collects and analyzes information about checking for an available (IPv4) subnet.
 - [tcpConnect](./tcpConnect): Collects and analyzes information about the ability to connect to the the specified TCP address.
 - [tcpLoadBalancer](./tcpLoadBalancer): Collects and analyzes information about the ability to connect to the specified TCP load balancer address.
 - [tcpPortStatus](./tcpPortStatus): Collects and analyzes information about the specified TCP port.

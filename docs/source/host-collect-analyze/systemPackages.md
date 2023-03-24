@@ -30,6 +30,9 @@ An array of the names of packages to collect information about if the operating 
 #### `rhel8` (Optional)
 An array of the names of packages to collect information about if the operating system is `RHEL` version `8.x`.
 
+#### `rhel9` (Optional)
+An array of the names of packages to collect information about if the operating system is `RHEL` version `9.x`.
+
 #### `centos` (Optional)
 An array of the names of packages to collect information about if the operating system is `CentOS`, regardless of the version.
 
@@ -39,6 +42,9 @@ An array of the names of packages to collect information about if the operating 
 #### `centos8` (Optional)
 An array of the names of packages to collect information about if the operating system is `CentOS` version `8.x`.
 
+#### `centos9` (Optional)
+An array of the names of packages to collect information about if the operating system is `CentOS` version `9.x`.
+
 #### `ol` (Optional)
 An array of the names of packages to collect information about if the operating system is `Oracle Linux`, regardless of the version.
 
@@ -47,6 +53,18 @@ An array of the names of packages to collect information about if the operating 
 
 #### `ol8` (Optional)
 An array of the names of packages to collect information about if the operating system is `Oracle Linux` version `8.x`.
+
+#### `ol9` (Optional)
+An array of the names of packages to collect information about if the operating system is `Oracle Linux` version `9.x`.
+
+#### `rocky` (Optional)
+An array of the names of packages to collect information about if the operating system is `Rocky Linux`, regardless of the version.
+
+#### `rocky8` (Optional)
+An array of the names of packages to collect information about if the operating system is `Rocky Linux` version `8.x`.
+
+#### `rocky9` (Optional)
+An array of the names of packages to collect information about if the operating system is `Rocky Linux` version `9.x`.
 
 #### `amzn` (Optional)
 An array of the names of packages to collect information about if the operating system is `Amazon Linux`, regardless of the version.
