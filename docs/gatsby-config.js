@@ -108,6 +108,7 @@ const themeOptions = {
               'host-collect-analyze/all',
               'host-collect-analyze/blockDevices',
               'host-collect-analyze/certificate',
+              'host-collect-analyze/copy',
               'host-collect-analyze/cpu',
               'host-collect-analyze/diskUsage',
               'host-collect-analyze/filesystemPerformance',
