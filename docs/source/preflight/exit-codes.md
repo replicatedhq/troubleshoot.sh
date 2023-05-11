@@ -3,6 +3,8 @@ title: Exit Codes
 description: "Explains how the Preflight CLI handles exit codes"
 ---
 
+> Introduced in Troubleshoot v0.63.0
+
 When using `preflight` via the CLI, there are specific exit codes returned based on the outcomes of any checks.
 
 ## Exit Codes
