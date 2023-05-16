@@ -4,7 +4,7 @@ description: Learn how to run preflight checks from the CLI
 ---
 
 
-You can run preflight checks to verify that a cluster or host meets the application requirements attempting an installation. While this capability is built in to some applications, it is possible to run preflight checks using the CLI.
+You can run preflight checks to verify that a cluster or host meets the application requirements attempting an installation. While this capability is built in to some applications, you can run preflight checks using the CLI.
 
 ## Usage
 
@@ -56,7 +56,7 @@ preflight [url] [flags] [-]
       <tr>
       <td><code>--cache-dir</code></td>
       <td>string</td>
-      <td>Default cache directory. Default: `~/.kube/cache`</td>
+          <td>Default cache directory. Default: <code>~/.kube/cache</code></td>
     </tr>
       <tr>
       <td><code>--certificate-authority</code></td>
@@ -81,7 +81,7 @@ preflight [url] [flags] [-]
     <tr>
       <td><code>--collect-without-permissions</code></td>
       <td></td>
-      <td>Always run preflight checks even if some require permissions that preflight does not have. Default: `true`</td>
+      <td>Always run preflight checks even if some require permissions that preflight does not have. Default: <code>true</code></td>
     </tr>
     <tr>
       <td><code>--collector-image</code></td>
@@ -116,7 +116,7 @@ preflight [url] [flags] [-]
     <tr>
       <td><code>--format</code></td>
       <td>string</td>
-          <td>Output format, one of <code>human</code>, <code>json</code>, <code>yaml</code>. Only used when <code>interactive</code> is set to <code>false<code/>. Default: <code>human</code>)</td>
+          <td>Output format, one of <code>human</code>, <code>json</code>, <code>yaml</code>. Only used when <code>interactive</code> is set to <code>false</code>. Default: <code>human</code></td>
     </tr>
     <tr>
       <td><code>-h, --help</code></td>
