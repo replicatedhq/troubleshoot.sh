@@ -29,6 +29,7 @@ const themeOptions = {
               "preflight/cluster-checks",
               "preflight/node-checks",
               "preflight/next-steps",
+              "preflight/cli-usage",
               "preflight/exit-codes"
             ],
             "Support Bundle": [
