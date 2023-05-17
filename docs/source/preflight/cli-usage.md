@@ -21,7 +21,7 @@ kubectl preflight oci://my.oci.registry/image
 helm template mychart --values my-values.yaml | ./preflight -
 ```
 
-As of v0.64.0, valid input for specs as stdin can include:
+As of v0.64.0, valid input for specs can include:
 
 - Documents of `kind: Preflight`
 - Documents of `kind: Secret` that have the label `troubleshoot.io/kind: preflight`
