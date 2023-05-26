@@ -33,4 +33,4 @@ In some collectors this controls the path where result files will be stored in t
 
 For collectors that are optional, based on runtime available configuration, the conditional can be specified in the `exclude` property.
 This is useful for deployment techniques that allow templating for optional components (Helm and [KOTS](https://kots.io/vendor/packaging/template-functions/)).
-When this value is `false`, the collector will not be included.
+When this value is `true`, the collector will not be included.
