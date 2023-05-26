@@ -4,7 +4,7 @@ description: Analyzing memory, cpu and storage available on each node
 ---
 
 The `nodeResources` analyzer is available to determine if the nodes in the cluster have sufficient resources to run an application.
-This is useful in preflight checks to avoid deploying a version that will not work, and it's useful in support bundles to collect and analyze in case the available resources of a shared cluster are being consumed by other workloads or if an autoscaling group is changing the resources available.
+This is useful in preflight checks to avoid deploying a version that will not work, and it's useful in support bundles to collect and analyze in case the available resources of a shared cluster are being reserved for cluster workloads or if an autoscaling group is changing the resources available.
 
 This analyzer's outcome `when` clause compares the condition specified with the resources present on each or all nodes.
 It's possible to create an analyzer to report on both aggregate values of all nodes in the cluster or individual values of any node in the cluster.
