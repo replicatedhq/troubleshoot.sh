@@ -106,6 +106,7 @@ const themeOptions = {
               'analyze/weave-report',
               'analyze/statefulset-status',
               'analyze/sysctl',
+              'analyzeq/certificates',
               "host-analyze/all",
             ],
             "Host Collect and Analyze": [
