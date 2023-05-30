@@ -5,8 +5,6 @@ description: Collect Certificate Chain information from Kubernetes ConfigMaps an
 
 The `certificates` collector can be used to gather information about the TLS certificates from Kubernetes ConfigMaps and Secrets. This collector can be used multiple times, referencing different Secrets and ConfigMaps.
 
-Parameters
-
 ## Parameters
 
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `certificates` collector accepts the following parameters:
@@ -17,7 +15,7 @@ The name of the ConfigMap or Secret.
 
 ##### `namespace` (Required)
 
-The namespaces where the Secret or ConfigMap exists. If multiple namespaces are specified, resources which match one of the namespaces will be collected.
+The namespaces where the Secret or ConfigMap exists. If multiple namespaces are specified, resources that match one of the namespaces are collected.
 > Example:
 ```yaml
 collectors:
@@ -53,7 +51,7 @@ spec:
 
 ## Example ConfigMap
 
-```
+```yaml
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -73,7 +71,7 @@ data:
 
 ## Included resources
 
-When this collector is executed, it will include the following file in a support bundle:
+When this collector is executed, it includes the following file in a support bundle:
 
 ### `/certificates/certificates.json`
 
@@ -100,7 +98,7 @@ When this collector is executed, it will include the following file in a support
 }
 ```
 
-If there is an error encountered, it will include the following file:
+If an error is encountered, this collector includes the following file:
 
 ### `/certificates/certificates.json`
 
