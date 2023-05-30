@@ -15,17 +15,7 @@ The name of the ConfigMap or Secret.
 
 ##### `namespace` (Required)
 
-The namespaces where the Secret or ConfigMap exists. If multiple namespaces are specified, resources that match one of the namespaces are collected.
-> Example:
-```yaml
-collectors:
-  - certificates: 
-    secrets:
-      - name: envoycert
-        namespaces:
-          - kube-system
-          - projectcontour
-```
+The namespaces where the Secret or ConfigMap exists. If multiple namespaces are specified, resources which match one of the namespaces will be collected.
 
 ## Example Collector Definition
 

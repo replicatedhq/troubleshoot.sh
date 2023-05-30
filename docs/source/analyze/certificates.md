@@ -3,8 +3,8 @@ title: Certificates
 description: Perform analysis and checks on Certificates found in the cluster
 ---
 
-The Certificates analyzer alerts users when a specific certificate is either invalid or nearing its expiration date.
-This analyzer's outcome `when` clause compares the condition specified with the resources present on each or all certificates.
+The `certificates` analyzer alerts users when a specific certificate is either invalid or nearing its expiration date.
+This analyzer's outcome `when` clause compares the condition specified with the resources present on the certificates.
 
 The `when` value in an outcome of this analyzer contains the certificates that match the filters, if any filters are defined.
 If there are no defined filters, the `when` value contains all certificates in the cluster.
