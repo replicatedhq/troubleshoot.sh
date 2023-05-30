@@ -3,7 +3,7 @@ title: Certificates
 description: Perform analysis and checks on Certificates found in the cluster
 ---
 
-The Certificates analyzer serves to alert users when a specific Certificate is either invalid or nearing its expiration date.
+The Certificates analyzer serves to alert users when a specific certificate is either invalid or nearing its expiration date.
 This analyzer's outcome `when` clause compares the condition specified with the resources present on each or all certificates.
 
 The `when` value in an outcome of this analyzer contains the certificates that match the filters, if any filters are defined.
@@ -16,8 +16,8 @@ The conditional in the `when` value supports the following:
 | `notAfter < Today` | Indicates that the expiration date of the certificate must be earlier than the current day. |
 | `notAfter < Today + `()` days` | Indicates that the expiration date of the certificate must be within a certain number of days from the current day.  (Expressed as a number, e.g. `365`) |
 
-Collectors do not automatically include Certificates because these often contain sensitive information.
-The [certificates collector](https://troubleshoot.sh/docs/collect/certificates/), can be included in a set of collectors to include data about the Certificates.
+Collectors do not automatically include certificates because they often contain sensitive information.
+The [certificates collector](https://troubleshoot.sh/docs/collect/certificates/) can be included in a set of collectors to include data about the certificates.
 
 ## Example Analyzer Definition
 
