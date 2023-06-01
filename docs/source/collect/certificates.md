@@ -106,13 +106,15 @@ If an error is encountered, this collector includes the following file:
 ### `/certificates/certificates.json`
 
 ```json
-{
-  "source": {
-    "secret": "kube-root-ca.crt",
-    "namespace": "curlie"
-  },
-  "errors": [
-    "Either the configMap does not exist in this namespace or RBAC permissions are preventing certificate collection"
-  ]
-}
+[
+  {
+    "source": {
+      "secret": "kube-root-ca.crt",
+      "namespace": "curlie"
+    },
+    "errors": [
+      "Either the configMap does not exist in this namespace or RBAC permissions are preventing certificate collection"
+    ]
+  }
+]
 ```
