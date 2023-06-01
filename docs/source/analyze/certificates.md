@@ -14,7 +14,7 @@ The conditional in the `when` value supports the following:
 | Filter Name | Description |
 |----|----|
 | `notAfter < Today` | Indicates that the expiration date of the certificate must be earlier than the current day. |
-| `notAfter < Today + `()` days` | Indicates that the expiration date of the certificate must be within a certain number of days from the current day.  (Expressed as a number, e.g. `365`) |
+| `notAfter < Today + () days` | Indicates that the expiration date of the certificate must be within a certain number of days from the current day.  (Expressed as a number, e.g. `365`) |
 
 Collectors do not automatically include certificates because they often contain sensitive information.
 The [certificates collector](https://troubleshoot.sh/docs/collect/certificates/) can be included in a set of collectors to include data about the certificates.

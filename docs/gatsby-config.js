@@ -80,6 +80,8 @@ const themeOptions = {
               'analyze/index',
               'analyze/outcomes',
               'analyze/ceph-status',
+              'analyze/cluster-version',
+              "analyze/certificates",
               'analyze/cluster-pod-statuses',
               'analyze/cluster-resource',
               'analyze/cluster-version',
@@ -106,7 +108,6 @@ const themeOptions = {
               'analyze/weave-report',
               'analyze/statefulset-status',
               'analyze/sysctl',
-              'analyze/certificates',
               "host-analyze/all",
             ],
             "Host Collect and Analyze": [

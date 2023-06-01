@@ -9,13 +9,24 @@ The `certificates` collector can be used to gather information about the TLS cer
 
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `certificates` collector accepts the following parameters:
 
-##### `name` (Required)
+##### `secrets` (Optional)
+secrets to use to find matching Secrets acrossing different namespaces.
+If specified, Secrets in the list will be collected.
 
-The name of the ConfigMap or Secret.
+The secrets field at the collector level accepts the following parameters:
+  - ##### `name` (required)
+    The name of the Secret.
+  - ##### `namespaces` (required)
+    The namespaces where the Secret exists. If multiple namespaces are specified, all matching Secrets from these namespaces will be collected.
+##### `configMaps` (Optional)
+configMaps to use to find matching ConfigMaps acrossing different namespaces.
+If specified, ConfigMaps in the list will be collected.
 
-##### `namespace` (Required)
-
-The namespaces where the Secret or ConfigMap exists. If multiple namespaces are specified, resources which match one of the namespaces will be collected.
+The configMaps field at the collector level accepts the following parameters:
+  - ##### `name` (required)
+    The name of the configMap.
+  - ##### `namespaces` (required)
+    The namespaces where the ConfigMap exists. If multiple namespaces are specified, all matching ConfigMaps from these namespaces will be collected.
 
 ## Example Collector Definition
 
@@ -27,16 +38,16 @@ metadata:
 spec:
   collectors:
     - certificates: 
-      secrets:
-        - name: envoycert
-          namespaces:
-            - kube-system
-            - projectcontour
-      configMaps:
-        - name: kube-root-ca.crt
-          namespaces:
-            - curlie
-            - kurl
+        secrets:
+          - name: envoycert
+            namespaces:
+              - kube-system
+              - projectcontour
+        configMaps:
+          - name: kube-root-ca.crt
+            namespaces:
+              - curlie
+              - kurl
 ```
 
 ## Example ConfigMap
@@ -61,31 +72,33 @@ data:
 
 ## Included resources
 
-When this collector is executed, it includes the following file in a support bundle:
+When this collector is executed, it includes the following file in a support bundle. All certificate metadata collected will be stored in this file as a JSON array of objects. Each object in the array will contain a `source` object containing the source of the certificate that the metadata was extracted from.
 
 ### `/certificates/certificates.json`
 
 ```json
-{
-  "source": {
-    "configMap": "kube-root-ca.crt",
-    "namespace": "kurl"
-  },
-  "certificateChain": [
-    {
-      "certificate": "ca.crt",
-      "subject": "CN=kubernetes",
-      "subjectAlternativeNames": [
-        "kubernetes"
-      ],
-      "issuer": "CN=kubernetes",
-      "notAfter": "2033-04-13T22:09:47Z",
-      "notBefore": "2023-04-16T22:09:47Z",
-      "isValid": true,
-      "isCA": true
-    }
-  ]
-}
+[
+  {
+    "source": {
+      "configMap": "kube-root-ca.crt",
+      "namespace": "kurl"
+    },
+    "certificateChain": [
+      {
+        "certificate": "ca.crt",
+        "subject": "CN=kubernetes",
+        "subjectAlternativeNames": [
+          "kubernetes"
+        ],
+        "issuer": "CN=kubernetes",
+        "notAfter": "2033-04-13T22:09:47Z",
+        "notBefore": "2023-04-16T22:09:47Z",
+        "isValid": true,
+        "isCA": true
+      }
+    ]
+  }
+]
 ```
 
 If an error is encountered, this collector includes the following file:
