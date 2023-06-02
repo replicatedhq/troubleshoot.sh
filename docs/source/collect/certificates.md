@@ -13,16 +13,17 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 secrets to use to find matching Secrets acrossing different namespaces.
 If specified, Secrets in the list will be collected.
 
-The secrets field at the collector level accepts the following parameters:
+The secrets field at the collector level accepts a list of objects with parameters:
   - ##### `name` (required)
     The name of the Secret.
   - ##### `namespaces` (required)
     The namespaces where the Secret exists. If multiple namespaces are specified, all matching Secrets from these namespaces will be collected.
+
 ##### `configMaps` (Optional)
-configMaps to use to find matching ConfigMaps acrossing different namespaces.
+configMaps to use to find matching ConfigMaps across different namespaces.
 If specified, ConfigMaps in the list will be collected.
 
-The configMaps field at the collector level accepts the following parameters:
+The configMaps field at the collector level accepts a list of objects with parameters:
   - ##### `name` (required)
     The name of the configMap.
   - ##### `namespaces` (required)
@@ -40,14 +41,14 @@ spec:
     - certificates: 
         secrets:
           - name: envoycert
-            namespaces:
-              - kube-system
-              - projectcontour
+              namespaces:
+                - kube-system
+                - projectcontour
         configMaps:
           - name: kube-root-ca.crt
-            namespaces:
-              - curlie
-              - kurl
+              namespaces:
+                - curlie
+                - kurl
 ```
 
 ## Example ConfigMap
