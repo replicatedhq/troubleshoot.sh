@@ -235,6 +235,10 @@ This file contains information about all installed CRDs in the cluster.
 ]
 ```
 
+### `/cluster-resources/daemonsets/[namespace]/[name].json`
+
+This file contains information about all daemonsets, separated by namespace.
+
 ### `/cluster-resources/deployments/[namespace]/[name].json`
 
 This file contains information about all deployments, separated by namespace.
