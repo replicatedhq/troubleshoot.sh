@@ -6,14 +6,14 @@ description: Analyze any attribute collected by the `ClusterResources` Collector
 The `clusterResource` analyzer can be used to check any attribute of any known resources in the cluster in a generic manner.
 
 The `clusterResource` analyzer uses data from the [clusterResources collector](/collect/cluster-resources).
-The `clusterResources` collector is automatically added and will always be present.
+The `clusterResources` collector is automatically added and is always present.
 
-You must specify the `kind` and `name` attributes, plus the optional `namespace` attribute to target the Kubernetes resource.
+You must specify the `kind` and `name` attributes. There is an optional `namespace` attribute to target the Kubernetes resource.
 
 The `yamlPath` attribute is used to specify a dot-delimited YAML path of a property on the Kubernetes resource referenced in `name`.
 The `when` attribute supports standard arithmetic comparison operators.
 
-The outcomes on this analyzer will be processed in order, and execution will stop after the first outcome that is truthy.
+The outcomes on this analyzer are processed in order, and execution stops after the first outcome that is truthy.
 
 ## Parameters
 
@@ -24,28 +24,27 @@ Used for uniqueness if multiple analyzers are defined with similar parameters.
 
 **name**: (Required) The name of the resource to check.
 
-**namespace**: (Optional) The namespace to look for the resource in.
+**namespace**: (Optional) The namespace to look in for the resource.
 
 **yamlPath**: (Required) The dot-delimited YAML path of a property on the Kubernetes resource.
 
 **regex**: (Optional) See [Regular Expression](/analyze/regex) documentation.
-Note: when using arithmetic comparison in `when`, this is not supported at this time.
+**Note:** This is not supported when using arithmetic comparison in `when`.
 
 **regexGroups**: (Optional) See [Regular Expression](/analyze/regex) documentation.
-Note: when using arithmetic comparison in `when`, this is not supported at this time.
+**Note:** This is not supported when using arithmetic comparison in `when`.
 
 ## Outcomes
 
 The `when` value in an outcome of this analyzer can accept a few variations.
 
-If the `yamlPath` points to a quantity-based value (eg. the size or quota or something), standard arithmetic comparison operators may be used.
-eg. `<`, `<=`, `>`, `>=`, `==`, `!=`. 
+If the `yamlPath` points to a quantity-based value (such as the size or quota or something), standard arithmetic comparison operators can be used: `<`, `<=`, `>`, `>=`, `==`, `!=`. 
 
-Alternatively if `regex` specifies an expected value, using a boolean `"true"` or `"false"` (written as a string in double quotes) in the `when` clause is acceptable.
+Alternatively, if `regex` specifies an expected value, using a boolean `"true"` or `"false"` in the `when` clause is acceptable. The boolean value must bewritten as a string in double quotes.
 
 ## Example Analyzer Definition
 
-The example below shows how to analyze a specific `PersistentVolumeClaim` size + access mode with custom outcomes, and ensure that it's bound (attached):
+The following example shows how to analyze a specific `PersistentVolumeClaim` size plus access mode with custom outcomes, and ensure that it is bound (attached):
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
