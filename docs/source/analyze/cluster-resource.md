@@ -41,7 +41,7 @@ The `when` value in an outcome of this analyzer can accept a few variations.
 If the `yamlPath` points to a quantity-based value (eg. the size or quota or something), standard arithmetic comparison operators may be used.
 eg. `<`, `<=`, `>`, `>=`, `==`, `!=`. 
 
-Alternatively if `regex` specifies an expected value, using a boolean `true` or `false` in the `when` clause is acceptable.
+Alternatively if `regex` specifies an expected value, using a boolean `"true"` or `"false"` (written as a string in double quotes) in the `when` clause is acceptable.
 
 ## Example Analyzer Definition
 
