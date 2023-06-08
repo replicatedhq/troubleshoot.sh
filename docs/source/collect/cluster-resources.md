@@ -15,8 +15,15 @@ This collector cannot be removed.
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `clusterResources` collector accepts the following parameters:
 
 ##### `namespaces` (Optional)
+
 The list of namespaces from which the resources and information will be collected.
 If not specified, it will default to collecting information from all namespaces.
+
+##### `ignoreRBAC` (Optional)
+
+Defaults to `false`.  When set to `true`, skip checking for RBAC authorization before collecting resource information from each namespace.
+This is useful when your cluster uses [authorization webhooks](https://kubernetes.io/docs/reference/access-authn-authz/webhook/) that do
+not support SelfSubjectRuleReviews.
 
 ## Example Collector Definition
 
@@ -32,7 +39,6 @@ spec:
         - default
         - myapp-namespace
 ```
-
 
 ## Included resources
 
