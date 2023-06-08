@@ -38,7 +38,7 @@ Used for uniqueness if multiple analyzers are defined with similar parameters.
 
 The `when` value in an outcome of this analyzer can accept a few variations.
 
-If the `yamlPath` points to a quantity-based value (such as the size or quota or something), standard arithmetic comparison operators can be used: `<`, `<=`, `>`, `>=`, `==`, `!=`. 
+If the `yamlPath` points to a quantity-based value (such as the size or quota), standard arithmetic comparison operators can be used: `<`, `<=`, `>`, `>=`, `==`, `!=`. 
 
 Alternatively, if `regex` specifies an expected value, using a boolean `"true"` or `"false"` in the `when` clause is acceptable. The boolean value must bewritten as a string in double quotes.
 
