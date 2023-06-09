@@ -25,6 +25,7 @@ Used for uniqueness if multiple analyzers are defined with similar parameters.
 **name**: (Required) The name of the resource to check.
 
 **namespace**: (Optional) The namespace to look in for the resource.
+If a namespace is not specified, this will configure the analyzer to search for cluster-scoped resources.
 
 **yamlPath**: (Required) The dot-delimited YAML path of a property on the Kubernetes resource.
 
