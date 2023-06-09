@@ -5,7 +5,7 @@ description: Analyze any attribute collected by the `ClusterResources` Collector
 
 The `clusterResource` analyzer can be used to check any attribute of any known resources in the cluster in a generic manner.
 
-The `clusterResource` analyzer uses data from the [clusterResources collector](/collect/cluster-resources).
+The `clusterResource` analyzer uses data from the [clusterResources collector](/collect/cluster-resources/).
 The `clusterResources` collector is automatically added and is always present.
 
 You must specify the `kind` and `name` attributes. There is an optional `namespace` attribute to target the Kubernetes resource.
@@ -28,10 +28,10 @@ Used for uniqueness if multiple analyzers are defined with similar parameters.
 
 **yamlPath**: (Required) The dot-delimited YAML path of a property on the Kubernetes resource.
 
-**regex**: (Optional) See [Regular Expression](/analyze/regex) documentation.
+**regex**: (Optional) See [Regular Expression](/analyze/regex/) documentation.
 **Note:** This is not supported when using arithmetic comparison in `when`.
 
-**regexGroups**: (Optional) See [Regular Expression](/analyze/regex) documentation.
+**regexGroups**: (Optional) See [Regular Expression](/analyze/regex/) documentation.
 **Note:** This is not supported when using arithmetic comparison in `when`.
 
 ## Outcomes
