@@ -28,6 +28,7 @@ const themeOptions = {
               "preflight/introduction",
               "preflight/cluster-checks",
               "preflight/node-checks",
+              "preflight/hostpreflight",
               "preflight/next-steps",
               "preflight/cli-usage",
               "preflight/exit-codes"
@@ -62,6 +63,7 @@ const themeOptions = {
               'collect/longhorn',
               'collect/registry-images',
               'collect/sysctl',
+              'collect/kernel-modules',
             ],
             "Redact": [
               "redact/index",
@@ -103,6 +105,7 @@ const themeOptions = {
               'analyze/registry-images',
               'analyze/weave-report',
               'analyze/sysctl',
+              'analyze/kernel-modules',
               "host-analyze/all",
             ],
             "Host Collect and Analyze": [

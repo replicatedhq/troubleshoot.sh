@@ -1,0 +1,15 @@
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: node-has-diskspace
+  annotations: 
+    title: "Check Node Filesystem Usage"
+    description: "Verify that the Kubernetes node has space available in /var/lib/kubelet"
+    category: "node"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags: '["kubernetes", "node", "storage"]'
+    contributors: '[{"name": "Simon Croome", "avatarUri": "https://avatars.githubusercontent.com/u/211994?s=460&v=4"}]'
+spec:
+  # Host Collectors can not be used with SupportBundles.
+  collectors: []
+  analyzers: {}

@@ -31,9 +31,17 @@ description: A list of all available collectors
 - [redis](./redis): collects information related to a redis cluster
 
 ## CSI
+
 - [ceph](./ceph): collects information about a ceph installation
 - [longhorn](./longhorn): collects information about a longhorn installation
 
 ## Registry
 
 - [registryImages](./registry-images): collects information about image existence in a registry
+
+## Host Collectors
+
+[Host Collectors](/collect/#host-collectors) can only be run using a
+`HostPreflight`.  They execute on the local node or on remote cluster nodes.
+
+- [kernelModules](./kernel-modules): lists a node's kernel modules

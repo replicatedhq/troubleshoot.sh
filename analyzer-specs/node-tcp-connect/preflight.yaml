@@ -1,0 +1,32 @@
+apiVersion: troubleshoot.sh/v1beta2
+kind: HostPreflight
+metadata:
+  name: node-tcp-connect
+  annotations: 
+    title: "Check Node TCP Connectivity"
+    description: "Verify that the Kubernetes node can connect to an ip address and port"
+    category: "node"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags: '["kubernetes", "node", "network"]'
+    contributors: '[{"name": "Simon Croome", "avatarUri": "https://avatars.githubusercontent.com/u/211994?s=460&v=4"}]'
+spec:
+  remoteCollectors:
+    - tcpConnect:
+        collectorName: weave host 1
+        address: 10.128.0.2:6783
+  analyzers:
+    - tcpConnect:
+        collectorName: weave host 1
+        outcomes:
+          - fail:
+              when: "connection-refused"
+              message: Connection to weave on host 1 was refused
+          - fail:
+              when: "connection-timeout"
+              message: Timed out connecting to weave on host 1
+          - fail:
+              when: "error"
+              message: Unexpected error connecting to weave on host 1
+          - pass:
+              when: "connected"
+              message: Successfully connected to weave on host 1
