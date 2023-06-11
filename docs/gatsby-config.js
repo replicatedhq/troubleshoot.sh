@@ -77,6 +77,7 @@ const themeOptions = {
             Analyze: [
               'analyze/index',
               'analyze/outcomes',
+              'analyze/cluster-resource',
               'analyze/cluster-version',
               'analyze/cluster-pod-statuses',
               'analyze/distribution',
