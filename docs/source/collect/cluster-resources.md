@@ -269,6 +269,10 @@ This file contains information about all statefulsets, separated by namespace.
 
 This file contains information about all services, separated by namespace.
 
+### `/cluster-resources/endpoints/[namespace]/[name].json`
+
+This file contains information about all endpoints, separated by namespace.
+
 ### `/cluster-resources/pods/[namespace]/[name].json`
 
 This file contains information about all pods, separated by namespace.
