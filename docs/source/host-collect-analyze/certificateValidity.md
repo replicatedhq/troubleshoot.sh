@@ -1,15 +1,15 @@
 ---
-title: TLS Certificates
-description: Collect and analyze certificate chain information about certificates.
+title: SSL/TLS Certificate Validity
+description: Collect and analyze SSL/TLS certificate chain data 
 ---
 
-## TLS Certificates Collector
+## SSL/TLS Certificate Validity Collector
 
-To collect certificate chain information about certificates on the host, use the `certificates` collector.
+To collect certificate chain data on the host, use the `certificateValidity` collector.
 
 ### Parameters
 
-In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `certificates` collector accepts the following parameters:
+In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `certificateValidity` collector accepts the following parameters:
 
 #### `paths` (Required)
 Includes multiple file paths of certificates on the host
@@ -23,7 +23,7 @@ metadata:
   name: certificates
 spec:
   hostCollectors:
-    - certificates:
+    - certificateValidity:
         paths: 
         - /Users/ubuntu/apiserver-kubelet-client.crt
         - /etc/ssl/corp.crt
@@ -31,11 +31,11 @@ spec:
 
 ### Included Resources
 
-The results of the `certificates` collector are stored in the `host-collectors/certificates` directory of the support bundle.
+The results of the `certificateValidity` collector are stored in the `host-collectors/certificateValidity` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset, it will be named `certificates.json`.
+If the `collectorName` field is unset, it will be named `certificateValidity.json`.
 
 Example of the resulting file:
 
@@ -66,7 +66,7 @@ Example of the resulting file:
 ]
 ```
 
-## TLS Certificates Analyzer
+## SSL Certificates Validity Analyzer
 
 The certificates analyzer supports multiple outcomes by validating certificate and checking the expired day. For example:
 
@@ -83,7 +83,7 @@ metadata:
   name: certificate
 spec:
   hostAnalyzers:
-    - certificates:
+    - certificateValidity:
         outcomes:
           - pass:
               message: Certificate is valid
