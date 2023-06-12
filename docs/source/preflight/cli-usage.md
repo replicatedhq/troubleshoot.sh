@@ -21,10 +21,10 @@ kubectl preflight oci://my.oci.registry/image
 helm template mychart --values my-values.yaml | ./preflight -
 ```
 
-As of v0.64.0, valid input for specs can include:
+As of v0.69.0, valid input for specs can include:
 
 - Documents of `kind: Preflight`
-- Documents of `kind: Secret` that have the label `troubleshoot.io/kind: preflight`
+- Documents of `kind: Secret` that have the label `troubleshoot.sh/kind: preflight`
 
 Multiple YAML "documents" (specs) are supported as input, in addition all documents other than the above supported will be filtered out. This allows feeding an entire set of manifests (eg. a full Helm chart) in, and preflight will take only the relevant specs.
 ```shell

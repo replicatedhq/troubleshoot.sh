@@ -47,11 +47,6 @@ module.exports = options => ({
             target: "_blank",
             rel: "noopener noreferrer"
           },
-          // Changelog: {
-          //   href: "https://troubleshoot.io/docs/changelog",
-          //   target: "_blank",
-          //   rel: "noopener noreferrer"
-          // }
         },
         algoliaApiKey: process.env.ALGOLIA_API_KEY,
         algoliaIndexName: "troubleshoot-algolia-config",
