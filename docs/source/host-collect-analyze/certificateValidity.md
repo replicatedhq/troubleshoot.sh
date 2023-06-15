@@ -12,7 +12,7 @@ To collect certificate chain data on the host, use the `certificateValidity` col
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `certificateValidity` collector accepts the following parameters:
 
 #### `paths` (Required)
-Includes multiple file paths of certificates on the host
+Includes multiple file paths for certificates on the host.
 
 ### Example Collector Definition
 
@@ -35,7 +35,7 @@ The results of the `certificateValidity` collector are stored in the `host-colle
 
 #### `[collector-name].json`
 
-If the `collectorName` field is unset, it will be named `certificateValidity.json`.
+If the `collectorName` field is not specified, it will be named `certificateValidity.json`.
 
 Example of the resulting file:
 
@@ -68,7 +68,7 @@ Example of the resulting file:
 
 ## SSL Certificates Validity Analyzer
 
-The certificates analyzer supports multiple outcomes by validating certificate and checking the expired day. For example:
+The certificates analyzer validates certificates and checks the expiration day, and can provide multiple outcomes such as:
 
 - `Certificate is valid`: The certificate is valid and not expired.
 - `notAfter < Today + 4 days`: The certificate is about to expired in 4 days.
