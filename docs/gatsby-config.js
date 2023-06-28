@@ -62,6 +62,7 @@ const themeOptions = {
               'collect/longhorn',
               'collect/registry-images',
               'collect/sysctl',
+              'collect/custom-metrics',
             ],
             "Redact": [
               "redact/index",
