@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "gatsby-plugin-sharp": "^2.6.11",
-    "gatsby-transformer-sharp": "^2.5.5"
+    "gatsby-plugin-sharp": "^2.14.4",
+    "gatsby-transformer-sharp": "^2.12.1"
   }
 }
