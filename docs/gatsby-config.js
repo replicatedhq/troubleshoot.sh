@@ -128,7 +128,7 @@ const themeOptions = {
               'host-collect-analyze/tcpPortStatus',
               'host-collect-analyze/udpPortStatus',
               'host-collect-analyze/time',
-              'host-collect-analyze/certificateValidity',
+              'host-collect-analyze/certificatesCollection',
             ],
           },
         },

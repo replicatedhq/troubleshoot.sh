@@ -1,15 +1,17 @@
 ---
-title: SSL/TLS Certificate Validity
+title: SSL/TLS Certificates Collection
 description: Collect and analyze SSL/TLS certificate chain data 
 ---
 
-## SSL/TLS Certificate Validity Collector
+## SSL/TLS Certificates Collection Collector
 
-To collect certificate chain data on the host, use the `certificateValidity` collector.
+To collect certificate chain data on the host, use the `certificatesCollection` collector.
+
+Unlike the [`certificate`](/host-collect-analyze/certificate/) collector, which is designed to collect a specific certificate key pair, the `certificatesCollection` collector focuses on collecting a collection of certificates from multiple file paths.
 
 ### Parameters
 
-In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `certificateValidity` collector accepts the following parameters:
+In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `certificatesCollection` collector accepts the following parameters:
 
 #### `paths` (Required)
 Includes multiple file paths for certificates on the host.
@@ -23,7 +25,7 @@ metadata:
   name: certificates
 spec:
   hostCollectors:
-    - certificateValidity:
+    - certificatesCollection:
         paths: 
         - /Users/ubuntu/apiserver-kubelet-client.crt
         - /etc/ssl/corp.crt
@@ -31,11 +33,11 @@ spec:
 
 ### Included Resources
 
-The results of the `certificateValidity` collector are stored in the `host-collectors/certificateValidity` directory of the support bundle.
+The results of the `certificatesCollection` collector are stored in the `host-collectors/certificatesCollection` directory of the support bundle.
 
 #### `[collector-name].json`
 
-If the `collectorName` field is not specified, it will be named `certificateValidity.json`.
+If the `collectorName` field is not specified, it will be named `certificatesCollection.json`.
 
 Example of the resulting file:
 
@@ -66,7 +68,7 @@ Example of the resulting file:
 ]
 ```
 
-## SSL Certificates Validity Analyzer
+## SSL Certificatess Collection Analyzer
 
 The certificates analyzer validates certificates and checks the expiration day, and can provide multiple outcomes such as:
 
@@ -83,7 +85,7 @@ metadata:
   name: certificate
 spec:
   hostAnalyzers:
-    - certificateValidity:
+    - certificatesCollection:
         outcomes:
           - pass:
               message: Certificate is valid
