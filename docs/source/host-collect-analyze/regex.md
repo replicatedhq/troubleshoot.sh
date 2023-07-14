@@ -29,25 +29,25 @@ This can be an exact name, a prefix, or a file path pattern as defined by Go's [
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
-  name: my-app
+  name: example
 spec:
-  collectors:
-    - logs:
-        selector:
-          - app=my-app
-        name: my-app
-  analyzers:
+  hostCollectors:
+    - run:
+        collectorName: "localhost-ips"
+        command: "sh"
+        args: ["-c", "host localhost"]
+  hostAnalyzers:
     - textAnalyze:
-        checkName: Database Authentication
-        fileName: my-app/my-app-0/my-app.log
-        regex: 'FATAL: password authentication failed for user'
+        checkName: Check if localhost resolves to 127.0.0.1
+        fileName: host-collectors/run-host/localhost-ips.txt
+        regex: 'localhost has address 127.0.0.1'
         outcomes:
-          - pass:
-              when: "false"
-              message: "Database credentials okay"
           - fail:
+              when: "false"
+              message: "'localhost' does not resolve to 127.0.0.1 ip address"
+          - pass:
               when: "true"
-              message: "Problem with database credentials"
+              message: "'localhost' resolves to 127.0.0.1 ip address"
 ```
 
 ## Example Analyzer Definition for regexGroups
@@ -58,19 +58,15 @@ kind: SupportBundle
 metadata:
   name: ping
 spec:
-  collectors:
+  hostCollectors:
     - run:
-        collectorName: "run-ping"
-        image: busybox:1
-        name: ping.txt
-        namespace: default
-        command: ["ping"]
-        args: ["-w", "10", "-c", "10", "-i", "0.3", "www.google.com"]
-        imagePullPolicy: IfNotPresent
-  analyzers:
+        collectorName: "ping-google"
+        command: "ping"
+        args: ["-c", "5", "google.com"]
+  hostAnalyzers:
     - textAnalyze:
         checkName: "run-ping"
-        fileName: ping.txt/run-ping.log
+        fileName: host-collectors/run-host/ping-google.txt
         regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+)(\.\d+)?% packet loss'
         outcomes:
           - pass:
