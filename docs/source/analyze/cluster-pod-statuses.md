@@ -53,5 +53,6 @@ spec:
               message: Pod {{ .Namespace }}/{{ .Name }} is in an Init:CrashLoopBackOff state.
           - fail:
               when: "!= Healthy" # Catch all unhealthy pods. A pod is considered healthy if it has a status of Completed, or Running and all of its containers are ready.
-              message: Pod {{ .Namespace }}/{{ .Name }} is unhealthy with a status of {{ .Status.Reason }}.
+              # {{ .Status.Reason }} displays the current status of the pod, while {{ .Status.Message }} provides a detailed explanation of why the pod is unhealthy, based on logged events.
+              message: Pod {{ .Namespace }}/{{ .Name }} is unhealthy with a status of {{ .Status.Reason }}. Message is {{ .Status.Message }} 
 ```
