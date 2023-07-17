@@ -3,7 +3,7 @@ title: Regular Expression
 description: Using a regular expression to analyze arbitrary data
 ---
 
-The regex analyzer is used to run arbitrary regular expressions against data collected into a bundle by any collector that collects text data such as static data, run, copy, pod logs or exec collectors.
+The regex analyzer is used to run arbitrary regular expressions against text data collected into a bundle. You can use the regex analyzer with any text data collector, such as the `data`, `runPod`, `copy`, `logs`, and `exec` collectors.
 
 ## Parameters
 
