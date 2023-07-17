@@ -7,13 +7,13 @@ The regex analyzer is used to run arbitrary regular expressions against data col
 
 ## Parameters
 
-Either `regex` or `regexGroups` must be set but not both.
+Either `regex` or `regexGroups` must be set, but not both.
 
 This analyzer uses the Go library [`regexp`](https://pkg.go.dev/regexp) from the Go standard library and uses Go's [RE2 regular expression syntax](https://github.com/google/re2/wiki/Syntax)
 
 **regex**: (Optional) A regex pattern to test.
-If the pattern matches the file, the outcome that has set `when` to `"true"` will be executed.
-If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
+If the pattern matches the file, the outcome that has set `when` to `"true"` is executed.
+If no `when` expression is specified, the `pass` outcome defaults to `"true"`.
 
 **regexGroups**: (Optional)  A regex pattern to match.
 Matches from named capturing groups are available to `when` expressions in outcomes.
@@ -21,7 +21,7 @@ Matches from named capturing groups are available to `when` expressions in outco
 **fileName** (Required) Path to the file in support bundle to analyze.
 This can be an exact name, a prefix, or a file path pattern as defined by Go's [`filepath.Match`](https://pkg.go.dev/path/filepath#Match) function.
 
-**ignoreIfNoFiles** (Optional)  If no file matches, this analyzer will produce a warn outcome by default. This flag can be set to `true` in order to suppress the warning.
+**ignoreIfNoFiles** (Optional)  If no file matches, this analyzer produces a warn outcome by default. This flag can be set to `true` to suppress the warning.
 
 ## Example Analyzer Definition for regex
 
