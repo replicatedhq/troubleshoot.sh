@@ -4,7 +4,7 @@ description: Run a specified command and output the results to a file.
 ---
 ## Run Collector
 
-The `run` collector runs the specified command and includes the results in the collected output.
+The `run` collector runs the specified command and includes the results in the collected output. By default, it will inherit all of the environment variables form the parent process.
 
 ### Parameters
 
@@ -15,6 +15,21 @@ The command to execute on the host.  The command gets executed directly and is n
 
 ##### `args` (Required)
 The arguments to pass to the specified command.
+
+##### `env` (Optional)
+The extra environment variables to pass to the specified command. It has to be the key value pair seperated by "=". e.g., MY_ENV_VAR=my-value.
+
+##### `ignoreParentEnvs` (Optional)
+Whether the command runs with the environment variable of the parent process. When not specified, it defaults to `false`. Note that `PATH`, `KUBECONFIG`, `PWD`,  will always be to be passed to the command run, even if this is set to `true`.
+
+##### `inheritEnvs` (Optional)
+The subset of envirnoment variables to inherit from the parent process, if you don't want to inherit all of them. By default and when `ignoreParentEnvs` is `false`, it inherits all environment variables from the parent process. Note that if you specify this and when `ignoreParentEnvs` is `true`, the value of `inheritEnvs` will still be ignored.
+
+##### `outputDir` (Optional)
+The directory that your command to write output to if you want to include your command run's file output into your bundle. If defined, an environment variable `TS_WORKSPACE_DIR` will be available to your command run.
+
+##### `input` (Optional)
+The input files(e.g., configuration file or sample data) that you wish to feed into your command run. It must be define as a single multi-line string. If defined, an environment variable `TS_INPUT_DIR` will be available to your command run. Note that this is a simple map[string]string.
 
 ## Example Collector Definition
 
@@ -48,6 +63,19 @@ spec:
         collectorName: "docker-logs-etcd"
         command: "sh"
         args: ["-c", "docker logs $(docker ps -a --filter label=io.kubernetes.container.name=etcd -q -l) 2>&1"]
+    # Run command with config gile and collect the file output
+    - run:
+        collectorName: "enriched-audit-logs"
+        # must present on where you run the troubleshoot command
+        command: "enrich-log.sh"
+        args: ["--timeout", "10m", "--output-dir", "$WORKSPACE_OUTPUT"]
+        config:
+          dummy.conf: |-
+            [hello]
+            hello = 1
+
+            [bye]
+            bye = 2
 ```
 
 ## Example Collector Definition With Analyzer
@@ -117,4 +145,61 @@ and
 1.1G    /var/log/apiserver
 897M    /var/lib/kurl/assets/kubernetes-1.19.16.tar.gz
 812M    /var/lib/kurl/assets/docker-20.10.5.tar.gz
+```
+
+## Example Collector Definition With Command Run File Output Saving to the Bundle
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: HostCollector
+metadata:
+  name: run-host-cmd-and-save-output
+spec:
+  collectors:
+    - run:
+        collectorName: "my-custom-run"
+        command: "sh"
+        # this is for demonstration purpose only -- you probably don't want to drop your input to the bundle!
+        args:
+          - "-c"
+          - "cat $TS_INPUT_DIR/dummy.yaml > $TS_WORKSPACE_DIR/dummy_content.yaml"
+        outputDir: "myCommandOutputs"
+        env:
+          - AWS_REGION=us-west-1
+        # if ignoreParentEnvs is true, it will not inherit envs from parent process.
+        # values specified in inheritEnv will not be used either
+        # ignoreParentEnvs: true
+        inheritEnvs:
+          - USER
+        input:
+          dummy.conf: |-
+            [hello]
+            hello = 1
+            
+            [bye]
+            bye = 2
+          dummy.yaml: |-
+            username: postgres
+            password: <my-pass>
+            dbHost: <hostname>
+            map:
+              key: value
+            list:
+              - val1
+              - val2
+```
+
+### Included Resources
+
+Besides `[collector-name].txt` and `[collector-name]-info.json`, there will be a directory `host-collectors/run-host/myCommandOutputs` that contains the file output of the command run.
+
+```yaml
+# myCommandOutputs/dummy_content.yaml
+username: postgres
+password: <my-pass>
+dbHost: <hostname>
+map:
+  key: value
+list:
+  - val1
+  - val2
 ```
