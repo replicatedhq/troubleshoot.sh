@@ -294,6 +294,15 @@ The maximum file size limit for a pods logfile is 5MB.
 
 ### `/cluster-resources/ingress/[namespace]/[name].json`
 
+### `/cluster-resources/configmaps/[namespace]/[name].json`
+This file contains information about all configmaps, separated by namespace.
+
+### `/cluster-resources/serviceaccounts/[namespace]/[name].json`
+This file contains information about all serviceaccounts, separated by namespace.
+
+### `/cluster-resources/leases/[namespace]/[name].json`
+This file contains information about all leases, separated by namespace.
+
 This file contains information about all ingresses, separated by namespace.
 
 ### `/cluster-resources/groups.json`
@@ -337,7 +346,7 @@ The below is a partial example only. Actual results will be significantly longer
 ...
 ```
 
-## `/cluster-resources/resources.json`
+### `/cluster-resources/resources.json`
 
 This file contains information about all Kubernetes API resources in the cluster.
 
