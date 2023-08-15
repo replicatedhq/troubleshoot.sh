@@ -446,3 +446,12 @@ The below is a partial example only. Actual results will be significantly longer
   }
 ]
 ```
+
+
+### `/cluster-resources/serviceaccounts/[namespace]/[name].json`
+
+This file contains information about all service accounts, separated by namespace.
+
+### `/cluster-resources/leases/[namespace]/[name].json`
+
+This file contains information about all leases, separated by namespace.
