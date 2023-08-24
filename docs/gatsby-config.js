@@ -51,6 +51,7 @@ const themeOptions = {
               'collect/exec',
               'collect/http',
               'collect/configmap',
+              'collect/custom-metrics',
               'collect/secret',
               'collect/longhorn',
               'collect/mssql',
@@ -62,7 +63,6 @@ const themeOptions = {
               'collect/run-pod',
               'collect/data',
               'collect/sysctl',
-              'collect/custom-metrics',
             ],
             "Redact": [
               "redact/index",
