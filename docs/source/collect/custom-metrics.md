@@ -13,13 +13,13 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 A list of metrics to be collected, each request is of the following format:
   - ###### `namespace`
-  for which to collect the metric values, empty for non-namespaces resources.
+  For which to collect the metric values, empty for non-namespaces resources.
 
   - ###### `objectName`
-  for which to collect metric values, all resources are considered when empty, for namespaced resources a Namespace has to be supplied regardless.
+  For which to collect metric values, all resources are considered when empty, for namespaced resources a Namespace has to be supplied regardless.
 
   - ###### `resourceMetricName`
-  name of the `MetricValueList` as per the `APIResourceList` from "custom.metrics.k8s.io/v1beta1"
+  Name of the `MetricValueList` as per the `APIResourceList` from "custom.metrics.k8s.io/v1beta1"
 
 ## Example Collector Definition
 
