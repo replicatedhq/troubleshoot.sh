@@ -51,6 +51,7 @@ const themeOptions = {
               'collect/exec',
               'collect/http',
               'collect/configmap',
+              'collect/custom-metrics',
               'collect/secret',
               'collect/longhorn',
               'collect/mssql',
