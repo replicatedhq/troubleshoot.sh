@@ -50,13 +50,47 @@ spec:
         args: ["-c", "docker logs $(docker ps -a --filter label=io.kubernetes.container.name=etcd -q -l) 2>&1"]
 ```
 
+## Example Collector Definition With Analyzer
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: run
+spec:
+  hostCollectors:
+    - run:
+        collectorName: "ping-google"
+        command: "ping"
+        args: ["-c", "5", "google.com"]
+  analyzers:
+    - textAnalyze:
+        checkName: "run-ping"
+        fileName: host-collectors/run-host/ping-google.txt
+        regexGroups: '(?P<Transmitted>\d+) packets? transmitted, (?P<Received>\d+) packets? received, (?P<Loss>\d+)(\.\d+)?% packet loss'
+        outcomes:
+          - pass:
+              when: "Loss < 5"
+              message: Solid connection to google.com
+          - fail:
+              message: High packet loss
+```
+
 ### Included Resources
 
-The results of the `run` collector are stored in the `host-collectors/run-host` directory of the support bundle.
+The results of the `run` collector are stored in the `host-collectors/run-host` directory of the bundle. Two files per collector execution will be stored in this directory
 
-#### `[collector-name].json`
+- `[collector-name].txt` - output of the command read from `stdout`
+- `[collector-name]-info.json` - the command that was executed, its exit code and any output read from `stderr`. See example below
+  ```json
+  {
+    "command": "/sbin/ping -c 5 google.com",
+    "exitCode": "0",
+    "error": ""
+  }
+  ```
 
-If the `collectorName` field is unset, it will be named `run-host.json`.
+_NOTE: If the `collectorName` field is unset, it will default to `run-host`._
 
 Example of the resulting files:
 
