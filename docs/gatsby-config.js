@@ -62,6 +62,7 @@ const themeOptions = {
               'collect/run-pod',
               'collect/data',
               'collect/sysctl',
+              'collect/custom-metrics',
             ],
             "Redact": [
               "redact/index",
