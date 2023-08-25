@@ -63,6 +63,7 @@ const themeOptions = {
               'collect/run-pod',
               'collect/data',
               'collect/sysctl',
+              'collect/helm',
             ],
             "Redact": [
               "redact/index",
@@ -130,7 +131,6 @@ const themeOptions = {
               'host-collect-analyze/tcpLoadBalancer',
               'host-collect-analyze/tcpPortStatus',
               'host-collect-analyze/time',
-              'host-collect-analyze/certificate',
               'host-collect-analyze/certificate',
               'host-collect-analyze/udpPortStatus',
             ],
