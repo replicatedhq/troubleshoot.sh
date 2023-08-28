@@ -16,7 +16,7 @@ If specified, Secrets in the list will be collected.
 The secrets field at the collector level accepts a list of objects with parameters:
   - ##### `name` (required)
     The name of the Secret.
-  - ##### `namespaces` (required)
+  - ##### `namespaces` (Optional)
     The namespaces where the Secret exists. If multiple namespaces are specified, all matching Secrets from these namespaces will be collected.
 
 ##### `configMaps` (Optional)
@@ -26,7 +26,7 @@ If specified, ConfigMaps in the list will be collected.
 The configMaps field at the collector level accepts a list of objects with parameters:
   - ##### `name` (required)
     The name of the configMap.
-  - ##### `namespaces` (required)
+  - ##### `namespaces` (Optional)
     The namespaces where the ConfigMap exists. If multiple namespaces are specified, all matching ConfigMaps from these namespaces will be collected.
 
 ## Example Collector Definition
@@ -106,7 +106,10 @@ When this collector is executed, it includes the following file in a support bun
         "isCA": true
       }
     ]
-  }
+  },
+  {
+    ...
+  } 
 ]
 ```
 
