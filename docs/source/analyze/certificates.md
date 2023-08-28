@@ -7,7 +7,7 @@ The `certificates` analyzer alerts users when a specific certificate is either i
 This analyzer's outcome `when` clause compares the condition specified with the resources present on the certificates.
 
 The `when` value in an outcome of this analyzer contains the certificates that match the filters, if any filters are defined.
-If there are no defined filters, the `when` value contains all certificates in the cluster.
+If there are no defined filters, it will based on validity of the certificate. For pass outcomes, the certificate which is valid will be matched. For fail outcomes, the certificate which is invalid will be matched.
 
 The conditional in the `when` value supports the following:
 

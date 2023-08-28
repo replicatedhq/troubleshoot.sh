@@ -44,6 +44,14 @@ spec:
               namespaces:
                 - kube-system
                 - projectcontour
+          - name: envoycert
+             namespaces:
+               - kube-system
+               - projectcontour
+           - name: kube-root-ca.crt
+              namespaces:
+                - default
+                - kube-public
         configMaps:
           - name: kube-root-ca.crt
               namespaces:
