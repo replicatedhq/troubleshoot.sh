@@ -19,6 +19,7 @@ The secrets field at the collector level accepts a list of objects with paramete
   - ##### `namespaces` (Optional)
     The namespaces where the Secret exists. If multiple namespaces are specified, all matching Secrets from these namespaces will be collected.
 
+
 ##### `configMaps` (Optional)
 configMaps to use to find matching ConfigMaps across different namespaces.
 If specified, ConfigMaps in the list will be collected.
