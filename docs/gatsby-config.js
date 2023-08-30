@@ -43,6 +43,7 @@ const themeOptions = {
               'collect/collectors',
               'collect/all',
               'collect/ceph',
+              'collect/certificates',
               'collect/cluster-info',
               'collect/cluster-resources',
               'collect/collectd',
