@@ -10,25 +10,25 @@ The `certificates` collector can be used to gather information about the TLS cer
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `certificates` collector accepts the following parameters:
 
 ##### `secrets` (Optional)
-secrets to use to find matching Secrets acrossing different namespaces.
-If specified, Secrets in the list will be collected.
+Find matching Secrets across one or more namespaces.
+If specified, the Secrets in the list are collected.
 
-The secrets field at the collector level accepts a list of objects with parameters:
-  - ##### `name` (required)
+The `secrets` field at the collector level accepts a list of objects with the following parameters:
+  - ##### `name` (Required)
     The name of the Secret.
   - ##### `namespaces` (Optional)
-    The namespaces where the Secret exists. If multiple namespaces are specified, all matching Secrets from these namespaces will be collected.
+    The namespaces where the Secret exists. If multiple namespaces are specified, all matching Secrets from these namespaces are collected.
 
 
 ##### `configMaps` (Optional)
-configMaps to use to find matching ConfigMaps across different namespaces.
-If specified, ConfigMaps in the list will be collected.
+Find matching ConfigMaps across one or more namespaces.
+If specified, the ConfigMaps in the list are collected.
 
-The configMaps field at the collector level accepts a list of objects with parameters:
-  - ##### `name` (required)
-    The name of the configMap.
+The `configMaps` field at the collector level accepts a list of objects with the following parameters:
+  - ##### `name` (Required)
+    The name of the ConfigMap.
   - ##### `namespaces` (Optional)
-    The namespaces where the ConfigMap exists. If multiple namespaces are specified, all matching ConfigMaps from these namespaces will be collected.
+    The namespaces where the ConfigMap exists. If multiple namespaces are specified, all matching ConfigMaps from these namespaces are collected.
 
 ## Example Collector Definition
 
@@ -82,7 +82,7 @@ data:
 
 ## Included resources
 
-When this collector is executed, it includes the following file in a support bundle. All certificate metadata collected will be stored in this file as a JSON array of objects. Each object in the array will contain a `source` object containing the source of the certificate that the metadata was extracted from.
+When this collector is executed, it includes the following file in a support bundle. All certificate metadata collected is stored in this file as a JSON array of objects. Each object in the array contains a `source` object containing the source of the certificate where the metadata was extracted.
 
 ### `/certificates/certificates.json`
 
