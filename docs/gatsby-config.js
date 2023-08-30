@@ -127,7 +127,6 @@ const themeOptions = {
               'host-collect-analyze/memory',
               'host-collect-analyze/regex',
               'host-collect-analyze/run',
-              'host-collect-analyze/certificatesCollection',
               'host-collect-analyze/subnetAvailable',
               'host-collect-analyze/systemPackages',
               'host-collect-analyze/tcpConnect',
