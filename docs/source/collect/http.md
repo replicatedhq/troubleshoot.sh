@@ -9,23 +9,28 @@ The http collector can be specified multiple times in a collector spec.
 
 ## Parameters
 
-In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `http` collector accepts the following parameters:
+The `http` collector can be either of  `get`, `post` or `put`.
 
-##### `url` (Required)
-The URL to make the HTTP request against
+In addition to the [shared collector properties](/collect/collectors/#shared-properties), it accepts the following parameters:
 
-##### `insecureSkipVerify` (Optional)
-When set to true, this will make connections to untrusted or self-signed certs.
-This defaults to false.
+- ##### `url` (Required)
+  The URL to make the HTTP request against.
 
-##### `headers` (Optional)
-When present, additional headers to send with the request.
-By default, there are no headers added to the request.
+- ##### `insecureSkipVerify` (Optional)
+  When set to true, this will make connections to untrusted or self-signed certs.
+  This defaults to false.
 
-##### `body` (Optional)
-When present, the body to be send with the request.
-By default, there is no body included in a request.
-This parameter is not supported if the method is `get`.
+- ##### `headers` (Optional)
+  When present, additional headers to send with the request.
+  By default, there are no headers added to the request.
+
+- ##### `body` (Optional)
+  When present, the body to be send with the request.
+  By default, there is no body included in a request.
+  This parameter is not supported if the method is `get`.
+
+- ##### `timeout` (Optional)
+  When present, the timeout for the request.
 
 ## Example Collector Definition
 
@@ -45,6 +50,7 @@ spec:
         collectorName: healthz
         get:
           url: http://api:3000/healthz
+          timeout: 5s
 ```
 
 
