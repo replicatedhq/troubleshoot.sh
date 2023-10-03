@@ -5,7 +5,9 @@ description: Benchmarks sequential write latency on a single file.
 
 ## Filesystem Performance Collector
 
-The `filesystemPerformance` collector benchmarks sequential write latency on a single file. The optional background IOPS feature attempts to mimic real-world conditions by running read and write workloads prior to and during benchmark execution.
+The `filesystemPerformance` collector uses the [`fio` tool](https://github.com/axboe/fio) to benchmark sequential write latency on a single file. The optional background IOPS feature attempts to mimic real-world conditions by running read and write workloads prior to and during benchmark execution.
+
+Note: the `fio` binary must be installed and available in your system's `$PATH`
 
 ### Parameters
 
@@ -73,7 +75,7 @@ spec:
 
 ### Included Resources
 
-The results of the `filesystemPerformance` collector are stored in the `host-collectors/filesystemPerformance` directory of the support bundle.
+The results of the `filesystemPerformance` collector are stored in the `host-collectors/filesystemPerformance` directory of the support bundle.  
 
 #### `[collector-name].json`
 
@@ -82,28 +84,48 @@ If the `collectorName` field is unset, it will be named `filesystemPerformance.j
 Example of the resulting JSON file:
 
 ```json
-{
-   "Min":1072380,
-   "Max":28258541,
-   "Average":1936389,
-   "P1":1361771,
-   "P5":1470115,
-   "P10":1530443,
-   "P20":1606706,
-   "P30":1668387,
-   "P40":1722871,
-   "P50":1782345,
-   "P60":1845403,
-   "P70":1929173,
-   "P80":2069770,
-   "P90":2484501,
-   "P95":2887302,
-   "P99":4464537,
-   "P995":5948001,
-   "P999":9461315,
-   "P9995":10746333,
-   "P9999":19159876
+"fio version" : "fio-3.28",
+"timestamp" : 1691679955,
+"timestamp_ms" : 1691679955590,
+"time" : "Thu Aug 10 15:05:55 2023",
+"global options" : {
+  "rw" : "write",
+  "ioengine" : "sync",
+  "fdatasync" : "1",
+  "directory" : "/var/lib/etcd",
+  "size" : "23068672",
+  "bs" : "1024"
+},
+...
+"sync" : {
+  "total_ios" : 0,
+  "lat_ns" : {
+  "min" : 200,
+  "max" : 1000000000,
+  "mean" : 55000,
+  "stddev" : 12345.6789,
+  "N" : 32400,
+  "percentile" : {
+    "1.000000" : 1000,
+    "5.000000" : 5000,
+    "10.000000" : 10000,
+    "20.000000" : 20000,
+    "30.000000" : 30000,
+    "40.000000" : 40000,
+    "50.000000" : 50000,
+    "60.000000" : 60000,
+    "70.000000" : 70000,
+    "80.000000" : 80000,
+    "90.000000" : 90000,
+    "95.000000" : 95000,
+    "99.000000" : 99000,
+    "99.500000" : 995000,
+    "99.900000" : 999000,
+    "99.950000" : 5000000,
+    "99.990000" : 9000000
+  }
 }
+},
 ```
 
 ## Filesystem Performance Analyzer
