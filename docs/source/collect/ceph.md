@@ -62,3 +62,7 @@ The output of command `ceph health detail -f json-pretty`.
 ### `/ceph/([collector-name]/)auth.json`
 
 The output of command `ceph auth ls -f json-pretty`.
+
+### `/ceph/([collector-name]/)df.json`
+
+The output of command `ceph df -f json-pretty`.
