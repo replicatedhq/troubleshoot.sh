@@ -7,9 +7,7 @@ The `Velero` analyzer is available to check statuses of Custom Resources install
 
 ## Parameters
 
-**namespace:** (Optional) Namespace where velero is installed. Will default to `velero` if not set.
-
-**collectorName:** (N/A) Velero currently does not require a special collector as all the Custom Resources are already collected in support bundle.
+**collectorName:** (N/A) Velero currently does not require a special collector as all the Custom Resources are already collected in support bundle by the `Cluster Resources` collector.
 
 ## Example Analyzer Definition
 
@@ -20,13 +18,19 @@ metadata:
   name: velero
 spec:
   collectors:
+    - clusterResources: {} # implicitly added if not defined in a spec
     - logs:
         namespace: velero
         name: velero/logs
   analyzers:
-    - velero:
-        strict: true
+    - velero: {}
 ```
+
+**Note**
+
+For the logs collector:
+- `name` should always be `velero/logs` as it's the default path created in support bundle to be then used by velero analyzer.
+- `namespace` could be changed to any other namespace in case velero was installed in a different namespace.
 
 ## Included Analyzers
 
