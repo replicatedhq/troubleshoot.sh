@@ -108,6 +108,7 @@ const themeOptions = {
               'analyze/weave-report',
               'analyze/statefulset-status',
               'analyze/sysctl',
+              'analyze/velero',
               "host-analyze/all",
             ],
             "Host Collect and Analyze": [
