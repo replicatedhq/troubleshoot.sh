@@ -63,19 +63,6 @@ spec:
         collectorName: "docker-logs-etcd"
         command: "sh"
         args: ["-c", "docker logs $(docker ps -a --filter label=io.kubernetes.container.name=etcd -q -l) 2>&1"]
-    # Run command with config gile and collect the file output
-    - run:
-        collectorName: "enriched-audit-logs"
-        # must present on where you run the troubleshoot command
-        command: "enrich-log.sh"
-        args: ["--timeout", "10m", "--output-dir", "$WORKSPACE_OUTPUT"]
-        config:
-          dummy.conf: |-
-            [hello]
-            hello = 1
-
-            [bye]
-            bye = 2
 ```
 
 ## Example Collector Definition With Analyzer
@@ -161,7 +148,7 @@ spec:
         # this is for demonstration purpose only -- you probably don't want to drop your input to the bundle!
         args:
           - "-c"
-          - "cat $TS_INPUT_DIR/dummy.yaml > $TS_WORKSPACE_DIR/dummy_content.yaml"
+          - "cat $TS_INPUT_DIR/dummy.yaml > $TS_OUTPUT_DIR/dummy_content.yaml"
         outputDir: "myCommandOutputs"
         env:
           - AWS_REGION=us-west-1
