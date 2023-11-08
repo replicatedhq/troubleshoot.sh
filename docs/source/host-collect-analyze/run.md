@@ -4,7 +4,7 @@ description: Run a specified command and output the results to a file.
 ---
 ## Run Collector
 
-The `run` collector runs the specified command and includes the results in the collected output. By default, it will inherit all of the environment variables form the parent process.
+The `run` collector runs the specified command and includes the results in the collected output. By default, it will inherit all of the environment variables from the parent process.
 
 ### Parameters
 
@@ -17,19 +17,19 @@ The command to execute on the host.  The command gets executed directly and is n
 The arguments to pass to the specified command.
 
 ##### `env` (Optional)
-The extra environment variables to pass to the specified command. It has to be the key value pair seperated by "=". e.g., MY_ENV_VAR=my-value.
+Extra environment variables to pass to the specified command. This is a list of values that are key/value pairs separated by "=". e.g `MY_ENV_VAR=my-value`
 
 ##### `ignoreParentEnvs` (Optional)
-Whether the command runs with the environment variable of the parent process. When not specified, it defaults to `false`. Note that `PATH`, `KUBECONFIG`, `PWD`,  will always be to be passed to the command run, even if this is set to `true`.
+Whether the command should run with the environment variables of the parent process or not. When not specified, it defaults to `false`. Note that `PATH`, `KUBECONFIG` and `PWD` variables will always be present in the spawned process of the command to run, even if this is set to `true`.
 
 ##### `inheritEnvs` (Optional)
-The subset of envirnoment variables to inherit from the parent process, if you don't want to inherit all of them. By default and when `ignoreParentEnvs` is `false`, it inherits all environment variables from the parent process. Note that if you specify this and when `ignoreParentEnvs` is `true`, the value of `inheritEnvs` will still be ignored.
+A subset of envirnoment variables to inherit from the parent process, if you don't want to inherit all of them. By default and when `ignoreParentEnvs` is `false`, it inherits all environment variables from the parent process. Note that if you specify this and set `ignoreParentEnvs` to `true`, the value of `inheritEnvs` will still be ignored.
 
 ##### `outputDir` (Optional)
-The directory that your command to write output to if you want to include your command run's file output into your bundle. If defined, an environment variable `TS_WORKSPACE_DIR` will be available to your command run.
+The directory that your command can write output to if you want to include your command run's file output into your bundle. If defined, an environment variable `TS_OUTPUT_DIR` will be available for your command to write output to. NOTE: `stdout` and/or `stderr` (if the command fails) output will be written to separate files.
 
 ##### `input` (Optional)
-The input files(e.g., configuration file or sample data) that you wish to feed into your command run. It must be define as a single multi-line string. If defined, an environment variable `TS_INPUT_DIR` will be available to your command run. Note that this is a simple map[string]string.
+Input files(e.g., configuration files or sample data) that you wish to feed into your command run. If defined, an environment variable `TS_INPUT_DIR` which is a directory to store these files. It will be available to your command run. The value is a simple map where keys are file names of the files created in `TS_INPUT_DIR` and values are the contents written to these files.
 
 ## Example Collector Definition
 
