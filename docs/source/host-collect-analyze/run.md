@@ -91,9 +91,50 @@ spec:
               message: High packet loss
 ```
 
+## Example Collector Definition With Command Run File Input and Output Saving to the Bundle
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: HostCollector
+metadata:
+  name: run-host-cmd-and-save-output
+spec:
+  collectors:
+    - run:
+        collectorName: "my-custom-run"
+        command: "sh"
+        # this is for demonstration purpose only -- you probably don't want to drop your input to the bundle!
+        args:
+          - "-c"
+          - "cat $TS_INPUT_DIR/dummy.yaml > $TS_OUTPUT_DIR/dummy_content.yaml"
+        outputDir: "myCommandOutputs"
+        env:
+          - AWS_REGION=us-west-1
+        # if ignoreParentEnvs is true, it will not inherit envs from parent process.
+        # values specified in inheritEnv will not be used either
+        # ignoreParentEnvs: true
+        inheritEnvs:
+          - USER
+        input:
+          dummy.conf: |-
+            [hello]
+            hello = 1
+
+            [bye]
+            bye = 2
+          dummy.yaml: |-
+            username: postgres
+            password: <my-pass>
+            dbHost: <hostname>
+            map:
+              key: value
+            list:
+              - val1
+              - val2
+```
+
 ### Included Resources
 
-The results of the `run` collector are stored in the `host-collectors/run-host` directory of the bundle. Two files per collector execution will be stored in this directory
+The results of the `run` collector are stored in the `host-collectors/run-host` directory of the bundle. Two files per collector execution will be stored in this directory and an optional outputs directory.
 
 - `[collector-name].txt` - output of the command read from `stdout`
 - `[collector-name]-info.json` - the command that was executed, its exit code and any output read from `stderr`. See example below
@@ -104,6 +145,7 @@ The results of the `run` collector are stored in the `host-collectors/run-host` 
     "error": ""
   }
   ```
+- `host-collectors/[collector-name]/[outputDir]` - Optional directory containing output files written by the command ran.
 
 _NOTE: If the `collectorName` field is unset, it will default to `run-host`._
 
@@ -134,53 +176,10 @@ and
 812M    /var/lib/kurl/assets/docker-20.10.5.tar.gz
 ```
 
-## Example Collector Definition With Command Run File Output Saving to the Bundle
-```yaml
-apiVersion: troubleshoot.sh/v1beta2
-kind: HostCollector
-metadata:
-  name: run-host-cmd-and-save-output
-spec:
-  collectors:
-    - run:
-        collectorName: "my-custom-run"
-        command: "sh"
-        # this is for demonstration purpose only -- you probably don't want to drop your input to the bundle!
-        args:
-          - "-c"
-          - "cat $TS_INPUT_DIR/dummy.yaml > $TS_OUTPUT_DIR/dummy_content.yaml"
-        outputDir: "myCommandOutputs"
-        env:
-          - AWS_REGION=us-west-1
-        # if ignoreParentEnvs is true, it will not inherit envs from parent process.
-        # values specified in inheritEnv will not be used either
-        # ignoreParentEnvs: true
-        inheritEnvs:
-          - USER
-        input:
-          dummy.conf: |-
-            [hello]
-            hello = 1
-            
-            [bye]
-            bye = 2
-          dummy.yaml: |-
-            username: postgres
-            password: <my-pass>
-            dbHost: <hostname>
-            map:
-              key: value
-            list:
-              - val1
-              - val2
-```
-
-### Included Resources
-
-Besides `[collector-name].txt` and `[collector-name]-info.json`, there will be a directory `host-collectors/run-host/myCommandOutputs` that contains the file output of the command run.
+and also after running `run-host-cmd-and-save-output` collector, the file below will be in the support bundle
 
 ```yaml
-# myCommandOutputs/dummy_content.yaml
+# host-collectors/my-custom-run/myCommandOutputs/dummy_content.yaml
 username: postgres
 password: <my-pass>
 dbHost: <hostname>
