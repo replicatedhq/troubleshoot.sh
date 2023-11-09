@@ -29,7 +29,7 @@ A subset of envirnoment variables to inherit from the parent process, if you don
 The directory that your command can write output to if you want to include your command run's file output into your bundle. If defined, an environment variable `TS_OUTPUT_DIR` will be available for your command to write output to. NOTE: `stdout` and/or `stderr` (if the command fails) output will be written to separate files.
 
 ##### `input` (Optional)
-Input files(e.g., configuration files or sample data) that you wish to feed into your command run. If defined, an environment variable `TS_INPUT_DIR` which is a directory to store these files. It will be available to your command run. The value is a simple map where keys are file names of the files created in `TS_INPUT_DIR` and values are the contents written to these files.
+Input files (e.g configuration files or sample data) that you wish to feed into your command run. If defined, an environment variable `TS_INPUT_DIR` which is a directory to store these files, will be available to your command run. The value is a simple map where keys are file names of the files created in `TS_INPUT_DIR` and values are the contents written to these files.
 
 ## Example Collector Definition
 
