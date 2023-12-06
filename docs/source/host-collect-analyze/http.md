@@ -5,7 +5,7 @@ description:  Analyze information collected by the http collector
 
 ## HTTP Analyzer
 
-The `http` analyzer is used to analyse information collected by the [http collector](/collect/http). It supports multiple outcomes. For example:
+The `http` analyzer is used to analyse information collected by the `http collector`. It supports multiple outcomes. For example:
 
 - `error`: Error occurred connecting to the URL.
 - `statusCode == 200`: Successfully connected to the URL.
