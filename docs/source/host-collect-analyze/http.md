@@ -10,6 +10,35 @@ The `http` analyzer is used to analyse information collected by the [HTTP Reques
 - `error`: Error occurred connecting to the URL.
 - `statusCode == 200`: Successfully connected to the URL.
 
+### Examples of the collected JSON output to analyse
+
+Response received from the server will be stored in the `"response"` key of the resulting JSON file
+
+```json
+{
+  "response": {
+    "status": 200,
+    "body": "{\"status\": \"healthy\"}",
+    "headers": {
+      "Connection": "keep-alive",
+      "Date": "Fri, 19 Jul 2019 20:13:44 GMT",
+      "Server": "nginx/1.8.1",
+      "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+    }
+  }
+}
+```
+
+In case a client side error occurs and no respose is received, the error text will be stored in the error key
+
+```json
+{
+  "error": {
+    "message": "Put : unsupported protocol scheme \"\""
+  }
+}
+```
+
 ### Example Analyzer Definition
 
 ```yaml
