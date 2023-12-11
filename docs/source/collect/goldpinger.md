@@ -3,14 +3,14 @@ title: Goldpinger
 description: Gathering goldpinger pod checks from a kubernetes cluster
 ---
 
-The `goldpinger` collector is used to collect pod-ping checks gathered by a [goldpinger service](https://github.com/bloomberg/goldpinger) installed in a kubernetes cluster. The collector makes a request to `<host>/check_all` endpoint. Periodically, this service will ping pods running on every node (daemonset pods) to ensure that nodes can reach all other nodes in that cluster. It caches these information and surfaces it via http endpoints. If this collector is run within a kubernetes cluster, the collector will directory make the http request to the goldpoinger endpoint (`http://goldpinger.<namespace>.svc.cluster.local:80/check_all`). If not, the collector attempts to launch a pod in the cluster and makes the request within the running container.
+The `goldpinger` collector is used to collect pod-ping checks gathered by a [goldpinger service](https://github.com/bloomberg/goldpinger) installed in a kubernetes cluster. The collector makes a request to `<host>/check_all` endpoint. Periodically, this service will ping pods running on every node (daemonset pods) to ensure that nodes can reach all other nodes in that cluster. It caches these information and surfaces it via http endpoints. If this collector is run within a kubernetes cluster, the collector will directly make the http request to the goldpoinger endpoint (`http://goldpinger.<namespace>.svc.cluster.local:80/check_all`). If not, the collector attempts to launch a pod in the cluster and makes the request within the running container.
 
 ## Parameters
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), it accepts the following parameters
 
 - ##### `namespace` (Optional)
-  The namespace where goldpinger is installed. Defaults to the `default` namespace.
+  The namespace where goldpinger is installed. This value is used to form the goldpinger service endpoint i.e `http://goldpinger.<namespace>.svc.cluster.local:80`. Defaults to the `default` namespace.
 
 - ##### `podLaunchOptions` (Optional)
   Pod launch options to start a pod
