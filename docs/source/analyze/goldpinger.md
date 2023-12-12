@@ -1,9 +1,9 @@
 ---
 title: Goldpinger
-description: Analyse goldpinger results
+description: Analyze goldpinger results
 ---
 
-The goldpinger analyser is used to analyse results collected by the [goldpinger collector](/collect/goldpinger/). The analyser reports the following
+The goldpinger analyzer is used to analyze results collected by the [goldpinger collector](/collect/goldpinger/). The goldpinger analyzer reports the following:
 - Failed outcome for each pod to pod ping that was not successful.
 - Warning outcome if any pod ping result is missing
 - Success for each pod that successfully pinged all other pods in a cluster
@@ -13,7 +13,7 @@ The goldpinger analyser is used to analyse results collected by the [goldpinger 
 ## Parameters
 
 - ##### `filePath` (Optional)
-  Optional parameter pointing to where goldpinger results are collected. By default this will be `goldpinger/check_all.json`
+  Optional parameter pointing to where goldpinger results are collected. By default, this is `goldpinger/check_all.json`
 
 ## Example Analyzer Definition
 
