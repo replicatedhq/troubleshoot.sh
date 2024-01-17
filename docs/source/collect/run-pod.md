@@ -27,7 +27,7 @@ The namespace to schedule the pod in. If not specified, the "default" namespace 
 The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec) for all available properties.
 
 ##### `timeout` (Optional)
-A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod. If not specified, the collector will run for as long as the underlying command does.
+A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod. If the timeout ellapses, the pod is terminated. Troubleshoot waits for a maximum of `60s` for the pod to safely terminate, then forcefully deletes it. If the timeout is not specified, the collector will run for as long as the underlying command does.
 
 #### `imagePullSecret` (Optional)
 
