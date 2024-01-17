@@ -17,8 +17,7 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 The name of the collector. This will be prefixed to the path that the output is written to in the support bundle.
 
 ##### `namespace` (Optional)
-The namespace to look for the pod selector in.
-If not specified, it will assume the "current" namespace that the kubectl context is set to.
+The namespace to schedule the pod in. If not specified, it will assume the "current" namespace that the kubectl context is set to.
 
 ##### `image` (Required)
 The image to run when starting the pod. This should be accessible to the nodes in the cluster.
@@ -74,7 +73,7 @@ imagePullSecret:
 
 Further information about config.json file and dockerconfigjson secrets may be found [here](https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/).
 
-See the examples below for use cases.  
+See the examples below for use cases.
 
 ## Example Collector Definition
 
