@@ -18,8 +18,7 @@ The name of the collector. This will be prefixed to the path that the output is 
 This is also used as the name of the pod and must meet pod naming criteria
 
 ##### `namespace` (Optional)
-The namespace to look for the pod selector in.
-If not specified, it will assume the "current" namespace that the kubectl context is set to.
+The namespace to schedule the pod in. If not specified, the "default" namespace will be used
 
 ##### `podSpec` (Required)
 
@@ -28,8 +27,7 @@ If not specified, it will assume the "current" namespace that the kubectl contex
 The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Reference](https://kubernetes.io/docs/reference/kubernetes-api/workload-resources/pod-v1/#PodSpec) for all available properties.
 
 ##### `timeout` (Optional)
-A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod.
-This cannot be greater than 30 seconds (30s) and if not specified, the default is 20s.
+A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod. If not specified, the collector will run for as long as the underlying command does.
 
 #### `imagePullSecret` (Optional)
 
@@ -64,7 +62,7 @@ Further information about config.json file and dockerconfigjson secrets may be f
              - name: my-image-pull-secret
 ```
 
-See the examples below for use cases.  
+See the examples below for use cases.
 
 ## Example Collector Definition
 
@@ -78,7 +76,7 @@ spec:
     - runPod:
         name: "run-ping"
         namespace: default
-        podSpec: 
+        podSpec:
           containers:
           - name: run-ping
             image: busybox:1
