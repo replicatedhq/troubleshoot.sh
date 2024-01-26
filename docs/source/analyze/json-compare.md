@@ -134,3 +134,37 @@ spec:
               when: "true"
               message: The cluster platform is linux/amd64.
 ```
+
+## Example Analyzer Definition using Templating in the Outcome Messages
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: jsonpath-compare-example
+spec:
+  collectors:
+    - data:
+        name: example.json
+        data: |
+          {
+            "stuff": {
+              "status": "ready",
+              "info": "foo"
+            }
+          }
+  analyzers:
+    - jsonCompare:
+        checkName: Compare JSONPath Example
+        fileName: example.json
+        path: "stuff.status"
+        value: |
+          "ready"
+        outcomes:
+          - fail:
+              when: "false"
+              message: "Not Ready, Info: {{ .stuff.info }}"
+          - pass:
+              when: "true"
+              message: "Ready, Info: {{ .stuff.info }}"
+```
