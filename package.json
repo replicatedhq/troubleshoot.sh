@@ -1,11 +1,8 @@
 {
   "private": true,
   "workspaces": [
-    "gatsby-theme-troubleshoot",
     "gatsby-theme-marketing",
-    "marketing",
-    "docs",
-    "gatsby-starter-saas-marketing"
+    "marketing"
   ],
   "version": "0.0.0",
   "scripts": {
