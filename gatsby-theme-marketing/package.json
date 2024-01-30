@@ -19,6 +19,7 @@
     "classnames": "^2.5.1",
     "dotenv": "^16.4.1",
     "gatsby": "^5.13.3",
+    "gatsby-config": "^0.1.1",
     "gatsby-plugin-create-client-paths": "^4.9.0",
     "gatsby-plugin-env-variables": "^2.3.0",
     "gatsby-plugin-google-analytics": "^5.13.1",
@@ -60,8 +61,5 @@
     "sass": "^1.22.12",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0"
-  },
-  "resolutions": {
-    "graphql": "16.0.0"
   }
 }
