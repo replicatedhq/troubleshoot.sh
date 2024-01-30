@@ -1,5 +1,4 @@
-const gatsbyConfig = require(`gatsby-config`)
-module.exports = gatsbyConfig({
+module.exports = {
   siteMetadata: {
     title: "Troubleshoot.sh"
   },
@@ -9,4 +8,4 @@ module.exports = gatsbyConfig({
       resolve: '../gatsby-theme-marketing',
     },
   ],
-});
+};

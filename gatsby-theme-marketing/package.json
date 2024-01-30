@@ -61,5 +61,8 @@
     "sass": "^1.22.12",
     "sass-loader": "^8.0.0",
     "style-loader": "^1.0.0"
+  },
+  "resolutions": {
+    "graphql": "^15.5.0"
   }
 }

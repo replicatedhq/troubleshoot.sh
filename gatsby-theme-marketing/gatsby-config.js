@@ -1,9 +1,8 @@
-const gatsbyConfig = require(`gatsby-config`)
 require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`
 })
 
-module.exports = gatsbyConfig({
+module.exports = {
   siteMetadata: {
     title: "Troubleshoot.sh"
   },
@@ -46,4 +45,4 @@ module.exports = gatsbyConfig({
       },
     }
   ],
-});
+}
