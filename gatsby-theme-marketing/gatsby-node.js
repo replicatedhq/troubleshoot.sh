@@ -1,4 +1,4 @@
-const MonacoWebpackPlugin = require(`monaco-editor-webpack-plugin`);
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
@@ -21,21 +21,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         ],
       },
       plugins: [
-        new MonacoWebpackPlugin({
-          languages: [
-            "yaml",
-            "json"
-          ],
-          features: [
-            "coreCommands",
-            "folding",
-            "bracketMatching",
-            "clipboard",
-            "find",
-            "colorDetector",
-            "codelens"
-          ]
-        })
+        
       ]
     });
   }

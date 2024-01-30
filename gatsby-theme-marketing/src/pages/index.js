@@ -1,37 +1,23 @@
-import React from "react";
-import Layout from "../components/Layout";
-import Troubleshootsh from "../components/Troubleshootsh";
-import { Resizer } from "../components/shared/Resize";
-import { BreakpointConfig } from "../services/breakpoint";
+import React from "react"
 
-@Resizer(BreakpointConfig)
-class Troubleshoot extends React.Component { 
-  constructor(props) {
-    super(props);
-    this.state = {
-      isMobile: false
-    };
-  }
+import Layout from "../components/common/layout/layout"
+import SEO from "../components/common/layout/seo"
+import Navigation from "../components/common/navigation/navigation"
 
-  componentDidMount() {
-    if (this.props.breakpoint) {
-      this.setState({ isMobile: this.props.breakpoint === "mobile" })
-    }
-  }
+import Header from "../components/sections/header"
+import Features from "../components/sections/features"
+import Footer from "../components/sections/footer"
+import GetStarted from "../components/sections/getstarted"
 
-  componentDidUpdate(lastProps) {
-    if (this.props.breakpoint !== lastProps.breakpoint && this.props.breakpoint) {
-      this.setState({ isMobile: this.props.breakpoint === "mobile" })
-    }
-  }
+const IndexPage = () => (
+  <Layout>
+    <SEO title="Home" />
+    <Navigation />
+    <Header />
+    <Features />
+    <GetStarted />
+    <Footer />
+  </Layout>
+)
 
-  render() {
-    return (
-      <Layout title="Troubleshoot.sh" isMobile={this.state.isMobile}> 
-        <Troubleshootsh isMobile={this.state.isMobile}/>
-      </Layout>
-    )
-  }
-};
-
-export default Troubleshoot;
+export default IndexPage
