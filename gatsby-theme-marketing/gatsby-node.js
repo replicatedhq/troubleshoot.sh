@@ -1,5 +1,3 @@
-const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
-
 exports.onCreateBabelConfig = ({ actions }) => {
   actions.setBabelPlugin({
     name: `@babel/plugin-proposal-decorators`,
@@ -20,9 +18,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
           },
         ],
       },
-      plugins: [
-        
-      ]
+      plugins: []
     });
   }
 };
