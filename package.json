@@ -4,7 +4,8 @@
     "gatsby-theme-troubleshoot",
     "gatsby-theme-marketing",
     "marketing",
-    "docs"
+    "docs",
+    "gatsby-starter-saas-marketing"
   ],
   "version": "0.0.0",
   "scripts": {

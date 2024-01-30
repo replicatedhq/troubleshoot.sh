@@ -14,8 +14,7 @@ publish:
 .PHONY: build
 build:
 	make generate-specs
-	yarn workspace marketing build --prefix-paths
-	yarn workspace docs build --prefix-paths
+	yarn workspace gatsby-starter-saas-marketing build --prefix-paths
 
 .PHONY: deps
 deps:
