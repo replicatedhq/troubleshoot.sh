@@ -14,7 +14,7 @@ publish:
 .PHONY: build
 build:
 	make generate-specs
-	yarn workspace gatsby-theme-marketing build --prefix-paths
+	yarn workspace marketing build --prefix-paths
 
 .PHONY: deps
 deps:

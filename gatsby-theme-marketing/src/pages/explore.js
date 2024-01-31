@@ -1,11 +1,11 @@
 import React from "react";
 import Layout from "../components/Layout";
-import Troubleshootsh from "../components/Troubleshootsh";
+import CustomQueryStringComponent from "../components/CustomQueryStringComponent";
 import { Resizer } from "../components/shared/Resize";
 import { BreakpointConfig } from "../services/breakpoint";
 
 @Resizer(BreakpointConfig)
-class Troubleshoot extends React.Component { 
+class ExploreSpec extends React.Component { 
   constructor(props) {
     super(props);
     this.state = {
@@ -24,14 +24,13 @@ class Troubleshoot extends React.Component {
       this.setState({ isMobile: this.props.breakpoint === "mobile" })
     }
   }
-
   render() {
     return (
-      <Layout title="Troubleshoot.sh" isMobile={this.state.isMobile}> 
-        <Troubleshootsh isMobile={this.state.isMobile}/>
+      <Layout title="Explore categories" isMobile={this.state.isMobile}> 
+        <CustomQueryStringComponent isMobile={this.state.isMobile} />
       </Layout>
     )
   }
 };
 
-export default Troubleshoot;
+export default ExploreSpec;

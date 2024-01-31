@@ -10,12 +10,7 @@
     "clean": "gatsby clean"
   },
   "dependencies": {
-    "@babel/plugin-proposal-decorators": "^7.23.9",
-    "@mdx-js/mdx": "^1.6.22",
-    "@mdx-js/react": "^1.0.27",
-    "gatsby": "^4.20.0",
-    "gatsby-config": "^0.1.1",
-    "gatsby-theme-marketing": "*",
+    "gatsby": "^5.13.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0"
   }
