@@ -5,10 +5,6 @@ publish:
 	mkdir -p public
 	cp -r marketing/public/* public
 
-	mkdir -p public/docs
-	cp -r docs/public/* public/docs
-	rm -rf public/docs/social-cards
-
 	cp -r static/* public
 
 .PHONY: build
