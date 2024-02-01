@@ -2,5 +2,7 @@
   publish = "public"
   command = "yarn build"
 [build.environment]
-  NETLIFY_RESTORE = "0"
+  NETLIFY_RESTORE = "1"
   # Also GA_TRACKING_ID and ALGOLIA_API_KEY which are specified in Netlify UI
+[[plugins]]
+  package = "netlify-plugin-gatsby-yarn-cache"
