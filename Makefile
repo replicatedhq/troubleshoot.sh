@@ -21,7 +21,6 @@ make-generate-specs:
 
 .PHONY: build-marketing
 build-marketing:
-	cp package-marketing.json package.json
 	yarn install
 	yarn workspace marketing build --prefix-paths
 
