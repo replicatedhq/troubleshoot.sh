@@ -21,6 +21,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         ],
       },
       plugins: [
+        
       ]
     });
   }
