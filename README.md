@@ -37,3 +37,4 @@ To preview the documentation locally, run:
 make local
 make preview
 ```
+You can open the preview at http://localhost:9000.

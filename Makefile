@@ -1,6 +1,6 @@
 
 .PHONY: publish
-publish: prep build
+publish: deps prep build
 publish:
 	mkdir -p public
 	cp -r marketing/public/* public
