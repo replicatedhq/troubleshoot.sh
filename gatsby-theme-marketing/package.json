@@ -1,9 +1,7 @@
 {
-  "name": "gatsby-starter-saas-marketing",
+  "name": "gatsby-theme-marketing",
   "private": true,
-  "description": "A simple one page marketing starter for saas companies",
-  "version": "0.1.0",
-  "author": "Keegan Burkett <keegan.2.burkett@gmail.com>",
+  "version": "1.0.0",
   "dependencies": {
     "@babel/plugin-proposal-decorators": "^7.23.9",
     "brace": "^0.11.1",
@@ -51,12 +49,5 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing \""
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-default"
-  },
-  "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
   }
 }
