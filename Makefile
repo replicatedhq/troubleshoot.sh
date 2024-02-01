@@ -13,6 +13,7 @@ publish:
 
 .PHONY: build
 build:
+	yarn workspace marketing clean
 	make generate-specs
 	yarn workspace marketing build --prefix-paths
 
