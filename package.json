@@ -1,9 +1,5 @@
 {
   "private": true,
-  "workspaces": [
-    "gatsby-theme-troubleshoot",
-    "docs"
-  ],
   "version": "0.0.0",
   "scripts": {
     "yarn:cache": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-cache || :",
