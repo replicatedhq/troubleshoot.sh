@@ -16,7 +16,7 @@ spec:
   hostcollectors: []
   analyzers: []
   hostanalyzers: []
-  uri: ""
+  uri: "ddd"
 ```
 
 ## Properties
