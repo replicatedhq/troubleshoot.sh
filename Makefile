@@ -12,7 +12,7 @@ publish:
 	cp -r static/* public
 
 .PHONY: build
-build:  make-generate-specs build-marketing
+build:  make-generate-specs build-marketing build-docs
 
 .PHONY: make-generate-specs
 make-generate-specs:
