@@ -31,6 +31,9 @@ The directory that your command can write output to if you want to include your 
 ##### `input` (Optional)
 Input files (e.g configuration files or sample data) that you wish to feed into your command run. If defined, an environment variable `TS_INPUT_DIR` which is a directory to store these files, will be available to your command run. The value is a simple map where keys are file names of the files created in `TS_INPUT_DIR` and values are the contents written to these files.
 
+##### `timeout` (Optional)
+A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the command. If the timeout elapses, the command is terminated with exit code `signal: killed` or `-1`. Default to no timeout.
+
 ## Example Collector Definition
 
 ```yaml
