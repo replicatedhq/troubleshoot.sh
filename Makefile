@@ -12,7 +12,7 @@ publish:
 	cp -r static/* public
 
 .PHONY: build
-build:  make-generate-specs build-marketing
+build:  make-generate-specs build-docs
 
 .PHONY: make-generate-specs
 make-generate-specs:
@@ -21,6 +21,7 @@ make-generate-specs:
 
 .PHONY: build-marketing
 build-marketing:
+	cp package-marketing.json package.json
 	yarn install
 	yarn workspace marketing build --prefix-paths
 
