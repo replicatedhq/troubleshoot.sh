@@ -1,0 +1,17 @@
+{
+  "private": true,
+  "workspaces": [
+    "gatsby-theme-marketing",
+    "marketing"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "yarn:cache": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-cache || :",
+    "yarn:restore": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-restore || :",
+    "preinstall": "yarn yarn:restore",
+    "build": "make publish; yarn yarn:cache"
+  },
+  "dependencies": {
+    "netlify-plugin-gatsby-yarn-cache": "^0.1.1"
+  }
+}
