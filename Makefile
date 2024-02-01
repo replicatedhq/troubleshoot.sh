@@ -69,3 +69,17 @@ pre-preview:
 .PHONY: preview
 preview:
 	./preview.sh
+
+.PHONY: local
+local: deps build
+local:
+	git restore package.json
+	rm -rf yarn.lock
+	mkdir -p public
+	cp -r marketing/public/* public
+
+	mkdir -p public/docs
+	cp -r docs/public/* public/docs
+	rm -rf public/docs/social-cards
+
+	cp -r static/* public

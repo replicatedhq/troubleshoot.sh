@@ -21,3 +21,19 @@ To collect a sample support bundle, [install the troubleshoot kubectl plugin](ht
 ```shell
 kubectl support-bundle https://support-bundle.replicated.com
 ```
+
+## Local Development
+To build the CLI locally, run:
+
+```shell
+make local
+```
+You will have a folder call `public` with the rendered HTML and CSS files for Gatsby.
+
+## Previewing Documentation
+To preview the documentation locally, run:
+
+```shell
+make local
+make preview
+```
