@@ -23,6 +23,7 @@ deps:
 .PHONY: prep
 prep:
 	rm -rf public
+	rm -rf .cache
 	yarn workspace marketing clean
 
 .PHONY: clean
