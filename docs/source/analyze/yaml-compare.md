@@ -50,3 +50,34 @@ spec:
               when: "true"
               message: The collected data matches the value.
 ```
+
+## Example Analyzer Definition using Templating in the Outcome Messages
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: yaml-compare-example
+spec:
+  collectors:
+    - data:
+        name: example.yaml
+        data: |
+          stuff:
+            status: ready
+            info: foo
+  analyzers:
+    - yamlCompare:
+        checkName: Compare YAML Example
+        fileName: example.yaml
+        path: "stuff.status"
+        value: |
+          "ready"
+        outcomes:
+          - fail:
+              when: "false"
+              message: "Not Ready, Info: {{ .stuff.info }}"
+          - pass:
+              when: "true"
+              message: "Ready, Info: {{ .stuff.info }}"
+```

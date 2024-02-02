@@ -135,6 +135,9 @@ The `filesystemPerformance` analyzer supports multiple outcomes by validating th
 - `p99 < 10ms`: The p99 write latency is less than 10ms.
 - `p90 > 20ms`: The p90 write latency is greater than 20ms.
 
+You can override the default 'file not found' error by setting the first outcome condition to `fileNotCollected` and a message of your choice.
+This can be useful when `fio` may not be present on the system being analyzed but you do not wish for that to result in a failure.
+
 ### Example Analyzer Definition
 
 ```yaml
@@ -161,6 +164,9 @@ spec:
     - filesystemPerformance:
         collectorName: filesystem-latency-two-minute-benchmark
         outcomes:
+          - warn:
+              when: "fileNotCollected"
+              message: "Filesystem Performance was not collected"
           - pass:
               when: "p99 < 10ms"
               message: "Write latency is ok (p99 target < 10ms)"

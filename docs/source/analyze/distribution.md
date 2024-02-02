@@ -9,6 +9,21 @@ The `when` attribute supports standard comparators to compare the result to.
 The `distribution` analyzer uses data from the [clusterResources collector](https://troubleshoot.sh/collect/cluster-resources).
 The `clusterResources` collector is automatically added and will always be present.
 
+The `distribution` analyzer supports the following distributions:
+
+* `aks` (Azure Kubernetes Services)
+* `digitalOcean` (DigitalOcean)
+* `dockerDesktop` (Docker Desktop)
+* `eks` (Amazon Elastic Kubernetes Service)
+* `gke` (Google Kubernetes Engine)
+* `ibm` (IBM Cloud)
+* `k3s` (K3s)
+* `kurl` (Replicated kURL)
+* `microk8s` (MicroK8s)
+* `minikube` (minikube)
+* `oke` (Oracle Cloud Infrastructure Container Engine for Kubernetes)
+* `rke2` (Rancher RKE2)
+
 ## Parameters
 
 *There are no parameters available for this analyzer.*

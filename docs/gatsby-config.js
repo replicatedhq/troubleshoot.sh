@@ -50,6 +50,8 @@ const themeOptions = {
               'collect/copy',
               'collect/copy-from-host',
               'collect/exec',
+              'collect/goldpinger',
+              'collect/helm',
               'collect/http',
               'collect/configmap',
               'collect/custom-metrics',
@@ -64,7 +66,6 @@ const themeOptions = {
               'collect/run-pod',
               'collect/data',
               'collect/sysctl',
-              'collect/helm',
             ],
             "Redact": [
               "redact/index",
@@ -88,6 +89,7 @@ const themeOptions = {
               'analyze/container-runtime',
               'analyze/crd',
               'analyze/deployment-status',
+              'analyze/goldpinger',
               'analyze/image-pull-secrets',
               'analyze/ingress',
               'analyze/job-status',
@@ -108,6 +110,7 @@ const themeOptions = {
               'analyze/weave-report',
               'analyze/statefulset-status',
               'analyze/sysctl',
+              'analyze/velero',
               "host-analyze/all",
             ],
             "Host Collect and Analyze": [

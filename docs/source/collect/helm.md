@@ -20,6 +20,9 @@ The name of the helm release. If not specified, all releases will be searched or
 
 **Note:** if both `namespace` and `releaseName` are not specified, all releases in all namespaces will be collected.
 
+#### `collectValues`(Optional)
+If set to `true`, the values of the helm release will be collected. Defaults to `false`.
+
 ## Example Collector Definitions
 
 Collect All Helm Releases in All Namespaces:
@@ -70,6 +73,18 @@ spec:
         releaseName: mysql-1692919203
 ```
 
+Collect All Helm Releases in All Namespaces with Helm Values:
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: sample
+spec:
+  collectors:
+    - helm:
+        collectValues: true
+```
+
 ## Included resources
 
 When this collector is executed, it will include the following files in a support bundle:
@@ -77,20 +92,30 @@ When this collector is executed, it will include the following files in a suppor
 
 ```json
 [
-	{
-		"releaseName": "mysql-1692919203",
-		"chart": "mysql",
-		"chartVersion": "9.10.9",
-		"appVersion": "8.0.34",
-		"namespace": "default",
-		"releaseHistory": [
-			{
-				"revision": "1",
-				"date": "2023-08-25 11:20:05.153483 +1200 NZST",
-				"status": "deployed"
-			}
-		]
-	}
+ {
+  "releaseName": "mysql-1692919203",
+  "chart": "mysql",
+  "chartVersion": "9.10.9",
+  "appVersion": "8.0.34",
+  "namespace": "default",
+  "releaseHistory": [
+    {
+      "revision": "1",
+      "date": "2023-08-25 11:20:05.153483 +1200 NZST",
+      "status": "deployed",
+      "values": {
+        "affinity": {},
+        "image": {
+          "digest": "",
+          "pullPolicy": "IfNotPresent",
+          "pullSecrets": [],
+          "registry": "docker.io",
+          "repository": "bitnami/git",
+          "tag": "2.41.0-debian-11-r76"
+        },
+      },
+    }
+  }
 ]
 ```
 
@@ -113,4 +138,3 @@ The namespace of the helm release
 
 #### `releaseHistory`
 The history of the helm release
-
