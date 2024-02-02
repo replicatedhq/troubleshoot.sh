@@ -1,0 +1,14 @@
+{
+  "private": true,
+  "workspaces": [
+    "gatsby-theme-marketing",
+    "marketing"
+  ],
+  "version": "0.0.0",
+  "scripts": {
+    "build": "make publish"
+  },
+  "dependencies": {
+    "netlify-plugin-gatsby-yarn-cache": "^0.1.1"
+  }
+}

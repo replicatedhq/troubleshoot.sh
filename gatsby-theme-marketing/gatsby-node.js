@@ -21,21 +21,7 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         ],
       },
       plugins: [
-        new MonacoWebpackPlugin({
-          languages: [
-            "yaml",
-            "json"
-          ],
-          features: [
-            "coreCommands",
-            "folding",
-            "bracketMatching",
-            "clipboard",
-            "find",
-            "colorDetector",
-            "codelens"
-          ]
-        })
+        
       ]
     });
   }

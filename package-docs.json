@@ -1,7 +1,8 @@
 {
   "private": true,
   "workspaces": [
-    "generate-specs"
+    "gatsby-theme-troubleshoot",
+    "docs"
   ],
   "version": "0.0.0",
   "scripts": {

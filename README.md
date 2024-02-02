@@ -21,3 +21,27 @@ To collect a sample support bundle, [install the troubleshoot kubectl plugin](ht
 ```shell
 kubectl support-bundle https://support-bundle.replicated.com
 ```
+
+## Local Development
+To build the CLI locally, run:
+
+```shell
+nvm use v20.11.0
+make local
+```
+You will have a folder call `public` with the rendered HTML and CSS files for Gatsby.
+
+## Previewing Documentation
+To preview the documentation locally, run:
+
+```shell
+make local
+make preview
+```
+You can open the preview at http://localhost:9000.
+if you have a following error:
+```shell
+⠙ compile gatsby files
+error Command failed with signal "SIGSEGV".
+```
+try to run `make clean` first.

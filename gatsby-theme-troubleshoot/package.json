@@ -25,6 +25,7 @@
   "dependencies": {
     "dotenv": "^8.2.0",
     "gatsby-plugin-sharp": "^2.6.11",
+    "gatsby-remark-autolink-headers": "^2.11.0",
     "gatsby-transformer-sharp": "^2.5.5"
   }
 }
