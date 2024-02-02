@@ -211,7 +211,6 @@ export const pageQuery = graphql`
         }
         fields {
           image
-          graphManagerUrl
         }
         htmlAst
       }
@@ -226,7 +225,6 @@ export const pageQuery = graphql`
         }
         fields {
           image
-          graphManagerUrl
         }
         body
       }
