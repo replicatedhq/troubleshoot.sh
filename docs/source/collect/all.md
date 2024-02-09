@@ -21,6 +21,7 @@ description: A list of all available collectors
 ## Generated and dynamic data
 
 - [runPod](./run-pod): runs new pods and includes the results in the collected output
+- [runDaemonSet](./run-daemonset): runs a DaemonSet and includes the results for all nodes in the collected output
 - [http](./http): executes http requests and includes results in the collected output
 - [exec](./exec): execs into existing pods and runs commands to include in the collected output
 
