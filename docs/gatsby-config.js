@@ -66,6 +66,7 @@ module.exports = {
             'collect/run-pod',
             'collect/run-daemonset',
             'collect/data',
+            'collect/sonobuoy',
             'collect/sysctl',
           ],
           "Redact": [
