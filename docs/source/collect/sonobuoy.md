@@ -4,6 +4,8 @@ description: Download Sonobuoy results tarball from the cluster
 ---
 
 The `sonobuoy` collector is used to download [sonobuoy](https://sonobuoy.io/) results tarballs from the cluster.
+Sonobuoy must have already been run in the cluster and the results available.
+This collector is equivalent to running the [sonobuoy retrieve](https://sonobuoy.io/docs/v0.57.1/cli/sonobuoy_retrieve/) cli command.
 This tarball can later be analyzed with the [sonobuoy results](https://sonobuoy.io/docs/v0.57.1/cli/sonobuoy_results/) cli command.
 
 ## Parameters
