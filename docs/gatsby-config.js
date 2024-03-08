@@ -91,6 +91,7 @@ module.exports = {
             'analyze/container-runtime',
             'analyze/crd',
             'analyze/deployment-status',
+            'analyze/event',
             'analyze/goldpinger',
             'analyze/image-pull-secrets',
             'analyze/ingress',
