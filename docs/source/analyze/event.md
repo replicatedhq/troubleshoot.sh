@@ -12,7 +12,7 @@ The target Event can be identified by `Reason`, `Kind` or a regular expression m
 
 The outcomes on this analyzer will be processed in order, and execution will stop after the first outcome that is truthy.
 
-The analyzer also has access to all fields in the Event [object](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#event-v1-core), Go templating can be used for dynamic message. E.g. `{{ .Reason }} {{ .InvovledObject.Name }}`
+The analyzer also has access to all fields in the Event [object](https://kubernetes.io/docs/reference/kubernetes-api/cluster-resources/event-v1/), Go templating can be used for dynamic message. E.g. `{{ .Reason }} {{ .InvovledObject.Name }}`
 
 ## Parameters
 
