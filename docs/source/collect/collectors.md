@@ -2,8 +2,6 @@
 title: "Collectors"
 ---
 
-An OpenAPI Schema for this type is published at: [https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/analyzer-troubleshoot-v1beta2.json](https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/analyzer-troubleshoot-v1beta2.json).
-
 ## Collectors Schema
 
 ```yaml
@@ -15,10 +13,9 @@ spec:
   collectors: []
 ```
 
-
-## Collector Schema
-
 Each collector in the `collectors` array is one of the collectors defined in this section.
+
+An OpenAPI Schema for this type is published at: [https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/collector-troubleshoot-v1beta2.json](https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/collector-troubleshoot-v1beta2.json).
 
 ### Shared Properties
 
