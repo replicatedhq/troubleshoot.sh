@@ -4,6 +4,8 @@ title: "Analyzers"
 
 ## Analyzers Schema
 
+Each analyzer in the `analyzers` array is one of the analyzers defined in this section.
+
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
@@ -13,8 +15,6 @@ spec:
   collectors: []
   analyzers: []
 ```
-
-Each analyzer in the `analyzers` array is one of the analyzers defined in this section.
 
 An OpenAPI Schema for this type is published at: [https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/analyzer-troubleshoot-v1beta2.json](https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/analyzer-troubleshoot-v1beta2.json).
 
