@@ -55,6 +55,7 @@ module.exports = {
             'collect/http',
             'collect/configmap',
             'collect/custom-metrics',
+            'collect/node-metrics',
             'collect/secret',
             'collect/longhorn',
             'collect/mssql',
