@@ -97,7 +97,7 @@ spec:
     - jsonCompare:
         checkName: Compare JSONPath Example
         fileName: example.json
-        jsonPath: "$.morestuff[?(@.foo.bar>100)].foo.bar"
+        jsonPath: "{$.morestuff[?(@.foo.bar>100)].foo.bar}"
         value: |
           123
         outcomes:

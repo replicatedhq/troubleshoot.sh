@@ -66,3 +66,7 @@ The output of command `ceph auth ls -f json-pretty`.
 ### `/ceph/([collector-name]/)df.json`
 
 The output of command `ceph df -f json-pretty`.
+
+### `/ceph/([collector-name]/)rbd-du-txt.txt`
+
+The output of command `ceph rbd du --pool=replicapool`.
