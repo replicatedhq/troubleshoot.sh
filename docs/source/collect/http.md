@@ -96,10 +96,15 @@ Response received from the server will be stored in the `"response"` key of the 
       "Date": "Fri, 19 Jul 2019 20:13:44 GMT",
       "Server": "nginx/1.8.1",
       "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
-    }
+    },
+    "raw_json": {                                                                                                                                          
+      "status": "healthy"                                                                                                                              
+    } 
   }
 }
 ```
+
+If the body of the response is valid JSON, it will also be saved under the key named `"raw_json"`.
 
 In case a client side error occurs and no respose is received, the error text will be stored in the error key:
 
