@@ -3,7 +3,7 @@ title: Node Metrics
 description: Analyzing node metrics collected by the kubelet
 ---
 
-The `nodeMetrics` analyzer is available to analyse [node metrics](https://kubernetes.io/docs/reference/instrumentation/node-metrics/) data collected by `kubelet` and served via kubernetes API server. The metrics are collected by the [nodeMetrics collector](/collect/node-metrics/). The analyser can be used in support bundles or preflights that need to report check such as `pvc` usage capacity violations.
+The `nodeMetrics` analyzer is available to analyse [node metrics](https://kubernetes.io/docs/reference/instrumentation/node-metrics/) data collected by `kubelet` and served via kubernetes API server. The metrics are collected by the nodeMetrics collector. The analyser can be used in support bundles or preflights that need to report check such as `pvc` usage capacity violations.
 
 This analyzer's outcome `when` clause compares the condition specified with the resources present such as a `pvc`.
 
@@ -20,7 +20,7 @@ Filters used to narrow down what resources to analyse. They will usually be used
 
 ## Outcomes
 
-The `when` value in an outcome of this analyzer contains scalar quantities such as percentages. They will be compared with generated values that will have been generated from various values in the raw metrics. Comparisions are done using available [logical oparators](/analyze/outcome#logical-operators).
+The `when` value in an outcome of this analyzer contains scalar quantities such as percentages. They will be compared with generated values that will have been generated from various values in the raw metrics. Comparisions are done using available logical oparators.
 
 The conditional in the `when` clause can accept the following fields
 
