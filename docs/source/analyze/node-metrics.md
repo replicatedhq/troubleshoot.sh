@@ -1,5 +1,5 @@
 ---
-title: Node Metrics
+title: Kubernetes Node Metrics
 description: Analyzing node metrics collected by the kubelet
 ---
 
@@ -20,7 +20,7 @@ Filters used to narrow down what resources to analyse. They will usually be used
 
 ## Outcomes
 
-The `when` value in an outcome of this analyzer contains scalar quantities such as percentages. They will be compared with generated values that will have been generated from various values in the raw metrics. Comparisions are done using available logical oparators.
+The `when` value in an outcome of this analyzer contains scalar quantities such as percentages. They will be compared with generated values that will have been generated from various values in the raw metrics. Comparisions are done using available [logical oparators](/analyze/outcomes/#logical-operators).
 
 The conditional in the `when` clause can accept the following fields
 

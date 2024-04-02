@@ -36,7 +36,7 @@ Some analyzers implement the `when` attribute. The details and implementation of
 
 In some cases, the `when` attribute can be used with the logical operators below to compare values. Which of these operators are supported depends on the specific analyzer, but they all compare scalar values. For more information about the analyzers and example definitions, see the [Troubleshoot Analyzer documentation](https://troubleshoot.sh/docs/analyze/) and select a specific analyzer from the content list.
 
-### Logical operators
+#### Logical operators
 
 | Operator | Description |
 |----------|-------------|
