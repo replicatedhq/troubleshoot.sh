@@ -3,7 +3,7 @@ title: Node Metrics
 description: Analyzing node metrics collected by the kubelet
 ---
 
-The `nodeMetrics` analyzer is available to analyse [node metrics](https://kubernetes.io/docs/reference/instrumentation/node-metrics/) data collected by `kubelet` and served via kubernetes API server. The metrics are collected by the [nodeMetrics collector](/collect/node metrics/). The analyser can be used in support bundles or preflights that need to report check such as `pvc` usage capacity violations.
+The `nodeMetrics` analyzer is available to analyse [node metrics](https://kubernetes.io/docs/reference/instrumentation/node-metrics/) data collected by `kubelet` and served via kubernetes API server. The metrics are collected by the [nodeMetrics collector](/collect/node-metrics/). The analyser can be used in support bundles or preflights that need to report check such as `pvc` usage capacity violations.
 
 This analyzer's outcome `when` clause compares the condition specified with the resources present such as a `pvc`.
 
