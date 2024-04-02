@@ -104,6 +104,7 @@ module.exports = {
             'analyze/longhorn',
             'analyze/mssql',
             'analyze/mysql',
+            'analyze/node-metrics',
             'analyze/node-resources',
             'analyze/postgresql',
             'analyze/regex',
