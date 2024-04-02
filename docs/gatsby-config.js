@@ -83,6 +83,7 @@ module.exports = {
           ],
           Analyze: [
             'analyze/index',
+            'analyze/analyzers',
             'analyze/outcomes',
             'analyze/ceph-status',
             'analyze/certificates',
