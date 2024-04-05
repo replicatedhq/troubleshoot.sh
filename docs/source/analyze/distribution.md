@@ -18,6 +18,7 @@ The `distribution` analyzer supports the following distributions:
 * `gke` (Google Kubernetes Engine)
 * `ibm` (IBM Cloud)
 * `k3s` (K3s)
+* `kind` (Kind)
 * `kurl` (Replicated kURL)
 * `microk8s` (MicroK8s)
 * `minikube` (minikube)
@@ -45,6 +46,9 @@ spec:
           - warn:
               when: "== microk8s"
               message: The application does not support Microk8s
+          - warn:
+              when: "== kind"
+              message: The application does not support Kind
           - pass:
               when: "== eks"
               message: EKS is a supported distribution
