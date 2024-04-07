@@ -18,6 +18,7 @@ The `distribution` analyzer supports the following distributions:
 * `gke` (Google Kubernetes Engine)
 * `ibm` (IBM Cloud)
 * `k3s` (K3s)
+* `kind` (Kind)
 * `kurl` (Replicated kURL)
 * `microk8s` (MicroK8s)
 * `minikube` (minikube)
