@@ -2,7 +2,7 @@ apiVersion: troubleshoot.sh/v1beta2
 kind: Preflight
 metadata:
   name: minimum-node-count
-  annotations: 
+  annotations:
     title: "Minimum Node Count"
     description: "Require that there are at least 3 nodes, recommend at least 6 nodes in the cluster"
     category: "cluster_info"

@@ -1,0 +1,21 @@
+apiVersion: troubleshoot.sh/v1beta2
+kind: Preflight
+metadata:
+  name: cluster-is-k0s
+  annotations:
+    title: "Check if k0s kubernetes cluster"
+    description: "Verify that the Kubernetes cluster is k0s"
+    category: "embedded_cluster"
+    iconUri: "/category-icons/kubernetes.svg"
+    tags: '["kubernetes", "embedded-cluster"]'
+    contributors: '[{"name": "Evans Mungai", "avatarUri": "https://avatars.githubusercontent.com/u/681087?v=4"}]'
+spec:
+  collectors: []
+  analyzers:
+    - distribution:
+        outcomes:
+          - pass:
+              when: "== k0s"
+              message: k0s is a supported distribution
+          - warn:
+              message: The cluster is not running on k0s
