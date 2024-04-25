@@ -24,6 +24,7 @@ The `distribution` analyzer supports the following distributions:
 * `minikube` (minikube)
 * `oke` (Oracle Cloud Infrastructure Container Engine for Kubernetes)
 * `rke2` (Rancher RKE2)
+* `embedded-cluster` (Replicated Embedded Cluster)
 
 ## Parameters
 
