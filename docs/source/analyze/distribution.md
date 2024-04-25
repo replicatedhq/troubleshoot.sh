@@ -11,6 +11,7 @@ The `clusterResources` collector is automatically added and will always be prese
 
 The `distribution` analyzer supports the following distributions:
 
+* `k0s` (Mirantis k0s)
 * `aks` (Azure Kubernetes Services)
 * `digitalOcean` (DigitalOcean)
 * `dockerDesktop` (Docker Desktop)
@@ -40,6 +41,9 @@ spec:
   analyzers:
     - distribution:
         outcomes:
+          - pass:
+              when: "== k0s"
+              message: k0s is a supported distribution
           - fail:
               when: "== docker-desktop"
               message: The application does not support Docker Desktop
