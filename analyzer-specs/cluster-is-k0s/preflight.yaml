@@ -7,7 +7,7 @@ metadata:
     description: "Verify that the Kubernetes cluster is k0s"
     category: "embedded_cluster"
     iconUri: "/category-icons/kubernetes.svg"
-    tags: '["kubernetes", "embedded-cluster"]'
+    tags: '["kubernetes", "embedded-cluster", "k0s"]'
     contributors: '[{"name": "Evans Mungai", "avatarUri": "https://avatars.githubusercontent.com/u/681087?v=4"}]'
 spec:
   collectors: []
