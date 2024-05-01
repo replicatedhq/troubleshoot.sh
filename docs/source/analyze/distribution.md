@@ -11,13 +11,14 @@ The `clusterResources` collector is automatically added and will always be prese
 
 The `distribution` analyzer supports the following distributions:
 
-* `k0s` (Mirantis k0s)
 * `aks` (Azure Kubernetes Services)
 * `digitalOcean` (DigitalOcean)
 * `dockerDesktop` (Docker Desktop)
 * `eks` (Amazon Elastic Kubernetes Service)
+* `embedded-cluster` (Replicated Embedded Cluster)
 * `gke` (Google Kubernetes Engine)
 * `ibm` (IBM Cloud)
+* `k0s` (Mirantis k0s)
 * `k3s` (K3s)
 * `kind` (Kind)
 * `kurl` (Replicated kURL)
@@ -25,7 +26,6 @@ The `distribution` analyzer supports the following distributions:
 * `minikube` (minikube)
 * `oke` (Oracle Cloud Infrastructure Container Engine for Kubernetes)
 * `rke2` (Rancher RKE2)
-* `embedded-cluster` (Replicated Embedded Cluster)
 
 ## Parameters
 
