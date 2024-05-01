@@ -16,7 +16,7 @@ The `DNS` collector can be used to aid with diagnosing DNS Resolution problems, 
 
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `dns` collector accepts the following parameters:
 
-##### `name` (Optional)
+##### `collectorName` ((Recommended))
 
 The name of the collector. The collector name is prefixed to the path that the output is written to in the support bundle.
 
@@ -32,7 +32,7 @@ metadata:
 spec:
   collectors:
     - dns:
-        name: "dns-troubleshoot"
+        collectorName: "dns-troubleshoot"
 ```
 
 ## Example data collected
