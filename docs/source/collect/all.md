@@ -17,6 +17,7 @@ description: A list of all available collectors
 - [configmap](./configmap): includes information about Kubernetes ConfigMaps in the collected output
 - [secret](./secret): includes information about Kubernetes Secrets in the collected output
 - [collectd](./collectd): includes collectd files from all hosts in the cluster
+- [dns](./dns): includes data to troubleshoot DNS Resolution issues
 
 ## Generated and dynamic data
 
@@ -32,6 +33,7 @@ description: A list of all available collectors
 - [redis](./redis): collects information related to a redis cluster
 
 ## CSI
+
 - [ceph](./ceph): collects information about a ceph installation
 - [longhorn](./longhorn): collects information about a longhorn installation
 
