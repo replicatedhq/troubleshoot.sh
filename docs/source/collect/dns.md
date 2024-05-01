@@ -5,12 +5,12 @@ description: Collect data to troubleshoot DNS Resolution
 
 The `DNS` collector can be used to aid with diagnosing DNS Resolution problems, e.g. detect search domain misconfiguration. During execution, the collector will:
 
-- Print `Kubernetes` Service Cluster IP retrieved from kube-apiserver
-- Run a test pod of image `registry.k8s.io/e2e-test-images/jessie-dnsutils:1.3`, do `nslookup` to `kubernetes` Service and print out content of `/etc/resolv.conf`
+- Output `Kubernetes` Service Cluster IP retrieved from kube-apiserver
+- Run a test pod of image `registry.k8s.io/e2e-test-images/jessie-dnsutils:1.3`, do `nslookup` to `kubernetes` Service and output content of `/etc/resolv.conf`
 - Check if DNS pods are running
 - Check if DNS service is up
 - Check if DNS endpoints are populated
-- CoreDNS/KubeDNS config
+- Output CoreDNS/KubeDNS config
 
 ## Parameters
 
