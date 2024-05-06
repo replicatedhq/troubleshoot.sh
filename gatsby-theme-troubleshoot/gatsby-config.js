@@ -36,18 +36,7 @@ module.exports = options => ({
             description: "Perform analysis to identify common problems with the collected data.",
           }
         },
-        footerNavConfig: {
-          Explore: {
-            href: "/explore/",
-            target: "_blank",
-            rel: "noopener noreferrer"
-          },
-          KOTS: {
-            href: "https://kots.io",
-            target: "_blank",
-            rel: "noopener noreferrer"
-          },
-        },
+        footerNavConfig: {},
         algoliaApiKey: process.env.ALGOLIA_API_KEY,
         algoliaIndexName: "troubleshoot-algolia-config",
         algoliaAppId: process.env.ALGOLIA_APP_ID,

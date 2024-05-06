@@ -3,6 +3,7 @@ title: Run Preflight Checks using the CLI
 description: Learn how to run preflight checks from the CLI
 ---
 
+If you don't have preflight installed, you can check out the [installation guide](https://troubleshoot.sh/docs/#installation).
 
 You can run preflight checks to verify that a cluster or host meets the application requirements attempting an installation. While this capability is built in to some applications, you can run preflight checks using the CLI.
 
@@ -15,7 +16,7 @@ To use stdin, supply `-` as the argument.
 Example usage:
 
 ```shell
-./preflight https://preflight.replicated.com
+./preflight https://raw.githubusercontent.com/replicatedhq/troubleshoot/main/examples/preflight/sample-preflight.yaml
 kubectl preflight oci://my.oci.registry/image
 ./preflight my-preflight-spec.yaml
 helm template mychart --values my-values.yaml | ./preflight -

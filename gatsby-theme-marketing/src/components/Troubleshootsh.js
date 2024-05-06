@@ -118,22 +118,8 @@ class Troubleshootsh extends React.Component {
                 </div>
               </div>
               <div className="u-marginTop--50">
-                <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Examples</p>
                 <div className="contain-1280">
-                  <div className="u-flexTabletReflow u-marginTop--50 justifyContent--center">
-                    {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
-                      <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
-                        <Link to={`/preflight/${item.slug}`}>
-                          <div className="example-spec-block">
-                            <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">{item.title}</p>
-                            <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">{item.description}</p>
-                          </div>
-                        </Link>
-                      </div>
-                    )) : null}
-                  </div>
                   <div className="u-marginTop--40 u-flexMobileReflow two-btn-wrapper justifyContent--center">
-                    <Link to="/explore/" className="Button primary">Browse more examples</Link>
                     <Link to="/docs/preflight/introduction/" className="Button secondary">Get started writing Preflight Checks</Link>
                   </div>
                 </div>
@@ -179,22 +165,8 @@ class Troubleshootsh extends React.Component {
                 </div>
               </div>
               <div className="u-marginTop--50">
-                <p className="u-fontSize--largest u-color--biscay u-lineHeight--more u-fontWeight--medium">Examples </p>
                 <div className="contain-1280">
-                  <div className="u-flexTabletReflow u-marginTop--50 justifyContent--center">
-                    {specs && specs.length > 0 ? this.getExampleSpecs(specs, 3).map((item, i) => (
-                      <div className="example-spec-block-wrapper flex1" key={`${i}-${item.slug}`}>
-                        <Link to={`/support-bundle/${item.slug}`}>
-                          <div className="example-spec-block">
-                            <p className="u-fontSize--large u-fontWeight--medium u-color--biscay u-lineHeight--default u-marginBottom--10">{item.title}</p>
-                            <p className="u-fontSize--normal u-color--dustyGray u-lineHeight--more">{item.description}</p>
-                          </div>
-                        </Link>
-                      </div>
-                    )) : null}
-                  </div>
                   <div className="u-marginTop--40 u-flexMobileReflow two-btn-wrapper justifyContent--center">
-                    <Link to="/explore/" className="Button primary">Browse more examples</Link>
                     <Link to="/docs/support-bundle/introduction/" className="Button secondary">Get started writing Support Bundles</Link>
                   </div>
                 </div>

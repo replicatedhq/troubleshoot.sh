@@ -56,7 +56,7 @@ const StyledButton = styled(Button)({
 const StyledIcon = styled(HamburgerMenu)({
   width: "15px",
   height: "12px",
-  marginLeft: "auto"
+  marginLeft: "10px"
 });
 
 const MobileNav = styled.div({
