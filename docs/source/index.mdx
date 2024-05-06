@@ -11,6 +11,18 @@ Welcome.
 The easiest way to get started with the Troubleshoot project is to see it in action through a couple examples. 
 
 ## Installation
+- Install a latest release
+
+It is possible to download the asset for a latest release and platform from the [release page](https://github.com/replicatedhq/troubleshoot/releases), uncompress
+```
+curl -L https://github.com/replicatedhq/troubleshoot/releases/latest/download/support-bundle_linux_amd64.tar.gz | tar xzvf -
+curl -L https://github.com/replicatedhq/troubleshoot/releases/latest/download/preflight_linux_amd64.tar.gz | tar xzvf -
+sudo ./support-bundle version
+sudo ./preflight version
+```
+
+- Using krew
+
 Executing Preflight Checks and Support Bundles relies on a client-side utility, packaged as a `kubectl` plugin and distributed through the [krew](https://krew.dev/) package manager.
 If you don't already have krew installed, head over to the [krew installation guide](https://krew.sigs.k8s.io/docs/user-guide/setup/install/), follow the steps there and then come back here.
 
@@ -32,7 +44,10 @@ Now that you have the plugins installed lets look at a simple example of a Prefl
 Preflight Checks can be executed before installing an application into a Kubernetes cluster. The checks are defined in a YAML file. Run the following command on your cluster to see an example Preflight Check.
 
 ```shell
-kubectl preflight https://preflight.replicated.com
+# using krew
+kubectl preflight https://raw.githubusercontent.com/replicatedhq/troubleshoot/main/examples/preflight/sample-preflight.yaml
+# using installation
+sudo ./preflight https://raw.githubusercontent.com/replicatedhq/troubleshoot/main/examples/preflight/sample-preflight.yaml
 ```
 
 ### Example Support Bundle
@@ -40,7 +55,10 @@ kubectl preflight https://preflight.replicated.com
 A Support Bundle needs to know what to collect and optionally, what to analyze. This is defined in a YAML file. There's a lot already included in the default collectors. Run the following command on your cluster to see an example Support Bundle.
 
 ```shell
-kubectl support-bundle https://support-bundle.replicated.com
+# using krew
+kubectl support-bundle https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/in-cluster/default.yaml
+# using installation
+sudo ./support-bundle https://raw.githubusercontent.com/replicatedhq/troubleshoot-specs/main/in-cluster/default.yaml
 ```
 
 ## What's next?
@@ -54,20 +72,6 @@ kubectl support-bundle https://support-bundle.replicated.com
     <div>
       <Link to="/preflight/introduction" class="custom-button primary">
         Start the tutorial!
-      </Link>
-    </div>
-  </div>
-
-  <div class="flex1 flex-column justifyContent--spaceBetween">
-    <div class="flex-auto">
-      <h4>Browse examples</h4>
-      <p>
-      Looking for something specific or a place to start? Browse through some examples.
-      </p>
-    </div>
-    <div>
-      <Link to="https://troubleshoot.sh/explore" class="custom-button primary">
-        Browse examples!
       </Link>
     </div>
   </div>

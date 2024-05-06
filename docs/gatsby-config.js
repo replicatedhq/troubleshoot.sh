@@ -17,7 +17,7 @@ module.exports = {
       options: {
         ...themeOptions,
         root: __dirname,
-        subtitle: "Troubleshoot Docs",
+        subtitle: "Troubleshoot Docs ",
         description: "The Official Troubleshoot Documentation",
         githubRepo: "replicatedhq/troubleshoot.sh",
         sidebarCategories: {
