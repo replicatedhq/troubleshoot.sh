@@ -11,29 +11,32 @@ Welcome.
 The easiest way to get started with the Troubleshoot project is to see it in action through a couple examples. 
 
 ## Installation
-- Install a latest release
 
-It is possible to download the asset for a latest release and platform from the [release page](https://github.com/replicatedhq/troubleshoot/releases), uncompress
-```
-curl -L https://github.com/replicatedhq/troubleshoot/releases/latest/download/support-bundle_linux_amd64.tar.gz | tar xzvf -
-curl -L https://github.com/replicatedhq/troubleshoot/releases/latest/download/preflight_linux_amd64.tar.gz | tar xzvf -
-sudo ./support-bundle version
-sudo ./preflight version
-```
+Do one of the following to install:
 
-- Using krew
+- Download and uncompress the latest release binary
 
-Executing Preflight Checks and Support Bundles relies on a client-side utility, packaged as a `kubectl` plugin and distributed through the [krew](https://krew.dev/) package manager.
-If you don't already have krew installed, head over to the [krew installation guide](https://krew.sigs.k8s.io/docs/user-guide/setup/install/), follow the steps there and then come back here.
+  To install the latest release, download and uncompress the latest release asset for the target platform from the [release page](https://github.com/replicatedhq/troubleshoot/releases):
+  ```
+  curl -L https://github.com/replicatedhq/troubleshoot/releases/latest/download/support-bundle_linux_amd64.tar.gz | tar xzvf -
+  curl -L https://github.com/replicatedhq/troubleshoot/releases/latest/download/preflight_linux_amd64.tar.gz | tar xzvf -
+  sudo ./support-bundle version
+  sudo ./preflight version
+  ```
 
-Install the Preflight and Support Bundle plugin using:
+- Install with krew
 
-```shell
-kubectl krew install preflight
-kubectl krew install support-bundle
-```
+  You can execute Preflight Checks and Support Bundles using a client-side utility, packaged as a `kubectl` plugin that is distributed through the [krew](https://krew.dev/) package manager.
+  If you don't already have krew installed, head over to the [krew installation guide](https://krew.sigs.k8s.io/docs/user-guide/setup/install/), follow the steps there and then come back here.
+  
+  Install the Preflight and Support Bundle plugin using:
+  
+  ```shell
+  kubectl krew install preflight
+  kubectl krew install support-bundle
+  ```
 
-Note: This will not install anything to your cluster, it only places a single binary per plugin in your path.
+  **Note:** This will not install anything to your cluster, it only places a single binary per plugin in your path.
 
 ## Examples
 
