@@ -130,6 +130,20 @@ spec:
               when: "true"
               message: replicas are matching
     - clusterResource:
+        checkName: check-replicas-number-case-insensitive
+        kind: Deployment
+        namespace: default
+        name: strapi-db
+        yamlPath: "spec.replicas"
+        regex: "1"
+        outcomes:
+          - fail:
+              when: "false"
+              message: replicas are not matching
+          - pass:
+              when: "true"
+              message: replicas are matching
+    - clusterResource:
         checkName: check-cm-confg
         kind: configmap
         namespace: default
