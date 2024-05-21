@@ -49,11 +49,7 @@ Example of the resulting JSON file:
 
 ## Kernel Configs Analyzer
 
-The `kernelConfigs` analyzer supports multiple outcomes. Unlike other analyzers, this analyzer will evaluate all outcomes, regardless of whether a previous outcome has returned true. For `when` condition of an outcome, only `=` assignment operator is supported. For example:
-
-1. `CONFIG_USB_SUPPORT=y`: USB support is enabled in the kernel.
-2. `CONFIG_SOUND=m`: Sound support is built as a loadable module.
-3. `CONFIG_BLK_DEV_FD=n`: Floppy disk support is disabled in the kernel.
+The `kernelConfigs` analyzer supports multiple outcomes. Unlike other analyzers, this analyzer will evaluate all outcomes, regardless of whether a previous outcome has returned `true`. For the `when` attribute of an outcome, only `=` assignment operator is supported.
 
 ### Example Analyzer Definition
 
