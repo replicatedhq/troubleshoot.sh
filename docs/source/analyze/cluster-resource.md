@@ -22,6 +22,25 @@ Used for uniqueness if multiple analyzers are defined with similar parameters.
 
 **kind**: (Required) The type of Kubernetes resource being targeted by `name`.
 
+supported values:
+- `deployment`
+- `statefulset`
+- `networkpolicy`
+- `pod`
+- `ingress`
+- `service`
+- `resourcequota`
+- `job`
+- `persistentvolumeclaim`
+- `pvc`
+- `replicaset`
+- `namespace`
+- `persistentvolume`
+- `pv`
+- `node`
+- `storageclass`
+- `configmap`
+
 **name**: (Required) The name of the resource to check.
 
 **namespace**: (Optional) The namespace to look in for the resource.
@@ -96,4 +115,60 @@ spec:
           - pass:
               when: "true"
               message: is bound
+    - clusterResource:
+        checkName: check-replicas-number
+        kind: deployment
+        namespace: default
+        name: strapi-db
+        yamlPath: "spec.replicas"
+        regex: "1"
+        outcomes:
+          - fail:
+              when: "false"
+              message: replicas are not matching
+          - pass:
+              when: "true"
+              message: replicas are matching
+    - clusterResource:
+        checkName: check-replicas-number-case-insensitive
+        kind: Deployment
+        namespace: default
+        name: strapi-db
+        yamlPath: "spec.replicas"
+        regex: "1"
+        outcomes:
+          - fail:
+              when: "false"
+              message: replicas are not matching
+          - pass:
+              when: "true"
+              message: replicas are matching
+    - clusterResource:
+        checkName: check-cm-confg
+        kind: configmap
+        namespace: default
+        name: strapi-db-config
+        yamlPath: "data.MYSQL_DATABASE"
+        regex: "strapi-k8s"
+        outcomes:
+          - fail:
+              when: "false"
+              message: is not strapi-k8s
+          - pass:
+              when: "true"
+              message: is strapi-k8s
+     - clusterResource:
+        checkName: check-storageclass-in-cluster-scope
+        kind: storageclass
+        name: standard
+        yamlPath: "volumeBindingMode"
+        regex: Immediate
+        clusterScoped: true
+        outcomes:
+          - fail:
+              when: "false"
+              message: is not Immediate
+          - pass:
+              when: "true"
+              message: is Immediate
 ```
