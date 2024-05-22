@@ -25,7 +25,7 @@ The `distribution` analyzer supports the following distributions:
 * `microk8s` (MicroK8s)
 * `minikube` (minikube)
 * `oke` (Oracle Cloud Infrastructure Container Engine for Kubernetes)
-* `openshift` (RedHat OpenShift)
+* `openShift` (RedHat OpenShift)
 * `rke2` (Rancher RKE2)
 
 ## Parameters
@@ -47,7 +47,7 @@ spec:
               when: "== k0s"
               message: k0s is a supported distribution
           - pass:
-              when: "== openshift"
+              when: "== openShift"
               message: OpenShift is a supported distribution
           - fail:
               when: "== docker-desktop"
