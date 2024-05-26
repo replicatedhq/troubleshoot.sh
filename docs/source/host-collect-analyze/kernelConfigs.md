@@ -49,7 +49,13 @@ Example of the resulting JSON file:
 
 ## Kernel Configs Analyzer
 
-The `kernelConfigs` analyzer supports multiple outcomes. Unlike other analyzers, this analyzer will evaluate all outcomes, regardless of whether a previous outcome has returned `true`. For the `when` attribute of an outcome, only `=` assignment operator is supported.
+The `kernelConfigs` analyzer supports only `pass` or `fail` outcomes. In the case of a `fail` outcome, the placeholder `{{ .ConfigsNotFound }}` can be used to render a list of missing kernel configurations in the message.
+
+### Parameters
+
+#### `selectedConfigs` (Required)
+
+List of kernel config parameters that must be available.
 
 ### Example Analyzer Definition
 
@@ -65,11 +71,12 @@ spec:
     - kernelConfigs:
         collectorName: "Kernel Configs Test"
         strict: true
+        selectedConfigs:
+          - CONFIG_CGROUP_FREEZER=y
+          - CONFIG_NETFILTER_XTABLES=m
         outcomes:
           - pass:
-              when: "CONFIG_CGROUP_FREEZER=y"
-              message: "The cgroup freezer is enabled"
-          - pass:
-              when: "CONFIG_NETFILTER_XTABLES=m"
-              message: "netfilter xtable is built as loadable module"
+              message: "required kernel configs are available"
+          - fail:
+              message: "missing kernel config(s): {{ .ConfigsNotFound }}"
 ```
