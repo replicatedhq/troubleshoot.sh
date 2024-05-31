@@ -133,6 +133,7 @@ module.exports = {
             "host-collect-analyze/http",
             "host-collect-analyze/httpLoadBalancer",
             "host-collect-analyze/ipv4Interfaces",
+            "host-collect-analyze/kernelConfigs",
             "host-collect-analyze/memory",
             "host-collect-analyze/regex",
             "host-collect-analyze/run",
