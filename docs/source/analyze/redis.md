@@ -41,7 +41,7 @@ spec:
         uri: 'redis://redis:replicated@server:6379'
   analyzers:
     - redis:
-        checkName: Must be Redis 10.x or later
+        checkName: Must be Redis 7.x or later
         collectorName: redis
         outcomes:
           - fail:
@@ -67,7 +67,7 @@ $ docker run --rm --name some-redis -d -p 6379:6379 redis:7.2
 You should use the following `uri` in the collector:
 
 ```yaml
-uri: redis://redis:replicated@localhost:6379
+uri: redis://localhost:6379
 ```
 
 Once it's running, you can run preflight and test the results.
