@@ -106,6 +106,7 @@ module.exports = {
             "analyze/mysql",
             "analyze/node-resources",
             "analyze/postgresql",
+            "analyze/redis",
             "analyze/regex",
             "analyze/replicaset-status",
             "analyze/storage-class",
