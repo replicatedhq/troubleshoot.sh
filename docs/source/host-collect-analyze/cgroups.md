@@ -32,7 +32,7 @@ spec:
 
 ### `/host-collectors/system/cgroups.json`
 
-This will contain the JSON results of the collected cgroups configuration. There will be a `"cgroup-enabled"` boolean field that will be true whenever the collector detects either `cgroup v1` or `cgroup v2` in the mounted filesystem.
+This will contain the JSON results of the collected cgroups configuration. There will be a `"cgroup-enabled"` boolean field that will be true whenever the collector detects either `cgroup v1` or `cgroup v2` in the mounted filesystem. There is also `"allControllers"` array which will contain all detected controllers. This field is meant to make it easier for analyzers to test if a controller is enabled or not regardless of the cgroup version.
 
 Example of the resulting JSON files
 
@@ -41,30 +41,38 @@ Example of the resulting JSON files
 {
   "cgroup-enabled": true,
   "cgroup-v1": {
+    "enabled": false,
+    "mountPoint": "",
+    "controllers": []
+  },
+  "cgroup-v2": {
     "enabled": true,
     "mountPoint": "/sys/fs/cgroup",
     "controllers": [
       "cpuset",
       "cpu",
-      "cpuacct",
-      "blkio",
+      "io",
       "memory",
-      "devices",
-      "freezer",
-      "net_cls",
-      "perf_event",
-      "net_prio",
       "hugetlb",
       "pids",
       "rdma",
-      "misc"
+      "misc",
+      "freezer",
+      "devices"
     ]
   },
-  "cgroup-v2": {
-    "enabled": false,
-    "mounts": null,
-    "controllers": null
-  }
+  "allControllers": [
+    "cpu",
+    "cpuset",
+    "devices",
+    "freezer",
+    "hugetlb",
+    "io",
+    "memory",
+    "misc",
+    "pids",
+    "rdma"
+  ]
 }
 ```
 
