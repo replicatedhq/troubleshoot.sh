@@ -47,7 +47,7 @@ The `hostOS` analyzer supports multiple outcomes by validating the name and vers
 - `centos = 7`: The detected OS is CentOS 7. `7` in this example is the platform version. The format here is `<platform> = <platformVersion>`
 - `ubuntu = 20.04`: The detected OS is Ubuntu 20.04.
 - `kernelVersion > 5.12.0`: Check if `kernelVersion` value in the JSON output, regardless of OS, is greater than 5.12.0
-- `ubuntu-16.04-kernel >= 4.14`: Detect whether Ubuntu 16.04 has a kernel version greater or equal to `4.14`. This string follows `<platform>-<platformVersion>-kernel = <platformVersion>` format.
+- `ubuntu-16.04-kernel >= 4.14`: Detect whether Ubuntu 16.04 has a kernel version greater or equal to `4.14`. This string follows `<platform>-<platformVersion>-kernel = <kernelVersion>` format.
 
 ### Example Analyzer Definition
 
