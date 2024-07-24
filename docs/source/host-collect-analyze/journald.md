@@ -81,13 +81,14 @@ The results of the `journald` collector are stored in the `host-collectors/journ
 
 - `[collector-name].txt` - output of the logs from `journalctl`
 - `[collector-name]-info.json` - the command that was executed, its exit code and any output read from `stderr`. See example below
-  ```json
-  {
-    "command": "/usr/bin/journalctl -u k0scontroller -n 100 --reverse --utc --no-pager",
-    "exitCode": "0",
-    "error": "",
-    "outputDir": "",
-    "input": "",
-    "env": null
-  }
-  ```
+
+```json
+{
+  "command": "/usr/bin/journalctl -u k0scontroller -n 100 --reverse --utc --no-pager",
+  "exitCode": "0",
+  "error": "",
+  "outputDir": "",
+  "input": "",
+  "env": null
+}
+```
