@@ -12,8 +12,8 @@ The `clusterResources` collector is automatically added and will always be prese
 The `distribution` analyzer supports the following distributions:
 
 * `aks` (Azure Kubernetes Services)
-* `digitalOcean` (DigitalOcean)
-* `dockerDesktop` (Docker Desktop)
+* `digitalocean` (DigitalOcean)
+* `docker-desktop` (Docker Desktop)
 * `eks` (Amazon Elastic Kubernetes Service)
 * `embedded-cluster` (Replicated Embedded Cluster)
 * `gke` (Google Kubernetes Engine)
