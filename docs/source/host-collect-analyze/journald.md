@@ -11,43 +11,43 @@ To collect log entries from the journald service, you can use the `journald` col
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), the `journald` collector accepts the following parameters to filter journal records:
 
-#### `System` (Optional)
+#### `system` (Optional)
 
 Show messages from system services and the kernel. Default to `false`
 
-#### `Dmesg` (Optional)
+#### `dmesg` (Optional)
 
 Include messages from the kernel ring buffer. Default to `false`
 
-#### `Units` (Optional)
+#### `units` (Optional)
 
 A list of systemd units to include messages from. If empty, messages from all units will be included.
 
-#### `Since` (Optional)
+#### `since` (Optional)
 
 Specify a starting point for the journal entries. This can be a timestamp or a relative time (for example, `"1 day ago"` for the previous day).
 
-#### `Until` (Optional)
+#### `until` (Optional)
 
 Specify an endpoint for the journal entries. This can be a timestamp or a relative time.
 
-#### `Output` (Optional)
+#### `output` (Optional)
 
-Specify the format for the collected logs. Possible values are `"short"`, `"json"`, or `"cat"`. Default is `"short"`.
+Specify the format for the collected logs. Default is `"short"`.
 
-#### `Lines` (Optional)
+#### `lines` (Optional)
 
 Limit the number of lines to fetch from the journal. If set to `0`, all lines will be fetched. Default is `0`.
 
-#### `Reverse` (Optional)
+#### `reverse` (Optional)
 
 Show the newest entries first. Default to `false`.
 
-#### `Utc` (Optional)
+#### `utc` (Optional)
 
 Show timestamps in UTC. Default to `false`.
 
-#### `Timeout` (Optional)
+#### `timeout` (Optional)
 
 Specify a timeout for collecting the logs. Default to `"30s"`.
 
