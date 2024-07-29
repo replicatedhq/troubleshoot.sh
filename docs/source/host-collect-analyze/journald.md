@@ -5,7 +5,7 @@ description: Collect logs from journald
 
 ## Journald Collector
 
-To collect log entries from journald service, you can use the `journald` collector.
+To collect log entries from the journald service, you can use the `journald` collector.
 
 ### Parameters
 
@@ -25,7 +25,7 @@ A list of systemd units to include messages from. If empty, messages from all un
 
 #### `Since` (Optional)
 
-Specify a starting point for the journal entries. This can be a timestamp or a relative time (e.g., `"1 day ago"` for the last day).
+Specify a starting point for the journal entries. This can be a timestamp or a relative time (for example, `"1 day ago"` for the previous day).
 
 #### `Until` (Optional)
 
@@ -37,7 +37,7 @@ Specify the format for the collected logs. Possible values are `"short"`, `"json
 
 #### `Lines` (Optional)
 
-Limit the number of lines to fetch from the journal. If set to 0, all lines will be fetched. Default is `0`.
+Limit the number of lines to fetch from the journal. If set to `0`, all lines will be fetched. Default is `0`.
 
 #### `Reverse` (Optional)
 
@@ -80,7 +80,7 @@ spec:
 The results of the `journald` collector are stored in the `host-collectors/journald` directory of the bundle. Two files per collector execution will be stored in this directory.
 
 - `[collector-name].txt` - output of the logs from `journalctl`
-- `[collector-name]-info.json` - the command that was executed, its exit code and any output read from `stderr`. See example below
+- `[collector-name]-info.json` - the command that was executed, its exit code and any output read from `stderr`. See the example below:
 
 ```json
 {
