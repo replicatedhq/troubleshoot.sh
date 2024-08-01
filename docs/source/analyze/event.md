@@ -45,5 +45,5 @@ spec:
               message: Event {{ .Reason }} by object {{ .InvolvedObject.Name }} kind {{ .InvolvedObject.Kind }} has message {{ .Message }}
           - pass:
               when: "false"
-              message: No OOMKilled event detected
+              message: No OOMKilling event detected
 ```
