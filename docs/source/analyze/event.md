@@ -37,13 +37,13 @@ spec:
     - event:
         checkName: event-oom-check
         namespace: default
-        reason: "OOMKilled"
-        kind: Pod
+        reason: "OOMKilling"
+        kind: Node
         outcomes:
           - fail:
               when: "true"
               message: Event {{ .Reason }} by object {{ .InvolvedObject.Name }} kind {{ .InvolvedObject.Kind }} has message {{ .Message }}
-          - fail:
+          - pass:
               when: "false"
-              message: No OOMKilled event detected
+              message: No OOMKilling event detected
 ```
