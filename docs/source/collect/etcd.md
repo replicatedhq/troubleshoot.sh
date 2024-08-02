@@ -3,14 +3,20 @@ title: Etcd
 description: Collect data to troubleshoot etcd cluster in Kubernetes
 ---
 
-The `etcd` collector can be used to help diagnose etcd issues. During execution, the collector will run these commands on the existing etcd cluster:
+The `etcd` collector gathers essential data to troubleshoot etcd cluster problems in Kubernetes environments. It executes a series of `etcdctl` commands to assess the health and status of your etcd cluster.
+During execution, the collector runs the following `etcdctl` commands on the existing etcd cluster:
 
-```
+```bash
 etcdctl endpoint health
 etcdctl endpoint status
 etcdctl member list
 etcdctl alarm list
 ```
+
+This collector is compatible with the following Kubernetes distributions:
+
+- kURL
+- k0s
 
 ## Parameters
 
