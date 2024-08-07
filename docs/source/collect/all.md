@@ -18,6 +18,7 @@ description: A list of all available collectors
 - [secret](./secret): includes information about Kubernetes Secrets in the collected output
 - [collectd](./collectd): includes collectd files from all hosts in the cluster
 - [dns](./dns): includes data to troubleshoot DNS Resolution issues
+- [etcd](./etcd): includes data to troubleshoot Kubernetes cluster's backing store etcd
 
 ## Generated and dynamic data
 

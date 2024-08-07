@@ -48,6 +48,7 @@ module.exports = {
             "collect/copy",
             "collect/copy-from-host",
             "collect/dns",
+            "collect/etcd",
             "collect/exec",
             "collect/goldpinger",
             "collect/helm",
