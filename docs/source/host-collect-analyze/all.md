@@ -42,3 +42,4 @@ description: A list of all available host collectors and analyzers.
 - [systemPackages](./systemPackages) Collects and analyzes information about the host system packages for the specified operating system.
 - [time](./time): Collects and analyzes information about the system clock.
 - [kernelConfigs](./kernelConfigs): Collects and analyzes information about available Kernel Configs on the machine.
+- [journald](./journald): Collects journal entries from journald service.
