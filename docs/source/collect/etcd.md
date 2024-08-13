@@ -11,6 +11,7 @@ etcdctl endpoint health
 etcdctl endpoint status
 etcdctl member list
 etcdctl alarm list
+etcdctl version
 ```
 
 This collector is compatible with the following Kubernetes distributions:
@@ -20,7 +21,11 @@ This collector is compatible with the following Kubernetes distributions:
 
 ## Parameters
 
-The `etcd` collector supports the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties) and no additional parameters.
+The `etcd` collector supports the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties) and following parameters.
+
+##### `image` (optional)
+
+The image for pod to run `etcdctl` commands. Default to `quay.io/coreos/etcd:latest`
 
 See the examples below for use cases.
 
@@ -33,7 +38,8 @@ metadata:
   name: etcd-collector
 spec:
   collectors:
-    - etcd: {}
+    - etcd:
+        image: quay.io/coreos/etcd:latest
 ```
 
 ## Included resources
@@ -116,4 +122,11 @@ Contains the output of the command `etcdctl alarm list --write-out json`.
     "raft_term": 2
   }
 }
+```
+
+### /etcd/version.json
+
+```json
+etcdctl version: 3.5.1
+API version: 3.5
 ```
