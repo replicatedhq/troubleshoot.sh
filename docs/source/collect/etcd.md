@@ -21,11 +21,11 @@ This collector is compatible with the following Kubernetes distributions:
 
 ## Parameters
 
-The `etcd` collector supports the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties) and following parameters.
+The `etcd` collector supports the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties) and the following parameters.
 
 ##### `image` (optional)
 
-The image for pod to run `etcdctl` commands. Default to `quay.io/coreos/etcd:latest`
+The image for the pod to run `etcdctl` commands. Default to `quay.io/coreos/etcd:latest`
 
 See the examples below for use cases.
 
