@@ -1,6 +1,6 @@
 ---
 title: All Collectors
-description: A list of all available collectors
+description: A list of all available in-cluster collectors.  See [All host collectors](../host-collect-analyze/all.md) for host collectors.
 ---
 
 ## Kubernetes Cluster Info
