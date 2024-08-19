@@ -3,8 +3,6 @@ title: All Collectors
 description: A list of all available in-cluster collectors.
 ---
 
-See [All host collectors](host-collect-analyze/all) for host collectors.
-
 ## Kubernetes Cluster Info
 
 - [clusterInfo](./cluster-info): collects basic information about the cluster
