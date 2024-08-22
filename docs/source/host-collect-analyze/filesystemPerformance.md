@@ -22,7 +22,7 @@ Specifies the directory where the benchmark will create files.
 #### `fileSize` (Required)
 Specifies the size of the file used in the benchmark. The number of IO operations for the benchmark will be fileSize / operationSizeBytes. This parameter accepts valid Kubernetes resource units, such as Mi.
 
-#### `operationSizeBytes` (Required)
+#### `operationSize` (Required)
 Specifies the size of each write operation performed while benchmarking. This parameter does not apply to the background IOPS feature if enabled, since those must be fixed at 4096.
 
 #### `sync` (Optional)
@@ -30,6 +30,10 @@ Specifies whether to call sync on the file after each write. This does not apply
 
 #### `datasync` (Optional)
 Specifies whether to call datasync on the file after each write. This is skipped if sync is also true. It does not apply to background IOPS task.
+
+#### `runTime` (Optional)
+Limits the runtime. The test will run until it completes the configured I/O workload or until it has run for this specified amount of time, whichever occurs first.
+When the unit is omitted, the value is interpreted in seconds. Defaults to 120 seconds. Set to "0" to disable.
 
 #### `enableBackgroundIOPS` (Optional)
 Enables the background IOPS feature.
@@ -60,10 +64,10 @@ spec:
   hostCollectors:
     - filesystemPerformance:
         collectorName: filesystem-latency-two-minute-benchmark
-        timeout: 2m
+        timeout: 3m
         directory: /var/lib/etcd
         fileSize: 22Mi
-        operationSizeBytes: 2300
+        operationSize: 2300
         datasync: true
         enableBackgroundIOPS: true
         backgroundIOPSWarmupSeconds: 10
@@ -71,6 +75,7 @@ spec:
         backgroundWriteIOPSJobs: 6
         backgroundReadIOPS: 50
         backgroundReadIOPSJobs: 1
+        runTime: "120"
 ```
 
 ### Included Resources
@@ -149,10 +154,10 @@ spec:
   hostCollectors:
     - filesystemPerformance:
         collectorName: filesystem-latency-two-minute-benchmark
-        timeout: 2m
+        timeout: 3m
         directory: /var/lib/etcd
         fileSize: 22Mi
-        operationSizeBytes: 2300
+        operationSize: 2300
         datasync: true
         enableBackgroundIOPS: true
         backgroundIOPSWarmupSeconds: 10
@@ -160,6 +165,7 @@ spec:
         backgroundWriteIOPSJobs: 6
         backgroundReadIOPS: 50
         backgroundReadIOPSJobs: 1
+        runTime: "120"
   hostAnalyzers:
     - filesystemPerformance:
         collectorName: filesystem-latency-two-minute-benchmark
