@@ -1,6 +1,6 @@
 ---
 title: All Collectors
-description: A list of all available collectors
+description: A list of all available in-cluster collectors.
 ---
 
 ## Kubernetes Cluster Info
