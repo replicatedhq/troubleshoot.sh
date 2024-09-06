@@ -16,7 +16,7 @@ If the pattern matches the file, the outcome that has set `when` to `"true"` wil
 If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
 
 **regexGroups**: (Optional)  A regex pattern to match.
-Matches from named capturing groups are available to `when` expressions in outcomes.
+Matches from named capturing groups are available to `when` expressions in outcomes. The captured group names can be used as template variables in the `when` outcome message. These template variables will be replaced by the strings extracted through regular expression matching.
 
 **fileName** (Required) Path to the file in support bundle to analyze.
 This can be an exact name, a prefix, or a file path pattern as defined by Go's [`filepath.Match`](https://pkg.go.dev/path/filepath#Match) function.
@@ -75,7 +75,7 @@ spec:
         outcomes:
           - pass:
               when: "Loss < 5"
-              message: Solid connection to google.com
+              message: "{{ .Transmitted }} packets transmitted and {{ .Received }} packets received with {{ .Loss }}% packet loss"
           - fail:
-              message: High packet loss
+              message: "High packet loss of {{ .Loss }}%"
 ```
