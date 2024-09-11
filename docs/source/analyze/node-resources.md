@@ -154,3 +154,55 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
           - pass:
               message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
 ```
+
+### Message Templating
+In the message, a user would able to include certain values gathered by the NodeResources as templates in outcome message, so that the message can be more informative. The templates are enclosed in double curly braces with a dot separator. The following templates are available:
+
+| Template | Description |
+|----|----|
+| `.NodeCount` | The number of nodes that match the filter |
+| `.CPUArchitecture` | The architecture of the CPU available to the node |
+| `.CPUCapacity` | The amount of CPU available to the node |
+| `.MemoryCapacity` | The amount of memory available to the node |
+| `.PodCapacity` | The number of pods that can be started on the node |
+| `.EphemeralStorageCapacity` | The amount of ephemeral storage on the node |
+| `.AllocatableMemory` | The amount of allocatable Memory after the Kubernetes components have been started |
+| `.AllocatableCPU` | The amount of allocatable CPU after the Kubernetes components have been started |
+| `.AllocatablePods` | The number of pods that can be started on the node after Kubernetes is running |
+| `.AllocatableEphemeralStorage` | The amount of ephemeral storage on the node after Kubernetes is running |
+
+## Example Analyzer Message Templating Definition
+
+```yaml
+    - nodeResources:
+        filters:
+          cpuArchitecture: arm64 
+        checkName: Must have at least 3 nodes in the cluster
+        outcomes:
+          - fail:
+              when: "count() < 3"
+              message: "This application requires at least 3 nodes. {{ .CPUArchitecture }}, it should only return the {{ .NodeCount }} nodes that match that filter"
+          - warn:
+              when: "count() < 5"
+              message: This application recommends at last 5 nodes.
+          - pass:
+              message: This cluster has enough nodes.
+
+```
+```yaml
+    - nodeResources:
+        filters:
+          cpuArchitecture: arm64
+          cpuCapacity: "2"        
+        checkName: Must have at least 3 nodes in the cluster
+        outcomes:
+          - fail:
+              when: "count() < 3"
+              message: "This application requires at least 3 nodes. {{ .CPUArchitecture }}-{{ .CPUCapacity }}, it should only return the {{ .NodeCount }} nodes that match that filter"
+          - warn:
+              when: "count() < 5"
+              message: This application recommends at last 5 nodes.
+          - pass:
+              message: This cluster has enough nodes.
+
+```
