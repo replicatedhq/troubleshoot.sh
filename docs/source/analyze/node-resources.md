@@ -155,7 +155,7 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
               message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
 ```
 
-### Message Templating
+## Message Templating
 To make the outcome message more informative, you can include certain values gathered by the NodeResources collector as templates. The templates are enclosed in double curly braces with a dot separator. The following templates are available:
 
 | Template | Description |
