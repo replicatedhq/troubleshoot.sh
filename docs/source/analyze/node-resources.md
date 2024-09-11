@@ -156,7 +156,7 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
 ```
 
 ### Message Templating
-In the message, a user would able to include certain values gathered by the NodeResources as templates in outcome message, so that the message can be more informative. The templates are enclosed in double curly braces with a dot separator. The following templates are available:
+To make the outcome message more informative, you can include certain values gathered by the NodeResources collector as templates. The templates are enclosed in double curly braces with a dot separator. The following templates are available:
 
 | Template | Description |
 |----|----|
