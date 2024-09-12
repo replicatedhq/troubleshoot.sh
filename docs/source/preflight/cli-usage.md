@@ -161,6 +161,11 @@ preflight [url] [flags] [-]
       <td>The length of time to wait before giving up on a single server request. Non-zero values should contain a corresponding time unit, such as 1s, 2m, 3h. A value of zero means that requests will not time out. Default: <code>0</code></td>
     </tr>
     <tr>
+      <td><code>--save-bundle</code></td>
+      <td>string</td>
+      <td>Save collected data to a bundle archive in the current directory. The file path will follow preflightbundle-YYYY-MM-DDTHH_MM_SS.tar.gz format</td>
+    </tr>
+    <tr>
       <td><code>--selector</code></td>
       <td>string</td>
       <td>Selector (label query) to filter remote collection nodes on.</td>
