@@ -20,7 +20,7 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `image` (Optional)
 
-Utility image to run `dig` command. Must have `dig` installed, default to `registry.k8s.io/e2e-test-images/agnhost:2.39`
+Utility image to run `dig` command. Must have `dig` installed. Defaults to `registry.k8s.io/e2e-test-images/agnhost:2.39`.
 
 ##### `nonResolvable` (Optional)
 
