@@ -6,7 +6,9 @@ description: Collect data to troubleshoot DNS Resolution
 The `dns` collector can be used to help diagnose DNS resolution problems, such as detecting search domain misconfiguration. During execution, the collector does the following:
 
 - Output `Kubernetes` Service Cluster IP retrieved from kube-apiserver
-- Run a test pod of image `registry.k8s.io/e2e-test-images/agnhost:2.39`, do `dig` to `kubernetes` Service and output content of `/etc/resolv.conf`
+- Run a test pod of image `registry.k8s.io/e2e-test-images/agnhost:2.39`, and run `dig` command
+  - to `kubernetes` Service and output content of `/etc/resolv.conf`
+  - to a non-resolveable domain to check for potential wildcard DNS issue
 - Check if DNS pods are running
 - Check if DNS service is up
 - Check if DNS endpoints are populated
