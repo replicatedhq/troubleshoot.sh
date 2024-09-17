@@ -13,7 +13,7 @@ The `dns` host collector can be used to help diagnose DNS resolution problems on
 
 In addition to the [shared collector properties](https://troubleshoot.sh/docs/collect/collectors/#shared-properties), the `dns` host collector accepts the following parameters:
 
-##### `names` (Optional)
+##### `hostnames` (Optional)
 
 A list of hostnames to query. These can include both resolvable domains and non-resolvable domains to test various scenarios (e.g., wildcard DNS). Defaults to `["*"]`.
 
@@ -27,7 +27,7 @@ metadata:
 spec:
   hostCollectors:
     - dns:
-        names:
+        hostnames:
           - "*"
           - replicated.app
 ```
