@@ -24,7 +24,7 @@ Utility image to run `dig` command. Must have `dig` installed. Defaults to `regi
 
 ##### `nonResolvable` (Optional)
 
-A non-resolveable domain. The collector will make a DNS query to this domain.
+A non-resolveable domain. The collector will make a DNS query to this domain. Defaults to `*`.
 
 See the examples below for use cases.
 
@@ -39,7 +39,7 @@ spec:
   collectors:
     - dns:
         image: registry.k8s.io/e2e-test-images/agnhost:2.39
-        nonResolvable: foo.bar.xyz
+        nonResolvable: "*"
 ```
 
 ## Included resources
@@ -98,7 +98,7 @@ import /etc/coredns/custom/*.server
       "address": "10.43.0.1"
     },
     "nonResolvableDomain": {
-      "name": "foo.bar.xyz",
+      "name": "*",
       "address": ""
     }
   },
