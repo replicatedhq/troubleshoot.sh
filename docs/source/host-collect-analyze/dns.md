@@ -29,6 +29,7 @@ spec:
     - dns:
         hostnames:
           - "*"
+          - "non-existent"
           - replicated.app
 ```
 
@@ -53,7 +54,58 @@ This file contains the results of the DNS queries in JSON format.
 
 ```json
 {
-  "*": "",
-  "replicated.app": "replicated.app.\t300\tIN\tA\t162.159.133.41"
+  "query": {
+    "*": [
+      {
+        "server": "127.0.0.53",
+        "name": "*.c.replicated-qa.internal.",
+        "answer": ""
+      },
+      {
+        "server": "127.0.0.53",
+        "name": "*.google.internal.",
+        "answer": ""
+      },
+      {
+        "server": "127.0.0.53",
+        "name": "*.",
+        "answer": ""
+      }
+    ],
+    "non-existent": [
+      {
+        "server": "127.0.0.53",
+        "name": "non-existent.c.replicated-qa.internal.",
+        "answer": ""
+      },
+      {
+        "server": "127.0.0.53",
+        "name": "non-existent.google.internal.",
+        "answer": ""
+      },
+      {
+        "server": "127.0.0.53",
+        "name": "non-existent.",
+        "answer": ""
+      }
+    ],
+    "replicated.app": [
+      {
+        "server": "127.0.0.53",
+        "name": "replicated.app.",
+        "answer": "replicated.app.\t300\tIN\tA\t162.159.133.41"
+      },
+      {
+        "server": "127.0.0.53",
+        "name": "replicated.app.c.replicated-qa.internal.",
+        "answer": ""
+      },
+      {
+        "server": "127.0.0.53",
+        "name": "replicated.app.google.internal.",
+        "answer": ""
+      }
+    ]
+  }
 }
 ```
