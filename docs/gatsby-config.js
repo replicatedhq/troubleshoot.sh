@@ -128,6 +128,7 @@ module.exports = {
             "host-collect-analyze/cpu",
             "host-collect-analyze/certificate",
             "host-collect-analyze/certificatesCollection",
+            "host-collect-analyze/dns",
             "host-collect-analyze/diskUsage",
             "host-collect-analyze/filesystemPerformance",
             "host-collect-analyze/hostOS",

@@ -30,6 +30,7 @@ description: A list of all available host collectors and analyzers.
 - [tcpLoadBalancer](./tcpLoadBalancer): Collects and analyzes information about the ability to connect to the specified TCP load balancer address.
 - [tcpPortStatus](./tcpPortStatus): Collects and analyzes information about the specified TCP port.
 - [udpPortStatus](./udpPortStatus): Collects and analyzes information about the specified UDP port.
+- [dns](./dns): Collects information about DNS resolution.
 
 ### Generated and Dynamic Data
 
