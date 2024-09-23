@@ -15,11 +15,11 @@ In addition to the [shared collector properties](https://troubleshoot.sh/docs/co
 
 ##### `collectorName` (Required)
 
-The name of the collector. No spaces or special characters are allowed as it will be used as a directory name.
+The name of the collector. No spaces or special characters are allowed because the collector name is used as a directory name.
 
 ##### `hostnames` (Required)
 
-A list of hostnames to query. These can include both resolvable domains and non-resolvable domains to test various scenarios (e.g., wildcard DNS).
+A list of hostnames to query. These can include both resolvable domains and non-resolvable domains to test various scenarios (for example, wildcard DNS).
 
 ## Example Collector Definition
 
@@ -118,7 +118,7 @@ This file contains the results of the DNS queries in JSON format.
   "resolvedFromSearch": ".foo.testcluster.net., .artifactory.testcluster.net."
 ```
 
-There is attribute `resolvedFromSearch` which contains the list of search domains that resolved the hostnames.
+The `resolvedFromSearch` attribute contains the list of search domains that resolved the hostnames.
 
 #### Example of a normal DNS resolution
 
