@@ -25,7 +25,8 @@ spec:
 
 ### Included Resources
 
-The results of the hostOS collector are stored in the `host-collectors/system` directory of the support bundle.
+The results of the hostOS collector are stored in the `host-collectors/system` directory of the support bundle. 
+However, if `runHostCollectorsInPod` is enabled, the results will be stored in the `host-collectors/system/<node name>` directory of the support bundle with the node name as a folder name.
 
 #### `hostos_info.json`
 
@@ -80,4 +81,74 @@ spec:
           - pass:
               when: "kernelVersion > 5.12.0"
               message: "kernel version is supported"
+```
+
+### `RunHostCollectorsInPod` enabled
+If the spec has `runHostCollectorsInPod: true`, the `hostcollectors` will be run in a privileged pod. The collector and analyzer will collect and analyze the results from multiple nodes in the cluster. It will be categorized by each node.
+Example:
+If a cluster has 2 nodes with running this support bundle spec, the output will be categorized by each node.
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: sb
+  runHostCollectorsInPod: true  # default is false 
+spec:
+  hostCollectors:
+  - hostOS: {}
+  hostAnalyzers:
+  - hostOS:
+        outcomes:
+          - pass:
+              when: "ubuntu >= 22.04"
+              message: "Ubuntu 22.04 is supported"
+          - fail:
+              when: "ubuntu <= 16.04"
+              message: "Ubuntu 16.04 is not supported"
+```
+
+The result:
+```json
+[
+    {
+        "name": "host.os.info.node.multinode.demo.m02",
+        "labels": {
+            "desiredPosition": "1",
+            "iconKey": "",
+            "iconUri": ""
+        },
+        "insight": {
+            "name": "host.os.info.node.multinode.demo.m02",
+            "labels": {
+                "iconKey": "",
+                "iconUri": ""
+            },
+            "primary": "Host OS Info - Node multinode-demo-m02",
+            "detail": "Ubuntu 22.04 is supported",
+            "severity": "debug"
+        },
+        "severity": "debug",
+        "analyzerSpec": ""
+    },
+    {
+        "name": "host.os.info.node.multinode.demo.m02.node.multinode.demo",
+        "labels": {
+            "desiredPosition": "1",
+            "iconKey": "",
+            "iconUri": ""
+        },
+        "insight": {
+            "name": "host.os.info.node.multinode.demo.m02.node.multinode.demo",
+            "labels": {
+                "iconKey": "",
+                "iconUri": ""
+            },
+            "primary": "Host OS Info - Node multinode-demo-m02 - Node multinode-demo",
+            "detail": "Ubuntu 22.04 is supported",
+            "severity": "debug"
+        },
+        "severity": "debug",
+        "analyzerSpec": ""
+    }
+]
 ```

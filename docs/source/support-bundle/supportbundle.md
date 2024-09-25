@@ -11,6 +11,7 @@ apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
   name: supportbundle
+  runHostCollectorsInPod: true  # default is false 
 spec:
   collectors: []
   hostcollectors: []
@@ -20,6 +21,9 @@ spec:
 ```
 
 ## Properties
+
+### `runHostCollectorsInPod`
+Default is `false`.  If set to `true`, the `hostcollectors` will be run in a privileged pod.  This is useful for collecting host information across a group of nodes in a cluster. This will reduce the number of support bundles that need to be collected to get a complete picture of the cluster nodes.
 
 ### `collectors`
 
