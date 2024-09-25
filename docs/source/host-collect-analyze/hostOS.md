@@ -26,7 +26,7 @@ spec:
 ### Included Resources
 
 The results of the hostOS collector are stored in the `host-collectors/system` directory of the support bundle. 
-However, if `runHostCollectorsInPod` is enabled, the results will be stored in the `host-collectors/system/<node name>` directory of the support bundle with the node name as a folder name.
+However, if `runHostCollectorsInPod` is enabled, the results will be stored in the `host-collectors/system/<node name>` directory of the support bundle with the node name as a folder name. And `node_list.json` will be created in the `host-collectors/system` directory with the list of node names.
 
 #### `hostos_info.json`
 
