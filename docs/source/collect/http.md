@@ -24,7 +24,7 @@ In addition to the [shared collector properties](/collect/collectors/#shared-pro
 
 - ##### `proxy` string (Optional)
 
-  When present, the proxy to use for the request.
+  When present, the proxy to use for the request.  This parameter will also read from the `HTTPS_PROXY` environment variable set in the shell.
   The proxy address must be a valid URL in the format `scheme://[user:password@]host:port`.
 
 - ##### `insecureSkipVerify` boolean (Optional)
