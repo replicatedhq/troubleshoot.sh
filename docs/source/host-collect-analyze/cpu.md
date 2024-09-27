@@ -1,6 +1,6 @@
 ---
 title: CPU
-description: Collect and analyze information about CPU features and CPU number of cores.
+description: Collect and analyze information about CPU features and core counts.
 ---
 
 ## CPU Collector
