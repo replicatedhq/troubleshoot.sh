@@ -5,6 +5,8 @@ description: Gathering goldpinger pod checks from a kubernetes cluster
 
 The `goldpinger` collector is used to collect pod-ping checks gathered by a [goldpinger service](https://github.com/bloomberg/goldpinger) installed in a kubernetes cluster. The collector makes a request to `<host>/check_all` endpoint. Periodically, this service will ping pods running on every node (daemonset pods) to ensure that nodes can reach all other nodes in that cluster. It caches these information and surfaces it via http endpoints. If this collector is run within a kubernetes cluster, the collector will directly make the http request to the goldpoinger endpoint (`http://goldpinger.<namespace>.svc.cluster.local:80/check_all`). If not, the collector attempts to launch a pod in the cluster and makes the request within the running container.
 
+If goldpinger is not installed, the collector will attempt to temporarily install it, and uninstall goldpinger once the collector has completed.
+
 ## Parameters
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), it accepts the following parameters
@@ -12,6 +14,9 @@ In addition to the [shared collector properties](/collect/collectors/#shared-pro
 - ##### `namespace` (Optional)
   The namespace where goldpinger is installed. This value is used to form the goldpinger service endpoint i.e `http://goldpinger.<namespace>.svc.cluster.local:80`. Defaults to the `default` namespace.
 
+- ##### `collectDelay` (optional)
+  Delay collection to allow goldpinger time to start sending requests. Defaults to 0s if an existing goldpinger installation is detected, and 6s if troubleshoot installs the temporary goldpinger service.
+  
 - ##### `podLaunchOptions` (Optional)
   Pod launch options to start a pod
   - ##### `namespace` (Optional)
