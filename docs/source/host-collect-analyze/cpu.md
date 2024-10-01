@@ -1,3 +1,4 @@
+
 ---
 title: CPU
 description: Collect and analyze information about CPU features and core counts.
@@ -42,7 +43,7 @@ The `cpu` analyzer supports multiple outcomes by validating the number of CPU co
 - `count < 32`: Less than 32 CPU cores were detected.
 - `count > 4`: More than 4 CPU cores were detected.
 
-The analyzer also supports validating the presence of specific CPU features, for example:
+This analyzer also supports validating the presence of specific CPU features, for example:
 
 - `supports x86-64-v2`: The CPU supports the x86-64-v2 feature set.
 - `supports x86-64-v3`: The CPU supports the x86-64-v3 feature set.
@@ -53,6 +54,26 @@ Supported CPU features (microarchitectures) set are:
 - `x86-64-v2`
 - `x86-64-v3`
 - `x86-64-v4`
+
+Check for individual CPU flags is also supported. The `HostPreflight` below exemplifies how to check for specific CPU flags:
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: HostPreflight
+metadata:
+    name: ec-cluster-preflight
+spec:
+    collectors:
+        - cpu: {}
+    analyzers:
+        - cpu:
+            checkName: CPU
+            outcomes:
+                - pass:
+                    when: hasFlags cmov,cx8,fpu,fxsr,mmx
+                    message: CPU supports all required flags
+                - fail: message: CPU not supported
+```
 
 ### Examples Analyzer Definition
 
