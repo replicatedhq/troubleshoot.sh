@@ -9,28 +9,44 @@ The http collector can be specified multiple times in a collector spec.
 
 ## Parameters
 
-The `http` collector can be either of  `get`, `post` or `put`.
+The `http` collector can be either of `get`, `post` or `put`.
 
 In addition to the [shared collector properties](/collect/collectors/#shared-properties), it accepts the following parameters:
 
-- ##### `url` (Required)
+- ##### `url` string (Required)
+
   The URL to make the HTTP request against.
 
-- ##### `insecureSkipVerify` (Optional)
+- ##### `tls.cacert` string (Optional)
+
+  When present, the CA certificate to use for verifying the server's certificate.
+  Valid options are a string containing the certificate in PEM format, or a path to a file or direcotry on disk containing the certificate.
+
+- ##### `proxy` string (Optional)
+
+  When present, the proxy to use for the request.  This parameter will also read from the `HTTPS_PROXY` environment variable set in the shell.
+  The proxy address must be a valid URL in the format `scheme://[user:password@]host:port`.
+
+- ##### `insecureSkipVerify` boolean (Optional)
+
   When set to true, this will make connections to untrusted or self-signed certs.
   This defaults to false.
 
-- ##### `headers` (Optional)
+- ##### `headers` string (Optional)
+
   When present, additional headers to send with the request.
   By default, there are no headers added to the request.
 
-- ##### `body` (Optional)
+- ##### `body` string (Optional)
+
   When present, the body to be send with the request.
   By default, there is no body included in a request.
   This parameter is not supported if the method is `get`.
 
-- ##### `timeout` (Optional)
+- ##### `timeout` string (Optional)
+
   When present, the timeout for the request.
+  Expressed as a string duration, such as `30s`, `5m`, `1h`.
 
 ## Example Collector Definition
 
@@ -51,8 +67,18 @@ spec:
         get:
           url: http://api:3000/healthz
           timeout: 5s
+    - http:
+        collectorName: proxy
+        get:
+          url: https://replicated.app
+          proxy: https://proxy.example.com:3130
+          timeout: 15s
+          tls:
+            cacert: |-
+              -----BEGIN CERTIFICATE-----
+              <truncated>
+              -----END CERTIFICATE-----
 ```
-
 
 ### POST/PUT
 
@@ -72,9 +98,8 @@ spec:
           insecureSkipVerify: true
           body: '{"disable-service": true}'
           headers:
-            Content-Type: "application/json"
+            Content-Type: 'application/json'
 ```
-
 
 ## Included resources
 
@@ -97,9 +122,9 @@ Response received from the server will be stored in the `"response"` key of the 
       "Server": "nginx/1.8.1",
       "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
     },
-    "raw_json": {                                                                                                                                          
-      "status": "healthy"                                                                                                                              
-    } 
+    "raw_json": {
+      "status": "healthy"
+    }
   }
 }
 ```
