@@ -11,8 +11,8 @@ apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
   name: supportbundle
-  runHostCollectorsInPod: true  # default is false 
 spec:
+  runHostCollectorsInPod: true  # default is false 
   collectors: []
   hostcollectors: []
   analyzers: []

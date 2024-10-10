@@ -91,9 +91,9 @@ If a cluster has 2 nodes with running this support bundle spec, the output will 
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
-  name: sb
-  runHostCollectorsInPod: true  # default is false 
+  name: sb 
 spec:
+  runHostCollectorsInPod: true  # default is false
   hostCollectors:
   - hostOS: {}
   hostAnalyzers:
