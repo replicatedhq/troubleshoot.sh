@@ -86,7 +86,7 @@ spec:
 ### `RunHostCollectorsInPod` enabled
 If the spec has `runHostCollectorsInPod: true`, the `hostcollectors` will be run in a privileged pod. The collector and analyzer will collect and analyze the results from multiple nodes in the cluster. It will be categorized by each node.
 Example:
-If a cluster has 2 nodes with running this support bundle spec, the output will be categorized by each node.
+If a cluster has 2 nodes running this support bundle spec, the output will be categorized by each node.
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
