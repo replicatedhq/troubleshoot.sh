@@ -1,5 +1,5 @@
 ---
-title: CPU Description
+title: CPU
 description: Collect and analyze information about CPU features, core counts and architecture.
 ---
 
