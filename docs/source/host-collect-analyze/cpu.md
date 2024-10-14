@@ -1,7 +1,6 @@
-
 ---
 title: CPU
-description: Collect and analyze information about CPU features and core counts.
+description: Collect and analyze information about CPU features, core counts and architecture.
 ---
 
 ## CPU Collector
@@ -120,4 +119,28 @@ spec:
               message: This server cpu suports the x86-64-v2 features
           - fail:
               message: This server does not support the x86-64-v2 features
+```
+
+Collecting and analyzing the presence of specific CPU architecture:
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: cpu
+spec:
+  hostCollectors:
+    - cpu: {}
+  hostAnalyzers:
+    - cpu:
+        checkName: "Check machine architecture"
+        outcomes:
+          - fail:
+              when: "machineArch == x86_64"
+              message: x86_64 machine architecture is not supported
+          - pass:
+              when: "machineArch == arm64"
+              message: It is recommended to use arm64 machine architecture
+          - warn:
+              message: Supported machine architecture was not detected
 ```
