@@ -124,6 +124,7 @@ module.exports = {
             "host-collect-analyze/overview",
             "host-collect-analyze/all",
             "host-collect-analyze/blockDevices",
+            "host-collect-analyze/cgroups",
             "host-collect-analyze/copy",
             "host-collect-analyze/cpu",
             "host-collect-analyze/certificate",
