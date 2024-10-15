@@ -5,7 +5,7 @@ description: The control groups host collector gathers cgroup configuration from
 
 > The ability to copy folders was introduced in Troubleshoot v0.96.0
 
-The `cgroups` is used to gather [Control Group](https://www.man7.org/linux/man-pages/man7/cgroups.7.html) configuration from a linux based system and stores this information on s json file. The collector expects an optional `mountPoint` parameter where the cgroup virtual filesystem is expected to be mounted. The collector checks for the version of `cgroups` and all enabled controllers.
+The `cgroups` is used to gather [Control Group](https://www.man7.org/linux/man-pages/man7/cgroups.7.html) configuration from a linux based system and stores this information on a json file. The collector expects an optional `mountPoint` parameter where the cgroup virtual filesystem is expected to be mounted. The collector checks for the version of `cgroups` and all enabled controllers.
 
 ## Parameters
 
