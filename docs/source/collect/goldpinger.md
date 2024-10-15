@@ -15,7 +15,7 @@ In addition to the [shared collector properties](/collect/collectors/#shared-pro
   The namespace where goldpinger is installed. This value is used to form the goldpinger service endpoint i.e `http://goldpinger.<namespace>.svc.cluster.local:80`. Defaults to the `default` namespace.
 
 - ##### `image` (optional)
-  The image to use for the goldpinger daemonset pods if troubleshoot has to deploy them
+  The image to use for the goldpinger daemonset pods if Troubleshoot has to deploy them
 
 - ##### `collectDelay` (optional)
   Delay collection to allow goldpinger time to start sending requests. Defaults to 0s if an existing goldpinger installation is detected, and 6s if troubleshoot installs the temporary goldpinger service.
