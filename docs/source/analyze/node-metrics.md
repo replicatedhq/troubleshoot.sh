@@ -3,11 +3,11 @@ title: Kubernetes Node Metrics
 description: Analyzing node metrics collected by the kubelet
 ---
 
-The `nodeMetrics` analyzer is available to analyze [node metrics](https://kubernetes.io/docs/reference/instrumentation/node-metrics/) data collected by `kubelet` and served via kubernetes API server. The metrics are collected by the [nodeMetrics collector](/collect/node-metrics/). The analyzer can be used in support bundles or preflights that need to report check such as `pvc` usage capacity violations.
+The `nodeMetrics` analyzer is available to analyze [node metrics](https://kubernetes.io/docs/reference/instrumentation/node-metrics/) data collected by `kubelet` and served via kubernetes API server. The metrics are collected by the [nodeMetrics collector](/collect/node-metrics/). The analyzer can be used in support bundles or preflights that need to report on checks such as `pvc` usage capacity violations.
 
-This analyzer's outcome `when` clause compares the condition specified with the resources present such as a `pvc`.
+This analyzer's `when` outcome clause compares the condition specified with the resources present such as a `pvc`.
 
-This analyzer also supports a `filters` property. If provided, the resources analyzed are filtered to any resource that matches the filters specified.
+This analyzer also supports a `filters` property. If provided, the resources analyzed are filtered to any resource that matches the filters specified. If no filters are specified, all collected metrics are inspected by the analyzer.
 
 ## Available Filters
 
@@ -43,7 +43,7 @@ kind: Preflight
 spec:
   analyzers:
     - nodeMetrics:
-        checkName: Check for pvc space usage is less than 80% in the entire cluster
+        checkName: Check for PVCs using more than 80% storage space in the entire cluster
         outcomes:
           - fail:
               when: "pvcUsedPercentage >= 80"
@@ -60,7 +60,7 @@ kind: Preflight
 spec:
   analyzers:
     - nodeMetrics:
-        checkName: Check minio pvc space usage is less than 80%
+        checkName: Check if minio pvc storage usage is less than 80%
         filters:
           pvc:
             nameRegex: "minio-data-ha-minio.*"
