@@ -64,4 +64,4 @@ You can also use the `--load-cluster-specs` flag with the `support-bundle` CLI t
 ### Notes on using multiple specs with runHostCollectorsInPod flag
 
 - If one spec has `runHostCollectorsInPod: true` and another does not, the merged spec sets `runHostCollectorsInPod: true` and includes all host collectors from both specs.
-- When using a spec with a URI pointing to another spec, if the URI spec does not have the `runHostCollectorsInPod` setting, the merged output reflects the setting from the URI content.
+- When using a spec with a URI pointing to a spec hosted elsewhere, if the target URI spec does not have the `runHostCollectorsInPod` setting, the merged output reflects the default setting of `false` regardless of the original spec's setting.
