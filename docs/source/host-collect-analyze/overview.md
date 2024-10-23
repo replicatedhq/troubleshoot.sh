@@ -66,7 +66,7 @@ spec:
 
 ## Included Resources
 
-Each collector generates results specific to its function, with detailed information available on the respective collector's documentation page. When collectors run remotely from a pod, the output files are prefixed with the name of the node where the collector executed.
+Each collector generates results specific to its function, with detailed information available on the respective collector's documentation page. When collectors run remotely from a pod (with `runHostCollectorsInPod`), the output files are prefixed with the name of the node where the collector executed.
 
 E.g.
 
@@ -84,24 +84,24 @@ host-collectors/
 │   │   └── result.json
 │   └── node-2
 │       └── result.json
-└── system
-├── node-1
-│   ├── block_devices.json
-│   ├── cpu.json
-│   ├── hostos_info.json
-│   ├── ipv4Interfaces.json
-│   ├── kernel-configs.json
-│   ├── packages-packages.json
-│   ├── systemctl_services.json
-│   └── time.json
-├── node-2
-│   ├── block_devices.json
-│   ├── cpu.json
-│   ├── hostos_info.json
-│   ├── ipv4Interfaces.json
-│   ├── kernel-configs.json
-│   ├── packages-packages.json
-│   ├── systemctl_services.json
-│   └── time.json
-└── node_list.json
+├── system
+│   ├── node-1
+│   │   ├── block_devices.json
+│   │   ├── cpu.json
+│   │   ├── hostos_info.json
+│   │   ├── ipv4Interfaces.json
+│   │   ├── kernel-configs.json
+│   │   ├── packages-packages.json
+│   │   ├── systemctl_services.json
+│   │   └── time.json
+│   ├── node-2
+│   │   ├── block_devices.json
+│   │   ├── cpu.json
+│   │   ├── hostos_info.json
+│   │   ├── ipv4Interfaces.json
+│   │   ├── kernel-configs.json
+│   │   ├── packages-packages.json
+│   │   ├── systemctl_services.json
+│   │   └── time.json
+│   └── node_list.json
 ```
