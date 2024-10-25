@@ -6,10 +6,12 @@ description: Host collectors and analyzers in support bundles
 > New in v0.40.0 of Troubleshoot!
 
 ## Introduction
+
 If you need to collect and analyze information that is not available when using in-cluster collectors, you can use host collectors to gather information about the environment, such as CPU, memory, available block devices, and so on. This is especially useful when you need to debug a Kubernetes cluster that is down.
 
 ### Differences Between In-Cluster and Host Collectors
-[In-cluster collectors](https://troubleshoot.sh/collect/collectors), specified with the `collectors` property in the `SupportBundle` specification, collect information from a running Kubernetes cluster or schedule a resource in the cluster to dynamically generate data. 
+
+[In-cluster collectors](https://troubleshoot.sh/collect/collectors), specified with the `collectors` property in the `SupportBundle` specification, collect information from a running Kubernetes cluster or schedule a resource in the cluster to dynamically generate data.
 
 Host collectors gather information directly from the host that they are run on and do not have Kubernetes as a dependency. They can be used to test network connectivity, collect information about the operating system, and gather the output of provided commands.
 
@@ -60,6 +62,46 @@ spec:
 
 ## Known Limitations and Considerations
 
-1. Although host collectors can technically be included in vendor support bundle specifications, host collectors are intended to run directly on the host using the CLI and not with [KOTS](https://kots.io/). If host collectors run from KOTS, they are likely not to produce the desired result as they run in the context of the Kotsadm pod.
+1. Root access is not required to run any of the host collectors. However, depending on what you want to collect, you must run the binary with elevated permissions. For example, if you run the `filesystemPerformance` host collector against `/var/lib/etcd` and the user running the binary does not have permissions on this directory, collection fails.
 
-2. Root access is not required to run any of the host collectors. However, depending on what you want to collect, you must run the binary with elevated permissions. For example, if you run the `filesystemPerformance` host collector against `/var/lib/etcd` and the user running the binary does not have permissions on this directory, collection fails.
+## Included Resources
+
+Each collector generates results specific to its function, with detailed information available on the respective collector's documentation page. When collectors run remotely from a pod (with `runHostCollectorsInPod`), the output files are prefixed with the name of the node where the collector executed.
+
+E.g.
+
+```bash
+host-collectors/
+├── run-host
+│   ├── node-1
+│   │   ├── ping-google-info.json
+│   │   └── ping-google.txt
+│   └── node-2
+│       ├── ping-google-info.json
+│       └── ping-google.txt
+├── subnetAvailable
+│   ├── node-1
+│   │   └── result.json
+│   └── node-2
+│       └── result.json
+├── system
+│   ├── node-1
+│   │   ├── block_devices.json
+│   │   ├── cpu.json
+│   │   ├── hostos_info.json
+│   │   ├── ipv4Interfaces.json
+│   │   ├── kernel-configs.json
+│   │   ├── packages-packages.json
+│   │   ├── systemctl_services.json
+│   │   └── time.json
+│   ├── node-2
+│   │   ├── block_devices.json
+│   │   ├── cpu.json
+│   │   ├── hostos_info.json
+│   │   ├── ipv4Interfaces.json
+│   │   ├── kernel-configs.json
+│   │   ├── packages-packages.json
+│   │   ├── systemctl_services.json
+│   │   └── time.json
+│   └── node_list.json
+```
