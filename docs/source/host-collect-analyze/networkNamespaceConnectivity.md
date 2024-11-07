@@ -26,7 +26,7 @@ The port to use for the UDP and TCP connections. Defaults to `8080`.
 
 ##### `timeout` (Optional)
 
-The time to wait for the UDP and TCP connections to be established. This parameter is expressed with a string following the [Go duration format](https://pkg.go.dev/time#ParseDuration).
+The time to wait for the UDP and TCP connections to be established. This parameter is expressed with a string following the [Go duration format](https://pkg.go.dev/time#ParseDuration). Defaults to `5s`.
 
 ### Example Collector Definition
 
