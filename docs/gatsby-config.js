@@ -140,6 +140,7 @@ module.exports = {
             "host-collect-analyze/journald",
             "host-collect-analyze/kernelConfigs",
             "host-collect-analyze/memory",
+            "host-collect-analyze/networkNamespaceConnectivity",
             "host-collect-analyze/regex",
             "host-collect-analyze/run",
             "host-collect-analyze/subnetAvailable",
