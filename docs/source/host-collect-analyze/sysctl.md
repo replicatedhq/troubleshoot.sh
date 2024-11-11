@@ -73,7 +73,7 @@ spec:
     - sysctl: {}
   hostAnalyzers:
     - sysctl:
-        checkName: "Sysctl"
+        checkName: "ARP parameters"
         outcomes:
           - fail:
               when: "net.ipv4.conf.all.arp_ignore > 0"
