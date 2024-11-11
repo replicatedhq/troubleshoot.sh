@@ -144,6 +144,7 @@ module.exports = {
             "host-collect-analyze/regex",
             "host-collect-analyze/run",
             "host-collect-analyze/subnetAvailable",
+            "host-collect-analyze/sysctl",
             "host-collect-analyze/systemPackages",
             "host-collect-analyze/tcpConnect",
             "host-collect-analyze/tcpLoadBalancer",
