@@ -31,6 +31,7 @@ description: A list of all available host collectors and analyzers.
 - [tcpPortStatus](./tcpPortStatus): Collects and analyzes information about the specified TCP port.
 - [udpPortStatus](./udpPortStatus): Collects and analyzes information about the specified UDP port.
 - [dns](./dns): Collects information about DNS resolution.
+- [networkNamespaceConnectivity](./networkNamespaceConnectivity): Collects and analyzes connectivity between ditinct network namespaces.
 
 ### Generated and Dynamic Data
 
