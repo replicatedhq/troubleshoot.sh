@@ -41,6 +41,7 @@ description: A list of all available host collectors and analyzers.
 
 - [hostServices](./hostServices): Collects and analyzes information about the available host system services.
 - [hostOS](./hostOS): Collects and analyzes information about the operating system installed on the machine.
+- [sysctl](./sysctl): Collects and analyzes information about the host kernel parameters at runtime using `sysctl`
 - [systemPackages](./systemPackages) Collects and analyzes information about the host system packages for the specified operating system.
 - [time](./time): Collects and analyzes information about the system clock.
 - [kernelConfigs](./kernelConfigs): Collects and analyzes information about available Kernel Configs on the machine.
