@@ -5,7 +5,7 @@ description: Collect and analyze kernel parameters.
 
 ## Host Sysctl Collector
 
-To collect information about the configured kernel parameters you can use the `sysctl` collector. This will the Kernel's parameters at runtime through the `sysctl` utility, similar to what you would get by running `sysctl -a`.
+To collect information about the configured kernel parameters you can use the `sysctl` collector. This will read the Kernel's parameters at runtime through the `sysctl` utility, similar to what you would get by running `sysctl -a`.
 
 ### Parameters
 
