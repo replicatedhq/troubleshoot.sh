@@ -99,8 +99,8 @@ To make the outcome message more informative, you can include certain values gat
 | Template | Description |
 |----|----|
 |`{{ .ErrorMessage }}` | Show all error messages found during the collection |
-|`{{ .FromNamespace }}` | The CIDR provided in the collector `fromCIDR` property |
-|`{{ .ToNamespace }}` | The CIDR provided in the collector `toCIDR` property |
+|`{{ .FromCIDR }}` | The CIDR provided in the collector `fromCIDR` property |
+|`{{ .ToCIDR }}` | The CIDR provided in the collector `toCIDR` property |
 
 ### Example Analyzer Definition
 
