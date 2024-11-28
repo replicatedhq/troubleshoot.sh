@@ -16,18 +16,20 @@ If provided, the nodes analyzed will be filtered to any node that matches the fi
 
 All filters can be integers or strings that are parsed using the Kubernetes resource standard. The fields here are from the [nodes capacity and allocatable](https://kubernetes.io/docs/concepts/architecture/nodes/#capacity). Note that allocatable is not "free" or "available", but it's the amount of the capacity that is not reserved by other pods and processes.
 
-| Filter Name | Description |
-|----|----|
-| `cpuArchitecture` | The architecture of the CPU available to the node. Expressed as a string, e.g. `amd64` |
-| `cpuCapacity` | The amount of CPU available to the node. |
-| `cpuAllocatable` | The amount of allocatable CPU after the Kubernetes components have been started |
-| `memoryCapacity` | The amount of memory available to the node |
-| `memoryAllocatable` | The amount of allocatable Memory after the Kubernetes components have been started |
-| `podCapacity` | The number of pods that can be started on the node |
-| `podAllocatable` | The number of pods that can be started on the node after Kubernetes is running |
-| `ephemeralStorageCapacity` | The amount of ephemeral storage on the node |
-| `ephemeralStorageAllocatable` | The amount of ephemeral storage on the node after Kubernetes is running |
-| `matchLabel` | Specific selector label or labels the node must contain in its metadata |
+| Filter Name                   | Description                                                                            |
+|-------------------------------|----------------------------------------------------------------------------------------|
+| `cpuArchitecture`             | The architecture of the CPU available to the node. Expressed as a string, e.g. `amd64` |
+| `cpuCapacity`                 | The amount of CPU available to the node.                                               |
+| `cpuAllocatable`              | The amount of allocatable CPU after the Kubernetes components have been started        |
+| `memoryCapacity`              | The amount of memory available to the node                                             |
+| `memoryAllocatable`           | The amount of allocatable Memory after the Kubernetes components have been started     |
+| `podCapacity`                 | The number of pods that can be started on the node                                     |
+| `podAllocatable`              | The number of pods that can be started on the node after Kubernetes is running         |
+| `ephemeralStorageCapacity`    | The amount of ephemeral storage on the node                                            |
+| `ephemeralStorageAllocatable` | The amount of ephemeral storage on the node after Kubernetes is running                |
+| `matchLabel`                  | Specific selector label or labels the node must contain in its metadata                |
+| `matchExpressions`            | A list of selector label expressions that the node needs to match in its metadata      |
+
 
 CPU and Memory units are expressed as Go [Quantities](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity): `16Gi`, `8Mi`, `1.5m`, `5` etc.
 
