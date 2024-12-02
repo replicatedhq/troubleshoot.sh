@@ -157,6 +157,8 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
               message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
 ```
 
+> Filtering by labels with `matchExpressions` was introduced in Troubleshoot 0.113.0.
+
 Alternatively, you can use `matchExpressions` to specify a list of selector label expressions that the node needs to match in its metadata.
 ```yaml
     - nodeResources:
