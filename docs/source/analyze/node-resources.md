@@ -157,6 +157,29 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
               message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
 ```
 
+> Filtering by labels with `matchExpressions` was introduced in Troubleshoot 0.113.0.
+
+Alternatively, you can use `matchExpressions` to specify a list of selector label expressions that the node needs to match in its metadata.
+```yaml
+    - nodeResources:
+        checkName: Must have Mongo running
+        filters:
+          allocatableMemory: 16Gi
+          cpuCapacity: "5"
+          selector:
+            matchExpressions:
+              - key: kubernetes.io/role
+                operator: In
+                values:
+                  - database-primary-replica
+        outcomes:
+          - fail:
+              when: "count() < 1"
+              message: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) running Mongo Operator.
+          - pass:
+              message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
+```
+
 ## Message Templating
 To make the outcome message more informative, you can include certain values gathered by the NodeResources collector as templates. The templates are enclosed in double curly braces with a dot separator. The following templates are available:
 
