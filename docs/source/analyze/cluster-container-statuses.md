@@ -14,6 +14,7 @@ The outcomes on this analyzer will be processed in order for each container of e
 ## Parameters
 
 **namespaces**: (Optional) The namespaces to look for the pods in. If not specified, it will default to all namespaces.
+
 **restartCount**: (Optional) Only consider containers with a restart count greater than or equal to this value.
 
 ## Example Analyzer Definition
