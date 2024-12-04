@@ -30,6 +30,7 @@ spec:
         checkName: oom-detector
         namespaces:
           - default
+        restartCount: 1
         outcomes:
           - fail:
               when: "== OOMKilled"
