@@ -88,6 +88,7 @@ module.exports = {
             "analyze/ceph-status",
             "analyze/certificates",
             "analyze/cluster-pod-statuses",
+            "analyze/cluster-container-statuses",
             "analyze/cluster-resource",
             "analyze/cluster-version",
             "analyze/container-runtime",
