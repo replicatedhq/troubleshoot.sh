@@ -133,33 +133,6 @@ spec:
               message: This cluster has a node with enough memory and cpu cores
 ```
 
-```yaml
-- nodeResources:
-    checkName: Must have at least 1 node with 3 cores and is not a storage, queue or control plane node
-    filters:
-      cpuCapacity: "3"  # Just checking for CPU capacity here, but we can check for memory, ephemeral storage, etc.
-      selector:
-        matchExpressions:
-        # An AND operation will be applied to this list of expressions
-        # Match nodes that are not storage or queue nodes
-        - key: node.kubernetes.io/role
-          operator: NotIn # Other operations are In, Exists, DoesNotExist
-          values:   # This is an OR operation i.e any node that does not have "node.kubernetes.io/role=storage" or "node.kubernetes.io/role=queue" label
-          - storage
-          - queue
-        # Not a control-plane node
-        - key: node-role.kubernetes.io/control-plane
-          operator: NotIn
-          values:
-          - "true"
-    outcomes:
-      - pass:
-          when: "count() >= 1"
-          message: "Found {{ .NodeCount }} nodes with at least 3 CPU cores"
-      - fail:
-          message: "{{ .NodeCount }} nodes do not meet the minimum requirements"
-```
-
 ### Filter by labels
 
 > Filtering by labels was introduced in Kots 1.19.0 and Troubleshoot 0.9.42.
@@ -182,6 +155,33 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
               message: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) running Mongo Operator.
           - pass:
               message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
+```
+
+```yaml
+- nodeResources:
+    checkName: Must have at least 1 node with 3 cores that is not a storage, queue or control plane node
+    filters:
+      cpuCapacity: "3"
+      selector:
+        matchExpressions:
+        # An AND operation will be applied to this list of expressions
+        # Nodes that are not storage or queue nodes
+        - key: node.kubernetes.io/role
+          operator: NotIn # Other operations are In, Exists, DoesNotExist
+          values:   # An OR operation i.e any node that does not have "node.kubernetes.io/role=storage" or "node.kubernetes.io/role=queue" label
+          - storage
+          - queue
+        # Nodes that are not control-plane nodes
+        - key: node-role.kubernetes.io/control-plane
+          operator: NotIn
+          values:
+          - "true"
+    outcomes:
+      - pass:
+          when: "count() >= 1"
+          message: "Found {{ .NodeCount }} nodes with at least 3 CPU cores"
+      - fail:
+          message: "{{ .NodeCount }} nodes do not meet the minimum requirements"
 ```
 
 ## Message Templating
