@@ -157,6 +157,33 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
               message: This cluster has a node with enough memory and cpu capacity running Mongo Operator.
 ```
 
+```yaml
+- nodeResources:
+    checkName: Must have at least 1 node with 3 cores that is not a storage, queue or control plane node
+    filters:
+      cpuCapacity: "3"
+      selector:
+        matchExpressions:
+        # An AND operation will be applied to this list of expressions
+        # Nodes that are not storage or queue nodes
+        - key: node.kubernetes.io/role
+          operator: NotIn # Other operations are In, Exists, DoesNotExist
+          values:   # An OR operation i.e any node that does not have "node.kubernetes.io/role=storage" or "node.kubernetes.io/role=queue" label
+          - storage
+          - queue
+        # Nodes that are not control-plane nodes
+        - key: node-role.kubernetes.io/control-plane
+          operator: NotIn
+          values:
+          - "true"
+    outcomes:
+      - pass:
+          when: "count() >= 1"
+          message: "Found {{ .NodeCount }} nodes with at least 3 CPU cores"
+      - fail:
+          message: "{{ .NodeCount }} nodes do not meet the minimum requirements"
+```
+
 ## Message Templating
 To make the outcome message more informative, you can include certain values gathered by the NodeResources collector as templates. The templates are enclosed in double curly braces with a dot separator. The following templates are available:
 
@@ -178,7 +205,7 @@ To make the outcome message more informative, you can include certain values gat
 ```yaml
     - nodeResources:
         filters:
-          cpuArchitecture: arm64 
+          cpuArchitecture: arm64
         checkName: Must have at least 3 nodes in the cluster
         outcomes:
           - fail:
@@ -195,7 +222,7 @@ To make the outcome message more informative, you can include certain values gat
     - nodeResources:
         filters:
           cpuArchitecture: arm64
-          cpuCapacity: "2"        
+          cpuCapacity: "2"
         checkName: Must have at least 3 nodes in the cluster
         outcomes:
           - fail:
