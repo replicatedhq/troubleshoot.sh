@@ -23,6 +23,8 @@ spec:
     - hostOS: {}
 ```
 
+test
+
 ### Included Resources
 
 The results of the hostOS collector are stored in the `host-collectors/system` directory of the support bundle.
