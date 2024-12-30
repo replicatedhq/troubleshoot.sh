@@ -29,6 +29,9 @@ All filters can be integers or strings that are parsed using the Kubernetes reso
 | `ephemeralStorageAllocatable` | The amount of ephemeral storage on the node after Kubernetes is running                |
 | `matchLabel`                  | Specific selector label or labels the node must contain in its metadata                |
 | `matchExpressions`            | A list of selector label expressions that the node needs to match in its metadata      |
+| `resourceName`               | The name of the resource to filter on. This is useful for filtering on custom resources |
+| `resourceCapacity`           | The amount of the resource available to the node.                                       |
+| `resourceAllocatable`        | The amount of allocatable resource after the Kubernetes components have been started    |
 
 
 CPU and Memory units are expressed as Go [Quantities](https://pkg.go.dev/k8s.io/apimachinery/pkg/api/resource#Quantity): `16Gi`, `8Mi`, `1.5m`, `5` etc.
@@ -182,6 +185,48 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
           message: "Found {{ .NodeCount }} nodes with at least 3 CPU cores"
       - fail:
           message: "{{ .NodeCount }} nodes do not meet the minimum requirements"
+```
+
+### Filter by GPU resources
+resoucrceName is used to filter on custom resources. For example, to filter on GPU resources, you can use the resourceName filter with the resource name `nvidia.com/gpu`.
+resourceCapacity and resourceAllocatable filters are used to filter on the capacity and allocatable resources of the custom resource.
+
+```yaml
+- nodeResources:
+    checkName: Must have at least 1 node with 1 GPU
+    filters:
+      resourceName: nvidia.com/gpu
+      resourceCapacity: "1"
+    outcomes:
+      - pass:
+          when: "count() >= 1"
+          message: "Found {{ .NodeCount }} nodes with at least 1 GPU"
+      - fail:
+          message: "{{ .NodeCount }} nodes do not meet the minimum requirements"
+```
+
+```yaml
+- nodeResources:
+    checkName: Must have at least 4 Intel i915 GPUs in the cluster
+    filters:
+      resourceName: gpu.intel.com/i915
+    outcomes:
+      - pass:
+          when: "min(resourceAllocatable) > 4"
+          message: "This application requires at least 4 Intel i915 GPUs"
+      - fail:
+          message: "{{ .NodeCount }} nodes do not meet the minimum requirements"
+```
+
+```yaml
+- nodeResources:
+   filters:
+     resourceName: nvidia.com/gpu
+   checkName: Must have at least 3 GPU-enabled nodes in the cluster
+   outcomes:
+     - pass:
+         when: "count() >= 3"
+         message: "This application requires at least 3 GPU-enabled nodes"
 ```
 
 ## Message Templating
