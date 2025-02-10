@@ -11,6 +11,7 @@
     "build": "make publish; yarn yarn:cache"
   },
   "dependencies": {
+    "js-yaml": "^4.1.0",
     "netlify-plugin-gatsby-yarn-cache": "^0.1.1"
   }
 }
