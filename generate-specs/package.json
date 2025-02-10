@@ -3,7 +3,7 @@
   "name": "marketing",
   "version": "0.0.0",
   "dependencies": {
-    "js-yaml": "^3.13.1",
+    "js-yaml": "^4.1.0",
     "lodash": "^4.17.21"
   }
 }
