@@ -58,7 +58,7 @@ fs.readdir(specDir, (err, files) => {
     let subdirSpecs = [];
     subFile.forEach(f => {
       // Load YAML file contents
-      const doc = yaml.safeLoad(fs.readFileSync(path.resolve(subDirPath + "/" + f)));
+      const doc = yaml.load(fs.readFileSync(path.resolve(subDirPath + "/" + f)));
       
       // Add all tags from spec to the tags array (will be filtered later)
       let newTags = JSON.parse(doc.metadata.annotations.tags)
@@ -105,10 +105,10 @@ fs.readdir(specDir, (err, files) => {
       // Remove annotations before setting the yaml spec
       delete doc["metadata"]["annotations"];
       if (doc.kind === "Preflight") {
-        specObj.preflightSpecYaml = yaml.safeDump(doc);
+        specObj.preflightSpecYaml = yaml.dump(doc);
       }
       if (doc.kind === "SupportBundle") {
-        specObj.supportSpecYaml = yaml.safeDump(doc);
+        specObj.supportSpecYaml = yaml.dump(doc);
       }
 
       // Add spec to specs array
@@ -143,5 +143,3 @@ fs.readdir(specDir, (err, files) => {
   });
 
 });
-
-
