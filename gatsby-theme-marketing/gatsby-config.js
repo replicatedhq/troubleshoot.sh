@@ -36,13 +36,6 @@ module.exports = {
         head: true,
         anonymize: true,
       },
-    },
-    {
-      resolve: `gatsby-plugin-load-script`,
-      options: {
-        src: `/matomo.js`,
-        disable: !process.env.CONTEXT === "production"
-      },
     }
   ],
 }
