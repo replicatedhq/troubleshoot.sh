@@ -49,7 +49,7 @@ The conditional in the `when` value supports the following:
 | `sum(filterName)` | Sum of filterName in all nodes that match any filter specified |
 | `min(filterName)` | Min of filterName in all nodes that match any filter specified |
 | `max(filterName)` | Max of filterName in all nodes that match any filter specified |
-| `nodeCondition(conditionType)` | used for checking node conditions such as Ready, PIDPressure, etc |
+| `nodeCondition(conditionType)` | used for checking [node conditions](https://kubernetes.io/docs/reference/node/node-status/#condition) such as Ready, PIDPressure, etc |
 
 ## Example Analyzer Definition
 
@@ -134,6 +134,20 @@ spec:
               message: This application requires at least 1 node with 16GB available memory and 5 cpu cores with amd64 architecture
           - pass:
               message: This cluster has a node with enough memory and cpu cores
+```
+
+```yaml
+    - nodeResources:
+        checkName: Node status check
+        outcomes:
+          - fail:
+              when: "nodeCondition(Ready) == False"
+              message: "Not all nodes are online."
+          - fail:
+              when: "nodeCondition(Ready) == Unknown"
+              message: "Not all nodes are online."
+          - pass:
+              message: "All nodes are online."
 ```
 
 ### Filter by labels

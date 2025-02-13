@@ -9,14 +9,14 @@
     "develop": "gatsby develop"
   },
   "peerDependencies": {
-    "gatsby": "^2.22.15",
+    "gatsby": "^5.14.1",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-theme-apollo-docs": "^4.2.3",
     "react": "^16.13.1",
     "react-dom": "^16.13.1"
   },
   "devDependencies": {
-    "gatsby": "^2.22.15",
+    "gatsby": "^5.14.1",
     "gatsby-plugin-google-fonts": "^1.0.1",
     "gatsby-theme-apollo-docs": "^4.2.3",
     "react": "^16.13.1",
@@ -24,7 +24,7 @@
   },
   "dependencies": {
     "dotenv": "^8.2.0",
-    "gatsby-plugin-sharp": "^2.6.11",
+    "gatsby-plugin-sharp": "^5.14.0",
     "gatsby-remark-autolink-headers": "^2.11.0",
     "gatsby-transformer-sharp": "^2.5.5"
   }
