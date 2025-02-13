@@ -15,7 +15,7 @@ spec:
   collectors: []
 ```
 
-An OpenAPI Schema for this type is published at: [https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/collector-troubleshoot-v1beta2.json](https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/v1.23.6-standalone-strict/collector-troubleshoot-v1beta2.json).
+An OpenAPI Schema for this type is published at: [https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/troubleshoot/collector-troubleshoot-v1beta2.json](https://github.com/replicatedhq/kots-lint/blob/main/kubernetes_json_schema/schema/troubleshoot/collector-troubleshoot-v1beta2.json).
 
 ### Shared Properties
 
