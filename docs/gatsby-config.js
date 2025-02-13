@@ -152,6 +152,7 @@ module.exports = {
             "host-collect-analyze/tcpPortStatus",
             "host-collect-analyze/time",
             "host-collect-analyze/udpPortStatus",
+            "host-collect-analyze/subnetcontainsip"
           ],
         },
       },
