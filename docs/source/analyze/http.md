@@ -10,6 +10,14 @@ The `http` analyzer is used to analyse information collected by the [HTTP Reques
 - `error`: Error occurred connecting to the URL.
 - `statusCode == 200`: Successfully connected to the URL.
 
+For the comparison if the status code, the following operators are supported:
+
+`"==", "!=", ">=", "<="`
+
+Expressions can also be chained through the `&&` (and) and `||` (or) operator. For example, in order to check that the HTTP status code is part of the 2xx family, the following expression can be used:
+
+`statusCode => 200 && statusCode <= 299`
+
 ### Examples of the collected JSON output to analyse
 
 Response received from the server will be stored in the `"response"` key of the resulting JSON file
