@@ -10,7 +10,7 @@ The `http` analyzer is used to analyse information collected by the [HTTP Reques
 - `error`: Error occurred connecting to the URL.
 - `statusCode == 200`: Successfully connected to the URL.
 
-For the comparison if the status code, the following operators are supported:
+For the comparison of the status code, the following operators are supported:
 
 `"==", "!=", ">=", "<="`
 
