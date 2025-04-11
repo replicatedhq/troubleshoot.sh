@@ -11,7 +11,7 @@ The JSON compare analyzer is used to compare a JSON snippet with part or all of 
 
 **value**: (Required) JSON value to compare.
 If the value matches the collected file, the outcome that has `when` set to `"true"` will be executed.
-If a `when` expression is not specified, the `pass` outcome defaults to `"true"`.
+If a `when` expression is not specified, the `pass` outcome defaults to `"true"`. This value _must_ be specified as a multi-line YAML string and any string values must be in double quotes (see the examples).
 
 **path**: (Optional) Portion of the collected JSON file to compare against.
 The default behavior is to compare against the entire collected file.
