@@ -3,11 +3,15 @@ title: Velero
 description: Check backup, restore settings and status.
 ---
 
-The `Velero` analyzer is available to check statuses of Custom Resources installed by velero, such as: backup storage locations, backup repositories, backups and restores.
+The `Velero` analyzer is available to check statuses of Custom Resources installed by velero, such as: BackupStorageLocations, BackupRepositories, Backups and Restores.  If it finds resources in the Failed or PartiallyFailed state, it will generate a Failure, surface the reason for the failure, and attempt to provide a remediation.
 
 ## Parameters
 
-**collectorName:** (N/A) Velero currently does not require a special collector as all the Custom Resources are already collected in support bundle by the `Cluster Resources` collector.
+**collectorName:** (N/A) Velero currently does not require a collectorName as a reference, all the Custom Resources are already collected in support bundle by the `Cluster Resources` collector.
+
+**backupsCount:** (Optional) `integer` The number of most recent backups to analyze.  Defaults to `1`.
+
+**restoresCount:** (Optional) `integer` The number of most recent restores to analyze.  Defaults to `1`.
 
 ## Example Analyzer Definition
 
@@ -28,7 +32,8 @@ spec:
 
 **Note**
 
-For the logs collector:
+For the Velero analyzer to find the Velero pod logs correctly, pair it with the `logs` collector:
+
 - `name` should always be `velero/logs` as it's the default path created in support bundle to be then used by velero analyzer.
 - `namespace` could be changed to any other namespace in case velero was installed in a different namespace.
 
@@ -40,7 +45,9 @@ Checks that at least 1 backup repository is configured and available.
 
 ### backups.velero.io
 
-Warns of the following phases if one or more of the following states:
+Analyzes the most recent N backups, where N is the value of the `backupsCount` parameter.  If the backup is in a failed state, it will generate a Fail message, surface the reason for the failure, and attempt to provide a remediation.
+
+Failed states include:
 
 - `BackupPhaseFailed`
 - `BackupPhasePartiallyFailed`
@@ -66,7 +73,7 @@ Generates 'pod volume restore' count summary and any failures.
 
 ### restores.velero.io
 
-Generates'restore' count summary and any failures. Failures if any of the following states are found:
+Analyzes the most recent N restores, where N is the value of the `restoresCount` parameter.  If the restore is in a failed state, it will generate a Fail message, surface the reason for the failure, and attempt to provide a remediation.
 
 - `RestorePhaseFailed`
 - `RestorePhasePartiallyFailed`
@@ -87,5 +94,5 @@ Analyzes the logs for the velero node agent. This analyzer will only run if the 
 
 Checks for the following strings in `node-agent*` pod log file(s):
 
-- `error|panic|fatal` 
+- `error|panic|fatal`
 - `permission denied`
