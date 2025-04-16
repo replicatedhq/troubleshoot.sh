@@ -66,6 +66,10 @@ The number of lines to include, starting from the newest.
 The maximum file size of a collected pod log. Defaults to an integer value of`5000000` bytes, which is 5MB. The value
 can only be set as an integer value for the `maxBytes` limit.
 
+#### `timestamps` (Optional)
+Include recorded timestamps in logs.
+By default, this is set to `false`.
+
 ## Example Collector Definition
 
 ```yaml
@@ -95,6 +99,7 @@ spec:
         limits:
           maxLines: 1000
           maxBytes: 5000000
+        timestamps: true
 ```
 
 
