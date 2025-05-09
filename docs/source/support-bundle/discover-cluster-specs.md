@@ -43,6 +43,7 @@ data:
               - app=example
               - component=nginx
             namespace: default
+            name: app-example-logs
             limits:
               maxAge: 720h
               maxLines: 10000

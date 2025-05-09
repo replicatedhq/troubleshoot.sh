@@ -34,6 +34,7 @@ The collector YAML in `support-bundle.yaml`:
     - logs:
         selector:
           - app.kubernetes.io/name=service1
+        name: service1/logs
 ```
 
 ##### `namespace` (Optional)
