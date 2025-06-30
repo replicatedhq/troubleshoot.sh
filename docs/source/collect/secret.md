@@ -30,6 +30,10 @@ A key within the Secret. Required if `includeValue` is `true`.
 
 Whether to include the key value. Defaults to false.
 
+##### `includeAllData` (Optional)
+
+Whether to include all of the key-value pairs from the Secret data. When set to `true`, all secret key-value pairs are collected and converted from `[]byte` to `string`. This takes precedence over key-specific collection. Defaults to false.
+
 ## Example Collector Definition
 
 ```yaml
@@ -46,11 +50,48 @@ spec:
         key: password
 ```
 
+## Example with includeAllData
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: sample
+spec:
+  collectors:
+    - secret:
+        namespace: default
+        name: my-app-config
+        includeAllData: true
+```
+
+## Usage Examples
+
+Collect all key-value pairs from a specific secret:
+
+```yaml
+- secret:
+    name: my-app-config
+    namespace: default
+    includeAllData: true
+```
+
+Collect all data from secrets matching a selector:
+
+```yaml
+- secret:
+    namespace: default
+    selector: ["app=my-app"]
+    includeAllData: true
+```
+
 ## Included resources
 
 When this collector is executed, it will include the following file in a support bundle:
 
 ### `/secrets/[namespace]/[name]/[key].json`
+
+When collecting a specific key:
 
 ```json
 {
@@ -63,7 +104,24 @@ When this collector is executed, it will include the following file in a support
 }
 ```
 
-If `key` is not set in the collector spec, the file will be created at:
+### `/secrets/[namespace]/[name].json`
+
+When `includeAllData` is set to `true`, the JSON output includes a `data` field:
+
+```json
+{
+  "namespace": "default",
+  "name": "my-app-config", 
+  "secretExists": true,
+  "data": {
+    "database-password": "supersecret123",
+    "api-key": "abc123xyz",
+    "jwt-secret": "my-signing-key"
+  }
+}
+```
+
+If `key` is not set in the collector spec and `includeAllData` is not enabled, the file will be created at:
 
 ### `/secrets/[namespace]/[name].json`
 
