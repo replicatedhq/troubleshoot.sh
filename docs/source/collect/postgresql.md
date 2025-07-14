@@ -15,7 +15,7 @@ This is recommended to set to a string identifying the PostgreSQL instance, and 
 If unset, this will be set to the string "postgres".
 
 #### `uri` (Required)
-The connection URI to use when connecting to the PostgreSQL server.  The PostgreSQL collector uses Golang's (`pgx.ParseConfig()`)[https://pkg.go.dev/github.com/jackc/pgx/v4#ParseConfig] which expects URL-encoded connection strings.
+The connection URI to use when connecting to the PostgreSQL server.  The PostgreSQL collector uses Golang's [`pgx.ParseConfig()`](https://pkg.go.dev/github.com/jackc/pgx/v4#ParseConfig) which expects URL-encoded connection strings.
 If your password contains special characters, like `@`, `#`, `&`, etc., you may need to URL-encode the password.  See the [URL encoding](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING) documentation for more details.
 
 #### `tls` (Optional)
