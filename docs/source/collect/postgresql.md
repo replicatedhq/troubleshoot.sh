@@ -15,7 +15,8 @@ This is recommended to set to a string identifying the PostgreSQL instance, and 
 If unset, this will be set to the string "postgres".
 
 #### `uri` (Required)
-The connection URI to use when connecting to the PostgreSQL server.
+The connection URI to use when connecting to the PostgreSQL server.  The PostgreSQL collector uses Golang's (`pgx.ParseConfig()`)[https://pkg.go.dev/github.com/jackc/pgx/v4#ParseConfig] which expects URL-encoded connection strings.
+If your password contains special characters, like `@`, `#`, `&`, etc., you may need to URL-encode the password.  See the [URL encoding](https://www.postgresql.org/docs/current/libpq-connect.html#LIBPQ-CONNSTRING) documentation for more details.
 
 #### `tls` (Optional)
 TLS parameters are required whenever connections to the target postgres server are encrypted using TLS. The server can be configured to authenticate clients (`mTLS`) or to secure the connection (`TLS`). In `mTLS` mode, the required parameters are `client certificate`, `private key` and a `CA certificate`. If the server is configured to encrypt only the connection, then only the `CA certificate` is required. When the `skipVerify` option is set to `true`, then verifying the server certificate can be skipped. The `skipVerify` option is available only in `TLS` mode.
@@ -35,6 +36,19 @@ spec:
     - postgres:
         collectorName: pg
         uri: postgresql://user:password@hostname:5432/defaultdb?sslmode=require
+```
+
+URL-encoded password with special characters, using [Helm's `urlquery` function](https://helm.sh/docs/chart_template_guide/function_list/#urlquery):
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: SupportBundle
+metadata:
+  name: sample
+spec:
+  collectors:
+    - postgres:
+        collectorName: pg
+        uri: 'postgresql://{{ $db_user | urlquery }}:{{ $db_pass | urlquery }}@{{ $db_host }}:{{ $db_port }}/{{ $db_name }}'
 ```
 
 Secured (`mTLS`) connection to a server with inline TLS parameter configurations. The parameters must be in `PEM` format:
