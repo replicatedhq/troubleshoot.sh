@@ -26,7 +26,7 @@ kubectl support-bundle https://support-bundle.replicated.com
 To build the CLI locally, run:
 
 ```shell
-nvm use v20.11.0
+nvm use v20.18.1
 make local
 ```
 You will have a folder call `public` with the rendered HTML and CSS files for Gatsby.
