@@ -1,8 +1,17 @@
 [build]
   publish = "public"
-  command = "yarn build"
+  command = """
+    apt-get update && 
+    apt-get install -y libglib2.0-dev libgobject-introspection-1.0-dev && 
+    yarn build
+  """
+
 [build.environment]
+  NODE_VERSION = "18.20.4"
+  NPM_VERSION = "10.8.2"
+  YARN_VERSION = "1.22.22"
   NETLIFY_RESTORE = "1"
   # Also GA_TRACKING_ID and ALGOLIA_API_KEY which are specified in Netlify UI
+
 [[plugins]]
   package = "netlify-plugin-gatsby-yarn-cache"
