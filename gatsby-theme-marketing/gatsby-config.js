@@ -26,15 +26,12 @@ module.exports = {
       },
     },
     {
-      resolve: `gatsby-plugin-create-client-paths`,
-      options: { prefixes: [`/explore/*`, `/preflight/*`, `/support-bundle/*`] },
-    },
-    {
       resolve: `gatsby-plugin-google-analytics`,
       options: {
-        trackingId: process.env.GA_TRACKING_ID,
-        head: true,
+        trackingId: process.env.GA_TRACKING_ID || "UA-000000-01",
+        head: false,
         anonymize: true,
+        respectDNT: true,
       },
     }
   ],
