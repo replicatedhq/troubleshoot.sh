@@ -8,6 +8,12 @@
   "scripts": {
     "build": "make publish"
   },
+  "config": {
+    "sharp_binary_host": "https://github.com/lovell/sharp-libvips/releases/download/",
+    "sharp_libvips_binary_host": "https://github.com/lovell/sharp-libvips/releases/download/",
+    "target_platform": "linux",
+    "target_arch": "x64"
+  },
   "resolutions": {
     "sharp": "^0.32.6",
     "axios": "^1.10.0",

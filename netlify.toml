@@ -7,11 +7,16 @@
   NPM_VERSION = "10.8.2"
   YARN_VERSION = "1.22.22"
   NETLIFY_RESTORE = "1"
-  # Force Sharp to use prebuilt binaries instead of compiling
-  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
-  SHARP_FORCE_GLOBAL_LIBVIPS = "false"
+  # Force Sharp to use prebuilt binaries - correct npm config variable names
   npm_config_sharp_binary_host = "https://github.com/lovell/sharp-libvips/releases/download/"
   npm_config_sharp_libvips_binary_host = "https://github.com/lovell/sharp-libvips/releases/download/"
+  npm_config_target_platform = "linux"
+  npm_config_target_arch = "x64"
+  npm_config_fallback_to_build = "false"
+  npm_config_build_from_source = "false"
+  # Additional Sharp environment variables
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
+  SHARP_FORCE_GLOBAL_LIBVIPS = "false"
   # Also GA_TRACKING_ID and ALGOLIA_API_KEY which are specified in Netlify UI
 
 [[plugins]]
