@@ -1,16 +1,17 @@
 [build]
   publish = "public"
-  command = """
-    apt-get update && 
-    apt-get install -y libglib2.0-dev libgobject-introspection-1.0-dev && 
-    yarn build
-  """
+  command = "yarn build"
 
 [build.environment]
   NODE_VERSION = "18.20.4"
   NPM_VERSION = "10.8.2"
   YARN_VERSION = "1.22.22"
   NETLIFY_RESTORE = "1"
+  # Force Sharp to use prebuilt binaries instead of compiling
+  SHARP_IGNORE_GLOBAL_LIBVIPS = "1"
+  SHARP_FORCE_GLOBAL_LIBVIPS = "false"
+  npm_config_sharp_binary_host = "https://github.com/lovell/sharp-libvips/releases/download/"
+  npm_config_sharp_libvips_binary_host = "https://github.com/lovell/sharp-libvips/releases/download/"
   # Also GA_TRACKING_ID and ALGOLIA_API_KEY which are specified in Netlify UI
 
 [[plugins]]
