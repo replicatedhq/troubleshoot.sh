@@ -2,6 +2,15 @@
   "private": true,
   "name": "docs",
   "version": "0.0.1",
+  "overrides": {
+    "sharp": "^0.34.3",
+    "axios": "^1.10.0",
+    "semver": "^7.6.0",
+    "minimatch": "^9.0.4",
+    "ws": "^8.18.0",
+    "postcss": "^8.4.49",
+    "undici": "^6.20.1"
+  },
   "scripts": {
     "prestart": "gatsby clean",
     "start": "gatsby develop -p 1313",
