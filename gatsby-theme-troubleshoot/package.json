@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "main": "index.js",
   "license": "Apache 2.0",
-  "overrides": {
+  "resolutions": {
     "sharp": "^0.32.6",
     "axios": "^1.10.0",
     "semver": "^7.6.0",

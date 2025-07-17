@@ -1,24 +1,8 @@
 [build]
-  command = "make build-marketing"
-  publish = "marketing/public"
-
+  publish = "public"
+  command = "yarn build"
 [build.environment]
-  NODE_VERSION = "18.20.4"
-  NPM_VERSION = "10.8.2"
-  YARN_VERSION = "1.22.22"
-
-# Force Ubuntu 22.04 for modern system dependencies
-[context.production]
-  command = "make build-marketing"
-
-[context.deploy-preview]
-  command = "make build-marketing"
-
-[context.branch-deploy]
-  command = "make build-marketing"
-
-# Redirects
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+  NETLIFY_RESTORE = "1"
+  # Also GA_TRACKING_ID and ALGOLIA_API_KEY which are specified in Netlify UI
+[[plugins]]
+  package = "netlify-plugin-gatsby-yarn-cache"

@@ -2,7 +2,8 @@
   "name": "gatsby-theme-marketing",
   "private": true,
   "version": "1.0.0",
-  "overrides": {
+
+  "resolutions": {
     "sharp": "^0.32.6",
     "axios": "^1.10.0",
     "semver": "^7.6.0",
