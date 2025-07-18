@@ -45,7 +45,7 @@ exports.onCreatePage = async ({ page, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  // Query for markdown docs content only
+  // Query for markdown docs content only (MDX support to be added later)
   const docsResult = await graphql(`
     query {
       allFile(filter: { 

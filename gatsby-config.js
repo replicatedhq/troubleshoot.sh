@@ -51,6 +51,12 @@ const plugins = [
   `gatsby-plugin-sharp`,
   `gatsby-transformer-sharp`,
   `gatsby-transformer-remark`,
+  {
+    resolve: `gatsby-plugin-mdx`,
+    options: {
+      extensions: [`.mdx`],
+    },
+  },
 ];
 
 // Only add Google Analytics if tracking ID is provided
