@@ -1,85 +1,25 @@
+# Troubleshoot Documentation Makefile
 
-.PHONY: publish
-publish: deps prep build
-publish:
-	mkdir -p public
-	cp -r marketing/public/* public
+.PHONY: help install start build serve test clean
 
-	mkdir -p public/docs
-	cp -r docs/public/* public/docs
-	rm -rf public/docs/social-cards
+# Default target
+help: ## Show available commands
+	@grep -E '^[a-zA-Z_-]+:.*?## .*$$' $(MAKEFILE_LIST) | awk 'BEGIN {FS = ":.*?## "}; {printf "%-15s %s\n", $$1, $$2}'
 
-	cp -r static/* public
+install: ## Install dependencies
+	npm ci
 
-.PHONY: build
-build:  make-generate-specs build-marketing build-docs
+start: ## Start development server
+	npm start
 
-.PHONY: make-generate-specs
-make-generate-specs:
-	make generate-specs
+build: ## Build for production
+	npm run build
 
+serve: ## Serve built site locally
+	npm run serve:build
 
-.PHONY: build-marketing
-build-marketing:
-	cp package-marketing.json package.json
-	yarn install
-	yarn workspace marketing build --prefix-paths
+test: ## Run all tests
+	./tests/run-all-tests.sh
 
-.PHONY: build-docs
-build-docs:
-	cp package-docs.json package.json
-	yarn install
-	yarn workspace docs build --prefix-paths
-
-.PHONY: deps
-deps:
-	yarn
-
-.PHONY: prep
-prep:
-	rm -rf public
-	rm -rf package.json
-	rm -rf yarn.lock
-
-.PHONY: clean
-clean: clean-public clean-marketing clean-docs
-
-.PHONY: clean-public
-clean-public:
-	rm -rf public
-
-.PHONY: clean-marketing
-clean-marketing:
-	cp package-marketing.json package.json
-	yarn workspace marketing clean
-
-.PHONY: clean-docs
-clean-docs:
-	cp package-docs.json package.json
-	yarn workspace docs clean
-
-.PHONY: generate-specs
-generate-specs:
-	node generate-specs.js
-
-.PHONY: pre-preview
-pre-preview:
-	cp -r public/*  marketing/public
-
-.PHONY: preview
-preview:
-	./preview.sh
-
-.PHONY: local
-local: deps build
-local:
-	git restore package.json
-	rm -rf yarn.lock
-	mkdir -p public
-	cp -r marketing/public/* public
-
-	mkdir -p public/docs
-	cp -r docs/public/* public/docs
-	rm -rf public/docs/social-cards
-
-	cp -r static/* public
+clean: ## Clear cache
+	npm run clear

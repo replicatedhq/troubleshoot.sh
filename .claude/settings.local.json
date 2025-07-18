@@ -24,7 +24,10 @@
       "WebFetch(domain:troubleshoot.sh)",
       "Bash(yarn start:*)",
       "Bash(chmod:*)",
-      "Bash(yarn add:*)"
+      "Bash(yarn add:*)",
+      "Bash(mv:*)",
+      "Bash(git rm:*)",
+      "Bash(make:*)"
     ],
     "deny": []
   }

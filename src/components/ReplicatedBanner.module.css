@@ -1,0 +1,86 @@
+.banner {
+  background: #326DE6;
+  color: white;
+  padding: 8px 0;
+  font-size: 14px;
+  position: relative;
+  z-index: 1000;
+}
+
+.container {
+  max-width: none;
+  margin: 0;
+  padding: 0 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.replicatedLogo {
+  display: flex;
+  align-items: center;
+}
+
+.logoImage {
+  height: 20px;
+  width: auto;
+}
+
+.message {
+  flex: 1;
+  text-align: right;
+}
+
+.bannerLink {
+  color: white;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 400;
+  transition: opacity 0.2s ease;
+}
+
+.bannerLink:hover {
+  opacity: 0.8;
+  color: white;
+  text-decoration: none;
+}
+
+.arrow {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+    gap: 8px;
+    text-align: center;
+  }
+  
+  .message {
+    text-align: center;
+  }
+  
+  .banner {
+    padding: 12px 0;
+  }
+  
+  .bannerLink {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: 0 16px;
+  }
+  
+  .bannerLink {
+    font-size: 12px;
+  }
+}

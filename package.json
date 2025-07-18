@@ -1,41 +1,53 @@
 {
-  "name": "troubleshoot-gatsby5",
-  "version": "1.0.0",
-  "main": "index.js",
+  "name": "troubleshoot-docs",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "gatsby develop -p 1313",
-    "build": "gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean"
+    "docusaurus": "docusaurus",
+    "start": "docusaurus start --port 3001",
+    "dev": "docusaurus start --port 3001",
+    "build": "docusaurus build",
+    "build:analyze": "docusaurus build --bundle-analyzer",
+    "swizzle": "docusaurus swizzle",
+    "deploy": "docusaurus deploy",
+    "clear": "docusaurus clear",
+    "serve": "docusaurus serve --port 3001",
+    "serve:build": "docusaurus serve --build --port 3001",
+    "write-translations": "docusaurus write-translations",
+    "write-heading-ids": "docusaurus write-heading-ids",
+    "typecheck": "tsc",
+    "lint": "eslint src --ext .js,.jsx,.ts,.tsx",
+    "lint:fix": "eslint src --ext .js,.jsx,.ts,.tsx --fix"
   },
-  "author": "Replicated",
-  "license": "MIT",
   "dependencies": {
-    "@mdx-js/react": "^2.3.0",
-    "brace": "^0.11.1",
-    "dotenv": "^16.0.0",
-    "gatsby": "5.14.0",
-    "gatsby-plugin-mdx": "^5.14.0",
-    "gatsby-plugin-netlify": "^5.1.1",
-    "gatsby-plugin-react-helmet": "6.14.0",
-    "gatsby-plugin-sass": "6.14.0",
-    "gatsby-remark-autolink-headers": "6.14.0",
-    "gatsby-remark-prismjs": "^7.14.0",
-    "gatsby-source-filesystem": "^5.14.0",
-    "gatsby-transformer-remark": "^6.14.0",
-    "monaco-editor-webpack-plugin": "^7.1.0",
-    "prismjs": "^1.30.0",
-    "prop-types": "^15.8.1",
-    "react": "18.3.1",
-    "react-anchor-link-smooth-scroll": "^1.0.12",
-    "react-dom": "18.3.1",
-    "react-feather": "^2.0.8",
-    "react-helmet": "^6.1.0",
-    "react-scrollspy": "^3.4.3",
-    "sass": "^1.69.0"
+    "@docusaurus/core": "3.8.1",
+    "@docusaurus/preset-classic": "3.8.1",
+    "@docusaurus/theme-search-algolia": "^3.8.1",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
   },
   "devDependencies": {
-    "@types/react": "^18.2.0",
-    "@types/react-dom": "^18.2.0"
+    "@docusaurus/module-type-aliases": "3.8.1",
+    "@docusaurus/tsconfig": "3.8.1",
+    "@docusaurus/types": "3.8.1",
+    "typescript": "~5.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=18.0"
   }
 }
