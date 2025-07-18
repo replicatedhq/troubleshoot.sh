@@ -98,7 +98,6 @@ This is a [Docusaurus](https://docusaurus.io/) site with the following structure
 - **Search Integration**: Algolia DocSearch with automated indexing
 - **SEO Optimized**: Proper meta tags and social cards
 - **Performance**: Optimized builds with caching
-- **Accessibility**: WCAG compliant
 
 ## Search Setup
 
@@ -140,14 +139,6 @@ Individual tests:
 3. Make your changes
 4. Run `make test` to ensure everything works
 5. Submit a pull request
-
-## Migration Notes
-
-This site was migrated from Gatsby to Docusaurus in 2024 while maintaining:
-- All original content and structure
-- URL compatibility with redirects
-- Visual consistency with the brand
-- Performance and SEO standards
 
 ## Support
 
