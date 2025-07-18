@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import styled from "@emotion/styled";
+import { MDXProvider } from "@mdx-js/react";
 
 // Colors and styling from the original docs theme
 const colors = {
@@ -195,11 +196,15 @@ const BodyContent = styled.div({
   }
 });
 
-const DocsTemplate = ({ data, pageContext }) => {
-  const { markdownRemark } = data;
+const DocsTemplate = ({ data, pageContext, children }) => {
+  const { markdownRemark, mdx } = data;
   
-  // Handle case where markdown file is not found
-  if (!markdownRemark) {
+  // Determine which content type we have
+  const content = markdownRemark || mdx;
+  const isMdx = !!mdx;
+  
+  // Handle case where neither markdown nor MDX file is found
+  if (!content) {
     return (
       <div>
         <Helmet>
@@ -213,18 +218,20 @@ const DocsTemplate = ({ data, pageContext }) => {
             <p>The requested documentation page could not be found.</p>
             <p><strong>Path:</strong> {pageContext.slug}</p>
             <p><strong>Relative Path:</strong> {pageContext.relativePath}</p>
+            <p><strong>Extension:</strong> {pageContext.extension}</p>
           </BodyContent>
         </StyledContentWrapper>
       </div>
     );
   }
   
-  const { frontmatter, html } = markdownRemark;
-
+  const { frontmatter } = content;
+  const html = content.html; // Only available for markdown
+  
   return (
     <div>
       <Helmet>
-        <title>{frontmatter.title} | Troubleshoot Docs</title>
+        <title>{frontmatter.title || 'Documentation'} | Troubleshoot Docs</title>
         <link
           href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;700&display=swap"
           rel="stylesheet"
@@ -236,9 +243,17 @@ const DocsTemplate = ({ data, pageContext }) => {
       </Helmet>
       <StyledContentWrapper>
         <PageHeader>
-          <Heading>{frontmatter.title}</Heading>
+          <Heading>{frontmatter.title || 'Documentation'}</Heading>
         </PageHeader>
-        <BodyContent dangerouslySetInnerHTML={{ __html: html }} />
+        {isMdx ? (
+          <BodyContent>
+            <MDXProvider>
+              {children}
+            </MDXProvider>
+          </BodyContent>
+        ) : (
+          <BodyContent dangerouslySetInnerHTML={{ __html: html }} />
+        )}
       </StyledContentWrapper>
     </div>
   );
@@ -251,6 +266,12 @@ export const query = graphql`
       frontmatter {
         title
       }
+    }
+    mdx(internal: {contentFilePath: {eq: $absolutePath}}) {
+      frontmatter {
+        title
+      }
+      body
     }
   }
 `;

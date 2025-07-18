@@ -45,17 +45,23 @@ exports.onCreatePage = async ({ page, actions }) => {
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
-  // Query for markdown docs content only (MDX support to be added later)
+  // Query for both markdown and MDX docs content
   const docsResult = await graphql(`
     query {
       allFile(filter: { 
         sourceInstanceName: { eq: "docs-content" }, 
-        extension: { eq: "md" } 
+        extension: { in: ["md", "mdx"] } 
       }) {
         nodes {
           relativePath
           absolutePath
+          extension
           childMarkdownRemark {
+            frontmatter {
+              title
+            }
+          }
+          childMdx {
             frontmatter {
               title
             }
@@ -70,10 +76,10 @@ exports.createPages = async ({ graphql, actions }) => {
     return;
   }
 
-  // Create docs pages for markdown files
+  // Create docs pages for both markdown and MDX files
   docsResult.data.allFile.nodes.forEach((node) => {
-    const { relativePath, absolutePath } = node;
-    const slug = relativePath.replace(/\.md$/, '');
+    const { relativePath, absolutePath, extension } = node;
+    const slug = relativePath.replace(/\.(md|mdx)$/, '');
     
     createPage({
       path: `/docs/${slug}`,
@@ -82,6 +88,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug,
         relativePath,
         absolutePath,
+        extension,
       },
     });
   });
