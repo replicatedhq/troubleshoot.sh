@@ -1,0 +1,61 @@
+name: Index Documentation
+
+on:
+  schedule:
+    # Run every hour to keep search index up to date
+    - cron: '0 * * * *'
+  workflow_dispatch:
+    # Allow manual triggering for testing
+  push:
+    branches:
+      - main
+    paths:
+      - 'docs/**'
+      - 'src/**'
+      - 'docusaurus.config.ts'
+      - 'sidebars.ts'
+
+jobs:
+  index-docs:
+    runs-on: ubuntu-latest
+    if: github.repository == 'replicatedhq/troubleshoot'
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'yarn'
+          cache-dependency-path: 'troubleshoot-docs/yarn.lock'
+
+      - name: Install dependencies
+        working-directory: troubleshoot-docs
+        run: yarn install --frozen-lockfile
+
+      - name: Build documentation
+        working-directory: troubleshoot-docs
+        run: yarn build
+
+      - name: Index documentation with Algolia
+        env:
+          APPLICATION_ID: ${{ secrets.ALGOLIA_APP_ID }}
+          API_KEY: ${{ secrets.ALGOLIA_API_KEY }}
+        working-directory: troubleshoot-docs
+        run: |
+          # Install jq for JSON processing
+          sudo apt-get update && sudo apt-get install -y jq
+          
+          # Run Algolia DocSearch Scraper
+          docker run \
+            -e APPLICATION_ID=$APPLICATION_ID \
+            -e API_KEY=$API_KEY \
+            -e "CONFIG=$(cat ./troubleshoot-algolia-config.json | jq -r tostring)" \
+            algolia/docsearch-scraper
+
+      - name: Notify on failure
+        if: failure()
+        run: |
+          echo "::error::Documentation indexing failed. Please check the logs and ensure Algolia credentials are properly configured."

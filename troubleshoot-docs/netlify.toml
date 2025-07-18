@@ -1,0 +1,149 @@
+[build]
+  command = "yarn build"
+  publish = "build"
+
+[build.environment]
+  NODE_VERSION = "18"
+  YARN_VERSION = "1.22.19"
+
+[[plugins]]
+  package = "netlify-plugin-yarn-cache"
+
+# Redirect old paths to new Docusaurus structure
+[[redirects]]
+  from = "/preflight/creating"
+  to = "/docs/preflight/introduction/"
+  status = 301
+
+[[redirects]]
+  from = "/preflight/introduction"
+  to = "/docs/preflight/introduction/"
+  status = 301
+
+[[redirects]]
+  from = "/preflight/cluster-checks"
+  to = "/docs/preflight/cluster-checks/"
+  status = 301
+
+[[redirects]]
+  from = "/preflight/node-checks"
+  to = "/docs/preflight/node-checks/"
+  status = 301
+
+[[redirects]]
+  from = "/preflight/exit-codes"
+  to = "/docs/preflight/exit-codes/"
+  status = 301
+
+[[redirects]]
+  from = "/preflight/next-steps"
+  to = "/docs/preflight/next-steps/"
+  status = 301
+
+[[redirects]]
+  from = "/support-bundle/introduction"
+  to = "/docs/support-bundle/introduction/"
+  status = 301
+
+[[redirects]]
+  from = "/support-bundle/collecting"
+  to = "/docs/support-bundle/collecting/"
+  status = 301
+
+[[redirects]]
+  from = "/support-bundle/discover-cluster-specs"
+  to = "/docs/support-bundle/discover-cluster-specs/"
+  status = 301
+
+[[redirects]]
+  from = "/support-bundle/supportbundle"
+  to = "/docs/support-bundle/supportbundle/"
+  status = 301
+
+# Collect redirects
+[[redirects]]
+  from = "/collect/*"
+  to = "/docs/collect/:splat"
+  status = 301
+
+# Analyze redirects
+[[redirects]]
+  from = "/analyze/*"
+  to = "/docs/analyze/:splat"
+  status = 301
+
+# Redact redirects
+[[redirects]]
+  from = "/redact/*"
+  to = "/docs/redact/:splat"
+  status = 301
+
+# Host collect & analyze redirects
+[[redirects]]
+  from = "/host-collect-analyze/*"
+  to = "/docs/host-collect-analyze/:splat"
+  status = 301
+
+# General docs redirect
+[[redirects]]
+  from = "/docs/*"
+  to = "/docs/:splat"
+  status = 200
+
+# SPA fallback for client-side routing
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[build.processing]
+  skip_processing = false
+
+[build.processing.css]
+  bundle = true
+  minify = true
+
+[build.processing.js]
+  bundle = true
+  minify = true
+
+[build.processing.html]
+  pretty_urls = true
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-XSS-Protection = "1; mode=block"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+
+[[headers]]
+  for = "/*.js"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.css"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.svg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.png"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.jpg"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"
+
+[[headers]]
+  for = "/*.gif"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000"

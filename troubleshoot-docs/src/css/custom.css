@@ -1,0 +1,432 @@
+/**
+ * Troubleshoot.sh Custom Theme
+ * Based on the original Apollo theme colors and styling
+ */
+
+/* Import Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  /* Troubleshoot brand colors (matching original Apollo theme) */
+  --ifm-color-primary: #326DE6;
+  --ifm-color-primary-dark: #2756B3;
+  --ifm-color-primary-darker: #2450A3;
+  --ifm-color-primary-darkest: #163166;
+  --ifm-color-primary-light: #4B7EE8;
+  --ifm-color-primary-lighter: #5B88EA;
+  --ifm-color-primary-lightest: #7BA3F0;
+  
+  /* Typography */
+  --ifm-font-family-base: 'Helvetica Neue', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --ifm-font-family-monospace: 'Roboto Mono', 'SF Mono', Monaco, 'Cascadia Code', 'Roboto Mono', Consolas, 'Courier New', monospace;
+  
+  /* Text colors */
+  --ifm-color-emphasis-900: #163166;
+  --ifm-color-emphasis-800: #2756B3;
+  --ifm-color-emphasis-700: #4A4A4A;
+  --ifm-color-emphasis-600: #6B6B6B;
+  
+  /* Code styling */
+  --ifm-code-font-size: 90%;
+  --ifm-code-background: #f8f9fa;
+  --ifm-code-border-radius: 3px;
+  
+  /* Highlighted code lines */
+  --docusaurus-highlighted-code-line-bg: rgba(50, 109, 230, 0.1);
+  
+  /* Navbar */
+  --ifm-navbar-background-color: #ffffff;
+  --ifm-navbar-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  
+  /* Sidebar */
+  --ifm-menu-color: #4A4A4A;
+  --ifm-menu-color-active: #326DE6;
+  --ifm-menu-color-background-active: rgba(50, 109, 230, 0.1);
+  
+  /* Footer */
+  --ifm-footer-background-color: #163166;
+  --ifm-footer-color: #ffffff;
+  --ifm-footer-link-color: #ffffff;
+  --ifm-footer-title-color: #ffffff;
+}
+
+/* Adjust layout to account for banner */
+body {
+  padding-top: 0;
+}
+
+/* Dark mode adjustments */
+[data-theme='dark'] {
+  --ifm-color-primary: #4B7EE8;
+  --ifm-color-primary-dark: #326DE6;
+  --ifm-color-primary-darker: #2756B3;
+  --ifm-color-primary-darkest: #163166;
+  --ifm-color-primary-light: #5B88EA;
+  --ifm-color-primary-lighter: #7BA3F0;
+  --ifm-color-primary-lightest: #9BB8F3;
+  
+  --ifm-code-background: #2d2d2d;
+  --docusaurus-highlighted-code-line-bg: rgba(75, 126, 232, 0.2);
+}
+
+/* Typography enhancements */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 500;
+}
+
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 1.75rem;
+  margin-top: 3rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+/* Enhanced Code block styling */
+pre {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 1px solid #e1e8ed;
+  background: #f8f9fa;
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  position: relative;
+}
+
+pre::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #326DE6 0%, #4B7EE8 100%);
+  border-radius: 8px 8px 0 0;
+}
+
+.prism-code {
+  padding: 1.5rem !important;
+  background: #f8f9fa !important;
+  font-size: 14px;
+  line-height: 1.6;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+/* Language label */
+.prism-code::before {
+  content: attr(data-language);
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  background: #326DE6;
+  color: white;
+  padding: 2px 8px;
+  border-radius: 3px;
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Inline code styling */
+code {
+  background: #f1f3f4;
+  border: 1px solid #e1e8ed;
+  color: #d73a49;
+  padding: 3px 6px;
+  border-radius: 4px;
+  font-size: 85%;
+  font-weight: 500;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+pre code {
+  border: none;
+  color: inherit;
+  padding: 0;
+  background: transparent;
+  font-size: inherit;
+  font-weight: inherit;
+}
+
+/* Code block copy button styling */
+.clean-btn {
+  background: #326DE6;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 11px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clean-btn:hover {
+  background: #2756B3;
+  color: white;
+}
+
+/* Code block title styling */
+.codeBlockTitle_f1md {
+  background: #163166;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 8px 8px 0 0;
+  font-size: 13px;
+  font-weight: 500;
+  font-family: var(--ifm-font-family-monospace);
+  border-bottom: 1px solid #e1e8ed;
+}
+
+.codeBlockTitle_f1md + div > pre {
+  border-radius: 0 0 8px 8px;
+  margin-top: 0;
+}
+
+/* Highlighted code lines */
+.docusaurus-highlight-code-line {
+  background-color: rgba(50, 109, 230, 0.1);
+  display: block;
+  margin: 0 -1.5rem;
+  padding: 0 1.5rem;
+  border-left: 3px solid #326DE6;
+}
+
+/* Navbar branding */
+.navbar__brand {
+  font-family: var(--ifm-font-family-monospace);
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+
+.navbar__logo {
+  height: 32px;
+  width: auto;
+}
+
+/* Sidebar styling */
+.theme-doc-sidebar-menu {
+  font-size: 14px;
+}
+
+.menu__link {
+  font-weight: 400;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.menu__link:hover {
+  background-color: rgba(50, 109, 230, 0.1);
+  color: var(--ifm-color-primary);
+}
+
+.menu__link--active {
+  background-color: rgba(50, 109, 230, 0.1);
+  color: var(--ifm-color-primary);
+  font-weight: 600;
+}
+
+.menu__list-item-collapsible {
+  border-radius: 4px;
+}
+
+.menu__caret {
+  transition: transform 0.2s ease;
+}
+
+/* Content styling */
+.markdown h1:first-child {
+  margin-bottom: 1.5rem;
+}
+
+.markdown > h2 {
+  border-bottom: 1px solid #e9ecef;
+  padding-bottom: 0.5rem;
+}
+
+/* Table styling */
+table {
+  border-collapse: separate;
+  border-spacing: 0;
+  border: 1px solid #e9ecef;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+table th {
+  background-color: #f8f9fa;
+  color: #163166;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+}
+
+table tr:hover {
+  background-color: #f8f9fa;
+}
+
+/* Admonition styling (for callouts) */
+.admonition {
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.admonition-icon {
+  margin-right: 0.5rem;
+}
+
+/* Suite banner (similar to original) */
+.suite-banner {
+  background: linear-gradient(135deg, #163166 0%, #2756B3 100%);
+  color: white;
+  padding: 12px 0;
+  text-align: center;
+  font-size: 14px;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.suite-banner a {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.suite-banner a:hover {
+  text-decoration: underline;
+}
+
+/* Algolia DocSearch styling */
+.DocSearch {
+  --docsearch-primary-color: #326DE6;
+  --docsearch-text-color: #4A4A4A;
+  --docsearch-spacing: 12px;
+  --docsearch-icon-stroke-width: 1.4;
+  --docsearch-highlight-color: #326DE6;
+  --docsearch-muted-color: #969faf;
+  --docsearch-container-background: rgba(101, 108, 133, 0.8);
+  --docsearch-logo-color: #5468ff;
+  --docsearch-modal-width: 560px;
+  --docsearch-modal-height: 600px;
+  --docsearch-modal-background: #f5f6f7;
+  --docsearch-modal-shadow: inset 1px 1px 0 0 hsla(0, 0%, 100%, 0.5),
+    0 3px 8px 0 #555a64;
+  --docsearch-searchbox-height: 56px;
+  --docsearch-searchbox-background: #ebedf0;
+  --docsearch-searchbox-focus-background: #fff;
+  --docsearch-searchbox-shadow: inset 0 0 0 2px #326DE6;
+  --docsearch-hit-color: #444950;
+  --docsearch-hit-active-color: #fff;
+  --docsearch-hit-background: #fff;
+  --docsearch-hit-shadow: 0 1px 3px 0 #d4d9e1;
+  --docsearch-key-gradient: linear-gradient(
+    -225deg,
+    #d5dbe4,
+    #f8f8f8
+  );
+  --docsearch-key-shadow: inset 0 -2px 0 0 #cdcde6,
+    inset 0 0 1px 1px #fff,
+    0 1px 2px 1px rgba(30, 35, 90, 0.4);
+  --docsearch-footer-background: #fff;
+  --docsearch-footer-shadow: 0 -1px 0 0 #e0e3e8,
+    0 -3px 6px 0 rgba(69, 98, 155, 0.12);
+}
+
+.DocSearch-Button {
+  border-radius: 6px;
+  border: 1px solid #e1e8ed;
+  background: #f8f9fa;
+  color: #4A4A4A;
+  font-weight: 500;
+  padding: 8px 12px;
+  transition: all 0.2s ease;
+}
+
+.DocSearch-Button:hover {
+  background: #fff;
+  border-color: #326DE6;
+  color: #326DE6;
+  box-shadow: 0 2px 8px rgba(50, 109, 230, 0.1);
+}
+
+.DocSearch-Button-Placeholder {
+  font-size: 14px;
+}
+
+.DocSearch-Button-Keys {
+  min-width: auto;
+}
+
+.DocSearch-Button-Key {
+  background: var(--docsearch-key-gradient);
+  border-radius: 3px;
+  border: 0;
+  box-shadow: var(--docsearch-key-shadow);
+  color: #969faf;
+  font-size: 12px;
+  font-weight: 500;
+  height: 18px;
+  line-height: 18px;
+  margin: 0 4px 0 0;
+  padding: 0 4px;
+  width: auto;
+}
+
+/* Search results styling */
+.DocSearch-Hit-title {
+  color: #326DE6;
+  font-weight: 600;
+}
+
+.DocSearch-Hit-path {
+  color: #969faf;
+  font-size: 13px;
+  font-weight: 500;
+}
+
+.DocSearch-Hit-action {
+  color: #326DE6;
+}
+
+.DocSearch-Hit-Select-Icon {
+  color: #326DE6;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .navbar__brand {
+    font-size: 1.1rem;
+  }
+  
+  .navbar__logo {
+    height: 28px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+  }
+  
+  .DocSearch-Button {
+    padding: 6px 10px;
+  }
+  
+  .DocSearch-Button-Placeholder {
+    font-size: 13px;
+  }
+  
+  .DocSearch-Button-Keys {
+    display: none;
+  }
+}

@@ -1,0 +1,199 @@
+.lifecycle {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.stepsContainer {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 40px;
+  margin-bottom: 30px;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.stepIcon {
+  width: 80px;
+  height: 80px;
+  background: #326DE6;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.stepIcon svg {
+  width: 32px;
+  height: 32px;
+  color: white;
+}
+
+.stepTitle {
+  font-size: 18px;
+  color: #326DE6;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.stepDescription {
+  font-size: 14px;
+  color: #64748b;
+  line-height: 1.5;
+  max-width: 200px;
+}
+
+.statusContainer {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr auto 1fr auto 1fr;
+  align-items: center;
+  justify-items: center;
+  gap: 0;
+  max-width: 100%;
+}
+
+.statusStep {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.statusNumber {
+  width: 32px;
+  height: 32px;
+  background: #326DE6;
+  color: white;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.statusItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.statusIcon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.statusIcon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.statusText {
+  font-size: 12px;
+  color: #64748b;
+  font-weight: 500;
+  text-align: center;
+}
+
+.arrow {
+  font-size: 18px;
+  color: #64748b;
+  user-select: none;
+  width: 100%;
+  text-align: center;
+  position: relative;
+}
+
+.arrow::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 1px;
+  background-color: #64748b;
+  z-index: 1;
+}
+
+.arrow::after {
+  content: "→";
+  position: relative;
+  z-index: 2;
+  background-color: #ffffff;
+  padding: 0 5px;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .stepsContainer {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+  }
+  
+  .stepIcon {
+    width: 60px;
+    height: 60px;
+  }
+  
+  .stepIcon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .stepTitle {
+    font-size: 16px;
+  }
+  
+  .stepDescription {
+    font-size: 13px;
+  }
+  
+  .statusContainer {
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 30px;
+  }
+  
+  .arrow {
+    display: none;
+  }
+  
+  .statusNumber {
+    width: 28px;
+    height: 28px;
+    font-size: 12px;
+  }
+  
+  .statusText {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .stepsContainer {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .statusContainer {
+    grid-template-columns: 1fr;
+    gap: 25px;
+  }
+  
+  .arrow {
+    display: none;
+  }
+  
+  .statusStep {
+    flex-direction: column;
+    gap: 5px;
+  }
+}

@@ -17,7 +17,14 @@
       "Bash(grep:*)",
       "Bash(mkdir:*)",
       "Bash(yarn install)",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(npx create-docusaurus:*)",
+      "Bash(node:*)",
+      "Bash(DEBUG=*)",
+      "WebFetch(domain:troubleshoot.sh)",
+      "Bash(yarn start:*)",
+      "Bash(chmod:*)",
+      "Bash(yarn add:*)"
     ],
     "deny": []
   }
