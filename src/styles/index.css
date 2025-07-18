@@ -1,0 +1,261 @@
+/* Troubleshoot.sh Design System - Main CSS */
+
+/* Import utility systems */
+@import './utilities/colors.css';
+@import './utilities/typography.css';
+@import './utilities/buttons.css';
+@import './utilities/flexbox.css';
+@import './utilities/spacing.css';
+@import './utilities/layout.css';
+@import './utilities/icons.css';
+
+/* Import component styles */
+@import './components/docs.css';
+@import './components/homepage.css';
+@import './components/marketing.css';
+
+/* Import original styles for complete parity */
+@import './original-styles.css';
+
+/* Critical fixes - ensure these override any conflicts */
+.troubleshoot-logo {
+  background-image: url('../images/troubleshoot.svg') !important;
+  background-size: contain !important;
+  background-repeat: no-repeat !important;
+  background-position: center !important;
+  display: inline-block !important;
+  width: 489px !important;
+  height: 47px !important;
+}
+
+@media (max-width: 768px) {
+  .troubleshoot-logo {
+    width: 320px !important;
+    height: 31px !important;
+  }
+}
+
+/* Button fixes */
+.Button {
+  font-family: "Roboto Mono", monospace !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 16px 24px !important;
+  border-radius: 6px !important;
+  border: none !important;
+  cursor: pointer !important;
+  text-decoration: none !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  transition: all 0.2s !important;
+  min-width: 200px !important;
+  text-align: center !important;
+}
+
+.Button.primary {
+  background-color: #326DE6 !important;
+  color: #ffffff !important;
+  border: 1px solid #326DE6 !important;
+}
+
+.Button.secondary {
+  background-color: #ffffff !important;
+  color: #326DE6 !important;
+  border: 1px solid #326DE6 !important;
+}
+
+/* Typography utilities */
+.u-fontSize--24 {
+  font-size: 24px !important;
+}
+
+.u-color--biscay {
+  color: #163166 !important;
+}
+
+.u-lineHeight--more {
+  line-height: 1.7 !important;
+}
+
+.u-fontWeight--medium {
+  font-weight: 500 !important;
+}
+
+.u-marginTop--30 {
+  margin-top: 30px !important;
+}
+
+.u-marginTop--50 {
+  margin-top: 50px !important;
+}
+
+.u-paddingBottom--20 {
+  padding-bottom: 20px !important;
+}
+
+/* Layout utilities */
+.u-width--full {
+  width: 100% !important;
+}
+
+.u-overflow--auto {
+  overflow: auto !important;
+}
+
+.u-flexMobileReflow {
+  display: flex !important;
+  flex-direction: column !important;
+}
+
+@media screen and (min-width: 35.5em) {
+  .u-flexMobileReflow {
+    flex-direction: row !important;
+  }
+}
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-primary);
+  -ms-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: var(--color-tuna);
+  background-color: var(--white);
+  font-size: var(--font-size-normal);
+  line-height: var(--line-height-normal);
+  font-family: "Roboto Mono", "monospace";
+  overflow-x: hidden;
+}
+
+body a {
+  text-decoration: none;
+  outline: none;
+}
+
+/* Base typography */
+h1, h2, h3, h4, h5, h6 {
+  margin: 0 0 1rem 0;
+  font-weight: 700;
+  line-height: var(--line-height-normal);
+  color: var(--color-tarawera);
+}
+
+h1 {
+  font-size: var(--font-size-header2);
+}
+
+h2 {
+  font-size: var(--font-size-header);
+}
+
+h3 {
+  font-size: var(--font-size-24);
+}
+
+h4 {
+  font-size: var(--font-size-largest);
+}
+
+p {
+  margin: 0 0 1rem 0;
+  line-height: var(--line-height-loose);
+}
+
+a {
+  color: var(--primary-blue);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+a:hover {
+  color: var(--primary-blue-hover);
+}
+
+/* Suite banner styles (Replicated banner) */
+.suite-banner {
+  background-color: var(--primary-blue);
+  padding: 0.5rem 2rem;
+  font-size: var(--font-size-small);
+  color: var(--white);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.suite-banner a {
+  color: var(--white);
+  opacity: 0.9;
+  text-decoration: none;
+}
+
+.suite-banner a:hover {
+  opacity: 1;
+  text-decoration: underline;
+}
+
+.mobile-suite-banner {
+  background-color: var(--primary-blue);
+  padding: 0.5rem 1rem;
+  font-size: var(--font-size-small);
+  color: var(--white);
+}
+
+.mobile-suite-banner a {
+  color: var(--white);
+  opacity: 0.9;
+  text-decoration: none;
+  font-size: var(--font-size-small);
+}
+
+/* Add repl-logo-white and banner-arrow for banner */
+.repl-logo-white {
+  width: 20px;
+  height: 20px;
+  background-image: url("../images/repl-white.svg");
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.banner-arrow {
+  margin-left: 8px;
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background-image: url("../images/banner-arrow.png");
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+/* Footer wrapper */
+.Footer-wrapper {
+  margin-top: auto;
+}
+
+/* Responsive utilities */
+@media (max-width: 768px) {
+  .suite-banner {
+    padding: 0.5rem 1rem;
+    font-size: 11px;
+  }
+  
+  .mobile-suite-banner {
+    display: block;
+  }
+}
+
+@media (min-width: 769px) {
+  .mobile-suite-banner {
+    display: none;
+  }
+} 

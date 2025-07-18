@@ -1,0 +1,24 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(git log:*)",
+      "Bash(find:*)",
+      "Bash(diff:*)",
+      "Bash(yarn build)",
+      "Bash(timeout:*)",
+      "Bash(true)",
+      "Bash(ls:*)",
+      "Bash(touch:*)",
+      "Bash(cp:*)",
+      "Bash(rm:*)",
+      "Bash(yarn start)",
+      "Bash(curl:*)",
+      "Bash(pkill:*)",
+      "Bash(grep:*)",
+      "Bash(mkdir:*)",
+      "Bash(yarn install)",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": []
+  }
+}

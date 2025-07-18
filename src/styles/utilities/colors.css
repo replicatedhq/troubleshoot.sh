@@ -1,0 +1,144 @@
+/* Color Utilities - Troubleshoot.sh Design Tokens */
+
+/* CSS Custom Properties */
+:root {
+  /* Brand Colors */
+  --primary-blue: #073551;
+  --primary-blue-hover: #061f2e;
+  --primary-dark-blue: #163166;
+  --secondary-blue: #326de6;
+  --white: #ffffff;
+  --black: #000000;
+  
+  /* Semantic Colors */
+  --color-success: #10b981;
+  --color-warning: #f59e0b;
+  --color-error: #ef4444;
+  --color-info: #3b82f6;
+  
+  /* Text Colors */
+  --color-tuna: #323232;
+  --color-tarawera: #073551;
+  --color-dustyGray: #9b9b9b;
+  --color-tundora: #4a4a4a;
+  --color-silver: #c5c5c5;
+  --color-biscay: #163166;
+  --color-waikawaGray: #5c6f94;
+  --color-royalBlue: #326de6;
+  
+  /* Accent Colors */
+  --color-vidaLoca: #65a61d;
+  --color-chestnut: #bc4752;
+  --color-astral: #337ab7;
+  
+  /* Background Colors */
+  --background-alabaster: #f8f8f8;
+  --gray-50: #f8fafc;
+  --gray-100: #f1f5f9;
+  --gray-200: #e2e8f0;
+  --gray-300: #cbd5e1;
+  --gray-400: #94a3b8;
+  --gray-500: #64748b;
+  --gray-600: #475569;
+  --gray-700: #334155;
+  --gray-800: #1e293b;
+  --gray-900: #0f172a;
+}
+
+/* Color utility classes */
+
+/* Text colors */
+.u-color--tuna {
+  color: #323232;
+}
+
+.u-color--tarawera {
+  color: #073551;
+}
+
+.u-color--dustyGray {
+  color: #9b9b9b;
+}
+
+.u-color--tundora {
+  color: #4a4a4a;
+}
+
+.u-color--silver {
+  color: #c5c5c5;
+}
+
+.u-color--vidaLoca {
+  color: #65a61d;
+}
+
+.u-color--chestnut {
+  color: #bc4752;
+}
+
+.u-color--astral {
+  color: #337ab7;
+}
+
+.u-color--royalBlue {
+  color: #326de6;
+}
+
+.u-color--biscay {
+  color: #163166;
+}
+
+.u-color--waikawaGray {
+  color: #5c6f94;
+}
+
+/* Background colors */
+.u-background--alabaster {
+  background-color: #f8f8f8;
+}
+
+/* Brand color utilities */
+.u-color--primary {
+  color: var(--primary-blue);
+}
+
+.u-color--primary-hover {
+  color: var(--primary-blue-hover);
+}
+
+.u-color--secondary {
+  color: var(--secondary-blue);
+}
+
+.u-color--white {
+  color: var(--white);
+}
+
+.u-color--black {
+  color: var(--black);
+}
+
+/* Background utilities */
+.u-background--primary {
+  background-color: var(--primary-blue);
+}
+
+.u-background--secondary {
+  background-color: var(--secondary-blue);
+}
+
+.u-background--white {
+  background-color: var(--white);
+}
+
+.u-background--gray-50 {
+  background-color: var(--gray-50);
+}
+
+.u-background--gray-100 {
+  background-color: var(--gray-100);
+}
+
+.u-background--gray-200 {
+  background-color: var(--gray-200);
+} 

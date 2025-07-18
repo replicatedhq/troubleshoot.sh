@@ -1,58 +1,73 @@
-import React from "react";
-import "../../scss/components/shared/Footer.scss";
+import React from "react"
 
-export default class Footer extends React.Component {
-
-  getItems() {
-    return [
-      {
-        label: "View on GitHub",
-        icon: "github",
-        href: "http://github.com/replicatedhq/troubleshoot",
-      }
-    ];
-  }
-
-  render() {
-    const footerItems = this.getItems();
-    return (
-      <div className={`FooterContent-wrapper flex flex-auto justifyContent--center ${this.props.className || ""}`}>
-        <div className="Footer-container flex1 flex">
-          <div className="TroubleshootFooter flex flex1">
-            <div className="flex flex-auto alignItems--center">
-              <div className="FooterItem-wrapper flex justifyContent--center alignItems--center">
-                <span className="icon u-kurl u-marginRight--normal"></span>
-                <span className="FooterItem">Contributed by <a href="https://replicated.com/" target="_blank" rel="noopener noreferrer">Replicated </a></span>
-              </div>
-            </div>
-            <div className="flex flex1 justifyContent--flexEnd alignItems--center alignSelf--center">
-              {footerItems.filter(item => item).map((item, i) => {
-                let node = (
-                  <span className="FooterItem">{item.label}</span>
-                );
-                if (item.icon) {
-                  node = (
-                    <div className="flex flex-auto">
-                      <span className={`u-marginRight--small ${item.icon}`} />
-                      <a href={item.href} target="_blank" rel="noopener noreferrer" className="FooterItem u-marginTop--4">{item.label}</a>
-                    </div>
-                  );
-                } else {
-                  node = (
-                    <a href={item.href} target="_blank" rel="noopener noreferrer" className="FooterItem">{item.label}</a>
-                  )
-                }
-
-                return (
-                  <div key={i} className="FooterItem-wrapper">
-                    {node}
-                  </div>
-                );
-              })}
-            </div>
-          </div>
+const Footer = () => {
+  return (
+    <footer style={{ 
+      backgroundColor: "#f8f9fa", 
+      padding: "3rem 2rem 2rem", 
+      borderTop: "1px solid #e1e5e9",
+      marginTop: "auto"
+    }}>
+      <div style={{ 
+        maxWidth: "1200px", 
+        margin: "0 auto",
+        display: "flex",
+        justifyContent: "space-between",
+        alignItems: "center",
+        flexWrap: "wrap",
+        gap: "2rem"
+      }}>
+        <div>
+          <p style={{ 
+            margin: 0, 
+            color: "#6c757d",
+            fontSize: "0.875rem"
+          }}>
+            © 2024 Replicated, Inc. Troubleshoot.sh - Debug Kubernetes applications
+          </p>
+        </div>
+        
+        <div style={{ display: "flex", gap: "2rem" }}>
+          <a 
+            href="https://github.com/replicatedhq/troubleshoot" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              color: "#6c757d", 
+              textDecoration: "none",
+              fontSize: "0.875rem"
+            }}
+          >
+            GitHub
+          </a>
+          <a 
+            href="https://replicated.com" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              color: "#6c757d", 
+              textDecoration: "none",
+              fontSize: "0.875rem"
+            }}
+          >
+            Replicated
+          </a>
+          <a 
+            href="https://docs.replicated.com/troubleshoot/" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            style={{ 
+              color: "#6c757d", 
+              textDecoration: "none",
+              fontSize: "0.875rem"
+            }}
+          >
+            Documentation
+          </a>
         </div>
       </div>
-    );
-  }
+    </footer>
+  )
 }
+
+export default Footer

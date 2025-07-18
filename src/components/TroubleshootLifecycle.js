@@ -1,5 +1,4 @@
-import * as React from "react";
-import "../scss/components/TroubleshootLifecycle.scss";
+import React from "react"
 
 export default function TroubleshootLifecycle({ isMobile }) {
   if (isMobile) {
@@ -57,13 +56,12 @@ export default function TroubleshootLifecycle({ isMobile }) {
           </div>
         </div>
 
-        <div className="step repeat-cycle  u-paddingTop--10 u-paddingBottom--10">
+        <div className="step repeat-cycle u-paddingTop--10 u-paddingBottom--10">
           <div className="flex alignItems--center step-content">
             <span className="icon repeat-cycle-icon" />
             <p className="u-fontSize--small u-marginLeft--10 u-fontWeight--medium u-color--silver u-lineHeight--normal">Escalation needed</p>
           </div>
         </div>
-
 
         <div className="flex alignItems--center">
           <div className="step-number flex-auto">4</div>

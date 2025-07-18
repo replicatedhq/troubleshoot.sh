@@ -1,0 +1,127 @@
+/* Flexbox System - Troubleshoot.sh Design Tokens */
+
+/* Display flex */
+.flex {
+  display: flex;
+}
+
+.flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+}
+
+/* Flex properties */
+.flex1 {
+  flex: 1;
+}
+
+.flex-auto {
+  flex: auto;
+}
+
+.flex-none {
+  flex: none;
+}
+
+/* Justify content */
+.justifyContent--center {
+  justify-content: center;
+}
+
+.justifyContent--spaceBetween {
+  justify-content: space-between;
+}
+
+.justifyContent--spaceAround {
+  justify-content: space-around;
+}
+
+.justifyContent--flexStart {
+  justify-content: flex-start;
+}
+
+.justifyContent--flexEnd {
+  justify-content: flex-end;
+}
+
+/* Align items */
+.alignItems--center {
+  align-items: center;
+}
+
+.alignItems--flexStart {
+  align-items: flex-start;
+}
+
+.alignItems--flexEnd {
+  align-items: flex-end;
+}
+
+.alignItems--stretch {
+  align-items: stretch;
+}
+
+.alignItems--baseline {
+  align-items: baseline;
+}
+
+/* Align self */
+.alignSelf--center {
+  align-self: center;
+}
+
+.alignSelf--flexStart {
+  align-self: flex-start;
+}
+
+.alignSelf--flexEnd {
+  align-self: flex-end;
+}
+
+.alignSelf--stretch {
+  align-self: stretch;
+}
+
+/* Flex wrap */
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.flex-nowrap {
+  flex-wrap: nowrap;
+}
+
+/* Modern utility classes */
+.d-flex {
+  display: flex;
+}
+
+.d-flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.items-start {
+  align-items: flex-start;
+}
+
+.items-end {
+  align-items: flex-end;
+} 
