@@ -71,4 +71,6 @@
 
 /preflight/* /preflight.html                   200
 /support-bundle/* /support-bundle.html         200
-/*  /index.html                                200
+/explore/* /explore.html                       200
+# Fallback for root and unmatched paths (but allow docs to serve normally)
+/ /index.html                                  200
