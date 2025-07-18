@@ -1,17 +1,37 @@
 {
   "private": true,
-  "workspaces": [
-    "generate-specs"
-  ],
-  "version": "0.0.0",
+  "name": "troubleshoot-consolidated",
+  "version": "0.0.1",
   "scripts": {
-    "yarn:cache": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-cache || :",
-    "yarn:restore": "[ \"$NETLIFY_RESTORE\" = 1 ] && ./netlify-yarn-restore || :",
-    "preinstall": "yarn yarn:restore",
-    "build": "make publish; yarn yarn:cache"
+    "prestart": "gatsby clean",
+    "start": "gatsby develop -p 1313",
+    "build": "GATSBY_EXPERIMENTAL_PAGE_BUILD_ON_DATA_CHANGES=true gatsby build",
+    "serve": "gatsby serve",
+    "clean": "gatsby clean"
   },
   "dependencies": {
-    "js-yaml": "^4.1.0",
-    "netlify-plugin-gatsby-yarn-cache": "^0.1.1"
+    "@babel/plugin-proposal-decorators": "^7.23.9",
+    "brace": "^0.11.1",
+    "classnames": "^2.5.1",
+    "dotenv": "^16.4.1",
+    "gatsby": "^4.20.0",
+    "gatsby-plugin-google-analytics": "^4.25.0",
+    "gatsby-plugin-google-fonts": "^1.0.1",
+    "gatsby-plugin-netlify": "^5.1.1",
+    "gatsby-plugin-react-helmet": "^5.20.0",
+    "gatsby-plugin-sass": "^5.25.0",
+    "gatsby-plugin-sharp": "^4.20.0",
+    "gatsby-remark-autolink-headers": "^2.11.0",
+    "gatsby-source-filesystem": "^4.20.0",
+    "gatsby-transformer-remark": "^5.25.1",
+    "gatsby-transformer-sharp": "^4.20.0",
+    "netlify-plugin-gatsby-yarn-cache": "^0.1.1",
+    "prop-types": "^15.8.1",
+    "react": "^18.2.0",
+    "react-anchor-link-smooth-scroll": "^1.0.12",
+    "react-dom": "^18.2.0",
+    "react-feather": "^2.0.10",
+    "react-helmet": "^6.1.0",
+    "sass": "^1.70.0"
   }
 }
