@@ -3,6 +3,8 @@ import { graphql } from "gatsby";
 import { Helmet } from "react-helmet";
 import styled from "@emotion/styled";
 import { MDXProvider } from "@mdx-js/react";
+import { MDXRenderer } from "gatsby-plugin-mdx";
+
 
 // Colors and styling from the original docs theme
 const colors = {
@@ -196,14 +198,24 @@ const BodyContent = styled.div({
   }
 });
 
-const DocsTemplate = ({ data, pageContext, children }) => {
+const DocsTemplate = ({ data, pageContext }) => {
   const { markdownRemark, mdx } = data;
   
-  // Determine which content type we have
-  const content = markdownRemark || mdx;
-  const isMdx = !!mdx;
+  // Determine content type and extract data
+  const isMarkdown = pageContext.fileType === 'md';
+  const isMdx = pageContext.fileType === 'mdx';
   
-  // Handle case where neither markdown nor MDX file is found
+  let content, frontmatter;
+  
+  if (isMarkdown && markdownRemark) {
+    content = markdownRemark.html;
+    frontmatter = markdownRemark.frontmatter;
+  } else if (isMdx && mdx) {
+    content = mdx.body;
+    frontmatter = mdx.frontmatter;
+  }
+  
+  // Handle case where content is not found
   if (!content) {
     return (
       <div>
@@ -218,15 +230,12 @@ const DocsTemplate = ({ data, pageContext, children }) => {
             <p>The requested documentation page could not be found.</p>
             <p><strong>Path:</strong> {pageContext.slug}</p>
             <p><strong>Relative Path:</strong> {pageContext.relativePath}</p>
-            <p><strong>Extension:</strong> {pageContext.extension}</p>
+            <p><strong>File Type:</strong> {pageContext.fileType}</p>
           </BodyContent>
         </StyledContentWrapper>
       </div>
     );
   }
-  
-  const { frontmatter } = content;
-  const html = content.html; // Only available for markdown
   
   return (
     <div>
@@ -245,15 +254,15 @@ const DocsTemplate = ({ data, pageContext, children }) => {
         <PageHeader>
           <Heading>{frontmatter.title || 'Documentation'}</Heading>
         </PageHeader>
-        {isMdx ? (
-          <BodyContent>
+        <BodyContent>
+          {isMarkdown ? (
+            <div dangerouslySetInnerHTML={{ __html: content }} />
+          ) : (
             <MDXProvider>
-              {children}
+              <MDXRenderer>{content}</MDXRenderer>
             </MDXProvider>
-          </BodyContent>
-        ) : (
-          <BodyContent dangerouslySetInnerHTML={{ __html: html }} />
-        )}
+          )}
+        </BodyContent>
       </StyledContentWrapper>
     </div>
   );
@@ -267,11 +276,11 @@ export const query = graphql`
         title
       }
     }
-    mdx(internal: {contentFilePath: {eq: $absolutePath}}) {
+    mdx(fileAbsolutePath: {eq: $absolutePath}) {
+      body
       frontmatter {
         title
       }
-      body
     }
   }
 `;

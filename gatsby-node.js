@@ -1,14 +1,7 @@
 const path = require('path');
 
 // Marketing theme gatsby-node functionality
-exports.onCreateBabelConfig = ({ actions }) => {
-  actions.setBabelPlugin({
-    name: `@babel/plugin-proposal-decorators`,
-    options: {
-      legacy: true
-    }
-  })
-}
+// Note: @babel/plugin-proposal-decorators is configured in .babelrc to avoid duplication
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
   if (stage === 'build-html') {
@@ -41,7 +34,7 @@ exports.onCreatePage = async ({ page, actions }) => {
   }
 }
 
-// Docs functionality (markdown only for now)
+// Docs functionality - supporting both .md and .mdx files
 exports.createPages = async ({ graphql, actions }) => {
   const { createPage } = actions;
 
@@ -88,7 +81,7 @@ exports.createPages = async ({ graphql, actions }) => {
         slug,
         relativePath,
         absolutePath,
-        extension,
+        fileType: extension, // Pass file type to template
       },
     });
   });
