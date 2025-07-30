@@ -42,8 +42,8 @@ A [duration](https://golang.org/pkg/time/#Duration) that will be honored when ru
 
 A boolean field that controls whether ImagePullBackOff conditions should respect the configured timeout instead of failing immediately.
 
-- When `allowImagePullRetries: false` (default): Maintains existing behavior - fails immediately on ImagePullBackOff
-- When `allowImagePullRetries: true`: Waits for the configured timeout, allowing image pull retries to potentially succeed
+- When `false` (default): Maintains existing behavior - fails immediately on ImagePullBackOff
+- When `true`: Waits for the configured timeout, allowing image pull retries to potentially succeed
 
 #### `imagePullSecret` (Optional)
 
