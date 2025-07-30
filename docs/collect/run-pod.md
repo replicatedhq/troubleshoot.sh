@@ -38,6 +38,13 @@ The `corev1.PodSpec` for the `runPod` collector. See the [Kubernetes API Referen
 
 A [duration](https://golang.org/pkg/time/#Duration) that will be honored when running the pod. If the timeout elapses, the pod is terminated. Troubleshoot waits for a maximum of `60s` for the pod to safely terminate, then forcefully deletes it. If the timeout is not specified, the collector will run for as long as the underlying command does.
 
+##### `allowImagePullRetries` (Optional)
+
+A boolean field that controls whether ImagePullBackOff conditions should respect the configured timeout instead of failing immediately.
+
+- When `false` (default): Maintains existing behavior - fails immediately on ImagePullBackOff
+- When `true`: Waits for the configured timeout, allowing image pull retries to potentially succeed
+
 #### `imagePullSecret` (Optional)
 
 Troubleshoot offers the ability to use ImagePullSecrets, either using the name of a pre-existing secret in the `podSpec` or dynamically creating a temporary secret to extract the image and destroy it after run-collector is done.
