@@ -16,6 +16,9 @@ const sidebars: SidebarsConfig = {
             "preflight/cli-usage",
             "preflight/cluster-checks",
             "preflight/node-checks",
+            "preflight/v1beta3-overview",
+            "preflight/v1beta3-migration",
+            "preflight/v1beta3-guide",
             "preflight/exit-codes",
             "preflight/next-steps"
         ]
