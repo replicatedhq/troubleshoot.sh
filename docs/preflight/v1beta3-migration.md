@@ -324,36 +324,36 @@ spec:
               message: Kubernetes version meets all requirements
     {{- end }}
 
-    {{- if .Values.nodes.count.enabled }}
+    {{- if .Values.nodes.enabled }}
     - docString: |
         Title: High Availability Node Count
         Requirement:
-          - Minimum {{ .Values.nodes.count.minimum }} nodes
+          - Minimum {{ .Values.nodes.minimum }} nodes
         Multiple nodes ensure the application remains available during
         node maintenance or failures. Single-node clusters risk downtime.
       nodeResources:
         checkName: Node count
         outcomes:
           - fail:
-              when: 'count() < {{ .Values.nodes.count.minimum }}'
-              message: At least {{ .Values.nodes.count.minimum }} nodes required for high availability
+              when: 'count() < {{ .Values.nodes.minimum }}'
+              message: At least {{ .Values.nodes.minimum }} nodes required for high availability
           - pass:
               message: Sufficient nodes for HA ({{ "{{" }} count() {{ "}}" }} nodes)
     {{- end }}
 
-    {{- if .Values.nodes.memory.enabled }}
+    {{- if .Values.memory.enabled }}
     - docString: |
         Title: Per-Node Memory Requirements
         Requirement:
-          - Each node: minimum {{ .Values.nodes.memory.minGi }} GiB
-        Application pods require {{ .Values.nodes.memory.minGi }} GiB to run database
+          - Each node: minimum {{ .Values.memory.minGi }} GiB
+        Application pods require {{ .Values.memory.minGi }} GiB to run database
         and cache workloads. Insufficient memory causes scheduling failures.
       nodeResources:
         checkName: Node memory
         outcomes:
           - fail:
-              when: 'min(memoryCapacity) < {{ .Values.nodes.memory.minGi }}Gi'
-              message: Each node must have at least {{ .Values.nodes.memory.minGi }} GiB memory
+              when: 'min(memoryCapacity) < {{ .Values.memory.minGi }}Gi'
+              message: Each node must have at least {{ .Values.memory.minGi }} GiB memory
           - pass:
               message: Memory requirements met (smallest node: {{ "{{" }} min(memoryCapacity) {{ "}}" }})
     {{- end }}
@@ -410,12 +410,12 @@ kubernetes:
   recommendedVersion: "1.27.0"
 
 nodes:
-  count:
-    enabled: true
-    minimum: 3
-  memory:
-    enabled: true
-    minGi: 16
+  enabled: true
+  minimum: 3
+
+memory:
+  enabled: true
+  minGi: 16
 
 storage:
   enabled: true

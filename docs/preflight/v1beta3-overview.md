@@ -19,12 +19,25 @@ With v1beta3, you can write a single Preflight spec that adapts to different sce
 
 ## Key Features
 
-### Templating with Values
+### Templating with Helm Engine
 
-v1beta3 uses Go template syntax with the Sprig function library. Supply values via:
+v1beta3 uses Helm's rendering engine, which means you have access to:
+
+**Available Builtin Objects:**
+- `.Values` - Values from your values files and `--set` overrides
+- `.Release` - Release information (Name, Namespace, IsInstall, IsUpgrade, etc.)
+- `.Chart` - Chart metadata (Name, Version, AppVersion, etc.)
+- `.Capabilities` - Cluster capabilities (KubeVersion, APIVersions, etc.)
+- `.Template` - Template file information (Name, BasePath)
+
+**Sprig Functions:** Full Sprig function library is available for string manipulation, math, date functions, etc.
+
+**Supply values via:**
 - Multiple values files: `--values base.yaml --values prod.yaml`
 - Command-line overrides: `--set storage.className=fast`
 - Both combined (sets override files)
+
+**Example using builtin objects:**
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta3
@@ -33,28 +46,39 @@ metadata:
   name: my-app-preflight
 spec:
   analyzers:
-    {{- if .Values.kubernetes.version.enabled }}
+    {{- if .Values.kubernetes.enabled }}
     - clusterVersion:
         checkName: Kubernetes version
         outcomes:
           - fail:
-              when: '< {{ .Values.kubernetes.version.minimum }}'
-              message: Requires Kubernetes {{ .Values.kubernetes.version.minimum }}+
+              when: '< {{ .Values.kubernetes.minVersion }}'
+              message: Requires Kubernetes {{ .Values.kubernetes.minVersion }}+
           - pass:
               message: Kubernetes version meets requirements
+    {{- end }}
+
+    # Using .Capabilities to conditionally check based on Kubernetes version
+    {{- if .Capabilities.KubeVersion.GitVersion }}
+    - distribution:
+        checkName: Distribution for {{ .Capabilities.KubeVersion.GitVersion }}
+        outcomes:
+          - pass:
+              message: Running on {{ .Capabilities.KubeVersion.GitVersion }}
     {{- end }}
 ```
 
 ### Self-Documenting with docStrings
 
-Every analyzer should include a `docString` that describes the requirement, rationale, and links. This can be extracted automatically for documentation:
+Every analyzer should include a `docString` that describes the requirement, rationale, and links. The docString uses templates to show actual configured values rather than placeholders, and can be extracted automatically for documentation.
+
+**Example:**
 
 ```yaml
 - docString: |
     Title: Kubernetes Version Requirements
     Requirement:
-      - Minimum: {{ .Values.kubernetes.version.minimum }}
-      - Recommended: {{ .Values.kubernetes.version.recommended }}
+      - Minimum: {{ .Values.kubernetes.minVersion }}
+      - Recommended: {{ .Values.kubernetes.recommendedVersion }}
     Ensures required APIs and security patches are available.
     Links:
       - https://kubernetes.io/releases/
@@ -62,22 +86,15 @@ Every analyzer should include a `docString` that describes the requirement, rati
     checkName: Kubernetes version
     outcomes:
       - fail:
-          when: '< {{ .Values.kubernetes.version.minimum }}'
-          message: Requires at least {{ .Values.kubernetes.version.minimum }}
+          when: '< {{ .Values.kubernetes.minVersion }}'
+          message: Requires at least {{ .Values.kubernetes.minVersion }}
       - pass:
           message: Kubernetes version OK
-```
 
-### Dynamic Documentation
-
-The `docString` can use templates to show actual values rather than placeholders:
-
-```yaml
 - docString: |
     Title: Storage Class Availability
     Requirement:
       - StorageClass "{{ .Values.storage.className }}" must exist
-      - Must support {{ .Values.storage.minSize }} minimum PVC size
     Dynamic provisioning requires a properly configured StorageClass.
   storageClass:
     checkName: Storage Class
@@ -88,6 +105,8 @@ The `docString` can use templates to show actual values rather than placeholders
       - pass:
           message: StorageClass {{ .Values.storage.className }} exists
 ```
+
+When rendered with values, the docString will show the actual requirements (e.g., "Minimum: 1.24.0" instead of a placeholder).
 
 ## Usage
 
@@ -241,73 +260,71 @@ spec:
     - clusterResources: {}
 
   analyzers:
-    {{- if .Values.resources.memory.enabled }}
+    {{- if .Values.memory.enabled }}
     - docString: |
         Title: Node Memory Requirements
         Requirement:
-          - Each node must have at least {{ .Values.resources.memory.minPerNodeGi }} GiB memory
-          - Total cluster memory must be at least {{ .Values.resources.memory.totalMinGi }} GiB
+          - Each node must have at least {{ .Values.memory.minPerNodeGi }} GiB memory
+          - Total cluster memory must be at least {{ .Values.memory.totalMinGi }} GiB
 
         Rationale:
-          The application workloads require {{ .Values.resources.memory.minPerNodeGi }} GiB per node
+          The application workloads require {{ .Values.memory.minPerNodeGi }} GiB per node
           to run database replicas and caching layers. If nodes have less memory, pods will
           fail to schedule or may be evicted under load.
 
-        Dynamic Feedback:
-          This check reports how much additional memory is needed if requirements aren't met.
       nodeResources:
         checkName: Node memory check
         outcomes:
           - fail:
-              when: 'min(memoryCapacity) < {{ .Values.resources.memory.minPerNodeGi }}Gi'
+              when: 'min(memoryCapacity) < {{ .Values.memory.minPerNodeGi }}Gi'
               message: |
                 Insufficient memory on one or more nodes.
-                Minimum required: {{ .Values.resources.memory.minPerNodeGi }} GiB per node
+                Minimum required: {{ .Values.memory.minPerNodeGi }} GiB per node
                 Smallest node has: {{ "{{" }} min(memoryCapacity) {{ "}}" }}
 
-                Action: Add {{ "{{" }} subtract({{ .Values.resources.memory.minPerNodeGi }}Gi, min(memoryCapacity)) {{ "}}" }} more memory to the smallest node,
-                or add nodes with at least {{ .Values.resources.memory.minPerNodeGi }} GiB memory.
+                Action: Add {{ "{{" }} subtract({{ .Values.memory.minPerNodeGi }}Gi, min(memoryCapacity)) {{ "}}" }} more memory to the smallest node,
+                or add nodes with at least {{ .Values.memory.minPerNodeGi }} GiB memory.
           - warn:
-              when: 'sum(memoryCapacity) < {{ .Values.resources.memory.totalMinGi }}Gi'
+              when: 'sum(memoryCapacity) < {{ .Values.memory.totalMinGi }}Gi'
               message: |
                 Total cluster memory below recommended minimum.
-                Required total: {{ .Values.resources.memory.totalMinGi }} GiB
+                Required total: {{ .Values.memory.totalMinGi }} GiB
                 Current total: {{ "{{" }} sum(memoryCapacity) {{ "}}" }}
 
-                Additional memory needed: {{ "{{" }} subtract({{ .Values.resources.memory.totalMinGi }}Gi, sum(memoryCapacity)) {{ "}}" }}
+                Additional memory needed: {{ "{{" }} subtract({{ .Values.memory.totalMinGi }}Gi, sum(memoryCapacity)) {{ "}}" }}
           - pass:
               message: |
                 Memory requirements met.
-                Per-node minimum: {{ "{{" }} min(memoryCapacity) {{ "}}" }} (required: {{ .Values.resources.memory.minPerNodeGi }} GiB)
-                Total cluster: {{ "{{" }} sum(memoryCapacity) {{ "}}" }} (required: {{ .Values.resources.memory.totalMinGi }} GiB)
+                Per-node minimum: {{ "{{" }} min(memoryCapacity) {{ "}}" }} (required: {{ .Values.memory.minPerNodeGi }} GiB)
+                Total cluster: {{ "{{" }} sum(memoryCapacity) {{ "}}" }} (required: {{ .Values.memory.totalMinGi }} GiB)
     {{- end }}
 
-    {{- if .Values.resources.cpu.enabled }}
+    {{- if .Values.cpu.enabled }}
     - docString: |
         Title: CPU Core Requirements
         Requirement:
-          - Minimum {{ .Values.resources.cpu.totalCores }} cores across all nodes
+          - Minimum {{ .Values.cpu.totalCores }} cores across all nodes
 
         Rationale:
-          Application services require {{ .Values.resources.cpu.totalCores }} cores for
+          Application services require {{ .Values.cpu.totalCores }} cores for
           compute-intensive workloads. The scheduler may fail to place pods if
           insufficient CPU capacity is available.
       nodeResources:
         checkName: Total CPU capacity
         outcomes:
           - fail:
-              when: 'sum(cpuCapacity) < {{ .Values.resources.cpu.totalCores }}'
+              when: 'sum(cpuCapacity) < {{ .Values.cpu.totalCores }}'
               message: |
                 Insufficient CPU capacity.
-                Required: {{ .Values.resources.cpu.totalCores }} cores
+                Required: {{ .Values.cpu.totalCores }} cores
                 Available: {{ "{{" }} sum(cpuCapacity) {{ "}}" }} cores
 
-                Need {{ "{{" }} subtract({{ .Values.resources.cpu.totalCores }}, sum(cpuCapacity)) {{ "}}" }} more cores.
+                Need {{ "{{" }} subtract({{ .Values.cpu.totalCores }}, sum(cpuCapacity)) {{ "}}" }} more cores.
                 Consider scaling the cluster or using larger instance types.
           - pass:
               message: |
                 CPU capacity meets requirements.
-                Available: {{ "{{" }} sum(cpuCapacity) {{ "}}" }} cores (required: {{ .Values.resources.cpu.totalCores }})
+                Available: {{ "{{" }} sum(cpuCapacity) {{ "}}" }} cores (required: {{ .Values.cpu.totalCores }})
     {{- end }}
 
     {{- if .Values.distribution.enabled }}
