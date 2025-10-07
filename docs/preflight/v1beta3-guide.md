@@ -62,7 +62,7 @@ Values can be supplied by files (`--values`) and/or inline overrides (`--set`), 
 
 - **Values**: template expressions directly use values from your values files.
   ```yaml
-  {{ .Values.clusterVersion.minVersion }}
+  {{ .Values.kubernetes.minVersion }}
   ```
 
 - **Nested conditionals**: further constrain checks (e.g., only when a specific CRD is required).
@@ -122,13 +122,13 @@ Use the analyzer that matches the requirement, and enumerate `outcomes` with cle
     checkName: Kubernetes version
     outcomes:
       - fail:
-          when: '< {{ .Values.clusterVersion.minVersion }}'
-          message: Requires at least Kubernetes {{ .Values.clusterVersion.minVersion }}.
+          when: '< {{ .Values.kubernetes.minVersion }}'
+          message: Requires at least Kubernetes {{ .Values.kubernetes.minVersion }}.
       - warn:
-          when: '< {{ .Values.clusterVersion.recommendedVersion }}'
-          message: Recommended to use Kubernetes {{ .Values.clusterVersion.recommendedVersion }} or later.
+          when: '< {{ .Values.kubernetes.recommendedVersion }}'
+          message: Recommended to use Kubernetes {{ .Values.kubernetes.recommendedVersion }} or later.
       - pass:
-          when: '>= {{ .Values.clusterVersion.recommendedVersion }}'
+          when: '>= {{ .Values.kubernetes.recommendedVersion }}'
           message: Meets recommended and required Kubernetes versions.
   ```
 
@@ -432,26 +432,26 @@ spec:
     {{- end }}
 
   analyzers:
-    {{- if .Values.clusterVersion.enabled }}
+    {{- if .Values.kubernetes.enabled }}
     - docString: |
         Title: Kubernetes Control Plane Requirements
         Requirement:
           - Version:
-            - Minimum: {{ .Values.clusterVersion.minVersion }}
-            - Recommended: {{ .Values.clusterVersion.recommendedVersion }}
+            - Minimum: {{ .Values.kubernetes.minVersion }}
+            - Recommended: {{ .Values.kubernetes.recommendedVersion }}
           - Docs: https://kubernetes.io
         These version targets ensure required APIs and defaults are available and patched.
       clusterVersion:
         checkName: Kubernetes version
         outcomes:
           - fail:
-              when: '< {{ .Values.clusterVersion.minVersion }}'
-              message: Requires at least Kubernetes {{ .Values.clusterVersion.minVersion }}.
+              when: '< {{ .Values.kubernetes.minVersion }}'
+              message: Requires at least Kubernetes {{ .Values.kubernetes.minVersion }}.
           - warn:
-              when: '< {{ .Values.clusterVersion.recommendedVersion }}'
-              message: Recommended to use Kubernetes {{ .Values.clusterVersion.recommendedVersion }} or later.
+              when: '< {{ .Values.kubernetes.recommendedVersion }}'
+              message: Recommended to use Kubernetes {{ .Values.kubernetes.recommendedVersion }} or later.
           - pass:
-              when: '>= {{ .Values.clusterVersion.recommendedVersion }}'
+              when: '>= {{ .Values.kubernetes.recommendedVersion }}'
               message: Meets recommended and required Kubernetes versions.
     {{- end }}
 
