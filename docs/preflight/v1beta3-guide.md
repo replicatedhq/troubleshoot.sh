@@ -149,15 +149,6 @@ spec:
     {{- end }}
 ```
 
-### Use templating and values
-
-Preflight v1beta3 uses Helm's rendering engine, giving you access to:
-- **Builtin objects**: `.Values`, `.Release`, `.Chart`, `.Capabilities`, `.Template`
-- **Sprig functions**: Full Sprig function library for template operations
-- **Helper templates**: Define and use `{{- define }}` templates (though these must be in the same file)
-
-Values can be supplied by files (`--values`) and/or inline overrides (`--set`), and accessed in templates via `.Values`.
-
 **Note on Helm integration:** While you have access to Helm builtins, Preflight specs are rendered independently. If you want to use `.Chart` or `.Release` information, you'll need to either:
 - Pass those values explicitly via `--set` (e.g., `--set release.name=my-release`)
 - Use Helm's `helm template` to pre-render your Preflight spec as part of your chart, then pipe it to preflight
