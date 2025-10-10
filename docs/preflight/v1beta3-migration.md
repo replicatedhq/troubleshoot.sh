@@ -1,5 +1,5 @@
 ---
-title: "Migrating from v1beta2 to v1beta3"
+title: "Migrate from v1beta2 to v1beta3"
 description: "Step-by-step guide to convert v1beta2 Preflight specs to v1beta3"
 tags: ["preflight", "v1beta2", "v1beta3", "migration"]
 sidebar_position: 5
@@ -34,6 +34,19 @@ This guide walks through converting v1beta2 Preflight specs to v1beta3. The v1be
 | **Toggles** | Maintain multiple files | Conditional blocks |
 
 ## Migration Process
+
+### Migration Checklist
+
+- [ ] Update `apiVersion` to `troubleshoot.sh/v1beta3`
+- [ ] Add `docString` to every analyzer
+- [ ] Extract hardcoded values to a values file
+- [ ] Replace hardcoded values with `{{ .Values.* }}` expressions
+- [ ] Wrap optional checks in `{{- if .Values.feature.enabled }}`
+- [ ] Update messages to use runtime expressions where helpful
+- [ ] Test rendering: `preflight template spec.yaml --values values.yaml`
+- [ ] Test with multiple values scenarios (dev, prod, minimal)
+- [ ] Extract docs: `preflight docs spec.yaml --values values.yaml`
+- [ ] Verify extracted documentation is clear and complete
 
 ### Step 1: Change API Version
 
@@ -562,19 +575,6 @@ databases:
             Available: {{ "{{" }} sum(cpuCapacity) {{ "}}" }} cores
             Need {{ "{{" }} subtract({{ .Values.cpu.minimum }}, sum(cpuCapacity)) {{ "}}" }} more cores
 ```
-
-## Migration Checklist
-
-- [ ] Update `apiVersion` to `troubleshoot.sh/v1beta3`
-- [ ] Add `docString` to every analyzer
-- [ ] Extract hardcoded values to a values file
-- [ ] Replace hardcoded values with `{{ .Values.* }}` expressions
-- [ ] Wrap optional checks in `{{- if .Values.feature.enabled }}`
-- [ ] Update messages to use runtime expressions where helpful
-- [ ] Test rendering: `preflight template spec.yaml --values values.yaml`
-- [ ] Test with multiple values scenarios (dev, prod, minimal)
-- [ ] Extract docs: `preflight docs spec.yaml --values values.yaml`
-- [ ] Verify extracted documentation is clear and complete
 
 ## Tips and Best Practices
 
