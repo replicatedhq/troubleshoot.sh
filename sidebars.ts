@@ -12,12 +12,22 @@ const sidebars: SidebarsConfig = {
         "label": "Preflight Checks",
         "collapsed": false,
         "items": [
-            "preflight/introduction",
-            "preflight/cli-usage",
-            "preflight/cluster-checks",
-            "preflight/node-checks",
-            "preflight/exit-codes",
-            "preflight/next-steps"
+            "preflight/v1beta3-overview",
+            "preflight/v1beta3-guide",
+            "preflight/v1beta3-migration",
+            {
+                "type": "category",
+                "label": "Preflight Tutorial",
+                "collapsed": false,
+                "items": [
+                    "preflight/introduction",
+                    "preflight/cli-usage",
+                    "preflight/cluster-checks",
+                    "preflight/node-checks",
+                    "preflight/exit-codes",
+                    "preflight/next-steps",
+                ],
+            },
         ]
     },
     {

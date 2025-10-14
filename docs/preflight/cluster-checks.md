@@ -14,6 +14,10 @@ These checks are designed to show how easy it is to add new preflight checks to 
 
 ## Create a `preflight.yaml`
 
+:::note
+This tutorial demonstrates how the author a v1beta2 Preflight spec. For information about v1beta3 Preflight specs, see [About Preflight v1beta3](v1beta3-overview).
+:::
+
 To start, create a new file on your computer named `preflight.yaml` and paste the following content into it:
 
 ```yaml
