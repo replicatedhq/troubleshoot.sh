@@ -153,6 +153,12 @@ spec:
 - Pass those values explicitly via `--set` (e.g., `--set release.name=my-release`)
 - Use Helm's `helm template` to pre-render your Preflight spec as part of your chart, then pipe it to preflight
 
+**Caveat about Helm built-ins (e.g., `.Capabilities`):** In Preflight, many Helm built-ins are present but often populated with defaults rather than live cluster or release data.
+
+- `.Capabilities` is not cluster-aware in this context. It comes from Helm's `chartutil.DefaultCapabilities`, not API discovery against your cluster. Do not use it to gate analyzers based on supposed API availability or Kubernetes version; instead, write analyzers that directly check for the resources/APIs you need.
+- Other built-ins that typically come from chart or release context (such as `.Chart`, `.Release`, and parts of `.Capabilities`) may be empty or defaulted unless you explicitly provide values.
+- We recommend avoiding Helm built-ins entirely inside standalone Preflight specs. If you require Helm context, move your Preflight spec into your chart and render it with `helm template`, or explicitly pass needed values via `--set`.
+
 - **Toggling sections**: wrap analyzer blocks in conditionals tied to values.
   ```yaml
   {{- if .Values.storageClass.enabled }}
