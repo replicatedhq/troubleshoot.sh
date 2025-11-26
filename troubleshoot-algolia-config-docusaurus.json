@@ -1,5 +1,5 @@
 {
-  "index_name": "troubleshoot-docs",
+  "index_name": "troubleshoot-algolia-config",
   "start_urls": [
     "https://troubleshoot.sh/docs"
   ],
