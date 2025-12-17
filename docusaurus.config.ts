@@ -67,8 +67,8 @@ const config: Config = {
     algolia: {
       appId: process.env.ALGOLIA_APP_ID || 'YOUR_APP_ID',
       apiKey: process.env.ALGOLIA_API_KEY || 'YOUR_API_KEY',
-      indexName: 'troubleshoot-docs',
-      contextualSearch: true,
+      indexName: 'troubleshoot-algolia-config',
+      contextualSearch: false,
       searchParameters: {},
       searchPagePath: 'search',
     },
