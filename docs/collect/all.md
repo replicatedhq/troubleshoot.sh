@@ -34,6 +34,7 @@ tags: ["collect"]
 - [postgresql](./postgresql): collects information related to a postgresql server
 - [mysql](./mysql): collects information related to a mysql server
 - [redis](./redis): collects information related to a redis cluster
+- [clickhouse](./clickhouse.md) collects information related to a ClickHouse cluster
 
 ## CSI
 
