@@ -110,6 +110,7 @@ const sidebars: SidebarsConfig = {
             "analyze/http",
             "analyze/image-pull-secrets",
             "analyze/ingress",
+            "analyze/ingress-class",
             "analyze/job-status",
             "analyze/json-compare",
             "analyze/node-metrics",
