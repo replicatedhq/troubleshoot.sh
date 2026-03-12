@@ -4,7 +4,7 @@ description: "Including application metadata from a well-known Kubernetes Secret
 tags: ["collect"]
 ---
 
-The `supportBundleMetadata` collector reads all key-value pairs from the `replicated-support-metadata` Kubernetes Secret and includes them in the support bundle.
+The `supportBundleMetadata` collector reads all key-value pairs from the `replicated-support-metadata` Kubernetes Secret and includes them in the support bundle. This secret is created by Replicated SDK versions 1.18.0 and later.
 
 The secret name `replicated-support-metadata` is fixed and cannot be changed.
 
