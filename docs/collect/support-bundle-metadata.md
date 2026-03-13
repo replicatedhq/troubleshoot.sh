@@ -4,7 +4,7 @@ description: "Including application metadata from a well-known Kubernetes Secret
 tags: ["collect"]
 ---
 
-The `supportBundleMetadata` collector reads all key-value pairs from the `replicated-support-metadata` Kubernetes Secret and includes them in the support bundle. This secret is created by Replicated SDK versions 1.18.0 and later.
+The `supportBundleMetadata` collector reads all key-value pairs from the `replicated-support-metadata` Kubernetes Secret and includes them in the support bundle. This secret is created automatically by Replicated SDK versions 1.18.0 and later, but can also be created manually.
 
 The secret name `replicated-support-metadata` is fixed and cannot be changed.
 
@@ -26,7 +26,7 @@ metadata:
 spec:
   collectors:
     - supportBundleMetadata:
-        namespace: default
+        namespace: example
 ```
 
 ## Included resources
@@ -44,3 +44,18 @@ When this collector is executed, it will include the following file in a support
 ```
 
 The file contains all key-value pairs from the `replicated-support-metadata` Secret's `data` field, with byte values converted to strings.
+
+### Example Secret Format
+
+```yaml
+apiVersion: v1
+kind: Secret
+metadata:
+  name: replicated-support-metadata
+  namespace: example
+type: Opaque
+data:
+  appVersion: MS4yLjM=                                       # "1.2.3"
+  enabledFeatures: WyJmZWF0dXJlMSIsImV4cGVyaW1lbnRhbDEiXQ==  # ["feature1","experimental1"]
+  environment: c3RhZ2luZw==                                  # "staging"
+```
