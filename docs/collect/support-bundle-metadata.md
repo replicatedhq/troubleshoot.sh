@@ -4,7 +4,11 @@ description: "Including application metadata from a well-known Kubernetes Secret
 tags: ["collect"]
 ---
 
-The `supportBundleMetadata` collector reads all key-value pairs from the `replicated-support-metadata` Kubernetes Secret and includes them in the support bundle. This secret is created automatically by Replicated SDK versions 1.18.0 and later, but can also be created manually.
+The `supportBundleMetadata` collector reads all key-value pairs from the `replicated-support-metadata` Kubernetes Secret and includes them in the support bundle. This is useful for including details about the installation in support bundles. For example, you could include metadata about the customer's license entitlements, their support tier, or their installation environment.
+
+The `supportBundleMetadata` secret is created automatically by Replicated SDK versions 1.18.0 and later. For more information about distributing the Replicated SDK with your application, see [About the Replicated SDK](https://docs.replicated.com/vendor/replicated-sdk-overview) in the Replicated documentation.
+
+You can also create the secret manually. For information about the required format of the secret, see [Secret Format]({#secret-format}) on this page.
 
 The secret name `replicated-support-metadata` is fixed and cannot be changed.
 
@@ -31,7 +35,7 @@ spec:
 
 ## Included resources
 
-When this collector is executed, it will include the following file in a support bundle:
+When this collector is executed, it includes the following file in a support bundle:
 
 ### `/metadata/cluster.json`
 
@@ -45,9 +49,9 @@ When this collector is executed, it will include the following file in a support
 
 The file contains all key-value pairs from the `replicated-support-metadata` Secret's `data` field, with byte values converted to strings.
 
-### Example Secret Format
+### Secret Format
 
-The following yaml demonstrates the expected format of the `replicated-support-metadata` secret.
+The following yaml demonstrates the format of the `replicated-support-metadata` secret.
 
 ```yaml
 apiVersion: v1
