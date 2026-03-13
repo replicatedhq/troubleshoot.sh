@@ -65,6 +65,7 @@ const sidebars: SidebarsConfig = {
             "collect/run-daemonset",
             "collect/run-pod",
             "collect/secret",
+            "collect/support-bundle-metadata",
             "collect/ceph",
             "collect/collectd",
             "collect/custom-metrics",

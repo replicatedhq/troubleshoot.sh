@@ -67,3 +67,24 @@ You can also use the `--load-cluster-specs` flag with the `support-bundle` CLI t
 
 - If one spec has `runHostCollectorsInPod: true` and another does not, the merged spec sets `runHostCollectorsInPod: true` and includes all host collectors from both specs.
 - When using a spec with a URI pointing to a spec hosted elsewhere, if the target URI spec does not have the `runHostCollectorsInPod` setting, the merged output reflects the default setting of `false` regardless of the original spec's setting.
+
+## Include user-provided metadata
+
+> Introduced in Troubleshoot v0.125.0
+
+You can attach arbitrary key-value metadata to a support bundle using the `--metadata` flag. The flag accepts `key=value` pairs and can be specified multiple times:
+
+```shell
+kubectl support-bundle ./support-bundle.yaml \
+  --metadata contactEmail=support@example.com \
+  --metadata ticketID=ISSUE-42
+```
+
+The provided pairs are saved as a JSON map at `metadata/user.json` inside the bundle:
+
+```json
+{
+  "contactEmail": "support@example.com",
+  "ticketID": "ISSUE-42"
+}
+```
