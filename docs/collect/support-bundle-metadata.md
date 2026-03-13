@@ -47,6 +47,8 @@ The file contains all key-value pairs from the `replicated-support-metadata` Sec
 
 ### Example Secret Format
 
+The following yaml demonstrates the expected format of the `replicated-support-metadata` secret.
+
 ```yaml
 apiVersion: v1
 kind: Secret
