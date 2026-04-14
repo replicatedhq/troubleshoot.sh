@@ -37,15 +37,23 @@ spec:
 
 The output of command `ceph status -f json-pretty`.
 
+### `/ceph/([collector-name]/)status-txt.txt`
+
+The output of command `ceph status` (plain text format).
+
 ### `/ceph/([collector-name]/)fs.json`
 
-The output of command `ceph fs -f json-pretty`.
+The output of command `ceph fs status -f json-pretty`.
+
+### `/ceph/([collector-name]/)fs-txt.txt`
+
+The output of command `ceph fs status` (plain text format).
 
 ### `/ceph/([collector-name]/)fs-ls.json`
 
 The output of command `ceph fs ls -f json-pretty`.
 
-### `/ceph/([collector-name]/)osd-status.txt`
+### `/ceph/([collector-name]/)osd-status.json`
 
 The output of command `ceph osd status -f json-pretty`.
 
@@ -65,10 +73,26 @@ The output of command `ceph health detail -f json-pretty`.
 
 The output of command `ceph auth ls -f json-pretty`.
 
+### `/ceph/([collector-name]/)rgw-stats.json`
+
+The output of command `radosgw-admin bucket stats --rgw-cache-enabled=false`.
+
+### `/ceph/([collector-name]/)rbd-du-txt.txt`
+
+The output of command `rbd du --pool=replicapool`.
+
 ### `/ceph/([collector-name]/)df.json`
 
 The output of command `ceph df -f json-pretty`.
 
-### `/ceph/([collector-name]/)rbd-du-txt.txt`
+### `/ceph/([collector-name]/)df-txt.txt`
 
-The output of command `ceph rbd du --pool=replicapool`.
+The output of command `ceph df` (plain text format).
+
+### `/ceph/([collector-name]/)osd-df.json`
+
+The output of command `ceph osd df -f json-pretty`.
+
+### `/ceph/([collector-name]/)osd-df-txt.txt`
+
+The output of command `ceph osd df` (plain text format).
