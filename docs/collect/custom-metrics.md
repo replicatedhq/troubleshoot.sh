@@ -52,7 +52,7 @@ When this collector is executed, it will include the following files in a suppor
    |_ <metric_name> # raw metric name truncated from the resource name as per custom.metrics.k8s.io/v1beta1/ e.g. "namespaces/cpu_usage" would result in metric_name "cpu_usage"
       |_ <namespace>.json or <non_namespaced_object>.json # values for namespaced resources metrics are saved together in a file named after the namespace. For non-namespaced resources, each resource has their metric values in a separate file named after the resource. 
 ```
-### `/metrics/Pod/default/cpu_usage.json`
+### `/metrics/Pod/cpu_usage/default.json`
 
 ```json
 [
@@ -77,7 +77,7 @@ When this collector is executed, it will include the following files in a suppor
 ]
 ```
 
-### `/metrics/Service/my-namespace/node_memory_HugePages_Free.json`
+### `/metrics/Service/node_memory_HugePages_Free/my-namespace.json`
 
 ```json
 [
@@ -102,7 +102,7 @@ When this collector is executed, it will include the following files in a suppor
 ]
 ```
 
-### `/metrics/Node/node_cpu_guest.json`
+### `/metrics/Node/node_cpu_guest/node1.json`
 
 ```json
 [
