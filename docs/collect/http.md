@@ -5,7 +5,10 @@ tags: ["collect"]
 ---
 
 
-The `http` collector can be used to execute http requests from inside the cluster.
+The `http` collector can be used to execute HTTP requests at collection time.
+The collector makes requests from the network context of the process running the support bundle CLI.
+If the CLI runs inside a pod, requests use cluster networking (e.g. `*.svc.cluster.local` DNS resolves).
+If the CLI runs outside the cluster (CI runners, local machines), requests use the host network and in-cluster DNS names will not resolve.
 The response code and response body will be included in the collected data.
 The http collector can be specified multiple times in a collector spec.
 
