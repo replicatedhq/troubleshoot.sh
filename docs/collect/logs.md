@@ -50,7 +50,7 @@ Name can contain slashes to create a path in the support bundle.
 ##### `containerNames` (Optional)
 ContainerNames is an array of container names.
 If specified, logs for each container in the list will be collected.
-This can be omitted for pods with only one container.
+If omitted, logs for **all** containers in the pod are collected, including init containers.
 
 ##### `limits` (Optional)
 Provided to limit the size of the logs.
@@ -66,8 +66,11 @@ For duration string format see [time.ParseDuration](https://pkg.go.dev/time#Pars
 The number of lines to include, starting from the newest.
 
 ##### `limits.maxBytes`
-The maximum file size of a collected pod log. Defaults to an integer value of`5000000` bytes, which is 5MB. The value
+The maximum file size of a collected pod log. Defaults to an integer value of `5000000` bytes, which is 5MB. The value
 can only be set as an integer value for the `maxBytes` limit.
+
+##### `timestamps` (Optional)
+When set to `true`, each log line will be prefixed with an RFC3339 timestamp from the Kubernetes API. Defaults to `false`.
 
 ## Example Collector Definition
 
@@ -105,11 +108,13 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/[name]/[pod-name]/[container-name].log`
+### `/cluster-resources/pods/logs/[namespace]/[pod-name]/[container-name].log`
+
+The actual log files are stored under `cluster-resources/pods/logs/`. A symlink is created at `/[name]/[pod-name]/[container-name].log` pointing to the actual file, so logs can be accessed via either path.
 
 This will be created for each pod that matches the selector.
 
-If any errors are encounted, the following file will be created:
+If any errors are encountered, the following file will be created:
 
 ### `/[name]/[pod-name]/[container-name]-errors.json`
 
