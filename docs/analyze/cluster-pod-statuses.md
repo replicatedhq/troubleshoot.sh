@@ -27,7 +27,6 @@ metadata:
 spec:
   analyzers:
     - clusterPodStatuses:
-        name: unhealthy
         namespaces:
           - default
           - myapp-namespace
