@@ -53,6 +53,11 @@ In addition to the [shared collector properties](/docs/collect/collectors/#share
   When present, the timeout for the request.
   Expressed as a string duration, such as `30s`, `5m`, `1h`.
 
+- ##### `name` string (Optional)
+
+  When present, used as a directory prefix for the output file path in the support bundle.
+  For example, if `name` is set to `my-app`, the output file will be saved at `my-app/[collector-name].json`.
+
 ## Example Collector Definition
 
 ### GET
@@ -108,11 +113,9 @@ spec:
 
 ## Included resources
 
-Result of each collector will be stored in the root directory of the support bundle.
+### `[name]/[collector-name].json`
 
-### `[collector-name].json`
-
-If the `collectorName` field is unset it will be named `result.json`.
+The output file is stored at `[name]/[collector-name].json` in the support bundle. If the `name` field is not set, the file is stored in the root directory of the bundle. If the `collectorName` field is unset, the file will be named `result.json`.
 
 Response received from the server will be stored in the `"response"` key of the resulting JSON file:
 
