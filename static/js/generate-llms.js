@@ -30,11 +30,15 @@ const STATIC_HEADER = `# Troubleshoot Documentation
 
 `;
 
-// Define the specific files for the curated list — key overview and getting started pages
+// Curated list of key documentation pages for llms.txt.
+// Includes all Preflight and Support Bundle pages (the two primary products
+// highlighted on troubleshoot.sh), plus overview/index pages for the reference
+// sections (Collect, Analyze, Redact, Host Collect & Analyze).
+// The complete archive of all pages is available in llms-full.txt.
 const INCLUDED_FILES = [
     // Getting started
     'index.mdx',
-    // Preflight checks
+    // Preflight Checks — all pages (primary product)
     'preflight/v1beta3-overview.md',
     'preflight/v1beta3-guide.md',
     'preflight/v1beta3-migration.md',
@@ -44,75 +48,26 @@ const INCLUDED_FILES = [
     'preflight/node-checks.md',
     'preflight/exit-codes.md',
     'preflight/next-steps.md',
-    // Support Bundle
+    // Support Bundle — all pages (primary product)
     'support-bundle/introduction.md',
     'support-bundle/collecting.md',
     'support-bundle/discover-cluster-specs.md',
     'support-bundle/supportbundle.md',
-    // Collect — overview and common collectors
+    // Collect — overview pages
     'collect/index.mdx',
     'collect/collectors.md',
     'collect/all.md',
-    'collect/cluster-info.md',
-    'collect/cluster-resources.md',
-    'collect/exec.md',
-    'collect/http.md',
-    'collect/logs.md',
-    'collect/run-pod.md',
-    'collect/copy.md',
-    'collect/copy-from-host.md',
-    'collect/data.md',
-    'collect/secret.md',
-    'collect/configmap.md',
-    'collect/certificates.md',
-    'collect/dns.md',
-    'collect/helm.md',
-    'collect/mysql.md',
-    'collect/postgresql.md',
-    'collect/redis.md',
-    'collect/mssql.md',
-    'collect/s3-status.md',
-    'collect/node-metrics.md',
-    'collect/registry-images.md',
-    'collect/sysctl.md',
-    // Analyze — overview and common analyzers
+    // Analyze — overview pages
     'analyze/index.mdx',
     'analyze/analyzers.md',
     'analyze/outcomes.md',
-    'analyze/cluster-version.md',
-    'analyze/distribution.md',
-    'analyze/node-resources.md',
-    'analyze/deployment-status.md',
-    'analyze/statefulset-status.md',
-    'analyze/cluster-pod-statuses.md',
-    'analyze/ingress.md',
-    'analyze/storage-class.md',
-    'analyze/image-pull-secrets.md',
-    'analyze/regex.md',
-    'analyze/json-compare.md',
-    'analyze/yaml-compare.md',
-    'analyze/certificates.md',
-    'analyze/mysql.md',
-    'analyze/postgresql.md',
-    'analyze/redis.md',
-    'analyze/s3-status.md',
-    // Redact
+    // Redact — overview pages
     'redact/index.mdx',
     'redact/redactors.md',
     'redact/built-in.md',
-    // Host Collect & Analyze — overview and common checks
+    // Host Collect & Analyze — overview pages
     'host-collect-analyze/overview.md',
     'host-collect-analyze/all.md',
-    'host-collect-analyze/cpu.md',
-    'host-collect-analyze/memory.md',
-    'host-collect-analyze/diskUsage.md',
-    'host-collect-analyze/certificate.md',
-    'host-collect-analyze/dns.md',
-    'host-collect-analyze/hostOS.md',
-    'host-collect-analyze/tcpConnect.md',
-    'host-collect-analyze/tcpPortStatus.md',
-    'host-collect-analyze/udpPortStatus.md',
-    'host-collect-analyze/httpLoadBalancer.md',
 ];
 
 function shouldSkipDirectory(filePath) {
