@@ -55,6 +55,10 @@ Thumbs.db
 ehthumbs.db
 Desktop.ini
 
+# Generated LLM documentation files
+static/llms.txt
+static/llms-full.txt
+
 # Legacy files (no longer used)
 gatsby-theme-marketing/static/specs-gen.json
 troubleshoot.txt
