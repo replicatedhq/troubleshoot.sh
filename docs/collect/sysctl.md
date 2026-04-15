@@ -5,7 +5,7 @@ tags: ["collect"]
 ---
 
 
-The `sysctl` collector reads kernel parameter settings from /proc/sys/net/ipv4 and /proc/sys/net/bridge on all nodes.
+The `sysctl` collector reads kernel parameter settings from /proc/sys/net/ipv4, /proc/sys/net/bridge, and /proc/sys/vm on all nodes.
 This collector schedules a pod on every node using the specified image.
 
 ## Parameters

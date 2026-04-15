@@ -5,7 +5,7 @@ tags: ["analyze"]
 ---
 
 
-The `MS SQL` analyzer is available to check vesion and connection status of a Microsoft SQL Server database.
+The `MS SQL` analyzer is available to check version and connection status of a Microsoft SQL Server database.
 It relies on the data collected by the [MS SQL collector](/docs/collect/mssql/).
 
 The analyzer's outcome `when` clause may be used to evaluate the database connection status or a version range to compare against the running version, and supports standard comparison operators.

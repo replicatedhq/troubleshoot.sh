@@ -14,10 +14,10 @@ To collect information about a certificate key pair on the host, use the `certif
 In addition to the [shared collector properties](/docs/collect/collectors/#shared-properties), the `certificate` collector accepts the following parameters:
 
 #### `certificatePath` (Required)
-Includes unmounted partitions in the analysis. Disabled by default.
+The path to the TLS certificate file on the host (e.g. `/etc/ssl/corp.crt`).
 
 #### `keyPath` (Required)
-The minimum acceptable size to filter the available block devices during the analysis. Disabled by default.
+The path to the private key file on the host (e.g. `/etc/ssl/corp.key`).
 
 ### Example Collector Definition
 
@@ -35,7 +35,7 @@ spec:
 
 ### Included Resources
 
-The results of the `blockDevices` collector are stored in the `host-collectors/certificate` directory of the support bundle.
+The results of the `certificate` collector are stored in the `host-collectors/certificate` directory of the support bundle.
 
 #### `[collector-name].json`
 
@@ -49,14 +49,14 @@ key-pair-valid
 
 ## TLS Certificate Analyzer
 
-The `diskUsage` analyzer supports multiple outcomes. For example:
+The `certificate` analyzer supports multiple outcomes. For example:
 
 - `key-pair-missing`: Key pair fails do not exist.
 - `key-pair-switched`: PEM inputs may have been switched.
 - `key-pair-encrypted`: Key pair is encrypted, could not read the key.
 - `key-pair-mismatch`: Private key does not match the public key.
 - `key-pair-invalid`: Key pair is invalid.
-- `key-pair-valid`: Key pair is invalid.
+- `key-pair-valid`: Key pair is valid.
 
 ### Example Analyzer Definition
 

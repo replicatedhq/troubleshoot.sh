@@ -5,7 +5,7 @@ tags: ["analyze"]
 ---
 
 
-The `Redis` analyzer is available to check vesion and connection status of a Redis database.
+The `Redis` analyzer is available to check version and connection status of a Redis database.
 It relies on the data collected by the [Redis collector](/docs/collect/redis/).
 
 The analyzer's outcome `when` clause may be used to evaluate the database connection status or a semver range to compare against the running version, and supports standard comparison operators.

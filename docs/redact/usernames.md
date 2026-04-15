@@ -19,7 +19,7 @@ spec:
   - name: Redact values for environment variables with names beginning with 'user'
     removals:
       regex:
-      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*user[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\"'
+      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*user[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\")' 
   - name: Redact usernames in multiline JSON
     removals:
       regex:

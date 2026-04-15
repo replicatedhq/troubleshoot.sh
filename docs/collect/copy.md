@@ -65,7 +65,8 @@ spec:
 When this collector is executed, it will include the following files in a support bundle:
 
 
-### `/[namespace]/[pod-name]/[container-name]/[path]`
+### `/[name]/[namespace]/[pod-name]/[container-name]/[path]`
 
+When a `name` is specified in the collector, it is used as a prefix to the output path. If `name` is not specified, the path starts directly with the namespace.
 
-This will contain the pod's folder or file specified in the collector
+This will contain the pod's folder or file specified in the collector.
