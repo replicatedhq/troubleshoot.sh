@@ -179,6 +179,7 @@ const sidebars: SidebarsConfig = {
             "host-collect-analyze/memory",
             "host-collect-analyze/networkNamespaceConnectivity",
             "host-collect-analyze/regex",
+            "host-collect-analyze/registryImages",
             "host-collect-analyze/run",
             "host-collect-analyze/subnetAvailable",
             "host-collect-analyze/subnetcontainsip",
