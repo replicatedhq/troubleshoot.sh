@@ -53,6 +53,26 @@
     "node": ">=24.0"
   },
   "resolutions": {
-    "webpack-dev-server": ">=5.2.1"
+    "webpack-dev-server": ">=5.2.1",
+    "uuid": ">=14.0.0",
+    "brace-expansion": ">=1.1.13",
+    "follow-redirects": ">=1.16.0",
+    "lodash": ">=4.18.0",
+    "path-to-regexp": "^0.1.13",
+    "serialize-javascript": ">=7.0.5",
+    "node-forge": ">=1.4.0",
+    "picomatch": ">=2.3.2",
+    "qs": ">=6.14.2"
+  },
+  "overrides": {
+    "uuid": ">=14.0.0",
+    "brace-expansion": ">=1.1.13",
+    "follow-redirects": ">=1.16.0",
+    "lodash": ">=4.18.0",
+    "path-to-regexp": "^0.1.13",
+    "serialize-javascript": ">=7.0.5",
+    "node-forge": ">=1.4.0",
+    "picomatch": ">=2.3.2",
+    "qs": ">=6.14.2"
   }
 }
