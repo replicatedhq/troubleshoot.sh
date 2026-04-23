@@ -17,10 +17,12 @@ In addition to the [shared collector properties](/docs/collect/collectors/#share
 A list of fully-qualified image references to check (e.g. `registry.example.com/org/app:1.2.3`).
 
 #### `username` (Optional)
-Username for authenticating with the registry. If omitted, the collector falls back to ambient credentials such as `~/.docker/config.json`.
+Username for authenticating with the registry. If omitted, the collector falls back to system-provided auth credentials.
 
 #### `password` (Optional)
-Password for the registry user specified by `username`.
+Password for authenticating with the registry. If omitted, the collector falls back to system-provided auth credentials.
+
+Public registries do not require `username` or `password`.
 
 ### Example Collector Definition
 
