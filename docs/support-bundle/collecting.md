@@ -63,6 +63,12 @@ secret/path/to/my/spec
 
 You can also use the `--load-cluster-specs` flag with the `support-bundle` CLI to collect a Support Bundle by automatically discovering Support Bundle and Redactor specs in Secrets and ConfigMaps in the cluster. For more information, see [Discover Cluster Specs](discover-cluster-specs).
 
+:::tip Storing the spec as a Secret works without CRDs
+Storing your `kind: SupportBundle` spec inside a `kind: Secret` (with the label `troubleshoot.sh/kind: support-bundle`) — or inside a `kind: ConfigMap` — is the most portable way to ship a support bundle spec with an application. The spec is stored as plain YAML in `stringData`/`data`, so the cluster does not need the `supportbundles.troubleshoot.sh` CRD installed and no cluster-admin permission is required.
+
+This is especially important for Helm charts deployed to shared or multi-tenant clusters where installing CRDs is not an option. A bare `kind: SupportBundle` resource applied directly to the cluster requires the matching CRD to already be installed.
+:::
+
 ### Notes on using multiple specs with runHostCollectorsInPod flag
 
 - If one spec has `runHostCollectorsInPod: true` and another does not, the merged spec sets `runHostCollectorsInPod: true` and includes all host collectors from both specs.

@@ -9,6 +9,18 @@ tags: ["support-bundle"]
 
 You can use the `--load-cluster-specs` flag with the `support-bundle` CLI to discover Support Bundle and Redactor specs in Secrets and ConfigMaps in the cluster. This allows you to use the `support-bundle` CLI to automatically discover specs at runtime, rather than manually specifying each spec individually on the command line.
 
+:::tip Recommended for Helm charts
+Storing your `kind: SupportBundle` (or `kind: Preflight`) spec inside a Kubernetes Secret or ConfigMap is the most portable way to ship Troubleshoot specs with an application. Because the spec is embedded in `stringData` (or `data`) as plain YAML, the cluster does not need to know about the `troubleshoot.sh` CRDs — no `CustomResourceDefinition` install is required, and no cluster-admin permissions are needed.
+
+This makes the Secret/ConfigMap pattern the right choice for:
+
+* Helm charts deployed to shared clusters where you cannot install CRDs.
+* Multi-tenant environments where the application is installed without elevated permissions.
+* Any release that should "just work" regardless of what is or isn't installed in the target cluster.
+
+In contrast, applying a bare `kind: SupportBundle` or `kind: Preflight` resource directly to the cluster requires the matching CRD (`supportbundles.troubleshoot.sh` or `preflights.troubleshoot.sh`) to already exist in the cluster.
+:::
+
 For Troubleshoot v0.42.0 and later, you can specify multiple specs on the command line. When you use the `--load-cluster-specs` flag, Troubleshoot applies the specs that you provide on the command line as well as any specs discovered in the cluster.
 
 ## Requirements
