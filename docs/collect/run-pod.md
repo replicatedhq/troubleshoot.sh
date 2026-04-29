@@ -135,3 +135,11 @@ When this collector is executed, it will include the following files in a suppor
 ### `/[collector-name]/[collector-name].log`
 
 This will contain the pod output (up to 10000 lines).
+
+### `/[collector-name]/[collector-name].json`
+
+This will contain the pod status details in JSON format.
+
+### `/[collector-name]/[collector-name]-events.json`
+
+This will contain Kubernetes events related to the pod in JSON format.

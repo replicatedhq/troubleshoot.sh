@@ -127,7 +127,7 @@ spec:
     - nodeResources:
         checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) with amd64 architecture
         filters:
-          allocatableMemory: 16Gi
+          memoryAllocatable: 16Gi
           cpuArchitecture: amd64
           cpuCapacity: "5"
         outcomes:
@@ -163,7 +163,7 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
     - nodeResources:
         checkName: Must have Mongo running
         filters:
-          allocatableMemory: 16Gi
+          memoryAllocatable: 16Gi
           cpuCapacity: "5"
           selector:
             matchLabel:

@@ -77,6 +77,7 @@ const sidebars: SidebarsConfig = {
             "collect/postgresql",
             "collect/redis",
             "collect/registry-images",
+            "collect/s3-status",
             "collect/sonobuoy",
             "collect/sysctl",
             {
@@ -131,6 +132,7 @@ const sidebars: SidebarsConfig = {
             "analyze/postgresql",
             "analyze/redis",
             "analyze/registry-images",
+            "analyze/s3-status",
             "analyze/velero",
             "analyze/weave-report"
         ]

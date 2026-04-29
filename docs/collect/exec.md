@@ -27,7 +27,8 @@ The namespace to look for the pod selector in.
 If not specified, it will assume the "current" namespace that the kubectl context is set to.
 
 ##### `containerName` (Optional)
-The name of the container in which to execute the command. if not specified, the first container in the pod will be used.
+The name of the container in which to execute the command. If not specified, the first container in the pod will be used.
+This field is used only for container selection — it does not affect the output file naming. To control output file names, use `collectorName`.
 
 ##### `command` (Required)
 An array of strings containing the command to execute in the pod.
@@ -61,7 +62,9 @@ spec:
 
 ## Included Resources
 
-When this collector is executed, it will include the following file in a support bundle:
+When this collector is executed, it will include the following file in a support bundle.
+The `[collector-name]` in the paths below refers to the `collectorName` field (not `name` or `containerName`).
+The `name` field is used as the top-level directory prefix.
 
 ### `/[name]/[namespace]/[pod-name]/[collector-name]-stdout.txt`
 
