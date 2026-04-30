@@ -9,8 +9,16 @@ The `clusterResources` collector will enumerate all resources of known types tha
 This will attempt to collect information from all namespaces, but if RBAC policies prevent the collector from accessing a namespace or resource, it will still include the resources that are accessible.
 Any RBAC policy errors will be included in the collected output.
 
-This collector is a default collector and it will be automatically included in your collector spec if you don't include it.
-This collector cannot be removed.
+This collector is a default collector for in-cluster Kubernetes Support Bundles. When you run an in-cluster bundle, Troubleshoot automatically adds `clusterResources` to the merged collector list if your spec does not already declare it. This default exists because bundles are far more useful for debugging when cluster resource information is present, and authors commonly forget to add this collector.
+
+To opt out, declare the collector in your spec with [`exclude: true`](/docs/collect/collectors/#exclude):
+
+```yaml
+spec:
+  collectors:
+    - clusterResources:
+        exclude: true
+```
 
 ## Parameters
 
