@@ -18,9 +18,7 @@ apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
   name: supportbundle-tutorial
-spec:
-  collectors: []
-  analyzers: []
+spec: {}
 ```
 
 Save the file as `support-bundle.yaml` and then execute it with:
