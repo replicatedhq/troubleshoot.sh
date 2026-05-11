@@ -85,3 +85,7 @@ Generate a Support Bundle with a spec from a CLI argument as well as the specs d
 Generate a Support Bundle with specs found in the cluster matching a custom label:
 
 `./support-bundle --load-cluster-specs -l troubleshoot.sh/kind=something-else`
+
+:::note
+Specs discovered via `--load-cluster-specs` are subject to the same default-collector behavior as any other in-cluster Support Bundle: `clusterInfo` and `clusterResources` are added automatically unless declared with `exclude: true`. See [Default collectors for in-cluster bundles](/docs/support-bundle/collecting/#default-collectors-for-in-cluster-bundles).
+:::

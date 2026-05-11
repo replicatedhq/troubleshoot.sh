@@ -18,9 +18,7 @@ apiVersion: troubleshoot.sh/v1beta2
 kind: SupportBundle
 metadata:
   name: supportbundle-tutorial
-spec:
-  collectors: []
-  analyzers: []
+spec: {}
 ```
 
 Save the file as `support-bundle.yaml` and then execute it with:
@@ -36,6 +34,12 @@ Note: This does not deploy anything to the cluster, it's all client-side code.
 In my case, the file created was named `support-bundle.tar.gz`.
 
 You can `tar xzvf` the file and open it in your editor to look at the contents.
+
+## Default collectors for in-cluster bundles
+
+In-cluster Kubernetes Support Bundles always include the [`clusterInfo`](/docs/collect/cluster-info/) and [`clusterResources`](/docs/collect/cluster-resources/) collectors by default. Troubleshoot adds them to the merged collector list whenever your spec does not already declare them, including when `collectors:` is empty. This default also applies to specs discovered with `--load-cluster-specs`.
+
+This is intentional: bundles without basic cluster information and resource state are far less useful for debugging, and authors commonly forget to add these collectors. To opt out, declare the collector in your spec with [`exclude: true`](/docs/collect/collectors/#exclude).
 
 ## Collect a support bundle using multiple specs
 
