@@ -57,7 +57,7 @@ spec:
 Defaults for storageClass analyzer are:
   - ```checkName``` = 'Default Storage Class'
   - Fail Message = 'No default storage class found'
-  - Pass Message = 'Default Storge Class found'
+  - Pass Message = 'Default Storage Class found'
 
 ```yaml
 apiVersion: troubleshoot.sh/v1beta2

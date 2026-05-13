@@ -46,10 +46,10 @@ Specifies how long to run the background IOPS read and write workloads prior to 
 #### `backgroundWriteIOPS` (Optional)
 Specifies the target write IOPS to run while benchmarking. This is a limit and there is no guarantee it will be reached. This is the total IOPS for all background write jobs.
 
-#### `backgroundWriteIOPS` (Optional)
+#### `backgroundReadIOPS` (Optional)
 Specifies the target read IOPS to run while benchmarking. This is a limit and there is no guarantee it will be reached. This is the total IOPS for all background read jobs.
 
-#### `backgroundWriteIOPS` (Optional)
+#### `backgroundWriteIOPSJobs` (Optional)
 Specifies the number of threads to use for background write IOPS. This value should be set high enough to reach the target specified in `backgroundWriteIOPS`. For example, if `backgroundWriteIOPS` is 100 and write latency is 10ms, then a single job would barely be able to reach 100 IOPS, so this value should be at least 2.
 
 #### `backgroundReadIOPSJobs` (Optional)

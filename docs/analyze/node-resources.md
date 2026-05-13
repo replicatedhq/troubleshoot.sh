@@ -14,6 +14,22 @@ It's possible to create an analyzer to report on both aggregate values of all no
 This analyzer also supports a `filters` property.
 If provided, the nodes analyzed will be filtered to any node that matches the filters specified.
 
+## Parameters
+
+**ignoreIfNoFiles** (Optional) The `nodeResources` analyzer reads node data collected by the `clusterResources` collector (`cluster-resources/nodes.json`). If that file is not present in the support bundle (for example, because the collector was not run or could not list nodes), the analyzer produces a `warn` outcome by default. Set `ignoreIfNoFiles` to `true` to suppress this warning and skip the analyzer entirely when no node data was collected.
+
+```yaml
+    - nodeResources:
+        checkName: Must have at least 3 nodes in the cluster
+        ignoreIfNoFiles: true
+        outcomes:
+          - fail:
+              when: "count() < 3"
+              message: This application requires at least 3 nodes
+          - pass:
+              message: This cluster has enough nodes.
+```
+
 ## Available Filters
 
 All filters can be integers or strings that are parsed using the Kubernetes resource standard. The fields here are from the [nodes capacity and allocatable](https://kubernetes.io/docs/concepts/architecture/nodes/#capacity). Note that allocatable is not "free" or "available", but it's the amount of the capacity that is not reserved by other pods and processes.
@@ -127,7 +143,7 @@ spec:
     - nodeResources:
         checkName: Must have 1 node with 16 GB (available) memory and 5 cores (on a single node) with amd64 architecture
         filters:
-          allocatableMemory: 16Gi
+          memoryAllocatable: 16Gi
           cpuArchitecture: amd64
           cpuCapacity: "5"
         outcomes:
@@ -163,7 +179,7 @@ Troubleshoot allows users to analyze nodes that match one or more labels. For ex
     - nodeResources:
         checkName: Must have Mongo running
         filters:
-          allocatableMemory: 16Gi
+          memoryAllocatable: 16Gi
           cpuCapacity: "5"
           selector:
             matchLabel:

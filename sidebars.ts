@@ -65,6 +65,7 @@ const sidebars: SidebarsConfig = {
             "collect/run-daemonset",
             "collect/run-pod",
             "collect/secret",
+            "collect/support-bundle-metadata",
             "collect/ceph",
             "collect/collectd",
             "collect/custom-metrics",
@@ -77,6 +78,7 @@ const sidebars: SidebarsConfig = {
             "collect/redis",
             "collect/clickhouse",
             "collect/registry-images",
+            "collect/s3-status",
             "collect/sonobuoy",
             "collect/sysctl",
             {
@@ -111,6 +113,7 @@ const sidebars: SidebarsConfig = {
             "analyze/http",
             "analyze/image-pull-secrets",
             "analyze/ingress",
+            "analyze/ingress-class",
             "analyze/job-status",
             "analyze/json-compare",
             "analyze/node-metrics",
@@ -131,6 +134,7 @@ const sidebars: SidebarsConfig = {
             "analyze/clickhouse",
             "analyze/redis",
             "analyze/registry-images",
+            "analyze/s3-status",
             "analyze/velero",
             "analyze/weave-report"
         ]

@@ -34,6 +34,12 @@ Multiple YAML "documents" (specs) are supported as input, in addition all docume
 preflight [url] [flags] [-]
 ```
 
+## Discovering specs from the cluster
+
+Unlike the `support-bundle` CLI, the `preflight` CLI does not support the `--load-cluster-specs` flag. Preflight checks are designed to run _before_ an application is installed or upgraded, to verify that the cluster meets the necessary requirements. Because no installation or upgrade has taken place at the time preflight checks are run, there are no application-deployed Secrets or ConfigMaps in the cluster from which to discover specs.
+
+Instead, preflight specs should be provided directly using a URL, a file, an OCI registry, or stdin as described in the [Usage](#usage) section above.
+
 ## Options
 
 <table>

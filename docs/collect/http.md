@@ -5,7 +5,10 @@ tags: ["collect"]
 ---
 
 
-The `http` collector can be used to execute http requests from inside the cluster.
+The `http` collector can be used to execute HTTP requests at collection time.
+The collector makes requests from the network context of the process running the support bundle CLI.
+If the CLI runs inside a pod, requests use cluster networking (e.g. `*.svc.cluster.local` DNS resolves).
+If the CLI runs outside the cluster (CI runners, local machines), requests use the host network and in-cluster DNS names will not resolve.
 The response code and response body will be included in the collected data.
 The http collector can be specified multiple times in a collector spec.
 
@@ -49,6 +52,11 @@ In addition to the [shared collector properties](/docs/collect/collectors/#share
 
   When present, the timeout for the request.
   Expressed as a string duration, such as `30s`, `5m`, `1h`.
+
+- ##### `name` string (Optional)
+
+  When present, used as a directory prefix for the output file path in the support bundle.
+  For example, if `name` is set to `my-app`, the output file will be saved at `my-app/[collector-name].json`.
 
 ## Example Collector Definition
 
@@ -105,11 +113,9 @@ spec:
 
 ## Included resources
 
-Result of each collector will be stored in the root directory of the support bundle.
+### `[name]/[collector-name].json`
 
-### `[collector-name].json`
-
-If the `collectorName` field is unset it will be named `result.json`.
+The output file is stored at `[name]/[collector-name].json` in the support bundle. If the `name` field is not set, the file is stored in the root directory of the bundle. If the `collectorName` field is unset, the file will be named `result.json`.
 
 Response received from the server will be stored in the `"response"` key of the resulting JSON file:
 

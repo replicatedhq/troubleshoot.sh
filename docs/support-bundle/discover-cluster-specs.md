@@ -11,6 +11,10 @@ You can use the `--load-cluster-specs` flag with the `support-bundle` CLI to dis
 
 For Troubleshoot v0.42.0 and later, you can specify multiple specs on the command line. When you use the `--load-cluster-specs` flag, Troubleshoot applies the specs that you provide on the command line as well as any specs discovered in the cluster.
 
+:::note
+The `--load-cluster-specs` flag is only available for the `support-bundle` CLI, not the `preflight` CLI. Preflight checks are designed to run before an application is installed or upgraded, so there are no application-deployed specs in the cluster to discover. For more information, see [Run Preflight Checks using the CLI](/preflight/cli-usage).
+:::
+
 ## Requirements
 
 To use the `--load-cluster-specs` flag with the `support-bundle` CLI, there must be an existing Secret or ConfigMap object in the cluster.
@@ -81,3 +85,7 @@ Generate a Support Bundle with a spec from a CLI argument as well as the specs d
 Generate a Support Bundle with specs found in the cluster matching a custom label:
 
 `./support-bundle --load-cluster-specs -l troubleshoot.sh/kind=something-else`
+
+:::note
+Specs discovered via `--load-cluster-specs` are subject to the same default-collector behavior as any other in-cluster Support Bundle: `clusterInfo` and `clusterResources` are added automatically unless declared with `exclude: true`. See [Default collectors for in-cluster bundles](/docs/support-bundle/collecting/#default-collectors-for-in-cluster-bundles).
+:::
