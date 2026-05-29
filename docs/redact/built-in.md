@@ -52,3 +52,11 @@ These target specific fields within Kubernetes custom resource YAMLs under `clus
 For applications deployed with KOTS, the following additional built-in redactor is also enabled:
 
 - IP Addresses (masks IPv4 addresses using regex)
+
+:::important
+The built-in redactors cover common patterns but are not exhaustive. You should review them against your specific requirements and the data in your environment to ensure that they are adequate.
+
+If the built-in redactors do not cover your needs, you can write [custom redactors](./redactors.md).
+:::
+
+For more information, see the [source code](https://github.com/replicatedhq/troubleshoot/blob/main/pkg/redact/redact.go).
