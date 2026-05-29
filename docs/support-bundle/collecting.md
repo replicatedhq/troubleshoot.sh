@@ -92,3 +92,11 @@ The provided pairs are saved as a JSON map at `metadata/user.json` inside the bu
   "ticketID": "ISSUE-42"
 }
 ```
+
+## Exit codes
+
+| Exit Code | Meaning | When It Occurs |
+|-----------|---------|----------------|
+| `0` | Success | Collection completed and the archive was created. **This includes cases where analyzers inside the bundle report warnings or failures**. As long as the archive itself is generated, the CLI exits cleanly. |
+| `1` | Catch-all / Collection failure | Generic errors, network failures, or any problem that prevents the support bundle archive from being created. |
+| `2` | Spec issues | The spec could not be loaded or parsed. Examples: invalid YAML, missing secrets/configmaps, bad OCI/HTTP URI, or unknown collector/analyzer kinds. |
