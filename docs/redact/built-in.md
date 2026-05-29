@@ -5,7 +5,7 @@ tags: ["redact"]
 ---
 
 
-Automatically enabled is a set of built in redactors. They use a combination of regex matching and yamlPath targeting:
+Automatically enabled is a set of built in redactors. They use a combination of `regex` matching and `yamlPath` targeting:
 
 ### Single-line regex redactors
 
@@ -46,3 +46,9 @@ These target specific fields within Kubernetes custom resource YAMLs under `clus
 - `*.spec.kubernetes.certKey`
 - `*.spec.kubernetes.kubeadmToken`
 - `metadata.annotations.kubectl.kubernetes.io/last-applied-configuration`
+
+### KOTS Additional Redactors
+
+For applications deployed with KOTS, the following additional built-in redactor is also enabled:
+
+- IP Addresses (masks IPv4 addresses using regex)
