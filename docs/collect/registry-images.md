@@ -6,6 +6,12 @@ tags: ["collect"]
 
 
 The `registryImages` collector will attempt to get image manifest to validate its existence.
+The collector uses the network of the process running the support bundle CLI.
+
+- **Inside a pod:** requests use cluster networking, and in-cluster DNS (e.g. `*.svc.cluster.local`) resolves.
+- **Outside the cluster (CI runners, local machines):** requests use the host network, and in-cluster DNS names will not resolve.
+
+To check connectivity to an in-cluster service, run the CLI inside a pod.
 
 ## Parameters
 
