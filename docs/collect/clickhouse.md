@@ -5,6 +5,12 @@ tags: ["collect"]
 ---
 
 The data collector will validate and add information about a ClickHouse server to a support bundle.
+The collector uses the network of the process running the support bundle CLI.
+
+- **Inside a pod:** requests use cluster networking, and in-cluster DNS (e.g. `*.svc.cluster.local`) resolves.
+- **Outside the cluster (CI runners, local machines):** requests use the host network, and in-cluster DNS names will not resolve.
+
+To check connectivity to an in-cluster service, run the check from inside the cluster. See [Run this check inside the cluster](#run-this-check-inside-the-cluster) below.
 
 ## Parameters
 
@@ -140,6 +146,38 @@ spec:
         tls:
           skipVerify: true
 ```
+
+## Run this check inside the cluster
+
+By default the `clickhouse` collector uses the network of the process running the CLI (see above). To run the connection check from _inside_ the cluster, run it as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`proxy.replicated.com/library/troubleshoot`, v0.131.0 or later) and the `collect clickhouse` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+
+```yaml
+collectors:
+  - runPod:
+      name: clickhouse-check
+      namespace: default
+      podSpec:
+        restartPolicy: Never
+        containers:
+          - name: check
+            image: proxy.replicated.com/library/troubleshoot:v0.131.0
+            command: ["collect", "clickhouse", "--uri", "clickhouse://user:pass@my-clickhouse.default.svc.cluster.local:9000/default"]
+analyzers:
+  - textAnalyze:
+      checkName: ClickHouse reachable
+      collectorName: clickhouse-check
+      fileName: "*.log"
+      regex: '"isConnected": *true'
+      outcomes:
+        - pass:
+            when: "true"
+            message: "Connected to ClickHouse from inside the cluster."
+        - fail:
+            when: "false"
+            message: "Could not connect to ClickHouse from inside the cluster."
+```
+
+The `collect clickhouse` subcommand accepts `--uri` (required, a clickhouse-go DSN) plus the TLS flags `--tls-cacert`, `--tls-client-cert`, `--tls-client-key`, `--tls-skip-verify`, `--tls-secret-name`, and `--tls-secret-namespace`, which map to the `uri` and `tls` parameters above.
 
 ## Included resources
 

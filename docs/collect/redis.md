@@ -11,7 +11,7 @@ The collector uses the network of the process running the support bundle CLI.
 - **Inside a pod:** requests use cluster networking, and in-cluster DNS (e.g. `*.svc.cluster.local`) resolves.
 - **Outside the cluster (CI runners, local machines):** requests use the host network, and in-cluster DNS names will not resolve.
 
-To check connectivity to an in-cluster service, run the CLI inside a pod.
+To check connectivity to an in-cluster service, run the check from inside the cluster. See [Run this check inside the cluster](#run-this-check-inside-the-cluster) below.
 
 ## Parameters
 
@@ -132,6 +132,38 @@ spec:
         tls:
           skipVerify: true
 ```
+
+## Run this check inside the cluster
+
+By default the `redis` collector uses the network of the process running the CLI (see above). To run the connection check from _inside_ the cluster, run it as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`proxy.replicated.com/library/troubleshoot`, v0.131.0 or later) and the `collect redis` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+
+```yaml
+collectors:
+  - runPod:
+      name: redis-check
+      namespace: default
+      podSpec:
+        restartPolicy: Never
+        containers:
+          - name: check
+            image: proxy.replicated.com/library/troubleshoot:v0.131.0
+            command: ["collect", "redis", "--uri", "redis://my-cache.default.svc.cluster.local:6379"]
+analyzers:
+  - textAnalyze:
+      checkName: Redis reachable
+      collectorName: redis-check
+      fileName: "*.log"
+      regex: '"isConnected": *true'
+      outcomes:
+        - pass:
+            when: "true"
+            message: "Connected to Redis from inside the cluster."
+        - fail:
+            when: "false"
+            message: "Could not connect to Redis from inside the cluster."
+```
+
+The `collect redis` subcommand accepts `--uri` (required) plus the TLS flags `--tls-cacert`, `--tls-client-cert`, `--tls-client-key`, `--tls-skip-verify`, `--tls-secret-name`, and `--tls-secret-namespace`, which map to the `uri` and `tls` parameters above.
 
 ## Included resources
 
