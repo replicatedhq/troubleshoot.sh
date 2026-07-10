@@ -11,7 +11,7 @@ The collector uses the network of the process running the support bundle CLI.
 - **Inside a pod:** requests use cluster networking, and in-cluster DNS (e.g. `*.svc.cluster.local`) resolves.
 - **Outside the cluster (CI runners, local machines):** requests use the host network, and in-cluster DNS names will not resolve.
 
-To check connectivity to an in-cluster service, run the CLI inside a pod.
+To check connectivity to an in-cluster service, run the check from inside the cluster. See [Run this check inside the cluster](#run-this-check-inside-the-cluster) below.
 The response code and response body will be included in the collected data.
 The http collector can be specified multiple times in a collector spec.
 
