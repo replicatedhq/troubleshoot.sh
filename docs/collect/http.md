@@ -114,6 +114,38 @@ spec:
             Content-Type: 'application/json'
 ```
 
+## Run this check inside the cluster
+
+By default the `http` collector uses the network of the process running the CLI (see above). To run the request from _inside_ the cluster — for example, to verify that an in-cluster Service is reachable — run the collector as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`replicated/troubleshoot`, v0.131.0 or later) and the `collect http` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+
+```yaml
+collectors:
+  - runPod:
+      name: http-check
+      namespace: default
+      podSpec:
+        restartPolicy: Never
+        containers:
+          - name: check
+            image: replicated/troubleshoot:v0.131.0
+            command: ["collect", "http", "--url", "http://my-service.default.svc.cluster.local:8080/healthz"]
+analyzers:
+  - textAnalyze:
+      checkName: HTTP endpoint reachable
+      collectorName: http-check
+      fileName: "*.log"
+      regex: '"status": 200'
+      outcomes:
+        - pass:
+            when: "true"
+            message: "The endpoint returned 200 from inside the cluster."
+        - fail:
+            when: "false"
+            message: "The endpoint was not reachable from inside the cluster."
+```
+
+The `collect http` subcommand accepts `--url` (required), `--method` (`GET`, `POST`, or `PUT`), `--header key=value` (repeatable), `--body`, `--timeout`, `--proxy`, `--insecure-skip-verify`, and `--tls-cacert`.
+
 ## Included resources
 
 ### `[name]/[collector-name].json`

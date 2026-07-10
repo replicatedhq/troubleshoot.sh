@@ -133,6 +133,38 @@ spec:
           skipVerify: true
 ```
 
+## Run this check inside the cluster
+
+By default the `redis` collector connects from the machine running the CLI, so it tests connectivity from there rather than from inside the cluster. To run the connection check from _inside_ the cluster, run it as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`replicated/troubleshoot`, v0.131.0 or later) and the `collect redis` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+
+```yaml
+collectors:
+  - runPod:
+      name: redis-check
+      namespace: default
+      podSpec:
+        restartPolicy: Never
+        containers:
+          - name: check
+            image: replicated/troubleshoot:v0.131.0
+            command: ["collect", "redis", "--uri", "redis://my-cache.default.svc.cluster.local:6379"]
+analyzers:
+  - textAnalyze:
+      checkName: Redis reachable
+      collectorName: redis-check
+      fileName: "*.log"
+      regex: '"isConnected":true'
+      outcomes:
+        - pass:
+            when: "true"
+            message: "Connected to Redis from inside the cluster."
+        - fail:
+            when: "false"
+            message: "Could not connect to Redis from inside the cluster."
+```
+
+The `collect redis` subcommand accepts `--uri` (required) plus the TLS flags `--tls-cacert`, `--tls-client-cert`, `--tls-client-key`, `--tls-skip-verify`, `--tls-secret-name`, and `--tls-secret-namespace`, which map to the `uri` and `tls` parameters above.
+
 ## Included resources
 
 A single JSON file will be added to the support bundle, in the path `/redis/[collector-name].json`:

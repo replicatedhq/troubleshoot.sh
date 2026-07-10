@@ -40,6 +40,38 @@ spec:
         uri: sqlserver://username:password@hostname:1433/defaultdb
 ```
 
+## Run this check inside the cluster
+
+By default the `mssql` collector connects from the machine running the CLI, so it tests connectivity from there rather than from inside the cluster. To run the connection check from _inside_ the cluster, run it as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`replicated/troubleshoot`, v0.131.0 or later) and the `collect mssql` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+
+```yaml
+collectors:
+  - runPod:
+      name: mssql-check
+      namespace: default
+      podSpec:
+        restartPolicy: Never
+        containers:
+          - name: check
+            image: replicated/troubleshoot:v0.131.0
+            command: ["collect", "mssql", "--uri", "sqlserver://user:pass@my-db.default.svc.cluster.local:1433"]
+analyzers:
+  - textAnalyze:
+      checkName: SQL Server reachable
+      collectorName: mssql-check
+      fileName: "*.log"
+      regex: '"isConnected":true'
+      outcomes:
+        - pass:
+            when: "true"
+            message: "Connected to SQL Server from inside the cluster."
+        - fail:
+            when: "false"
+            message: "Could not connect to SQL Server from inside the cluster."
+```
+
+The `collect mssql` subcommand accepts only `--uri` (required). TLS is configured through the connection URI query parameters (for example, `?encrypt=true`).
+
 ## Included resources
 
 A single JSON file will be added to the support bundle, in the path `/mssql/[collector-name].json`:

@@ -147,6 +147,38 @@ spec:
           skipVerify: true
 ```
 
+## Run this check inside the cluster
+
+By default the `postgres` collector connects from the machine running the CLI, so it tests connectivity from there rather than from inside the cluster. To run the connection check from _inside_ the cluster, run it as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`replicated/troubleshoot`, v0.131.0 or later) and the `collect postgres` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+
+```yaml
+collectors:
+  - runPod:
+      name: postgres-check
+      namespace: default
+      podSpec:
+        restartPolicy: Never
+        containers:
+          - name: check
+            image: replicated/troubleshoot:v0.131.0
+            command: ["collect", "postgres", "--uri", "postgres://user:pass@my-db.default.svc.cluster.local:5432/app?sslmode=disable"]
+analyzers:
+  - textAnalyze:
+      checkName: PostgreSQL reachable
+      collectorName: postgres-check
+      fileName: "*.log"
+      regex: '"isConnected":true'
+      outcomes:
+        - pass:
+            when: "true"
+            message: "Connected to PostgreSQL from inside the cluster."
+        - fail:
+            when: "false"
+            message: "Could not connect to PostgreSQL from inside the cluster."
+```
+
+The `collect postgres` subcommand accepts `--uri` (required) plus the TLS flags `--tls-cacert`, `--tls-client-cert`, `--tls-client-key`, `--tls-skip-verify`, `--tls-secret-name`, and `--tls-secret-namespace`, which map to the `uri` and `tls` parameters above. `--tls-secret-name` reads a Secret and requires cluster access.
+
 ## Included resources
 
 A single JSON file will be added to the support bundle, in the path `/postgres/[collector-name].json`:
