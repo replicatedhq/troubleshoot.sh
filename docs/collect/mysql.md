@@ -11,7 +11,7 @@ The collector uses the network of the process running the support bundle CLI.
 - **Inside a pod:** requests use cluster networking, and in-cluster DNS (e.g. `*.svc.cluster.local`) resolves.
 - **Outside the cluster (CI runners, local machines):** requests use the host network, and in-cluster DNS names will not resolve.
 
-To check connectivity to an in-cluster service, run the CLI inside a pod.
+To check connectivity to an in-cluster service, run the check from inside the cluster. See [Run this check inside the cluster](#run-this-check-inside-the-cluster) below.
 
 ## Parameters
 
@@ -53,7 +53,7 @@ spec:
 
 ## Run this check inside the cluster
 
-By default the `mysql` collector connects from the machine running the CLI, so it tests connectivity from there rather than from inside the cluster. To run the connection check from _inside_ the cluster, run it as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`replicated/troubleshoot`, v0.131.0 or later) and the `collect mysql` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+By default the `mysql` collector uses the network of the process running the CLI (see above). To run the connection check from _inside_ the cluster, run it as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`proxy.replicated.com/library/troubleshoot`, v0.131.0 or later) and the `collect mysql` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
 
 ```yaml
 collectors:
@@ -64,7 +64,7 @@ collectors:
         restartPolicy: Never
         containers:
           - name: check
-            image: replicated/troubleshoot:v0.131.0
+            image: proxy.replicated.com/library/troubleshoot:v0.131.0
             command: ["collect", "mysql", "--uri", "user:pass@tcp(my-db.default.svc.cluster.local:3306)/app"]
 analyzers:
   - textAnalyze:

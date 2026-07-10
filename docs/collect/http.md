@@ -116,7 +116,7 @@ spec:
 
 ## Run this check inside the cluster
 
-By default the `http` collector uses the network of the process running the CLI (see above). To run the request from _inside_ the cluster — for example, to verify that an in-cluster Service is reachable — run the collector as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`replicated/troubleshoot`, v0.131.0 or later) and the `collect http` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
+By default the `http` collector uses the network of the process running the CLI (see above). To run the request from _inside_ the cluster — for example, to verify that an in-cluster Service is reachable — run the collector as a Pod using the [`runPod`](/docs/collect/run-pod) collector with the Troubleshoot image (`proxy.replicated.com/library/troubleshoot`, v0.131.0 or later) and the `collect http` subcommand. The Pod runs the collector from within the cluster and prints the same result JSON to its logs, which you evaluate with [`textAnalyze`](/docs/analyze/regex):
 
 ```yaml
 collectors:
@@ -127,7 +127,7 @@ collectors:
         restartPolicy: Never
         containers:
           - name: check
-            image: replicated/troubleshoot:v0.131.0
+            image: proxy.replicated.com/library/troubleshoot:v0.131.0
             command: ["collect", "http", "--url", "http://my-service.default.svc.cluster.local:8080/healthz"]
 analyzers:
   - textAnalyze:
