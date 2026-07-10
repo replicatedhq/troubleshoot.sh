@@ -60,7 +60,7 @@ analyzers:
       checkName: SQL Server reachable
       collectorName: mssql-check
       fileName: "*.log"
-      regex: '"isConnected":true'
+      regex: '"isConnected": *true'
       outcomes:
         - pass:
             when: "true"

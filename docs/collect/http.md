@@ -134,7 +134,7 @@ analyzers:
       checkName: HTTP endpoint reachable
       collectorName: http-check
       fileName: "*.log"
-      regex: '"status": 200'
+      regex: '"status": *200'
       outcomes:
         - pass:
             when: "true"

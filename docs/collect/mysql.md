@@ -71,7 +71,7 @@ analyzers:
       checkName: MySQL reachable
       collectorName: mysql-check
       fileName: "*.log"
-      regex: '"isConnected":true'
+      regex: '"isConnected": *true'
       outcomes:
         - pass:
             when: "true"

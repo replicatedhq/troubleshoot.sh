@@ -153,7 +153,7 @@ analyzers:
       checkName: Redis reachable
       collectorName: redis-check
       fileName: "*.log"
-      regex: '"isConnected":true'
+      regex: '"isConnected": *true'
       outcomes:
         - pass:
             when: "true"

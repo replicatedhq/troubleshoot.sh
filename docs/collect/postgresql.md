@@ -167,7 +167,7 @@ analyzers:
       checkName: PostgreSQL reachable
       collectorName: postgres-check
       fileName: "*.log"
-      regex: '"isConnected":true'
+      regex: '"isConnected": *true'
       outcomes:
         - pass:
             when: "true"
