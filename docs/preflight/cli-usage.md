@@ -30,6 +30,14 @@ As of v0.69.0, valid input for specs can include:
 - Documents of `kind: Secret` that have the label `troubleshoot.sh/kind: preflight`
 
 Multiple YAML "documents" (specs) are supported as input, in addition all documents other than the above supported will be filtered out. This allows feeding an entire set of manifests (eg. a full Helm chart) in, and preflight will take only the relevant specs.
+
+:::tip Use a Secret to ship preflight specs with a Helm chart
+When you ship preflight checks as part of a Helm chart, embed the preflight spec inside a `kind: Secret` (with the `troubleshoot.sh/kind: preflight` label) rather than placing a bare `kind: Preflight` resource into the chart's `templates/` directory.
+
+The Secret-based pattern always works, even when the `preflights.troubleshoot.sh` CRD is not installed in the cluster, because the spec is stored as plain YAML inside `stringData` (or `data`). This avoids needing cluster-admin permissions to install CRDs and is the most reliable way to deliver preflights to shared or multi-tenant clusters.
+
+The `preflight` CLI reads either form — a `kind: Preflight` document, or a Secret/ConfigMap containing one — so you can keep using the same `preflight` command regardless of how the spec is stored.
+:::
 ```shell
 preflight [url] [flags] [-]
 ```
