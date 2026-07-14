@@ -21,9 +21,10 @@ In addition to the [shared collector properties](/docs/collect/collectors/#share
 
 - ##### `collectDelay` (optional)
   Delay collection to allow goldpinger time to start sending requests. Defaults to 0s if an existing goldpinger installation is detected, and 6s if troubleshoot installs the temporary goldpinger service.
-  
+
 - ##### `podLaunchOptions` (Optional)
   Pod launch options to start a pod
+
   - ##### `namespace` (Optional)
     Namespace to launch the pod in. Defaults to the `default` namespace.
 
