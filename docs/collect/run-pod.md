@@ -138,7 +138,8 @@ This will contain the pod output (up to 10000 lines).
 
 ### `/[collector-name]/[collector-name].json`
 
-This will contain the pod status details in JSON format.
+This will contain the pod metadata and status (phase, conditions, container statuses, etc.) in JSON format.
+The pod `Spec` is intentionally omitted to avoid persisting sensitive data such as environment variables, commands, args, and image pull secrets in the collected bundle.
 
 ### `/[collector-name]/[collector-name]-events.json`
 
