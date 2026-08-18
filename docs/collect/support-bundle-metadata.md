@@ -8,9 +8,11 @@ The `supportBundleMetadata` collector reads all key-value pairs from the `replic
 
 The `supportBundleMetadata` secret is created automatically by Replicated SDK versions 1.18.0 and later. For more information about distributing the Replicated SDK with your application, see [About the Replicated SDK](https://docs.replicated.com/vendor/replicated-sdk-overview) in the Replicated documentation.
 
-You can also create the secret manually. For information about the required format of the secret, see [Secret Format]({#secret-format}) on this page.
+You can also create the secret manually. For information about the required format of the secret, see [Secret Format](#secret-format) on this page.
 
 The secret name `replicated-support-metadata` is fixed and cannot be changed.
+
+<a id="secret-format"></a>
 
 ## Parameters
 
