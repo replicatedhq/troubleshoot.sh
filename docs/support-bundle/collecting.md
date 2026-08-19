@@ -61,6 +61,39 @@ kubectl support-bundle https://raw.githubusercontent.com/replicatedhq/troublesho
 secret/path/to/my/spec
 ```
 
+## Apply custom redactors from files, URLs, or cluster resources
+
+In addition to the built-in redactors, you can apply one or more custom `Redactor` specs by passing them with the `--redactors` flag. The flag can be specified multiple times.
+
+Each value can be one of the following:
+
+- A local file path
+- An HTTP or HTTPS URL
+- An `oci://` registry URL
+- A ConfigMap URI: `configmap/<namespace>/<configmap-name>[/<data-key>]`
+- A Secret URI: `secret/<namespace>/<secret-name>[/<data-key>]`
+
+The default data key is `redactor-spec`.
+
+### Examples
+
+Apply redactors from a local file and a Secret:
+
+```shell
+kubectl support-bundle ./support-bundle.yaml \
+  --redactors ./my-redactor.yaml \
+  --redactors secret/default/my-redactor
+```
+
+Apply a redactor from a ConfigMap with a custom data key:
+
+```shell
+kubectl support-bundle ./support-bundle.yaml \
+  --redactors configmap/default/my-redactor/custom-key
+```
+
+For more information about writing redactor specs, see [Redactors](/docs/redact/redactors).
+
 ## Collect a support bundle using specs discovered from the cluster
 
 > Introduced in Troubleshoot v0.47.0
