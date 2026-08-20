@@ -57,11 +57,11 @@ Example of the resulting JSON file:
 
 ```json
 {
-  "from_namespace": "10.0.0.0/24",
-  "to_namespace": "10.0.1.0/24",
+  "from_cidr": "10.0.0.0/24",
+  "to_cidr": "10.0.1.0/24",
   "errors": {
-    "from_namespace_creation": "",
-    "to_namespace_creation": "",
+    "from_cidr_creation": "",
+    "to_cidr_creation": "",
     "udp_client": "error reading from udp socket: read udp 10.0.0.1:60767->10.0.1.1:8888: i/o timeout",
     "udp_server": "error reading from udp socket: read udp 10.0.1.1:8888: i/o timeout",
     "tcp_client": "error dialing tcp: dial tcp 10.0.1.1:8888: i/o timeout",
@@ -124,7 +124,7 @@ spec:
       collectorName: check-network-connectivity
       outcomes:
       - pass:
-          message: "Communication between {{ .FromNamespace }} and {{ .ToNamespace }} is working"
+          message: "Communication between {{ .FromCIDR }} and {{ .ToCIDR }} is working"
       - fail:
           message: "{{ .ErrorMessage }}"
 ```

@@ -19,7 +19,7 @@ spec:
   - name: Redact values for environment variables with names beginning with 'token'
     removals:
       regex:
-      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*token[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\"'
+      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*token[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\")' 
   - name: Redact values that look like API tokens in multiline JSON
     removals:
       regex:

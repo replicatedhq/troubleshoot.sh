@@ -33,10 +33,10 @@ run_test() {
     if [ -f "$test_script" ] && [ -x "$test_script" ]; then
         if "$test_script"; then
             echo "✅ PASSED: $test_name"
-            ((TESTS_PASSED++))
+            TESTS_PASSED=$((TESTS_PASSED + 1))
         else
             echo "❌ FAILED: $test_name"
-            ((TESTS_FAILED++))
+            TESTS_FAILED=$((TESTS_FAILED + 1))
             FAILED_TESTS+=("$test_name")
         fi
     else

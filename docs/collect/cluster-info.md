@@ -7,8 +7,16 @@ tags: ["collect"]
 
 The `clusterInfo` collector will add common information about a Kubernetes cluster.
 
-This collector is a default collector and it will be automatically included in your collector spec if you don't include it.
-This collector cannot be removed.
+This collector is a default collector for in-cluster Kubernetes Support Bundles. When you run an in-cluster bundle, Troubleshoot automatically adds `clusterInfo` to the merged collector list if your spec does not already declare it. This default exists because bundles are far more useful for debugging when basic cluster information is present, and authors commonly forget to add this collector.
+
+To opt out, declare the collector in your spec with [`exclude: true`](/docs/collect/collectors/#exclude):
+
+```yaml
+spec:
+  collectors:
+    - clusterInfo:
+        exclude: true
+```
 
 ## Parameters
 

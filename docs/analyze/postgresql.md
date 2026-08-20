@@ -5,7 +5,7 @@ tags: ["analyze"]
 ---
 
 
-The `PostgreSQL` analyzer is available to check vesion and connection status of a PostgreSQL database. 
+The `PostgreSQL` analyzer is available to check version and connection status of a PostgreSQL database. 
 It relies on the data collected by the [PostgreSQL collector](/docs/collect/postgresql/).
 
 The analyzer's outcome `when` clause may be used to evaluate the database connection status or a semver range to compare against the running version, and supports standard comparison operators.

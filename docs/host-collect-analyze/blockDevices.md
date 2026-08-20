@@ -84,6 +84,9 @@ Includes unmounted partitions in the analysis. Disabled by default.
 #### `minimumAcceptableSize` (Optional)
 The minimum acceptable size to filter the available block devices during analysis. Disabled by default.
 
+#### `additionalDeviceTypes` (Optional)
+A list of extra lsblk TYPE values (e.g. `loop`, `lvm`) that should count toward outcomes, in addition to whole disks and (when `includeUnmountedPartitions` is set) partitions. By default, only `disk` type devices are counted. Types in this list are eligible regardless of the `includeUnmountedPartitions` setting.
+
 ### Example Analyzer Definition
 
 ```yaml
@@ -98,6 +101,8 @@ spec:
     - blockDevices:
         includeUnmountedPartitions: true
         minimumAcceptableSize: 10737418240 # 1024 ^ 3 * 10, 10GiB
+        additionalDeviceTypes:
+          - lvm
         outcomes:
         - pass:
             when: ".* == 1"

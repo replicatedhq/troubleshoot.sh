@@ -21,5 +21,8 @@ serve: ## Serve built site locally
 test: ## Run all tests
 	./tests/run-all-tests.sh
 
+typecheck: ## Run TypeScript type checks
+	npm run typecheck
+
 clean: ## Clear cache
 	npm run clear

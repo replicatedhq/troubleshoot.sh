@@ -99,6 +99,10 @@ spec:
 
 When this collector is executed, it will include the following files in a support bundle:
 
-### `/[name or hostPath]/[node name]/archive.tar`
+### `/[name or hostPath]/[node-name]/archive.tar`
 
-This will contain tar archives of the directory or file from all nodes.
+When `extractArchive` is `false` (default), this will contain tar archives of the directory or file from all nodes.
+
+### `/[name or hostPath]/[node-name]/[extracted-files]`
+
+When `extractArchive` is set to `true`, individual files are extracted and placed at this path instead of creating an archive.

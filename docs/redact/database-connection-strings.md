@@ -23,7 +23,7 @@ spec:
   - name: Redact values for environment variables with names beginning with 'database'
     removals:
       regex:
-      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*database[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\"'
+      - redactor: '(?i)(\\\"name\\\":\\\"[^\"]*database[^\"]*\\\",\\\"value\\\":\\\")(?P<mask>[^\"]*)(\\\")' 
   - name: Redact 'Data Source' values commonly found in database connection strings
     removals:
       regex:

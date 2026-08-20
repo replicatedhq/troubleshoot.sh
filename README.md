@@ -132,6 +132,23 @@ Individual tests:
 ./tests/test-search.sh     # Validates search configuration
 ```
 
+## Troubleshoot Documentation for LLMs
+
+Troubleshoot supports the [llms.txt](https://llmstxt.org/) convention for making documentation available to LLMs.
+
+- [llms.txt](https://troubleshoot.sh/llms.txt): This file contains Markdown versions of key docs pages.
+- [llms-full.txt](https://troubleshoot.sh/llms-full.txt): This file contains the contents of the docs/ directory in the [troubleshoot.sh](https://github.com/replicatedhq/troubleshoot.sh) repository.
+
+### How LLM Files Are Generated
+
+The `static/js/generate-llms.js` script generates LLM files:
+   - `static/llms.txt`: Curated list of key documentation pages
+   - `static/llms-full.txt`: Complete archive of all documentation
+
+This script runs automatically with the `prebuild` npm hook before every production build. The `prebuild` hook is defined in `package.json`. To ensure the `prebuild` npm hook runs, the Netlify build command must be `npm run build` (not `docusaurus build`).
+
+Generated files are excluded from version control (listed in `.gitignore`) because they are created fresh on every build.
+
 ## Contributing
 
 1. Fork the repository

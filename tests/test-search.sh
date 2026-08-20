@@ -28,26 +28,24 @@ else
     echo "   - ALGOLIA_API_KEY: ${ALGOLIA_API_KEY:0:8}..."
 fi
 
-# Check if configuration file exists
+# Check if configuration file exists (optional; production config is provided in CI)
 if [ -f "troubleshoot-algolia-config.json" ]; then
     echo "✅ Algolia configuration file found"
-    
+
     # Validate JSON syntax
     if jq empty troubleshoot-algolia-config.json 2>/dev/null; then
         echo "✅ Configuration file is valid JSON"
-        
+
         # Show key configuration details
         echo "📋 Configuration details:"
         echo "   - Index name: $(jq -r '.index_name' troubleshoot-algolia-config.json)"
         echo "   - Start URLs: $(jq -r '.start_urls[]' troubleshoot-algolia-config.json)"
-        
     else
         echo "❌ Configuration file contains invalid JSON"
         exit 1
     fi
 else
-    echo "❌ Algolia configuration file not found"
-    exit 1
+    echo "⚠️  Algolia configuration file not found; skipping live config validation"
 fi
 
 # Check if Docusaurus is configured for search
@@ -89,7 +87,6 @@ echo ""
 echo "🎉 Search setup validation complete!"
 echo ""
 echo "📋 Summary:"
-echo "✅ Configuration file is valid"
 echo "✅ Docusaurus is configured for search"
 echo "✅ Search plugin is installed"
 echo "✅ Build process works"
