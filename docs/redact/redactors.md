@@ -13,12 +13,12 @@ metadata:
   name: my-redactor-name
 spec:
   redactors:
-  - name: replace password # names are not used internally, but are useful for recordkeeping
+  - name: replace company name # names are not used internally, but are useful for recordkeeping
     fileSelector:
-      file: data/my-password-dump # this targets a single file
+      file: data/my-company-name # this targets a single file
     removals:
       values:
-      - abc123 # this value is my password, and should never appear in a support bundle
+      - example-company-name # this value is a company name, and should never appear in a support bundle
   - name: all files # as no file is specified, this redactor will run against all files
     removals:
       regex:
@@ -35,6 +35,8 @@ Any of the four can be omitted.
 
 This is divided into two sub-objects - `fileSelector` (containing `file` or `files`) and `removals` (containing `values`, `regex` and/or `yamlPath`).
 `fileSelector` determines what files the redactor applies to, and `removals` determines what it removes.
+
+**Important:** Do not include sensitive data in redactor specifications. Redactor specs are passed to Troubleshoot in plain text and may be stored in plain text locations such as ConfigMaps. Instead, use patterns such as `regex` or `yamlPath` to redact values without embedding the values themselves.
 
 ### `file` and `files`
 
