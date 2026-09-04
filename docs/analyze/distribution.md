@@ -29,6 +29,28 @@ The `distribution` analyzer supports the following distributions:
 * `oke` (Oracle Cloud Infrastructure Container Engine for Kubernetes)
 * `openShift` (RedHat OpenShift)
 * `rke2` (Rancher RKE2)
+* `tanzu` (VMware Tanzu)
+
+## How Detection Works
+
+Distributions are identified from the data the `clusterResources` collector already gathers, using
+whichever signals are distinctive for each one:
+
+* node labels, such as `kots.io/embedded-cluster-role` for Embedded Cluster or
+  `minikube.k8s.io/version` for minikube
+* node annotations, such as `rke2.io/node-args` for RKE2
+* the node `providerID` prefix, such as `aws:` for EKS or `digitalocean:` for DigitalOcean
+* the node OS image, such as `Docker Desktop`
+* API groups present in the cluster, such as `apps.openshift.io/` for OpenShift
+
+Tanzu is detected from either the `run.tanzu.vmware.com/kubernetesDistributionVersion` node label or
+the presence of the `run.tanzu.vmware.com/` API group, so it is recognized on TKG and VKS clusters
+whether or not the supervisor exposes that API group.
+
+Because detection relies on these signals, a distribution can go unrecognized on a cluster where the
+expected labels or API groups have been stripped or renamed. Outcomes are evaluated in the order they
+are declared, and an outcome with no `when` attribute always matches, so it is worth ending a spec
+with one to catch unrecognized distributions. If no outcome matches, the analyzer reports a warning.
 
 ## Parameters
 
@@ -72,6 +94,9 @@ spec:
           - pass:
               when: "== digitalocean"
               message: DigitalOcean is a supported distribution
+          - pass:
+              when: "== tanzu"
+              message: Tanzu is a supported distribution
           - warn:
               when: "== minikube"
               message: Minikube is not suitable for production environments
