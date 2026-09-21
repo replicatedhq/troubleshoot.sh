@@ -55,7 +55,7 @@ If omitted, logs for **all** containers in the pod are collected, including init
 ##### `limits` (Optional)
 Provided to limit the size of the logs.
 By default, this is set to `maxLines: 10000`.
-Either `maxAge` or `maxLines` can be provided, but not both.
+When defined, `maxAge` will always take precedence over `maxLines` and `maxBytes`.
 
 ##### `limits.maxAge`
 The duration of the maximum oldest log to include.
@@ -63,7 +63,7 @@ Valid time units are "ns", "us" (or "µs"), "ms", "s", "m", "h".
 For duration string format see [time.ParseDuration](https://pkg.go.dev/time#ParseDuration).
 
 ##### `limits.maxLines`
-The number of lines to include, starting from the newest.
+The number of lines to include, starting from the newest. This option will be ignored if `maxAge` is defined.
 
 ##### `limits.maxBytes`
 The maximum file size of a collected pod log. Defaults to an integer value of `5000000` bytes, which is 5MB. The value
