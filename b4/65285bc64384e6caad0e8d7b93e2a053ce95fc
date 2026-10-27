@@ -1,0 +1,19 @@
+docs/analyze/cluster-resource.md
+  s_1172a6df0fa7da::t_90a2de766e6dee 13,25,27-29,33-35,37-42,45,47,51-55,168
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.5",
+  "base_commit_sha": "b465285bc64384e6caad0e8d7b93e2a053ce95fc",
+  "prompts": {},
+  "sessions": {
+    "s_1172a6df0fa7da": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "s_1172a6df0fa7da",
+        "model": "unknown"
+      },
+      "human_author": "Amber Alston <amber@replicated.com>"
+    }
+  }
+}
