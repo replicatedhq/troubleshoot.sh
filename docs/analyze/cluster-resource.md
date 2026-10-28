@@ -10,7 +10,7 @@ The `clusterResource` analyzer can be used to check any attribute of any known r
 The `clusterResource` analyzer uses data from the [clusterResources collector](/docs/collect/cluster-resources/).
 The `clusterResources` collector is automatically added and is always present.
 
-You must specify the `kind` and `name` attributes. There is an optional `namespace` attribute to target the Kubernetes resource.
+You must specify the `kind` and `name` attributes. For namespaced resources, use `namespace` to target the Kubernetes resource. For cluster-scoped resources, set `clusterScoped: true`.
 
 The `yamlPath` attribute is used to specify a dot-delimited YAML path of a property on the Kubernetes resource referenced in `name`.
 The `when` attribute supports standard arithmetic comparison operators.
@@ -22,31 +22,37 @@ The outcomes on this analyzer are processed in order, and execution stops after 
 **checkName**: (Optional) Analyzer name.
 Used for uniqueness if multiple analyzers are defined with similar parameters.
 
-**kind**: (Required) The type of Kubernetes resource being targeted by `name`.
+**kind**: (Required) The type of Kubernetes resource being targeted by `name`. Values are case-insensitive.
 
-supported values:
-- `deployment`
-- `statefulset`
-- `networkpolicy`
-- `pod`
-- `ingress`
-- `service`
-- `resourcequota`
-- `job`
-- `persistentvolumeclaim`
-- `pvc`
-- `replicaset`
-- `namespace`
-- `persistentvolume`
-- `pv`
-- `node`
-- `storageclass`
+Supported namespaced values:
 - `configmap`
+- `daemonset`
+- `deployment`
+- `ingress`
+- `job`
+- `networkpolicy`
+- `persistentvolumeclaim` or `pvc`
+- `pod`
+- `replicaset`
+- `resourcequota`
+- `service`
+- `statefulset`
+
+Supported cluster-scoped values (require `clusterScoped: true`):
+- `mutatingwebhookconfiguration`
+- `namespace`
+- `node`
+- `persistentvolume` or `pv`
+- `storageclass`
+- `validatingwebhookconfiguration`
 
 **name**: (Required) The name of the resource to check.
 
-**namespace**: (Optional) The namespace to look in for the resource.
-If a namespace is not specified, this will configure the analyzer to search for cluster-scoped resources.
+**namespace**: (Optional) The namespace to look in for a namespaced resource.
+Defaults to `default`. Ignored when `clusterScoped` is `true`.
+
+**clusterScoped**: (Optional) Set to `true` when `kind` is a cluster-scoped resource. Defaults to `false`.
+If a cluster-scoped `kind` is used without `clusterScoped: true`, the analyzer looks for the resource in a namespace, does not find it, and reports that the resource does not exist.
 
 **yamlPath**: (Required) The dot-delimited YAML path of a property on the Kubernetes resource.
 
@@ -159,7 +165,7 @@ spec:
           - pass:
               when: "true"
               message: is strapi-k8s
-     - clusterResource:
+    - clusterResource:
         checkName: check-storageclass-in-cluster-scope
         kind: storageclass
         name: standard
