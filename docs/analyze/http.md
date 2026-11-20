@@ -7,10 +7,12 @@ tags: ["analyze"]
 
 ## HTTP Analyzer
 
-The `http` analyzer is used to analyse information collected by the [HTTP Requests](/docs/collect/http/) collector. It supports multiple outcomes. For example:
+The `http` analyzer is used to analyse information collected by the [HTTP Requests](/docs/collect/http/) collector. The `when` value in an outcome can be one of the following:
 
-- `error`: Error occurred connecting to the URL.
-- `statusCode == 200`: Successfully connected to the URL.
+- `error`: An error occurred connecting to the URL, and no response was received.
+- A comparison on `statusCode`, the HTTP status code of the response. The supported operators are `==`, `!=`, `<`, `<=`, `>`, and `>=`. You can combine comparisons with `&&` and `||`. For example, `statusCode >= 200 && statusCode < 300` matches any 2xx response, and `statusCode != 200` matches any other status code.
+
+Outcomes are evaluated in order, and the first outcome that matches is used. An outcome without `when` always matches, so place it last to act as a catch-all.
 
 ### Examples of the collected JSON output to analyse
 

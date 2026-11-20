@@ -17,6 +17,8 @@ The `when` attribute supports standard arithmetic comparison operators.
 
 The outcomes on this analyzer are processed in order, and execution stops after the first outcome that is truthy.
 
+If the resource doesn't exist, the analyzer fails with a built-in message, such as `namespace my-app does not exist`, and your outcomes are not evaluated. A custom message or a `warn` outcome is not shown for a missing resource.
+
 ## Parameters
 
 **checkName**: (Optional) Analyzer name.
