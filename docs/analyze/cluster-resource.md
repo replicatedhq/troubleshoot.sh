@@ -17,7 +17,9 @@ The `when` attribute supports standard arithmetic comparison operators.
 
 The outcomes on this analyzer are processed in order, and execution stops after the first outcome that is truthy.
 
-If the resource doesn't exist, the analyzer fails with a built-in message, such as `namespace my-app does not exist`, and your outcomes are not evaluated. A custom message or a `warn` outcome is not shown for a missing resource.
+If the resource doesn't exist, the analyzer fails with a built-in message, such as `namespace my-app does not exist`, and your outcomes are not evaluated. A custom message or a `warn` outcome is not shown for a missing resource. This message requires Troubleshoot v0.119.0 or later. In earlier versions, a missing resource fails with `YAML path provided is invalid`.
+
+The same message appears when the analyzer can't look up the resource for other reasons, even if the resource exists. For example, if `kind` is misspelled or not supported, if the `clusterResources` collector didn't collect the resource's namespace because of RBAC or a `namespaces` filter, or if the collected file can't be parsed. Before assuming the resource is missing, check `kind` and the collector's scope.
 
 ## Parameters
 

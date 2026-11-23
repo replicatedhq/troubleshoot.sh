@@ -9,8 +9,10 @@ tags: ["analyze"]
 
 The `http` analyzer is used to analyse information collected by the [HTTP Requests](/docs/collect/http/) collector. The `when` value in an outcome can be one of the following:
 
-- `error`: An error occurred connecting to the URL, and no response was received.
-- A comparison on `statusCode`, the HTTP status code of the response. The supported operators are `==`, `!=`, `<`, `<=`, `>`, and `>=`. You can combine comparisons with `&&` and `||`. For example, `statusCode >= 200 && statusCode < 300` matches any 2xx response, and `statusCode != 200` matches any other status code.
+- `error`: An error occurred connecting to the URL, and no response was received. `error` must be used on its own. It can't be combined with a `statusCode` comparison.
+- A comparison on `statusCode`, the HTTP status code of the response. The supported operators are `==`, `!=`, `<`, `<=`, `>`, and `>=`. You can combine `statusCode` comparisons with `&&` and `||`. For example, `statusCode >= 200 && statusCode < 300` matches any 2xx response, and `statusCode != 200` matches any other status code. Operators other than `==`, and the `&&` and `||` operators, require Troubleshoot v0.118.0 or later.
+
+Comparisons on `statusCode` never match when no response is received, such as on a DNS failure, TLS error, or timeout. This applies to `!=` as well. To handle failed requests, add an `error` outcome or a catch-all outcome.
 
 Outcomes are evaluated in order, and the first outcome that matches is used. An outcome without `when` always matches, so place it last to act as a catch-all.
 
