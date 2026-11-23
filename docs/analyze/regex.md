@@ -16,6 +16,7 @@ This analyzer uses the Go library [`regexp`](https://pkg.go.dev/regexp) from the
 **regex**: (Optional) A regex pattern to test.
 If the pattern matches the file, the outcome that has set `when` to `"true"` will be executed.
 If no `when` expression has been specified, the `pass` outcome defaults to `"true"`.
+The pattern is tested against the whole file, not each line. By default, `^` and `$` match only the start and end of the file. To match the start and end of each line, add the `(?m)` flag. For example, `^0$` does not match a file that contains `0` followed by a newline, but `(?m)^0$` does.
 
 **regexGroups**: (Optional)  A regex pattern to match.
 Matches from named capturing groups are available to `when` expressions in outcomes. The captured group names can be used as template variables in the `when` outcome message. These template variables will be replaced by the strings extracted through regular expression matching.
