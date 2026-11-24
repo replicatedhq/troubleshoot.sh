@@ -56,6 +56,38 @@ spec:
               message: No wildcard DNS detected.
 ```
 
+## Check that a hostname resolves
+
+Use a `jsonCompare` analyzer to check for a non-empty DNS record for a specific hostname. The check passes when any of the collected lookups for that hostname returns a record.
+
+```yaml
+apiVersion: troubleshoot.sh/v1beta2
+kind: HostPreflight
+metadata:
+  name: hostname-resolution
+spec:
+  collectors:
+    - dns:
+        collectorName: hostname-check
+        hostnames:
+          - example.com
+  analyzers:
+    - jsonCompare:
+        checkName: Resolve example.com
+        fileName: host-collectors/dns/hostname-check/result.json
+        jsonPath: '{$.query.example\.com[?(@.record!="")].record}'
+        value: '[]'
+        outcomes:
+          - fail:
+              when: 'true'
+              message: Unable to resolve example.com.
+          - pass:
+              when: 'false'
+              message: Resolved example.com.
+```
+
+The hostname is a single key under `query`. When you change the hostname, update both `hostnames` and `jsonPath`, and escape each dot in the JSONPath key with a backslash. Use single quotes to preserve those backslashes in YAML. The JSONPath returns an empty array when there are no matching records, which triggers the fail outcome.
+
 ## Included resources
 
 When this collector is executed, it includes the following files in a support bundle:
